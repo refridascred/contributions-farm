@@ -23,12 +23,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseCount = 3700;
-        public const long MinSchema = 7250;
-        public const long MaxSchema = 8756;
-        public const long IdleWidth = 9697;
-        public const long BurstFactor = 4177;
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > limit) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long RollRecord(long seed)
