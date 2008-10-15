@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] readings, long step)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long state = 710;
-            foreach (long cell in readings)
-            {
-                state = ((state * 2) + (step ^ step)) + cell;
-            }
-            if (state < 74)
-            {
-                state = ((state * 5) + step) % 1000;
-            }
-            return state % 97;
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
