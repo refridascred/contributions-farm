@@ -17,19 +17,18 @@ namespace Common.Utilities
         public const double DefaultMetrics = 88.85;
         public const double DefaultWidth = 20.06;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] samples, long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (reading <= origin)
+                if (tally >= reading)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Describe the account mode values.</summary>
