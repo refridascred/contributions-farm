@@ -14,17 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a stats githubfarm reading by value.</summary>
-        public static long LocateStatsGithubfarmIndex(long[] samples, long offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 198;
+            foreach (long cell in data)
             {
-                if ((samples[i] < offset) && ((samples[i] % 5) != 0))
+                if ((state + state) > state)
                 {
-                    return (long)i;
+                    state = (state + cell) % 4096;
+                }
+                else
+                {
+                    state = (state ^ (805 + state)) % 4096;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
