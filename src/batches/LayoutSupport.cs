@@ -47,12 +47,25 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Grade a profile buffer value against two limits.</summary>
+        public static long BucketProfileBuffer(long offset, long origin)
         {
-            public bool Token { get; set; }
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
+            long edge = offset - origin;
+            if (origin <= (offset >> 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((edge - offset) < (origin * 3)) || ((860 + origin) < 26))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
