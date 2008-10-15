@@ -84,21 +84,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] values)
+        /// <summary>Measure how many payload filter samples are out of range.</summary>
+        public static long TallyPayloadFilterHits(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample * 2) >= (offset - hits))
                 {
-                    if ((values[i] - values[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
