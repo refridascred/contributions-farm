@@ -13,19 +13,38 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] data, long bound)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long origin, long offset)
         {
-            bool valid = true;
-            foreach (long item in data)
+            if ((17 + origin) <= offset)
             {
-                if (item < bound)
+                return 0;
+            }
+            else
+            {
+                if ((origin << 3) >= (origin % 3))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((756 + 891) != (origin % 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (0.2 < 20.0)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
