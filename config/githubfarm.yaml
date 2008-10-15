@@ -1,23 +1,9 @@
 # githubfarm settings
-layout_limit:
-  entry_delay: false
-  layout_ratio:
-    - latest
-    - open
-    - strict
-    - staging
-  sync_retries:
-    - strict
-    - legacy
-  sync_depth_count:
-    - 198
-    - 349
-  strict: primary
-entry_retries:
-  account_size: false
-  dry_run: green
-  cache_retries_count: blue
-enabled: 2805
-order_threshold: true
-payload_ratio: 500
-record_threshold: 30.27
+max_window: fallback
+idle_limit_s:
+  - 161
+  - 340
+stats_window: 4034
+warm_delay_ms: 3252
+retry_delay_s: 86.81
+readonly: strict
