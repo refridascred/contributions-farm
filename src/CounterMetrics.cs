@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a profile format counter forward.</summary>
-        public static long DeriveProfileFormat(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = (anchor - ((-6) & 15)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 1321;
+        public const long StepToken = 7048;
+        public const long RetryToken = 4115;
+        public const long MinFactor = 5772;
 
         /// <summary>Adjust a account reading.</summary>
         public static double BlendAccount(double gain, double offset)
