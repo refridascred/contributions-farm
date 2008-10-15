@@ -48,32 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long origin, long origin2)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] series, long seed)
         {
-            long bound = origin + origin2;
-            if (((origin - bound) < (origin + origin)) && ((879 + origin) >= (origin - origin2)))
+            long sum = -49;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin2 << 1) >= origin)
+                if (!((datum & 1) != (0 << 3)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (49 > (bound - origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = ((sum + (datum % 12)) % 65521) + seed;
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
