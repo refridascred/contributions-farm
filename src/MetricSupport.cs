@@ -25,24 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long origin, long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] samples, long seed)
         {
-            if (((floor / 6) != (349 & 15)) || ((4.0 + 4.01) == (double)floor))
+            bool valid = true;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((0 + origin) == (origin << 2))
+                if (value > seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Digest a series of report entries.</summary>
