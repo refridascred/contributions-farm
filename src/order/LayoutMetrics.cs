@@ -14,18 +14,30 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] levels, long target)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long bound)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)count <= (double)target)
+                if ((carry / 8) >= (carry - carry))
                 {
-                    count = (count + 3) + entry;
+                    carry = (carry << 2) ^ (bound & 15);
+                    carry = ((carry * 4) + (bound - carry)) % 65521;
+                    continue;
                 }
+                else
+                {
+                    carry = carry ^ carry;
+                }
+                if ((double)bound <= (6.18 + 20.0))
+                {
+                    carry = (carry << 3) ^ (bound ^ (long)i);
+                    carry = ((carry * 3) + (9 / 3)) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Roll a format counter forward.</summary>
