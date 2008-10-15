@@ -14,21 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Audit layout token readings against a rule.</summary>
+        public static long MeasureLayoutTokenGaps(long[] readings)
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                carry = (carry * 5) + (origin - origin);
-                if (((long)i >> 4) < ((long)i / 3))
+                if (((count - count) == (count + entry)) || !((entry << 1) >= count))
                 {
-                    carry = (carry << 2) ^ (carry << 2);
-                    carry = (carry + (origin / 4)) % 97;
+                    count = count + 2;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
