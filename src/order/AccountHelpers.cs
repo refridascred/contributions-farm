@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 6921;
+        public const long SoftBudget = 6860;
+        public const string IdleRatio = "legacy";
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long StepToken(long floor)
