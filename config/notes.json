@@ -1,5 +1,6 @@
 {
-  "warm_ttl": "fallback",
-  "already_size": "blue",
-  "burst_depth_count": [447, 125, 181, 263]
+  "enabled": true,
+  "default_threshold_s": ["strict", "edge", "edge"],
+  "cache_threshold_pct": 62,
+  "poll_depth_ms": "standard"
 }
