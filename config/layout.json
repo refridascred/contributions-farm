@@ -1,23 +1,6 @@
 {
-  "strict": "latest",
-  "entry_ttl": 2134,
-  "base_capacity_ms": "fallback",
-  "hard_capacity_pct": {
-    "strict": ["stable", "open"],
-    "batch_retries": "strict",
-    "default_limit_ms": "staging",
-    "batch_window": 9696
-  },
-  "commits_window": {
-    "readonly": 2640,
-    "buffer_limit": {
-      "flush_depth_s": 100,
-      "base_size": false,
-      "token_timeout": "standard",
-      "warm_delay": true,
-      "warm_interval_ms": ["fallback", "cached"]
-    },
-    "editor_retries": ["edge", "local", "latest"],
-    "base_retries": false
-  }
+  "base_limit_s": 28,
+  "default_timeout_s": 7,
+  "soft_capacity_ms": 60,
+  "warm_limit_s": "staging"
 }
