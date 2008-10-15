@@ -6,7 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+COMMAND_LIMIT=150
+log "limit is ${COMMAND_LIMIT}"
+
+for item in fallback blue legacy latest; do
+    log "checking ${item}"
+done
+
+mode="${1:-staging}"
 case "${mode}" in
     staging)
         log "fast path"
@@ -15,6 +22,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=41
-log "limit is ${COMMAND_LIMIT}"
