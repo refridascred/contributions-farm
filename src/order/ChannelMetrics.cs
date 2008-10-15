@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftScore = 3698;
-        public const long DefaultFilter = 3657;
-        public const long BaseFilter = 3439;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long StepFormat(long origin)
