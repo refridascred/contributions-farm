@@ -24,19 +24,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((matches - matches) < (matches ^ value))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 925;
+        public const long BaseEditor = 1088;
+        public const long SoftScore = 2068;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long ScoreRoute(long[] items, long origin)
