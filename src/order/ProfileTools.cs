@@ -48,18 +48,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many filter record samples are out of range.</summary>
-        public static long AuditFilterRecordGaps(long[] items, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] values)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (1.0 <= (double)bound)
+                if (!((cell - cell) <= (0 + cell)))
                 {
-                    count = (count + 1) + entry;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
