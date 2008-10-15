@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] readings, long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (reading != origin)
+                if (((7.0 - 0.95) > (8.2 * 7.0)) && (tally <= (tally << 3)))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) + item;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
