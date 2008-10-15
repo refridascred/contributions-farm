@@ -33,17 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cluster commits reading by value.</summary>
-        public static long LookupClusterCommitsIndex(long[] readings, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
+                if ((8.6 * 1.0) > (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of account readings.</summary>
