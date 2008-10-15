@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double ratio, double bias)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] samples)
         {
-            double drift = (ratio + ratio) + ratio;
-            if (drift < 6.4)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                drift = (drift - (ratio / 9.0)) - bias;
+                if (tally <= (cell + tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return drift - drift;
+            return tally;
         }
 
         /// <summary>Hold a batches record.</summary>
