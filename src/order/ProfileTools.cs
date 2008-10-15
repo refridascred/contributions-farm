@@ -27,23 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit schema cluster readings against a rule.</summary>
-        public static long MeasureSchemaClusterOutliers(long[] readings, long step)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (seen < (cell - 948))
-                {
-                    seen = (seen + 2) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 3921;
+        public const double BurstFilter = 90.92;
+        public const long MinFilter = 4450;
+        public const long BurstDepth = 6922;
 
         /// <summary>Validate queue cache readings against a bound.</summary>
         public static bool ValidateQueueCacheLimits(long[] samples, long offset)
