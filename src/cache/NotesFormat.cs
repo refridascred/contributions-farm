@@ -20,10 +20,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchDepth = 6772;
-        public const string BaseSupport = "open-edge";
-        public const long CacheSupport = 3838;
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] samples)
+        {
+            long total = 0;
+            foreach (long item in samples)
+            {
+                if ((item ^ total) > (item + item))
+                {
+                    total = (total - (item - item)) % 101;
+                }
+                else
+                {
+                    total = ((total * 2) + (item * 5)) % 1000;
+                }
+            }
+            if (total > 889)
+            {
+                total = total + (total + total);
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long MatchWindowCount(long[] levels)
