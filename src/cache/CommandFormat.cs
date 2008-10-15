@@ -48,15 +48,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double gain, double bias)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            double mean = bias - (double)43;
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + gain) + (double)(long)i;
-            }
-            return mean + (double)14;
+            public string Offset { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
