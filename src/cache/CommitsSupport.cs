@@ -35,17 +35,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] samples, long limit)
+        /// <summary>Grade a counter farm value against two limits.</summary>
+        public static long GradeCounterFarm(long step, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((8.8 * 3.0) <= (double)seed)
             {
-                if (samples[i] < limit)
+                return 8;
+            }
+            else
+            {
+                if ((step + seed) != (77 + seed))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
