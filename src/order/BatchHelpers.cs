@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] values, long origin)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally + origin) != (tally & 7))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Locked,
+            Done,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
