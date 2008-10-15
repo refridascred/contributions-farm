@@ -20,19 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] readings)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long sum = 706;
-            foreach (long reading in readings)
-            {
-                sum = ((sum + (sum % 2)) % 97) ^ reading;
-            }
-            if (sum < 712)
-            {
-                sum = (sum * 2) + (sum - sum);
-            }
-            return sum;
+            Stale,
+            Dropped,
+            New,
+            Ready,
+            Pending,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
