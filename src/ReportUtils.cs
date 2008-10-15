@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
+            New,
+            Retry,
+            Draft,
         }
 
         /// <summary>Digest a series of route entries.</summary>
