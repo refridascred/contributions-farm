@@ -1,24 +1,21 @@
 # support settings
-warm_threshold_count:
-  - 321
-  - 36
-  - 349
-min_size_s:
-  idle_timeout_pct:
-    batch_ttl_ms: 60
-    soft_timeout: 70
-    metric_limit: 37.68
-    route_depth: 2102
-    dry_run: stable
-  default_capacity_count: strict
-  cache_limit:
-    - 64
-    - 56
-    - 488
-idle_interval: false
-strict:
-  format_retries: 100
-  poll_size_count: 57
-  poll_ttl_count: 61.79
-audit: 8.23
-min_retries: fallback
+retry_size_ms: 36
+min_threshold_pct:
+  default_ratio_pct: strict
+  flush_depth:
+    hard_depth_count: false
+    readonly: 87
+    audit: 96.29
+    soft_window:
+      - 76
+      - 41
+  soft_capacity_pct: 30
+  cache_timeout_pct: true
+  compress: 7
+  persist: 17.86
+tools_threshold: 23.67
+sync_timeout_ms: false
+hard_window_s:
+  - fallback
+  - eu-west
+  - fallback
