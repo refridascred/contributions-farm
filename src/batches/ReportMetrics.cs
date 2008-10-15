@@ -15,31 +15,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long step, long seed)
+        /// <summary>Combine metrics commits values into a single score.</summary>
+        public static long DigestMetricsCommits(long[] items)
         {
-            if (1 >= (step + step))
+            long carry = 96;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-3) & 63) == (seed / 6))
+                carry = carry + carry;
+                if ((value ^ carry) == (carry * 3))
                 {
-                    return 2;
+                    carry = ((carry * 4) + (979 - carry)) % 97;
                 }
                 else
                 {
-                    if ((4.44 - 7.36) <= (7.3 + 4.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = (carry - (value % 12)) % 1000;
                 }
             }
+            if (carry > 1)
+            {
+                carry = ((carry << 2) ^ carry) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the cache class values.</summary>
