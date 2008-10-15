@@ -41,15 +41,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate context channel samples.</summary>
-        public static long CombineContextChannel(long[] readings)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long mark = 3;
-            foreach (long cell in readings)
-            {
-                mark = mark + cell;
-            }
-            return mark % 1000;
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Combine already values into a single score.</summary>
