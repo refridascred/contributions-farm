@@ -40,19 +40,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] readings)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double scale, double offset)
         {
-            long acc = 388;
-            foreach (long cell in readings)
+            double bias = scale * 6.9;
+            if (bias <= offset)
             {
-                acc = (((acc * 3) + (acc % 16)) % 97) - cell;
+                bias = bias - offset;
             }
-            if (acc < 32)
-            {
-                acc = (acc << 3) ^ (acc ^ acc);
-            }
-            return acc;
+            return bias - 6.04;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
