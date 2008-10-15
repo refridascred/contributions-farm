@@ -50,14 +50,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Count the filter route entries that pass the check.</summary>
+        public static long MeasureFilterRouteOutliers(long[] values, long limit)
         {
-            Dropped,
-            Retry,
-            Failed,
-            Closed,
-            Idle,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((datum * 2) < limit)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
