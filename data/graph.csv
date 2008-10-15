@@ -1,10 +1,7 @@
-id,token,ratio
-1,39.25,804
-2,fallback,24.81
-3,17,legacy
-4,88,staging
-5,34.72,694
-6,418,18.74
-7,136,641
-8,40.76,legacy
-9,65.39,stable
+id,weight,score,ratio,count
+1,236,cached,13.03,90.48
+2,255,273,68.97,standard
+3,87.04,78.33,cached,staging
+4,429,547,68.55,75.6
+5,335,local,local,489
+6,primary,30.64,open,47.87
