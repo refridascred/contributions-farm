@@ -31,18 +31,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] items)
+        /// <summary>Audit layout context readings against a rule.</summary>
+        public static long CountLayoutContextOutliers(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (item >= (item + 78))
+                if (((count / 8) < (step << 1)) && (count < (count % 100)))
                 {
-                    hits = hits + 1;
+                    count = (count + 2) - sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
