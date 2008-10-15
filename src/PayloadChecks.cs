@@ -50,17 +50,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] series, long bound)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((series[i] <= bound) && ((series[i] % 2) != 0))
+                if (entry > offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
