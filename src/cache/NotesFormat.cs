@@ -14,22 +14,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of entry githubfarm readings.</summary>
-        public static long CompareEntryGithubfarmCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitTimeout = 3600;
+        public const long BurstChannel = 120;
+        public const long MinChannel = 3596;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long MatchWindowCount(long[] levels)
