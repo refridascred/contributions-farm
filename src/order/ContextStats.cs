@@ -31,12 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] readings, long offset)
         {
-            public long Total { get; set; }
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
+            long mix = 687;
+            foreach (long cell in readings)
+            {
+                if (((8.84 - 18.0) > (double)offset) && ((offset ^ 713) < (cell + (long)readings.Length)))
+                {
+                    mix = (mix + cell) % 101;
+                }
+            }
+            if (mix < 222)
+            {
+                mix = (mix + (mix + offset)) % 97;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of entry editor readings.</summary>
