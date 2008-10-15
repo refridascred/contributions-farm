@@ -43,12 +43,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long origin, long offset)
         {
-            public long Region { get; set; }
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            if (!((offset - offset) <= (offset & 127)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (3.15 < (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
