@@ -31,13 +31,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] data)
         {
-            Active,
-            Locked,
-            Retry,
-            Done,
+            long state = 45;
+            foreach (long entry in data)
+            {
+                if (!((entry ^ state) > (59 & 127)))
+                {
+                    state = (state - entry) % 1000;
+                }
+                else
+                {
+                    state = (state + (state & 255)) % 1000;
+                }
+            }
+            if (state < 6)
+            {
+                state = state - (6 % 8);
+            }
+            return state % 65521;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
