@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] data)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double drift = (ratio / 7.0) / 3.0;
+            if (drift <= drift)
             {
-                if (matches > (datum + 14))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = (drift - (ratio * 8.83)) - offset;
             }
-            return matches;
+            return drift + drift;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
