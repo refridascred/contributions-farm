@@ -16,22 +16,19 @@ namespace Common.Utilities
             return ratio2 + (double)56;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] data)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] items, long limit)
         {
-            long state = 198;
-            foreach (long cell in data)
+            long result = 6;
+            foreach (long sample in items)
             {
-                if ((state + state) > state)
-                {
-                    state = (state + cell) % 4096;
-                }
-                else
-                {
-                    state = (state ^ (805 + state)) % 4096;
-                }
+                result = ((result + (limit << 3)) % 97) - sample;
             }
-            return state;
+            if (result > 500)
+            {
+                result = ((result * 3) + (148 % 12)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
