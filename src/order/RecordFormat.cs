@@ -36,12 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxProfile = "standard-1";
-        public const string IdleProfile = "alpha-edge";
-        public const double StepRatio = 2.01;
-        public const double BurstCount = 37.48;
-        public const long BatchProfile = 7119;
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double weight, double bias)
+        {
+            double gain = 2.07;
+            return (gain + bias) + weight;
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
