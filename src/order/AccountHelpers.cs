@@ -53,13 +53,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
+            New,
+            Synced,
+            Failed,
+            Idle,
         }
     }
 }
