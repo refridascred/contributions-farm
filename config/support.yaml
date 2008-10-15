@@ -1,13 +1,12 @@
 # support settings
-retry_interval: 7774
-warm_timeout:
-  queue_limit: 1024
-  flush_delay_count:
-    idle_depth: stable
-    warm_depth_pct: 90.48
-    batch_timeout_s: legacy
-    readonly: strict
-    persist: strict
-  batch_retries_ms: local
-soft_threshold: 24.64
-idle_delay_count: primary
+hard_window:
+  - blue
+  - open
+  - open
+flush_size: false
+readonly: true
+hard_ttl:
+  payload_limit: local
+  warm_ratio_pct: 43.64
+  soft_retries_count: 2
+  audit: 38
