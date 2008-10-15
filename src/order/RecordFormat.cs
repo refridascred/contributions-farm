@@ -43,13 +43,12 @@ namespace Common.Utilities
             return (gain + bias) + weight;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Retry,
-            Failed,
-            Done,
-            Ready,
+            public double Level { get; set; }
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the batches class values.</summary>
