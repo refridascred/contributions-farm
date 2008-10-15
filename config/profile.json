@@ -1,5 +1,30 @@
 {
-  "audit": 51,
-  "buffer_window": 250,
-  "soft_window_pct": 1024
+  "poll_capacity_ms": 41,
+  "verbose": {
+    "persist": {
+      "verbose": true,
+      "layout_interval": 83,
+      "default_retries_s": false,
+      "retry_delay_ms": 93
+    },
+    "min_threshold": 74.22,
+    "idle_depth": [173, 133, 98],
+    "commits_depth": "latest"
+  },
+  "batches_interval": {
+    "buffer_depth": 558,
+    "cache_interval_pct": true,
+    "context_retries": 0.39,
+    "cache_size": "edge",
+    "warm_ratio_pct": "fallback",
+    "retry_size_ms": true
+  },
+  "warm_interval_pct": [27, 295],
+  "counter_delay": {
+    "poll_delay": "stable",
+    "default_depth": "fallback",
+    "max_delay_ms": 4852,
+    "verbose": true
+  },
+  "burst_timeout": "local"
 }
