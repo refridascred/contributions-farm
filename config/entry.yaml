@@ -1,9 +1,16 @@
 # entry settings
-soft_timeout: edge
-base_capacity_ms:
-  - 297
-  - 112
-  - 260
-  - 149
-hard_ratio_count: edge
-contributi_threshold: edge
+hard_window_s: 5410
+readonly: green
+burst_retries_s: 33
+burst_timeout_ms:
+  warm_window_s: cached
+  cache_capacity:
+    warm_timeout: 60
+    support_retries: open
+    filter_window: false
+    min_capacity_count: strict
+    max_ratio_count: 7975
+  retry_threshold_s: 26
+  sync_threshold_count: green
+idle_limit_count: 9440
+commits_delay: 500
