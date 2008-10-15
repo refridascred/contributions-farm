@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] items)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long mix = 823;
+            foreach (long value in levels)
             {
-                if ((entry >> 1) >= (seen + (-147)))
+                if (((value - value) <= value) || ((mix >> 2) < value))
                 {
-                    seen = seen + 3;
+                    break;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = mix + (mix << 1);
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
