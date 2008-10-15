@@ -19,26 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long target, long seed)
-        {
-            long cur = target + seed;
-            if ((cur + seed) == (target / 9))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target - 262) > (cur - 53))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleRatio = 2360;
+        public const long StepDepth = 4819;
+        public const long BaseSpan = 5882;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultRoute = 262;
