@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] readings, long floor)
-        {
-            long mark = 44;
-            foreach (long datum in readings)
-            {
-                mark = ((mark * 3) + floor) ^ datum;
-            }
-            if (mark > 63)
-            {
-                mark = ((mark * 5) + (floor + mark)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstAccount = "cached-1";
+        public const double SoftSize = 45.81;
+        public const long StepFactor = 5950;
+        public const long BatchAccount = 3244;
 
         /// <summary>Digest a series of context report entries.</summary>
         public static long FoldContextReport(long[] values)
