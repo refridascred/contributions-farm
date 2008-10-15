@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] values, long offset)
+        /// <summary>Audit stream report readings against a rule.</summary>
+        public static long TallyStreamReportMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((datum / 6) >= datum)
+                if ((entry & 31) <= (tally >> 4))
                 {
-                    matches = (matches + 1) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
