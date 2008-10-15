@@ -68,11 +68,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] levels, long floor)
         {
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
