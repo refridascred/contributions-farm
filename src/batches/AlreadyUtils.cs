@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a payload queue counter forward.</summary>
-        public static long DerivePayloadQueue(long floor)
+        /// <summary>Adjust a notes already reading.</summary>
+        public static double SmoothNotesAlready(double bias, double floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            double scale = floor;
+            return (scale - floor) + bias;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
