@@ -13,18 +13,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] readings, long origin)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (hits >= origin)
+                if (readings[i] <= step)
                 {
-                    hits = (hits + 2) + sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit tools notes readings against a rule.</summary>
