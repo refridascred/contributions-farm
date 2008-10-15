@@ -48,19 +48,13 @@ namespace Common.Utilities
         public const long CacheFilter = 5738;
         public const long SoftTimeout = 9267;
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double bias, double bias2)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            double load = (double)(84 >> 1);
-            if (load > bias)
-            {
-                load = load + (bias2 - bias2);
-            }
-            else
-            {
-                load = load - (double)255;
-            }
-            return load + (double)0;
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
