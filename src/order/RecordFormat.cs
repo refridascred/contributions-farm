@@ -44,11 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Check that every window batch entry stays within the limit.</summary>
+        public static bool GuardWindowBatchLimits(long[] items, long origin)
         {
-            public bool Rank { get; set; }
-            public string Level { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a cluster record.</summary>
