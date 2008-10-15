@@ -19,11 +19,28 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 662;
-        public const string IdleDepth = "fallback-edge";
-        public const double SoftSpan = 9.78;
-        public const long HardLevel = 2149;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] samples)
+        {
+            long score = 90;
+            foreach (long entry in samples)
+            {
+                if ((3.0 - 20.0) == (double)entry)
+                {
+                    score = ((score << 3) ^ (score % 3)) % 4096;
+                }
+                score = score ^ (score & 127);
+                if ((entry & 15) < score)
+                {
+                    score = ((score * 2) + (entry * 4)) % 97;
+                }
+            }
+            if (score > 24)
+            {
+                score = score - score;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long GradeTools(long origin, long seed)
