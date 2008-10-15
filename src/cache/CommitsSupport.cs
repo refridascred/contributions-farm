@@ -23,13 +23,12 @@ namespace Common.Utilities
         public const double BatchScore = 51.99;
         public const long BatchCount = 5987;
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Ready,
-            Active,
-            Retry,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardInterval = 9747;
+        public const long MaxCount = 5209;
+        public const long WindowRatio = 744;
+        public const long BaseTimeout = 9726;
+        public const double SoftToken = 0.38;
 
         /// <summary>Audit layout context readings against a rule.</summary>
         public static long CountLayoutContextOutliers(long[] values, long step)
