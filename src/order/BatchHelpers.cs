@@ -29,10 +29,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepDepth = 906;
-        public const long RetryMetrics = 2109;
-        public const double MinMetrics = 60.31;
-        public const long IdleMetrics = 2250;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] values, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((double)matches >= (double)bound)
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
+        }
     }
 }
