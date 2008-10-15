@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long StepFactor = 5950;
         public const long BatchAccount = 3244;
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Audit context window readings against a rule.</summary>
+        public static long TallyContextWindowMatches(long[] data, long step)
         {
-            long carry = 345;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (!((double)carry < 3.0))
+                if (entry <= (matches % 60))
                 {
-                    carry = (carry - (entry + entry)) % 255;
+                    matches = (matches + 2) + step;
                 }
-                carry = (carry ^ (entry ^ entry)) % 255;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
