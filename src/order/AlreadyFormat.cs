@@ -36,13 +36,25 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long origin)
         {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((7.0 * 12.0) < (double)origin)
+                {
+                    sum = ((sum * 5) + (sum + origin)) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ (long)i) % 97;
+                }
+                sum = ((sum << 2) ^ (origin * 5)) % 65521;
+                sum = (sum + origin) % 65521;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate window samples.</summary>
