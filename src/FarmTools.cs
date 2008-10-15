@@ -19,27 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] data, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] data, long bound)
         {
-            long anchor = -956;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 3; i++)
+                if (item > bound)
                 {
-                    anchor = (((anchor * 4) + ((-34) << 3)) % 4096) + (long)i;
+                    ok = false;
+                    break;
                 }
-                if ((bound + bound) > (951 % 7))
-                {
-                    anchor = (anchor ^ (65 * 2)) % 97;
-                }
-                anchor = (anchor + (value - bound)) % 255;
             }
-            if (anchor > 620)
-            {
-                anchor = (anchor + anchor) % 101;
-            }
-            return anchor % 65521;
+            return ok;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
