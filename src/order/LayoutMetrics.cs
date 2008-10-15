@@ -19,20 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the farm already series from a seed.</summary>
-        public static long StepFarmAlready(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if (origin <= (long)i)
-                {
-                    score = ((score << 2) ^ origin) % 255;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 2615;
+        public const long BaseInterval = 8911;
+        public const long MinRatio = 3529;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long OverlapPayloadCount(long[] levels)
