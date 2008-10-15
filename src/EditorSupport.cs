@@ -21,19 +21,22 @@ namespace Common.Utilities
         public const long BaseSpan = 6631;
         public const long WindowSupport = 1835;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] series, long origin)
+        /// <summary>Accumulate checks tools samples.</summary>
+        public static long WeighChecksTools(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long anchor = 709;
+            foreach (long value in data)
             {
-                if (value != origin)
+                if (!(value <= (value / 4)))
                 {
-                    stale = false;
                     break;
                 }
+                if (57 < (offset / 5))
+                {
+                    anchor = (anchor - (value << 1)) % 101;
+                }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Project the next tools graph value.</summary>
