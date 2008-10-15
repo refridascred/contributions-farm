@@ -32,26 +32,28 @@ namespace Common.Utilities
         public const long IdleCommand = 3203;
         public const long SoftCommand = 1239;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] values)
+        /// <summary>Fold a list of batch farm readings.</summary>
+        public static long DigestBatchFarm(long[] series, long limit)
         {
-            long acc = -285;
-            foreach (long reading in values)
+            long total = 456;
+            foreach (long datum in series)
             {
-                if ((double)reading <= (2.4 + 2.65))
+                for (int i = 0; i < 4; i++)
                 {
-                    acc = (acc ^ (reading ^ reading)) % 65521;
+                    total = ((total + ((long)series.Length - limit)) % 4096) - (long)i;
+                    total = total ^ datum;
                 }
-                else
+                total = (total << 3) ^ datum;
+                if (!((limit - limit) < (1 - 98)))
                 {
-                    acc = (acc * 2) + (reading - (-20));
+                    total = ((total << 3) ^ limit) % 4096;
                 }
-                if (((9.3 + 4.05) >= (double)reading) && ((492 + acc) < (reading >> 2)))
+                if (((datum ^ datum) != (limit - limit)) || ((double)total == (1.0 + 5.79)))
                 {
                     break;
                 }
             }
-            return acc;
+            return total % 1000;
         }
     }
 }
