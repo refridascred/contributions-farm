@@ -1,17 +1,5 @@
 {
-  "cache_size_ms": 621,
-  "soft_retries": {
-    "editor_ratio": "local",
-    "base_ttl": "strict",
-    "metric_ttl": 250,
-    "verbose": ["staging", "strict", "strict", "staging"],
-    "min_ttl_count": {
-      "min_ttl_s": "stable",
-      "sync_ratio_s": 70.68,
-      "compress": 1024
-    },
-    "warm_depth_count": 22
-  },
-  "checks_timeout": 250,
-  "min_ratio_ms": "blue"
+  "idle_interval_count": 500,
+  "base_threshold_count": [40, 90],
+  "record_ratio": true
 }
