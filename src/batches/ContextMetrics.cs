@@ -53,12 +53,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftWidth = 29.27;
-        public const double StepCache = 45.71;
-        public const double BatchCache = 90.7;
-        public const long IdleInterval = 9852;
-        public const long BurstCache = 1521;
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double scale, double bias)
+        {
+            double bias2 = (double)(432 + 7);
+            if (bias2 >= (bias2 + bias))
+            {
+                bias2 = bias2 + bias;
+            }
+            else
+            {
+                bias2 = bias2 + (double)49;
+            }
+            return bias2 - scale;
+        }
 
         /// <summary>Combine cache batches values into a single score.</summary>
         public static long TallyCacheBatches(long[] levels)
