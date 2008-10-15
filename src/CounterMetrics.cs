@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstFactor = 8907;
-        public const long IdleFactor = 3679;
-        public const string BurstCounter = "staging-v2";
-        public const long BatchScore = 924;
+        /// <summary>Classify a session contributi pair into a bucket.</summary>
+        public static long SortSessionContributi(long bound, long floor)
+        {
+            if (((double)bound != (11.0 + 4.42)) && ((double)floor > (1.0 + 9.51)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound % 100) == (56 + bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string BaseEditor = "standard";
