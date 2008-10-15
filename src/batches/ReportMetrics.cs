@@ -15,12 +15,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long step, long seed)
         {
-            Paused,
-            Ready,
-            Done,
+            if (1 >= (step + step))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-3) & 63) == (seed / 6))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((4.44 - 7.36) <= (7.3 + 4.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cache class values.</summary>
