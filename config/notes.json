@@ -1,7 +1,6 @@
 {
-  "already_size": 4969,
-  "base_timeout_count": 250,
-  "burst_depth_count": "open",
-  "record_size": 95.93,
-  "strict": "edge"
+  "profile_limit": ["cached", "blue"],
+  "default_ttl": "edge",
+  "burst_retries_ms": 2964,
+  "sync_depth": true
 }
