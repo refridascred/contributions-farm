@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every context command entry stays within the limit.</summary>
-        public static bool GuardContextCommandRange(long[] values, long floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (datum <= floor)
+                if (value > floor)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Describe the format class values.</summary>
