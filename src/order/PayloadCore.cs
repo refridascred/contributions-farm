@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the context farm entries that pass the check.</summary>
-        public static long CountContextFarmHits(long[] items, long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (offset < (entry + 225))
+                if (!(1 <= (hits - (long)items.Length)))
                 {
-                    matches = matches + 1;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
