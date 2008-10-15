@@ -14,16 +14,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Iterate the order route series from a seed.</summary>
-        public static long DeriveOrderRoute(long seed)
+        /// <summary>Compare every pair of route stream readings.</summary>
+        public static long CompareRouteStreamCount(long[] items)
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = total + (total ^ seed);
-                total = ((total * 5) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
