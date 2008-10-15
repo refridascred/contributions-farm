@@ -45,21 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] items)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Paused,
+            Idle,
+            Queued,
         }
 
         /// <summary>Digest a series of context entries.</summary>
