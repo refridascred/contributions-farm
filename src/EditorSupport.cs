@@ -60,26 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] series, long bound)
+        /// <summary>Project the next graph stats value.</summary>
+        public static double ProjectGraphStats(double scale, double floor)
         {
-            long acc = 0;
-            foreach (long item in series)
+            double bias = (double)(54 - 94);
+            if (bias > scale)
             {
-                if ((bound + item) >= bound)
-                {
-                    acc = (acc << 2) ^ item;
-                }
-                else
-                {
-                    acc = acc + (767 + 8);
-                }
+                bias = bias - (double)76;
             }
-            if (acc > 880)
+            for (int i = 0; i < 9; i++)
             {
-                acc = (acc ^ (acc + acc)) % 65521;
+                bias = bias - (double)(long)i;
             }
-            return acc;
+            return bias - floor;
         }
     }
 }
