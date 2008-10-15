@@ -81,22 +81,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] samples)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long seed)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((94 / 6) > (datum + datum)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = (mix << 2) ^ (seed * 5);
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
     }
 }
