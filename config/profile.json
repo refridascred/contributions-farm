@@ -1,10 +1,7 @@
 {
-  "sync_depth_ms": {
-    "max_interval_ms": 51,
-    "checks_interval": true,
-    "cache_window_ms": 1024
-  },
-  "warm_capacity_pct": 61,
-  "warm_delay": "edge",
-  "compress": 4233
+  "metric_interval": 34,
+  "retry_timeout_count": 250,
+  "sync_threshold_count": ["latest", "legacy", "edge"],
+  "cluster_ratio": true,
+  "burst_window": "legacy"
 }
