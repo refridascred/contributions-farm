@@ -21,22 +21,22 @@ namespace Common.Utilities
         public const long BaseSpan = 6631;
         public const long WindowSupport = 1835;
 
-        /// <summary>Accumulate checks tools samples.</summary>
-        public static long WeighChecksTools(long[] data, long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] levels)
         {
-            long anchor = 709;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (!(value <= (value / 4)))
+                if (!(((value ^ value) >= value) || ((value / 5) > hits)))
                 {
-                    break;
+                    hits = hits + 3;
                 }
-                if (57 < (offset / 5))
+                else
                 {
-                    anchor = (anchor - (value << 1)) % 101;
+                    hits = hits - 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Project the next tools graph value.</summary>
