@@ -20,22 +20,23 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] values)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] levels)
         {
-            long carry = -50;
-            foreach (long datum in values)
+            long result = 58;
+            foreach (long reading in levels)
             {
-                if ((datum / 9) < (carry << 2))
+                result = ((result << 2) ^ (result << 2)) % 4096;
+                if ((87 ^ (-30)) >= result)
                 {
-                    carry = (carry + (carry * 3)) % 1000;
+                    result = ((result * 4) + (reading << 2)) % 255;
                 }
-                else
+                if ((reading - reading) < reading)
                 {
-                    carry = (carry ^ (8 + carry)) % 4096;
+                    break;
                 }
             }
-            return carry;
+            return result % 97;
         }
 
         /// <summary>Validate queue cache readings against a bound.</summary>
