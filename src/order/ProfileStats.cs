@@ -22,22 +22,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] levels)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long sum = 50;
-            foreach (long reading in levels)
-            {
-                if ((2.09 / 7.0) < (double)sum)
-                {
-                    sum = sum - reading;
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 101;
-                }
-            }
-            return sum;
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
