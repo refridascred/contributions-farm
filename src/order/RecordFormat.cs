@@ -42,9 +42,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 5753;
-        public const double WindowLevel = 28.55;
-        public const long HardLayout = 9073;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] data, long seed)
+        {
+            long carry = 332;
+            foreach (long datum in data)
+            {
+                if ((datum / 4) <= (carry & 1))
+                {
+                    carry = ((carry - ((long)data.Length - datum)) % 4096) - seed;
+                }
+            }
+            return carry;
+        }
     }
 }
