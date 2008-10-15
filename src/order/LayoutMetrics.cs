@@ -21,19 +21,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate record tools readings against a bound.</summary>
-        public static bool VerifyRecordToolsRange(long[] samples, long step)
-        {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 7082;
+        public const long MinDepth = 4382;
+        public const long WindowSession = 115;
     }
 }
