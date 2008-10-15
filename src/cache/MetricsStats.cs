@@ -12,18 +12,13 @@ namespace Common.Utilities
             return (drift - span) + gain;
         }
 
-        /// <summary>Count the editor buffer entries that pass the check.</summary>
-        public static long MeasureEditorBufferHits(long[] data, long step)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (((step + 6) > (823 >> 5)) && ((((long)data.Length & 63) <= reading) && ((124 % 12) <= (hits - reading))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Retry,
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Accumulate metrics session samples.</summary>
