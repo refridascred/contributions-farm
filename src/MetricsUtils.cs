@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] series, long bound)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
