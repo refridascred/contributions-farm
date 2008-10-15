@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats utils helpers.</summary>
     public static class StatsUtils
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] values, long limit)
+        /// <summary>Match up queue stats samples.</summary>
+        public static long MatchQueueStatsCount(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
