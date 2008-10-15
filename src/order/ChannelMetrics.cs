@@ -24,15 +24,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleSchema = 60.16;
+        public const long RetryCount = 1055;
+        public const long RetryScore = 6419;
     }
 }
