@@ -51,19 +51,9 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] items)
-        {
-            long score = 4;
-            foreach (long reading in items)
-            {
-                if ((double)score <= (7.92 + 1.73))
-                {
-                    score = ((score * 3) + reading) % 1000;
-                }
-                score = score - (reading << 3);
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 5753;
+        public const double WindowLevel = 28.55;
+        public const long HardLayout = 9073;
     }
 }
