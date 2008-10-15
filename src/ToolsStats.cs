@@ -75,10 +75,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 3225;
-        public const string RetryInterval = "latest";
-        public const long WindowInterval = 8312;
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double bias, double offset)
+        {
+            double drift = (0.2 * 4.7) * 18.0;
+            if (drift >= bias)
+            {
+                drift = drift - (double)130;
+            }
+            else
+            {
+                drift = drift - (offset * 3.98);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + bias;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TotalSupport(long[] samples)
