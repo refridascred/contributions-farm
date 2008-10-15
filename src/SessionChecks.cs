@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] values, long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long result = 78;
+            foreach (long sample in readings)
             {
-                if (value > floor)
+                if (!((result << 2) == (sample >> 1)))
                 {
-                    valid = false;
-                    break;
+                    result = (result << 2) ^ (sample >> 5);
+                }
+                else
+                {
+                    result = result + sample;
+                    result = (result - (sample - result)) % 65521;
+                }
+                if ((3.4 / 8.0) > (double)result)
+                {
+                    result = result - result;
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Accumulate account samples.</summary>
