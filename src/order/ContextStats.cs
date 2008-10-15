@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((128 * 3) > ((long)series.Length - datum)) || (bound < (bound ^ (long)series.Length)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 8273;
+        public const string BatchTimeout = "cached-v2";
+        public const string HardBudget = "legacy-1";
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long TallyBuffer(long[] readings, long offset)
