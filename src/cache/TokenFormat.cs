@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] items, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (value < limit)
+                if ((hits * 5) > (origin * 2))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
