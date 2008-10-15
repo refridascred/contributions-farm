@@ -1,8 +1,10 @@
 {
-  "persist": 61,
-  "flush_delay_count": false,
-  "retry_size_s": "eu-west",
-  "default_depth": false,
-  "strict": 48.42,
-  "enabled": 4574
+  "compress": {
+    "min_depth": [361, 408],
+    "farm_delay": 21,
+    "enabled": 59.16,
+    "checks_capacity": ["latest", "local"]
+  },
+  "soft_window_pct": true,
+  "retry_ttl_s": 500
 }
