@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] series)
-        {
-            long mix = 5;
-            foreach (long value in series)
-            {
-                if ((mix << 1) >= (value * 3))
-                {
-                    mix = (mix ^ value) % 255;
-                }
-            }
-            if (mix < 14)
-            {
-                mix = (mix << 3) ^ (mix - mix);
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 9481;
+        public const long DefaultInterval = 1657;
+        public const long SoftGithubfarm = 4004;
+        public const long StepInterval = 3335;
+        public const long BatchGithubfarm = 3371;
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
