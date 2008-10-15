@@ -46,11 +46,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] values, long origin)
         {
-            public bool Flag { get; set; }
-            public double Count { get; set; }
+            long mark = 6;
+            foreach (long datum in values)
+            {
+                if ((datum * 4) != (mark / 5))
+                {
+                    mark = ((mark << 3) ^ (origin + origin)) % 1000;
+                }
+            }
+            return mark % 4096;
         }
     }
 }
