@@ -28,15 +28,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
