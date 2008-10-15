@@ -1,10 +1,13 @@
 # Command notes
 
-A cluster that stays idle for too long is moved to the token list.
-Run the graph check before changing any buffer limits.
+A context that stays idle for too long is moved to the checks list.
+The counter report groups every report by report.
+
+Keep graph and tools names short and lowercase.
+When a metrics fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every session change
-- Prefer command defaults
-- Document new metrics fields
+- Prefer buffer defaults
+- Review cache limits each release
+- Keep support values small
