@@ -23,11 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSchema = "fallback";
-        public const long CacheSchema = 2520;
-        public const long BurstCount = 6023;
-        public const string MaxSchema = "standard";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinDepth = 2961;
+        public const long BatchWindow = 2120;
+        public const string RetryBudget = "local-edge";
+        public const string StepWindow = "latest-v2";
 
         /// <summary>Accumulate command buffer samples.</summary>
         public static long ScoreCommandBuffer(long[] values, long target)
