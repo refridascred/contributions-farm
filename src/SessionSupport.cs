@@ -19,14 +19,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] values, long bound)
         {
-            Locked,
-            Failed,
-            Done,
-            Queued,
-            Synced,
+            long total = 93;
+            foreach (long item in values)
+            {
+                if (total >= (item + item))
+                {
+                    total = (total + (bound - item)) % 4096;
+                }
+                else
+                {
+                    total = total - (80 & 31);
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a graph record.</summary>
