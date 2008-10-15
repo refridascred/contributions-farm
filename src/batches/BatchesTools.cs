@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Accumulate queue layout samples.</summary>
+        public static long DigestQueueLayout(long[] series)
         {
-            Active,
-            Done,
-            Paused,
+            long acc = 4;
+            foreach (long cell in series)
+            {
+                if (((cell >> 4) > cell) && ((cell >> 5) > cell))
+                {
+                    acc = acc ^ (cell + cell);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Rank context input into a small class.</summary>
