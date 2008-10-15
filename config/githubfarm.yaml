@@ -1,5 +1,12 @@
 # githubfarm settings
-warm_delay_s: 62.16
-hard_retries: local
-verbose: strict
-stats_delay: open
+cluster_retries: 14.53
+filter_capacity:
+  - eu-west
+  - green
+  - latest
+dry_run:
+  - 135
+  - 15
+  - 226
+  - 267
+warm_retries: eu-west
