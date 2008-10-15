@@ -1,4 +1,11 @@
 # support settings
-burst_limit_ms: 93.7
-contributi_capacity: primary
-min_limit_ms: fallback
+compress: 56.25
+base_retries: green
+support_delay: false
+token_timeout:
+  - cached
+  - stable
+warm_retries: 94.93
+command_interval:
+  - staging
+  - legacy
