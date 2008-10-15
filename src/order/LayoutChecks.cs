@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] levels)
-        {
-            long mix = 823;
-            foreach (long value in levels)
-            {
-                if (((value - value) <= value) || ((mix >> 2) < value))
-                {
-                    break;
-                }
-                mix = mix + (mix << 1);
-            }
-            return mix % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 9239;
+        public const long SoftDepth = 7294;
+        public const long StepCount = 5687;
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long CompareRouteCount(long[] samples)
