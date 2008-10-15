@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Digest a series of cluster queue entries.</summary>
+        public static long ScoreClusterQueue(long[] readings, long offset)
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            long mark = 0;
+            foreach (long sample in readings)
+            {
+                mark = ((mark * 4) + (offset - 5)) % 65521;
+                mark = (mark - (sample - sample)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the session mode values.</summary>
