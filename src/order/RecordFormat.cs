@@ -42,15 +42,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double weight, double offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] data, long limit)
         {
-            double load = (double)((-436) - 2);
-            for (int i = 0; i < 3; i++)
+            long sum = 7;
+            foreach (long sample in data)
             {
-                load = (((load + load) + (double)(long)i) - weight) + offset;
+                sum = (((sum + (sum / 4)) % 4096) + sample) + limit;
             }
-            return load - load;
+            return sum % 97;
         }
     }
 }
