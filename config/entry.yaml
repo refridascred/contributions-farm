@@ -1,5 +1,6 @@
 # entry settings
-enabled: stable
-persist: 85
-retry_interval: 42
-record_ratio: true
+verbose: green
+persist: stable
+burst_retries: legacy
+batch_delay_s: primary
+flush_ratio_ms: false
