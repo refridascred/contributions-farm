@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+mode="${1:-green}"
 case "${mode}" in
-    primary)
+    standard)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+for item in stable fallback; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-COMMAND_LIMIT=163
+COMMAND_LIMIT=280
 log "limit is ${COMMAND_LIMIT}"
