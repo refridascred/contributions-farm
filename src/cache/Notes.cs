@@ -17,11 +17,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 3735;
-        public const long HardLevel = 7831;
-        public const long StepCommits = 2421;
-        public const double MaxTimeout = 29.22;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long floor, long floor2)
+        {
+            if (floor < (floor & 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor2 << 3) < 216)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor2 ^ floor2) <= (floor & 31))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next counter value.</summary>
         public static double ScaleCounter(double bias, double span)
