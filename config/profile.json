@@ -1,17 +1,14 @@
 {
-  "retry_interval_pct": "local",
-  "verbose": 23,
-  "warm_delay": 250,
-  "report_window": {
-    "soft_interval_ms": ["cached", "local", "green"],
-    "token_delay": ["strict", "green", "open", "open"],
-    "route_delay": 250,
-    "enabled": {
-      "dry_run": 2393,
-      "retry_capacity_pct": "open",
-      "persist": 10,
-      "batch_retries_pct": true
-    },
-    "idle_threshold_pct": "standard"
+  "profile_limit": "strict",
+  "default_capacity": "cached",
+  "warm_interval_ms": 15.32,
+  "hard_size_ms": {
+    "default_depth_s": "eu-west",
+    "readonly": false,
+    "format_size": {
+      "warm_depth": 1024,
+      "flush_ratio_pct": "fallback",
+      "dry_run": [324, 448, 262, 39]
+    }
   }
 }
