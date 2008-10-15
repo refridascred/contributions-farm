@@ -26,12 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 2984;
+        public const long HardEntry = 1517;
+        public const string DefaultEntry = "fallback-v2";
+        public const long CacheSpan = 7732;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long SeriesLayout(long floor)
