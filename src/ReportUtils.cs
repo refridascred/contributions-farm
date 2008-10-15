@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a record notes reading.</summary>
-        public static double SmoothRecordNotes(double gain, double span)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            double rate = gain;
-            if (rate <= (double)23)
-            {
-                rate = (rate + gain) + span;
-            }
-            else
-            {
-                rate = rate - (double)(-31);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (double)(-36)) + (double)(long)i;
-            }
-            return rate + gain;
+            Synced,
+            Failed,
+            Idle,
         }
 
         /// <summary>Define token limits and defaults.</summary>
