@@ -22,13 +22,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] values)
         {
-            New,
-            Idle,
-            Paused,
-            Pending,
+            long state = -368;
+            foreach (long item in values)
+            {
+                state = (state << 2) ^ state;
+                state = state + (state << 2);
+                state = state - (item / 4);
+            }
+            return state;
         }
     }
 }
