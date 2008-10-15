@@ -25,18 +25,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] levels)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (9.0 >= (17.0 - 2.2))
-                {
-                    tally = (tally + 1) - cell;
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the tools kind values.</summary>
