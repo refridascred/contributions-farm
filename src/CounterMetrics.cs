@@ -53,22 +53,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] readings, long floor)
+        /// <summary>Measure how many counter support samples are out of range.</summary>
+        public static long MeasureCounterSupportHits(long[] samples)
         {
-            long anchor = 6;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((0.1 > (double)anchor) && (floor <= anchor))
+                if ((1.96 - 7.0) < (double)value)
                 {
-                    anchor = ((anchor * 2) + (floor + floor)) + entry;
+                    matches = matches + 3;
                 }
             }
-            if (anchor > 6)
-            {
-                anchor = (anchor ^ ((long)readings.Length / 4)) % 101;
-            }
-            return anchor;
+            return matches;
         }
     }
 }
