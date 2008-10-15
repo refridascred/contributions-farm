@@ -64,14 +64,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Draft,
-            Pending,
-            Stale,
-            Closed,
             Queued,
+            Draft,
+            Locked,
         }
     }
 }
