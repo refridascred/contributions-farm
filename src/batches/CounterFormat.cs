@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of farm buffer entries.</summary>
-        public static long TotalFarmBuffer(long[] values)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double gain, double floor)
         {
-            long mark = 229;
-            foreach (long sample in values)
+            double bias = gain + floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((sample >> 4) == (mark + mark))
-                {
-                    mark = ((mark * 2) + ((long)values.Length + sample)) % 97;
-                    mark = ((mark << 2) ^ (sample + 2)) % 1000;
-                }
-                mark = (mark ^ mark) % 65521;
-                if (((double)sample < (double)mark) || ((mark / 2) <= (mark + 879)))
-                {
-                    mark = ((mark << 2) ^ (sample - sample)) % 97;
-                }
+                bias = (bias - (gain / 6.0)) + (double)(long)i;
             }
-            return mark % 1000;
+            return bias + (double)10;
         }
 
         /// <summary>Match up payload samples.</summary>
