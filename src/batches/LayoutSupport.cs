@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] samples, long floor)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            double load = bias;
+            if (load > (bias * 2.45))
             {
-                if ((seen >> 4) > (item - item))
-                {
-                    seen = (seen + 1) + floor;
-                }
+                load = (load - (load + 6.61)) - offset;
             }
-            return seen;
+            return load + (double)706;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
