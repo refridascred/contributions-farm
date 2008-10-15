@@ -59,30 +59,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] values)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long target)
         {
-            long sum = 255;
-            foreach (long cell in values)
+            long result = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((cell > (cell - cell)) && ((double)(long)values.Length < (double)sum))
-                {
-                    sum = ((sum << 2) ^ 147) % 65521;
-                    break;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ 9) % 1000;
-                    sum = (sum * 5) + cell;
-                }
-                sum = sum - (3 - sum);
-                sum = sum + (cell * 2);
+                result = result + target;
+                result = (result ^ target) % 97;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            if (sum > 231)
-            {
-                sum = ((sum * 3) + (sum >> 2)) % 4096;
-            }
-            return sum;
+            return result;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
