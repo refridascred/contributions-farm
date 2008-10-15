@@ -1,5 +1,6 @@
 {
-  "poll_limit_count": "legacy",
-  "audit": 100,
-  "stats_depth": "fallback"
+  "cache_ttl": 35.55,
+  "default_capacity": "latest",
+  "compress": 1024,
+  "enabled": "latest"
 }
