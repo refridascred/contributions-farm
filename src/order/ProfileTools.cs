@@ -28,23 +28,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] levels)
+        /// <summary>Audit schema cluster readings against a rule.</summary>
+        public static long MeasureSchemaClusterOutliers(long[] readings, long step)
         {
-            long result = 58;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                result = ((result << 2) ^ (result << 2)) % 4096;
-                if ((87 ^ (-30)) >= result)
+                if (seen < (cell - 948))
                 {
-                    result = ((result * 4) + (reading << 2)) % 255;
+                    seen = (seen + 2) + step;
                 }
-                if ((reading - reading) < reading)
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Validate queue cache readings against a bound.</summary>
