@@ -1,21 +1,5 @@
 # support settings
-retry_size_ms: 36
-min_threshold_pct:
-  default_ratio_pct: strict
-  flush_depth:
-    hard_depth_count: false
-    readonly: 87
-    audit: 96.29
-    soft_window:
-      - 76
-      - 41
-  soft_capacity_pct: 30
-  cache_timeout_pct: true
-  compress: 7
-  persist: 17.86
-tools_threshold: 23.67
-sync_timeout_ms: false
-hard_window_s:
-  - fallback
-  - eu-west
-  - fallback
+min_ttl: 50
+contributi_timeout: 97.39
+retry_threshold_count: 80.94
+readonly: false
