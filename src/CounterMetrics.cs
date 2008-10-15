@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] data, long step)
         {
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (!((datum >> 3) != (datum << 1)))
+                {
+                    matches = (matches + 3) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a layout report reading.</summary>
