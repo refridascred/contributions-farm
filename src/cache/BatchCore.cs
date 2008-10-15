@@ -30,23 +30,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] values, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (((matches & 63) == (cell / 6)) || (((cell + cell) > (cell << 3)) && ((double)cell < (14.0 - 0.4))))
-                {
-                    matches = (matches + 1) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 7965;
+        public const double WindowBatches = 87.69;
+        public const long RetryBatches = 9924;
+        public const string LimitDepth = "cached-edge";
+        public const long BaseBatches = 4300;
 
         /// <summary>Grade a format filter value against two limits.</summary>
         public static long ClassifyFormatFilter(long step, long offset)
