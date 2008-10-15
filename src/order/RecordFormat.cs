@@ -10,10 +10,39 @@ namespace Common.Utilities
         public const double BurstWidth = 12.58;
         public const long IdleContributi = 8627;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstBudget = 2494;
-        public const string MinAccount = "primary-edge";
-        public const double IdleAccount = 77.21;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long origin, long bound)
+        {
+            if ((double)bound > 2.6)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((10.0 - 9.86) == (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin <= (bound >> 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((2.5 + 8.0) <= (double)origin) || ((8.9 * 20.0) == (double)bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
