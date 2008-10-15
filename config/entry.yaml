@@ -1,17 +1,5 @@
 # entry settings
-route_depth: 9305
-filter_capacity:
-  max_delay_s: primary
-  schema_ratio: 60
-  persist: 7304
-  sync_limit_ms: false
-  default_threshold_pct: eu-west
-  retry_threshold: 5330
-context_retries:
-  persist: 30
-  account_limit: false
-  record_threshold: stable
-  token_limit: 29
-  report_window: 0.14
-  idle_depth_s: 456
-base_threshold: 74
+cache_depth_count: true
+sync_depth: 250
+min_window: false
+min_depth_s: 42
