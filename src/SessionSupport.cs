@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] values)
+        /// <summary>Find the first route queue entry that matches the target.</summary>
+        public static long SeekRouteQueueIndex(long[] samples, long offset)
         {
-            long anchor = 27;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)802 != (double)anchor)
+                if ((samples[i] < offset) && ((samples[i] % 2) != 0))
                 {
-                    anchor = (((anchor << 3) ^ (anchor * 3)) % 255) + sample;
+                    return (long)i;
                 }
-                anchor = ((anchor * 4) + (anchor + anchor)) % 4096;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
