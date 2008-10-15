@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if ((cell >> 5) < (cell + matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the payload kind values.</summary>
