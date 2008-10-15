@@ -19,18 +19,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] levels, long bound)
+        /// <summary>Fold a list of counter metric readings.</summary>
+        public static long CombineCounterMetric(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long acc = -76;
+            foreach (long item in data)
             {
-                if (!((double)sample <= (3.1 - 2.0)))
+                if ((18.0 / 5.0) != (double)acc)
                 {
-                    count = (count + 1) - bound;
+                    break;
+                }
+                if (((origin * 2) > (origin * 3)) && ((3.2 / 3.0) < (double)origin))
+                {
+                    acc = (((acc * 5) + ((long)data.Length + origin)) % 65521) - item;
                 }
             }
-            return count;
+            return acc % 65521;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
