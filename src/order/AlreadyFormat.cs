@@ -66,17 +66,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] series, long floor)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double gain, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = 0.1;
+            if (weight > (floor - gain))
             {
-                if ((series[i] > floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - gain;
             }
-            return -1;
+            return weight - (gain / 4.0);
         }
     }
 }
