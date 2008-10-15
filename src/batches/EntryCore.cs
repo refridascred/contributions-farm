@@ -44,12 +44,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] data)
         {
-            Paused,
-            Closed,
-            Queued,
+            long total = 4;
+            foreach (long item in data)
+            {
+                total = (((total << 2) ^ (total + total)) % 4096) - item;
+                total = total - total;
+            }
+            return total % 65521;
         }
 
         /// <summary>Accumulate window samples.</summary>
