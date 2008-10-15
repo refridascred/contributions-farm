@@ -15,19 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] levels, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (floor >= cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleDepth = 2710;
+        public const long WindowScore = 6318;
+        public const long BurstBudget = 3494;
+        public const long WindowEntry = 4509;
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
