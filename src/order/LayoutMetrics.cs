@@ -21,15 +21,12 @@ namespace Common.Utilities
             return load - 8.0;
         }
 
-        /// <summary>Adjust a route layout reading.</summary>
-        public static double ScaleRouteLayout(double scale, double span)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double weight = (double)(99 + (-79));
-            for (int i = 0; i < 6; i++)
-            {
-                weight = ((weight + span) + (double)(long)i) + scale;
-            }
-            return weight - weight;
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public double Score { get; set; }
         }
     }
 }
