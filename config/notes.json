@@ -1,8 +1,6 @@
 {
-  "persist": 7015,
-  "readonly": true,
-  "sync_retries_ms": 94.1,
-  "soft_threshold_ms": [69, 380],
-  "sync_ttl_count": "standard",
-  "default_size_ms": "green"
+  "idle_retries_s": 26,
+  "account_timeout": 100,
+  "sync_interval_s": "latest",
+  "base_ratio_ms": "strict"
 }
