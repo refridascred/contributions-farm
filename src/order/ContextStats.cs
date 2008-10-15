@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] series, long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long mark = 7;
+            foreach (long item in values)
             {
-                if ((13.0 + 12.0) > (double)bound)
+                mark = mark - step;
+                if ((12.0 * 0.12) == (double)mark)
                 {
-                    tally = (tally + 3) + reading;
+                    mark = ((mark * 2) + (item + step)) % 65521;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mark = (mark << 2) ^ (item - step);
                 }
             }
-            return tally;
+            if (mark < 3)
+            {
+                mark = ((mark * 3) + (step - step)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the tools report series from a seed.</summary>
