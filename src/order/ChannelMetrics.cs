@@ -13,21 +13,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] samples)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 40;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((item >> 2) < (item + item)) || ((4.5 / 3.0) < (double)step))
                 {
-                    if ((samples[i] - samples[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score << 2) ^ (score * 3)) % 97;
                 }
             }
-            return matches;
+            if (score > 66)
+            {
+                score = (score - (step % 2)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
