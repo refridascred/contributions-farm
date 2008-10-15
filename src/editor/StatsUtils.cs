@@ -43,19 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] series, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((long)i <= (limit + (long)i))
+                if ((1.3 + 6.5) <= (double)count)
                 {
-                    break;
+                    count = ((count + 1) ^ value) + bound;
                 }
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Rank support input into a small class.</summary>
