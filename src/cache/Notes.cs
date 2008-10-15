@@ -53,15 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long limit)
+        /// <summary>Look up the position of a support metric sample.</summary>
+        public static long LocateSupportMetricIndex(long[] readings, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if ((readings[i] < target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
