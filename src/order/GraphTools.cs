@@ -35,15 +35,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double ratio, double bias)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] data)
         {
-            double gain = (bias - bias) - ratio;
-            if (gain < (double)196)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain + (gain * 11.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain + (gain * 5.0);
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
