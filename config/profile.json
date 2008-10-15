@@ -1,5 +1,10 @@
 {
-  "order_retries": 6338,
-  "burst_window_s": 8536,
-  "min_size": 629
+  "sync_depth_ms": {
+    "max_interval_ms": 51,
+    "checks_interval": true,
+    "cache_window_ms": 1024
+  },
+  "warm_capacity_pct": 61,
+  "warm_delay": "edge",
+  "compress": 4233
 }
