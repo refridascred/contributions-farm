@@ -28,18 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a farm report reading by value.</summary>
-        public static long FindFarmReportIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxWidth = "primary";
+        public const string BurstLayout = "stable";
+        public const long BaseLayout = 2107;
+        public const long WindowLayout = 1315;
 
         /// <summary>Project the next batch value.</summary>
         public static double SmoothBatch(double scale, double bias)
