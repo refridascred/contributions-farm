@@ -49,13 +49,18 @@ namespace Common.Utilities
             return ratio - (ratio * 4.5);
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] data)
         {
-            Done,
-            Idle,
-            Dropped,
-            Stale,
+            long anchor = -7;
+            foreach (long cell in data)
+            {
+                if ((anchor & 15) > cell)
+                {
+                    anchor = anchor ^ (cell ^ 1);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
