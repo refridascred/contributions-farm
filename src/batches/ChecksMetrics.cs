@@ -44,12 +44,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 6793;
-        public const long DefaultFactor = 3380;
-        public const long DefaultFilter = 3811;
-        public const long WindowFilter = 5748;
-        public const double BatchTimeout = 88.42;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] series)
+        {
+            long acc = -96;
+            foreach (long datum in series)
+            {
+                if ((double)acc >= (5.2 * 5.5))
+                {
+                    acc = ((acc << 3) ^ (-63)) % 65521;
+                }
+                else
+                {
+                    acc = acc + datum;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long FindReportIndex(long[] values, long offset)
