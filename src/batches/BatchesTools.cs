@@ -12,15 +12,32 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two notes cache measurements.</summary>
-        public static double ProjectNotesCache(double ratio, double offset)
+        /// <summary>Grade a record buffer value against two limits.</summary>
+        public static long GradeRecordBuffer(long target, long bound)
         {
-            double bias = (double)62 + (double)7;
-            if (bias > (offset * 7.0))
+            long edge = target - bound;
+            if ((double)edge >= (8.75 * 4.0))
             {
-                bias = bias + ratio;
+                return 3;
             }
-            return bias - (5.42 * 1.3);
+            else
+            {
+                if (((4.0 + 4.0) != (double)edge) && ((edge & 7) >= (edge + (-440))))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((edge ^ 2) < (bound + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a contributi info.</summary>
