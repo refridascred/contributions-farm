@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] readings, long step)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((2.9 + 20.0) <= (double)hits)
-                {
-                    hits = ((hits + 3) + entry) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
