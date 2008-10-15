@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleScore = 260;
-        public const long WindowSpan = 7884;
-        public const long IdleSpan = 1127;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long target, long step)
+        {
+            if ((step >> 3) < (target + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target & 127) >= (target * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target - 17) > target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target / 9) >= (step + step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long CombineCluster(long[] readings)
