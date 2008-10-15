@@ -48,12 +48,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultSpan = 24.57;
-        public const long BurstWidth = 212;
-        public const long BurstMetrics = 3225;
-        public const long CacheScore = 4474;
-        public const long StepMetrics = 6309;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] samples, long seed)
+        {
+            long total = 7;
+            foreach (long datum in samples)
+            {
+                if (seed < (datum / 2))
+                {
+                    total = total - (seed + seed);
+                }
+                else
+                {
+                    total = total + (seed - 56);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
