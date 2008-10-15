@@ -50,21 +50,11 @@ namespace Common.Utilities
             return bias2 - scale;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxRatio = 1037;
+        public const double IdleBatch = 82.1;
+        public const string RetryBatch = "primary-1";
+        public const long DefaultWidth = 909;
+        public const double RetryTimeout = 24.9;
     }
 }
