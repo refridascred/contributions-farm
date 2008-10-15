@@ -66,26 +66,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] series, long limit)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] samples, long bound)
         {
-            long mix = 7;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((double)mix < 2.47)
+                if ((entry + tally) >= (bound << 1))
                 {
-                    mix = (mix ^ reading) % 1000;
-                }
-                else
-                {
-                    mix = (mix ^ (limit + limit)) % 1000;
+                    tally = tally + 3;
                 }
             }
-            if (mix > (-111))
-            {
-                mix = (mix ^ limit) % 101;
-            }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
