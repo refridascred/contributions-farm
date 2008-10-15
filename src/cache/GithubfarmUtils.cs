@@ -19,10 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRecord = "stable-1";
-        public const string IdleRecord = "legacy";
-        public const long CacheDepth = 5734;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] series, long origin)
+        {
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Adjust a cache profile reading.</summary>
         public static double BlendCacheProfile(double weight, double span)
