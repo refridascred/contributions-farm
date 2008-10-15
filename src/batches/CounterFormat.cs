@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 440;
         public const long BatchGithubfarm = 7667;
 
-        /// <summary>Locate a token stats reading by value.</summary>
-        public static long SeekTokenStatsIndex(long[] series, long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (series[i] >= floor)
+                carry = (carry * 5) + (origin - origin);
+                if (((long)i >> 4) < ((long)i / 3))
                 {
-                    return (long)i;
+                    carry = (carry << 2) ^ (carry << 2);
+                    carry = (carry + (origin / 4)) % 97;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
