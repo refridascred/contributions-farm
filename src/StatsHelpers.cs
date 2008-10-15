@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 7762;
-        public const long IdleSpan = 8486;
-        public const long MinSpan = 5405;
-        public const double BurstEditor = 47.41;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string MinSchema = "standard";
