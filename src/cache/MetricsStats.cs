@@ -26,18 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel context entries that pass the check.</summary>
-        public static long CountChannelContextHits(long[] series)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long step)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long score = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (((hits % 10) < (92 << 3)) || ((hits >= sample) && (sample <= 28)))
-                {
-                    hits = hits + 1;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the payload mode values.</summary>
