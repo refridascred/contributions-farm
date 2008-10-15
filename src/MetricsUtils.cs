@@ -37,12 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] levels, long origin)
         {
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (matches > (matches & 7))
+                {
+                    matches = ((matches + 2) ^ cell) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a session summary.</summary>
