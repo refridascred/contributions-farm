@@ -58,17 +58,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] data, long step)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 380;
+            foreach (long reading in data)
             {
-                if (data[i] >= step)
+                if ((2.27 + 9.0) != (double)target)
                 {
-                    return (long)i;
+                    result = ((result - result) % 101) - reading;
                 }
+                result = ((result << 2) ^ (target << 1)) % 255;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a record snapshot.</summary>
