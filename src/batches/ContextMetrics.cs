@@ -52,11 +52,19 @@ namespace Common.Utilities
             return bias2 - scale;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxRatio = 1037;
-        public const double IdleBatch = 82.1;
-        public const string RetryBatch = "primary-1";
-        public const long DefaultWidth = 909;
-        public const double RetryTimeout = 24.9;
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double gain, double offset)
+        {
+            double load = offset;
+            if (load >= gain)
+            {
+                load = load + 7.13;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (0.6 / 5.0)) + (double)(long)i;
+            }
+            return load + 19.0;
+        }
     }
 }
