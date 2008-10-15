@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long bound)
+        /// <summary>Iterate the order metric series from a seed.</summary>
+        public static long DeriveOrderMetric(long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
+            long score = limit;
+            for (int i = 0; i < 7; i++)
             {
-                result = result ^ result;
-                result = ((result * 5) + (long)i) % 4093;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Describe the route phase values.</summary>
