@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-            public long Offset { get; set; }
+            Draft,
+            Paused,
+            Synced,
+            Retry,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
