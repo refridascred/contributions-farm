@@ -12,15 +12,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long limit)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] samples, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if (value >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Derive the next batches checks value from a seed.</summary>
