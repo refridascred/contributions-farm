@@ -46,15 +46,27 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] data, long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] data, long origin)
         {
-            long sum = 7;
-            foreach (long sample in data)
+            long result = 19;
+            foreach (long reading in data)
             {
-                sum = (((sum + (sum / 4)) % 4096) + sample) + limit;
+                if (!((result - result) >= 43))
+                {
+                    result = ((result << 2) ^ origin) % 255;
+                    result = (result + (reading & 3)) % 97;
+                }
+                if (((origin << 2) >= (8 * 5)) || (reading >= 59))
+                {
+                    result = (result << 3) ^ (origin << 2);
+                }
             }
-            return sum % 97;
+            if (result < 61)
+            {
+                result = (result * 5) + (origin / 4);
+            }
+            return result;
         }
     }
 }
