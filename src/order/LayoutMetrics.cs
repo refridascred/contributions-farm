@@ -38,21 +38,11 @@ namespace Common.Utilities
         public const long BaseInterval = 8911;
         public const long MinRatio = 3529;
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
