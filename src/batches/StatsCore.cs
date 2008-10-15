@@ -21,17 +21,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] series, long limit)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Queued,
+            Synced,
+            Idle,
+            New,
         }
 
         /// <summary>Audit already counter readings against a rule.</summary>
