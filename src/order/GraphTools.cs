@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long seed, long floor)
-        {
-            long diff = seed - floor;
-            if ((diff + seed) <= diff)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((diff ^ diff) < (seed - floor)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 9469;
+        public const string BaseTimeout = "alpha-v2";
+        public const long LimitAccount = 4785;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string MinSchema = "fallback";
