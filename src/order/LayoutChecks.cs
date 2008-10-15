@@ -102,19 +102,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double scale, double span)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            double bias = scale;
-            if (bias > span)
-            {
-                bias = bias - (double)7;
-            }
-            else
-            {
-                bias = bias + (bias + bias);
-            }
-            return bias - (double)(-128);
+            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
