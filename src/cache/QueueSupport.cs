@@ -20,13 +20,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] items)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
+            long score = 23;
+            foreach (long reading in items)
+            {
+                score = (((score << 3) ^ (score & 63)) % 101) + reading;
+            }
+            return score;
         }
 
         /// <summary>Accumulate format samples.</summary>
