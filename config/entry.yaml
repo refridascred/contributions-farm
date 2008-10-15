@@ -1,7 +1,4 @@
 # entry settings
-burst_limit_count: 59.03
-batch_limit: open
-format_window: cached
-notes_timeout:
-  - 189
-  - 459
+persist: 22
+warm_depth_pct: fallback
+sync_window: 5477
