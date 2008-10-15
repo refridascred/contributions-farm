@@ -40,18 +40,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit already counter readings against a rule.</summary>
-        public static long TallyAlreadyCounterOutliers(long[] values, long limit)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((limit - 157) <= (count + limit))
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
+            Active,
+            Done,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
