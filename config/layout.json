@@ -1,23 +1,7 @@
 {
-  "record_timeout": "standard",
-  "retry_window": {
-    "cluster_retries": true,
-    "audit": {
-      "already_timeout": true,
-      "schema_limit": false,
-      "batches_threshold": "edge",
-      "batch_retries_count": "green",
-      "batch_capacity_count": 57.35,
-      "batch_threshold": 19.48
-    },
-    "strict": 84.11,
-    "enabled": 8879,
-    "sync_retries_pct": 1.29
-  },
-  "retry_size_ms": [290, 107, 125, 263],
-  "batch_size": {
-    "hard_capacity": "local",
-    "payload_delay": 4.51,
-    "batch_ratio": 57
-  }
+  "max_window_pct": false,
+  "base_delay": 1024,
+  "retry_window_pct": "fallback",
+  "default_limit_count": 58.08,
+  "burst_ttl_s": 6313
 }
