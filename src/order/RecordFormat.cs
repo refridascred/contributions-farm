@@ -39,12 +39,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long bound)
         {
-            Draft,
-            Queued,
-            Ready,
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
