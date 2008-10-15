@@ -1,5 +1,8 @@
 {
-  "compress": 9121,
-  "burst_threshold_s": 250,
-  "cluster_size": ["local", "stable"]
+  "enabled": ["fallback", "cached"],
+  "warm_interval_count": 3740,
+  "readonly": "open",
+  "max_depth_s": 89.15,
+  "retry_timeout_count": [401, 230],
+  "report_capacity": 10
 }
