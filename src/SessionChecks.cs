@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double scale, double bias)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double ratio = (double)233 * 8.0;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ((ratio - ratio) + (double)(long)i) - scale;
-            }
-            return ratio + (bias * 7.9);
+            Ready,
+            Synced,
+            Queued,
+            Draft,
+            Pending,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
