@@ -40,12 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] items)
         {
-            Failed,
-            Draft,
-            Queued,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((4.4 / 7.0) > (double)8)
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a filter info.</summary>
