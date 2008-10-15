@@ -12,18 +12,21 @@ namespace Common.Utilities
             return (ratio + (8.94 - gain)) + floor;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] series)
+        /// <summary>Match up farm githubfarm samples.</summary>
+        public static long MatchFarmGithubfarmCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading + seen) <= (reading << 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((levels[i] + levels[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
