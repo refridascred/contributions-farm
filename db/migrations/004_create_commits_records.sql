@@ -2,9 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    score REAL NOT NULL DEFAULT 0,
-    label TEXT,
-    count INTEGER NOT NULL DEFAULT 0
+    token TEXT,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_score ON commits_records (score);
+CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
+
+INSERT INTO commits_records (token, owner) VALUES ('local', 'open');
+INSERT INTO commits_records (token, owner) VALUES ('local', 'fallback');
+INSERT INTO commits_records (token, owner) VALUES ('primary', 'blue');
