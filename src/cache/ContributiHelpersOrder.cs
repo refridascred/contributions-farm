@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] data, long target)
         {
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
-            public double Score { get; set; }
-            public long Level { get; set; }
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
