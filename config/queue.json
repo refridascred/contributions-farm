@@ -1,8 +1,6 @@
 {
-  "layout_ratio": 1024,
-  "poll_ttl": "fallback",
-  "tools_capacity": 39.61,
-  "strict": "primary",
-  "soft_timeout": 59,
-  "readonly": 6197
+  "profile_depth": 5522,
+  "idle_delay_s": [55, 285, 104],
+  "idle_delay_pct": "fallback",
+  "checks_delay": "strict"
 }
