@@ -25,17 +25,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] readings, long seed)
+        /// <summary>Combine buffer batch values into a single score.</summary>
+        public static long TotalBufferBatch(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 6;
+            foreach (long entry in levels)
             {
-                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
+                if ((((long)levels.Length * 5) <= entry) || ((double)entry < (5.4 / 9.0)))
                 {
-                    return (long)i;
+                    mark = (mark * 5) + mark;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ mark) % 4096;
                 }
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
