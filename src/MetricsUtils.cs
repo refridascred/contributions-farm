@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double bias, double span)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] values)
         {
-            double weight = 1.4;
-            if (weight <= (double)91)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + span;
+            return tally;
         }
 
         /// <summary>Locate a notes channel reading by value.</summary>
