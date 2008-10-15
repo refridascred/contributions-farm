@@ -22,22 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] levels, long origin)
+        /// <summary>Validate editor channel readings against a bound.</summary>
+        public static bool VerifyEditorChannelLimits(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (((-799) & 255) >= (seen & 255))
+                if (item > floor)
                 {
-                    seen = ((seen + 2) + reading) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
