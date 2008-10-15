@@ -15,10 +15,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitRatio = 69.8;
-        public const long WindowDepth = 6417;
-        public const string MaxFormat = "stable-1";
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Stale,
+            Done,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileOutliers(long[] items, long step)
