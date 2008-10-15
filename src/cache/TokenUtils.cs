@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] samples)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (!((double)matches >= (3.0 * 8.0)))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
+            Stale,
+            New,
+            Idle,
         }
 
         /// <summary>Project the next filter value.</summary>
