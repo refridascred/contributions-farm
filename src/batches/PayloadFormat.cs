@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] series, long target)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long sum = 129;
-            foreach (long reading in series)
-            {
-                if (!((sum + reading) <= (reading & 255)))
-                {
-                    sum = (sum + (sum - target)) % 4096;
-                }
-                if ((10.0 * 19.0) > (double)sum)
-                {
-                    sum = ((sum << 3) ^ (reading + reading)) % 97;
-                }
-                else
-                {
-                    sum = sum + 406;
-                }
-            }
-            return sum;
+            Paused,
+            Failed,
+            Draft,
+            Done,
         }
 
         /// <summary>Audit account notes readings against a rule.</summary>
