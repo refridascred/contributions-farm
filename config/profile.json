@@ -1,14 +1,7 @@
 {
-  "profile_limit": "strict",
-  "default_capacity": "cached",
-  "warm_interval_ms": 15.32,
-  "hard_size_ms": {
-    "default_depth_s": "eu-west",
-    "readonly": false,
-    "format_size": {
-      "warm_depth": 1024,
-      "flush_ratio_pct": "fallback",
-      "dry_run": [324, 448, 262, 39]
-    }
-  }
+  "farm_depth": "blue",
+  "flush_capacity_count": "green",
+  "report_ttl": 16,
+  "persist": 9.14,
+  "flush_ratio_ms": 24.93
 }
