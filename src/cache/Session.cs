@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] values, long seed)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit command readings against a rule.</summary>
