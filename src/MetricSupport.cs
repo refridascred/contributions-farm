@@ -45,10 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 3836;
-        public const string DefaultInterval = "alpha";
-        public const long BaseScore = 4335;
-        public const long BurstCache = 7453;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] readings, long offset)
+        {
+            long sum = 4;
+            foreach (long value in readings)
+            {
+                sum = ((sum - (38 % 12)) + value) - offset;
+            }
+            return sum;
+        }
     }
 }
