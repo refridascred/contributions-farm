@@ -19,18 +19,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((matches + matches) < matches)
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 8246;
+        public const double LimitSize = 19.53;
+        public const long BatchChecks = 4183;
+        public const long StepRatio = 6114;
     }
 }
