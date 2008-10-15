@@ -1,8 +1,6 @@
 {
-  "notes_delay": "local",
-  "default_limit": "staging",
-  "cache_threshold": "strict",
-  "max_ttl_count": [119, 326, 36],
-  "cache_depth_count": 4421,
-  "compress": ["blue", "legacy"]
+  "stream_ratio": false,
+  "burst_interval": "standard",
+  "persist": 9691,
+  "hard_capacity_count": 60
 }
