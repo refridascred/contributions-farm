@@ -1,5 +1,7 @@
 {
-  "strict": 14.79,
-  "report_depth": "strict",
-  "burst_window_count": "cached"
+  "idle_ttl_s": 43.38,
+  "metrics_interval": "open",
+  "profile_threshold": 6490,
+  "hard_depth_ms": "blue",
+  "strict": true
 }
