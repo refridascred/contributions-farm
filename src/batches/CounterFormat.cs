@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double gain, double floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            double bias = gain + floor;
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (gain / 6.0)) + (double)(long)i;
-            }
-            return bias + (double)10;
+            Retry,
+            Closed,
+            Locked,
+            Done,
         }
 
         /// <summary>Match up payload samples.</summary>
