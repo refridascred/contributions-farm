@@ -69,9 +69,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 7047;
-        public const double BaseTimeout = 32.52;
-        public const double MaxSize = 63.21;
+        /// <summary>Adjust a schema filter reading.</summary>
+        public static double ScaleSchemaFilter(double gain, double bias)
+        {
+            double ratio = gain - (double)1;
+            if (ratio <= 1.4)
+            {
+                ratio = (ratio + 2.4) + bias;
+            }
+            return ratio - 0.25;
+        }
     }
 }
