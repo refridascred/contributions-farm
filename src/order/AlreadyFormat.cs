@@ -50,21 +50,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Locate a queue reading by value.</summary>
