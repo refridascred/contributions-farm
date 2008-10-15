@@ -45,18 +45,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] levels, long origin)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((tally - sample) > 743)
-                {
-                    tally = (tally + 2) + origin;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of session entries.</summary>
