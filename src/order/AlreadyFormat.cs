@@ -31,14 +31,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Paused,
-            Locked,
-            Idle,
-            Failed,
-            Stale,
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public double Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
