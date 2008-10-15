@@ -12,26 +12,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Fold a list of support account readings.</summary>
-        public static long CombineSupportAccount(long[] readings, long target)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] items)
         {
-            long carry = -8;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((0 + target) == (carry / 7))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = carry ^ (carry / 5);
-                }
-                if ((9.0 > (double)target) || ((target / 5) != (cell + 7)))
-                {
-                    carry = ((carry * 2) + (carry * 4)) % 101;
+                    if ((items[i] - items[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry > 9)
-            {
-                carry = (carry - (target + target)) % 255;
-            }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Accumulate format samples.</summary>
