@@ -1,7 +1,6 @@
 {
-  "min_retries": 79.4,
-  "burst_ratio_ms": 60,
-  "audit": true,
-  "min_limit": "fallback",
-  "context_capacity": ["primary", "primary"]
+  "contributi_threshold": "standard",
+  "githubfarm_limit": true,
+  "base_window_count": "eu-west",
+  "soft_depth_pct": 5044
 }
