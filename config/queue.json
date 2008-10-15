@@ -1,6 +1,28 @@
 {
-  "stream_ratio": false,
-  "burst_interval": "standard",
-  "persist": 9691,
-  "hard_capacity_count": 60
+  "sync_limit_s": {
+    "soft_ttl_ms": 25,
+    "warm_timeout_count": 4802,
+    "graph_capacity": {
+      "window_threshold": ["green", "edge", "eu-west"],
+      "cache_limit": true,
+      "retry_capacity_count": [365, 180, 382],
+      "flush_ratio_ms": 752,
+      "hard_retries": ["eu-west", "fallback", "standard"],
+      "batch_ttl_s": "latest"
+    },
+    "verbose": "green",
+    "metrics_delay": 60,
+    "soft_delay": "latest"
+  },
+  "strict": {
+    "soft_interval_s": 68,
+    "default_limit_pct": 60,
+    "min_threshold_ms": 8403,
+    "buffer_delay": false,
+    "payload_depth": ["stable", "edge", "fallback"]
+  },
+  "warm_timeout_s": "local",
+  "metric_ttl": "primary",
+  "cluster_retries": "primary",
+  "min_ttl_pct": false
 }
