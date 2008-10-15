@@ -1,16 +1,4 @@
 # githubfarm settings
-min_depth_count: false
-default_capacity_pct:
-  - 8
-  - 288
-  - 51
-default_timeout_pct: latest
-dry_run:
-  - 416
-  - 392
-  - 193
-  - 479
-audit:
-  - 133
-  - 11
-idle_limit_count: 3.72
+sync_threshold_pct: true
+max_window_ms: eu-west
+min_ttl: 36.98
