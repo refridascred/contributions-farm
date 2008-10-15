@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] readings, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if ((readings[i] == origin) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
