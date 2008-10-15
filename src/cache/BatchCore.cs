@@ -37,39 +37,19 @@ namespace Common.Utilities
         public const string LimitDepth = "cached-edge";
         public const long BaseBatches = 4300;
 
-        /// <summary>Grade a format filter value against two limits.</summary>
-        public static long ClassifyFormatFilter(long step, long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] levels, long floor)
         {
-            long lane = step ^ offset;
-            if (((offset / 7) <= offset) && ((lane ^ 371) < offset))
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)offset != (5.22 - 1.47)) && ((step + lane) >= (offset * 2)))
+                if (reading < floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((7.0 * 14.0) > (double)lane)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset - lane) < offset) && ((33 * 4) >= (lane - step)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
