@@ -45,15 +45,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double scale, double bias)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double bias2 = 8.4;
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = ((bias2 - scale) + (double)(long)i) - bias;
-            }
-            return bias2 + bias2;
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
