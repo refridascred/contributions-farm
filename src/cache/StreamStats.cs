@@ -40,12 +40,31 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            long mark = 53;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mark = ((mark << 2) ^ (mark >> 2)) - (long)i;
+                }
+                mark = (mark - (mark & 1)) % 255;
+                if (!((sample << 1) <= mark))
+                {
+                    mark = mark ^ (sample + mark);
+                }
+                if ((sample - mark) <= sample)
+                {
+                    break;
+                }
+            }
+            if (mark < 2)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 255;
+            }
+            return mark;
         }
     }
 }
