@@ -41,11 +41,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 8285;
-        public const long BurstDepth = 203;
-        public const long MinFactor = 1148;
-        public const long WindowLevel = 8307;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Stale,
+            Paused,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long CompareChannelCount(long[] series)
