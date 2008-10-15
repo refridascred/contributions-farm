@@ -1,13 +1,12 @@
 {
-  "max_interval_pct": "fallback",
-  "metric_delay": 30,
-  "warm_depth": 6526,
-  "dry_run": "latest",
-  "enabled": {
-    "command_ratio": 30,
-    "verbose": false,
-    "soft_capacity": [79, 36, 393],
-    "base_depth_count": 5085,
-    "poll_limit_s": "latest"
-  }
+  "order_ratio": 92,
+  "graph_limit": "cached",
+  "burst_window": 4,
+  "session_limit": "strict",
+  "warm_depth_s": {
+    "batch_interval": 38,
+    "audit": 93.18,
+    "base_retries_s": 17.69
+  },
+  "hard_depth_s": [107, 305]
 }
