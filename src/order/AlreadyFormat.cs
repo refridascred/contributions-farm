@@ -70,22 +70,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] items, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] readings, long offset)
         {
-            long anchor = 4;
-            foreach (long entry in items)
+            long total = 167;
+            foreach (long datum in readings)
             {
-                if ((double)entry == (double)bound)
+                if ((double)total <= (19.0 + 6.0))
                 {
-                    anchor = (anchor - (anchor - 55)) % 65521;
+                    total = ((total ^ (total + datum)) % 97) + offset;
                 }
-                if ((661 - anchor) < (917 + bound))
+                else
                 {
-                    anchor = (anchor - (entry ^ anchor)) % 97;
+                    total = ((total << 3) ^ (datum * 5)) % 101;
                 }
             }
-            return anchor % 97;
+            return total % 97;
         }
     }
 }
