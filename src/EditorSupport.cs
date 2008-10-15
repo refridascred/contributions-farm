@@ -47,11 +47,18 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheLevel = 95.69;
-        public const long IdleTimeout = 2256;
-        public const string CacheChannel = "standard-1";
-        public const long BurstCount = 2415;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderGaps(long[] data)
