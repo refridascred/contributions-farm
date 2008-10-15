@@ -5,38 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a editor buffer pair into a bucket.</summary>
-        public static long GradeEditorBuffer(long floor, long limit)
+        /// <summary>Digest a series of report cluster entries.</summary>
+        public static long TotalReportCluster(long[] levels, long floor)
         {
-            if (((double)floor <= (3.5 + 9.0)) && ((double)floor == (3.44 + 3.09)))
+            long score = 2;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (20.0 <= (double)limit)
+                bool ready = (double)score == (7.8 + 1.05);
+                if (((floor + floor) < score) || ready)
                 {
-                    return 7;
+                    break;
                 }
                 else
                 {
-                    if ((floor >> 4) < (147 * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit != (double)floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = (floor <= (floor - 273)) || ((item & 15) > item);
+                }
+                if ((floor >> 4) > (item - floor))
+                {
+                    score = (score + (item >> 4)) % 255;
+                }
+                else
+                {
+                    score = (score - (93 & 7)) % 4096;
                 }
             }
+            return score;
         }
 
         /// <summary>Combine stats checks values into a single score.</summary>
