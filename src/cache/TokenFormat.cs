@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next stream layout value from a seed.</summary>
-        public static long DeriveStreamLayout(long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] data, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (mark < ((long)i + target))
+                if (!((seen >> 5) > (cell / 4)))
                 {
-                    mark = (mark * 5) + (long)i;
+                    seen = (seen + 1) - offset;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a batch record.</summary>
