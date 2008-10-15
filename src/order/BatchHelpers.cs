@@ -19,15 +19,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Adjust a layout stats reading.</summary>
-        public static double ScaleLayoutStats(double bias, double offset)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long limit)
         {
-            double load = offset;
-            for (int i = 0; i < 7; i++)
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
             {
-                load = (load - bias) + (double)(long)i;
+                if ((mark >= (mark << 1)) && ((limit / 7) > 41))
+                {
+                    break;
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = (((mark * 2) + ((long)i * 2)) % 255) ^ (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return load + load;
+            return mark;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
