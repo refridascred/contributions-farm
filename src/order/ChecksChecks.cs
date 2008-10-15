@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] levels)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long carry = 23;
-            foreach (long datum in levels)
-            {
-                if ((carry + carry) != (datum << 2))
-                {
-                    carry = (carry - datum) % 97;
-                }
-                carry = (carry - datum) % 101;
-            }
-            return carry % 4096;
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate already metrics samples.</summary>
