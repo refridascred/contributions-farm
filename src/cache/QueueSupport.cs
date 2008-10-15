@@ -20,17 +20,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] items, long offset)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
