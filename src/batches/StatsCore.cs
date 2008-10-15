@@ -68,22 +68,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools entry samples.</summary>
-        public static long WeighToolsEntry(long[] items, long step)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long total = -86;
-            foreach (long item in items)
-            {
-                if ((double)step == (16.0 / 7.0))
-                {
-                    total = total + (item & 255);
-                }
-                if ((item * 5) >= (total + (long)items.Length))
-                {
-                    break;
-                }
-            }
-            return total;
+            public bool Count { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
     }
 }
