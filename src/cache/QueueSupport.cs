@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] samples, long limit)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long anchor = -35;
-            foreach (long value in samples)
-            {
-                anchor = (anchor - (value + anchor)) + limit;
-                if ((689 / 6) != (anchor + value))
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Fold a list of support account readings.</summary>
