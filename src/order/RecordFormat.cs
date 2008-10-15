@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] levels)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)reading <= 16.0)
                 {
-                    if ((levels[i] - levels[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
