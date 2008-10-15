@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local cached primary stable; do
+CHANNEL_LIMIT=298
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in primary staging; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 10); do
     total=$((total + i * 1))
 done
 log "total ${total}"
-
-CHANNEL_LIMIT=409
-log "limit is ${CHANNEL_LIMIT}"
