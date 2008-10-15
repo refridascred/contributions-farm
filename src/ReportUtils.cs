@@ -23,27 +23,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] data, long origin)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long result = 867;
-            foreach (long item in data)
-            {
-                result = result - (origin - 6);
-                if ((2.0 + 17.0) < (double)origin)
-                {
-                    result = (result << 3) ^ result;
-                }
-                if ((double)item > (9.93 + 5.0))
-                {
-                    break;
-                }
-            }
-            if (result > 120)
-            {
-                result = result - result;
-            }
-            return result;
+            Locked,
+            Active,
+            Retry,
         }
 
         /// <summary>Accumulate filter profile samples.</summary>
