@@ -14,13 +14,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long origin)
         {
-            Closed,
-            Pending,
-            Synced,
-            Paused,
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
