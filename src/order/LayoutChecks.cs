@@ -68,30 +68,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] samples)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long offset, long limit)
         {
-            long result = 729;
-            foreach (long datum in samples)
+            if ((offset + offset) >= (offset & 255))
             {
-                if ((double)datum >= (1.3 + 2.86))
+                return 4;
+            }
+            else
+            {
+                if (((offset + 93) > 36) || ((limit + limit) <= offset))
                 {
-                    result = ((result * 2) + (datum + result)) % 97;
+                    return 5;
                 }
                 else
                 {
-                    result = result + (datum - datum);
-                }
-                if (!((datum >> 1) != (datum - datum)))
-                {
-                    result = (result + result) % 65521;
-                }
-                else
-                {
-                    result = (result * 2) + (312 + result);
+                    if ((6.61 - 4.1) >= (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + limit) < ((-79) << 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return result % 65521;
         }
 
         /// <summary>Adjust a profile reading.</summary>
