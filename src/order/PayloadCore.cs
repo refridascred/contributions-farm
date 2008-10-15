@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first farm support entry that matches the target.</summary>
-        public static long LocateFarmSupportIndex(long[] series, long origin)
+        /// <summary>Count the context farm entries that pass the check.</summary>
+        public static long CountContextFarmHits(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((series[i] < origin) && ((series[i] % 5) != 0))
+                if (offset < (entry + 225))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
