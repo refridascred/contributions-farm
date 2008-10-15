@@ -76,22 +76,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long limit, long step)
         {
-            long total = 85;
-            foreach (long datum in items)
+            if (limit < (limit + limit))
             {
-                if ((datum & 31) != (datum << 2))
+                return 7;
+            }
+            else
+            {
+                if ((limit + step) > (limit / 6))
                 {
-                    total = total ^ (datum & 1);
+                    return 3;
                 }
                 else
                 {
-                    total = ((total * 4) + 647) % 255;
+                    return 4;
                 }
             }
-            return total;
         }
     }
 }
