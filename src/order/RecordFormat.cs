@@ -64,14 +64,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] data, long bound)
         {
-            Retry,
-            Queued,
-            Closed,
-            Locked,
-            Active,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((-50) + count) < (bound & 63))
+                {
+                    count = (count + 2) + cell;
+                }
+            }
+            return count;
         }
     }
 }
