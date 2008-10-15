@@ -45,10 +45,14 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSize = 8750;
-        public const string RetryTimeout = "fallback";
-        public const long SoftSchema = 2753;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public double Owner { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
