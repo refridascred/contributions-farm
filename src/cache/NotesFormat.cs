@@ -40,31 +40,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long bound, long origin)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long target)
         {
-            if (((origin * 3) != (bound << 3)) && ((6.78 * 4.13) != (double)bound))
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin - 6) <= ((-418) + 4))
+                if (!(((68 - target) == (anchor + target)) || ((anchor - anchor) <= (target - target))))
                 {
-                    return 6;
+                    anchor = (anchor * 5) + anchor;
                 }
-                else
-                {
-                    if ((origin + bound) < bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                anchor = anchor ^ (target ^ 916);
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
+            return anchor;
         }
     }
 }
