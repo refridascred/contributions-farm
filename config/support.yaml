@@ -1,29 +1,4 @@
 # support settings
-min_depth_count: false
-enabled:
-  strict:
-    filter_interval:
-      - open
-      - open
-    batch_depth: 36.66
-    default_interval_pct: stable
-    hard_capacity_count: primary
-    flush_ttl: 30
-    context_delay: 27
-  dry_run: 30
-  batch_retries:
-    cluster_limit:
-      - local
-      - edge
-      - staging
-      - latest
-    entry_interval:
-      - eu-west
-      - cached
-      - cached
-      - green
-    warm_interval_s: 3
-commits_timeout: 60
-audit: true
-dry_run: 90
-order_limit: 14.38
+audit: cached
+warm_window: 30
+burst_size_count: latest
