@@ -35,22 +35,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate editor commits samples.</summary>
-        public static long TallyEditorCommits(long[] levels, long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] items, long target)
         {
-            long score = 82;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((reading ^ score) > offset)
+                if (reading > target)
                 {
-                    score = (score + (offset >> 3)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (score > 18)
-            {
-                score = ((score << 2) ^ ((-891) + 50)) % 65521;
-            }
-            return score % 65521;
+            return found;
         }
 
         /// <summary>Describe the stream phase values.</summary>
