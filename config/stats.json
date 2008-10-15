@@ -1,5 +1,11 @@
 {
-  "token_ratio": 863,
-  "burst_retries_count": [250, 406, 457, 77],
-  "idle_ttl_count": "eu-west"
+  "sync_threshold": 95.46,
+  "warm_delay": {
+    "flush_ratio_ms": 39,
+    "route_window": "legacy",
+    "schema_delay": false,
+    "command_size": "legacy",
+    "cache_limit": "staging"
+  },
+  "default_timeout": "fallback"
 }
