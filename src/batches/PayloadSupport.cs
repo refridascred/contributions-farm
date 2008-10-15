@@ -20,17 +20,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] data, long floor)
+        /// <summary>Grade a cluster channel value against two limits.</summary>
+        public static long BucketClusterChannel(long target, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((6.0 + 6.0) == (double)target) && ((step + step) > step))
             {
-                if (data[i] <= floor)
+                return 5;
+            }
+            else
+            {
+                if ((double)step != (double)52)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (target < 677)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
