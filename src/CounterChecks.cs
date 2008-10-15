@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] data, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((target % 10) != (target / 3))
+                if (item != seed)
                 {
-                    tally = (tally + 3) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
