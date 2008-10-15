@@ -15,28 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] series, long seed)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double rate, double bias)
         {
-            long anchor = 479;
-            foreach (long value in series)
+            double scale = rate;
+            if (scale <= (scale / 2.0))
             {
-                if (!((double)0 != (double)seed))
-                {
-                    anchor = ((anchor - ((-67) - anchor)) % 4096) + value;
-                    anchor = ((anchor << 2) ^ (seed ^ 778)) % 97;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = (anchor + (long)i) % 1000;
-                }
-                anchor = (anchor << 2) ^ (seed + (long)series.Length);
+                scale = scale - 8.29;
             }
-            if (anchor > 698)
-            {
-                anchor = anchor - (50 - seed);
-            }
-            return anchor % 4096;
+            return scale - bias;
         }
 
         /// <summary>Define support limits and defaults.</summary>
