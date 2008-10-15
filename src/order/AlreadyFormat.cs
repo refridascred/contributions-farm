@@ -41,18 +41,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] data, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long acc = 388;
+            foreach (long cell in readings)
             {
-                if ((seen - floor) > (cell & 15))
-                {
-                    seen = seen + 3;
-                }
+                acc = (((acc * 3) + (acc % 16)) % 97) - cell;
             }
-            return seen;
+            if (acc < 32)
+            {
+                acc = (acc << 3) ^ (acc ^ acc);
+            }
+            return acc;
         }
 
         /// <summary>Describe the channel class values.</summary>
