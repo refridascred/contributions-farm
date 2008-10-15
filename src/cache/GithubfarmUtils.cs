@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Validate farm account readings against a bound.</summary>
+        public static bool CheckFarmAccountBounds(long[] series, long bound)
         {
-            Active,
-            Draft,
-            Synced,
-            Retry,
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a session reading.</summary>
