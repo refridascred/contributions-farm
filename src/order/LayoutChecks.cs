@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double ratio, double span)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] levels)
         {
-            double scale = ratio;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                scale = (scale - (span / 2.0)) + (double)(long)i;
+                if (!((double)cell <= 1.9))
+                {
+                    count = count + 3;
+                }
             }
-            return scale + (11.0 / 4.0);
+            return count;
         }
 
         /// <summary>Match up checks editor samples.</summary>
