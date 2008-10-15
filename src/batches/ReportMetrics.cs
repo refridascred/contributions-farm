@@ -32,13 +32,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
