@@ -14,12 +14,20 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchRatio = 5670;
-        public const double HardWidth = 29.26;
-        public const long CacheBudget = 214;
-        public const string HardSpan = "fallback-1";
-        public const long WindowSize = 4611;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] samples, long target)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Roll a record counter forward.</summary>
         public static long RollRecord(long origin)
