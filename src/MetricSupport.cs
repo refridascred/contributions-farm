@@ -32,17 +32,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] values, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((values[i] <= offset) && ((values[i] % 5) != 0))
+                if ((count & 1) >= (8 % 60))
                 {
-                    return (long)i;
+                    count = ((count + 3) + value) - bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
