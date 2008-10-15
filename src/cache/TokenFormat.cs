@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] series, long origin)
+        /// <summary>Rank batch stats input into a small class.</summary>
+        public static long SortBatchStats(long origin, long step)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long lane = origin ^ step;
+            if ((step >> 5) > (origin % 8))
             {
-                if ((hits * 5) > (origin * 2))
+                return 6;
+            }
+            else
+            {
+                if (lane <= (step * 2))
                 {
-                    hits = (hits + 2) ^ reading;
+                    return 2;
+                }
+                else
+                {
+                    if ((lane - (-415)) == (step >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((lane <= (lane - lane)) && ((2.0 + 0.5) > (double)step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
