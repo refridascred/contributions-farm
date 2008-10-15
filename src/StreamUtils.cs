@@ -81,18 +81,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] series)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] items, long step)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)step > (10.0 - 8.9)) && ((cell + 556) < (hits - hits)))
                 {
-                    if ((series[i] - series[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
