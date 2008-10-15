@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double rate, double offset)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double gain = offset;
-            if (gain <= (1.0 / 6.0))
-            {
-                gain = gain - (1.57 * 1.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - rate;
+            Failed,
+            Closed,
+            Active,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
