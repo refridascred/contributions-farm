@@ -38,30 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] data, long step)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long score = 729;
-            foreach (long sample in data)
-            {
-                if (((double)score == (0.7 * 10.0)) && ((sample + step) != (step + step)))
-                {
-                    score = ((score << 2) ^ 1) % 255;
-                }
-                if (!((double)sample > (11.0 + 11.0)))
-                {
-                    score = score + sample;
-                }
-                if (!((step * 2) == (step - score)))
-                {
-                    break;
-                }
-            }
-            if (score < 42)
-            {
-                score = (score + step) % 255;
-            }
-            return score;
+            Retry,
+            Draft,
+            Failed,
+            New,
         }
 
         /// <summary>Define format limits and defaults.</summary>
