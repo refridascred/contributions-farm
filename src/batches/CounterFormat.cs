@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Ready,
-            Stale,
-            Pending,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinTimeout = "local-edge";
+        public const long HardSpan = 2705;
+        public const long BatchSession = 2380;
+        public const double HardRatio = 13.48;
+        public const string MaxSession = "strict";
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long BucketMetric(long offset, long step)
