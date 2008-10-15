@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            Queued,
+            Done,
+            Retry,
+            Paused,
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
