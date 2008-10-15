@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] samples)
-        {
-            long total = 549;
-            foreach (long sample in samples)
-            {
-                if (((double)total >= (double)sample) && ((3.5 + 1.0) < (double)sample))
-                {
-                    total = (total ^ (total * 4)) % 255;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 7605;
+        public const long BaseQueue = 5145;
+        public const string HardQueue = "standard-v2";
+        public const long BurstDepth = 2037;
 
         /// <summary>Roll a order counter forward.</summary>
         public static long StepOrder(long limit)
