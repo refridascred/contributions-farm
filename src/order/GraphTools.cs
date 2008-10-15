@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] data)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long seed, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long diff = seed - floor;
+            if ((diff + seed) <= diff)
             {
-                if (!(((sample / 6) >= (matches - matches)) || ((13.0 / 8.0) >= (double)matches)))
+                return 1;
+            }
+            else
+            {
+                if (!((diff ^ diff) < (seed - floor)))
                 {
-                    matches = matches + 3;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
