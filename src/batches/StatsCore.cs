@@ -72,13 +72,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Iterate the order window series from a seed.</summary>
+        public static long DeriveOrderWindow(long offset)
         {
-            Paused,
-            Queued,
-            Closed,
-            Retry,
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = sum ^ ((long)i / 8);
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
