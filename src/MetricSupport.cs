@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstScore = 9486;
-        public const string HardOrder = "alpha-v2";
-        public const long MinOrder = 3756;
-        public const long LimitScore = 3729;
-        public const long StepOrder = 1428;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] items)
+        {
+            long result = 702;
+            foreach (long entry in items)
+            {
+                if (!((result + 28) <= (5 + result)))
+                {
+                    result = ((result + (result % 12)) % 1000) - entry;
+                }
+                else
+                {
+                    result = (result * 3) + (result - result);
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsGaps(long[] series, long bound)
