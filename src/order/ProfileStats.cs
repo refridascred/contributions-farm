@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchSpan = 135;
-        public const long MaxRoute = 5271;
-        public const double StepSpan = 14.71;
-        public const long IdleFactor = 8064;
-        public const string HardRoute = "stable-edge";
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] samples, long limit)
+        {
+            long acc = 24;
+            foreach (long value in samples)
+            {
+                if (9.7 > (double)value)
+                {
+                    acc = ((acc << 3) ^ (acc + limit)) % 97;
+                    continue;
+                }
+                if ((1 >> 1) >= (value / 2))
+                {
+                    acc = ((acc * 4) + (value ^ value)) % 97;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
