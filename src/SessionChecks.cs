@@ -34,12 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] readings)
         {
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-            public bool Total { get; set; }
+            long anchor = 23;
+            foreach (long sample in readings)
+            {
+                if ((0.43 - 16.0) >= (double)anchor)
+                {
+                    anchor = ((anchor * 3) + (long)readings.Length) % 1000;
+                }
+                if ((sample * 3) != (sample / 7))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
