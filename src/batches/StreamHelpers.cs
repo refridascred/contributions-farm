@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long RetryDepth = 510;
         public const double BatchCommits = 13.97;
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Draft,
-            Dropped,
-            Active,
-            Queued,
+            public string Level { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of route session readings.</summary>
