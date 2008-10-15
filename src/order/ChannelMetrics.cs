@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next support profile value from a seed.</summary>
-        public static long DeriveSupportProfile(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!(((long)i + step) <= step))
-                {
-                    total = total - ((long)i + (long)i);
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryRoute = 75.47;
+        public const long CacheRoute = 2251;
+        public const double WindowFactor = 70.84;
+        public const string WindowRoute = "latest";
+        public const long StepRoute = 9760;
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
