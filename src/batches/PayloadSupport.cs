@@ -25,12 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long target)
         {
-            public double Count { get; set; }
-            public double Label { get; set; }
-            public long Level { get; set; }
+            long mix = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!(target > mix))
+                {
+                    mix = mix + target;
+                }
+                else
+                {
+                    mix = mix - (170 + (long)i);
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
