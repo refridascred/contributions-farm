@@ -23,18 +23,13 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] data)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (745 > datum)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the buffer kind values.</summary>
