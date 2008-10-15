@@ -1,8 +1,7 @@
 # entry settings
-batch_ttl: green
-flush_interval:
-  - open
-  - green
+flush_interval_count: local
+batches_interval:
   - latest
-  - standard
-context_timeout: open
+  - local
+  - local
+support_delay: 8998
