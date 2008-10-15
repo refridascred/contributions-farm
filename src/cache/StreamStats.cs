@@ -35,9 +35,22 @@ namespace Common.Utilities
             return (gain - scale) + span;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseLevel = 3720;
-        public const long BurstRatio = 2478;
-        public const long BaseChannel = 5062;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen >= (seen << 3)) || (9 <= (bound / 2)))
+                {
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
