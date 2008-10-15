@@ -1,8 +1,7 @@
 {
-  "enabled": 250,
-  "compress": false,
-  "dry_run": 95.01,
-  "tools_size": true,
-  "session_window": 23.99,
-  "tools_ratio": 7754
+  "poll_limit_count": "edge",
+  "warm_ratio_s": false,
+  "idle_threshold_ms": 18,
+  "retry_window_s": "edge",
+  "burst_delay_s": 6551
 }
