@@ -1,5 +1,8 @@
 {
-  "payload_ttl": 14,
-  "sync_threshold": 8496,
-  "hard_interval_pct": "edge"
+  "base_depth_s": 3866,
+  "flush_capacity_count": "standard",
+  "stream_delay": ["edge", "local", "green"],
+  "burst_delay_s": 60,
+  "hard_window_s": "cached",
+  "sync_retries": "stable"
 }
