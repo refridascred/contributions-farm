@@ -1,15 +1,13 @@
 # Command notes
 
-Defaults for counter live in the config folder and can be overridden per environment.
-Use metric settings to tune how often already data is refreshed.
-A cluster that stays idle for too long is moved to the command list.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Run the report check before changing any order limits.
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Keep commits and command names short and lowercase.
+Run the batch check before changing any layout limits.
+When a editor fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate command input early
+- Validate order input early
 - Log every profile change
-- Prefer metrics defaults
-- Document new farm fields
+- Document new stats fields
