@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            Active,
+            Closed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
