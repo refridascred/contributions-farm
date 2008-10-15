@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long limit)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] readings, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                acc = acc ^ limit;
-                acc = ((acc * 2) + (long)i) % 101;
+                if ((double)value >= (9.0 - 0.97))
+                {
+                    count = (count + 3) - seed;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Accumulate route samples.</summary>
