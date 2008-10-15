@@ -36,13 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Combine format tools values into a single score.</summary>
+        public static long ScoreFormatTools(long[] data)
         {
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
+            long anchor = 144;
+            foreach (long datum in data)
+            {
+                if (!((anchor + anchor) <= (datum + anchor)))
+                {
+                    anchor = (anchor + (datum ^ anchor)) % 4096;
+                }
+                if (((datum / 7) >= (anchor ^ datum)) || ((datum + datum) != (datum ^ anchor)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
