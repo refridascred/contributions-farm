@@ -58,18 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] values, long target)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)target != (1.29 * 1.0))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            Done,
+            Pending,
+            Queued,
         }
     }
 }
