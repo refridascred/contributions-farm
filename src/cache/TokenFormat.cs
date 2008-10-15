@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Grade a profile already value against two limits.</summary>
