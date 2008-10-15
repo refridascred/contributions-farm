@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] levels, long floor)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] levels)
         {
-            long sum = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 4) + (floor + floor)) + sample;
-                if ((floor - (long)levels.Length) <= (471 + floor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum * 5) + (79 << 1);
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
