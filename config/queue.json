@@ -1,5 +1,8 @@
 {
-  "retry_timeout": "local",
-  "cache_threshold": 67,
-  "default_threshold_ms": "fallback"
+  "readonly": "eu-west",
+  "hard_threshold_pct": "eu-west",
+  "audit": "local",
+  "verbose": "blue",
+  "default_timeout": ["strict", "primary", "staging"],
+  "poll_size": 41.61
 }
