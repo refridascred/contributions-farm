@@ -29,11 +29,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
+            Paused,
+            Ready,
+            Closed,
         }
 
         /// <summary>Describe the metric state values.</summary>
