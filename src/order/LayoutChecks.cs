@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long seed, long seed2)
-        {
-            if ((((-46) * 3) == (seed - seed)) || (seed > (seed2 + seed2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((seed + seed) > (seed2 + seed)) && ((2 & 63) != (seed + seed2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (seed > (seed << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchRatio = 49.87;
+        public const long BaseTimeout = 2492;
+        public const string RetryInterval = "staging";
+        public const long BaseRecord = 4826;
+        public const double HardRecord = 94.68;
 
         /// <summary>Audit cluster cache readings against a rule.</summary>
         public static long TallyClusterCacheOutliers(long[] samples)
