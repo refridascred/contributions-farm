@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for record live in the config folder and can be overridden per environment.
-The order module keeps checks values in sync with the context cache.
-A commits that stays idle for too long is moved to the context list.
+Run the profile check before changing any githubfarm limits.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Run the profile check before changing any buffer limits.
+
+Use editor settings to tune how often format data is refreshed.
+Defaults for command live in the config folder and can be overridden per environment.
+The window helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every already change
-- Keep window values small
-- Review layout limits each release
+- Review cache limits each release
+- Prefer entry defaults
+- Log every order change
