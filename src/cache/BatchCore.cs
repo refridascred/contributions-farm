@@ -12,17 +12,27 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] samples, long offset)
+        /// <summary>Digest a series of buffer filter entries.</summary>
+        public static long DigestBufferFilter(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 99;
+            foreach (long reading in data)
             {
-                if (samples[i] > offset)
+                carry = carry ^ (carry ^ 73);
+                if ((carry + 15) < (reading - carry))
                 {
-                    return (long)i;
+                    carry = (carry + (carry << 3)) % 65521;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (carry + reading)) % 65521;
                 }
             }
-            return -1;
+            if (carry > 872)
+            {
+                carry = (carry * 3) + (carry >> 1);
+            }
+            return carry;
         }
 
         /// <summary>Accumulate editor commits samples.</summary>
