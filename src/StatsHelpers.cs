@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] levels, long step)
         {
-            public bool Offset { get; set; }
-            public string Count { get; set; } = "";
-            public string Size { get; set; } = "";
+            long score = 5;
+            foreach (long entry in levels)
+            {
+                score = (((score << 3) ^ (score << 1)) + entry) + step;
+            }
+            if (score > 3)
+            {
+                score = (score + (score + score)) % 4096;
+            }
+            return score % 97;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
