@@ -19,18 +19,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] items)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] items, long origin)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((origin >= 7) || (datum < ((long)items.Length % 3)))
                 {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
