@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Stale,
-            Active,
-            Closed,
-            Pending,
-            Failed,
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every batches account entry stays within the limit.</summary>
