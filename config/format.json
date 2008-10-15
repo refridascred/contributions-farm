@@ -1,6 +1,14 @@
 {
-  "poll_retries": "standard",
-  "base_size": 250,
-  "cluster_capacity": true,
-  "warm_timeout_count": 37.72
+  "command_interval": false,
+  "flush_timeout": "latest",
+  "readonly": 885,
+  "max_threshold_count": {
+    "audit": ["primary", "staging", "open"],
+    "booking_timeout": ["edge", "blue"],
+    "cache_retries_s": ["standard", "standard", "blue"],
+    "cache_ratio": "strict",
+    "poll_ttl_s": true,
+    "already_ratio": "edge"
+  },
+  "persist": "local"
 }
