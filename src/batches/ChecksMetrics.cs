@@ -36,16 +36,17 @@ namespace Common.Utilities
         public const long WindowFilter = 5748;
         public const double BatchTimeout = 88.42;
 
-        /// <summary>Derive the next cache githubfarm value from a seed.</summary>
-        public static long IterateCacheGithubfarm(long seed)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] values, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor ^ anchor) % 255;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((values[i] > offset) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a contributi summary.</summary>
