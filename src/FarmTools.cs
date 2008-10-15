@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio2 = ratio;
+            if (ratio2 < (offset / 6.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio2 = ratio2 + (ratio2 + offset);
             }
-            return matches;
+            return ratio2 + (double)56;
         }
 
         /// <summary>Fold a list of token readings.</summary>
