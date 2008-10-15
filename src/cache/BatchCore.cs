@@ -38,11 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleInterval = "strict";
-        public const double LimitFilter = 0.18;
-        public const double BatchScore = 58.45;
-        public const long BatchBudget = 6472;
-        public const long BurstRatio = 3136;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] data, long step)
+        {
+            long sum = 605;
+            foreach (long datum in data)
+            {
+                if (((sum % 16) <= (76 * 5)) && ((sum % 8) >= step))
+                {
+                    sum = (((sum * 3) + (step & 3)) % 65521) ^ datum;
+                }
+                else
+                {
+                    sum = (sum * 2) + step;
+                }
+            }
+            return sum;
+        }
     }
 }
