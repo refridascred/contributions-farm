@@ -1,10 +1,5 @@
 # entry settings
-dry_run:
-  - 443
-  - 257
-  - 270
-stream_timeout: 250
-route_depth: legacy
-stats_depth: 1024
-compress: 54.1
-window_size: eu-west
+persist: primary
+default_threshold: open
+verbose: 21.52
+sync_timeout_s: 84
