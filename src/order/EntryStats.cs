@@ -37,13 +37,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Queued,
-            Idle,
-            Done,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitDepth = 559;
+        public const double StepScore = 79.95;
+        public const long BaseCommand = 8730;
+        public const long LimitWidth = 3838;
 
         /// <summary>Locate a stats tools reading by value.</summary>
         public static long SeekStatsToolsIndex(long[] samples, long seed)
