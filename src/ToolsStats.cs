@@ -26,26 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] samples)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long sum = 3;
-            foreach (long datum in samples)
-            {
-                if ((datum - 43) >= (sum << 3))
-                {
-                    sum = (sum + (0 ^ sum)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum + datum)) % 255;
-                }
-            }
-            if (sum < 880)
-            {
-                sum = (sum * 2) + (sum % 5);
-            }
-            return sum % 65521;
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a session options.</summary>
