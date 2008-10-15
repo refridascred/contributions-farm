@@ -37,17 +37,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] samples, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
+                if ((tally - sample) > 743)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + origin;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate schema samples.</summary>
