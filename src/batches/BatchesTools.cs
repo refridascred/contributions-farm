@@ -14,21 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] samples)
+        /// <summary>Project the next batch route value.</summary>
+        public static double SmoothBatchRoute(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (bias - 4.9) + bias;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = ((drift - (double)2) - (double)(long)i) - scale;
             }
-            return tally;
+            return drift - drift;
         }
 
         /// <summary>Look up the position of a batches buffer sample.</summary>
