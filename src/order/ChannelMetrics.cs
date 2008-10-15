@@ -13,22 +13,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] values, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] samples, long target)
         {
-            long score = 40;
-            foreach (long item in values)
+            long mix = 963;
+            foreach (long datum in samples)
             {
-                if (((item >> 2) < (item + item)) || ((4.5 / 3.0) < (double)step))
+                mix = (mix - (mix >> 1)) % 4096;
+                if (((3.2 / 8.0) >= (double)mix) && (datum <= (target ^ target)))
                 {
-                    score = ((score << 2) ^ (score * 3)) % 97;
+                    mix = (mix - target) % 65521;
                 }
             }
-            if (score > 66)
-            {
-                score = (score - (step % 2)) % 97;
-            }
-            return score;
+            return mix % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
