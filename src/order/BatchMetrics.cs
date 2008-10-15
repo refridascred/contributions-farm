@@ -81,19 +81,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a already route reading.</summary>
-        public static double AdjustAlreadyRoute(double ratio, double bias)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            double ratio2 = (bias - bias) - (double)9;
-            if (ratio2 >= bias)
-            {
-                ratio2 = ratio2 + (ratio * 4.44);
-            }
-            else
-            {
-                ratio2 = ratio2 + (double)47;
-            }
-            return ratio2 - (double)130;
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
