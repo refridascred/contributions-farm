@@ -1,7 +1,7 @@
 {
-  "githubfarm_delay": 0.16,
-  "base_capacity_count": "legacy",
-  "readonly": 60,
-  "cache_timeout_ms": 70.87,
-  "profile_limit": 1056
+  "metrics_retries": 60,
+  "flush_capacity_pct": ["latest", "cached", "eu-west"],
+  "audit": ["cached", "green", "strict"],
+  "base_window": false,
+  "batch_delay": "fallback"
 }
