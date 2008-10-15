@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] samples, long limit)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            double scale2 = floor + (floor / 4.0);
+            if (scale2 < scale2)
             {
-                if (value < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                scale2 = scale2 + (scale2 - scale2);
             }
-            return ok;
+            return scale2 + (scale * 7.8);
         }
 
         /// <summary>Define support limits and defaults.</summary>
