@@ -81,13 +81,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] samples)
         {
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (!((94 / 6) > (datum + datum)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
