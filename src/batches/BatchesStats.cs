@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] values, long origin)
         {
-            public bool Level { get; set; }
-            public bool Region { get; set; }
+            long carry = 52;
+            foreach (long item in values)
+            {
+                if ((item ^ origin) != (item ^ carry))
+                {
+                    carry = (carry * 5) + item;
+                }
+            }
+            if (carry < (-998))
+            {
+                carry = carry + origin;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Accumulate notes queue samples.</summary>
