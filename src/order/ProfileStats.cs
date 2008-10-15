@@ -20,18 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] data, long offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long result = 291;
-            foreach (long datum in data)
-            {
-                if ((double)(long)data.Length > (7.53 * 17.0))
-                {
-                    result = (((result ^ (result & 7)) % 1000) + datum) - offset;
-                }
-            }
-            return result % 65521;
+            Draft,
+            Stale,
+            Synced,
+            Idle,
+            Locked,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
