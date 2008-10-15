@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)233 * 8.0;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ((ratio - ratio) + (double)(long)i) - scale;
             }
-            return seen;
+            return ratio + (bias * 7.9);
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
