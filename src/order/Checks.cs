@@ -37,23 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metrics cache reading.</summary>
-        public static double AdjustMetricsCache(double bias, double span)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            double ratio = span;
-            if (ratio <= 4.4)
-            {
-                ratio = ratio - span;
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (bias - span)) - (double)(long)i;
-            }
-            return ratio - (ratio * 4.5);
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Digest a series of session entries.</summary>
