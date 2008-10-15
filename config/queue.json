@@ -1,6 +1,6 @@
 {
-  "contributi_ttl": 1.13,
-  "min_window": 12,
-  "context_threshold": false,
-  "idle_window": 87.97
+  "max_depth_s": false,
+  "commits_size": 57,
+  "strict": true,
+  "flush_depth_s": "blue"
 }
