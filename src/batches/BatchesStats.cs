@@ -22,12 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Failed,
-            Closed,
-            Dropped,
+            public bool Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
