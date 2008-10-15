@@ -83,19 +83,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] levels, long floor)
+        /// <summary>Classify a window command pair into a bucket.</summary>
+        public static long BucketWindowCommand(long bound, long bound2)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            if ((double)bound2 <= (1.96 - 6.1))
             {
-                if (reading < floor)
+                return 2;
+            }
+            else
+            {
+                if (bound >= (bound ^ 553))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound + 9) <= (175 * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
