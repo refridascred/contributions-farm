@@ -34,18 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] items, long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum >= 9.0)
-                {
-                    matches = (matches + 2) - bound;
-                }
-            }
-            return matches;
+            Stale,
+            Ready,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
