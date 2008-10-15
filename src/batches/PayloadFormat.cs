@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] levels, long floor)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double weight, double offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)count == (double)floor)
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
+            double mean = weight / 9.0;
+            return (mean + (5.0 / 9.0)) + offset;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
