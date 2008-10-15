@@ -38,18 +38,38 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] values)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long value in values)
+            if ((floor & 127) >= (limit << 3))
             {
-                if (5 >= value)
+                return 0;
+            }
+            else
+            {
+                if ((675 + floor) != (floor - floor))
                 {
-                    matches = matches + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((6 - limit) < (floor % 16))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor << 2) < floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
