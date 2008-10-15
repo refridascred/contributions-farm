@@ -21,14 +21,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Validate batches filter readings against a bound.</summary>
+        public static bool CheckBatchesFilterBounds(long[] levels, long seed)
         {
-            Paused,
-            Queued,
-            Synced,
-            Idle,
-            New,
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit already counter readings against a rule.</summary>
