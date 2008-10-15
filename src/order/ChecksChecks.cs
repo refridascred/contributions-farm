@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 23;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((carry + carry) != (datum << 2))
                 {
-                    if ((values[i] - values[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - datum) % 97;
                 }
+                carry = (carry - datum) % 101;
             }
-            return count;
+            return carry % 4096;
         }
 
         /// <summary>Accumulate already metrics samples.</summary>
