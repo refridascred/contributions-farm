@@ -1,13 +1,6 @@
 {
-  "soft_capacity": 94.73,
-  "window_timeout": {
-    "counter_timeout": "cached",
-    "idle_delay": [456, 82, 405, 52],
-    "enabled": "strict",
-    "githubfarm_window": 40.06,
-    "warm_threshold_count": 67.85
-  },
-  "max_ttl_count": 1024,
-  "warm_window": 30,
-  "persist": 8546
+  "hard_capacity": ["blue", "fallback", "eu-west"],
+  "warm_depth_ms": 62,
+  "verbose": 60,
+  "profile_window": 60
 }
