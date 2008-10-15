@@ -69,12 +69,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] samples, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((6.7 - 0.8) == (double)limit)
+                {
+                    tally = (tally + 3) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
