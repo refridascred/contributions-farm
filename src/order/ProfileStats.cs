@@ -62,21 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] readings)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = -632;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix ^ datum) % 65521) - seed;
             }
-            return count;
+            return mix % 97;
         }
     }
 }
