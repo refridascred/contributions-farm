@@ -34,15 +34,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 3836;
+        public const string DefaultInterval = "alpha";
+        public const long BaseScore = 4335;
+        public const long BurstCache = 7453;
     }
 }
