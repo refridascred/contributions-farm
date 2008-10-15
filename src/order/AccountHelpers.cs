@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double rate, double span)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double ratio, double offset)
         {
-            double bias = (rate + span) * 9.0;
-            if (bias <= (bias - bias))
+            double scale = offset;
+            if (scale <= (ratio * 9.7))
             {
-                bias = bias + (double)7;
+                scale = scale + (ratio - scale);
             }
-            else
-            {
-                bias = bias + span;
-            }
-            return bias + (bias / 3.0);
+            return scale + ratio;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
