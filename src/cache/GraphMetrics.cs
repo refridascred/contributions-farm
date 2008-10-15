@@ -53,18 +53,12 @@ namespace Common.Utilities
         public const long BaseSpan = 6314;
         public const long MaxReport = 7213;
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheBuffer = "alpha-v2";
+        public const double WindowBuffer = 28.66;
+        public const long BurstTimeout = 5208;
+        public const long BaseBuffer = 1827;
+        public const double LimitBudget = 6.18;
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool VerifyStatsLimits(long[] items, long floor)
