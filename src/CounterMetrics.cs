@@ -43,11 +43,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Project the next tools command value.</summary>
-        public static double SmoothToolsCommand(double bias, double bias2)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            double load = bias;
-            return (load + (double)(-81)) + bias2;
+            public bool Stamp { get; set; }
+            public bool Offset { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
