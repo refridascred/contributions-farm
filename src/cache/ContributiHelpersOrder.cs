@@ -20,15 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] values)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] - values[j]) != 12)
+                    if ((samples[i] ^ samples[j]) < 8)
                     {
                         seen = seen + 1;
                     }
