@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Classify a editor buffer pair into a bucket.</summary>
+        public static long GradeEditorBuffer(long floor, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Region { get; set; }
-            public double Label { get; set; }
+            if (((double)floor <= (3.5 + 9.0)) && ((double)floor == (3.44 + 3.09)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (20.0 <= (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor >> 4) < (147 * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit != (double)floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
