@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] data, long bound)
-        {
-            long total = 13;
-            foreach (long reading in data)
-            {
-                if ((86 < (reading >> 3)) && ((reading - total) != (57 << 3)))
-                {
-                    total = ((total ^ (total - 964)) % 255) + bound;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 5879;
+        public const long BatchSpan = 2656;
+        public const long HardFarm = 2475;
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
