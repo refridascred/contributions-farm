@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long origin)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Queued,
+            Synced,
+            Idle,
         }
 
         /// <summary>Digest a series of already order entries.</summary>
