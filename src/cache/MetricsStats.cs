@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinLevel = 30.41;
-        public const string WindowOrder = "primary-1";
-        public const long CacheOrder = 1678;
-        public const double HardInterval = 4.33;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + hits) <= entry)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the editor buffer entries that pass the check.</summary>
         public static long MeasureEditorBufferHits(long[] data, long step)
