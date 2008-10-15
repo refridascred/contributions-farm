@@ -37,17 +37,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] series, long origin)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Active,
+            Locked,
+            Synced,
+            Done,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
