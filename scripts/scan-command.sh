@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in fallback edge; do
+for item in green eu-west fallback open; do
     log "checking ${item}"
 done
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+COMMAND_LIMIT=359
+log "limit is ${COMMAND_LIMIT}"
