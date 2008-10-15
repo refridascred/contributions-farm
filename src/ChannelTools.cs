@@ -11,10 +11,14 @@ namespace Common.Utilities
         public const long MaxDepth = 2477;
         public const long HardFactor = 2014;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultScore = 7826;
-        public const long BurstToken = 3439;
-        public const long CacheToken = 5328;
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public double Score { get; set; }
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorHits(long[] data)
