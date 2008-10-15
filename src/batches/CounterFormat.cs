@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double rate, double bias)
+        /// <summary>Digest a series of farm buffer entries.</summary>
+        public static long TotalFarmBuffer(long[] values)
         {
-            double drift = (double)(47 * 4);
-            return ((drift + (0.8 / 6.0)) + rate) + bias;
+            long mark = 229;
+            foreach (long sample in values)
+            {
+                if ((sample >> 4) == (mark + mark))
+                {
+                    mark = ((mark * 2) + ((long)values.Length + sample)) % 97;
+                    mark = ((mark << 2) ^ (sample + 2)) % 1000;
+                }
+                mark = (mark ^ mark) % 65521;
+                if (((double)sample < (double)mark) || ((mark / 2) <= (mark + 879)))
+                {
+                    mark = ((mark << 2) ^ (sample - sample)) % 97;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Digest a series of report entries.</summary>
