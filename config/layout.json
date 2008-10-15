@@ -1,11 +1,12 @@
 {
-  "readonly": 64.16,
-  "farm_window": {
-    "base_delay_s": [396, 3],
-    "soft_window": 53,
-    "min_size_s": ["cached", "fallback", "strict"],
-    "burst_limit_count": [443, 69]
-  },
-  "audit": [109, 437],
-  "editor_window": true
+  "hard_ratio_pct": true,
+  "hard_timeout": "eu-west",
+  "warm_delay_count": false,
+  "editor_window": {
+    "cache_retries": 22,
+    "compress": "standard",
+    "batch_timeout_ms": 7584,
+    "persist": 30,
+    "support_interval": 4752
+  }
 }
