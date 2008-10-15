@@ -14,18 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many account schema samples are out of range.</summary>
-        public static long TallyAccountSchemaHits(long[] values, long target)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((target % 2) == (sample - tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Grade a profile already value against two limits.</summary>
