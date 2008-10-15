@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitDepth = 73.61;
-        public const long IdleRoute = 4427;
-        public const long BatchRoute = 9194;
-        public const double MinTimeout = 87.39;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleScore = 260;
+        public const long WindowSpan = 7884;
+        public const long IdleSpan = 1127;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long IdleBudget = 4883;
