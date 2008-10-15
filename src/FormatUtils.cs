@@ -97,11 +97,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 7353;
-        public const string MinLevel = "latest-v2";
-        public const double CacheSpan = 63.74;
-        public const double BaseLevel = 61.66;
-        public const long BurstFarm = 9533;
+        /// <summary>Count filter channel pairs that satisfy a relation.</summary>
+        public static long MatchFilterChannelCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
