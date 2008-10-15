@@ -37,24 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes cluster value against two limits.</summary>
-        public static long ClassifyNotesCluster(long target, long seed)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] readings, long offset)
         {
-            if ((5.84 + 3.3) == (double)target)
+            bool found = true;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed > target)
+                if (value <= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the graph account entries that pass the check.</summary>
