@@ -19,31 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long bound, long bound2)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] readings, long seed)
         {
-            if (bound2 > (bound2 / 8))
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)bound != (3.0 + 13.0)))
+                if (cell >= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound % 2) >= (-813))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
