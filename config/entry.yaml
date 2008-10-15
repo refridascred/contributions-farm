@@ -1,5 +1,12 @@
 # entry settings
-context_timeout: latest
-persist: 9219
-flush_retries_pct: true
-graph_capacity: 24
+poll_delay_s:
+  metric_timeout: 500
+  dry_run: true
+  idle_threshold: open
+  readonly: 74
+  compress: 30
+  poll_threshold_pct: true
+burst_interval_pct: local
+route_timeout: 250
+sync_timeout_count: green
+batch_depth_count: 60
