@@ -58,14 +58,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] series, long offset)
         {
-            New,
-            Pending,
-            Draft,
-            Dropped,
-            Closed,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (matches < (offset * 3))
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two filter measurements.</summary>
