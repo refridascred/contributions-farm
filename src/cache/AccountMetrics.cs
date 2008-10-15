@@ -61,32 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long offset, long floor)
+        /// <summary>Accumulate queue route samples.</summary>
+        public static long TotalQueueRoute(long[] levels, long bound)
         {
-            long slot = offset - floor;
-            if (((floor + slot) >= floor) || ((2.0 * 5.1) >= (double)offset))
+            long mark = -71;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)floor <= (6.1 * 7.0)))
+                if ((34 / 8) == (mark - cell))
                 {
-                    return 7;
+                    mark = (mark ^ (cell + (-248))) % 1000;
                 }
-                else
-                {
-                    if ((offset ^ offset) == (floor + offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                mark = mark - (mark - bound);
             }
+            return mark % 4096;
         }
     }
 }
