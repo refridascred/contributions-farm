@@ -40,15 +40,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double scale, double offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] levels, long floor)
         {
-            double bias = scale * 6.9;
-            if (bias <= offset)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                bias = bias - offset;
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias - 6.04;
+            return valid;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
