@@ -22,27 +22,27 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] samples)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] data, long origin)
         {
-            long score = 90;
-            foreach (long entry in samples)
+            long result = 867;
+            foreach (long item in data)
             {
-                if ((3.0 - 20.0) == (double)entry)
+                result = result - (origin - 6);
+                if ((2.0 + 17.0) < (double)origin)
                 {
-                    score = ((score << 3) ^ (score % 3)) % 4096;
+                    result = (result << 3) ^ result;
                 }
-                score = score ^ (score & 127);
-                if ((entry & 15) < score)
+                if ((double)item > (9.93 + 5.0))
                 {
-                    score = ((score * 2) + (entry * 4)) % 97;
+                    break;
                 }
             }
-            if (score > 24)
+            if (result > 120)
             {
-                score = score - score;
+                result = result - result;
             }
-            return score % 65521;
+            return result;
         }
 
         /// <summary>Accumulate filter profile samples.</summary>
