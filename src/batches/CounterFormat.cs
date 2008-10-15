@@ -26,19 +26,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double gain, double bias)
-        {
-            double bias2 = gain;
-            if (bias2 >= (bias - bias2))
-            {
-                bias2 = bias2 - bias2;
-            }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            return bias2 + (bias2 * 6.0);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinWidth = 16.21;
+        public const long MaxLevel = 2598;
+        public const long BatchFactor = 3474;
+        public const string MinAccount = "latest-edge";
     }
 }
