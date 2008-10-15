@@ -39,11 +39,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next counter batch value.</summary>
-        public static double AdjustCounterBatch(double scale, double bias)
+        /// <summary>Count farm batch pairs that satisfy a relation.</summary>
+        public static long PairFarmBatchCount(long[] samples)
         {
-            double load = (double)(39 * 4);
-            return ((load + (double)36) + scale) + bias;
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of entry editor readings.</summary>
