@@ -1,13 +1,4 @@
 # entry settings
-hard_ratio: stable
-persist:
-  batch_timeout: true
-  max_window_pct: true
-  session_timeout: true
-  sync_depth_s: 80.03
-  flush_delay_count: standard
-  persist: 35
-cache_depth_pct:
-  - primary
-  - cached
-default_capacity_s: latest
+burst_size_ms: 77
+min_limit_s: strict
+stats_ratio: 1.23
