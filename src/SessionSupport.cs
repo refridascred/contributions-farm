@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Accumulate channel account samples.</summary>
+        public static long ScoreChannelAccount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 822;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading ^ mark) == (mark + reading))
                 {
-                    if ((items[i] - items[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark << 3) ^ reading;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
