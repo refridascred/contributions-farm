@@ -22,18 +22,19 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] levels)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (!((hits << 2) < (hits >> 2)))
+                if (item >= target)
                 {
-                    hits = (hits + 2) ^ cell;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
