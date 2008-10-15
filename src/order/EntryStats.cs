@@ -55,12 +55,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            Synced,
-            Done,
-            Draft,
+            public double Size { get; set; }
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
