@@ -43,18 +43,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] series, long origin)
+        /// <summary>Fold a list of support batch readings.</summary>
+        public static long TallySupportBatch(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long score = 5;
+            foreach (long entry in data)
             {
-                if (((5 & 63) <= (seen * 4)) && ((82 >> 2) <= sample))
+                if ((step + 49) < (step - entry))
                 {
-                    seen = (seen + 2) + origin;
+                    score = score - (entry ^ 5);
                 }
             }
-            return seen;
+            if (score > 49)
+            {
+                score = (score - (6 - 395)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Describe the farm level values.</summary>
