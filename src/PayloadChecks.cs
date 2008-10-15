@@ -75,27 +75,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] levels)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] data, long offset)
         {
-            long mark = 28;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long entry in data)
             {
-                mark = ((mark * 5) + 12) % 255;
-                if ((mark % 8) == (mark + mark))
+                if (entry > offset)
                 {
-                    mark = (mark + (mark ^ sample)) % 4096;
-                }
-                else
-                {
-                    mark = (mark - (sample ^ sample)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            if (mark > 636)
-            {
-                mark = ((mark * 5) + (73 ^ mark)) % 101;
-            }
-            return mark;
+            return found;
         }
     }
 }
