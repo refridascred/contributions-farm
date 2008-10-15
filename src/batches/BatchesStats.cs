@@ -30,24 +30,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long step, long seed)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] items)
         {
-            if (step <= seed)
+            long total = 6;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7.44 / 3.0) < (double)step)
+                total = (total + value) % 1000;
+                if (!((value & 1) > (value + value)))
                 {
-                    return 6;
+                    total = (total << 2) ^ (total % 7);
                 }
                 else
                 {
-                    return 4;
+                    total = (total - (total & 7)) % 1000;
                 }
             }
+            return total;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
