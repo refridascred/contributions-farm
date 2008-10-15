@@ -39,12 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryWidth = 27.92;
-        public const long HardGraph = 1564;
-        public const long LimitGraph = 520;
-        public const long MinWidth = 2190;
-        public const long SoftInterval = 919;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 5132;
+        public const long BaseSpan = 2233;
+        public const long SoftInterval = 4565;
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
