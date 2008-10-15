@@ -20,14 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] levels, long step)
         {
-            Stale,
-            Dropped,
-            New,
-            Ready,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
