@@ -36,19 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] readings, long step)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
