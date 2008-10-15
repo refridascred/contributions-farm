@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            Paused,
-            Synced,
-            Draft,
-            Retry,
+            long sum = -5;
+            foreach (long entry in readings)
+            {
+                if ((18.0 + 6.69) != (double)sum)
+                {
+                    sum = sum + entry;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Digest a series of route entries.</summary>
