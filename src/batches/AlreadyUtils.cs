@@ -42,15 +42,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double ratio, double offset)
+        /// <summary>Rank format support input into a small class.</summary>
+        public static long ClassifyFormatSupport(long offset, long floor)
         {
-            double scale = ratio;
-            if (scale > 10.0)
+            long bound = offset ^ floor;
+            if ((double)bound >= (0.78 + 4.0))
             {
-                scale = (scale - scale) - offset;
+                return 2;
             }
-            return scale + (double)11;
+            else
+            {
+                if ((598 & 255) > (floor ^ offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((601 + 134) >= floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
