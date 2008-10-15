@@ -27,12 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] values, long target)
         {
-            Ready,
-            Locked,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= target) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
