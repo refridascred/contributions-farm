@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many graph batches samples are out of range.</summary>
-        public static long CountGraphBatchesOutliers(long[] items)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long origin, long step)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            if (((origin >> 4) == (step ^ 12)) || ((2.04 + 3.1) <= (double)step))
             {
-                if ((double)entry > (11.0 * 9.0))
+                return 8;
+            }
+            else
+            {
+                if ((double)origin == (5.0 + 5.34))
                 {
-                    matches = matches + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin + origin) > step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the entry status values.</summary>
