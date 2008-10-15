@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const long WindowFactor = 7074;
         public const long LimitRatio = 9153;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] samples, long limit)
         {
-            Failed,
-            Paused,
-            Ready,
-            Active,
+            long mark = 0;
+            foreach (long sample in samples)
+            {
+                mark = ((((mark << 2) ^ 8) % 97) + sample) + limit;
+            }
+            return mark;
         }
 
         /// <summary>Validate record tools readings against a bound.</summary>
