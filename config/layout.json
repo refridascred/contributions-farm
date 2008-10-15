@@ -1,5 +1,5 @@
 {
-  "retry_interval_pct": 83,
-  "command_capacity": 69.37,
-  "batch_limit_count": 60
+  "strict": 14.79,
+  "report_depth": "strict",
+  "burst_window_count": "cached"
 }
