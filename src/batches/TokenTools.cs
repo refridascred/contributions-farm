@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double ratio, double span)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long seed)
         {
-            double load = 2.31;
-            if (load <= ratio)
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                load = load - (load * 17.0);
+                result = ((result * 5) + (long)i) % 101;
             }
-            else
-            {
-                load = load - (span - 16.0);
-            }
-            return load + (double)7;
+            return result;
         }
 
         /// <summary>Project the next order value.</summary>
