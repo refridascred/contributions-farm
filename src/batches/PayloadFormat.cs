@@ -26,19 +26,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] levels)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] values)
         {
-            long score = -23;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score << 2) ^ (value & 7);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (score > 117)
-            {
-                score = score ^ (9 << 2);
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
