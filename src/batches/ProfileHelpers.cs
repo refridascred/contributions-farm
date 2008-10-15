@@ -44,19 +44,31 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] data, long limit)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long seed, long step)
         {
-            bool ok = true;
-            foreach (long value in data)
+            if ((step ^ 77) != (seed - step))
             {
-                if (value <= limit)
+                return 5;
+            }
+            else
+            {
+                if ((192 - 195) == (step - 78))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((step - step) != (seed * 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Audit batches stats readings against a rule.</summary>
