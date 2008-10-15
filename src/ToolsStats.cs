@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] samples)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] levels)
         {
-            long acc = 887;
-            foreach (long value in samples)
+            long state = 116;
+            foreach (long item in levels)
             {
-                if ((acc / 4) == (acc ^ value))
-                {
-                    acc = (acc - (acc ^ acc)) % 255;
-                }
+                state = (state ^ item) % 4096;
             }
-            if (acc < 5)
+            if (state < (-511))
             {
-                acc = (acc - (65 + acc)) % 101;
+                state = (state << 2) ^ (state + state);
             }
-            return acc % 1000;
+            return state;
         }
 
         /// <summary>Count the checks farm entries that pass the check.</summary>
