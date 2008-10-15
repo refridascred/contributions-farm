@@ -46,24 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] samples, long limit)
-        {
-            long anchor = 11;
-            foreach (long cell in samples)
-            {
-                anchor = ((anchor - (3 >> 4)) % 255) - cell;
-                if (!((anchor + (long)samples.Length) <= limit))
-                {
-                    anchor = (anchor ^ anchor) % 65521;
-                }
-            }
-            if (anchor < 49)
-            {
-                anchor = anchor ^ (324 - anchor);
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 8285;
+        public const long BurstDepth = 203;
+        public const long MinFactor = 1148;
+        public const long WindowLevel = 8307;
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long CompareChannelCount(long[] series)
