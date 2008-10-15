@@ -54,12 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] levels)
         {
-            Synced,
-            Stale,
-            Pending,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (((datum % 5) < (94 % 10)) || ((count + datum) > (datum + datum)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the order window series from a seed.</summary>
