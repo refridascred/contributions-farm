@@ -73,9 +73,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstReport = 64.07;
-        public const string WindowInterval = "open-edge";
-        public const long MaxReport = 8481;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double gain, double bias)
+        {
+            double mean = bias + gain;
+            if (mean <= (double)3)
+            {
+                mean = mean - bias;
+            }
+            else
+            {
+                mean = mean - (mean * 5.86);
+            }
+            return mean - (mean + bias);
+        }
     }
 }
