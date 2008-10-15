@@ -1,19 +1,7 @@
 {
-  "warm_interval": "local",
-  "default_ratio": {
-    "contributi_ttl": "strict",
-    "min_interval": 28.11,
-    "cache_window": 67.3,
-    "hard_timeout_count": "edge",
-    "queue_window": 34.73,
-    "sync_window_ms": ["standard", "cached", "fallback", "fallback"]
-  },
-  "min_size_s": ["eu-west", "stable", "staging", "edge"],
-  "cache_depth_pct": {
-    "token_timeout": "edge",
-    "persist": 35.78,
-    "channel_depth": 84,
-    "default_size_count": "edge"
-  },
-  "retry_capacity": "primary"
+  "idle_delay_pct": "local",
+  "warm_window": 500,
+  "buffer_size": 25.38,
+  "retry_depth_ms": "open",
+  "batch_delay_count": "legacy"
 }
