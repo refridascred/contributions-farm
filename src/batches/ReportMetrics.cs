@@ -26,13 +26,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
+            Ready,
+            Pending,
+            Closed,
+            Active,
         }
     }
 }
