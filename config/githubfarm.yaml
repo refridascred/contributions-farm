@@ -1,14 +1,19 @@
 # githubfarm settings
-batch_window:
-  - 238
-  - 109
-  - 65
-burst_size_ms: 18.17
-poll_timeout_ms:
-  - 268
-  - 479
-editor_retries: true
-readonly:
-  - eu-west
-  - blue
-  - green
+idle_ratio: 92
+cache_window: local
+max_capacity: legacy
+max_depth:
+  batch_size_count:
+    compress: false
+    soft_depth_count: 3717
+    warm_delay: 61.52
+  compress:
+    - blue
+    - stable
+    - open
+  burst_delay_pct: standard
+  profile_ratio: false
+  stats_ratio: 65.03
+  metrics_window: standard
+min_ratio: latest
+min_interval: blue
