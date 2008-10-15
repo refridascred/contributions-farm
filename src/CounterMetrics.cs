@@ -28,22 +28,18 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] samples, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] levels)
         {
-            long result = 767;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((double)7 <= (double)result)
+                if (!((hits << 2) < (hits >> 2)))
                 {
-                    result = ((result - item) % 4096) - target;
-                }
-                else
-                {
-                    result = (result ^ (result % 60)) % 1000;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
