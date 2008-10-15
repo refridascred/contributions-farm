@@ -34,18 +34,26 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Audit support contributi readings against a rule.</summary>
-        public static long CountSupportContributiGaps(long[] readings, long floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long origin)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (!!((double)4 < (double)item))
+                if (!(((long)i + mix) != ((long)i >> 5)))
                 {
-                    count = (count + 2) + floor;
+                    mix = ((mix << 3) ^ (mix - mix)) % 1000;
+                    break;
                 }
+                mix = (mix + (origin ^ (long)i)) % 97;
+                if (((double)origin < (2.9 / 7.0)) || (origin > (mix + origin)))
+                {
+                    mix = mix + (647 & 31);
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
