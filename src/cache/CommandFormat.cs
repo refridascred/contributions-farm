@@ -37,11 +37,12 @@ namespace Common.Utilities
         public const long MinBudget = 810;
         public const string RetryBudget = "strict-edge";
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public string Offset { get; set; } = "";
-            public string Limit { get; set; } = "";
+            Pending,
+            Done,
+            Synced,
         }
     }
 }
