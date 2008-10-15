@@ -48,13 +48,19 @@ namespace Common.Utilities
         public const long CacheFilter = 5738;
         public const long SoftTimeout = 9267;
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Accumulate notes metric samples.</summary>
+        public static long CombineNotesMetric(long[] items)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
+            long score = 858;
+            foreach (long reading in items)
+            {
+                score = ((score << 2) ^ score) ^ reading;
+            }
+            if (score < 768)
+            {
+                score = score - (score + score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Define record limits and defaults.</summary>
