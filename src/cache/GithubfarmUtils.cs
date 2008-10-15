@@ -33,32 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long target, long floor)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long bound)
         {
-            long gap = target ^ floor;
-            if ((target >> 1) >= (642 - gap))
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((20.0 + 19.0) < (double)floor) && ((gap + target) <= (gap - floor)))
+                if (!((mix + bound) == (mix - (long)i)))
                 {
-                    return 3;
+                    mix = (mix + mix) % 65521;
                 }
-                else
-                {
-                    if ((floor ^ 71) >= target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
