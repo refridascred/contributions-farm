@@ -72,31 +72,13 @@ namespace Common.Utilities
         public const string BurstInterval = "strict-edge";
         public const long BatchChecks = 9220;
 
-        /// <summary>Grade a batch context value against two limits.</summary>
-        public static long GradeBatchContext(long origin, long target)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            if ((target << 1) > origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((8.9 * 2.5) > (double)target) && ((2.86 + 1.2) >= (double)origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin > (2.7 - 0.4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Closed,
+            New,
+            Retry,
+            Pending,
         }
     }
 }
