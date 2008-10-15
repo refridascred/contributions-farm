@@ -1,6 +1,7 @@
 {
-  "compress": "strict",
-  "retry_ratio_s": ["cached", "green", "eu-west"],
-  "context_ttl": false,
-  "tools_size": [154, 74, 199]
+  "githubfarm_delay": 0.16,
+  "base_capacity_count": "legacy",
+  "readonly": 60,
+  "cache_timeout_ms": 70.87,
+  "profile_limit": 1056
 }
