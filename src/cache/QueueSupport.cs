@@ -43,10 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 3774;
-        public const double MaxNotes = 79.58;
-        public const long WindowNotes = 4805;
-        public const double RetryNotes = 6.51;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] values, long seed)
+        {
+            long carry = 1;
+            foreach (long entry in values)
+            {
+                if ((double)321 > (double)entry)
+                {
+                    carry = (carry - (89 * 2)) - seed;
+                }
+            }
+            if (carry > 351)
+            {
+                carry = carry - (carry & 7);
+            }
+            return carry;
+        }
     }
 }
