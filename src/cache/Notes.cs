@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a counter support counter forward.</summary>
-        public static long RollCounterSupport(long step)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc - 26) % 101;
-                acc = ((acc * 3) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Iterate the queue report series from a seed.</summary>
