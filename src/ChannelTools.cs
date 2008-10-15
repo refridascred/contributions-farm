@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const double IdleRatio = 3.57;
         public const long BurstBuffer = 7160;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] readings)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long total = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value > (hits - value)) || (hits < (value + 98)))
+                bool found = (offset >> 5) < (93 + 34);
+                long matches = 307;
+                if (found || (matches <= (offset & 255)))
                 {
-                    hits = hits + 2;
+                    matches = (matches - (offset - (long)i)) % 1000;
+                    break;
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Digest a series of report entries.</summary>
