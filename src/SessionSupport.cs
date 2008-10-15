@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a order route reading by value.</summary>
-        public static long FindOrderRouteIndex(long[] samples, long seed)
+        /// <summary>Count the window command entries that pass the check.</summary>
+        public static long CountWindowCommandMatches(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (samples[i] > seed)
+                if ((seen ^ sample) > (sample + seen))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
