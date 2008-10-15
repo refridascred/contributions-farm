@@ -53,14 +53,18 @@ namespace Common.Utilities
         public const string CacheChannel = "standard-1";
         public const long BurstCount = 2415;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] data)
         {
-            Closed,
-            New,
-            Draft,
-            Idle,
-            Active,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches / 5) >= entry)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
