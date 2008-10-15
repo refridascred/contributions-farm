@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a support notes value against two limits.</summary>
-        public static long RankSupportNotes(long limit, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] readings, long step)
         {
-            long offset = limit - step;
-            if (((limit + offset) > (step ^ limit)) && ((limit - offset) >= (limit - step)))
+            long score = 96;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset + limit) >= step) || (step >= (-581)))
+                if (((double)value < 20.0) || ((double)score >= (18.0 + 2.0)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((-8) / 7) < (limit - 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset ^ offset) == (24 << 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    score = (score + (step - value)) % 1000;
                 }
             }
+            return score;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
