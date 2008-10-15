@@ -23,19 +23,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] values, long target)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < target)
+                if (items[i] <= floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
