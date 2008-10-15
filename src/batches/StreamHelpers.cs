@@ -20,15 +20,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Scale a cache support figure with a bias.</summary>
-        public static double SmoothCacheSupport(double ratio, double offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            double load = ratio;
-            if (load > (load + ratio))
-            {
-                load = (load + load) - offset;
-            }
-            return load - (ratio * 3.0);
+            Draft,
+            Dropped,
+            Active,
+            Queued,
         }
 
         /// <summary>Adjust a stats reading.</summary>
