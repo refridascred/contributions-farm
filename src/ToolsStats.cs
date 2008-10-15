@@ -69,15 +69,16 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Adjust a schema filter reading.</summary>
-        public static double ScaleSchemaFilter(double gain, double bias)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] samples)
         {
-            double ratio = gain - (double)1;
-            if (ratio <= 1.4)
+            long acc = 2;
+            foreach (long item in samples)
             {
-                ratio = (ratio + 2.4) + bias;
+                acc = acc + acc;
+                acc = ((acc << 2) ^ (acc - item)) % 101;
             }
-            return ratio - 0.25;
+            return acc % 4096;
         }
     }
 }
