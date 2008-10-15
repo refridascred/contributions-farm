@@ -63,15 +63,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] samples, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] data)
         {
             long tally = 0;
-            foreach (long cell in samples)
+            foreach (long value in data)
             {
-                if ((6.7 - 0.8) == (double)limit)
+                if ((tally & 7) <= (value ^ tally))
                 {
-                    tally = (tally + 3) - cell;
+                    tally = tally + 3;
                 }
                 else
                 {
