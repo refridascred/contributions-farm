@@ -50,18 +50,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] values)
+        /// <summary>Find the first cache account entry that matches the target.</summary>
+        public static long FindCacheAccountIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((cell - cell) <= (0 + cell)))
+                if ((items[i] >= origin) && ((items[i] % 3) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
