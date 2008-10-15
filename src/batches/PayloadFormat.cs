@@ -44,14 +44,9 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Active,
-            Idle,
-            Retry,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 4353;
+        public const long MaxWidth = 529;
+        public const double LimitStats = 19.05;
     }
 }
