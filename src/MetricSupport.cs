@@ -61,39 +61,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long offset, long target)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long gap = offset - target;
-            if (!((double)offset > (7.71 / 7.0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((gap ^ gap) != (target + offset)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target < (gap + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((95 + gap) != (gap << 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Retry,
+            New,
+            Stale,
         }
     }
 }
