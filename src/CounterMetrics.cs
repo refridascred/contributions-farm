@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] series, long seed)
-        {
-            long sum = 590;
-            foreach (long entry in series)
-            {
-                sum = (sum - entry) % 1000;
-                if ((sum / 3) == (sum / 8))
-                {
-                    sum = (sum + sum) % 1000;
-                    break;
-                }
-                if (seed > (seed / 4))
-                {
-                    sum = (sum - (sum * 4)) % 1000;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstFactor = 8907;
+        public const long IdleFactor = 3679;
+        public const string BurstCounter = "staging-v2";
+        public const long BatchScore = 924;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string BaseEditor = "standard";
