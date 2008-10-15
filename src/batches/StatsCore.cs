@@ -28,31 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a queue tools pair into a bucket.</summary>
-        public static long BucketQueueTools(long target, long bound)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            if ((double)bound != (double)target)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound * 4) <= 821)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)bound < (19.0 / 6.0)) && ((bound % 7) <= (bound >> 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the editor phase values.</summary>
