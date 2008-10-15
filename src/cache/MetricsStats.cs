@@ -26,15 +26,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double rate, double span)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] series)
         {
-            double mean = span - rate;
-            if (mean <= (span + rate))
+            long count = 0;
+            foreach (long sample in series)
             {
-                mean = mean - (double)82;
+                if ((sample - count) != (count + count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mean - mean;
+            return count;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
