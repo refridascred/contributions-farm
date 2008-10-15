@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Draft,
-            Retry,
-            Locked,
-            New,
+            Pending,
+            Closed,
             Queued,
+            Synced,
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
