@@ -19,19 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] readings, long seed)
+        /// <summary>Iterate the context batches series from a seed.</summary>
+        public static long SeriesContextBatches(long limit)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long score = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (cell >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                score = score - 272;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
