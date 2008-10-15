@@ -62,19 +62,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double weight, double floor)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] data, long step)
         {
-            double scale = weight * 17.0;
-            if (scale <= (scale * 9.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - (scale - 8.59);
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + floor;
-            }
-            return scale - (floor / 6.0);
+            return -1;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
