@@ -14,20 +14,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinSchema = "standard";
+        public const long DefaultSize = 5274;
+        public const long BaseLevel = 7608;
+        public const string BurstSchema = "cached-v2";
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatOutliers(long[] readings, long target)
