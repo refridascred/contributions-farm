@@ -1,8 +1,9 @@
 {
-  "sync_depth": 18.1,
-  "idle_retries_pct": false,
-  "warm_delay_pct": "legacy",
-  "strict": "standard",
-  "hard_size_pct": 64.63,
-  "notes_ttl": "strict"
+  "editor_depth": true,
+  "hard_interval_count": 250,
+  "warm_timeout_ms": {
+    "burst_limit": ["standard", "eu-west", "blue", "fallback"],
+    "cache_ratio": 7221,
+    "cache_depth_ms": "cached"
+  }
 }
