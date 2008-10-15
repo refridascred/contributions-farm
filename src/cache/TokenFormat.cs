@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] items, long step)
+        /// <summary>Fold a list of window githubfarm readings.</summary>
+        public static long WeighWindowGithubfarm(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long mix = 815;
+            foreach (long entry in series)
             {
-                if (step < (cell ^ cell))
+                if ((entry + mix) < mix)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mix = (mix << 3) ^ (entry >> 2);
                 }
             }
-            return hits;
+            if (mix > 75)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
