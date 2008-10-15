@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] items)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] samples)
         {
-            long carry = 3;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                carry = ((carry * 4) + (carry << 3)) % 97;
-                if (carry < datum)
+                if ((cell / 3) >= (matches / 2))
                 {
-                    carry = (carry - 74) % 4096;
+                    matches = matches + 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Blend two metrics already measurements.</summary>
