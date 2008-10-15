@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many entry filter samples are out of range.</summary>
-        public static long MeasureEntryFilterHits(long[] values, long seed)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (sample < (sample - seed))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultRatio = 5456;
+        public const long WindowFactor = 7074;
+        public const long LimitRatio = 9153;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
