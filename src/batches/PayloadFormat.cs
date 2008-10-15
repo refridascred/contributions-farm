@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a layout buffer counter forward.</summary>
-        public static long RollLayoutBuffer(long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] series, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            long sum = 129;
+            foreach (long reading in series)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if (!((sum + reading) <= (reading & 255)))
+                {
+                    sum = (sum + (sum - target)) % 4096;
+                }
+                if ((10.0 * 19.0) > (double)sum)
+                {
+                    sum = ((sum << 3) ^ (reading + reading)) % 97;
+                }
+                else
+                {
+                    sum = sum + 406;
+                }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
