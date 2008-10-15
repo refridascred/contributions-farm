@@ -64,19 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats command entry stays within the limit.</summary>
-        public static bool VerifyStatsCommandLimits(long[] levels, long seed)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (sample <= seed)
+                if ((double)limit != (4.4 + 0.9))
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
