@@ -37,17 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] readings, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((readings[i] > step) && ((readings[i] % 5) == 0))
+                if (hits > ((long)levels.Length / 8))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) - sample) - offset;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
