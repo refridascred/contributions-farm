@@ -37,23 +37,22 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] levels)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] series)
         {
-            long mix = 143;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                mix = (mix ^ (entry + 75)) % 1000;
-                if ((entry + mix) != (mix - mix))
+                if (((datum <= (datum + datum)) && ((49 - (-34)) > (count << 1))) && (((count / 9) <= (-395)) && ((6.0 * 2.2) >= (double)count)))
                 {
-                    mix = ((mix << 3) ^ entry) % 65521;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mix < (-477))
-            {
-                mix = mix - 6;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a queue stats.</summary>
