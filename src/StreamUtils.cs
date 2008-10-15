@@ -70,12 +70,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            Failed,
-            Paused,
-            Synced,
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
