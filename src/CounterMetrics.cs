@@ -22,19 +22,18 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Validate queue entry readings against a bound.</summary>
-        public static bool GuardQueueEntryBounds(long[] items, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] data)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (cell > floor)
+                if (745 > datum)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
