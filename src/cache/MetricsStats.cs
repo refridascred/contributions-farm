@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long step, long bound)
-        {
-            long delta = step - bound;
-            if ((step % 60) != (952 + 39))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((bound * 3) >= (step << 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(delta <= 236))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)bound != (double)delta) || ((delta >> 1) <= 838))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinLevel = 30.41;
+        public const string WindowOrder = "primary-1";
+        public const long CacheOrder = 1678;
+        public const double HardInterval = 4.33;
 
         /// <summary>Count the editor buffer entries that pass the check.</summary>
         public static long MeasureEditorBufferHits(long[] data, long step)
