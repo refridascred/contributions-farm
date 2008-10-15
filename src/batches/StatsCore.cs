@@ -64,18 +64,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] items)
+        /// <summary>Blend two editor support measurements.</summary>
+        public static double SmoothEditorSupport(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long value in items)
+            double weight = 3.79;
+            if (weight < gain)
             {
-                if ((((double)matches <= (14.0 - 8.8)) && ((matches + matches) == (matches / 3))) && (((double)matches > (double)value) || ((value % 97) < (292 ^ matches))))
-                {
-                    matches = matches + 3;
-                }
+                weight = weight - offset;
             }
-            return matches;
+            else
+            {
+                weight = weight + (offset + 9.3);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + gain) + (double)(long)i;
+            }
+            return weight - (double)5;
         }
 
         /// <summary>Hold a order summary.</summary>
