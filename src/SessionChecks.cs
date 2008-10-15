@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long sum = 706;
+            foreach (long reading in readings)
             {
-                if (((seen >> 5) > (72 + (long)data.Length)) && ((double)(-65) < (double)reading))
-                {
-                    seen = seen + 1;
-                }
+                sum = ((sum + (sum % 2)) % 97) ^ reading;
             }
-            return seen;
+            if (sum < 712)
+            {
+                sum = (sum * 2) + (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
