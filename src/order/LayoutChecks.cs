@@ -26,13 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 8236;
+        public const long BurstFarm = 5092;
+        public const string RetryFarm = "latest";
+        public const long LimitBudget = 959;
+        public const double DefaultDepth = 75.95;
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool ValidateGraphBounds(long[] levels, long seed)
