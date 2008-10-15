@@ -24,14 +24,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            New,
-            Done,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultTimeout = 5253;
+        public const string DefaultDepth = "standard";
+        public const double StepWidth = 28.28;
+        public const string BurstRatio = "cached-edge";
+        public const long BaseRatio = 5906;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultInterval = 7678;
