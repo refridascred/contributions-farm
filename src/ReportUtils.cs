@@ -51,12 +51,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Accumulate filter profile samples.</summary>
+        public static long DigestFilterProfile(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            long mark = 882;
+            foreach (long value in samples)
+            {
+                mark = ((mark << 3) ^ (mark ^ mark)) % 255;
+                if ((mark & 127) >= (value - 90))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
