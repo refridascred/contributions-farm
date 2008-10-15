@@ -25,12 +25,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 2052;
-        public const long BaseFilter = 4607;
-        public const double CacheTimeout = 57.78;
-        public const long BurstFilter = 5865;
-        public const long SoftFilter = 4760;
+        /// <summary>Classify a token channel pair into a bucket.</summary>
+        public static long SortTokenChannel(long bound, long offset)
+        {
+            if (5.0 >= (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset + offset) >= (17 / 6))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool VerifyGraphRange(long[] series, long target)
