@@ -35,19 +35,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((bound << 1) >= (datum - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 7846;
+        public const double LimitDepth = 43.97;
+        public const long BaseDepth = 8902;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
