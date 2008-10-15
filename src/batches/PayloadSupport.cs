@@ -29,15 +29,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a farm layout figure with a bias.</summary>
-        public static double SmoothFarmLayout(double scale, double offset)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] data, long floor)
         {
-            double drift = 3.4;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift - (double)(long)i) - scale;
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return drift - offset;
+            return -1;
         }
     }
 }
