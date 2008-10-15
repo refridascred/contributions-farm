@@ -1,13 +1,17 @@
 {
-  "idle_timeout": "open",
-  "cache_window_count": ["staging", "standard"],
-  "filter_window": false,
-  "channel_interval": "stable",
-  "window_interval": {
-    "batch_threshold": "blue",
-    "enabled": 17.15,
-    "filter_retries": "legacy",
-    "default_ttl_count": ["blue", "local"]
+  "cache_size_ms": 621,
+  "soft_retries": {
+    "editor_ratio": "local",
+    "base_ttl": "strict",
+    "metric_ttl": 250,
+    "verbose": ["staging", "strict", "strict", "staging"],
+    "min_ttl_count": {
+      "min_ttl_s": "stable",
+      "sync_ratio_s": 70.68,
+      "compress": 1024
+    },
+    "warm_depth_count": 22
   },
-  "window_retries": false
+  "checks_timeout": 250,
+  "min_ratio_ms": "blue"
 }
