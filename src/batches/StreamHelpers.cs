@@ -32,32 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long floor, long target)
+        /// <summary>Count session schema pairs that satisfy a relation.</summary>
+        public static long PairSessionSchemaCount(long[] readings)
         {
-            long offset = floor ^ target;
-            if (((target + offset) == (floor - 4)) || ((offset ^ offset) >= (target + target)))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((0 + floor) >= offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset - target) == (36 - floor))
+                    if ((readings[i] - readings[j]) > 9)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the session mode values.</summary>
