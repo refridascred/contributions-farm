@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] data, long origin)
+        /// <summary>Find the first farm support entry that matches the target.</summary>
+        public static long LocateFarmSupportIndex(long[] series, long origin)
         {
-            long carry = 50;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry - (origin << 3)) % 4096;
-                if ((reading - carry) <= (carry + origin))
+                if ((series[i] < origin) && ((series[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a batch entry.</summary>
