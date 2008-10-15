@@ -33,9 +33,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseTimeout = 9139;
-        public const long LimitCommits = 2540;
-        public const double WindowBudget = 4.03;
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double bias, double bias2)
+        {
+            double bias3 = bias;
+            if (bias3 >= (double)11)
+            {
+                bias3 = (bias3 + (bias * 9.98)) + bias2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias3 = (bias3 + (double)7) + (double)(long)i;
+            }
+            return bias3 - 7.2;
+        }
     }
 }
