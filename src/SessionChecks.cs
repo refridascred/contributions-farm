@@ -46,15 +46,18 @@ namespace Common.Utilities
         public const double WindowDepth = 51.51;
         public const double BurstInterval = 8.88;
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] levels, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if (!((value << 3) >= (matches >> 1)))
+                {
+                    matches = (matches + 3) + origin;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Check that every order channel entry stays within the limit.</summary>
