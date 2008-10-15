@@ -38,19 +38,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] data, long offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            double gain = scale;
+            if (gain > gain)
             {
-                if (datum >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain + gain;
             }
-            return ok;
+            else
+            {
+                gain = gain - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + offset) - (double)(long)i;
+            }
+            return gain + (double)6;
         }
     }
 }
