@@ -14,18 +14,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchSpan = 8360;
+        public const long CacheGithubfarm = 6834;
+        public const string HardGithubfarm = "stable-edge";
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferBounds(long[] items, long origin)
