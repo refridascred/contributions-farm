@@ -54,18 +54,22 @@ namespace Common.Utilities
             return gain + (double)91;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] data, long bound)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] items, long step)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long mark = 706;
+            foreach (long sample in items)
             {
-                if (((-50) + count) < (bound & 63))
+                if ((17.0 / 8.0) != (double)step)
                 {
-                    count = (count + 2) + cell;
+                    mark = ((mark ^ (step + step)) % 255) ^ sample;
                 }
             }
-            return count;
+            if (mark > 727)
+            {
+                mark = ((mark << 2) ^ step) % 1000;
+            }
+            return mark % 4096;
         }
     }
 }
