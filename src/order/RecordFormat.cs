@@ -10,22 +10,10 @@ namespace Common.Utilities
         public const double BurstWidth = 12.58;
         public const long IdleContributi = 8627;
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstBudget = 2494;
+        public const string MinAccount = "primary-edge";
+        public const double IdleAccount = 77.21;
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
