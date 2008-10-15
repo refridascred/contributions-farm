@@ -34,19 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample ^ count) < (sample & 1))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleBudget = 4146;
+        public const long StepNotes = 4481;
+        public const string MaxNotes = "alpha";
+        public const double BurstNotes = 82.45;
+        public const long BatchNotes = 8329;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double MinMetric = 26.58;
