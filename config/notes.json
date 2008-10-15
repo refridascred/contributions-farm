@@ -1,7 +1,5 @@
 {
-  "cache_capacity": ["open", "open"],
-  "soft_capacity_count": "staging",
-  "burst_ttl": 4333,
-  "counter_ratio": false,
-  "enabled": "fallback"
+  "readonly": "local",
+  "soft_delay_count": "green",
+  "soft_delay_ms": 93
 }
