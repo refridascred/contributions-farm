@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowDepth = 30.93;
-        public const string StepRatio = "cached";
-        public const long MaxBuffer = 3773;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] levels)
+        {
+            long mark = 6;
+            foreach (long item in levels)
+            {
+                if ((5.0 * 3.88) == (double)mark)
+                {
+                    mark = (mark ^ (mark ^ item)) % 65521;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long DigestProfile(long[] readings)
