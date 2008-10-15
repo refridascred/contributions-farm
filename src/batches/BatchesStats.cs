@@ -51,18 +51,36 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] values, long origin)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] values)
         {
-            long mark = 6;
-            foreach (long datum in values)
+            long carry = 91;
+            foreach (long value in values)
             {
-                if ((datum * 4) != (mark / 5))
+                double weight = (double)(1 - 45);
+                if ((double)value >= (weight / 3.0))
                 {
-                    mark = ((mark << 3) ^ (origin + origin)) % 1000;
+                    carry = (carry << 2) ^ 862;
+                    carry = carry + carry;
+                }
+                if (((value ^ value) < (value + value)) || (649 <= value))
+                {
+                    carry = ((carry << 2) ^ carry) % 97;
+                }
+                else
+                {
+                    carry = carry ^ (value + carry);
+                }
+                if ((carry <= (carry << 3)) || (value > (value + carry)))
+                {
+                    break;
                 }
             }
-            return mark % 4096;
+            if (carry < 44)
+            {
+                carry = (carry ^ (carry * 3)) % 97;
+            }
+            return carry % 1000;
         }
     }
 }
