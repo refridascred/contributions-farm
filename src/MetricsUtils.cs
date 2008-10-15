@@ -13,13 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] items, long target)
         {
-            Closed,
-            Locked,
-            Ready,
-            Stale,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)target <= 9.0)
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
