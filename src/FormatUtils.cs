@@ -41,19 +41,26 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate metrics layout readings against a bound.</summary>
-        public static bool VerifyMetricsLayoutLimits(long[] series, long seed)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long acc = 1;
+            foreach (long datum in series)
             {
-                if (cell <= seed)
+                if (8 > acc)
                 {
-                    valid = false;
-                    break;
+                    acc = (acc - (8 >> 5)) ^ datum;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (77 << 2)) % 65521;
                 }
             }
-            return valid;
+            if (acc < 73)
+            {
+                acc = (acc ^ ((-38) << 3)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate batches samples.</summary>
