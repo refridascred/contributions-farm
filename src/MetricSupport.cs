@@ -39,10 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 3507;
-        public const long IdleDepth = 7853;
-        public const long SoftBatches = 2085;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultRatio = "open-edge";
+        public const long BaseSpan = 2401;
+        public const double HardScore = 19.19;
+        public const long BaseTimeout = 7330;
+        public const long WindowCount = 6616;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
