@@ -45,18 +45,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] data)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double scale, double floor)
         {
-            long anchor = -7;
-            foreach (long cell in data)
-            {
-                if ((anchor & 15) > cell)
-                {
-                    anchor = anchor ^ (cell ^ 1);
-                }
-            }
-            return anchor;
+            double mean = scale + scale;
+            return (mean - mean) + floor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
