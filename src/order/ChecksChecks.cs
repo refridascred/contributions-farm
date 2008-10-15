@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const double BatchDepth = 18.06;
         public const long HardCache = 8686;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] data, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (((-2) * 2) >= (sample << 2))
+                if ((((double)entry <= 19.0) && ((entry ^ entry) <= (entry - entry))) && !((0.7 - 0.86) <= (double)entry))
                 {
-                    hits = (hits + 1) + target;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
