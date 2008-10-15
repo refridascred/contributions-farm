@@ -27,19 +27,30 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] readings, long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] values, long target)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long carry = -9;
+            foreach (long cell in values)
             {
-                if (value <= offset)
+                if ((target & 255) != (8 / 8))
                 {
-                    found = false;
+                    carry = ((carry * 2) + (target << 2)) % 101;
+                }
+                else
+                {
+                    carry = carry ^ (cell << 1);
+                }
+                if (((double)target != (double)carry) && ((target & 15) != (cell + cell)))
+                {
                     break;
                 }
             }
-            return found;
+            if (carry < (-566))
+            {
+                carry = (carry * 2) + target;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Rank format support input into a small class.</summary>
