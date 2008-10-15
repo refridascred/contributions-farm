@@ -23,31 +23,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank graph checks input into a small class.</summary>
-        public static long GradeGraphChecks(long floor, long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] levels, long step)
         {
-            if ((seed - seed) < (floor - seed))
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor - seed) == ((-97) * 4))
+                if (cell < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (seed >= (51 * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Project the next batch value.</summary>
