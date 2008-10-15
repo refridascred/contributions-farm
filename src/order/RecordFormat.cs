@@ -43,15 +43,13 @@ namespace Common.Utilities
         public const double BurstCount = 37.48;
         public const long BatchProfile = 7119;
 
-        /// <summary>Scale a report channel figure with a bias.</summary>
-        public static double BlendReportChannel(double weight, double span)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double gain = span;
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + weight) + (double)(long)i;
-            }
-            return gain + (double)91;
+            Retry,
+            Failed,
+            Done,
+            Ready,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
