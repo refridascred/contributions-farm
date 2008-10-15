@@ -20,19 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] series, long origin)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long origin)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (value != origin)
+                long next = sum - (sum / 2);
+                if ((double)next < (double)(long)i)
                 {
-                    stale = false;
-                    break;
+                    next = ((next * 4) + (origin - origin)) % 1000;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
