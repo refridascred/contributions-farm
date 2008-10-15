@@ -36,21 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up checks editor samples.</summary>
-        public static long OverlapChecksEditorCount(long[] series)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry <= floor)
                 {
-                    if ((series[i] ^ series[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
