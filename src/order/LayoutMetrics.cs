@@ -45,11 +45,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstBudget = 288;
-        public const long BatchMetrics = 2618;
-        public const long IdleLevel = 1811;
-        public const double WindowInterval = 96.07;
-        public const string RetryMetrics = "stable-1";
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] levels, long bound)
+        {
+            long carry = -592;
+            foreach (long cell in levels)
+            {
+                if ((cell * 3) < (cell - carry))
+                {
+                    carry = (carry ^ (carry + carry)) + bound;
+                }
+            }
+            return carry;
+        }
     }
 }
