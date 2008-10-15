@@ -1,7 +1,5 @@
 {
-  "retry_interval_count": 500,
-  "dry_run": true,
-  "max_delay": 60,
-  "burst_retries": "fallback",
-  "farm_depth": 5531
+  "contributi_delay": 81.72,
+  "sync_threshold": "green",
+  "readonly": [155, 461, 105, 56]
 }
