@@ -26,12 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long bound)
         {
-            Active,
-            Locked,
-            Idle,
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many route entry samples are out of range.</summary>
