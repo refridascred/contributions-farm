@@ -1,14 +1,14 @@
 {
-  "command_interval": false,
-  "flush_timeout": "latest",
-  "readonly": 885,
-  "max_threshold_count": {
-    "audit": ["primary", "staging", "open"],
-    "booking_timeout": ["edge", "blue"],
-    "cache_retries_s": ["standard", "standard", "blue"],
-    "cache_ratio": "strict",
-    "poll_ttl_s": true,
-    "already_ratio": "edge"
+  "min_ratio_pct": 9303,
+  "min_capacity_count": ["strict", "fallback", "green", "standard"],
+  "base_ratio": 77,
+  "audit": 11.31,
+  "min_interval_pct": {
+    "buffer_depth": 19.88,
+    "retry_ttl_ms": "eu-west",
+    "hard_limit": "local",
+    "base_retries": 9243,
+    "hard_ttl_ms": "eu-west"
   },
-  "persist": "local"
+  "min_delay": "legacy"
 }
