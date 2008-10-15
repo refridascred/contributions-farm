@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public long Weight { get; set; }
             public bool Offset { get; set; }
+            public string Count { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
