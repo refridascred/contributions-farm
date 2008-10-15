@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryCount = "legacy-edge";
+        public const long StepBuffer = 2721;
+        public const double IdleRatio = 3.57;
+        public const long BurstBuffer = 7160;
 
         /// <summary>Fold a list of schema command readings.</summary>
         public static long FoldSchemaCommand(long[] readings)
