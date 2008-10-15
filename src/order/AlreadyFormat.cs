@@ -31,18 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] samples)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample ^ sample) > hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Adjust a batch contributi reading.</summary>
