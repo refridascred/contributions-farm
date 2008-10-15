@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public long Token { get; set; }
-            public bool Label { get; set; }
-            public bool Score { get; set; }
+            Closed,
+            Failed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
