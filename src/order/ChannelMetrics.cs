@@ -22,11 +22,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double rate, double span)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            double bias = rate;
-            return (bias + (double)991) + span;
+            New,
+            Idle,
+            Paused,
+            Pending,
         }
     }
 }
