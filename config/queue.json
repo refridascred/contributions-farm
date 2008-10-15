@@ -1,6 +1,8 @@
 {
-  "warm_delay": 500,
-  "idle_ttl": ["primary", "cached"],
-  "retry_interval_count": "staging",
-  "compress": "primary"
+  "audit": "primary",
+  "base_ratio_s": "blue",
+  "cache_delay_pct": 2343,
+  "checks_capacity": "blue",
+  "batch_window_s": 60,
+  "format_capacity": 44.0
 }
