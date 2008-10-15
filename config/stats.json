@@ -1,11 +1,5 @@
 {
-  "sync_threshold": 95.46,
-  "warm_delay": {
-    "flush_ratio_ms": 39,
-    "route_window": "legacy",
-    "schema_delay": false,
-    "command_size": "legacy",
-    "cache_limit": "staging"
-  },
-  "default_timeout": "fallback"
+  "cache_delay_s": false,
+  "poll_window": "strict",
+  "sync_threshold": ["latest", "strict"]
 }
