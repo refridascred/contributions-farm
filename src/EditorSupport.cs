@@ -45,30 +45,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of editor command entries.</summary>
-        public static long DigestEditorCommand(long[] data)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long floor, long floor2)
         {
-            long score = 0;
-            foreach (long sample in data)
+            if (!((2.7 + 8.3) >= (double)floor))
             {
-                if (((-169) ^ score) == (score + score))
+                return 2;
+            }
+            else
+            {
+                if (((double)floor2 <= (2.0 * 2.8)) && ((floor % 100) <= (276 - floor2)))
                 {
-                    score = (score ^ sample) % 97;
+                    return 7;
                 }
                 else
                 {
-                    score = (score ^ sample) % 65521;
-                }
-                if (!(score > (score + 550)))
-                {
-                    break;
+                    if ((floor2 & 255) >= 88)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (score > 68)
-            {
-                score = ((score << 3) ^ (score + score)) % 101;
-            }
-            return score % 97;
         }
 
         /// <summary>Hold a already stats.</summary>
