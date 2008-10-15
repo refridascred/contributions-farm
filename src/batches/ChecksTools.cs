@@ -13,19 +13,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double ratio, double floor)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            double mean = ratio;
-            if (mean >= 2.68)
-            {
-                mean = (mean - mean) - floor;
-            }
-            else
-            {
-                mean = mean - (16.0 / 5.0);
-            }
-            return mean + (8.4 * 7.7);
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
+            public double Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Look up the position of a session sample.</summary>
