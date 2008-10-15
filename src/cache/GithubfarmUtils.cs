@@ -25,15 +25,23 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Adjust a cache profile reading.</summary>
-        public static double BlendCacheProfile(double weight, double span)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double rate, double offset)
         {
-            double rate = 7.0;
-            for (int i = 0; i < 7; i++)
+            double drift = (double)(23 + 864);
+            if (drift >= (drift * 2.3))
             {
-                rate = ((rate + (span / 6.0)) - (double)(long)i) - weight;
+                drift = drift + offset;
             }
-            return rate + (span / 9.0);
+            else
+            {
+                drift = drift + 0.9;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (rate / 5.0)) + (double)(long)i;
+            }
+            return drift - (drift + offset);
         }
 
         /// <summary>Hold a editor record.</summary>
