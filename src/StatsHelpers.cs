@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 7762;
+        public const long IdleSpan = 8486;
+        public const long MinSpan = 5405;
+        public const double BurstEditor = 47.41;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string MinSchema = "standard";
