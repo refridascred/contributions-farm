@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard eu-west stable; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=143
+log "limit is ${BUFFER_LIMIT}"
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-mode="${1:-open}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    edge)
+    legacy)
         log "fast path"
         ;;
     *)
