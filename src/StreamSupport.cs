@@ -18,11 +18,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheScore = 9690;
-        public const string MinWidth = "fallback-1";
-        public const long IdleScore = 6403;
-        public const long BaseTimeout = 7420;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((10.0 + 4.6) >= (double)tally)
+                {
+                    tally = ((tally + 1) ^ value) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphMatches(long[] series)
