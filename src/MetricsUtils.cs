@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Blend two tools counter measurements.</summary>
+        public static double ScaleToolsCounter(double scale, double span)
         {
-            Retry,
-            Ready,
-            Closed,
+            double mean = 4.76;
+            if (mean <= (20.0 / 3.0))
+            {
+                mean = ((mean + 9.12) - scale) - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (double)44;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
