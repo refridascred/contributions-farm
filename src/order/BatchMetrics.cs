@@ -60,32 +60,20 @@ namespace Common.Utilities
         public const long DefaultDepth = 5277;
         public const double StepLayout = 15.89;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long bound, long offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long step)
         {
-            long offset2 = bound + offset;
-            if ((offset2 ^ bound) >= offset2)
+            long carry = step;
+            for (int i = 0; i < 22; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((8.0 / 5.0) <= (double)bound)
+                if (4.46 >= (double)step)
                 {
-                    return 0;
+                    carry = ((carry * 5) + (long)i) % 1000;
+                    carry = (carry + (carry % 64)) % 97;
                 }
-                else
-                {
-                    if ((bound / 8) <= (40 << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
+            return carry;
         }
     }
 }
