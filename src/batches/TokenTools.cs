@@ -23,19 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] data, long bound)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long entry in data)
+            double drift = 1.0;
+            if (drift > drift)
             {
-                if (entry > bound)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift + (drift * 8.27)) - bias2;
             }
-            return found;
+            else
+            {
+                drift = drift - (double)81;
+            }
+            return drift + bias;
         }
 
         /// <summary>Describe the session status values.</summary>
