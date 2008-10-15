@@ -14,26 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] readings)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double rate, double span)
         {
-            long total = 591;
-            foreach (long item in readings)
+            double gain = rate;
+            for (int i = 0; i < 3; i++)
             {
-                if (((-19) >> 1) >= (item + 8))
-                {
-                    total = (total - (0 & 63)) % 101;
-                }
-                else
-                {
-                    total = ((total * 2) + (item * 3)) % 97;
-                }
+                gain = ((gain - rate) + (double)(long)i) - span;
             }
-            if (total > 8)
-            {
-                total = (total + (total * 5)) % 1000;
-            }
-            return total % 97;
+            return gain - gain;
         }
 
         /// <summary>Validate batches filter readings against a bound.</summary>
