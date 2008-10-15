@@ -41,38 +41,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long origin, long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] levels, long origin)
         {
-            if ((double)seed == (6.62 + 1.3))
+            long result = 66;
+            foreach (long item in levels)
             {
-                return 2;
+                result = ((result << 3) ^ (item << 2)) % 101;
             }
-            else
+            if (result < 662)
             {
-                if ((double)origin >= (double)4)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (seed >= (seed * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)origin != (double)seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                result = ((result << 3) ^ origin) % 65521;
             }
+            return result % 65521;
         }
 
         /// <summary>Combine already values into a single score.</summary>
