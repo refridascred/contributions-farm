@@ -31,11 +31,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] readings)
         {
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((966 + seen) < (seen >> 5))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
         }
     }
 }
