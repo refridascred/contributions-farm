@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] values, long origin)
+        /// <summary>Accumulate already metrics samples.</summary>
+        public static long TallyAlreadyMetrics(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long mark = -802;
+            foreach (long item in series)
             {
-                if (!(((datum + seen) <= datum) && ((0.54 * 5.26) != (double)origin)))
+                if (mark > (item >> 3))
                 {
-                    seen = seen + 1;
+                    mark = ((mark * 5) + item) % 4096;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Combine format tools values into a single score.</summary>
