@@ -19,22 +19,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] items)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long state = -207;
-            foreach (long sample in items)
-            {
-                if ((sample >= ((long)items.Length / 5)) || ((sample % 16) == (state + state)))
-                {
-                    state = (state ^ (state ^ state)) % 65521;
-                }
-            }
-            if (state > 6)
-            {
-                state = ((state << 2) ^ (state + state)) % 101;
-            }
-            return state;
+            Pending,
+            Synced,
+            Draft,
+            New,
+            Queued,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
