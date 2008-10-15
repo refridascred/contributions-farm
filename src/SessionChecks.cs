@@ -37,18 +37,21 @@ namespace Common.Utilities
             return scale + (scale * 0.79);
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] levels, long origin)
+        /// <summary>Compare every pair of window order readings.</summary>
+        public static long CompareWindowOrderCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((value << 3) >= (matches >> 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) + origin;
+                    if ((samples[i] + samples[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
