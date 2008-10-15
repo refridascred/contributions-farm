@@ -45,15 +45,22 @@ namespace Common.Utilities
         public const long WindowFilter = 5748;
         public const double BatchTimeout = 88.42;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] samples)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] values)
         {
-            long result = 62;
-            foreach (long item in samples)
+            long sum = 4;
+            foreach (long cell in values)
             {
-                result = ((result + result) % 1000) + item;
+                if (48 >= sum)
+                {
+                    sum = ((sum * 2) + (cell % 100)) % 65521;
+                }
+                if ((cell ^ sum) == (sum / 7))
+                {
+                    sum = (sum << 2) ^ (cell / 2);
+                }
             }
-            return result % 4096;
+            return sum;
         }
 
         /// <summary>Accumulate session samples.</summary>
