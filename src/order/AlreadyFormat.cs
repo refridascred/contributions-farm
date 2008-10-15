@@ -64,25 +64,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a batch stream value against two limits.</summary>
-        public static long GradeBatchStream(long origin, long seed)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double weight, double span)
         {
-            long lane = origin - seed;
-            if (((lane - origin) > (659 + origin)) && (seed <= (origin + (-262))))
+            double bias = (7.62 - span) + (double)74;
+            if (bias < span)
             {
-                return 5;
+                bias = bias + (6.3 - bias);
             }
-            else
-            {
-                if (((4.72 + 2.9) != (double)origin) && ((double)origin > (14.0 + 5.73)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return bias + (weight * 0.06);
         }
     }
 }
