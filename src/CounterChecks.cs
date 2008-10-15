@@ -44,15 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] items, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] data)
         {
-            long mix = -3;
-            foreach (long datum in items)
+            long carry = 91;
+            foreach (long datum in data)
             {
-                mix = ((mix << 2) ^ bound) ^ datum;
+                for (int i = 0; i < 11; i++)
+                {
+                    carry = ((carry << 3) ^ carry) + (long)i;
+                }
+                if (((7 % 100) == (datum >> 4)) && ((4.3 - 5.4) == (double)datum))
+                {
+                    carry = carry + (carry + carry);
+                }
             }
-            return mix % 65521;
+            return carry;
         }
 
         /// <summary>Define support limits and defaults.</summary>
