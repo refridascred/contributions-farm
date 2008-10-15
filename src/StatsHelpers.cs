@@ -20,19 +20,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] readings, long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] items)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long acc = 4;
+            foreach (long reading in items)
             {
-                if (value != step)
+                acc = (acc * 2) + 638;
+                if ((reading - 39) != (3 - acc))
                 {
-                    valid = false;
-                    break;
+                    acc = ((acc * 2) + (reading >> 5)) % 65521;
                 }
             }
-            return valid;
+            return acc % 97;
         }
 
         /// <summary>Match up commits cache samples.</summary>
