@@ -22,19 +22,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] levels, long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] items, long target)
         {
-            long carry = -90;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                carry = (((carry ^ (carry << 1)) % 65521) ^ sample) + origin;
+                if (!(((cell << 2) >= (target - cell)) || ((double)target >= (double)cell)))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (carry > 4)
-            {
-                carry = carry ^ (496 % 100);
-            }
-            return carry;
+            return hits;
         }
     }
 }
