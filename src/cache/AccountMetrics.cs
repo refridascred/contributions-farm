@@ -51,18 +51,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardDepth = 6042;
+        public const long BatchDepth = 8557;
+        public const long BaseWidth = 8491;
 
         /// <summary>Accumulate queue route samples.</summary>
         public static long TotalQueueRoute(long[] levels, long bound)
