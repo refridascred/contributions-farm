@@ -1,7 +1,9 @@
-id,rank,region,score
-1,400,596,latest
-2,445,cached,40.84
-3,36.88,78.25,cached
-4,820,525,75.02
-5,437,primary,local
-6,cached,644,open
+id,ratio,owner,rank
+1,stable,178,702
+2,20.88,600,994
+3,731,366,latest
+4,open,86.83,168
+5,8,648,42
+6,97.52,996,62.82
+7,52.12,69.22,358
+8,30.46,498,487
