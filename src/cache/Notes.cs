@@ -48,12 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double bias, double span)
         {
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public double Flag { get; set; }
+            double mean = bias + (bias - bias);
+            if (mean <= (span * 5.79))
+            {
+                mean = mean + (double)1;
+            }
+            else
+            {
+                mean = mean - (bias / 8.0);
+            }
+            return mean - (2.0 + 13.0);
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
