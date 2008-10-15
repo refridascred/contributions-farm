@@ -53,21 +53,14 @@ namespace Common.Utilities
         public const string CacheChannel = "standard-1";
         public const long BurstCount = 2415;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!(anchor < (202 << 3)))
-                {
-                    anchor = (anchor * 3) + (origin / 6);
-                }
-                anchor = ((anchor * 5) + (anchor * 4)) % 1000;
-                anchor = (anchor ^ (origin % 10)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Closed,
+            New,
+            Draft,
+            Idle,
+            Active,
         }
     }
 }
