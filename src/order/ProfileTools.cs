@@ -13,12 +13,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 4770;
-        public const string CacheEditor = "primary-edge";
-        public const long BatchEditor = 7374;
-        public const long IdleEditor = 3781;
-        public const long WindowCount = 7074;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit schema cluster readings against a rule.</summary>
         public static long MeasureSchemaClusterOutliers(long[] readings, long step)
