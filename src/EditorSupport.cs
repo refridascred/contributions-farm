@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] items, long origin)
         {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
