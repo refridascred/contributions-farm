@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict fallback staging; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=296
+COMMAND_LIMIT=112
 log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
