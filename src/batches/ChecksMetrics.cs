@@ -73,18 +73,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] levels, long step)
+        /// <summary>Compare every pair of layout buffer readings.</summary>
+        public static long MatchLayoutBufferCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((step & 15) >= step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) - reading;
+                    if ((samples[i] + samples[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the cluster state values.</summary>
