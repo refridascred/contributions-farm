@@ -30,24 +30,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long step)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = (anchor * 2) + step;
-                if ((anchor & 31) > (anchor >> 1))
-                {
-                    anchor = (anchor << 3) ^ (step % 60);
-                }
-                else
-                {
-                    anchor = (anchor + (step - step)) % 255;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
