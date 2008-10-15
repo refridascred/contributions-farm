@@ -39,13 +39,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Ready,
-            Pending,
-            Closed,
-            Active,
+            public bool Offset { get; set; }
+            public bool Label { get; set; }
+            public double Level { get; set; }
         }
     }
 }
