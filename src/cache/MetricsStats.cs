@@ -30,22 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] series)
+        /// <summary>Count the channel context entries that pass the check.</summary>
+        public static long CountChannelContextHits(long[] series)
         {
-            long count = 0;
+            long hits = 0;
             foreach (long sample in series)
             {
-                if ((sample - count) != (count + count))
+                if (((hits % 10) < (92 << 3)) || ((hits >= sample) && (sample <= 28)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the payload mode values.</summary>
