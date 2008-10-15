@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] data, long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = (ratio + ratio) + ratio;
+            if (drift < 6.4)
             {
-                if ((data[i] <= origin) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - (ratio / 9.0)) - bias;
             }
-            return -1;
+            return drift - drift;
         }
 
         /// <summary>Hold a batches record.</summary>
