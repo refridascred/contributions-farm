@@ -1,12 +1,4 @@
 # support settings
-hard_window:
-  - blue
-  - open
-  - open
-flush_size: false
-readonly: true
-hard_ttl:
-  payload_limit: local
-  warm_ratio_pct: 43.64
-  soft_retries_count: 2
-  audit: 38
+poll_limit_ms: 8743
+idle_limit_s: 1107
+schema_threshold: blue
