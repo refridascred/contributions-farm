@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Grade a metrics command value against two limits.</summary>
+        public static long BucketMetricsCommand(long offset, long floor)
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Size { get; set; }
+            long prev = offset + floor;
+            if ((prev % 7) > (offset >> 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((prev + prev) == (offset / 3)) || (offset <= (offset & 7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a layout header.</summary>
