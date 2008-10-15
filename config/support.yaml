@@ -1,8 +1,4 @@
 # support settings
-audit: 6.61
-poll_limit_s:
-  - legacy
-  - green
-sync_retries_pct: eu-west
-retry_delay_s: 81.19
-soft_timeout: 100
+burst_depth_s: false
+readonly: false
+route_depth: false
