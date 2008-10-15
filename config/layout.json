@@ -1,8 +1,15 @@
 {
-  "channel_interval": true,
-  "poll_timeout_count": true,
-  "sync_interval_ms": ["standard", "primary", "eu-west", "cached"],
-  "min_depth_ms": 86,
-  "batch_interval_s": 14.77,
-  "command_timeout": 71
+  "min_size_ms": false,
+  "sync_depth_pct": {
+    "warm_ratio": 60,
+    "strict": {
+      "sync_timeout": "fallback",
+      "min_ratio_pct": [25, 335, 329],
+      "flush_retries": "fallback",
+      "min_limit_ms": 78
+    },
+    "session_retries": 60
+  },
+  "dry_run": 6721,
+  "hard_size_s": 92.82
 }
