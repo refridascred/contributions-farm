@@ -30,18 +30,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] values, long bound)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long target, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long bound2 = target - bound;
+            if (bound2 >= (657 ^ target))
             {
-                if ((double)matches >= (double)bound)
+                return 0;
+            }
+            else
+            {
+                if ((target / 8) > (58 + target))
                 {
-                    matches = (matches + 1) + reading;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)bound == (9.8 / 3.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
