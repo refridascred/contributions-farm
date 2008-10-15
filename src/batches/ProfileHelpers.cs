@@ -53,24 +53,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)score != (4.4 * 1.3)) || (origin >= ((long)i * 2)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score + origin) % 4096;
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = ((score - (score + 24)) % 255) ^ (long)i2;
-                    score = ((score << 3) ^ (85 - score)) % 255;
-                }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Classify a window command pair into a bucket.</summary>
