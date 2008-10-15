@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count entry notes pairs that satisfy a relation.</summary>
-        public static long MatchEntryNotesCount(long[] levels)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 74;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((((mix << 3) ^ (mix << 2)) % 65521) ^ datum) - target;
             }
-            return seen;
+            if (mix > 7)
+            {
+                mix = (mix - (mix << 1)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
