@@ -20,17 +20,18 @@ namespace Common.Utilities
             return mean - (double)44;
         }
 
-        /// <summary>Find the first order already entry that matches the target.</summary>
-        public static long LocateOrderAlreadyIndex(long[] values, long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (values[i] < bound)
+                if ((double)sample > (2.1 - 15.0))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit support contributi readings against a rule.</summary>
