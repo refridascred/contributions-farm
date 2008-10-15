@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] items)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] samples)
         {
-            long count = 0;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((32 < count) && ((value & 127) > (value ^ count)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
