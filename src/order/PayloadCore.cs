@@ -17,12 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
+            public bool Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the report phase values.</summary>
