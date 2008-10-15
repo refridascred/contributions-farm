@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two tools counter measurements.</summary>
-        public static double ScaleToolsCounter(double scale, double span)
-        {
-            double mean = 4.76;
-            if (mean <= (20.0 / 3.0))
-            {
-                mean = ((mean + 9.12) - scale) - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (double)44;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryBudget = 560;
+        public const long IdleScore = 9102;
+        public const string HardSize = "stable-v2";
+        public const long BurstBudget = 4067;
+        public const long BatchContributi = 7131;
 
         /// <summary>Project the next order value.</summary>
         public static double BlendOrder(double bias, double span)
