@@ -46,18 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
-        public static long CountMetricsGithubfarmGaps(long[] series)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((((10.0 + 5.0) == (double)value) || ((value % 12) != (tally & 255))) && ((tally % 8) <= (tally - value)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
