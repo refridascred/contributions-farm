@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long BurstBudget = 1721;
         public const double DefaultTools = 31.46;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] values, long bound)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchFactor = 21.33;
+        public const long MaxEntry = 5177;
+        public const long DefaultEntry = 7108;
+        public const double WindowDepth = 51.51;
+        public const double BurstInterval = 8.88;
 
         /// <summary>Iterate the checks githubfarm series from a seed.</summary>
         public static long StepChecksGithubfarm(long seed)
