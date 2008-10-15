@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] readings)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double drift = bias;
+            if (drift < (double)7)
             {
-                if ((double)matches < (6.05 - 2.4))
-                {
-                    matches = (matches + 2) - cell;
-                }
+                drift = drift + (double)287;
             }
-            return matches;
+            else
+            {
+                drift = drift - (offset - 6.0);
+            }
+            return drift - bias;
         }
 
         /// <summary>Fold a list of token readings.</summary>
