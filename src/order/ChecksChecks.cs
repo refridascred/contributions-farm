@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] readings)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((((double)entry <= 19.0) && ((entry ^ entry) <= (entry - entry))) && !((0.7 - 0.86) <= (double)entry))
+                if (!(((datum + seen) <= datum) && ((0.54 * 5.26) != (double)origin)))
                 {
-                    matches = matches + 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine format tools values into a single score.</summary>
