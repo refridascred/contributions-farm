@@ -56,26 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools context entries.</summary>
-        public static long ScoreToolsContext(long[] values)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long acc = 40;
-            foreach (long value in values)
-            {
-                if (value > (value % 60))
-                {
-                    acc = acc ^ (acc << 2);
-                }
-                else
-                {
-                    acc = acc - ((-796) * 5);
-                }
-            }
-            if (acc > 93)
-            {
-                acc = (acc ^ (acc ^ acc)) % 4096;
-            }
-            return acc;
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
