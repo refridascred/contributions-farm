@@ -48,17 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] values, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (values[i] <= bound)
+                if (cell != origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
