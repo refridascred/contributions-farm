@@ -19,21 +19,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long limit)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] items)
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                double bias = (double)limit + (0.7 - 14.0);
-                if ((bias - bias) > (double)mix)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    continue;
+                    if ((items[i] - items[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = mix ^ ((-5) - mix);
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Accumulate tools samples.</summary>
