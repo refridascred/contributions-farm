@@ -51,17 +51,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] readings, long limit)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == limit) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate account samples.</summary>
