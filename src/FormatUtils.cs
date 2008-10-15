@@ -21,21 +21,17 @@ namespace Common.Utilities
         public const long SoftInterval = 2709;
         public const long MaxTimeout = 895;
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] levels)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (data[i] <= origin)
                 {
-                    if ((levels[i] ^ levels[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the account mode values.</summary>
