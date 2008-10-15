@@ -14,21 +14,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] values)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Dropped,
+            Ready,
+            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Locate a notes channel reading by value.</summary>
