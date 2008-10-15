@@ -16,12 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Failed,
-            Retry,
-            Closed,
+            public string Size { get; set; } = "";
+            public bool Level { get; set; }
+            public double Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
