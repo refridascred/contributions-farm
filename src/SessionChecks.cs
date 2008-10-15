@@ -17,16 +17,15 @@ namespace Common.Utilities
         public const double WindowDepth = 51.51;
         public const double BurstInterval = 8.88;
 
-        /// <summary>Iterate the checks githubfarm series from a seed.</summary>
-        public static long StepChecksGithubfarm(long seed)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
+            long total = target;
+            for (int i = 0; i < 22; i++)
             {
-                mix = mix - 75;
-                mix = ((mix * 3) + (long)i) % 97;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Check that every order channel entry stays within the limit.</summary>
