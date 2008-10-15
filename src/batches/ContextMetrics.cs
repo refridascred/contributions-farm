@@ -61,21 +61,22 @@ namespace Common.Utilities
         public const long IdleInterval = 9852;
         public const long BurstCache = 1521;
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] readings)
+        /// <summary>Combine cache batches values into a single score.</summary>
+        public static long TallyCacheBatches(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 250;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((acc >> 5) >= (acc + (long)levels.Length))
                 {
-                    if ((readings[i] - readings[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc * 2) + (value - acc)) % 4096;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (value << 3);
                 }
             }
-            return hits;
+            return acc % 4096;
         }
     }
 }
