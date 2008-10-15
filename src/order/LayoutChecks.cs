@@ -42,18 +42,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long offset, long offset2)
         {
-            long total = 603;
-            foreach (long datum in items)
+            if ((double)offset2 <= (7.1 * 0.87))
             {
-                if ((5.2 - 6.0) == (double)total)
+                return 8;
+            }
+            else
+            {
+                if ((offset << 3) < (offset - offset))
                 {
-                    total = (((total * 4) + (total - total)) % 1000) - datum;
+                    return 7;
+                }
+                else
+                {
+                    if (((offset2 + offset2) <= 639) && ((double)offset2 <= (5.48 / 4.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset2 + offset2) <= (23 >> 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
