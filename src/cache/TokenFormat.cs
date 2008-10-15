@@ -28,15 +28,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long step)
+        /// <summary>Grade a profile already value against two limits.</summary>
+        public static long RankProfileAlready(long offset, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
+            long bound = offset ^ origin;
+            if ((bound <= (6 - offset)) && ((10.0 / 9.0) >= (double)offset))
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((bound + bound) <= (origin + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
