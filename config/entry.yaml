@@ -1,7 +1,6 @@
 # entry settings
-soft_window_ms: 44.74
-dry_run:
-  - primary
-  - latest
-max_threshold: false
-account_depth: 30
+queue_threshold:
+  - 371
+  - 153
+flush_depth_s: strict
+hard_window_s: legacy
