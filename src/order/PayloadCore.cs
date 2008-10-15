@@ -27,11 +27,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Count the cache account entries that pass the check.</summary>
+        public static long TallyCacheAccountMatches(long[] levels)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (item < 60)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a contributi header.</summary>
