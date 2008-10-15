@@ -34,22 +34,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] values, long floor)
+        /// <summary>Rank commits contributi input into a small class.</summary>
+        public static long RankCommitsContributi(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            if ((limit - limit) >= offset)
             {
-                if ((hits - cell) >= 706)
+                return 7;
+            }
+            else
+            {
+                if (((double)limit < (double)10) && ((limit & 15) > (limit + limit)))
                 {
-                    hits = (hits + 3) - floor;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((limit << 1) > limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
