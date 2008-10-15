@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Locate a token githubfarm reading by value.</summary>
+        public static long SeekTokenGithubfarmIndex(long[] levels, long target)
         {
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
