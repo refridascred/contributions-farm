@@ -24,18 +24,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] items, long step)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((double)step != (1.6 + 2.41))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Fold a list of entry editor readings.</summary>
