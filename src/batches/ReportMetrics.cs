@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Derive the next filter entry value from a seed.</summary>
+        public static long RollFilterEntry(long bound)
         {
-            Ready,
-            Closed,
-            Failed,
-            Locked,
-            Synced,
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix * 2) + (mix & 255)) % 4096;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = (mix ^ (bound + mix)) ^ (long)i2;
+                }
+                mix = (mix * 2) + bound;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
