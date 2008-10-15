@@ -27,11 +27,29 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long limit)
         {
-            public bool Region { get; set; }
-            public double Count { get; set; }
+            long score = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                long cur = (long)i;
+                if (!((double)cur == (double)score))
+                {
+                    cur = cur ^ ((long)i + (long)i);
+                    score = score - (long)i;
+                }
+                if ((double)cur < 8.47)
+                {
+                    cur = cur ^ (cur & 127);
+                }
+                else
+                {
+                    cur = (cur - (cur * 4)) % 101;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
