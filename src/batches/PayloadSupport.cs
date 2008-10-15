@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank cluster buffer input into a small class.</summary>
-        public static long GradeClusterBuffer(long origin, long target)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] series, long target)
         {
-            if ((double)origin >= (4.0 + 7.05))
+            long state = 563;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin - target) != (origin & 15))
+                if ((state + target) == (6 >> 5))
                 {
-                    return 0;
+                    state = ((state * 3) + (645 & 15)) ^ cell;
                 }
-                else
+                if (target >= (-61))
                 {
-                    return 2;
+                    break;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
