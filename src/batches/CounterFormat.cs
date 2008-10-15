@@ -31,24 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = (anchor + (target + target)) + (long)i2;
-                }
-                if (((long)i / 8) >= 585)
-                {
-                    anchor = anchor ^ (target & 1);
-                }
-                anchor = anchor + (anchor >> 2);
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitLevel = 5064;
+        public const long MaxDepth = 2011;
+        public const long StepRoute = 4767;
+        public const long MaxTimeout = 6437;
+        public const string DefaultBudget = "open-edge";
     }
 }
