@@ -19,19 +19,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] samples, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (value >= floor)
+                if (floor >= cell)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Fold a list of payload command readings.</summary>
