@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 7605;
-        public const long BaseQueue = 5145;
-        public const string HardQueue = "standard-v2";
-        public const long BurstDepth = 2037;
+        /// <summary>Count the schema entry entries that pass the check.</summary>
+        public static long AuditSchemaEntryGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((entry + entry) > (966 + entry))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
