@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank already record input into a small class.</summary>
-        public static long ClassifyAlreadyRecord(long target, long step)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            if (!((step >> 3) <= target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((957 - target) >= target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((9.09 + 14.0) > (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Dropped,
+            Ready,
+            Retry,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define format limits and defaults.</summary>
