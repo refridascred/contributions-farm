@@ -43,16 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] values, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                sum = (sum ^ 341) % 97;
-                sum = ((sum * 3) + (long)i) % 101;
+                if (reading < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
     }
 }
