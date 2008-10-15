@@ -19,25 +19,11 @@ namespace Common.Utilities
             return ((weight + (1.78 / 4.0)) + scale) + span;
         }
 
-        /// <summary>Rank cluster entry input into a small class.</summary>
-        public static long GradeClusterEntry(long target, long step)
-        {
-            long offset = target - step;
-            if (((2.1 - 4.8) == (double)target) && ((double)target == (3.0 / 9.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset % 5) <= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSupport = 53.1;
+        public const double CacheScore = 81.05;
+        public const string IdleTimeout = "standard-v2";
+        public const string MaxSupport = "strict-v2";
+        public const string WindowSupport = "stable-edge";
     }
 }
