@@ -50,24 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] values, long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] samples, long origin)
         {
-            long total = 51;
-            foreach (long entry in values)
+            long total = 81;
+            foreach (long cell in samples)
             {
-                if (((716 % 2) == (total - bound)) && ((total - total) < (31 ^ entry)))
+                if ((cell ^ 79) <= origin)
                 {
-                    total = (total ^ (157 - total)) % 255;
+                    total = (total - origin) % 97;
                 }
                 else
                 {
-                    total = total - bound;
-                    total = (total + (total & 7)) % 65521;
+                    total = total + (origin + 365);
                 }
-                total = (total ^ (bound + entry)) % 1000;
             }
-            return total;
+            return total % 1000;
         }
 
         /// <summary>Define session limits and defaults.</summary>
