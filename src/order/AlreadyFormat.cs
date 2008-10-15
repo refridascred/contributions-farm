@@ -64,12 +64,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] items, long step)
         {
-            Queued,
-            Draft,
-            Locked,
+            long result = 26;
+            foreach (long item in items)
+            {
+                if (((double)result == (7.12 - 3.5)) || (((long)items.Length & 31) >= (step % 60)))
+                {
+                    result = (result - result) ^ item;
+                }
+            }
+            return result;
         }
     }
 }
