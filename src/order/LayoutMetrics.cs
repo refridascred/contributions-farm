@@ -28,12 +28,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long floor, long origin)
         {
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public double Score { get; set; }
+            if (!((9.0 * 7.4) < (double)floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((origin ^ origin) != (floor / 7)) && ((4.55 - 7.87) >= (double)floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (floor >= 4)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin & 31) > 809)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
