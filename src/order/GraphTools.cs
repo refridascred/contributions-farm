@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double scale, double floor)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] series)
         {
-            double gain = (double)(739 >> 1);
-            if (gain >= (scale / 4.0))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = (gain - gain) + floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (double)39;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + 9.0) + (double)(long)i;
-            }
-            return gain + gain;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
