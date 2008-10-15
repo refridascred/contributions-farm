@@ -30,21 +30,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] samples)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long step, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (step <= seed)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((7.44 / 3.0) < (double)step)
                 {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
