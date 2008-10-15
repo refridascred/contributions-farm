@@ -20,15 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] values)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long score = 65;
-            foreach (long cell in values)
-            {
-                score = (score ^ (cell >> 2)) % 97;
-            }
-            return score % 97;
+            Retry,
+            Paused,
+            Idle,
+            Draft,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
