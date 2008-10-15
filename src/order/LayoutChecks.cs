@@ -33,19 +33,39 @@ namespace Common.Utilities
         public const long LimitBudget = 959;
         public const double DefaultDepth = 75.95;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] levels, long seed)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long origin, long limit)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long bound = origin - limit;
+            if ((double)71 > (double)bound)
             {
-                if (sample <= seed)
+                return 5;
+            }
+            else
+            {
+                if ((17.0 * 1.57) == (double)bound)
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((7.0 - 2.78) <= (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (limit >= (origin * 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
