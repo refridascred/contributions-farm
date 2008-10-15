@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank channel stats input into a small class.</summary>
-        public static long SortChannelStats(long step, long origin)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] series, long bound)
         {
-            long prev = step ^ origin;
-            if ((441 * 4) != (origin + step))
+            bool ready = true;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((67 >> 1) <= (origin + origin)))
+                if (datum <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)prev >= (5.0 / 3.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin < prev)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Accumulate cache samples.</summary>
