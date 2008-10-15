@@ -32,10 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 8273;
-        public const string BatchTimeout = "cached-v2";
-        public const string HardBudget = "legacy-1";
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Pending,
+            Retry,
+            Synced,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileOutliers(long[] items, long step)
