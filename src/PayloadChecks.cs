@@ -56,15 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double rate, double offset)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            double mean = rate;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = ((mean - (2.38 * 5.1)) + (double)(long)i) - offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean - (double)9;
+            return seen;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
