@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Pending,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 9600;
+        public const long IdleSize = 81;
+        public const double HardPayload = 67.6;
+        public const double BaseSpan = 90.43;
 
         /// <summary>Digest a series of record stats entries.</summary>
         public static long DigestRecordStats(long[] values, long step)
