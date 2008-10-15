@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] levels)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long result = 95;
-            foreach (long value in levels)
-            {
-                result = (result << 3) ^ ((-8) ^ value);
-            }
-            if (result > 46)
-            {
-                result = (result * 3) + result;
-            }
-            return result;
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
