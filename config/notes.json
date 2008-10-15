@@ -1,6 +1,8 @@
 {
-  "idle_retries_s": 26,
-  "account_timeout": 100,
-  "sync_interval_s": "latest",
-  "base_ratio_ms": "strict"
+  "context_capacity": false,
+  "verbose": 66.78,
+  "burst_timeout_s": false,
+  "persist": 93.88,
+  "stats_limit": 100,
+  "sync_timeout": 9.85
 }
