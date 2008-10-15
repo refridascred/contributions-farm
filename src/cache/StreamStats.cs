@@ -39,24 +39,15 @@ namespace Common.Utilities
         public const string MaxStream = "alpha-v2";
         public const long HardStream = 5120;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long origin)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
             {
-                long span = (origin ^ result) & 15;
-                if (((205 - span) < origin) || ((origin % 16) > (span << 3)))
-                {
-                    span = (span << 3) ^ (span % 60);
-                }
-                if (result < (9 ^ result))
-                {
-                    span = (span + (origin + origin)) % 97;
-                }
-                result = ((result * 2) + (long)i) % 97;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return result;
+            return acc;
         }
     }
 }
