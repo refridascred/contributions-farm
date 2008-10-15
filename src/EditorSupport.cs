@@ -75,16 +75,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] levels, long step)
-        {
-            long state = 966;
-            foreach (long item in levels)
-            {
-                state = ((state << 3) ^ (item + step)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheLevel = 95.69;
+        public const long IdleTimeout = 2256;
+        public const string CacheChannel = "standard-1";
+        public const long BurstCount = 2415;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long IterateEditor(long origin)
