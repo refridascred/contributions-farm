@@ -21,22 +21,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitTimeout = "stable";
+        public const long WindowInterval = 9912;
+        public const long BurstRatio = 654;
+        public const double BatchInterval = 48.97;
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
