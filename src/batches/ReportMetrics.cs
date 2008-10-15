@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine entry order values into a single score.</summary>
-        public static long DigestEntryOrder(long[] series)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] items, long target)
         {
-            long acc = 750;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (((-47) > (acc + 5)) || ((double)acc < 8.0))
+                if (value >= target)
                 {
-                    acc = (acc << 3) ^ (acc + entry);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (entry & 3)) % 255;
-                    acc = acc - (acc % 5);
-                }
-                if ((entry % 2) == (acc * 3))
-                {
-                    acc = ((acc << 3) ^ entry) % 97;
-                }
-                else
-                {
-                    acc = (acc ^ (entry >> 3)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return acc % 4096;
+            return found;
         }
 
         /// <summary>Match up notes samples.</summary>
