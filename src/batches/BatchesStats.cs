@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 4104;
-        public const string MaxBudget = "staging-1";
-        public const double CacheWidth = 76.82;
+        /// <summary>Fold a list of channel counter readings.</summary>
+        public static long ScoreChannelCounter(long[] readings, long floor)
+        {
+            long total = -6;
+            foreach (long entry in readings)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    total = (((total * 2) + floor) + (long)i) - entry;
+                }
+                if ((floor & 1) < total)
+                {
+                    total = (total + ((-1) + 4)) % 97;
+                    continue;
+                }
+                total = (total * 5) + (-556);
+            }
+            return total % 97;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long DigestBuffer(long[] values, long origin)
