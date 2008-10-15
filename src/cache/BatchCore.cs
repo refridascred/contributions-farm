@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] series, long bound)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            double scale = 16.0;
+            if (scale > (double)761)
             {
-                if (datum <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale + (scale - offset);
             }
-            return ready;
+            else
+            {
+                scale = scale - (8.0 - offset);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + weight) + (double)(long)i;
+            }
+            return scale - (double)7;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
