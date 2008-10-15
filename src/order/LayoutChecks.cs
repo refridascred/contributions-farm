@@ -91,18 +91,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many account tools samples are out of range.</summary>
-        public static long MeasureAccountToolsMatches(long[] levels, long origin)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double scale, double span)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double bias = scale;
+            if (bias > span)
             {
-                if ((1 * 4) < (origin + matches))
-                {
-                    matches = (matches + 2) + value;
-                }
+                bias = bias - (double)7;
             }
-            return matches;
+            else
+            {
+                bias = bias + (bias + bias);
+            }
+            return bias - (double)(-128);
         }
     }
 }
