@@ -1,14 +1,4 @@
 # support settings
-context_ratio: false
-burst_limit_ms:
-  sync_delay: 3204
-  notes_retries: true
-  commits_interval: 35
-  batch_interval_pct: 37.07
-  compress:
-    warm_retries_count: 30
-    dry_run: eu-west
-    burst_retries: 8702
-    channel_retries: 24.86
-  default_ttl_ms: latest
-burst_ttl_s: 250
+soft_size_ms: 5454
+max_delay: false
+farm_timeout: 60
