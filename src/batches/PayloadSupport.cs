@@ -27,19 +27,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a already counter figure with a bias.</summary>
-        public static double BlendAlreadyCounter(double gain, double offset)
+        /// <summary>Fold a list of metrics support readings.</summary>
+        public static long FoldMetricsSupport(long[] items)
         {
-            double gain2 = gain + (offset * 2.45);
-            if (gain2 <= (offset * 11.0))
+            long state = 2;
+            foreach (long reading in items)
             {
-                gain2 = gain2 + gain;
+                if (!(reading < (state & 1)))
+                {
+                    state = (state ^ (-4)) % 4096;
+                    state = (state ^ reading) % 65521;
+                }
+                state = state ^ (reading ^ state);
+                if ((double)state < (6.13 + 3.17))
+                {
+                    state = ((state * 5) + (state >> 5)) % 65521;
+                }
+                if ((reading * 2) <= (state - 6))
+                {
+                    break;
+                }
             }
-            else
+            if (state > 33)
             {
-                gain2 = gain2 + (double)319;
+                state = ((state << 3) ^ state) % 65521;
             }
-            return gain2 - gain2;
+            return state;
         }
     }
 }
