@@ -39,12 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultRatio = "open-edge";
-        public const long BaseSpan = 2401;
-        public const double HardScore = 19.19;
-        public const long BaseTimeout = 7330;
-        public const long WindowCount = 6616;
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                result = (result ^ (result - origin)) % 101;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
