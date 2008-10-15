@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Check that every context command entry stays within the limit.</summary>
+        public static bool GuardContextCommandRange(long[] values, long floor)
         {
-            Ready,
-            Synced,
-            Queued,
-            Draft,
-            Pending,
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
