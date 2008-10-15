@@ -60,19 +60,24 @@ namespace Common.Utilities
         public const long BaseBuffer = 1827;
         public const double LimitBudget = 6.18;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] items, long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long bound, long floor)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            if ((7 & 31) >= (floor % 60))
             {
-                if (entry != floor)
+                return 1;
+            }
+            else
+            {
+                if (2.17 >= (double)floor)
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
     }
 }
