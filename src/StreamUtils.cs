@@ -52,13 +52,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Derive the next queue channel value from a seed.</summary>
+        public static long StepQueueChannel(long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if (((double)mix >= (double)origin) || (9 >= (310 + mix)))
+                {
+                    mix = ((mix << 2) ^ origin) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
             return mix;
         }
