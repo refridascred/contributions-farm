@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Fold a list of order notes readings.</summary>
+        public static long DigestOrderNotes(long[] data, long floor)
         {
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
+            long mix = -217;
+            foreach (long cell in data)
+            {
+                if (!((9.0 - 3.79) != (double)cell))
+                {
+                    mix = ((mix << 3) ^ (floor % 97)) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
