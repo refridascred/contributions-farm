@@ -13,12 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchDepth = "standard";
+        public const long WindowEditor = 4585;
+        public const double CacheEditor = 29.94;
+        public const double LimitLevel = 38.61;
+        public const string BaseEditor = "legacy";
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long WeighQueue(long[] values, long target)
