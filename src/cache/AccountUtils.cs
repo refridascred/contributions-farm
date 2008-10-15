@@ -35,12 +35,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a command batches sample.</summary>
-        public static long LocateCommandBatchesIndex(long[] items, long bound)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] > bound)
+                if (samples[i] <= floor)
                 {
                     return (long)i;
                 }
