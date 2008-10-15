@@ -32,12 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Stale,
-            New,
-            Draft,
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the cache account entries that pass the check.</summary>
