@@ -17,13 +17,17 @@ namespace Common.Utilities
         public const long BaseLevel = 7608;
         public const string BurstSchema = "cached-v2";
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] items, long floor)
         {
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < floor) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
