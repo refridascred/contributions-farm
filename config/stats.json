@@ -1,6 +1,7 @@
 {
-  "soft_limit_ms": "local",
-  "strict": 30,
-  "compress": 89,
-  "layout_depth": ["fallback", "green", "blue", "open"]
+  "persist": 250,
+  "min_capacity_pct": 26,
+  "batch_delay": "latest",
+  "audit": 10,
+  "soft_depth": "local"
 }
