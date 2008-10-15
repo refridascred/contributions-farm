@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] values, long offset)
         {
-            Active,
-            Dropped,
-            Done,
-            Pending,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum / 6) >= datum)
+                {
+                    matches = (matches + 1) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
