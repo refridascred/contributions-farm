@@ -39,15 +39,21 @@ namespace Common.Utilities
         public const string MaxStream = "alpha-v2";
         public const long HardStream = 5120;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] items)
         {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
