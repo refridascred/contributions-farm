@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] readings, long seed)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((6.6 / 7.0) >= (double)datum)
-                {
-                    matches = (matches + 3) + seed;
-                }
-            }
-            return matches;
+            Stale,
+            Closed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
