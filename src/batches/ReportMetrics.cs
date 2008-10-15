@@ -31,19 +31,22 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double scale, double floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] data)
         {
-            double drift = floor;
-            if (drift >= (floor / 2.0))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                drift = drift + drift;
+                if ((1 / 4) < tally)
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - scale;
+            return tally;
         }
     }
 }
