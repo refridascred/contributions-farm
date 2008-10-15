@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const double WindowFactor = 20.3;
         public const long BatchToken = 7402;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultTimeout = "legacy";
-        public const double RetryTimeout = 87.81;
-        public const long HardTimeout = 4379;
-        public const double StepWindow = 94.27;
+        /// <summary>Audit buffer support readings against a rule.</summary>
+        public static long CountBufferSupportMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((82 + item) != (433 % 8))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long MeasureRecordMatches(long[] levels, long offset)
