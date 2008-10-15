@@ -1,6 +1,8 @@
 # support settings
-burst_size: true
-token_window: 45.0
-channel_delay: standard
-batches_size: eu-west
-soft_timeout: 26.37
+soft_interval_s: false
+max_timeout_ms:
+  - 102
+  - 5
+  - 79
+  - 131
+session_size: 9052
