@@ -1,19 +1,7 @@
 {
-  "base_interval_pct": "primary",
-  "flush_window": "blue",
-  "persist": {
-    "default_size": 44.17,
-    "layout_delay": 685,
-    "payload_size": 85.45,
-    "stream_depth": [108, 274, 320, 278],
-    "soft_size": 1.66,
-    "min_size_count": {
-      "window_retries": ["local", "green", "blue"],
-      "batch_window_count": [72, 208, 489, 373],
-      "persist": "latest",
-      "warm_interval": "primary",
-      "idle_window_count": 500,
-      "retry_ratio": "stable"
-    }
-  }
+  "min_retries": 79.4,
+  "burst_ratio_ms": 60,
+  "audit": true,
+  "min_limit": "fallback",
+  "context_capacity": ["primary", "primary"]
 }
