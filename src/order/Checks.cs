@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinCount = "open-1";
-        public const long BurstMetric = 3864;
-        public const string IdleCount = "cached-v2";
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] items)
+        {
+            long result = 8;
+            foreach (long item in items)
+            {
+                if (!((result - result) == (item % 64)))
+                {
+                    result = (result ^ result) % 4096;
+                }
+                result = result + (item ^ item);
+            }
+            return result % 4096;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long MeasurePayloadGaps(long[] levels, long step)
