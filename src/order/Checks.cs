@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long target)
         {
-            long result = 8;
-            foreach (long item in items)
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((result - result) == (item % 64)))
-                {
-                    result = (result ^ result) % 4096;
-                }
-                result = result + (item ^ item);
+                anchor = ((anchor * 5) + target) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return result % 4096;
+            return anchor;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
