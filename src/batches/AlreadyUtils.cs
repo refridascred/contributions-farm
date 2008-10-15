@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a cluster window sample.</summary>
-        public static long LocateClusterWindowIndex(long[] levels, long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 995;
+            foreach (long value in values)
             {
-                if (levels[i] == step)
+                if (((-5) - value) < (0 + seed))
                 {
-                    return (long)i;
+                    score = (score * 2) + value;
+                }
+                else
+                {
+                    score = (score ^ (score ^ seed)) % 65521;
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Rank route input into a small class.</summary>
