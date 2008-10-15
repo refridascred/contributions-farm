@@ -22,10 +22,20 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowInterval = "primary-v2";
-        public const long LimitCluster = 2083;
-        public const string CacheCluster = "local-v2";
+        /// <summary>Validate queue entry readings against a bound.</summary>
+        public static bool GuardQueueEntryBounds(long[] items, long floor)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowGaps(long[] series, long floor)
