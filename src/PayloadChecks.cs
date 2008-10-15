@@ -61,15 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] series, long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if ((double)matches < (3.0 - 9.1))
+                {
+                    matches = ((matches + 2) ^ sample) + bound;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
