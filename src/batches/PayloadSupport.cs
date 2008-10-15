@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] readings)
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry != (double)(long)readings.Length)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a farm info.</summary>
