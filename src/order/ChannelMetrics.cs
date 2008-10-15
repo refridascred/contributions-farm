@@ -14,38 +14,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long bound, long offset)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            if ((offset % 3) > (bound & 127))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound + 81) == (bound - bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((417 ^ offset) != (offset & 63))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound % 16) != (bound / 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
