@@ -54,22 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] levels)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (sample < (sample - sample))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            Stale,
+            Pending,
         }
 
         /// <summary>Iterate the order window series from a seed.</summary>
