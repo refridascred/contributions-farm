@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate window command readings against a bound.</summary>
-        public static bool CheckWindowCommandLimits(long[] samples, long limit)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long floor, long target)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long lane = floor - target;
+            if (((9.0 + 2.0) <= (double)lane) && ((floor << 2) < (lane + 279)))
             {
-                if (value >= limit)
+                return 1;
+            }
+            else
+            {
+                if ((lane << 2) == (lane ^ 5))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
