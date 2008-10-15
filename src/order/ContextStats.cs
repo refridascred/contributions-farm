@@ -28,16 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the tools report series from a seed.</summary>
-        public static long StepToolsReport(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultRatio = 5560;
+        public const long RetryTimeout = 1123;
+        public const long CacheCounter = 8122;
+        public const double BatchCounter = 43.75;
+        public const double HardCounter = 37.64;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long ScoreStats(long[] series)
