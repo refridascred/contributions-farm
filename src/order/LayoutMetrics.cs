@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] levels)
         {
-            Draft,
-            Done,
-            Failed,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry < (entry & 3)) && (entry < (tally / 2)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
