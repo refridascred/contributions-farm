@@ -28,11 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxWidth = "primary";
-        public const string BurstLayout = "stable";
-        public const long BaseLayout = 2107;
-        public const long WindowLayout = 1315;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double SmoothBatch(double scale, double bias)
