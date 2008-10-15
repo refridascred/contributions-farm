@@ -72,15 +72,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long floor)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Failed,
+            Paused,
+            Synced,
         }
     }
 }
