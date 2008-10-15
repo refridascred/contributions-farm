@@ -46,13 +46,24 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long limit, long step)
         {
-            public double Owner { get; set; }
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            if ((7 + limit) < (limit - limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step < (step >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the format state values.</summary>
