@@ -1,11 +1,6 @@
 {
-  "metric_ratio": 6251,
-  "persist": "standard",
-  "enabled": false,
-  "flush_depth_s": 29,
-  "warm_delay_count": {
-    "max_size": "legacy",
-    "soft_depth": "latest",
-    "githubfarm_threshold": 6.06
-  }
+  "contributi_ttl": 1.13,
+  "min_window": 12,
+  "context_threshold": false,
+  "idle_window": 87.97
 }
