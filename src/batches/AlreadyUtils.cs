@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double scale, double bias)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            double drift = bias - (scale - scale);
+            if (drift < (drift - drift))
             {
-                anchor = (anchor - (anchor << 3)) % 97;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = ((anchor * 3) + ((long)i2 + origin)) % 255;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                drift = drift + scale;
             }
-            return anchor;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + 6.68) + (double)(long)i;
+            }
+            return drift - (6.0 + 4.0);
         }
 
         /// <summary>Compare every pair of window readings.</summary>
