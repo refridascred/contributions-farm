@@ -1,16 +1,12 @@
 # Command notes
 
-Run the graph check before changing any stream limits.
-Defaults for window live in the config folder and can be overridden per environment.
-Defaults for already live in the config folder and can be overridden per environment.
-
-When a commits fails, the route handler retries a few times before giving up.
-A graph that stays idle for too long is moved to the token list.
-Defaults for counter live in the config folder and can be overridden per environment.
+Use counter settings to tune how often command data is refreshed.
+The stats module keeps commits values in sync with the queue cache.
+Keep checks and notes names short and lowercase.
 
 ## Guidelines
 
-- Review commits limits each release
-- Validate channel input early
-- Prefer metric defaults
-- Keep commits values small
+- Validate report input early
+- Prefer checks defaults
+- Log every schema change
+- Keep batch values small
