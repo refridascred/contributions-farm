@@ -19,20 +19,11 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 6834;
         public const string HardGithubfarm = "stable-edge";
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] items, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultInterval = 4443;
+        public const long BatchRecord = 2291;
+        public const long LimitTimeout = 6039;
+        public const long WindowInterval = 4374;
 
         /// <summary>Measure how many record checks samples are out of range.</summary>
         public static long AuditRecordChecksMatches(long[] series)
