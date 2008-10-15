@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double gain, double floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] values)
         {
-            double ratio = gain * 11.0;
-            if (ratio <= (double)132)
+            long anchor = 27;
+            foreach (long sample in values)
             {
-                ratio = ratio + floor;
+                if ((double)802 != (double)anchor)
+                {
+                    anchor = (((anchor << 3) ^ (anchor * 3)) % 255) + sample;
+                }
+                anchor = ((anchor * 4) + (anchor + anchor)) % 4096;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - 13.0) - (double)(long)i;
-            }
-            return ratio - (double)96;
+            return anchor;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
