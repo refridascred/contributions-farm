@@ -20,21 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] values)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = offset;
+            if (gain <= (1.0 / 6.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain - (1.57 * 1.0);
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - rate;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
