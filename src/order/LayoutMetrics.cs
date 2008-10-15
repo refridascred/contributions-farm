@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine entry account values into a single score.</summary>
-        public static long TotalEntryAccount(long[] series, long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long step, long offset)
         {
-            long mix = 6;
-            foreach (long cell in series)
+            long cur = step + offset;
+            if (!((-7) > (offset * 5)))
             {
-                mix = ((mix - target) % 4096) ^ cell;
+                return 6;
             }
-            if (mix > 6)
+            else
             {
-                mix = mix ^ target;
+                if (!((cur & 31) < cur))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return mix;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
