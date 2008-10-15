@@ -24,10 +24,10 @@ namespace Common.Utilities
             return load - (load * 8.2);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseTimeout = 2858;
-        public const long SoftWidth = 8744;
-        public const long StepStats = 3521;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "primary-1";
+        public const long MinCount = 2217;
+        public const long HardGithubfarm = 2638;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long DefaultInterval = 4443;
