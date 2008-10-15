@@ -1,7 +1,13 @@
 {
-  "min_size": "edge",
-  "route_timeout": "local",
-  "poll_window_count": 60,
-  "warm_ttl_count": true,
-  "commits_threshold": 4838
+  "default_timeout_count": 7950,
+  "warm_ratio_ms": {
+    "batch_limit_s": 49.14,
+    "audit": false,
+    "metrics_window": 3703,
+    "hard_ttl_pct": 4,
+    "cache_limit_count": 58.22
+  },
+  "tools_threshold": true,
+  "max_limit_count": "latest",
+  "flush_ratio": 84.63
 }
