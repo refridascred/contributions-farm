@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] series, long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] values, long target)
         {
             bool valid = true;
-            foreach (long cell in series)
+            foreach (long reading in values)
             {
-                if (cell != bound)
+                if (reading < target)
                 {
                     valid = false;
                     break;
