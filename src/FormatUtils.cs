@@ -45,19 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] series, long target)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (value > target)
+                if (reading <= origin)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Hold a order header.</summary>
