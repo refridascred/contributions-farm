@@ -36,13 +36,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public string Label { get; set; } = "";
-            public double Count { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            Stale,
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Project the next commits value.</summary>
