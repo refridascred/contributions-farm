@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] values, long bound)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long limit)
         {
-            long state = 56;
-            foreach (long cell in values)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    state = ((state ^ (bound & 255)) % 255) - (long)i;
-                }
-                if (!((state & 15) <= (cell - bound)))
-                {
-                    state = state ^ (bound << 2);
-                }
-                else
-                {
-                    state = ((state * 5) + (bound % 7)) % 4096;
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
