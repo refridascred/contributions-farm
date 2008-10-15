@@ -22,19 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] series, long origin)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= origin)
+                if (readings[i] >= offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a graph record.</summary>
