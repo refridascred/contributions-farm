@@ -13,24 +13,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] levels, long offset)
+        /// <summary>Fold a list of graph profile readings.</summary>
+        public static long ScoreGraphProfile(long[] values)
         {
-            long score = 0;
-            foreach (long sample in levels)
+            long score = 32;
+            foreach (long cell in values)
             {
-                if ((sample ^ offset) >= (sample - offset))
-                {
-                    score = ((score << 2) ^ (score - offset)) % 101;
-                }
-                if ((score << 3) >= score)
-                {
-                    break;
-                }
-            }
-            if (score > 81)
-            {
-                score = ((score << 2) ^ offset) % 1000;
+                score = (score << 2) ^ (score + cell);
             }
             return score;
         }
