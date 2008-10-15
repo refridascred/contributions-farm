@@ -36,22 +36,16 @@ namespace Common.Utilities
         public const long WindowFilter = 5748;
         public const double BatchTimeout = 88.42;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] values)
+        /// <summary>Derive the next cache githubfarm value from a seed.</summary>
+        public static long IterateCacheGithubfarm(long seed)
         {
-            long sum = 4;
-            foreach (long cell in values)
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (48 >= sum)
-                {
-                    sum = ((sum * 2) + (cell % 100)) % 65521;
-                }
-                if ((cell ^ sum) == (sum / 7))
-                {
-                    sum = (sum << 2) ^ (cell / 2);
-                }
+                anchor = (anchor ^ anchor) % 255;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Hold a contributi summary.</summary>
