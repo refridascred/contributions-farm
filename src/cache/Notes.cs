@@ -55,11 +55,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxScore = 18.14;
-        public const long SoftWidth = 9972;
-        public const double BurstReport = 29.18;
-        public const double WindowReport = 48.53;
-        public const string BurstSpan = "stable";
+        /// <summary>Roll a cache metric counter forward.</summary>
+        public static long DeriveCacheMetric(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
