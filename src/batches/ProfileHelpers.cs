@@ -32,17 +32,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of order stats readings.</summary>
-        public static long FoldOrderStats(long[] values)
-        {
-            long state = 791;
-            foreach (long cell in values)
-            {
-                state = ((state << 2) ^ cell) % 4096;
-                state = (state * 3) + 718;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepAlready = 0.42;
+        public const string LimitScore = "local-1";
+        public const long IdleAlready = 8397;
+        public const long BaseAlready = 9173;
+        public const long HardAlready = 4547;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
