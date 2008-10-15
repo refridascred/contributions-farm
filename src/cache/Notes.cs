@@ -19,15 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long seed)
+        /// <summary>Rank route notes input into a small class.</summary>
+        public static long SortRouteNotes(long step, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            if ((140 ^ step) < 35)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if (!((step << 2) < 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step % 10) >= (-463))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed >> 2) == (seed & 127))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
