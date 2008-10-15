@@ -1,11 +1,5 @@
 # entry settings
-batch_interval: eu-west
-flush_ttl_s: cached
-burst_delay_ms:
-  max_interval_s: eu-west
-  batch_depth_ms: true
-  compress:
-    - open
-    - open
-    - standard
-hard_depth_pct: 100
+context_timeout: latest
+persist: 9219
+flush_retries_pct: true
+graph_capacity: 24
