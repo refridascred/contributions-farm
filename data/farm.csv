@@ -1,7 +1,7 @@
-id,owner,level,active
-1,primary,standard,934
-2,912,401,86.78
-3,green,standard,35.54
-4,42.86,752,340
-5,3.04,863,536
-6,legacy,276,local
+id,rank,count
+1,23.17,staging
+2,344,strict
+3,34.27,legacy
+4,56.16,976
+5,legacy,85.1
+6,715,692
