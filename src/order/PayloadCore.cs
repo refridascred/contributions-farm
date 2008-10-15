@@ -36,18 +36,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((double)tally > (double)value)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultInterval = 7678;
+        public const long StepRatio = 5190;
+        public const long BatchAlready = 308;
+        public const long MinTimeout = 5427;
     }
 }
