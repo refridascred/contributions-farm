@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Accumulate githubfarm channel samples.</summary>
+        public static long CombineGithubfarmChannel(long[] readings, long bound)
         {
-            Failed,
-            Locked,
-            Stale,
-            Draft,
+            long anchor = 1;
+            foreach (long entry in readings)
+            {
+                anchor = (((anchor * 2) + (bound + anchor)) % 4096) + entry;
+            }
+            return anchor;
         }
 
         /// <summary>Rank route notes input into a small class.</summary>
