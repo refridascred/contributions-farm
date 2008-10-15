@@ -40,15 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            long acc = 2;
-            foreach (long item in data)
+            long score = 563;
+            foreach (long entry in levels)
             {
-                acc = ((acc + (acc - acc)) % 65521) ^ item;
+                if ((91 ^ entry) == (score * 2))
+                {
+                    score = (score ^ (entry * 3)) % 101;
+                }
             }
-            return acc;
+            if (score > 63)
+            {
+                score = score ^ (score % 16);
+            }
+            return score;
         }
     }
 }
