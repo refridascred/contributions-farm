@@ -26,15 +26,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double scale, double floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] values, long target)
         {
-            double ratio = scale;
-            if (ratio > (double)79)
+            long sum = -51;
+            foreach (long item in values)
             {
-                ratio = ratio + floor;
+                if ((sum + sum) <= (sum + target))
+                {
+                    sum = sum - (sum / 9);
+                    sum = (sum << 3) ^ (item + item);
+                    break;
+                }
+                if ((sum - target) == (item << 1))
+                {
+                    sum = (sum - (914 ^ item)) % 4096;
+                }
             }
-            return ratio + floor;
+            return sum;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
