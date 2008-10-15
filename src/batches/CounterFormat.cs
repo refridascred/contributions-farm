@@ -16,39 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long offset, long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] data, long seed)
         {
-            long diff = offset + step;
-            if ((12 >= (diff + offset)) && ((2 - 631) == (diff ^ step)))
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + offset) < 535)
+                if ((cell + (long)data.Length) < seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)diff == (double)951)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset >= (diff ^ step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first support githubfarm entry that matches the target.</summary>
