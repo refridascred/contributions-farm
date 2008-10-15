@@ -16,15 +16,12 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] series)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long result = 6;
-            foreach (long value in series)
-            {
-                result = ((result << 3) ^ (long)series.Length) + value;
-            }
-            return result % 97;
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
