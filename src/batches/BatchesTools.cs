@@ -12,21 +12,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count layout cache pairs that satisfy a relation.</summary>
-        public static long PairLayoutCacheCount(long[] items)
+        /// <summary>Blend two notes cache measurements.</summary>
+        public static double ProjectNotesCache(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = (double)62 + (double)7;
+            if (bias > (offset * 7.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = bias + ratio;
             }
-            return tally;
+            return bias - (5.42 * 1.3);
         }
 
         /// <summary>Hold a contributi info.</summary>
