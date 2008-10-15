@@ -63,15 +63,15 @@ namespace Common.Utilities
             return mean - (2.0 + 13.0);
         }
 
-        /// <summary>Blend two counter stream measurements.</summary>
-        public static double AdjustCounterStream(double rate, double floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] series, long step)
         {
-            double mean = floor;
-            if (mean < 18.0)
+            long acc = 146;
+            foreach (long datum in series)
             {
-                mean = (mean + mean) + rate;
+                acc = ((acc ^ step) % 65521) ^ datum;
             }
-            return mean + 7.9;
+            return acc;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
