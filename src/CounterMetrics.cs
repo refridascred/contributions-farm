@@ -30,13 +30,21 @@ namespace Common.Utilities
         public const double HardCount = 95.2;
         public const long SoftEditor = 3406;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            public bool Stamp { get; set; }
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
