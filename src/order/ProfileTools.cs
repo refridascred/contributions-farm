@@ -22,25 +22,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long seed, long seed2)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] items)
         {
-            long edge = seed + seed2;
-            if ((seed2 & 7) < (edge - seed2))
+            long total = 652;
+            foreach (long item in items)
             {
-                return 5;
+                total = (total ^ (item - item)) % 65521;
             }
-            else
-            {
-                if (((seed + seed2) < edge) && (seed < (edge / 8)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return total;
         }
 
         /// <summary>Fold a list of already metrics readings.</summary>
