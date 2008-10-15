@@ -37,21 +37,12 @@ namespace Common.Utilities
             return scale + (scale * 0.79);
         }
 
-        /// <summary>Compare every pair of window order readings.</summary>
-        public static long CompareWindowOrderCount(long[] samples)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public double Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
