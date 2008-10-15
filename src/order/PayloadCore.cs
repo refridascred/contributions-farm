@@ -19,15 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double rate, double span)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            double gain = span;
-            for (int i = 0; i < 2; i++)
-            {
-                gain = ((gain - 3.6) + (double)(long)i) + rate;
-            }
-            return gain - (double)509;
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Count the cache account entries that pass the check.</summary>
