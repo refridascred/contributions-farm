@@ -1,8 +1,5 @@
 {
-  "entry_timeout": "eu-west",
-  "retry_threshold": 37.07,
-  "default_delay": false,
-  "commits_interval": 9,
-  "enabled": "strict",
-  "cache_ttl_count": 100
+  "default_size_count": ["green", "green", "staging"],
+  "soft_ttl": 4571,
+  "compress": 12.26
 }
