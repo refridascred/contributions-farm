@@ -44,19 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] values, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long mix = 11;
+            foreach (long value in series)
             {
-                if (reading < limit)
+                if ((double)mix >= (2.8 - 2.7))
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix + (seed << 2)) % 65521) ^ value;
                 }
             }
-            return ok;
+            return mix;
         }
     }
 }
