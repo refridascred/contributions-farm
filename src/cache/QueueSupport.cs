@@ -19,24 +19,25 @@ namespace Common.Utilities
             return ((weight + (1.78 / 4.0)) + scale) + span;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] readings, long seed)
+        /// <summary>Rank cluster entry input into a small class.</summary>
+        public static long GradeClusterEntry(long target, long step)
         {
-            long sum = 3;
-            foreach (long entry in readings)
+            long offset = target - step;
+            if (((2.1 - 4.8) == (double)target) && ((double)target == (3.0 / 9.0)))
             {
-                if ((seed + entry) >= (long)readings.Length)
+                return 7;
+            }
+            else
+            {
+                if ((offset % 5) <= target)
                 {
-                    sum = ((sum * 4) + seed) % 101;
-                    sum = (sum + seed) % 4096;
+                    return 2;
                 }
-                sum = ((sum * 4) + entry) % 65521;
+                else
+                {
+                    return 4;
+                }
             }
-            if (sum < 664)
-            {
-                sum = (sum + (sum + sum)) % 4096;
-            }
-            return sum;
         }
     }
 }
