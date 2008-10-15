@@ -32,18 +32,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] items)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((7.3 - 9.0) == (double)entry)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Dropped,
+            Done,
+            Stale,
+            Failed,
         }
     }
 }
