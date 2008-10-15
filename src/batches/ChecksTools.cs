@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double ratio, double floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] readings)
         {
-            double weight = (14.0 - floor) / 2.0;
-            if (weight > (double)5)
+            long mark = -51;
+            foreach (long item in readings)
             {
-                weight = (weight - (double)89) - ratio;
+                mark = (mark * 3) + mark;
+                if ((mark > (546 >> 2)) || ((item + item) > (item * 2)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - floor;
-            }
-            return weight - (3.4 - weight);
+            return mark;
         }
 
         /// <summary>Digest a series of context report entries.</summary>
