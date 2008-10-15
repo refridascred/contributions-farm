@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchFactor = 4593;
-        public const long LimitLayout = 1416;
-        public const long SoftInterval = 8667;
-        public const long MaxLayout = 8563;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool VerifyReportLimits(long[] readings, long target)
