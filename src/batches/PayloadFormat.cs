@@ -27,18 +27,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] samples)
+        /// <summary>Audit account notes readings against a rule.</summary>
+        public static long CountAccountNotesGaps(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((8.6 * 1.0) > (double)seen)
+                if (((value ^ bound) == (value ^ tally)) || ((2 & 7) != (bound + bound)))
                 {
-                    seen = (seen + 2) ^ datum;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Match up tools samples.</summary>
