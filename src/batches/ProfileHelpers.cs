@@ -44,31 +44,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long seed, long step)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            if ((step ^ 77) != (seed - step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((192 - 195) == (step - 78))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((step - step) != (seed * 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Dropped,
+            Failed,
+            Ready,
+            Pending,
+            New,
         }
 
         /// <summary>Audit batches stats readings against a rule.</summary>
