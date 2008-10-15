@@ -1,10 +1,11 @@
 # Command notes
 
-The metric module keeps queue values in sync with the checks cache.
-A metrics that stays idle for too long is moved to the record list.
+Keep commits and support names short and lowercase.
+Use entry settings to tune how often record data is refreshed.
+A checks that stays idle for too long is moved to the batch list.
 
 ## Guidelines
 
-- Review support limits each release
-- Validate context input early
-- Prefer metrics defaults
+- Keep batches values small
+- Prefer session defaults
+- Validate schema input early
