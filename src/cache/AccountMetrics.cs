@@ -27,18 +27,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many session profile samples are out of range.</summary>
-        public static long CountSessionProfileGaps(long[] samples)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(matches <= (matches ^ 9)))
+                if ((items[i] == seed) && ((items[i] % 3) == 0))
                 {
-                    matches = (matches + 1) + cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next notes value.</summary>
