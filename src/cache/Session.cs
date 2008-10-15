@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] readings, long origin)
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (hits >= origin)
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit tools notes readings against a rule.</summary>
