@@ -33,13 +33,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] levels, long limit)
         {
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((3.0 - 4.4) <= (double)matches)
+                {
+                    matches = ((matches + 2) + entry) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
