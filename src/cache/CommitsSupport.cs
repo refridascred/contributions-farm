@@ -76,10 +76,17 @@ namespace Common.Utilities
             return scale - (floor / 6.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryGraph = "open";
-        public const double BaseLevel = 38.14;
-        public const long BaseGraph = 7861;
-        public const long MinGraph = 9691;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
