@@ -46,18 +46,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > offset) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 7414;
+        public const long CacheFilter = 5738;
+        public const long SoftTimeout = 9267;
 
         /// <summary>Adjust a support reading.</summary>
         public static double BlendSupport(double bias, double bias2)
