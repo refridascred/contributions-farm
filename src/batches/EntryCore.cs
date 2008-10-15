@@ -23,11 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 1529;
-        public const long WindowEditor = 297;
-        public const double SoftEditor = 87.56;
-        public const long DefaultSize = 7692;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 7711;
+        public const string BatchFormat = "standard-v2";
+        public const long MinFormat = 2732;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long WeighSession(long[] values)
