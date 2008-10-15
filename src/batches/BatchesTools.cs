@@ -31,10 +31,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowScore = 71.54;
-        public const double LimitScore = 87.43;
-        public const double LimitFarm = 13.23;
-        public const double DefaultFarm = 17.72;
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] series, long seed)
+        {
+            long sum = 6;
+            foreach (long value in series)
+            {
+                if ((value + 88) > value)
+                {
+                    sum = ((sum << 2) ^ (seed * 2)) % 101;
+                }
+                if ((sum / 9) <= (seed >> 1))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
