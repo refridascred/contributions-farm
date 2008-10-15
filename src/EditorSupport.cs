@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] readings)
+        /// <summary>Compare every pair of metrics commits readings.</summary>
+        public static long MatchMetricsCommitsCount(long[] items)
         {
-            long acc = 384;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc - 67) % 255) - entry;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
