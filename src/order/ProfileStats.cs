@@ -24,12 +24,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
+            Ready,
+            Pending,
+            Draft,
+            Done,
         }
 
         /// <summary>Hold a farm summary.</summary>
