@@ -1,21 +1,8 @@
 {
-  "min_interval_ms": "fallback",
-  "warm_limit": 47.42,
-  "batch_limit_ms": {
-    "dry_run": [209, 310, 195, 36],
-    "sync_capacity_s": false,
-    "min_threshold_ms": "primary"
-  },
-  "batch_limit_pct": {
-    "channel_ttl": 8761,
-    "audit": "open",
-    "githubfarm_capacity": [381, 41],
-    "burst_capacity": {
-      "metrics_depth": 762,
-      "burst_capacity_pct": "eu-west",
-      "default_depth": ["open", "fallback", "legacy", "strict"],
-      "record_window": "staging"
-    },
-    "batch_ratio_count": "local"
-  }
+  "counter_window": "open",
+  "record_ttl": ["legacy", "edge", "standard", "cached"],
+  "persist": "standard",
+  "support_window": ["staging", "staging", "strict"],
+  "dry_run": "stable",
+  "poll_ratio_ms": true
 }
