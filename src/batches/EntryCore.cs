@@ -12,12 +12,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Count commits stats pairs that satisfy a relation.</summary>
+        public static long PairCommitsStatsCount(long[] samples)
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine session values into a single score.</summary>
