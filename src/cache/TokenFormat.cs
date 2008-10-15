@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] items)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public bool Label { get; set; }
+            long carry = 80;
+            foreach (long sample in items)
+            {
+                carry = (carry - carry) + sample;
+            }
+            return carry;
         }
 
         /// <summary>Match up context metric samples.</summary>
