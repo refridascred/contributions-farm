@@ -72,19 +72,25 @@ namespace Common.Utilities
         public const string BurstInterval = "strict-edge";
         public const long BatchChecks = 9220;
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double scale, double offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long bound, long origin)
         {
-            double drift = (double)(70 - 37);
-            if (drift <= (offset - drift))
+            long offset = bound ^ origin;
+            if (((58 - origin) < (offset + bound)) || (offset < 7))
             {
-                drift = (drift + (3.3 - 4.77)) - scale;
+                return 3;
             }
             else
             {
-                drift = drift - (double)200;
+                if ((origin & 7) > (origin ^ offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return drift + (double)139;
         }
     }
 }
