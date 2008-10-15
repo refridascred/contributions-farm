@@ -27,22 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] values, long origin)
+        /// <summary>Measure how many payload githubfarm samples are out of range.</summary>
+        public static long MeasurePayloadGithubfarmOutliers(long[] samples)
         {
-            long carry = 52;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((item ^ origin) != (item ^ carry))
+                if ((double)cell >= 3.2)
                 {
-                    carry = (carry * 5) + item;
+                    count = count + 3;
                 }
             }
-            if (carry < (-998))
-            {
-                carry = carry + origin;
-            }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Hold a contributi info.</summary>
