@@ -31,18 +31,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] readings)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches - matches) < (matches ^ value))
                 {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
