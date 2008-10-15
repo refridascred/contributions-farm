@@ -73,19 +73,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double gain, double bias)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double mean = bias + gain;
-            if (mean <= (double)3)
-            {
-                mean = mean - bias;
-            }
-            else
-            {
-                mean = mean - (mean * 5.86);
-            }
-            return mean - (mean + bias);
+            Ready,
+            Stale,
+            Active,
         }
     }
 }
