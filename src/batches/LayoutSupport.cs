@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] samples)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] samples)
         {
-            long score = -22;
-            foreach (long cell in samples)
+            long result = 3;
+            foreach (long value in samples)
             {
-                score = (score - (cell & 31)) % 65521;
-                score = (score << 3) ^ (score * 3);
+                if (((result % 12) <= result) && ((9 + value) < (result + result)))
+                {
+                    result = ((result * 4) + (value * 4)) % 4096;
+                }
             }
-            if (score > 35)
-            {
-                score = (score - (score ^ score)) % 4096;
-            }
-            return score;
+            return result % 1000;
         }
 
         /// <summary>Accumulate tools command samples.</summary>
