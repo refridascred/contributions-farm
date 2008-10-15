@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate githubfarm channel samples.</summary>
-        public static long CombineGithubfarmChannel(long[] readings, long bound)
+        /// <summary>Roll a counter support counter forward.</summary>
+        public static long RollCounterSupport(long step)
         {
-            long anchor = 1;
-            foreach (long entry in readings)
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                anchor = (((anchor * 2) + (bound + anchor)) % 4096) + entry;
+                acc = (acc - 26) % 101;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
