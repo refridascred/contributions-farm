@@ -30,12 +30,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 7965;
-        public const double WindowBatches = 87.69;
-        public const long RetryBatches = 9924;
-        public const string LimitDepth = "cached-edge";
-        public const long BaseBatches = 4300;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long offset, long seed)
+        {
+            if ((double)offset == (double)seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset + seed) > (seed ^ 93))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((8 - offset) <= (seed - 682))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaRange(long[] levels, long floor)
