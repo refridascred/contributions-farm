@@ -60,12 +60,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheBuffer = "alpha-v2";
-        public const double WindowBuffer = 28.66;
-        public const long BurstTimeout = 5208;
-        public const long BaseBuffer = 1827;
-        public const double LimitBudget = 6.18;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Active,
+            Idle,
+            New,
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] values)
