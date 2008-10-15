@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate queue layout samples.</summary>
-        public static long DigestQueueLayout(long[] series)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] readings)
         {
-            long acc = 4;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((cell >> 4) > cell) && ((cell >> 5) > cell))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = acc ^ (cell + cell);
+                    if ((readings[i] - readings[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Rank context input into a small class.</summary>
