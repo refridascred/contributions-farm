@@ -1,11 +1,6 @@
 {
-  "poll_window_count": false,
-  "dry_run": [16, 137],
-  "burst_size": {
-    "verbose": false,
-    "idle_ttl_ms": "strict",
-    "base_depth_count": 17.63,
-    "record_timeout": 100
-  },
-  "cache_ttl": 41
+  "soft_limit_ms": "local",
+  "strict": 30,
+  "compress": 89,
+  "layout_depth": ["fallback", "green", "blue", "open"]
 }
