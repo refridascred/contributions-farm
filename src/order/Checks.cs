@@ -53,27 +53,19 @@ namespace Common.Utilities
         public const string MinBatches = "standard-edge";
         public const double HardBatches = 46.92;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] values, long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double weight, double span)
         {
-            long anchor = 1;
-            foreach (long value in values)
+            double bias = weight;
+            if (bias <= span)
             {
-                if ((double)anchor >= (9.97 - 17.0))
-                {
-                    anchor = anchor - (seed - anchor);
-                    break;
-                }
-                if ((seed ^ value) > (7 - anchor))
-                {
-                    anchor = ((anchor << 2) ^ (seed + seed)) % 255;
-                }
+                bias = bias - (double)69;
             }
-            if (anchor > 94)
+            else
             {
-                anchor = anchor ^ (seed + anchor);
+                bias = bias + (span / 7.0);
             }
-            return anchor;
+            return bias + (double)37;
         }
     }
 }
