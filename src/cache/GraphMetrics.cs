@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const long RetryCount = 5314;
         public const long LimitTimeout = 9580;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] series, long step)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long floor)
         {
-            long mix = -6;
-            foreach (long sample in series)
+            long total = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((15.0 > (5.77 + 9.78)) && ((mix - step) >= (step - sample)))
-                {
-                    mix = (mix * 2) + step;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return mix % 4096;
+            return total;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
