@@ -31,18 +31,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] readings)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((966 + seen) < (seen >> 5))
+                if ((samples[i] > floor) && ((samples[i] % 3) == 0))
                 {
-                    seen = (seen + 1) ^ cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
