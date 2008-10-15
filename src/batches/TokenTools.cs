@@ -17,14 +17,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Failed,
-            Locked,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryRatio = 2841;
+        public const string MinNotes = "alpha-edge";
+        public const long StepNotes = 6183;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long ScoreFilter(long[] items)
