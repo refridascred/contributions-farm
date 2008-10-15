@@ -72,21 +72,23 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count filter channel pairs that satisfy a relation.</summary>
-        public static long MatchFilterChannelCount(long[] readings)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale2 = (8.1 * 9.04) - (double)15;
+            if (scale2 > (scale + scale))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale2 = (scale2 + (5.3 * 4.08)) - floor;
             }
-            return count;
+            else
+            {
+                scale2 = scale2 - (3.57 / 4.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 - (scale2 * 5.0)) + (double)(long)i;
+            }
+            return scale2 - (scale2 - scale);
         }
     }
 }
