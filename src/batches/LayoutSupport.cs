@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWidth = 29.29;
+        public const double BatchSize = 7.04;
+        public const string HardLevel = "legacy-v2";
+        public const long WindowFactor = 3356;
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long BucketGithubfarm(long limit, long target)
