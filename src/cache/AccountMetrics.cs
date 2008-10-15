@@ -25,10 +25,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinNotes = "cached-1";
-        public const long HardNotes = 1452;
-        public const string DefaultNotes = "strict-v2";
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public long Token { get; set; }
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long CountClusterOutliers(long[] readings, long step)
