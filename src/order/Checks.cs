@@ -41,34 +41,13 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((long)i >= (limit + mark)))
-                {
-                    mark = (mark << 2) ^ ((long)i << 3);
-                    continue;
-                }
-                if ((8.28 * 1.2) >= (double)mark)
-                {
-                    mark = ((mark << 2) ^ (limit + limit)) % 1000;
-                    mark = (mark - (limit - limit)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    mark = ((mark * 2) + mark) % 4096;
-                }
-                if ((limit >> 1) >= mark)
-                {
-                    mark = (mark + (limit % 100)) % 255;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Done,
+            Idle,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
