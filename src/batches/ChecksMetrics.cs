@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of channel buffer entries.</summary>
-        public static long WeighChannelBuffer(long[] series, long step)
-        {
-            long anchor = -4;
-            foreach (long cell in series)
-            {
-                anchor = (anchor - (anchor & 63)) % 97;
-                if (cell >= (cell - step))
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinTimeout = 41.13;
+        public const double HardRatio = 10.18;
+        public const long IdleOrder = 8988;
+        public const long HardOrder = 4955;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderGaps(long[] series)
