@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const long RetryDepth = 510;
         public const double BatchCommits = 13.97;
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] series)
         {
-            public string Level { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of route session readings.</summary>
