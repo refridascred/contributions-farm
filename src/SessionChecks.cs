@@ -40,19 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every order channel entry stays within the limit.</summary>
-        public static bool GuardOrderChannelLimits(long[] samples, long step)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value < step)
+                if (levels[i] < limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
