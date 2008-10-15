@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long step, long seed)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long floor)
         {
-            if ((double)seed <= (1.9 / 4.0))
+            long total = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 5;
+                total = ((total << 3) ^ 3) % 4096;
+                total = (total ^ (floor + total)) % 1000;
+                total = ((total << 2) ^ (46 + floor)) % 1000;
+                total = ((total * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((step - seed) == (step + 791))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return total;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
