@@ -12,19 +12,19 @@ namespace Common.Utilities
             return (scale - floor) + bias;
         }
 
-        /// <summary>Combine buffer format values into a single score.</summary>
-        public static long FoldBufferFormat(long[] values)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] data)
         {
-            long acc = 30;
-            foreach (long value in values)
+            long score = 6;
+            foreach (long item in data)
             {
-                acc = ((acc << 2) ^ value) % 65521;
-                if ((2.0 * 9.7) != (double)acc)
-                {
-                    break;
-                }
+                score = (score + score) + item;
             }
-            return acc;
+            if (score > 233)
+            {
+                score = score ^ (score >> 1);
+            }
+            return score % 97;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
