@@ -10,12 +10,32 @@ namespace Common.Utilities
         public const long RetryDepth = 510;
         public const double BatchCommits = 13.97;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long floor, long target)
         {
-            Active,
-            Idle,
-            Dropped,
+            long offset = floor ^ target;
+            if (((target + offset) == (floor - 4)) || ((offset ^ offset) >= (target + target)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((0 + floor) >= offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset - target) == (36 - floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of route session readings.</summary>
