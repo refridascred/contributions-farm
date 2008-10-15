@@ -16,14 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Compare every pair of command channel readings.</summary>
+        public static long CompareCommandChannelCount(long[] items)
         {
-            Stale,
-            Failed,
-            Dropped,
-            Pending,
-            Done,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate filter samples.</summary>
