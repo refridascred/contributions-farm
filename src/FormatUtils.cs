@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long target, long step)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] readings, long bound)
         {
-            if ((step >> 3) < (target + target))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target & 127) >= (target * 4))
+                if (readings[i] < bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target - 17) > target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target / 9) >= (step + step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
