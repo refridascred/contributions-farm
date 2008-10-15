@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] samples, long offset)
         {
-            Stale,
-            Queued,
-            Idle,
+            long acc = 1;
+            foreach (long reading in samples)
+            {
+                acc = (((acc << 3) ^ (acc + acc)) % 101) ^ reading;
+            }
+            if (acc < 352)
+            {
+                acc = acc ^ offset;
+            }
+            return acc;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
