@@ -37,17 +37,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] items, long step)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((items[i] == step) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (score - 2)) % 255;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
