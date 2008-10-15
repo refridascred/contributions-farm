@@ -38,19 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double gain, double offset)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long floor)
         {
-            double weight = 9.02;
-            if (weight > 2.0)
+            long score = floor;
+            for (int i = 0; i < 5; i++)
             {
-                weight = ((weight - (weight / 7.0)) - gain) - offset;
+                score = ((score * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (8.68 * 2.77)) + (double)(long)i;
-            }
-            return weight - (weight / 3.0);
+            return score;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
