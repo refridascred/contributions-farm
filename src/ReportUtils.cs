@@ -13,19 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] values, long origin)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Digest a series of route entries.</summary>
