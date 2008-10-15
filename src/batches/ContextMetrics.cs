@@ -31,26 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of support already readings.</summary>
-        public static long FoldSupportAlready(long[] readings)
+        /// <summary>Locate a farm report reading by value.</summary>
+        public static long FindFarmReportIndex(long[] samples, long step)
         {
-            long anchor = -12;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)anchor <= (double)reading))
+                if ((samples[i] > step) && ((samples[i] % 3) != 0))
                 {
-                    anchor = ((anchor * 2) + (reading >> 3)) % 65521;
-                }
-                if ((32 >> 2) == ((-4) + reading))
-                {
-                    anchor = ((anchor * 2) + (long)readings.Length) % 4096;
+                    return (long)i;
                 }
             }
-            if (anchor < 4)
-            {
-                anchor = (anchor * 2) + anchor;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Project the next batch value.</summary>
