@@ -13,12 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchDepth = "standard";
-        public const long WindowEditor = 4585;
-        public const double CacheEditor = 29.94;
-        public const double LimitLevel = 38.61;
-        public const string BaseEditor = "legacy";
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Closed,
+            Locked,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long WeighQueue(long[] values, long target)
