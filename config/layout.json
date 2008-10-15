@@ -1,7 +1,7 @@
 {
-  "metrics_retries": 60,
-  "flush_capacity_pct": ["latest", "cached", "eu-west"],
-  "audit": ["cached", "green", "strict"],
-  "base_window": false,
-  "batch_delay": "fallback"
+  "format_depth": 35,
+  "warm_depth_s": true,
+  "hard_ttl": "standard",
+  "stream_limit": 348,
+  "warm_ratio_s": ["strict", "blue"]
 }
