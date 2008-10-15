@@ -11,26 +11,11 @@ namespace Common.Utilities
         public const long IdleBudget = 9241;
         public const string DefaultChannel = "cached";
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long seed, long seed2)
-        {
-            long prev = seed ^ seed2;
-            if ((prev % 12) < (prev + 795))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((5.53 - 4.52) == (double)prev)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultTimeout = "legacy";
+        public const double RetryTimeout = 87.81;
+        public const long HardTimeout = 4379;
+        public const double StepWindow = 94.27;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long MeasureRecordMatches(long[] levels, long offset)
