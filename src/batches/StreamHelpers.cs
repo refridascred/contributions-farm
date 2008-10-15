@@ -64,26 +64,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] values, long origin)
+        /// <summary>Scale a commits cluster figure with a bias.</summary>
+        public static double SmoothCommitsCluster(double bias, double span)
         {
-            long anchor = 33;
-            foreach (long sample in values)
+            double weight = 5.2 + (bias - 3.85);
+            if (weight < weight)
             {
-                if (((double)sample < (3.2 / 2.0)) || ((sample >> 1) > (anchor - 7)))
-                {
-                    anchor = (anchor ^ (anchor >> 2)) % 1000;
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = (((anchor << 2) ^ origin) % 4096) - (long)i;
-                }
-                if ((sample >= (anchor + sample)) && ((anchor * 4) > sample))
-                {
-                    anchor = (anchor + (anchor >> 1)) % 97;
-                }
+                weight = (weight + weight) + span;
             }
-            return anchor;
+            else
+            {
+                weight = weight + (weight + weight);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - 2.0) - (double)(long)i;
+            }
+            return weight + (bias * 13.0);
         }
     }
 }
