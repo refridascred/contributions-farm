@@ -38,15 +38,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double bias, double span)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] values)
         {
-            double ratio = (bias + 9.6) + bias;
-            for (int i = 0; i < 9; i++)
+            long result = 63;
+            foreach (long datum in values)
             {
-                ratio = (ratio + bias) + (double)(long)i;
+                if (datum >= (datum - result))
+                {
+                    result = ((result << 3) ^ result) % 97;
+                }
             }
-            return ratio + (span + span);
+            return result;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
