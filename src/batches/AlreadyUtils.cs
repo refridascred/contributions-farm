@@ -36,15 +36,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double ratio, double bias)
+        /// <summary>Grade a notes cluster value against two limits.</summary>
+        public static long ClassifyNotesCluster(long target, long seed)
         {
-            double gain = (double)(10 + 689);
-            for (int i = 0; i < 6; i++)
+            if ((5.84 + 3.3) == (double)target)
             {
-                gain = ((gain - (bias - gain)) + (double)(long)i) - ratio;
+                return 4;
             }
-            return gain + gain;
+            else
+            {
+                if (seed > target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a batches options.</summary>
