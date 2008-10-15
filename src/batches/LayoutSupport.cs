@@ -49,12 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 581;
-        public const long LimitMetric = 2068;
-        public const long MaxMetric = 8403;
-        public const long CacheSize = 9607;
-        public const long HardMetric = 2087;
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
         public static long BucketProfileBuffer(long offset, long origin)
