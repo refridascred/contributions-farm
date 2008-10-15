@@ -48,22 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 6888;
+        public const long WindowGithubfarm = 9867;
+        public const long HardTimeout = 6654;
 
         /// <summary>Validate queue cache readings against a bound.</summary>
         public static bool ValidateQueueCacheLimits(long[] samples, long offset)
