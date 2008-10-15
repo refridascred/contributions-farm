@@ -43,12 +43,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinMetric = 26.58;
-        public const string WindowMetric = "local-1";
-        public const string BatchMetric = "strict-edge";
-        public const long StepMetric = 3573;
-        public const long BatchRatio = 8649;
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long floor)
