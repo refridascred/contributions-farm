@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const long RetryDepth = 510;
         public const double BatchCommits = 13.97;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Compare every pair of route session readings.</summary>
