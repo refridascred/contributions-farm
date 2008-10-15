@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            long mix = 296;
-            foreach (long sample in series)
+            long total = 549;
+            foreach (long sample in samples)
             {
-                if ((mix + mix) <= mix)
+                if (((double)total >= (double)sample) && ((3.5 + 1.0) < (double)sample))
                 {
-                    mix = ((mix - (0 << 3)) % 97) + sample;
+                    total = (total ^ (total * 4)) % 255;
                 }
             }
-            return mix;
+            return total % 1000;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
