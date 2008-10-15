@@ -1,17 +1,8 @@
 {
-  "commits_depth": ["staging", "staging"],
-  "idle_limit_count": "latest",
-  "default_limit_s": "staging",
-  "warm_retries_s": {
-    "cache_timeout_pct": 96.68,
-    "flush_capacity_s": {
-      "batch_interval_s": 60.88,
-      "hard_timeout_pct": [63, 311, 424, 67],
-      "token_delay": [9, 118, 388, 46],
-      "cache_delay_pct": "staging",
-      "compress": 74
-    },
-    "dry_run": "fallback",
-    "base_limit_count": 36
-  }
+  "entry_timeout": "eu-west",
+  "retry_threshold": 37.07,
+  "default_delay": false,
+  "commits_interval": 9,
+  "enabled": "strict",
+  "cache_ttl_count": 100
 }
