@@ -46,18 +46,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many counter support samples are out of range.</summary>
-        public static long MeasureCounterSupportHits(long[] samples)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((1.96 - 7.0) < (double)value)
+                if ((hits * 4) < (floor ^ floor))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 2) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
