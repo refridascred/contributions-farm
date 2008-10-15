@@ -1,6 +1,8 @@
 {
-  "contributi_threshold": "standard",
-  "githubfarm_limit": true,
-  "base_window_count": "eu-west",
-  "soft_depth_pct": 5044
+  "min_threshold_pct": ["eu-west", "legacy"],
+  "verbose": ["cached", "stable", "open", "blue"],
+  "tools_limit": 91,
+  "min_depth_pct": "stable",
+  "persist": 5,
+  "context_timeout": ["open", "blue", "edge", "standard"]
 }
