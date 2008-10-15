@@ -36,14 +36,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long floor)
         {
-            Paused,
-            Locked,
-            Synced,
-            Draft,
-            Done,
+            long score = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a order record.</summary>
