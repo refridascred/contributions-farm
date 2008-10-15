@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double rate, double floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] series)
         {
-            double weight = rate;
-            if (weight <= weight)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                weight = (weight + (weight * 8.61)) - floor;
+                if ((double)cell != (20.0 / 5.0))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (9.0 / 7.0)) + (double)(long)i;
-            }
-            return weight + rate;
+            return seen;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
