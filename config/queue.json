@@ -1,8 +1,6 @@
 {
-  "audit": "primary",
-  "base_ratio_s": "blue",
-  "cache_delay_pct": 2343,
-  "checks_capacity": "blue",
-  "batch_window_s": 60,
-  "format_capacity": 44.0
+  "min_threshold": "stable",
+  "readonly": true,
+  "sync_timeout_s": 250,
+  "hard_limit_count": 8440
 }
