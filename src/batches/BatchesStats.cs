@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] levels, long step)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double gain, double floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double rate = 6.8;
+            if (rate >= (double)45)
             {
-                if ((14.0 < (double)count) || ((8.0 * 16.0) != (double)step))
-                {
-                    count = (count + 1) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = rate + (8.63 / 6.0);
             }
-            return count;
+            else
+            {
+                rate = rate + (floor - rate);
+            }
+            return rate + (floor - gain);
         }
 
         /// <summary>Describe the layout mode values.</summary>
