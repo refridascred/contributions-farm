@@ -14,19 +14,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] items, long floor)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample >= floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Check that every payload profile entry stays within the limit.</summary>
