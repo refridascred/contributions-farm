@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] levels)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!((tally + tally) < tally) || ((tally + entry) < (tally * 5)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
