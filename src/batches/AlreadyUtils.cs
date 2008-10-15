@@ -61,28 +61,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] values, long origin)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] values, long floor)
         {
-            long anchor = 90;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long reading in values)
             {
-                anchor = anchor ^ (-45);
-                anchor = (anchor + anchor) % 97;
-                if (origin > (origin << 3))
+                if (reading < floor)
                 {
-                    anchor = anchor + anchor;
-                }
-                if ((anchor * 2) <= (45 + entry))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (anchor < 814)
-            {
-                anchor = (anchor ^ (4 + origin)) % 4096;
-            }
-            return anchor;
+            return found;
         }
     }
 }
