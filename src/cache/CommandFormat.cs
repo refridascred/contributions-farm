@@ -35,12 +35,22 @@ namespace Common.Utilities
         public const long MinBudget = 810;
         public const string RetryBudget = "strict-edge";
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] samples)
         {
-            Pending,
-            Done,
-            Synced,
+            long anchor = 146;
+            foreach (long entry in samples)
+            {
+                if ((anchor / 6) < (anchor & 31))
+                {
+                    anchor = anchor ^ (entry & 127);
+                }
+                if (!((anchor * 4) == (anchor - anchor)))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
