@@ -1,7 +1,8 @@
 {
-  "idle_delay_pct": "local",
-  "warm_window": 500,
-  "buffer_size": 25.38,
-  "retry_depth_ms": "open",
-  "batch_delay_count": "legacy"
+  "min_delay": "stable",
+  "githubfarm_threshold": 8296,
+  "soft_ttl": "primary",
+  "context_ratio": false,
+  "min_size_count": "fallback",
+  "command_ratio": 9699
 }
