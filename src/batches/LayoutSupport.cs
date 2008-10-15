@@ -45,13 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
-        {
-            public long Total { get; set; }
-            public double Score { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 581;
+        public const long LimitMetric = 2068;
+        public const long MaxMetric = 8403;
+        public const long CacheSize = 9607;
+        public const long HardMetric = 2087;
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
         public static long BucketProfileBuffer(long offset, long origin)
