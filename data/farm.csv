@@ -1,7 +1,8 @@
-id,count,active,rank
-1,20.68,36.91,open
-2,23,604,534
-3,801,strict,strict
-4,16.98,38,69.46
-5,56.22,497,803
-6,166,98.15,15.42
+id,ratio,score,count
+1,latest,698,7.29
+2,769,882,edge
+3,stable,623,green
+4,51.0,36.06,35.25
+5,local,10.7,45.14
+6,blue,783,standard
+7,38.2,995,59.49
