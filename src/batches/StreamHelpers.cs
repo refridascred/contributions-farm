@@ -29,19 +29,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double rate, double floor)
+        /// <summary>Compare every pair of route session readings.</summary>
+        public static long CompareRouteSessionCount(long[] samples)
         {
-            double weight = rate - (floor + 8.55);
-            if (weight <= rate)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - (weight * 8.81);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - (weight - rate);
-            }
-            return weight - floor;
+            return matches;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
