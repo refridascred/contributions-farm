@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] items)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (((-700) ^ reading) != (count + reading))
+                if (value < limit)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Iterate the context batches series from a seed.</summary>
