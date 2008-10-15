@@ -27,11 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 3921;
-        public const double BurstFilter = 90.92;
-        public const long MinFilter = 4450;
-        public const long BurstDepth = 6922;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Paused,
+            Active,
+            Queued,
+        }
 
         /// <summary>Validate queue cache readings against a bound.</summary>
         public static bool ValidateQueueCacheLimits(long[] samples, long offset)
