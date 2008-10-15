@@ -1,12 +1,27 @@
 # githubfarm settings
-cluster_retries: 14.53
-filter_capacity:
-  - eu-west
-  - green
+burst_window_count: 500
+persist:
+  batch_ttl_pct: 71.73
+  default_interval: latest
+  default_threshold_s:
+    - blue
+    - fallback
+  min_depth_ms: 60
+  audit: 37
+base_retries_s: 100
+support_depth:
+  - open
   - latest
-dry_run:
-  - 135
-  - 15
-  - 226
-  - 267
-warm_retries: eu-west
+  - latest
+  - local
+buffer_delay: 92
+default_limit:
+  soft_capacity_s: 52
+  warm_ratio_count: edge
+  max_interval_s: latest
+  hard_limit_count: 29
+  poll_capacity_ms:
+    - green
+    - stable
+    - blue
+  account_ttl: standard
