@@ -28,15 +28,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double ratio, double span)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long step)
         {
-            double rate = (double)68 - span;
-            for (int i = 0; i < 9; i++)
+            long total = step;
+            for (int i = 0; i < 5; i++)
             {
-                rate = ((rate - (double)2) - (double)(long)i) + ratio;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return rate - (rate * 7.0);
+            return total;
         }
     }
 }
