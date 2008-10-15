@@ -1,16 +1,16 @@
 # Command notes
 
-A format that stays idle for too long is moved to the token list.
-Each entry is validated before it reaches the format queue.
-Defaults for metrics live in the config folder and can be overridden per environment.
+Run the payload check before changing any buffer limits.
+The tools report groups every counter by notes.
+Defaults for entry live in the config folder and can be overridden per environment.
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-The profile report groups every channel by metric.
-Each route is validated before it reaches the metrics queue.
+The notes module keeps window values in sync with the channel cache.
+The graph helpers are pure functions, so they are safe to call from any thread.
+Each graph is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Prefer window defaults
-- Log every record change
-- Validate profile input early
-- Review contributi limits each release
+- Document new graph fields
+- Validate cache input early
+- Keep command values small
+- Review route limits each release
