@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next filter entry value from a seed.</summary>
-        public static long RollFilterEntry(long bound)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double rate, double floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            double weight = rate;
+            if (weight <= weight)
             {
-                mix = ((mix * 2) + (mix & 255)) % 4096;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = (mix ^ (bound + mix)) ^ (long)i2;
-                }
-                mix = (mix * 2) + bound;
-                mix = ((mix * 5) + (long)i) % 4093;
+                weight = (weight + (weight * 8.61)) - floor;
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (9.0 / 7.0)) + (double)(long)i;
+            }
+            return weight + rate;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
