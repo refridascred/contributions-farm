@@ -44,18 +44,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of layout buffer readings.</summary>
-        public static long MatchLayoutBufferCount(long[] samples)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] readings, long limit)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (hits < sample)
                 {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + limit;
                 }
             }
             return hits;
