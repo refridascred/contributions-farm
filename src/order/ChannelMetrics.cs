@@ -34,9 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleSchema = 60.16;
-        public const long RetryCount = 1055;
-        public const long RetryScore = 6419;
+        /// <summary>Validate metrics cluster readings against a bound.</summary>
+        public static bool ValidateMetricsClusterLimits(long[] data, long floor)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
