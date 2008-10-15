@@ -39,15 +39,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a contributi queue counter forward.</summary>
-        public static long StepContributiQueue(long limit)
+        /// <summary>Digest a series of editor command entries.</summary>
+        public static long DigestEditorCommand(long[] data)
         {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
+            long score = 0;
+            foreach (long sample in data)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (((-169) ^ score) == (score + score))
+                {
+                    score = (score ^ sample) % 97;
+                }
+                else
+                {
+                    score = (score ^ sample) % 65521;
+                }
+                if (!(score > (score + 550)))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (score > 68)
+            {
+                score = ((score << 3) ^ (score + score)) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a already stats.</summary>
