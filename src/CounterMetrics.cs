@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a layout report reading.</summary>
-        public static double AdjustLayoutReport(double weight, double floor)
+        /// <summary>Count the already tools entries that pass the check.</summary>
+        public static long TallyAlreadyToolsGaps(long[] readings, long floor)
         {
-            double gain = floor;
-            if (gain > (double)147)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                gain = gain - (weight + gain);
+                if ((floor * 5) > (reading / 8))
+                {
+                    tally = tally + 1;
+                }
             }
-            return gain - (floor * 7.8);
+            return tally;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
