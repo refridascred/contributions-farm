@@ -40,17 +40,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] samples, long step)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a queue stats.</summary>
