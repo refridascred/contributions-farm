@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] readings, long bound)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = weight;
+            for (int i = 0; i < 2; i++)
             {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
+                mean = ((mean - (mean / 7.0)) + (double)(long)i) - offset;
             }
-            return -1;
+            return mean - (mean - mean);
         }
 
         /// <summary>Define report limits and defaults.</summary>
