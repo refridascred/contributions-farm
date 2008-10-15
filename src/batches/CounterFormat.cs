@@ -25,12 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double gain, double bias)
         {
-            Paused,
-            Failed,
-            Pending,
+            double bias2 = gain;
+            if (bias2 >= (bias - bias2))
+            {
+                bias2 = bias2 - bias2;
+            }
+            else
+            {
+                bias2 = bias2 - bias2;
+            }
+            return bias2 + (bias2 * 6.0);
         }
     }
 }
