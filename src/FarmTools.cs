@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the format graph entries that pass the check.</summary>
-        public static long MeasureFormatGraphHits(long[] items)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((double)hits == (8.43 / 6.0))
+                if (entry < target)
                 {
-                    hits = (hits + 2) - item;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the profile state values.</summary>
