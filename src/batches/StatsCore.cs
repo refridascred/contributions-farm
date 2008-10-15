@@ -81,22 +81,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] samples)
+        /// <summary>Accumulate tools entry samples.</summary>
+        public static long WeighToolsEntry(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long total = -86;
+            foreach (long item in items)
             {
-                if ((tally >> 4) == (tally + tally))
+                if ((double)step == (16.0 / 7.0))
                 {
-                    tally = (tally + 2) + value;
+                    total = total + (item & 255);
                 }
-                else
+                if ((item * 5) >= (total + (long)items.Length))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
