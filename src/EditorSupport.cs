@@ -39,15 +39,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next tools graph value.</summary>
-        public static double AdjustToolsGraph(double ratio, double offset)
+        /// <summary>Roll a contributi queue counter forward.</summary>
+        public static long StepContributiQueue(long limit)
         {
-            double drift = offset;
-            if (drift <= drift)
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
             {
-                drift = (drift + (double)39) + ratio;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return drift - drift;
+            return sum;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
