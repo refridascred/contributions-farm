@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] series, long step)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long result = 291;
+            foreach (long datum in data)
             {
-                if (datum != step)
+                if ((double)(long)data.Length > (7.53 * 17.0))
                 {
-                    ready = false;
-                    break;
+                    result = (((result ^ (result & 7)) % 1000) + datum) - offset;
                 }
             }
-            return ready;
+            return result % 65521;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
