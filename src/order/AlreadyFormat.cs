@@ -69,22 +69,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] readings, long offset)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] series, long floor)
         {
-            long total = 167;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)total <= (19.0 + 6.0))
+                if ((series[i] > floor) && ((series[i] % 5) == 0))
                 {
-                    total = ((total ^ (total + datum)) % 97) + offset;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (datum * 5)) % 101;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
     }
 }
