@@ -53,19 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
+            long total = 603;
+            foreach (long datum in items)
             {
-                if (!((7.0 + 3.66) != (double)(long)i))
+                if ((5.2 - 6.0) == (double)total)
                 {
-                    mark = (mark << 3) ^ 4;
+                    total = (((total * 4) + (total - total)) % 1000) - datum;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
