@@ -14,15 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] values)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                total = ((total * 2) + (long)i) % 97;
+                if (!((value >= (count & 127)) || (value >= (count << 1))))
+                {
+                    count = count + 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Classify a queue tools pair into a bucket.</summary>
