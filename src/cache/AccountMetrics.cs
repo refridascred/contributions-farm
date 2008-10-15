@@ -59,13 +59,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Done,
-            Pending,
-            Failed,
-            Synced,
+            Ready,
+            Closed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Digest a series of session entries.</summary>
