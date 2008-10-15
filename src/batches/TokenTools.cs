@@ -32,19 +32,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] items, long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] items)
         {
-            long total = 95;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                total = ((total + (step >> 4)) % 255) + item;
+                if ((7.3 - 9.0) == (double)entry)
+                {
+                    hits = hits + 2;
+                }
             }
-            if (total < 7)
-            {
-                total = total ^ step;
-            }
-            return total;
+            return hits;
         }
     }
 }
