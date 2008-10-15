@@ -31,19 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every payload profile entry stays within the limit.</summary>
-        public static bool GuardPayloadProfileBounds(long[] levels, long bound)
+        /// <summary>Look up the position of a batches buffer sample.</summary>
+        public static long LocateBatchesBufferIndex(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample >= bound)
+                if (items[i] < bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
