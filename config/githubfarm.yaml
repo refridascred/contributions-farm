@@ -1,7 +1,4 @@
 # githubfarm settings
-poll_ratio_ms: strict
-max_capacity_s:
-  - 95
-  - 313
-audit: 60
-burst_depth_pct: 74.55
+tools_delay: legacy
+cache_depth: true
+batch_capacity_s: 6277
