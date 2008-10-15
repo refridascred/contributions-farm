@@ -12,22 +12,10 @@ namespace Common.Utilities
             return load - (offset + load);
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseTimeout = 2858;
+        public const long SoftWidth = 8744;
+        public const long StepStats = 3521;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long DefaultInterval = 4443;
