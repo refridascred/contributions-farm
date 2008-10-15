@@ -14,15 +14,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] samples, long seed)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] values)
         {
             long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell / 2) > (117 + 69))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 1) - seed;
+                    if ((values[i] ^ values[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
