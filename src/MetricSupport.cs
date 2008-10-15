@@ -51,11 +51,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long offset, long target)
         {
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
+            long gap = offset - target;
+            if (!((double)offset > (7.71 / 7.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((gap ^ gap) != (target + offset)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (target < (gap + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((95 + gap) != (gap << 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
