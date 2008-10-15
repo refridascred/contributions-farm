@@ -1,19 +1,8 @@
 {
-  "dry_run": 69.0,
-  "account_ttl": true,
-  "hard_capacity_ms": ["legacy", "local", "legacy"],
-  "persist": "edge",
-  "soft_depth_pct": {
-    "cache_limit_ms": false,
-    "entry_window": "stable",
-    "burst_threshold_s": {
-      "poll_depth_pct": "fallback",
-      "cluster_capacity": ["standard", "cached", "local", "stable"],
-      "base_size": 0.41,
-      "default_size": "strict",
-      "idle_retries_ms": "latest",
-      "min_depth_ms": "primary"
-    }
-  },
-  "flush_ttl_ms": 52.07
+  "enabled": 250,
+  "compress": false,
+  "dry_run": 95.01,
+  "tools_size": true,
+  "session_window": 23.99,
+  "tools_ratio": 7754
 }
