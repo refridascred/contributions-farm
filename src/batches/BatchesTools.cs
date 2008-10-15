@@ -21,32 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a record buffer value against two limits.</summary>
-        public static long GradeRecordBuffer(long target, long bound)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long edge = target - bound;
-            if ((double)edge >= (8.75 * 4.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((4.0 + 4.0) != (double)edge) && ((edge & 7) >= (edge + (-440))))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((edge ^ 2) < (bound + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up record samples.</summary>
