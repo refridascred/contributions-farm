@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] samples)
         {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
+            long carry = 945;
+            foreach (long value in samples)
             {
-                anchor = ((anchor * 5) + target) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                carry = carry ^ (87 / 5);
+                if ((carry ^ value) > carry)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (carry < 313)
+            {
+                carry = carry ^ (carry & 255);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
