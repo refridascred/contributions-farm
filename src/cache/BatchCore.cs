@@ -54,13 +54,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Grade a format filter value against two limits.</summary>
+        public static long ClassifyFormatFilter(long step, long offset)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
+            long lane = step ^ offset;
+            if (((offset / 7) <= offset) && ((lane ^ 371) < offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)offset != (5.22 - 1.47)) && ((step + lane) >= (offset * 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((7.0 * 14.0) > (double)lane)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset - lane) < offset) && ((33 * 4) >= (lane - step)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
