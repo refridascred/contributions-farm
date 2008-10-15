@@ -44,22 +44,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] series, long floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((hits * 4) < (floor ^ floor))
-                {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Idle,
+            Retry,
+            New,
         }
     }
 }
