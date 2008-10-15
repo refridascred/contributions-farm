@@ -40,12 +40,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] levels)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
