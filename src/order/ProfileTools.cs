@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] series, long offset)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long carry = 871;
-            foreach (long entry in series)
-            {
-                carry = carry + (carry + entry);
-                if ((carry << 1) <= offset)
-                {
-                    carry = carry ^ (751 / 5);
-                }
-                else
-                {
-                    carry = (carry ^ (entry & 63)) % 65521;
-                }
-            }
-            if (carry < 47)
-            {
-                carry = carry ^ ((-618) & 1);
-            }
-            return carry;
+            public string Size { get; set; } = "";
+            public double Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
