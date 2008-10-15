@@ -12,6 +12,9 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-for item in stable strict eu-west; do
+for item in blue primary standard; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=59
+log "limit is ${RECORD_LIMIT}"
