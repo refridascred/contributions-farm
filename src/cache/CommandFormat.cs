@@ -13,19 +13,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] items, long floor)
+        /// <summary>Derive the next githubfarm cluster value from a seed.</summary>
+        public static long StepGithubfarmCluster(long seed)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading <= floor)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    ready = false;
-                    break;
+                    long delta = seed;
+                    result = (result ^ (delta ^ 48)) ^ (long)i2;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
