@@ -11,24 +11,12 @@ namespace Common.Utilities
         public const string HardQueue = "standard-v2";
         public const long BurstDepth = 2037;
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((mark >= (mark << 1)) && ((limit / 7) > 41))
-                {
-                    break;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = (((mark * 2) + ((long)i * 2)) % 255) ^ (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinInterval = "strict-edge";
+        public const long LimitScore = 3870;
+        public const double BatchGraph = 14.48;
+        public const string MinFactor = "cached-v2";
+        public const long CacheGraph = 7950;
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long GradeToken(long target, long bound)
