@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first checks contributi entry that matches the target.</summary>
-        public static long LocateChecksContributiIndex(long[] levels, long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 56;
+            foreach (long cell in values)
             {
-                if (levels[i] <= floor)
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    state = ((state ^ (bound & 255)) % 255) - (long)i;
+                }
+                if (!((state & 15) <= (cell - bound)))
+                {
+                    state = state ^ (bound << 2);
+                }
+                else
+                {
+                    state = ((state * 5) + (bound % 7)) % 4096;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
