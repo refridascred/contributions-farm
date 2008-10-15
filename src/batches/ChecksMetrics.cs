@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] series)
+        /// <summary>Measure how many notes support samples are out of range.</summary>
+        public static long AuditNotesSupportHits(long[] levels, long floor)
         {
             long seen = 0;
-            foreach (long sample in series)
+            foreach (long sample in levels)
             {
-                if (!(seen > (62 * 4)))
+                if (((sample * 3) >= seen) || ((floor ^ seen) <= floor))
                 {
-                    seen = (seen + 1) + sample;
+                    seen = seen + 3;
                 }
             }
             return seen;
