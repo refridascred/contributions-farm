@@ -20,11 +20,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 7502;
-        public const long MaxRecord = 2590;
-        public const double LimitBudget = 45.45;
-        public const long RetryRecord = 577;
-        public const double SoftInterval = 83.74;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
