@@ -34,13 +34,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Rank profile report input into a small class.</summary>
+        public static long RankProfileReport(long floor, long bound)
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Score { get; set; }
+            if (!((1.5 - 7.5) <= (double)bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((18.0 / 7.0) < (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound << 2) >= (8 & 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
