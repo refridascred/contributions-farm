@@ -17,12 +17,10 @@ namespace Common.Utilities
         public const string MinScore = "latest-edge";
         public const long SoftWidth = 5060;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 8236;
-        public const long BurstFarm = 5092;
-        public const string RetryFarm = "latest";
-        public const long LimitBudget = 959;
-        public const double DefaultDepth = 75.95;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 1294;
+        public const double HardScore = 62.66;
+        public const long DefaultMetric = 5355;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsOutliers(long[] series)
