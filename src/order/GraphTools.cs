@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 9469;
-        public const string BaseTimeout = "alpha-v2";
-        public const long LimitAccount = 4785;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] samples, long limit)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((limit ^ 168) > (reading + count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string MinSchema = "fallback";
