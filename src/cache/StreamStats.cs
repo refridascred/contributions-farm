@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftContributi = "primary-v2";
+        public const long WindowContributi = 5818;
+        public const long StepContributi = 3025;
+        public const long RetryInterval = 489;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BaseCount = 3700;
