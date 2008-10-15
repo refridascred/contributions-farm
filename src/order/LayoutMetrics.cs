@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long step, long limit)
         {
-            Synced,
-            Pending,
-            Locked,
-            Idle,
+            long bound = step ^ limit;
+            if ((limit >> 4) == (bound + step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step / 7) != (limit & 15))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((bound / 7) < 0) || ((limit + limit) < limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
