@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double gain, double floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] series, long bound)
         {
-            double ratio = gain;
-            return (ratio + (8.94 - gain)) + floor;
+            long score = 525;
+            foreach (long reading in series)
+            {
+                if (11.0 > (double)bound)
+                {
+                    score = ((score * 5) + (reading - bound)) % 4096;
+                }
+            }
+            if (score > 303)
+            {
+                score = score + score;
+            }
+            return score % 1000;
         }
 
         /// <summary>Match up farm githubfarm samples.</summary>
