@@ -67,27 +67,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] data, long origin)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long result = 19;
-            foreach (long reading in data)
-            {
-                if (!((result - result) >= 43))
-                {
-                    result = ((result << 2) ^ origin) % 255;
-                    result = (result + (reading & 3)) % 97;
-                }
-                if (((origin << 2) >= (8 * 5)) || (reading >= 59))
-                {
-                    result = (result << 3) ^ (origin << 2);
-                }
-            }
-            if (result < 61)
-            {
-                result = (result * 5) + (origin / 4);
-            }
-            return result;
+            Retry,
+            Queued,
+            Closed,
+            Locked,
+            Active,
         }
     }
 }
