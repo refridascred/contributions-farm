@@ -59,36 +59,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] values)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] items, long step)
         {
-            long carry = 91;
-            foreach (long value in values)
+            long score = 0;
+            foreach (long entry in items)
             {
-                double weight = (double)(1 - 45);
-                if ((double)value >= (weight / 3.0))
-                {
-                    carry = (carry << 2) ^ 862;
-                    carry = carry + carry;
-                }
-                if (((value ^ value) < (value + value)) || (649 <= value))
-                {
-                    carry = ((carry << 2) ^ carry) % 97;
-                }
-                else
-                {
-                    carry = carry ^ (value + carry);
-                }
-                if ((carry <= (carry << 3)) || (value > (value + carry)))
-                {
-                    break;
-                }
+                score = (((score - (559 - score)) % 4096) ^ entry) - step;
             }
-            if (carry < 44)
-            {
-                carry = (carry ^ (carry * 3)) % 97;
-            }
-            return carry % 1000;
+            return score;
         }
     }
 }
