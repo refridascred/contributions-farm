@@ -30,18 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] samples, long floor)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((floor <= (hits + floor)) && ((double)floor > (2.0 / 9.0))) || ((0 >> 5) == (floor >> 4)))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
