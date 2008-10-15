@@ -14,19 +14,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Fold a list of report commits readings.</summary>
-        public static long DigestReportCommits(long[] items)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double scale, double span)
         {
-            long total = 888;
-            foreach (long entry in items)
+            double mean = 6.98;
+            if (mean > 9.0)
             {
-                total = (total - (total - 300)) - entry;
+                mean = ((mean + (double)40) + scale) + span;
             }
-            if (total < 338)
-            {
-                total = ((total * 2) + (224 * 3)) % 255;
-            }
-            return total;
+            return mean + (mean / 7.0);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
