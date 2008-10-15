@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] items, long seed)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long state = 165;
-            foreach (long item in items)
-            {
-                state = (state + (item * 2)) % 101;
-                state = ((state * 2) + (item + item)) % 1000;
-                state = ((state * 2) + seed) % 4096;
-                if (((double)state == (5.5 * 4.3)) || ((2.83 * 17.0) == (double)item))
-                {
-                    break;
-                }
-            }
-            return state;
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
