@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double scale, double floor)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            double mean = scale;
-            if (mean <= scale)
-            {
-                mean = (mean + 7.7) - floor;
-            }
-            else
-            {
-                mean = mean - (mean * 3.72);
-            }
-            return mean - 14.0;
+            Idle,
+            Draft,
+            Pending,
+            Synced,
         }
 
         /// <summary>Fold a list of counter metric readings.</summary>
