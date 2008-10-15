@@ -33,15 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double gain, double bias)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            double ratio = (double)0 - gain;
-            if (ratio > (ratio * 0.9))
-            {
-                ratio = ratio + bias;
-            }
-            return ratio + (ratio - ratio);
+            public double Limit { get; set; }
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
