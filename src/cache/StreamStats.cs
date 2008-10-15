@@ -49,31 +49,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] series)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long origin)
         {
-            long mark = 53;
-            foreach (long sample in series)
+            long result = origin;
+            for (int i = 0; i < 24; i++)
             {
-                for (int i = 0; i < 11; i++)
+                long span = (origin ^ result) & 15;
+                if (((205 - span) < origin) || ((origin % 16) > (span << 3)))
                 {
-                    mark = ((mark << 2) ^ (mark >> 2)) - (long)i;
+                    span = (span << 3) ^ (span % 60);
                 }
-                mark = (mark - (mark & 1)) % 255;
-                if (!((sample << 1) <= mark))
+                if (result < (9 ^ result))
                 {
-                    mark = mark ^ (sample + mark);
+                    span = (span + (origin + origin)) % 97;
                 }
-                if ((sample - mark) <= sample)
-                {
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            if (mark < 2)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 255;
-            }
-            return mark;
+            return result;
         }
     }
 }
