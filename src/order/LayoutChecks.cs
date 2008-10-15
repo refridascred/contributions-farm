@@ -59,19 +59,30 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the counter support series from a seed.</summary>
-        public static long StepCounterSupport(long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
+            long result = 729;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((double)datum >= (1.3 + 2.86))
                 {
-                    sum = ((sum << 3) ^ (-82)) ^ (long)i2;
+                    result = ((result * 2) + (datum + result)) % 97;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
+                else
+                {
+                    result = result + (datum - datum);
+                }
+                if (!((datum >> 1) != (datum - datum)))
+                {
+                    result = (result + result) % 65521;
+                }
+                else
+                {
+                    result = (result * 2) + (312 + result);
+                }
             }
-            return sum;
+            return result % 65521;
         }
 
         /// <summary>Adjust a profile reading.</summary>
