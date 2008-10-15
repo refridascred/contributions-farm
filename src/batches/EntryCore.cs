@@ -31,16 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long floor)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = (acc + (floor + (long)i)) % 1000;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            Paused,
+            Closed,
+            Queued,
         }
 
         /// <summary>Adjust a cache reading.</summary>
