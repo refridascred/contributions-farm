@@ -1,13 +1,25 @@
 {
-  "default_limit": true,
-  "commits_window": false,
-  "max_delay": {
-    "audit": ["latest", "legacy", "eu-west", "primary"],
-    "channel_size": [208, 392, 457],
-    "default_threshold": false,
-    "soft_ttl_count": ["standard", "blue", "staging"]
+  "idle_limit_count": "cached",
+  "soft_delay_s": {
+    "min_window_count": [142, 234],
+    "idle_ttl": "staging",
+    "persist": 1
   },
-  "default_threshold_s": 45.01,
-  "soft_interval_s": 72,
-  "stats_capacity": "staging"
+  "warm_retries": {
+    "support_retries": "legacy",
+    "idle_limit": [275, 345, 143, 357],
+    "max_window_pct": "standard"
+  },
+  "base_ttl_s": 95.3,
+  "verbose": {
+    "graph_ttl": {
+      "persist": [155, 249, 294, 69],
+      "compress": "blue",
+      "buffer_size": 7080
+    },
+    "report_retries": "fallback",
+    "poll_retries_count": true,
+    "editor_limit": "local",
+    "min_threshold_count": ["strict", "primary"]
+  }
 }
