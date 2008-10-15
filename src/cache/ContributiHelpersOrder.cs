@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] items, long origin)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long anchor = 22;
-            foreach (long value in items)
-            {
-                anchor = (anchor + (value << 2)) - origin;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Roll a entry counter forward.</summary>
