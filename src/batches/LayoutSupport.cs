@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const double BatchInterval = 11.9;
         public const double BatchOrder = 18.98;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] readings)
-        {
-            long state = 39;
-            foreach (long datum in readings)
-            {
-                state = ((state ^ state) % 101) ^ datum;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxTimeout = 6425;
+        public const long MinChannel = 4752;
+        public const string SoftSize = "primary-edge";
+        public const long BurstChannel = 1803;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
