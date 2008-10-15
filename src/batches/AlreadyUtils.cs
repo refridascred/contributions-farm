@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] values, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] readings, long step)
         {
-            long score = 995;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (((-5) - value) < (0 + seed))
+                if ((double)(long)readings.Length > (2.0 + 4.7))
                 {
-                    score = (score * 2) + value;
-                }
-                else
-                {
-                    score = (score ^ (score ^ seed)) % 65521;
+                    tally = ((tally + 1) + value) + step;
                 }
             }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Rank route input into a small class.</summary>
