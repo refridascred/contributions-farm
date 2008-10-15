@@ -37,21 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] items, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((offset - 17) < (offset / 5)))
+                if ((items[i] == step) && ((items[i] % 5) != 0))
                 {
-                    mark = mark ^ (mark >> 3);
-                    mark = ((mark * 3) + ((long)i << 1)) % 101;
+                    return (long)i;
                 }
-                mark = mark + (mark % 24);
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
     }
 }
