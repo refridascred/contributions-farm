@@ -41,12 +41,16 @@ namespace Common.Utilities
         public const long BatchWindow = 3102;
         public const long RetryWindow = 4397;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long limit)
         {
-            public bool Score { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = (mark - (25 ^ mark)) % 101;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
