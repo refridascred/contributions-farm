@@ -1,8 +1,16 @@
 {
-  "counter_window": "open",
-  "record_ttl": ["legacy", "edge", "standard", "cached"],
-  "persist": "standard",
-  "support_window": ["staging", "staging", "strict"],
-  "dry_run": "stable",
-  "poll_ratio_ms": true
+  "compress": {
+    "audit": "primary",
+    "base_limit_ms": 70.05,
+    "report_interval": 554,
+    "farm_window": 500,
+    "default_depth_count": [114, 227, 358],
+    "warm_capacity_s": false
+  },
+  "audit": "primary",
+  "warm_limit_s": {
+    "record_depth": "latest",
+    "metric_timeout": false,
+    "min_capacity_count": [75, 478]
+  }
 }
