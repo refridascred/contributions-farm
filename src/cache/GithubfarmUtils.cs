@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] levels, long limit)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell << 2) <= 81)
+                {
+                    seen = (seen + 1) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
