@@ -58,18 +58,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] series, long offset)
+        /// <summary>Compare every pair of counter cluster readings.</summary>
+        public static long OverlapCounterClusterCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches < (offset * 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) + entry;
+                    if ((samples[i] ^ samples[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Blend two filter measurements.</summary>
