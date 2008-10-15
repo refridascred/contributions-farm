@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] items)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] items)
         {
-            long carry = 80;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                carry = (carry - carry) + sample;
+                if ((datum - datum) <= (datum + datum))
+                {
+                    seen = seen + 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Match up context metric samples.</summary>
