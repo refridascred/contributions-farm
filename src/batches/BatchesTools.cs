@@ -29,19 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] samples, long target)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Mode { get; set; }
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
