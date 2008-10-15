@@ -14,22 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleContext = 40.05;
+        public const string DefaultTimeout = "stable-v2";
+        public const double RetryContext = 79.98;
+        public const double BurstContext = 0.72;
 
         /// <summary>Blend two notes measurements.</summary>
         public static double ScaleNotes(double scale, double span)
