@@ -40,38 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long origin, long offset)
+        /// <summary>Count the editor buffer entries that pass the check.</summary>
+        public static long MeasureEditorBufferHits(long[] data, long step)
         {
-            if ((17 + origin) <= offset)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin << 3) >= (origin % 3))
+                if (((step + 6) > (823 >> 5)) && ((((long)data.Length & 63) <= reading) && ((124 % 12) <= (hits - reading))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((756 + 891) != (origin % 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (0.2 < 20.0)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a cache reading.</summary>
