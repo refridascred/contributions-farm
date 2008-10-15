@@ -16,12 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Iterate the stream notes series from a seed.</summary>
+        public static long StepStreamNotes(long step)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            long state = step;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of route entries.</summary>
