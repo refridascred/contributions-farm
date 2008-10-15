@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] data, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (entry > bound)
+                if (!!((hits / 5) >= reading))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) + bound;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
