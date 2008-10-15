@@ -62,17 +62,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] values, long offset)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((values[i] > offset) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the command class values.</summary>
