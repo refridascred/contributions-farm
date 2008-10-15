@@ -1,4 +1,7 @@
 # entry settings
-flush_size: 947
-batch_retries_s: 80.42
-poll_delay: 22.7
+default_retries_count: latest
+readonly: standard
+commits_threshold:
+  - staging
+  - fallback
+  - open
