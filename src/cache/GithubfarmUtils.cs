@@ -20,18 +20,31 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long target, long seed)
         {
-            long mark = 71;
-            foreach (long datum in items)
+            if ((seed - target) == (seed / 2))
             {
-                if ((291 ^ mark) >= mark)
+                return 3;
+            }
+            else
+            {
+                if ((double)seed < (5.31 + 5.9))
                 {
-                    mark = (((mark << 3) ^ (mark / 6)) % 97) - datum;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed == (13.0 * 0.24))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
