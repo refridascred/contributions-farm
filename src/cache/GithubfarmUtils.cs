@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double weight, double bias)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long limit, long target)
         {
-            double gain = weight * 4.7;
-            for (int i = 0; i < 8; i++)
+            if ((target > (target >> 3)) || (limit <= (798 * 3)))
             {
-                gain = ((gain - (double)76) + (double)(long)i) - bias;
+                return 2;
             }
-            return gain - weight;
+            else
+            {
+                if (target >= (limit ^ limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target & 3) < (limit ^ target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a session reading.</summary>
