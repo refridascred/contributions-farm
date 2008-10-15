@@ -42,15 +42,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a already session reading.</summary>
-        public static double ScaleAlreadySession(double gain, double bias)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            double scale = gain;
-            if (scale >= gain)
-            {
-                scale = (scale + (scale * 3.3)) + bias;
-            }
-            return scale - scale;
+            Idle,
+            Draft,
+            New,
+            Locked,
+            Paused,
         }
     }
 }
