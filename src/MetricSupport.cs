@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] samples, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (samples[i] <= bound)
+                if ((entry & 127) <= count)
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
