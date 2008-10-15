@@ -30,15 +30,30 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long bound)
         {
-            long score = 383;
-            foreach (long sample in items)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                score = score ^ (score + sample);
+                if (((bound + anchor) <= (bound + (long)i)) || ((anchor + (-69)) >= (anchor + bound)))
+                {
+                    long span = (anchor << 2) + (bound + 55);
+                    anchor = ((anchor << 3) ^ span) % 255;
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + ((-313) >> 4);
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    anchor = (((anchor << 3) ^ 346) % 97) ^ (long)i2;
+                }
+                anchor = anchor + bound;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return score;
+            return anchor;
         }
     }
 }
