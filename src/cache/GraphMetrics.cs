@@ -40,17 +40,39 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] values, long step)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long floor, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long step = floor + target;
+            if ((floor ^ target) != (floor / 5))
             {
-                if ((values[i] > step) && ((values[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((8.09 / 6.0) < (double)floor)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((9.49 - 5.28) >= (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor << 3) != (step + target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
