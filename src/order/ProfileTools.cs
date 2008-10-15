@@ -13,22 +13,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of token tools entries.</summary>
-        public static long CombineTokenTools(long[] series)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long acc = 740;
-            foreach (long datum in series)
-            {
-                if ((double)datum >= (7.0 / 6.0))
-                {
-                    acc = (acc ^ (acc * 5)) % 4096;
-                }
-                if ((datum / 6) <= (acc + datum))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
