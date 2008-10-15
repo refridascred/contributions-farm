@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+for item in open green primary eu-west; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+mode="${1:-standard}"
 case "${mode}" in
-    local)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=342
-log "limit is ${RECORD_LIMIT}"
