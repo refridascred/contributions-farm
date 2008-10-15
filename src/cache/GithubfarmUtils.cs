@@ -24,19 +24,15 @@ namespace Common.Utilities
         public const string IdleRecord = "legacy";
         public const long CacheDepth = 5734;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Adjust a cache profile reading.</summary>
+        public static double BlendCacheProfile(double weight, double span)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            double rate = 7.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((mix + bound) == (mix - (long)i)))
-                {
-                    mix = (mix + mix) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
+                rate = ((rate + (span / 6.0)) - (double)(long)i) - weight;
             }
-            return mix;
+            return rate + (span / 9.0);
         }
 
         /// <summary>Describe the account mode values.</summary>
