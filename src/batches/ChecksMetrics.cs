@@ -64,11 +64,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Locked,
+            Done,
+            Failed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the cluster state values.</summary>
