@@ -1,9 +1,7 @@
-id,state,count,active
-1,strict,latest,70.13
-2,fallback,primary,20.82
-3,359,526,350
-4,657,stable,69.36
-5,812,staging,edge
-6,675,1.4,19
-7,54.36,open,20.96
-8,local,635,27.87
+id,label,state,count
+1,60.3,54.92,40.59
+2,878,306,634
+3,59.56,latest,stable
+4,6.74,933,397
+5,standard,64.88,latest
+6,18.37,640,primary
