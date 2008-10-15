@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] values, long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long bound, long limit)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long gap = bound ^ limit;
+            if ((limit - gap) <= 52)
             {
-                if (cell < limit)
+                return 2;
+            }
+            else
+            {
+                if (((double)limit != (double)bound) || ((8 + limit) < (bound / 4)))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ok;
         }
 
         /// <summary>Count context batches pairs that satisfy a relation.</summary>
