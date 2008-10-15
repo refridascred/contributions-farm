@@ -43,11 +43,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Project the next tools command value.</summary>
+        public static double SmoothToolsCommand(double bias, double bias2)
         {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
+            double load = bias;
+            return (load + (double)(-81)) + bias2;
         }
 
         /// <summary>Define token limits and defaults.</summary>
