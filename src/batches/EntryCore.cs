@@ -31,11 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 6828;
-        public const long WindowQueue = 7033;
-        public const string MaxScore = "primary-v2";
-        public const long BaseSize = 3642;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxRoute = "open-1";
+        public const long RetryRoute = 4577;
+        public const long RetryCount = 2319;
+        public const long WindowScore = 7193;
+        public const long HardRoute = 9473;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long WeighNotes(long[] data)
