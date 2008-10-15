@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long floor, long bound)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long limit)
         {
-            if (!(floor > (bound / 3)))
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
+                acc = acc ^ limit;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (floor > bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound / 3) >= floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Accumulate route samples.</summary>
