@@ -64,18 +64,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] samples, long limit)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] values)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long sum = 255;
+            foreach (long cell in values)
             {
-                if ((double)limit != (4.4 + 0.9))
+                if ((cell > (cell - cell)) && ((double)(long)values.Length < (double)sum))
                 {
-                    count = (count + 3) ^ entry;
+                    sum = ((sum << 2) ^ 147) % 65521;
+                    break;
                 }
+                else
+                {
+                    sum = ((sum << 2) ^ 9) % 1000;
+                    sum = (sum * 5) + cell;
+                }
+                sum = sum - (3 - sum);
+                sum = sum + (cell * 2);
             }
-            return count;
+            if (sum > 231)
+            {
+                sum = ((sum * 3) + (sum >> 2)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
