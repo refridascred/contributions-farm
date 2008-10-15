@@ -73,18 +73,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] series, long bound)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (9.41 <= (double)bound)
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a editor snapshot.</summary>
