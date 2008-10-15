@@ -34,11 +34,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Measure how many route entry samples are out of range.</summary>
+        public static long TallyRouteEntryMatches(long[] data, long seed)
         {
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((4.25 - 18.0) >= (double)item)
+                {
+                    tally = (tally + 1) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
