@@ -37,21 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up queue report samples.</summary>
-        public static long CompareQueueReportCount(long[] items)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a session summary.</summary>
