@@ -31,12 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] samples)
         {
-            Synced,
-            Draft,
-            Idle,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (!(((matches << 3) > (5 + (-34))) && (6 < (entry % 60))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a account entry.</summary>
