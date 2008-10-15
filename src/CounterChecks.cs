@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] series)
+        /// <summary>Validate editor counter readings against a bound.</summary>
+        public static bool ValidateEditorCounterLimits(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (((long)series.Length % 97) == (hits + hits))
+                if (value > floor)
                 {
-                    hits = (hits + 1) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
