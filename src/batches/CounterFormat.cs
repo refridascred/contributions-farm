@@ -14,22 +14,39 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit layout token readings against a rule.</summary>
-        public static long MeasureLayoutTokenGaps(long[] readings)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long offset, long step)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long diff = offset + step;
+            if ((12 >= (diff + offset)) && ((2 - 631) == (diff ^ step)))
             {
-                if (((count - count) == (count + entry)) || !((entry << 1) >= count))
+                return 7;
+            }
+            else
+            {
+                if ((step + offset) < 535)
                 {
-                    count = count + 2;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)diff == (double)951)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset >= (diff ^ step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Match up batches samples.</summary>
