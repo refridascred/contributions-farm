@@ -14,11 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long origin)
         {
-            public long Region { get; set; }
-            public double Offset { get; set; }
+            long total = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Classify a queue tools pair into a bucket.</summary>
