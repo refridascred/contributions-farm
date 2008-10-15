@@ -1,6 +1,5 @@
 {
-  "soft_retries_count": 16,
-  "max_threshold_ms": 1732,
-  "enabled": 7,
-  "base_interval": "green"
+  "route_timeout": false,
+  "checks_timeout": [1, 359, 453],
+  "sync_size_count": 47.03
 }
