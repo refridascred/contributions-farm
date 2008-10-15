@@ -19,12 +19,19 @@ namespace Common.Utilities
         public const string LimitEntry = "alpha-edge";
         public const long SoftEntry = 9079;
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] data, long offset)
         {
-            public double Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
