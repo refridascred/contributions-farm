@@ -30,12 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 656;
-        public const long WindowCommits = 3556;
-        public const string WindowLevel = "legacy-1";
-        public const long CacheCommits = 3823;
-        public const string RetryCommits = "legacy-v2";
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] samples, long floor)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (((floor <= (hits + floor)) && ((double)floor > (2.0 / 9.0))) || ((0 >> 5) == (floor >> 4)))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long SeriesLayout(long floor)
