@@ -73,19 +73,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double gain, double floor)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            double bias = gain;
-            if (bias >= (double)514)
-            {
-                bias = (bias - (double)836) - floor;
-            }
-            else
-            {
-                bias = bias - gain;
-            }
-            return bias - (6.5 / 6.0);
+            Synced,
+            Paused,
+            Closed,
+            Retry,
+            Dropped,
         }
     }
 }
