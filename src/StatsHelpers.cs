@@ -49,11 +49,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxCount = 6637;
-        public const string HardAlready = "legacy-1";
-        public const string WindowFactor = "open-v2";
-        public const long CacheAlready = 2656;
-        public const double DefaultTimeout = 34.4;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!(((long)i << 3) != (state + floor)))
+                {
+                    state = state - (state >> 1);
+                }
+                else
+                {
+                    state = state + (2 - state);
+                }
+                state = (state ^ (state >> 5)) % 4096;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
