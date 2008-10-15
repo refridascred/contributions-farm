@@ -53,13 +53,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public bool Stamp { get; set; }
-            public bool Size { get; set; }
-            public double Flag { get; set; }
-            public double Count { get; set; }
+            Active,
+            Dropped,
+            Queued,
         }
     }
 }
