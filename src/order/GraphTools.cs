@@ -42,12 +42,9 @@ namespace Common.Utilities
             return gain + (gain * 5.0);
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Queued,
-            Active,
-            Synced,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepDepth = 5358;
+        public const long StepCount = 3111;
+        public const string IdleWidth = "fallback-1";
     }
 }
