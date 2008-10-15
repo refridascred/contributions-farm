@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Check that every cache window entry stays within the limit.</summary>
+        public static bool CheckCacheWindowBounds(long[] values, long bound)
         {
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
