@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] readings, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] data, long bound)
         {
             long count = 0;
-            foreach (long value in readings)
+            foreach (long item in data)
             {
-                if ((double)value >= (9.0 - 0.97))
+                if (((double)item == (double)(-5)) && (item < (count ^ item)))
                 {
-                    count = (count + 3) - seed;
+                    count = (count + 1) - bound;
                 }
             }
             return count;
