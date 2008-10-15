@@ -31,23 +31,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double ratio, double bias)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] levels, long step)
         {
-            double scale = (double)966 / 9.0;
-            if (scale < bias)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale - (bias / 4.0);
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (8.6 + 2.7);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (ratio / 8.0)) + (double)(long)i;
-            }
-            return scale - ratio;
+            return -1;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
