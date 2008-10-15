@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Synced,
-            Failed,
             Idle,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define token limits and defaults.</summary>
