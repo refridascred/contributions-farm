@@ -49,16 +49,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] levels, long target)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] items)
         {
-            long total = 649;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total - (target / 4)) % 97) + sample;
-                total = ((total * 2) + (target + target)) % 255;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Rank metrics format input into a small class.</summary>
