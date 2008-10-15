@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] readings)
         {
-            Stale,
-            Closed,
-            Pending,
-            Synced,
+            long state = 975;
+            foreach (long value in readings)
+            {
+                if (!!((state ^ value) <= value))
+                {
+                    state = state + (state / 4);
+                }
+                if ((state << 2) >= (value + state))
+                {
+                    state = ((state << 2) ^ (state & 31)) % 1000;
+                }
+            }
+            if (state > 76)
+            {
+                state = ((state << 3) ^ state) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Measure how many session profile samples are out of range.</summary>
