@@ -32,26 +32,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine stats checks values into a single score.</summary>
-        public static long FoldStatsChecks(long[] samples)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] samples, long limit)
         {
-            long carry = 6;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((0.54 - 13.0) <= (double)carry)
+                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
                 {
-                    carry = carry + (item & 7);
-                }
-                if (((double)carry > (double)item) || ((double)carry < (double)item))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 9)
-            {
-                carry = (carry + (55 + carry)) % 65521;
-            }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
