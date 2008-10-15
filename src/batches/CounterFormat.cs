@@ -25,18 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] samples, long limit)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (((seen % 64) <= seen) && (sample > (171 * 5)))
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
+            Paused,
+            Failed,
+            Pending,
         }
     }
 }
