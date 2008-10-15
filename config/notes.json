@@ -1,17 +1,8 @@
 {
-  "base_retries_count": 69,
-  "sync_limit_pct": {
-    "command_retries": {
-      "default_depth": 28.74,
-      "already_depth": 16.78,
-      "retry_interval_pct": "latest",
-      "idle_window_s": ["fallback", "eu-west"],
-      "burst_ttl_s": "stable",
-      "verbose": 250
-    },
-    "idle_capacity": "eu-west",
-    "default_limit": false,
-    "verbose": 73.32
-  },
-  "filter_interval": 99
+  "persist": 7015,
+  "readonly": true,
+  "sync_retries_ms": 94.1,
+  "soft_threshold_ms": [69, 380],
+  "sync_ttl_count": "standard",
+  "default_size_ms": "green"
 }
