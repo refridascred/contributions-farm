@@ -73,12 +73,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] samples, long target)
         {
-            Ready,
-            Stale,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
