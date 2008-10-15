@@ -20,19 +20,13 @@ namespace Common.Utilities
         public const long BaseLevel = 7608;
         public const string BurstSchema = "cached-v2";
 
-        /// <summary>Validate githubfarm buffer readings against a bound.</summary>
-        public static bool GuardGithubfarmBufferLimits(long[] values, long floor)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
