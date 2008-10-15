@@ -17,15 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double scale, double floor)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double gain = floor;
-            if (gain < (floor * 5.0))
-            {
-                gain = (gain - floor) + scale;
-            }
-            return gain - floor;
+            Failed,
+            Locked,
+            Closed,
+            Paused,
         }
 
         /// <summary>Accumulate filter samples.</summary>
