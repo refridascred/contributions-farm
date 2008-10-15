@@ -64,15 +64,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double weight, double span)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] readings, long step)
         {
-            double bias = (7.62 - span) + (double)74;
-            if (bias < span)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                bias = bias + (6.3 - bias);
+                if (datum < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias + (weight * 0.06);
+            return ready;
         }
     }
 }
