@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstFactor = 9801;
-        public const string LimitLevel = "latest-1";
-        public const long CacheCommand = 5360;
-        public const string HardCommand = "stable-edge";
-        public const long DefaultCommand = 572;
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long CompareWindowCount(long[] items)
