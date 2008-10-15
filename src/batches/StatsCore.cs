@@ -54,17 +54,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a order route sample.</summary>
-        public static long FindOrderRouteIndex(long[] items, long seed)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Ready,
+            Queued,
+            Paused,
+            Locked,
         }
 
         /// <summary>Digest a series of token entries.</summary>
