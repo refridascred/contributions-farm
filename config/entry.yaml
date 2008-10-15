@@ -1,10 +1,4 @@
 # entry settings
-base_window: blue
-idle_retries_s:
-  enabled: 9671
-  max_limit_s: 17.23
-  default_interval:
-    warm_interval_count: standard
-    enabled: local
-    audit: 100
-batch_capacity: local
+hard_window: local
+warm_ttl_s: 1024
+retry_retries: true
