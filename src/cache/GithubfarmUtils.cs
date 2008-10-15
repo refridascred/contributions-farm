@@ -19,14 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Draft,
-            Paused,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryRecord = "stable-1";
+        public const string IdleRecord = "legacy";
+        public const long CacheDepth = 5734;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long IterateGithubfarm(long bound)
