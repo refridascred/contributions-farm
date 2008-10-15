@@ -23,13 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double weight, double offset)
         {
-            public bool Limit { get; set; }
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
+            double bias = 1.6;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = ((bias + bias) + (double)(long)i) + offset;
+            }
+            return bias + weight;
         }
 
         /// <summary>Check that every metric queue entry stays within the limit.</summary>
