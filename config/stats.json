@@ -1,12 +1,11 @@
 {
-  "sync_limit_ms": false,
-  "batch_interval": ["legacy", "fallback"],
-  "soft_size": "cached",
-  "idle_timeout_s": {
-    "strict": "cached",
-    "readonly": 1024,
-    "compress": 53.66,
-    "poll_delay": ["eu-west", "eu-west", "stable"]
+  "poll_window_count": false,
+  "dry_run": [16, 137],
+  "burst_size": {
+    "verbose": false,
+    "idle_ttl_ms": "strict",
+    "base_depth_count": 17.63,
+    "record_timeout": 100
   },
-  "audit": 2083
+  "cache_ttl": 41
 }
