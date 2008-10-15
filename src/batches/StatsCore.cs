@@ -54,14 +54,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            New,
-            Ready,
-            Queued,
-            Paused,
             Locked,
+            Paused,
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Digest a series of token entries.</summary>
