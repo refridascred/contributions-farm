@@ -48,22 +48,9 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate cache contributi samples.</summary>
-        public static long TotalCacheContributi(long[] values)
-        {
-            long mix = 7;
-            foreach (long cell in values)
-            {
-                if ((double)cell < (3.99 / 2.0))
-                {
-                    mix = ((mix << 2) ^ 895) % 65521;
-                }
-                else
-                {
-                    mix = ((mix * 4) + cell) % 65521;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheChecks = "standard-v2";
+        public const string MaxTimeout = "open-1";
+        public const long IdleChecks = 8352;
     }
 }
