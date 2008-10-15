@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] data, long seed)
         {
-            Paused,
-            Ready,
-            Pending,
-            Retry,
+            long state = 5;
+            foreach (long cell in data)
+            {
+                if (!(0 < seed))
+                {
+                    state = state - (8 ^ state);
+                }
+                if ((double)cell < (8.6 * 3.6))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
