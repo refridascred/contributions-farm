@@ -41,17 +41,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] samples, long seed)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = offset;
+            return (ratio + (ratio + ratio)) + scale;
         }
 
         /// <summary>Digest a series of filter farm entries.</summary>
