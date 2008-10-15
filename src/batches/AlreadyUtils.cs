@@ -19,24 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long offset, long seed)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] levels)
         {
-            if ((1.0 - 8.1) >= (double)offset)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset & 3) < seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
