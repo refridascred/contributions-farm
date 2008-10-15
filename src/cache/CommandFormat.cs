@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a githubfarm context sample.</summary>
-        public static long LocateGithubfarmContextIndex(long[] readings, long target)
+        /// <summary>Grade a window channel value against two limits.</summary>
+        public static long GradeWindowChannel(long bound, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long gap = bound + limit;
+            if ((double)gap < 0.68)
             {
-                if ((readings[i] > target) && ((readings[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((5.0 + 2.93) < (double)gap)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit + bound) > limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit > (46 + limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the session account entries that pass the check.</summary>
