@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the order metric series from a seed.</summary>
-        public static long DeriveOrderMetric(long limit)
+        /// <summary>Audit account report readings against a rule.</summary>
+        public static long MeasureAccountReportHits(long[] samples)
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (!((value + (-7)) <= (hits ^ 6)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a format info.</summary>
