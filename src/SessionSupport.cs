@@ -27,12 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            Ready,
+            Locked,
+            Draft,
         }
     }
 }
