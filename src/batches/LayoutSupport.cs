@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] samples)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long result = 3;
-            foreach (long value in samples)
-            {
-                if (((result % 12) <= result) && ((9 + value) < (result + result)))
-                {
-                    result = ((result * 4) + (value * 4)) % 4096;
-                }
-            }
-            return result % 1000;
+            public bool Flag { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
