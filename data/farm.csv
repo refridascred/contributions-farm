@@ -1,7 +1,8 @@
-id,token,weight
-1,795,edge
-2,152,20.48
-3,511,blue
-4,78.05,269
-5,eu-west,3
-6,96.9,65.71
+id,ratio,score,weight
+1,431,473,stable
+2,882,80.05,290
+3,33.39,green,695
+4,611,latest,162
+5,fallback,89.45,878
+6,705,119,20
+7,legacy,72.72,834
