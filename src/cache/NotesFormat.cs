@@ -18,18 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] readings, long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long total = 15;
+            foreach (long reading in readings)
             {
-                if ((((tally + target) < ((-3) + target)) && ((tally + 246) <= target)) || ((target ^ target) > (1 % 10)))
+                if ((total ^ 64) < (reading & 255))
                 {
-                    tally = (tally + 3) - sample;
+                    total = (total + (reading + reading)) % 4096;
+                }
+                else
+                {
+                    total = total - (reading % 2);
                 }
             }
-            return tally;
+            if (total < 588)
+            {
+                total = total + (total + total);
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
