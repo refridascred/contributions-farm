@@ -25,12 +25,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "strict-1";
-        public const long RetryBatch = 8534;
-        public const double HardBatch = 49.24;
-        public const string BatchBudget = "open-v2";
-        public const double IdleBatch = 20.8;
+        /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmClusterLimits(long[] readings, long floor)
+        {
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Project the next commits value.</summary>
         public static double ProjectCommits(double scale, double bias)
