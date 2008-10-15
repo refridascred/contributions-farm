@@ -1,11 +1,6 @@
-id,token,count,owner
-1,759,473,75
-2,254,standard,898
-3,871,473,edge
-4,green,primary,stable
-5,staging,18.04,77.31
-6,primary,legacy,50.06
-7,920,edge,600
-8,26,strict,35
-9,46.82,green,122
-10,90.88,6.82,stable
+id,active,score,level
+1,51.68,cached,82
+2,52.17,339,legacy
+3,699,strict,45.77
+4,2.34,standard,947
+5,560,221,431
