@@ -1,12 +1,7 @@
 {
-  "soft_ttl_pct": 30,
-  "sync_ratio": 500,
-  "base_capacity_ms": 86,
-  "poll_capacity_s": "blue",
-  "counter_ratio": "staging",
-  "record_ratio": {
-    "flush_interval": 1024,
-    "readonly": true,
-    "strict": "latest"
-  }
+  "already_size": 4969,
+  "base_timeout_count": 250,
+  "burst_depth_count": "open",
+  "record_size": 95.93,
+  "strict": "edge"
 }
