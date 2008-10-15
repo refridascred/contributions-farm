@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double weight, double floor)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double mean = 1.84;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = ((mean + (floor + floor)) + (double)(long)i) - weight;
-            }
-            return mean + floor;
+            Draft,
+            Pending,
+            Paused,
         }
 
         /// <summary>Combine commits graph values into a single score.</summary>
