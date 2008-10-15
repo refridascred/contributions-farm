@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] values, long target)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Size { get; set; }
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Iterate the order route series from a seed.</summary>
