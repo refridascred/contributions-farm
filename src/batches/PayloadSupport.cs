@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of stream route readings.</summary>
-        public static long PairStreamRouteCount(long[] values)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Match up account samples.</summary>
