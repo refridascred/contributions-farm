@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of channel counter readings.</summary>
-        public static long ScoreChannelCounter(long[] readings, long floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] readings, long floor)
         {
-            long total = -6;
-            foreach (long entry in readings)
+            long sum = 236;
+            foreach (long reading in readings)
             {
-                for (int i = 0; i < 8; i++)
+                if (((reading / 7) <= (reading / 4)) && ((reading - floor) <= reading))
                 {
-                    total = (((total * 2) + floor) + (long)i) - entry;
+                    sum = (sum << 3) ^ (sum >> 5);
                 }
-                if ((floor & 1) < total)
+                else
                 {
-                    total = (total + ((-1) + 4)) % 97;
-                    continue;
+                    sum = sum - (reading * 2);
                 }
-                total = (total * 5) + (-556);
             }
-            return total % 97;
+            if (sum > (-960))
+            {
+                sum = sum + (904 + (long)readings.Length);
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
