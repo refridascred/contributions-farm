@@ -44,22 +44,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] samples)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((long)samples.Length / 5) <= reading)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Paused,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Audit order profile readings against a rule.</summary>
