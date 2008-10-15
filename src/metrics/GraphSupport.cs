@@ -50,22 +50,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] readings)
+        /// <summary>Roll a report metric counter forward.</summary>
+        public static long DeriveReportMetric(long seed)
         {
-            long acc = 48;
-            foreach (long reading in readings)
+            long state = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((long)readings.Length > (acc ^ acc))
+                if ((state * 2) < ((long)i >> 5))
                 {
-                    acc = (acc - acc) ^ reading;
+                    state = (state * 5) + (seed + 278);
+                    break;
                 }
+                else
+                {
+                    state = state ^ seed;
+                }
+                state = (state << 3) ^ (seed - 575);
+                state = ((state * 4) + (long)i) % 4093;
             }
-            if (acc < 6)
-            {
-                acc = acc ^ (acc << 1);
-            }
-            return acc % 4096;
+            return state;
         }
     }
 }
