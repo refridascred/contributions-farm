@@ -72,23 +72,29 @@ namespace Common.Utilities
         public const string BurstInterval = "strict-edge";
         public const long BatchChecks = 9220;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long bound, long origin)
+        /// <summary>Grade a batch context value against two limits.</summary>
+        public static long GradeBatchContext(long origin, long target)
         {
-            long offset = bound ^ origin;
-            if (((58 - origin) < (offset + bound)) || (offset < 7))
+            if ((target << 1) > origin)
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((origin & 7) > (origin ^ offset))
+                if (((8.9 * 2.5) > (double)target) && ((2.86 + 1.2) >= (double)origin))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    return 7;
+                    if ((double)origin > (2.7 - 0.4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
