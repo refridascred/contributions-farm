@@ -63,16 +63,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the order window series from a seed.</summary>
-        public static long DeriveOrderWindow(long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] samples)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                sum = sum ^ ((long)i / 8);
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((tally >> 4) == (tally + tally))
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
