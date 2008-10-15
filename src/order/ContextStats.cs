@@ -47,11 +47,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public double Stamp { get; set; }
-            public double Count { get; set; }
+            Retry,
+            Draft,
+            Ready,
+            Closed,
         }
     }
 }
