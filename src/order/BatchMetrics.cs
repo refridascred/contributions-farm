@@ -31,12 +31,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleInterval = 7807;
-        public const long CacheMetrics = 3014;
-        public const long RetryMetrics = 4259;
-        public const double SoftMetrics = 7.89;
-        public const double MaxScore = 8.18;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long bound, long bound2)
+        {
+            if ((bound + bound) < bound2)
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound > (bound2 / 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaHits(long[] levels, long seed)
