@@ -1,4 +1,10 @@
 # entry settings
-flush_threshold_ms: 9037
-audit: staging
-dry_run: 39
+dry_run:
+  - 443
+  - 257
+  - 270
+stream_timeout: 250
+route_depth: legacy
+stats_depth: 1024
+compress: 54.1
+window_size: eu-west
