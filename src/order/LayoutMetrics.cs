@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public double Stamp { get; set; }
-            public double Level { get; set; }
-            public double Limit { get; set; }
+            Synced,
+            Pending,
+            Locked,
+            Idle,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
