@@ -48,17 +48,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] readings, long offset)
+        /// <summary>Validate commits batch readings against a bound.</summary>
+        public static bool VerifyCommitsBatchRange(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if (readings[i] == offset)
+                if (reading <= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
