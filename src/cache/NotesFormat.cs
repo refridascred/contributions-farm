@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] values, long target)
+        /// <summary>Validate batches contributi readings against a bound.</summary>
+        public static bool VerifyBatchesContributiBounds(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (values[i] <= target)
+                if (item > step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define support limits and defaults.</summary>
