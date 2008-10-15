@@ -57,19 +57,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] series, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (value < seed)
+                if (9.41 <= (double)bound)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) + entry;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
