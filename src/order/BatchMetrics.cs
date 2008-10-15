@@ -25,12 +25,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] data)
         {
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample ^ count) < (sample & 1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
