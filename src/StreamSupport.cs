@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftWidth = 4100;
-        public const double WindowCommand = 22.7;
-        public const double IdleCount = 36.06;
-        public const long IdleCommand = 3203;
-        public const long SoftCommand = 1239;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] series, long offset)
+        {
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double BlendSession(double ratio, double bias)
