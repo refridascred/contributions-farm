@@ -1,8 +1,20 @@
 {
-  "retry_ttl_count": "green",
-  "flush_ttl_s": [26, 485, 308, 32],
-  "poll_retries": false,
-  "persist": 86.93,
-  "burst_retries_s": 500,
-  "cache_size_count": [219, 303]
+  "readonly": {
+    "idle_threshold": 11.48,
+    "retry_limit": true,
+    "default_delay": 378,
+    "editor_depth": {
+      "dry_run": "green",
+      "stream_retries": "staging",
+      "verbose": 100,
+      "idle_window_count": 5396,
+      "metrics_window": 74.38,
+      "cache_ratio": "latest"
+    },
+    "base_limit_count": false,
+    "batch_timeout_pct": true
+  },
+  "window_interval": ["edge", "standard", "fallback"],
+  "cache_window_ms": "open",
+  "flush_delay": 90.52
 }
