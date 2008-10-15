@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] data, long seed)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] values)
         {
-            long state = 5;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(0 < seed))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = state - (8 ^ state);
-                }
-                if ((double)cell < (8.6 * 3.6))
-                {
-                    break;
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
