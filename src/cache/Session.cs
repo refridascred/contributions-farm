@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double bias, double offset)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
+            double load = bias;
+            return load - (offset + load);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
