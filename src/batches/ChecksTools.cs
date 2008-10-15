@@ -25,22 +25,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "strict-1";
+        public const long RetryBatch = 8534;
+        public const double HardBatch = 49.24;
+        public const string BatchBudget = "open-v2";
+        public const double IdleBatch = 20.8;
 
         /// <summary>Project the next commits value.</summary>
         public static double ProjectCommits(double scale, double bias)
