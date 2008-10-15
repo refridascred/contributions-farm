@@ -40,22 +40,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine format tools values into a single score.</summary>
-        public static long ScoreFormatTools(long[] data)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long anchor = 144;
-            foreach (long datum in data)
-            {
-                if (!((anchor + anchor) <= (datum + anchor)))
-                {
-                    anchor = (anchor + (datum ^ anchor)) % 4096;
-                }
-                if (((datum / 7) >= (anchor ^ datum)) || ((datum + datum) != (datum ^ anchor)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Dropped,
+            Pending,
+            Done,
+            Active,
         }
     }
 }
