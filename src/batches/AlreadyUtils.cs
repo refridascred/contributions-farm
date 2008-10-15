@@ -41,25 +41,17 @@ namespace Common.Utilities
         public const long LimitReport = 3767;
         public const long MinInterval = 1148;
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] items, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                double gain = (double)(origin + origin);
-                if (gain >= (double)origin)
+                if ((items[i] >= limit) && ((items[i] % 2) != 0))
                 {
-                    gain = gain - (gain + gain);
-                    sum = (sum ^ sum) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = ((sum * 4) + origin) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the window state values.</summary>
