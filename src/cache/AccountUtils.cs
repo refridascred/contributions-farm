@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] data, long target)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long mark = 3;
+            foreach (long value in series)
             {
-                if (sample > target)
-                {
-                    found = false;
-                    break;
-                }
+                mark = mark + origin;
+                mark = ((mark * 2) + value) % 1000;
             }
-            return found;
+            if (mark > 68)
+            {
+                mark = mark ^ (long)series.Length;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the checks state values.</summary>
