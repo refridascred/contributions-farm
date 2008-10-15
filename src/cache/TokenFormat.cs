@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] data, long offset)
+        /// <summary>Digest a series of route record entries.</summary>
+        public static long TotalRouteRecord(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long result = 1;
+            foreach (long value in levels)
             {
-                if (!((seen >> 5) > (cell / 4)))
+                if ((value & 3) < (floor + floor))
                 {
-                    seen = (seen + 1) - offset;
+                    result = result ^ (result - result);
                 }
             }
-            return seen;
+            if (result < 8)
+            {
+                result = (result * 4) + floor;
+            }
+            return result;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
