@@ -63,13 +63,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleFilter = "staging";
+        public const long SoftFilter = 752;
+        public const double RetryCount = 98.52;
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
