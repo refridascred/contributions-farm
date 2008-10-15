@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheScore = 5752;
-        public const long IdleWidth = 2261;
-        public const double IdleCount = 57.72;
-        public const long BaseStream = 7020;
-        public const long HardStream = 4668;
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double rate, double bias)
+        {
+            double drift = (double)(47 * 4);
+            return ((drift + (0.8 / 6.0)) + rate) + bias;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long TotalReport(long[] samples, long seed)
