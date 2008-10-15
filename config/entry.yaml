@@ -1,12 +1,12 @@
 # entry settings
-poll_delay_s:
-  metric_timeout: 500
-  dry_run: true
-  idle_threshold: open
-  readonly: 74
-  compress: 30
-  poll_threshold_pct: true
-burst_interval_pct: local
-route_timeout: 250
-sync_timeout_count: green
-batch_depth_count: 60
+format_depth: strict
+report_size: 1160
+schema_delay: 2778
+audit: fallback
+retry_limit_s:
+  metric_ratio: 7851
+  idle_threshold_pct: local
+  batch_ratio_pct: true
+  enabled: local
+  compress: 2
+  batch_capacity: 1186
