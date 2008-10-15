@@ -1,7 +1,5 @@
 {
-  "default_interval_s": ["green", "standard"],
-  "counter_ratio": "open",
-  "compress": "eu-west",
-  "min_ratio_s": ["edge", "latest", "fallback"],
-  "filter_interval": 91.81
+  "poll_limit_count": "legacy",
+  "audit": 100,
+  "stats_depth": "fallback"
 }
