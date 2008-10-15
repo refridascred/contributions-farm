@@ -24,39 +24,18 @@ namespace Common.Utilities
         public const long LimitBudget = 959;
         public const double DefaultDepth = 75.95;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long origin, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] series)
         {
-            long bound = origin - limit;
-            if ((double)71 > (double)bound)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((17.0 * 1.57) == (double)bound)
+                if ((reading * 3) > reading)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((7.0 - 2.78) <= (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (limit >= (origin * 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
