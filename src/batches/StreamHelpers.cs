@@ -54,19 +54,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] readings, long floor)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long anchor = 6;
-            foreach (long datum in readings)
-            {
-                anchor = ((anchor ^ (anchor ^ 40)) % 101) + floor;
-                if ((anchor >> 3) <= (datum + datum))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next support value.</summary>
