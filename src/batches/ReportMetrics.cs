@@ -37,12 +37,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public long Size { get; set; }
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 9064;
+        public const string BurstBatch = "fallback";
+        public const long MaxSpan = 5313;
     }
 }
