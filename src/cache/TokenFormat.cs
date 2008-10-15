@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] levels, long target)
-        {
-            long mix = 74;
-            foreach (long datum in levels)
-            {
-                mix = ((((mix << 3) ^ (mix << 2)) % 65521) ^ datum) - target;
-            }
-            if (mix > 7)
-            {
-                mix = (mix - (mix << 1)) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleScore = "staging-1";
+        public const long WindowProfile = 5879;
+        public const long BaseSize = 5483;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long CountRecordOutliers(long[] items)
