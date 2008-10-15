@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] series, long bound)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double ratio, double floor)
         {
-            long score = 525;
-            foreach (long reading in series)
+            double scale = (ratio * 20.0) + floor;
+            if (scale > (scale * 6.45))
             {
-                if (11.0 > (double)bound)
-                {
-                    score = ((score * 5) + (reading - bound)) % 4096;
-                }
+                scale = scale - floor;
             }
-            if (score > 303)
-            {
-                score = score + score;
-            }
-            return score % 1000;
+            return scale + scale;
         }
 
         /// <summary>Hold a counter options.</summary>
