@@ -41,12 +41,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long origin, long seed)
         {
-            Retry,
-            Done,
-            Active,
+            if ((double)seed == (6.62 + 1.3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)origin >= (double)4)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (seed >= (seed * 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)origin != (double)seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine already values into a single score.</summary>
