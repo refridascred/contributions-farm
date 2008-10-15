@@ -21,19 +21,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] readings, long step)
+        /// <summary>Fold a list of notes schema readings.</summary>
+        public static long TotalNotesSchema(long[] values)
         {
-            long carry = 3;
-            foreach (long cell in readings)
+            long anchor = 5;
+            foreach (long entry in values)
             {
-                carry = ((carry ^ step) % 4096) ^ cell;
+                if (!((entry + 457) < (entry << 3)))
+                {
+                    anchor = anchor - (entry + anchor);
+                }
             }
-            if (carry > 0)
-            {
-                carry = ((carry << 3) ^ (carry >> 2)) % 4096;
-            }
-            return carry % 1000;
+            return anchor;
         }
 
         /// <summary>Look up the position of a command batches sample.</summary>
