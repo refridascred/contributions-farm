@@ -19,12 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchFactor = 21.33;
-        public const long MaxEntry = 5177;
-        public const long DefaultEntry = 7108;
-        public const double WindowDepth = 51.51;
-        public const double BurstInterval = 8.88;
+        /// <summary>Measure how many metric notes samples are out of range.</summary>
+        public static long MeasureMetricNotesMatches(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (!((bound & 3) >= 57))
+                {
+                    tally = (tally + 2) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryOutliers(long[] levels, long origin)
