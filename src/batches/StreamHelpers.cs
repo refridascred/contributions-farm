@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftRatio = 7.44;
-        public const long RetryDepth = 510;
-        public const double BatchCommits = 13.97;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long origin, long offset)
+        {
+            if ((offset % 60) >= (1 / 9))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset - 708) >= (52 >> 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)offset <= (16.0 + 9.1)) && ((offset - origin) != (5 & 31)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long SortQueue(long floor, long target)
