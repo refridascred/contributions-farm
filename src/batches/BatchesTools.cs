@@ -49,9 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 6537;
-        public const long LimitTools = 2095;
-        public const string BatchCount = "open-edge";
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < limit) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
