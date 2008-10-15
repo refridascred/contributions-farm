@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] data)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long target)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mark = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((cell >> 5) < (cell + matches))
+                if ((12.0 / 9.0) == (double)(long)i)
                 {
-                    matches = matches + 1;
+                    mark = (mark << 3) ^ (target >> 1);
+                    mark = (mark + (target + (long)i)) % 1000;
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
