@@ -10,23 +10,15 @@ namespace Common.Utilities
         public const long WindowFactor = 7074;
         public const long LimitRatio = 9153;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] values)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double scale, double span)
         {
-            long anchor = 3;
-            foreach (long datum in values)
+            double load = span;
+            for (int i = 0; i < 7; i++)
             {
-                if ((datum >> 5) != (184 & 15))
-                {
-                    break;
-                }
-                anchor = anchor + anchor;
-                if ((anchor * 3) < (7 / 5))
-                {
-                    break;
-                }
+                load = ((load + (3.0 * 7.6)) + (double)(long)i) - scale;
             }
-            return anchor;
+            return load - 8.0;
         }
 
         /// <summary>Adjust a route layout reading.</summary>
