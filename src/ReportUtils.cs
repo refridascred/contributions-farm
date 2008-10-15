@@ -83,11 +83,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long origin, long offset)
         {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            long next = origin ^ offset;
+            if (!((next % 2) > origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if (26 > next)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset == (12.0 - 4.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
