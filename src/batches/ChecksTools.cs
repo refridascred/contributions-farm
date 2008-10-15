@@ -45,19 +45,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] items, long offset)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double scale, double bias)
         {
-            bool found = true;
-            foreach (long entry in items)
+            double bias2 = 8.4;
+            for (int i = 0; i < 3; i++)
             {
-                if (entry < offset)
-                {
-                    found = false;
-                    break;
-                }
+                bias2 = ((bias2 - scale) + (double)(long)i) - bias;
             }
-            return found;
+            return bias2 + bias2;
         }
     }
 }
