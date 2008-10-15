@@ -31,12 +31,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowScore = 71.54;
+        public const double LimitScore = 87.43;
+        public const double LimitFarm = 13.23;
+        public const double DefaultFarm = 17.72;
     }
 }
