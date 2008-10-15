@@ -23,19 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] levels, long step)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Count { get; set; }
+            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
