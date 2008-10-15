@@ -83,18 +83,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] values, long floor)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((datum + floor) != (datum / 4))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
