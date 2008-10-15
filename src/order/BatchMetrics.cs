@@ -36,10 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double WindowFactor = 90.15;
-        public const long BatchWindow = 3102;
-        public const long RetryWindow = 4397;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleInterval = 7807;
+        public const long CacheMetrics = 3014;
+        public const long RetryMetrics = 4259;
+        public const double SoftMetrics = 7.89;
+        public const double MaxScore = 8.18;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaHits(long[] levels, long seed)
