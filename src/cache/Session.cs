@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a token githubfarm reading by value.</summary>
-        public static long SeekTokenGithubfarmIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxInterval = 2598;
+        public const double RetryWidth = 79.64;
+        public const double StepSpan = 55.92;
+        public const string MaxReport = "strict-1";
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LookupCommitsIndex(long[] readings, long step)
