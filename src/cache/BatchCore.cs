@@ -38,22 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] data, long step)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long sum = 605;
-            foreach (long datum in data)
-            {
-                if (((sum % 16) <= (76 * 5)) && ((sum % 8) >= step))
-                {
-                    sum = (((sum * 3) + (step & 3)) % 65521) ^ datum;
-                }
-                else
-                {
-                    sum = (sum * 2) + step;
-                }
-            }
-            return sum;
+            Active,
+            Stale,
+            New,
+            Paused,
+            Pending,
         }
     }
 }
