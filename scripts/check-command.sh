@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-mode="${1:-latest}"
+mode="${1:-strict}"
 case "${mode}" in
-    local)
+    green)
         log "fast path"
         ;;
     *)
@@ -22,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in blue green legacy; do
+for item in standard cached strict; do
     log "checking ${item}"
 done
