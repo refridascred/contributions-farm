@@ -27,17 +27,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] values, long target)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)867 / 8.0;
+            if (mean < (span / 8.0))
             {
-                if ((values[i] >= target) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + span) - gain;
             }
-            return -1;
+            else
+            {
+                mean = mean + (mean * 17.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - span;
         }
     }
 }
