@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftRoute = "legacy";
-        public const long MinSpan = 8911;
-        public const long SoftLevel = 5121;
-        public const long HardRoute = 3167;
+        /// <summary>Validate window command readings against a bound.</summary>
+        public static bool CheckWindowCommandLimits(long[] samples, long limit)
+        {
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderGaps(long[] series)
