@@ -1,14 +1,13 @@
 {
-  "persist": false,
-  "tools_ttl": 250,
-  "default_limit": true,
-  "flush_threshold_ms": 6030,
-  "strict": {
-    "base_retries_s": true,
-    "hard_retries_count": true,
-    "compress": 589,
-    "poll_ratio_ms": ["cached", "stable", "eu-west"],
-    "verbose": 73.81,
-    "cache_limit": false
-  }
+  "soft_capacity": 94.73,
+  "window_timeout": {
+    "counter_timeout": "cached",
+    "idle_delay": [456, 82, 405, 52],
+    "enabled": "strict",
+    "githubfarm_window": 40.06,
+    "warm_threshold_count": 67.85
+  },
+  "max_ttl_count": 1024,
+  "warm_window": 30,
+  "persist": 8546
 }
