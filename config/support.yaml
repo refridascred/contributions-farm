@@ -1,12 +1,8 @@
 # support settings
-dry_run:
-  schema_capacity: 9234
-  default_window: green
-  channel_limit: strict
-  report_interval: eu-west
-filter_size: false
-min_capacity:
-  - 233
-  - 340
-  - 158
-profile_interval: true
+audit: 6.61
+poll_limit_s:
+  - legacy
+  - green
+sync_retries_pct: eu-west
+retry_delay_s: 81.19
+soft_timeout: 100
