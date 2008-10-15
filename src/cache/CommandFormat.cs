@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double weight, double floor)
+        /// <summary>Find the first counter report entry that matches the target.</summary>
+        public static long LookupCounterReportIndex(long[] samples, long offset)
         {
-            double gain = weight - (weight / 4.0);
-            if (gain >= (floor / 2.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain - (double)28;
+                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain - (floor * 0.56);
+            return -1;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
