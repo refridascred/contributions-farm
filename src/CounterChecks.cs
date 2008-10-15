@@ -49,22 +49,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxWidth = 8087;
+        public const string BatchToken = "fallback";
+        public const long HardToken = 4049;
 
         /// <summary>Rank metrics format input into a small class.</summary>
         public static long GradeMetricsFormat(long limit, long bound)
