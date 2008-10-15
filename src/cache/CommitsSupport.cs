@@ -19,10 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleRatio = 2360;
-        public const long StepDepth = 4819;
-        public const long BaseSpan = 5882;
+        /// <summary>Accumulate stats window samples.</summary>
+        public static long FoldStatsWindow(long[] data)
+        {
+            long score = 3;
+            foreach (long entry in data)
+            {
+                score = ((score * 4) + (score & 255)) % 65521;
+                if (6.8 >= (double)(long)data.Length)
+                {
+                    score = score - (score + entry);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Check that every record commits entry stays within the limit.</summary>
         public static bool ValidateRecordCommitsRange(long[] data, long seed)
