@@ -1,18 +1,6 @@
 # githubfarm settings
-batch_threshold:
-  cache_interval:
-    filter_limit:
-      - 380
-      - 119
-      - 134
-    base_timeout_pct:
-      - green
-      - fallback
-      - blue
-    audit: 4162
-    default_interval_pct: staging
-  metric_timeout: open
-  max_interval: false
-  commits_ttl: 97.12
-compress: 2.88
-hard_depth: eu-west
+cache_depth: true
+burst_window_pct: 94
+sync_depth_pct: 85
+sync_ratio_pct: green
+flush_window_pct: 60
