@@ -1,4 +1,12 @@
 # githubfarm settings
-tools_delay: legacy
-cache_depth: true
-batch_capacity_s: 6277
+default_depth_ms: 35
+default_interval_pct: eu-west
+context_limit: 33
+retry_threshold_ms:
+  - open
+  - strict
+  - green
+persist:
+  - green
+  - open
+  - edge
