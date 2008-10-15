@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = 1.84;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = ((mean + (floor + floor)) + (double)(long)i) - weight;
             }
-            return seen;
+            return mean + floor;
         }
 
         /// <summary>Combine commits graph values into a single score.</summary>
