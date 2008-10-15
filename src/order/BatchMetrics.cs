@@ -52,12 +52,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryScore = 2289;
-        public const double HardCount = 18.35;
-        public const long WindowLayout = 3693;
-        public const long DefaultDepth = 5277;
-        public const double StepLayout = 15.89;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public bool Ratio { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long RollBatches(long step)
