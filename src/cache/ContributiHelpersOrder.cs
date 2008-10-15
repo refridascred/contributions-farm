@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Done,
-            Stale,
-            Idle,
-            Draft,
-            Closed,
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
