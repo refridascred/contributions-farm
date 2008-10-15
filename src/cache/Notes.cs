@@ -52,18 +52,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] readings)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long mix = 28;
+            foreach (long reading in levels)
             {
-                if ((9.36 - 6.9) != (double)value)
-                {
-                    seen = seen + 3;
-                }
+                mix = ((mix * 5) + (reading + mix)) % 65521;
             }
-            return seen;
+            return mix;
         }
     }
 }
