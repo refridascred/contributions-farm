@@ -1,13 +1,8 @@
 {
-  "warm_depth_pct": 250,
-  "flush_capacity": "green",
-  "retry_window_pct": 3464,
-  "burst_delay_count": {
-    "order_ttl": "cached",
-    "context_depth": 4530,
-    "default_size_pct": [262, 452],
-    "flush_delay_ms": [227, 212, 460]
-  },
-  "burst_delay_s": "legacy",
-  "cache_depth_ms": 1226
+  "persist": 61,
+  "flush_delay_count": false,
+  "retry_size_s": "eu-west",
+  "default_depth": false,
+  "strict": 48.42,
+  "enabled": 4574
 }
