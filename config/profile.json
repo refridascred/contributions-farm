@@ -1,9 +1,5 @@
 {
-  "min_ratio_ms": ["fallback", "blue", "latest", "green"],
-  "persist": {
-    "burst_size": true,
-    "enabled": 1024,
-    "max_delay": "standard"
-  },
-  "default_capacity_s": 12
+  "dry_run": ["strict", "fallback", "fallback", "staging"],
+  "idle_window_pct": 53,
+  "flush_delay_s": true
 }
