@@ -34,12 +34,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleBudget = 4146;
-        public const long StepNotes = 4481;
-        public const string MaxNotes = "alpha";
-        public const double BurstNotes = 82.45;
-        public const long BatchNotes = 8329;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] readings)
+        {
+            long carry = 78;
+            foreach (long reading in readings)
+            {
+                if ((double)carry >= (double)(-9))
+                {
+                    carry = carry + (carry + reading);
+                }
+            }
+            if (carry < 9)
+            {
+                carry = (carry - (carry / 6)) % 101;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double MinMetric = 26.58;
