@@ -36,17 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] items, long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 46;
+            foreach (long value in items)
             {
-                if ((items[i] >= target) && ((items[i] % 5) != 0))
+                if ((value - (-1)) < ((long)items.Length + value))
                 {
-                    return (long)i;
+                    mix = ((mix ^ (mix & 7)) % 255) + offset;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
