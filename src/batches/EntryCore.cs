@@ -12,21 +12,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count commits stats pairs that satisfy a relation.</summary>
-        public static long PairCommitsStatsCount(long[] samples)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value < offset)
                 {
-                    if ((samples[i] + samples[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Combine session values into a single score.</summary>
