@@ -1,8 +1,9 @@
-id,token
-1,primary
-2,884
-3,staging
-4,32.38
-5,latest
-6,820
-7,32.31
+id,level,label,owner,region
+1,24.14,33.02,latest,legacy
+2,781,419,730,66
+3,198,34.96,local,458
+4,67.31,104,latest,latest
+5,81.28,57.94,87.6,62.79
+6,66.36,178,blue,530
+7,67.28,93.19,84.94,fallback
+8,93.34,566,964,primary
