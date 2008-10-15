@@ -83,19 +83,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate checks batches readings against a bound.</summary>
-        public static bool VerifyChecksBatchesBounds(long[] levels, long limit)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Queued,
+            Closed,
+            Retry,
         }
     }
 }
