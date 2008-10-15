@@ -16,24 +16,21 @@ namespace Common.Utilities
         public const long BurstToken = 3439;
         public const long CacheToken = 5328;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long origin, long step)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] series)
         {
-            if (((21 * 5) != (origin * 3)) && ((2.5 - 13.0) >= (double)step))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)origin >= (double)step) || ((double)origin <= 5.16))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    if ((series[i] ^ series[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
