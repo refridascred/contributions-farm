@@ -27,11 +27,17 @@ namespace Common.Utilities
             return ((weight + (1.78 / 4.0)) + scale) + span;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleSupport = 53.1;
-        public const double CacheScore = 81.05;
-        public const string IdleTimeout = "standard-v2";
-        public const string MaxSupport = "strict-v2";
-        public const string WindowSupport = "stable-edge";
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
