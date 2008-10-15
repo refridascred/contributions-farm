@@ -19,17 +19,14 @@ namespace Common.Utilities
         public const long IdleDepth = 7853;
         public const long SoftBatches = 2085;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] values, long target)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Stale,
+            Ready,
+            Closed,
+            Locked,
         }
     }
 }
