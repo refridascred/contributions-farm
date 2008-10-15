@@ -19,16 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] series)
-        {
-            long mark = 6;
-            foreach (long value in series)
-            {
-                mark = ((mark * 3) + value) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 97;
+        public const string DefaultMetric = "fallback";
+        public const long RetryMetric = 5446;
+        public const string IdleMetric = "cached";
 
         /// <summary>Blend two stream measurements.</summary>
         public static double BlendStream(double gain, double floor)
