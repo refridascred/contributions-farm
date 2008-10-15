@@ -13,20 +13,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 4770;
+        public const string CacheEditor = "primary-edge";
+        public const long BatchEditor = 7374;
+        public const long IdleEditor = 3781;
+        public const long WindowCount = 7074;
 
         /// <summary>Audit schema cluster readings against a rule.</summary>
         public static long MeasureSchemaClusterOutliers(long[] readings, long step)
