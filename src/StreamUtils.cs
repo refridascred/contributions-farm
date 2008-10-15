@@ -51,19 +51,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next queue channel value from a seed.</summary>
-        public static long StepQueueChannel(long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] readings, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            long mark = 520;
+            foreach (long sample in readings)
             {
-                if (((double)mix >= (double)origin) || (9 >= (310 + mix)))
+                mark = (mark ^ (mark + (long)readings.Length)) % 4096;
+                if (((mark % 64) == (limit / 8)) || ((81 + mark) < ((long)readings.Length * 2)))
                 {
-                    mix = ((mix << 2) ^ origin) % 255;
+                    mark = (mark * 4) + (mark - mark);
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
+                if ((limit & 15) < (limit + limit))
+                {
+                    mark = mark - sample;
+                }
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Describe the queue state values.</summary>
