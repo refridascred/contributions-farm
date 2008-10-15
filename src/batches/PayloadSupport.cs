@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] data, long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] items)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long anchor = 515;
+            foreach (long datum in items)
             {
-                if ((double)value != (7.0 / 8.0))
+                if (((anchor % 5) == (6 & 127)) && ((datum / 2) != (datum - anchor)))
                 {
-                    hits = (hits + 2) + limit;
+                    anchor = ((anchor << 3) ^ (datum << 3)) % 101;
                 }
             }
-            return hits;
+            return anchor % 65521;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
