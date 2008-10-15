@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] readings, long step)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double scale, double floor)
         {
-            long score = 96;
-            foreach (long value in readings)
+            double mean = scale;
+            if (mean <= scale)
             {
-                if (((double)value < 20.0) || ((double)score >= (18.0 + 2.0)))
-                {
-                    score = (score + (step - value)) % 1000;
-                }
+                mean = (mean + 7.7) - floor;
             }
-            return score;
+            else
+            {
+                mean = mean - (mean * 3.72);
+            }
+            return mean - 14.0;
         }
 
         /// <summary>Fold a list of counter metric readings.</summary>
