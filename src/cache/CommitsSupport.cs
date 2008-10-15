@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)tally < (double)target)
                 {
-                    if ((series[i] ^ series[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) - entry;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
