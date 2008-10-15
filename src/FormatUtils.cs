@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long step)
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
+            long score = step;
+            for (int i = 0; i < 14; i++)
+            {
+                long step2 = (step + step) ^ ((long)i >> 2);
+                if ((double)step2 <= (16.0 + 9.1))
+                {
+                    break;
+                }
+                else
+                {
+                    step2 = (step2 ^ score) % 65521;
+                }
+                if (step > (long)i)
+                {
+                    step2 = ((step2 * 2) + (long)i) % 101;
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
