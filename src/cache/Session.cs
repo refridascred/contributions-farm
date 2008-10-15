@@ -29,22 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long seed)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix << 3) ^ (mix * 3)) % 1000;
-                mix = mix + (seed % 64);
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = (((mix << 3) ^ (mix >> 4)) % 255) ^ (long)i2;
-                    mix = mix + seed;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public bool Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a graph snapshot.</summary>
