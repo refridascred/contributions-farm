@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long floor)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                long delta = (score >> 2) * 5;
-                if (floor >= (delta + score))
-                {
-                    delta = delta ^ score;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Active,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a token summary.</summary>
