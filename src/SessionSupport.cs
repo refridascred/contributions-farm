@@ -33,23 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double gain, double span)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double gain, double bias)
         {
-            double mean = (double)867 / 8.0;
-            if (mean < (span / 8.0))
+            double ratio = (double)0 - gain;
+            if (ratio > (ratio * 0.9))
             {
-                mean = (mean + span) - gain;
+                ratio = ratio + bias;
             }
-            else
-            {
-                mean = mean + (mean * 17.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - span;
+            return ratio + (ratio - ratio);
         }
     }
 }
