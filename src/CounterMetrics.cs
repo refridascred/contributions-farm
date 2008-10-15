@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] data, long step)
+        /// <summary>Roll a profile format counter forward.</summary>
+        public static long DeriveProfileFormat(long seed)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((datum >> 3) != (datum << 1)))
-                {
-                    matches = (matches + 3) - step;
-                }
+                anchor = (anchor - ((-6) & 15)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
