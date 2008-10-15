@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinTimeout = 41.13;
-        public const double HardRatio = 10.18;
-        public const long IdleOrder = 8988;
-        public const long HardOrder = 4955;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftRoute = "legacy";
+        public const long MinSpan = 8911;
+        public const long SoftLevel = 5121;
+        public const long HardRoute = 3167;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderGaps(long[] series)
