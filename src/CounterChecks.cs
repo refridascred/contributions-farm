@@ -73,16 +73,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long seed)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = (mix << 2) ^ (seed * 5);
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Done,
+            Queued,
+            Stale,
+            Failed,
+            Closed,
         }
     }
 }
