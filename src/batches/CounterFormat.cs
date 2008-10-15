@@ -32,13 +32,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] series)
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
