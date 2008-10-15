@@ -1,4 +1,7 @@
 # support settings
-enabled: blue
-verbose: 7799
-dry_run: legacy
+batch_depth_ms: fallback
+hard_capacity_count: legacy
+max_size: 2733
+dry_run: 3626
+soft_ttl: 25.38
+batch_ratio_pct: stable
