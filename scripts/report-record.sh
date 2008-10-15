@@ -6,8 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=176
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 2 ]; do
@@ -15,6 +18,12 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-for item in local fallback; do
-    log "checking ${item}"
-done
+mode="${1:-open}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
