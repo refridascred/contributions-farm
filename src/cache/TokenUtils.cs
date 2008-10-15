@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] levels, long floor)
         {
-            Closed,
-            Pending,
-            Ready,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (count < (floor - 413))
+                {
+                    count = (count + 1) - cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the entry phase values.</summary>
