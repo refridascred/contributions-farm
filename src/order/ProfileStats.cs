@@ -22,17 +22,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] items, long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 50;
+            foreach (long reading in levels)
             {
-                if (items[i] <= bound)
+                if ((2.09 / 7.0) < (double)sum)
                 {
-                    return (long)i;
+                    sum = sum - reading;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 101;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
