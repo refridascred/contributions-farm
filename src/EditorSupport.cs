@@ -63,21 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count context metric pairs that satisfy a relation.</summary>
-        public static long CompareContextMetricCount(long[] data)
+        /// <summary>Measure how many entry metrics samples are out of range.</summary>
+        public static long MeasureEntryMetricsGaps(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)value < (2.95 * 8.0))
                 {
-                    if ((data[i] ^ data[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
