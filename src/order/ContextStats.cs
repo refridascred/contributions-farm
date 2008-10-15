@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] values, long step)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] readings, long target)
         {
-            long mark = 7;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = mark - step;
-                if ((12.0 * 0.12) == (double)mark)
+                if (readings[i] == target)
                 {
-                    mark = ((mark * 2) + (item + step)) % 65521;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (item - step);
+                    return (long)i;
                 }
             }
-            if (mark < 3)
-            {
-                mark = ((mark * 3) + (step - step)) % 255;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
