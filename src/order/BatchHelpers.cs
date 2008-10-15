@@ -25,31 +25,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank commits contributi input into a small class.</summary>
-        public static long RankCommitsContributi(long offset, long limit)
+        /// <summary>Match up command metric samples.</summary>
+        public static long MatchCommandMetricCount(long[] levels)
         {
-            if ((limit - limit) >= offset)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)limit < (double)10) && ((limit & 15) > (limit + limit)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit << 1) > limit)
+                    if ((levels[i] + levels[j]) > 17)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
