@@ -40,12 +40,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Ready,
-            Closed,
-            Synced,
+            Active,
+            Idle,
+            Retry,
+            Failed,
+            Paused,
         }
     }
 }
