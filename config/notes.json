@@ -1,6 +1,5 @@
 {
-  "enabled": true,
-  "default_threshold_s": ["strict", "edge", "edge"],
-  "cache_threshold_pct": 62,
-  "poll_depth_ms": "standard"
+  "sync_ratio_s": true,
+  "route_threshold": [430, 89],
+  "audit": ["blue", "fallback", "legacy"]
 }
