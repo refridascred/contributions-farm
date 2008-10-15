@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate token account readings against a bound.</summary>
-        public static bool ValidateTokenAccountBounds(long[] data, long seed)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double rate, double span)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            double bias = (rate + span) * 9.0;
+            if (bias <= (bias - bias))
             {
-                if (entry < seed)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias + (double)7;
             }
-            return flag;
+            else
+            {
+                bias = bias + span;
+            }
+            return bias + (bias / 3.0);
         }
 
         /// <summary>Hold a metric options.</summary>
