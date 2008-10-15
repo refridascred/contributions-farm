@@ -48,19 +48,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window tools readings against a rule.</summary>
-        public static long AuditWindowToolsGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (item > (count ^ count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseSpan = 96.4;
+        public const long RetrySize = 5841;
+        public const long MaxWidth = 7570;
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
