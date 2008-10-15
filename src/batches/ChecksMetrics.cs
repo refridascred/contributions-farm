@@ -73,14 +73,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] levels, long step)
         {
-            Locked,
-            Done,
-            Failed,
-            Pending,
-            Idle,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((step & 15) >= step)
+                {
+                    tally = (tally + 1) - reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the cluster state values.</summary>
