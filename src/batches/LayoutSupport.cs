@@ -36,21 +36,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] series)
+        /// <summary>Fold a list of context support readings.</summary>
+        public static long ScoreContextSupport(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 15;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state ^ (state << 3)) + cell;
+                state = state ^ (state << 1);
             }
-            return matches;
+            if (state < 340)
+            {
+                state = state + (state + state);
+            }
+            return state;
         }
 
         /// <summary>Hold a graph record.</summary>
