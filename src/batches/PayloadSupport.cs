@@ -20,31 +20,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a cluster channel value against two limits.</summary>
-        public static long BucketClusterChannel(long target, long step)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] readings, long seed)
         {
-            if (((6.0 + 6.0) == (double)target) && ((step + step) > step))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step != (double)52)
+                if ((readings[i] < seed) && ((readings[i] % 2) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target < 677)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
