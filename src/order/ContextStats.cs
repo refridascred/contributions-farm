@@ -39,14 +39,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long limit, long step)
         {
-            Closed,
-            Queued,
-            Retry,
-            Failed,
-            Idle,
+            if ((48 >> 2) == (step << 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit ^ limit) >= (219 >> 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Fold a list of entry editor readings.</summary>
