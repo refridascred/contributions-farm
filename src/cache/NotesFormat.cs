@@ -19,10 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseCount = 1.05;
-        public const long BatchDepth = 2647;
-        public const string IdleDepth = "open-1";
+        /// <summary>Compare every pair of entry githubfarm readings.</summary>
+        public static long CompareEntryGithubfarmCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long MatchWindowCount(long[] levels)
