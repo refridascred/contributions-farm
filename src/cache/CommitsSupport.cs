@@ -24,12 +24,20 @@ namespace Common.Utilities
         public const long StepDepth = 4819;
         public const long BaseSpan = 5882;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 262;
-        public const string StepTimeout = "latest-v2";
-        public const long MaxFactor = 5036;
-        public const long LimitRoute = 2081;
-        public const double DefaultCount = 7.25;
+        /// <summary>Check that every record commits entry stays within the limit.</summary>
+        public static bool ValidateRecordCommitsRange(long[] data, long seed)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricMatches(long[] items)
