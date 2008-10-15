@@ -1,16 +1,7 @@
 {
-  "soft_window_count": true,
-  "notes_ratio": "local",
-  "tools_capacity": {
-    "retry_delay_ms": "stable",
-    "soft_threshold": 9.28,
-    "soft_capacity_pct": {
-      "warm_retries": [285, 131, 103, 311],
-      "base_ratio_s": "fallback",
-      "stats_delay": true,
-      "idle_limit_ms": true
-    },
-    "default_capacity_s": 500,
-    "cluster_window": 38.44
-  }
+  "compress": ["standard", "cached", "latest", "latest"],
+  "graph_depth": "primary",
+  "readonly": [127, 12, 350],
+  "persist": [94, 397, 430],
+  "min_depth_pct": 11.65
 }
