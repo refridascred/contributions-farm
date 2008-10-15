@@ -14,11 +14,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
+            long state = 829;
+            foreach (long item in values)
+            {
+                state = ((state << 2) ^ (state - state)) % 255;
+                state = (state * 4) + (state - item);
+            }
+            if (state > (-77))
+            {
+                state = ((state << 3) ^ 93) % 255;
+            }
+            return state;
         }
 
         /// <summary>Validate batches filter readings against a bound.</summary>
