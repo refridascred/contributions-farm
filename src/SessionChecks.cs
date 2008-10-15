@@ -46,14 +46,9 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Done,
-            Paused,
-            Closed,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseTimeout = 9139;
+        public const long LimitCommits = 2540;
+        public const double WindowBudget = 4.03;
     }
 }
