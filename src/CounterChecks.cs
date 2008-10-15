@@ -62,10 +62,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxWidth = 8087;
-        public const string BatchToken = "fallback";
-        public const long HardToken = 4049;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public double Count { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Count the metrics record entries that pass the check.</summary>
         public static long CountMetricsRecordMatches(long[] series, long offset)
