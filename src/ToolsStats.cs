@@ -48,18 +48,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] series, long origin)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long floor, long offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            if (((0 ^ offset) != (offset + 7)) || ((offset * 2) >= (offset / 8)))
             {
-                if (!((value - seen) >= (origin << 2)))
+                return 2;
+            }
+            else
+            {
+                if (!((offset + floor) < (floor % 5)))
                 {
-                    seen = seen + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (offset > (floor + 87))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate notes metric samples.</summary>
