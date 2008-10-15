@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double rate, double floor)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            double rate2 = (double)(3 + 5);
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = ((rate2 - (rate + rate2)) + (double)(long)i) - floor;
-            }
-            return rate2 - rate;
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
