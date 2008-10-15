@@ -50,18 +50,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the account route entries that pass the check.</summary>
-        public static long MeasureAccountRouteOutliers(long[] readings, long origin)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (reading < (matches ^ 49))
-                {
-                    matches = (matches + 1) - origin;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
