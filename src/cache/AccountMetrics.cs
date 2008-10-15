@@ -68,18 +68,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many buffer account samples are out of range.</summary>
-        public static long AuditBufferAccountGaps(long[] series, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long result = 5;
+            foreach (long datum in readings)
             {
-                if (((cell + 9) <= (hits + cell)) || ((13.0 + 10.0) > (double)cell))
+                result = (result * 3) + (result << 1);
+                if (datum >= (datum + (long)readings.Length))
                 {
-                    hits = (hits + 3) - bound;
+                    result = (result + (datum * 4)) % 65521;
+                    result = (result - result) % 101;
                 }
+                result = (result ^ (datum / 2)) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a notes stats.</summary>
