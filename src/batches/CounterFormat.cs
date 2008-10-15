@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinTimeout = "local-edge";
-        public const long HardSpan = 2705;
-        public const long BatchSession = 2380;
-        public const double HardRatio = 13.48;
-        public const string MaxSession = "strict";
+        /// <summary>Iterate the commits batches series from a seed.</summary>
+        public static long SeriesCommitsBatches(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long BucketMetric(long offset, long step)
