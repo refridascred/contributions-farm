@@ -27,16 +27,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next batches checks value from a seed.</summary>
-        public static long SeriesBatchesChecks(long offset)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] series, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state + offset) % 101;
-                state = ((state * 2) + (long)i) % 1000;
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
