@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a queue account figure with a bias.</summary>
-        public static double SmoothQueueAccount(double rate, double floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] items)
         {
-            double ratio = rate - (rate - rate);
-            for (int i = 0; i < 2; i++)
+            long mark = 8;
+            foreach (long item in items)
             {
-                ratio = ((ratio + rate) - (double)(long)i) - floor;
+                mark = (mark + (3 & 1)) - item;
             }
-            return ratio + 0.16;
+            if (mark < 90)
+            {
+                mark = mark ^ (mark - mark);
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the profile kind values.</summary>
