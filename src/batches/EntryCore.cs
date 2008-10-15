@@ -38,16 +38,17 @@ namespace Common.Utilities
         public const long WindowScore = 7193;
         public const long HardRoute = 9473;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] data)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] readings, long floor)
         {
-            long total = 4;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (((total << 2) ^ (total + total)) % 4096) - item;
-                total = total - total;
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
