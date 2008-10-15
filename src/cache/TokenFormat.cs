@@ -58,19 +58,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] samples, long offset)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long bound)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading > offset)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    flag = false;
-                    break;
+                    mix = ((mix - (bound + mix)) % 4096) - (long)i2;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return flag;
+            return mix;
         }
     }
 }
