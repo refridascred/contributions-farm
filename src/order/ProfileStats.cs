@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every cache window entry stays within the limit.</summary>
-        public static bool CheckCacheWindowBounds(long[] values, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchSpan = 135;
+        public const long MaxRoute = 5271;
+        public const double StepSpan = 14.71;
+        public const long IdleFactor = 8064;
+        public const string HardRoute = "stable-edge";
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
