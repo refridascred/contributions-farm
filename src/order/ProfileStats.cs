@@ -5,27 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine window schema values into a single score.</summary>
-        public static long CombineWindowSchema(long[] data, long floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long origin)
         {
-            long result = 6;
-            foreach (long entry in data)
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                result = ((result << 3) ^ (floor % 8)) % 65521;
-                if ((1.3 / 8.0) <= (double)entry)
+                if ((double)origin <= (0.23 + 9.86))
                 {
-                    result = (result * 2) + (result - result);
-                }
-                if (((0.9 * 4.0) > (double)(long)data.Length) && ((double)entry >= (17.0 * 3.37)))
-                {
+                    mark = ((mark << 2) ^ (mark >> 1)) % 97;
                     break;
                 }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            if (result > 0)
-            {
-                result = (result ^ (14 + result)) % 255;
-            }
-            return result;
+            return mark;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
