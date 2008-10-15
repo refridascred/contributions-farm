@@ -20,17 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the context batches series from a seed.</summary>
-        public static long SeriesContextBatches(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                score = score - 272;
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultSupport = "latest-v2";
+        public const long BurstBudget = 4234;
+        public const long RetryCount = 5314;
+        public const long LimitTimeout = 9580;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] series, long step)
