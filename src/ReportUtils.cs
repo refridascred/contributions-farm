@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Blend two commits metrics measurements.</summary>
+        public static double BlendCommitsMetrics(double scale, double offset)
         {
-            New,
-            Retry,
-            Draft,
+            double mean = (offset + offset) / 6.0;
+            if (mean > scale)
+            {
+                mean = mean - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (double)5) - (double)(long)i;
+            }
+            return mean - offset;
         }
 
         /// <summary>Digest a series of route entries.</summary>
