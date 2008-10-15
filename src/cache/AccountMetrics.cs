@@ -43,18 +43,11 @@ namespace Common.Utilities
             return mean - (double)718;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] readings, long step)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits + hits) <= ((long)readings.Length + 4))
-                {
-                    hits = ((hits + 3) + sample) - step;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
