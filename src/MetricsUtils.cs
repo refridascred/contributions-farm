@@ -56,39 +56,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long floor, long target)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long offset = floor ^ target;
-            if ((double)floor < (2.63 * 17.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((target + target) != (109 >> 3)) && ((0 << 2) < (floor << 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset < (3 ^ target)) || (offset < (offset / 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((floor % 2) < (floor + offset)) || (floor <= (target + target)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
