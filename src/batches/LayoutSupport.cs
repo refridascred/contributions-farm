@@ -67,10 +67,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetryTimeout = "open-v2";
-        public const long LimitFactor = 4967;
-        public const long WindowSession = 9850;
-        public const string StepFactor = "open-edge";
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] data)
+        {
+            long carry = 6;
+            foreach (long value in data)
+            {
+                if ((carry ^ carry) >= carry)
+                {
+                    carry = (((carry << 3) ^ (carry % 2)) % 255) - value;
+                }
+            }
+            if (carry > 56)
+            {
+                carry = (carry ^ (carry + carry)) % 255;
+            }
+            return carry % 1000;
+        }
     }
 }
