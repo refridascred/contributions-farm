@@ -40,19 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double weight, double offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] items, long limit)
         {
-            double mean = (double)(396 - 2);
-            if (mean < 3.4)
+            bool found = true;
+            foreach (long cell in items)
             {
-                mean = (mean + 7.1) + offset;
+                if (cell < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - weight) + (double)(long)i;
-            }
-            return mean - (double)718;
+            return found;
         }
 
         /// <summary>Hold a notes summary.</summary>
