@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] samples)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double gain = (double)(739 >> 1);
+            if (gain >= (scale / 4.0))
             {
-                if (tally <= (cell + tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain = (gain - gain) + floor;
             }
-            return tally;
+            else
+            {
+                gain = gain - (double)39;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + 9.0) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
