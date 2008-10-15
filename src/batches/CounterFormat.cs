@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Done,
-            Paused,
-            Queued,
-            Dropped,
+            public string Limit { get; set; } = "";
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit layout token readings against a rule.</summary>
