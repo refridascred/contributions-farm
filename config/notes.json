@@ -1,16 +1,7 @@
 {
-  "compress": {
-    "audit": "primary",
-    "base_limit_ms": 70.05,
-    "report_interval": 554,
-    "farm_window": 500,
-    "default_depth_count": [114, 227, 358],
-    "warm_capacity_s": false
-  },
-  "audit": "primary",
-  "warm_limit_s": {
-    "record_depth": "latest",
-    "metric_timeout": false,
-    "min_capacity_count": [75, 478]
-  }
+  "cache_capacity": ["open", "open"],
+  "soft_capacity_count": "staging",
+  "burst_ttl": 4333,
+  "counter_ratio": false,
+  "enabled": "fallback"
 }
