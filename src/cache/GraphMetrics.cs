@@ -67,24 +67,19 @@ namespace Common.Utilities
         public const long BaseBuffer = 1827;
         public const double LimitBudget = 6.18;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long bound, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] values)
         {
-            if ((7 & 31) >= (floor % 60))
+            long mark = 52;
+            foreach (long item in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (2.17 >= (double)floor)
+                if ((item - mark) == (item ^ item))
                 {
-                    return 7;
+                    mark = (mark * 4) + (mark << 2);
                 }
-                else
-                {
-                    return 5;
-                }
+                mark = (mark ^ (355 + mark)) % 1000;
             }
+            return mark;
         }
     }
 }
