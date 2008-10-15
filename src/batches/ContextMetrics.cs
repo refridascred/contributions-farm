@@ -23,18 +23,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] items)
+        /// <summary>Rank graph checks input into a small class.</summary>
+        public static long GradeGraphChecks(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if ((seed - seed) < (floor - seed))
             {
-                if ((double)matches == (double)datum)
+                return 6;
+            }
+            else
+            {
+                if ((floor - seed) == ((-97) * 4))
                 {
-                    matches = matches + 3;
+                    return 0;
+                }
+                else
+                {
+                    if (seed >= (51 * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next batch value.</summary>
