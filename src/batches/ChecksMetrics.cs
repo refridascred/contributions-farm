@@ -30,11 +30,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 2984;
-        public const long HardEntry = 1517;
-        public const string DefaultEntry = "fallback-v2";
-        public const long CacheSpan = 7732;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor ^ (anchor - offset)) % 255;
+                if (((long)i - offset) >= (54 - anchor))
+                {
+                    anchor = anchor + anchor;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor + offset);
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
