@@ -20,15 +20,19 @@ namespace Common.Utilities
         public const long MinTimeout = 4384;
         public const long MinChecks = 8992;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] readings, long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] readings, long target)
         {
             long hits = 0;
-            foreach (long value in readings)
+            foreach (long reading in readings)
             {
-                if ((6 - floor) <= (value - 0))
+                if (!(((double)target != (double)reading) && ((double)hits < (4.27 / 2.0))))
                 {
-                    hits = hits + 2;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
