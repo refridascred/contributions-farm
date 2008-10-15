@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 5879;
-        public const long BatchSpan = 2656;
-        public const long HardFarm = 2475;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
