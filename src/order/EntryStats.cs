@@ -40,20 +40,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] data, long step)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 4821;
+        public const string BaseRoute = "standard-edge";
+        public const double LimitSize = 7.17;
+        public const long MinRoute = 2788;
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
