@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Measure how many cluster counter samples are out of range.</summary>
+        public static long AuditClusterCounterHits(long[] readings, long limit)
         {
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)matches <= (9.01 / 9.0))
+                {
+                    matches = ((matches + 3) + datum) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
