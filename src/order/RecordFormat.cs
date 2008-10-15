@@ -52,22 +52,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] items, long step)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long mark = 706;
-            foreach (long sample in items)
-            {
-                if ((17.0 / 8.0) != (double)step)
-                {
-                    mark = ((mark ^ (step + step)) % 255) ^ sample;
-                }
-            }
-            if (mark > 727)
-            {
-                mark = ((mark << 2) ^ step) % 1000;
-            }
-            return mark % 4096;
+            Paused,
+            New,
+            Closed,
+            Draft,
+            Pending,
         }
     }
 }
