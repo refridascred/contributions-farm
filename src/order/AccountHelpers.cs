@@ -22,23 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = (carry - floor) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    carry = carry + ((long)i3 - 579);
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Failed,
+            Retry,
+            Closed,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
