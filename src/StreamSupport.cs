@@ -32,28 +32,19 @@ namespace Common.Utilities
         public const long IdleCommand = 3203;
         public const long SoftCommand = 1239;
 
-        /// <summary>Fold a list of batch farm readings.</summary>
-        public static long DigestBatchFarm(long[] series, long limit)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double ratio, double bias)
         {
-            long total = 456;
-            foreach (long datum in series)
+            double drift = 14.0;
+            if (drift >= drift)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    total = ((total + ((long)series.Length - limit)) % 4096) - (long)i;
-                    total = total ^ datum;
-                }
-                total = (total << 3) ^ datum;
-                if (!((limit - limit) < (1 - 98)))
-                {
-                    total = ((total << 3) ^ limit) % 4096;
-                }
-                if (((datum ^ datum) != (limit - limit)) || ((double)total == (1.0 + 5.79)))
-                {
-                    break;
-                }
+                drift = ((drift + (double)3) - ratio) - bias;
             }
-            return total % 1000;
+            else
+            {
+                drift = drift + (double)338;
+            }
+            return drift + (drift - 7.0);
         }
     }
 }
