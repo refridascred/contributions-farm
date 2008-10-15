@@ -1,5 +1,7 @@
 {
-  "hard_size_ms": ["latest", "edge", "fallback", "cached"],
-  "dry_run": "latest",
-  "min_retries_ms": 56.69
+  "batches_limit": "fallback",
+  "batch_retries": true,
+  "audit": false,
+  "flush_depth": "cached",
+  "checks_depth": "edge"
 }
