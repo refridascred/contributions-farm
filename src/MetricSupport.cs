@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] items, long floor)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 3507;
+        public const long IdleDepth = 7853;
+        public const long SoftBatches = 2085;
 
         /// <summary>Locate a format reading by value.</summary>
         public static long FindFormatIndex(long[] values, long target)
