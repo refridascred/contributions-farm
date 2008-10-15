@@ -1,12 +1,6 @@
 {
-  "max_interval": "green",
-  "already_window": "legacy",
-  "profile_threshold": {
-    "retry_ratio_pct": true,
-    "readonly": false,
-    "session_threshold": 99,
-    "audit": "primary"
-  },
-  "graph_ttl": ["latest", "open", "staging", "cached"],
-  "min_depth_ms": [392, 85, 278]
+  "default_delay_pct": 47,
+  "flush_timeout": 3106,
+  "hard_window": [236, 158, 241, 15],
+  "hard_ttl": 60
 }
