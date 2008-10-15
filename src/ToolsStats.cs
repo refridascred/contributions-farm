@@ -59,19 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] items, long offset)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long sample in items)
+            double load = (double)(84 >> 1);
+            if (load > bias)
             {
-                if (sample > offset)
-                {
-                    found = false;
-                    break;
-                }
+                load = load + (bias2 - bias2);
             }
-            return found;
+            else
+            {
+                load = load - (double)255;
+            }
+            return load + (double)0;
         }
 
         /// <summary>Define record limits and defaults.</summary>
