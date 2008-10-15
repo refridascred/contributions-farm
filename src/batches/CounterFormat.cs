@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public string Limit { get; set; } = "";
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            Ready,
+            Stale,
+            Pending,
+            Idle,
+            Synced,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
