@@ -1,11 +1,24 @@
 # support settings
-retry_ttl_ms: true
-cache_size_ms:
-  - 455
-  - 117
-  - 183
-default_interval: 2842
-enabled:
-  - 116
-  - 50
-  - 6
+warm_threshold_count:
+  - 321
+  - 36
+  - 349
+min_size_s:
+  idle_timeout_pct:
+    batch_ttl_ms: 60
+    soft_timeout: 70
+    metric_limit: 37.68
+    route_depth: 2102
+    dry_run: stable
+  default_capacity_count: strict
+  cache_limit:
+    - 64
+    - 56
+    - 488
+idle_interval: false
+strict:
+  format_retries: 100
+  poll_size_count: 57
+  poll_ttl_count: 61.79
+audit: 8.23
+min_retries: fallback
