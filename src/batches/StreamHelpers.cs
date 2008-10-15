@@ -39,16 +39,10 @@ namespace Common.Utilities
         public const double MaxScore = 98.45;
         public const string BatchFactor = "strict-v2";
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSize = 8750;
+        public const string RetryTimeout = "fallback";
+        public const long SoftSchema = 2753;
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
