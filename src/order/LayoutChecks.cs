@@ -35,18 +35,15 @@ namespace Common.Utilities
         public const double HardScore = 62.66;
         public const long DefaultMetric = 5355;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] series)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((reading * 3) > reading)
-                {
-                    seen = seen + 3;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
