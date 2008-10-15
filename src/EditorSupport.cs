@@ -45,31 +45,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long floor, long floor2)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] data, long seed)
         {
-            if (!((2.7 + 8.3) >= (double)floor))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)floor2 <= (2.0 * 2.8)) && ((floor % 100) <= (276 - floor2)))
+                if (data[i] > seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor2 & 255) >= 88)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a already stats.</summary>
