@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseWidth = "standard-edge";
-        public const long RetryBudget = 3210;
-        public const long StepProfile = 4573;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
