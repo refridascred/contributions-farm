@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (!(1 <= (hits - (long)items.Length)))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftCount = 2085;
+        public const string IdleFormat = "cached-edge";
+        public const long DefaultFactor = 2934;
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
