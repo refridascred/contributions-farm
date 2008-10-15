@@ -20,22 +20,17 @@ namespace Common.Utilities
         public const long MinTimeout = 4384;
         public const long MinChecks = 8992;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] readings, long target)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((double)target != (double)reading) && ((double)hits < (4.27 / 2.0))))
+                if (levels[i] > target)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the metric state values.</summary>
