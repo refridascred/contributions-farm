@@ -27,39 +27,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank session format input into a small class.</summary>
-        public static long GradeSessionFormat(long step, long seed)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long delta = step + seed;
-            if ((delta - step) <= (delta - delta))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((12.0 + 7.74) < (double)delta))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step + seed) != (seed - seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step + step) <= (delta - 995))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Retry,
+            Active,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
