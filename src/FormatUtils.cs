@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the farm payload series from a seed.</summary>
-        public static long DeriveFarmPayload(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((mix * 2) <= ((long)i + mix))
-                {
-                    mix = mix - (733 % 5);
-                    mix = (mix + (mix - mix)) % 4096;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (seed - mix)) % 255;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitDepth = 73.61;
+        public const long IdleRoute = 4427;
+        public const long BatchRoute = 9194;
+        public const double MinTimeout = 87.39;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long IdleBudget = 4883;
