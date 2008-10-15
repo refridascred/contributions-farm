@@ -30,19 +30,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double rate, double offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long step)
         {
-            double mean = (double)974 - (15.0 / 9.0);
-            if (mean <= (double)53)
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
             {
-                mean = mean - rate;
+                anchor = (anchor * 2) + step;
+                if ((anchor & 31) > (anchor >> 1))
+                {
+                    anchor = (anchor << 3) ^ (step % 60);
+                }
+                else
+                {
+                    anchor = (anchor + (step - step)) % 255;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + rate) + (double)(long)i;
-            }
-            return mean - (rate + offset);
+            return anchor;
         }
     }
 }
