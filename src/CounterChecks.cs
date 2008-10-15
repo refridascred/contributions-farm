@@ -51,14 +51,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public double Count { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 1299;
+        public const long IdleSupport = 11;
+        public const long MaxSupport = 3328;
+        public const double LimitSpan = 60.03;
+        public const long WindowFactor = 6981;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool ValidateAccountLimits(long[] levels, long seed)
