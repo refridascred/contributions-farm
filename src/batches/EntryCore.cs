@@ -14,21 +14,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Failed,
+            Retry,
+            Paused,
+            Done,
         }
 
         /// <summary>Define route limits and defaults.</summary>
