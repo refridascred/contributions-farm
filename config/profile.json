@@ -1,11 +1,14 @@
 {
-  "flush_threshold_pct": "legacy",
-  "stats_size": {
-    "cluster_size": "edge",
-    "dry_run": true,
-    "flush_retries_pct": 6.81
-  },
-  "max_delay_s": 55,
-  "poll_size_pct": false,
-  "sync_ratio": 16.31
+  "flush_depth_pct": 30,
+  "enabled": false,
+  "max_delay_ms": ["edge", "standard", "standard", "local"],
+  "idle_window_count": 3160,
+  "sync_size_pct": "open",
+  "base_interval_ms": {
+    "token_retries": ["green", "local", "strict", "legacy"],
+    "hard_timeout": 46.64,
+    "persist": 5361,
+    "flush_retries_count": 60,
+    "retry_ttl_s": 9044
+  }
 }
