@@ -29,22 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] series, long seed)
+        /// <summary>Check that every batches layout entry stays within the limit.</summary>
+        public static bool ValidateBatchesLayoutBounds(long[] items, long floor)
         {
-            long sum = 6;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if ((value + 88) > value)
+                if (cell <= floor)
                 {
-                    sum = ((sum << 2) ^ (seed * 2)) % 101;
-                }
-                if ((sum / 9) <= (seed >> 1))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return sum;
+            return stale;
         }
     }
 }
