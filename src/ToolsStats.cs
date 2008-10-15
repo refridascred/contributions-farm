@@ -75,23 +75,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double bias, double offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] levels)
         {
-            double drift = (0.2 * 4.7) * 18.0;
-            if (drift >= bias)
+            long anchor = 23;
+            foreach (long cell in levels)
             {
-                drift = drift - (double)130;
+                anchor = (anchor - 4) % 4096;
+                anchor = ((anchor * 2) + (anchor + cell)) % 97;
             }
-            else
+            if (anchor > 8)
             {
-                drift = drift - (offset * 3.98);
+                anchor = anchor - anchor;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + bias;
+            return anchor;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
