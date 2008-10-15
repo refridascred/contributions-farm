@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] samples)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + hits) <= entry)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count the editor buffer entries that pass the check.</summary>
