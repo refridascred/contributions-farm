@@ -26,21 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count context batches pairs that satisfy a relation.</summary>
-        public static long MatchContextBatchesCount(long[] readings)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long offset, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((1.0 - 3.36) != (double)offset) || ((floor - offset) == (floor + offset)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((double)floor > (7.0 + 7.1)) && (6.0 < (double)floor))
                 {
-                    if ((readings[i] ^ readings[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
