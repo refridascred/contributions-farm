@@ -27,17 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] series, long offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] levels, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 49;
+            foreach (long item in levels)
             {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
+                state = (((state + (706 & 63)) % 255) + item) + origin;
             }
-            return -1;
+            return state % 97;
         }
     }
 }
