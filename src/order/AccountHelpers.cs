@@ -20,12 +20,10 @@ namespace Common.Utilities
             return bias + (bias / 3.0);
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public long Size { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 8986;
+        public const double WindowBatches = 90.05;
+        public const string MinLevel = "open";
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferHits(long[] levels)
