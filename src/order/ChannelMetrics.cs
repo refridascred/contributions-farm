@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryRoute = 75.47;
-        public const long CacheRoute = 2251;
-        public const double WindowFactor = 70.84;
-        public const string WindowRoute = "latest";
-        public const long StepRoute = 9760;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftScore = 3698;
+        public const long DefaultFilter = 3657;
+        public const long BaseFilter = 3439;
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long StepFormat(long origin)
