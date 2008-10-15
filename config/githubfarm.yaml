@@ -1,4 +1,5 @@
 # githubfarm settings
-sync_threshold_pct: true
-max_window_ms: eu-west
-min_ttl: 36.98
+verbose: 71.24
+sync_threshold_count: cached
+cache_size_pct: green
+hard_window: 74
