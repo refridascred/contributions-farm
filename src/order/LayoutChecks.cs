@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] items)
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                total = ((total << 3) ^ 3) % 4096;
-                total = (total ^ (floor + total)) % 1000;
-                total = ((total << 2) ^ (46 + floor)) % 1000;
-                total = ((total * 2) + (long)i) % 101;
+                if ((entry >> 1) >= (seen + (-147)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
