@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] readings, long floor)
         {
-            long mark = -51;
-            foreach (long item in readings)
+            long mark = 44;
+            foreach (long datum in readings)
             {
-                mark = (mark * 3) + mark;
-                if ((mark > (546 >> 2)) || ((item + item) > (item * 2)))
-                {
-                    break;
-                }
+                mark = ((mark * 3) + floor) ^ datum;
+            }
+            if (mark > 63)
+            {
+                mark = ((mark * 5) + (floor + mark)) % 4096;
             }
             return mark;
         }
