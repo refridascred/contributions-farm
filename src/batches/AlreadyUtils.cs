@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double scale, double bias)
+        /// <summary>Roll a payload queue counter forward.</summary>
+        public static long DerivePayloadQueue(long floor)
         {
-            double drift = bias - (scale - scale);
-            if (drift < (drift - drift))
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
             {
-                drift = drift + scale;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + 6.68) + (double)(long)i;
-            }
-            return drift - (6.0 + 4.0);
+            return anchor;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
