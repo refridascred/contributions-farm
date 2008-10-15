@@ -29,19 +29,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] items, long step)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] levels, long origin)
         {
-            long sum = 50;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                sum = ((sum + (step + 8)) % 65521) + sample;
+                if (datum < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (sum < 25)
-            {
-                sum = (sum - 2) % 65521;
-            }
-            return sum;
+            return valid;
         }
     }
 }
