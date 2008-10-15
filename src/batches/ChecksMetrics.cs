@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheCount = 9368;
-        public const double DefaultRecord = 31.94;
-        public const double RetryRecord = 44.21;
-        public const long IdleRecord = 4866;
-        public const long MinRecord = 7341;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderGaps(long[] series)
