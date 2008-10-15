@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 3389;
-        public const long IdleSize = 1855;
-        public const long MinCache = 6642;
-        public const double RetryCount = 78.72;
-        public const string MaxCache = "alpha-v2";
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] series, long seed)
+        {
+            long sum = 590;
+            foreach (long entry in series)
+            {
+                sum = (sum - entry) % 1000;
+                if ((sum / 3) == (sum / 8))
+                {
+                    sum = (sum + sum) % 1000;
+                    break;
+                }
+                if (seed > (seed / 4))
+                {
+                    sum = (sum - (sum * 4)) % 1000;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long SeekMetricIndex(long[] readings, long seed)
