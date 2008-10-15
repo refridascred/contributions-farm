@@ -1,7 +1,7 @@
 {
-  "warm_ratio_ms": "staging",
-  "retry_delay": 39.27,
-  "enabled": 90,
-  "poll_delay": [205, 435, 429, 193],
-  "entry_interval": ["staging", "stable"]
+  "default_interval_s": ["green", "standard"],
+  "counter_ratio": "open",
+  "compress": "eu-west",
+  "min_ratio_s": ["edge", "latest", "fallback"],
+  "filter_interval": 91.81
 }
