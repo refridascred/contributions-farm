@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] levels, long limit)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell << 2) <= 81)
-                {
-                    seen = (seen + 1) - limit;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
