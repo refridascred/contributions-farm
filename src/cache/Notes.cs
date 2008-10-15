@@ -32,19 +32,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double bias, double span)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] levels)
         {
-            double mean = bias + (bias - bias);
-            if (mean <= (span * 5.79))
+            long score = 9;
+            foreach (long sample in levels)
             {
-                mean = mean + (double)1;
+                score = score - 70;
+                if (!(sample > (62 & 3)))
+                {
+                    score = score - score;
+                }
             }
-            else
-            {
-                mean = mean - (bias / 8.0);
-            }
-            return mean - (2.0 + 13.0);
+            return score;
         }
 
         /// <summary>Hold a channel info.</summary>
