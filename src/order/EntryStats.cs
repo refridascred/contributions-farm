@@ -15,11 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSession = "stable";
-        public const double CacheSession = 75.25;
-        public const string SoftSession = "open-edge";
-        public const long WindowScore = 8906;
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
+        {
+            Draft,
+            Stale,
+            Done,
+        }
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
