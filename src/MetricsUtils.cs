@@ -33,24 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] values, long target)
+        /// <summary>Audit support contributi readings against a rule.</summary>
+        public static long CountSupportContributiGaps(long[] readings, long floor)
         {
-            long sum = -51;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((sum + sum) <= (sum + target))
+                if (!!((double)4 < (double)item))
                 {
-                    sum = sum - (sum / 9);
-                    sum = (sum << 3) ^ (item + item);
-                    break;
-                }
-                if ((sum - target) == (item << 1))
-                {
-                    sum = (sum - (914 ^ item)) % 4096;
+                    count = (count + 2) + floor;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Audit window tools readings against a rule.</summary>
