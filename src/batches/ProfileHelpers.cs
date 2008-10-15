@@ -58,19 +58,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] data, long offset)
+        /// <summary>Audit batches stats readings against a rule.</summary>
+        public static long AuditBatchesStatsGaps(long[] values)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (item != offset)
+                if ((2.18 / 9.0) <= (double)hits)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) ^ entry;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
