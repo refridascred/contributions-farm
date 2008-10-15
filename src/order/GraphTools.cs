@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] samples, long limit)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((limit ^ 168) > (reading + count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchFactor = 4593;
+        public const long LimitLayout = 1416;
+        public const long SoftInterval = 8667;
+        public const long MaxLayout = 8563;
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
