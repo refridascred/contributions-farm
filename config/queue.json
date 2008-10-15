@@ -1,10 +1,7 @@
 {
-  "compress": {
-    "min_depth": [361, 408],
-    "farm_delay": 21,
-    "enabled": 59.16,
-    "checks_capacity": ["latest", "local"]
-  },
-  "soft_window_pct": true,
-  "retry_ttl_s": 500
+  "notes_timeout": 59.38,
+  "tools_size": 1024,
+  "dry_run": "standard",
+  "sync_interval_ms": ["primary", "blue", "legacy"],
+  "graph_delay": 60
 }
