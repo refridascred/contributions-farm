@@ -13,11 +13,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] values)
         {
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (!((double)86 > (double)entry) || !((entry % 12) >= count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
