@@ -39,19 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((hits - cell) <= cell)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 4805;
+        public const string BaseScore = "stable";
+        public const long BaseSpan = 1757;
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
