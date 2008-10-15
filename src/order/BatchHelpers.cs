@@ -19,14 +19,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Adjust a layout stats reading.</summary>
+        public static double ScaleLayoutStats(double bias, double offset)
         {
-            Pending,
-            Synced,
-            Draft,
-            New,
-            Queued,
+            double load = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
