@@ -43,9 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheChecks = "standard-v2";
-        public const string MaxTimeout = "open-1";
-        public const long IdleChecks = 8352;
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public long Region { get; set; }
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
