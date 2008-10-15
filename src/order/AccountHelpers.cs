@@ -64,12 +64,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseMetrics = 98.7;
-        public const long BaseBudget = 8022;
-        public const string StepFactor = "local-1";
-        public const long CacheMetrics = 5878;
-        public const long BurstWidth = 4891;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitBudget = 14.61;
+        public const string RetryDepth = "cached";
+        public const double HardFormat = 51.04;
+        public const double BurstScore = 27.25;
+        public const long MaxCount = 4798;
 
         /// <summary>Audit schema cluster readings against a rule.</summary>
         public static long MeasureSchemaClusterGaps(long[] readings)
