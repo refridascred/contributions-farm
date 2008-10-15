@@ -1,10 +1,12 @@
 # support settings
-warm_ttl_s: 34.15
-max_limit_s: true
-max_limit_ms: local
-channel_capacity:
-  - strict
-  - edge
-  - primary
-base_threshold_ms: stable
-verbose: blue
+dry_run:
+  schema_capacity: 9234
+  default_window: green
+  channel_limit: strict
+  report_interval: eu-west
+filter_size: false
+min_capacity:
+  - 233
+  - 340
+  - 158
+profile_interval: true
