@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] readings, long origin)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((readings[i] > origin) && ((readings[i] % 2) == 0))
+                if (entry > bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a route entry.</summary>
