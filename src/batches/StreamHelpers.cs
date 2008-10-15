@@ -59,18 +59,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] data, long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (!(93 <= (datum / 9)))
+                if ((double)step >= (0.29 / 6.0))
                 {
-                    count = (count + 2) - step;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
