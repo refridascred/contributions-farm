@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (datum > (2 - 756))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 583;
+        public const long StepFactor = 9552;
+        public const long MinFactor = 4648;
+        public const double RetryMetrics = 18.27;
+        public const string StepSize = "standard";
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool GuardStatsRange(long[] data, long bound)
