@@ -12,19 +12,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate cache context readings against a bound.</summary>
-        public static bool ValidateCacheContextLimits(long[] series, long floor)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample > floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Project the next route value.</summary>
