@@ -72,23 +72,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double scale, double floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long bound)
         {
-            double scale2 = (8.1 * 9.04) - (double)15;
-            if (scale2 > (scale + scale))
+            long sum = bound;
+            for (int i = 0; i < 5; i++)
             {
-                scale2 = (scale2 + (5.3 * 4.08)) - floor;
+                if ((sum ^ sum) == (bound * 4))
+                {
+                    sum = (sum * 5) + (long)i;
+                }
+                sum = sum ^ (sum / 6);
+                sum = (sum << 2) ^ (sum << 2);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            else
-            {
-                scale2 = scale2 - (3.57 / 4.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 - (scale2 * 5.0)) + (double)(long)i;
-            }
-            return scale2 - (scale2 - scale);
+            return sum;
         }
     }
 }
