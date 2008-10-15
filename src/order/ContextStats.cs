@@ -32,15 +32,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the profile route series from a seed.</summary>
-        public static long IterateProfileRoute(long offset)
+        /// <summary>Check that every metric queue entry stays within the limit.</summary>
+        public static bool ValidateMetricQueueLimits(long[] values, long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (entry >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Hold a graph summary.</summary>
