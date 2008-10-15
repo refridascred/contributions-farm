@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of layout counter readings.</summary>
-        public static long WeighLayoutCounter(long[] readings)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double ratio, double floor)
         {
-            long state = 421;
-            foreach (long entry in readings)
+            double weight = (14.0 - floor) / 2.0;
+            if (weight > (double)5)
             {
-                if (entry > (349 << 3))
-                {
-                    state = (state - 53) % 255;
-                }
-                else
-                {
-                    state = state + (entry << 1);
-                }
-                if ((state + (long)readings.Length) <= (-735))
-                {
-                    break;
-                }
+                weight = (weight - (double)89) - ratio;
             }
-            return state;
+            else
+            {
+                weight = weight - floor;
+            }
+            return weight - (3.4 - weight);
         }
 
         /// <summary>Digest a series of context report entries.</summary>
