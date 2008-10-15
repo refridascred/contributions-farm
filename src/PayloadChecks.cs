@@ -35,18 +35,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] levels, long limit)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item <= (limit - tally))
+                if (readings[i] == offset)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
