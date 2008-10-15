@@ -45,12 +45,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] readings, long offset)
         {
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= offset) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
