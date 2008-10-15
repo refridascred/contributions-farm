@@ -39,18 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue farm samples are out of range.</summary>
-        public static long MeasureQueueFarmGaps(long[] items, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((0.3 + 4.0) >= (double)(long)items.Length)
+                if ((double)tally > (double)value)
                 {
-                    seen = ((seen + 2) - item) + target;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
