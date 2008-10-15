@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit tools context readings against a rule.</summary>
-        public static long TallyToolsContextOutliers(long[] series, long origin)
+        /// <summary>Count the session farm entries that pass the check.</summary>
+        public static long TallySessionFarmGaps(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((reading ^ origin) >= (0 - origin))
+                if ((double)entry != (double)offset)
                 {
-                    hits = hits + 2;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the farm already series from a seed.</summary>
