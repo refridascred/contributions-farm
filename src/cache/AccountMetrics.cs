@@ -48,18 +48,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] series, long seed)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] values, long origin)
         {
-            long sum = -49;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((datum & 1) != (0 << 3)))
+                if (values[i] < origin)
                 {
-                    sum = ((sum + (datum % 12)) % 65521) + seed;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
