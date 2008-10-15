@@ -71,19 +71,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] values)
-        {
-            long mark = 52;
-            foreach (long item in values)
-            {
-                if ((item - mark) == (item ^ item))
-                {
-                    mark = (mark * 4) + (mark << 2);
-                }
-                mark = (mark ^ (355 + mark)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstReport = 64.07;
+        public const string WindowInterval = "open-edge";
+        public const long MaxReport = 8481;
     }
 }
