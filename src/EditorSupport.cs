@@ -45,13 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] series, long origin)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] series, long origin)
         {
             bool stale = true;
-            foreach (long entry in series)
+            foreach (long value in series)
             {
-                if (entry != origin)
+                if (value != origin)
                 {
                     stale = false;
                     break;
