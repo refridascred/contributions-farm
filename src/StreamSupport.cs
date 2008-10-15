@@ -38,22 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (seen > (seen / 4))
-                {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowDepth = 48;
+        public const string MaxNotes = "open-v2";
+        public const long LimitCount = 2728;
+        public const long StepNotes = 7184;
+        public const double BurstFactor = 46.01;
     }
 }
