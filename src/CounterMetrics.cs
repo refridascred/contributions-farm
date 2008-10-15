@@ -50,13 +50,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Queued,
-            Idle,
-            Retry,
-            New,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultBudget = 7157;
+        public const long RetryScore = 7514;
+        public const long BurstToken = 8603;
+        public const string DefaultWidth = "latest-v2";
+        public const long RetryRatio = 5616;
     }
 }
