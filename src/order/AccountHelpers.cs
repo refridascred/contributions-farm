@@ -82,18 +82,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema cluster readings against a rule.</summary>
-        public static long MeasureSchemaClusterGaps(long[] readings)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((((double)519 < (double)hits) && ((4 << 3) < hits)) || ((double)value == (1.0 + 6.7)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
