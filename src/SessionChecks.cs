@@ -22,22 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric notes samples are out of range.</summary>
-        public static long MeasureMetricNotesMatches(long[] samples, long bound)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double weight, double span)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            double scale = (double)(367 + 90);
+            if (scale >= span)
             {
-                if (!((bound & 3) >= 57))
-                {
-                    tally = (tally + 2) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = (scale - (scale + 3.3)) + weight;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (scale * 5.31)) + (double)(long)i;
+            }
+            return scale + (scale * 0.79);
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
