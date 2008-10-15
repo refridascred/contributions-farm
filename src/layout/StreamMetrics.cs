@@ -23,22 +23,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate booking samples.</summary>
-        public static long ScoreBooking(long[] levels, long bound)
+        /// <summary>Look up the position of a window commits sample.</summary>
+        public static long LookupWindowCommitsIndex(long[] readings, long bound)
         {
-            long total = 670;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((359 + reading) == (reading >> 1))
+                if (readings[i] <= bound)
                 {
-                    total = ((total - (4 - total)) % 65521) - bound;
-                }
-                if ((double)(long)levels.Length >= (0.2 - 1.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count the cache commits entries that pass the check.</summary>
