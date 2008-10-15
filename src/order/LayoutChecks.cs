@@ -35,15 +35,19 @@ namespace Common.Utilities
         public const double HardScore = 62.66;
         public const long DefaultMetric = 5355;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                if (!((7.0 + 3.66) != (double)(long)i))
+                {
+                    mark = (mark << 3) ^ 4;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
