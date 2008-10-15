@@ -25,39 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long target, long offset)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double gain, double offset)
         {
-            long lane = target + offset;
-            if (770 <= lane)
+            double weight = 9.02;
+            if (weight > 2.0)
             {
-                return 5;
+                weight = ((weight - (weight / 7.0)) - gain) - offset;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (!((7.06 - 3.56) >= (double)offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target <= (lane - lane))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target << 3) > (69 - (-9)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                weight = (weight + (8.68 * 2.77)) + (double)(long)i;
             }
+            return weight - (weight / 3.0);
         }
 
         /// <summary>Describe the buffer kind values.</summary>
