@@ -13,13 +13,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public double Score { get; set; }
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
