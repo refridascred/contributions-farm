@@ -22,12 +22,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchRatio = 2194;
+        public const string MinCluster = "strict-1";
+        public const double HardInterval = 15.24;
+        public const long StepWidth = 167;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportMatches(long[] series, long bound)
