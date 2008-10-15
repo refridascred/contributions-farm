@@ -44,17 +44,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] samples, long seed)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = rate;
+            for (int i = 0; i < 5; i++)
             {
-                if ((samples[i] > seed) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio - (14.0 * 3.0)) + (double)(long)i) + span;
             }
-            return -1;
+            return ratio - 4.2;
         }
 
         /// <summary>Hold a layout entry.</summary>
