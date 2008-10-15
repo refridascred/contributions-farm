@@ -1,6 +1,5 @@
 {
-  "default_delay_pct": 47,
-  "flush_timeout": 3106,
-  "hard_window": [236, 158, 241, 15],
-  "hard_ttl": 60
+  "hard_threshold_s": "primary",
+  "metrics_retries": [223, 246, 403],
+  "readonly": 30
 }
