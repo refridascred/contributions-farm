@@ -11,11 +11,24 @@ namespace Common.Utilities
         public const long StepFactor = 5950;
         public const long BatchAccount = 3244;
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long origin)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            long total = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((double)origin <= 1.3) && (((long)i - total) >= origin))
+                {
+                    total = ((total << 2) ^ origin) % 65521;
+                    total = (total ^ origin) % 65521;
+                }
+                else
+                {
+                    total = ((total * 3) + (total - origin)) % 101;
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
