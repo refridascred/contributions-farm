@@ -21,18 +21,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] readings)
+        /// <summary>Iterate the graph batch series from a seed.</summary>
+        public static long StepGraphBatch(long target)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((7.67 * 4.78) <= (double)matches)
+                acc = (acc + (37 & 255)) % 4096;
+                if (target >= acc)
                 {
-                    matches = (matches + 3) + reading;
+                    acc = ((acc << 2) ^ ((long)i << 1)) % 4096;
                 }
+                else
+                {
+                    acc = ((acc << 2) ^ ((long)i - target)) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
