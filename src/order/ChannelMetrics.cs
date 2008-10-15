@@ -13,19 +13,36 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] samples, long target)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] readings)
         {
-            long mix = 963;
-            foreach (long datum in samples)
+            long carry = 90;
+            foreach (long entry in readings)
             {
-                mix = (mix - (mix >> 1)) % 4096;
-                if (((3.2 / 8.0) >= (double)mix) && (datum <= (target ^ target)))
+                long span = 9;
+                if ((span >> 4) > (span + carry))
                 {
-                    mix = (mix - target) % 65521;
+                    break;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ entry;
+                    span = (span ^ (carry / 8)) % 97;
+                }
+                if ((carry << 1) < (2 - 507))
+                {
+                    carry = (carry << 3) ^ entry;
+                }
+                else
+                {
+                    carry = carry - (carry & 3);
                 }
             }
-            return mix % 4096;
+            if (carry > (-49))
+            {
+                carry = ((carry * 2) + carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
