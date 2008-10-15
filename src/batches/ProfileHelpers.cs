@@ -32,10 +32,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 7483;
-        public const double RetryEditor = 13.77;
-        public const long LimitFactor = 7989;
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
         public static long CountMetricsGithubfarmGaps(long[] series)
