@@ -14,21 +14,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of route stream readings.</summary>
-        public static long CompareRouteStreamCount(long[] items)
+        /// <summary>Audit metric record readings against a rule.</summary>
+        public static long TallyMetricRecordOutliers(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)seen > (6.0 + 5.11))
                 {
-                    if ((items[i] ^ items[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 1) ^ item) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
