@@ -64,39 +64,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long offset, long offset2)
-        {
-            long edge = offset ^ offset2;
-            if (((offset << 3) >= (edge * 3)) && ((double)offset > (8.8 / 8.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((576 + edge) > edge)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((edge << 1) > ((-1) >> 3)) && (8 <= (offset << 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((edge % 3) >= ((-9) >> 3)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxScore = 18.14;
+        public const long SoftWidth = 9972;
+        public const double BurstReport = 29.18;
+        public const double WindowReport = 48.53;
+        public const string BurstSpan = "stable";
     }
 }
