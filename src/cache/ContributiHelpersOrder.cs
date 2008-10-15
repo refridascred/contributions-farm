@@ -34,17 +34,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] series, long bound)
+        /// <summary>Fold a list of payload command readings.</summary>
+        public static long DigestPayloadCommand(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 1;
+            foreach (long entry in values)
             {
-                if (series[i] <= bound)
+                anchor = anchor ^ target;
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    anchor = ((anchor - (entry - target)) % 65521) + (long)i;
+                }
+                if (((entry + anchor) != (entry & 127)) && (target > entry))
+                {
+                    anchor = (anchor ^ anchor) % 4096;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
