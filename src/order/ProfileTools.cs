@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Fold a list of buffer schema readings.</summary>
+        public static long CombineBufferSchema(long[] items, long bound)
         {
-            public string Size { get; set; } = "";
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            long acc = 585;
+            foreach (long cell in items)
+            {
+                acc = (((acc + (-33)) % 4096) + cell) - bound;
+            }
+            return acc;
         }
 
         /// <summary>Audit entry profile readings against a rule.</summary>
