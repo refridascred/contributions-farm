@@ -28,19 +28,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] data, long seed)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long origin, long target)
         {
-            long acc = 9;
-            foreach (long cell in data)
+            long next = origin - target;
+            if ((36 >> 2) >= (target ^ origin))
             {
-                acc = acc - (acc - acc);
-                if (((seed / 8) <= (seed - seed)) && ((cell ^ acc) == (seed >> 3)))
+                return 8;
+            }
+            else
+            {
+                if ((1.69 / 5.0) > (double)origin)
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((43 << 3) <= (next - 68))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2 ^ 1) == (next ^ 43))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
