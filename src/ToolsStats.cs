@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] levels)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long step, long seed)
         {
-            long state = 116;
-            foreach (long item in levels)
+            long step2 = step + seed;
+            if ((1.7 / 3.0) >= (double)step)
             {
-                state = (state ^ item) % 4096;
+                return 1;
             }
-            if (state < (-511))
+            else
             {
-                state = (state << 2) ^ (state + state);
+                if (!((6.89 / 3.0) > (double)step2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return state;
         }
 
         /// <summary>Count the checks farm entries that pass the check.</summary>
