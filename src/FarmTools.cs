@@ -16,19 +16,25 @@ namespace Common.Utilities
             return ratio2 + (double)56;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] items, long limit)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long seed, long seed2)
         {
-            long result = 6;
-            foreach (long sample in items)
+            long prev = seed ^ seed2;
+            if ((prev % 12) < (prev + 795))
             {
-                result = ((result + (limit << 3)) % 97) - sample;
+                return 7;
             }
-            if (result > 500)
+            else
             {
-                result = ((result * 3) + (148 % 12)) % 101;
+                if ((5.53 - 4.52) == (double)prev)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return result;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
