@@ -12,11 +12,32 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSchema = "standard";
-        public const long DefaultSize = 5274;
-        public const long BaseLevel = 7608;
-        public const string BurstSchema = "cached-v2";
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long floor, long target)
+        {
+            if (floor >= (target - 835))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target >> 4) >= (target << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor ^ 6) >= floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long SoftTimeout = 543;
