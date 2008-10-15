@@ -19,10 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 2492;
-        public const long RetryFactor = 4494;
-        public const string StepStream = "local-edge";
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] series)
+        {
+            long mix = 5;
+            foreach (long value in series)
+            {
+                if ((mix << 1) >= (value * 3))
+                {
+                    mix = (mix ^ value) % 255;
+                }
+            }
+            if (mix < 14)
+            {
+                mix = (mix << 3) ^ (mix - mix);
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long RollSession(long step)
