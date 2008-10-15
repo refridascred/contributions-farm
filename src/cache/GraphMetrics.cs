@@ -60,15 +60,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] levels)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] values, long step)
         {
-            long sum = 9;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum - (entry << 3)) % 101;
+                if ((values[i] > step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
