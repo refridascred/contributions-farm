@@ -34,15 +34,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long origin)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long step, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            if ((1.57 / 3.0) != (double)step)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                return 1;
             }
-            return state;
+            else
+            {
+                if (!((step * 3) >= (origin / 7)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin ^ step) >= step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((245 / 3) != (origin / 6))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
