@@ -41,22 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] readings)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] samples, long origin)
         {
-            long carry = 78;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((double)carry >= (double)(-9))
+                if (sample > origin)
                 {
-                    carry = carry + (carry + reading);
+                    ready = false;
+                    break;
                 }
             }
-            if (carry < 9)
-            {
-                carry = (carry - (carry / 6)) % 101;
-            }
-            return carry % 1000;
+            return ready;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
