@@ -46,18 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] data, long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long mix = -6;
+            foreach (long sample in series)
             {
-                if ((8 + matches) <= 0)
+                if ((15.0 > (5.77 + 9.78)) && ((mix - step) >= (step - sample)))
                 {
-                    matches = ((matches + 3) + item) + origin;
+                    mix = (mix * 2) + step;
                 }
             }
-            return matches;
+            return mix % 4096;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
