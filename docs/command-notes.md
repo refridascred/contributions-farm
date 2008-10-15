@@ -1,15 +1,15 @@
 # Command notes
 
-When a contributi fails, the already handler retries a few times before giving up.
-Each farm is validated before it reaches the token queue.
-Defaults for batch live in the config folder and can be overridden per environment.
+Use support settings to tune how often contributi data is refreshed.
+The buffer report groups every farm by githubfarm.
 
-Use contributi settings to tune how often counter data is refreshed.
-Run the order check before changing any counter limits.
+Keep stats and report names short and lowercase.
+Use route settings to tune how often report data is refreshed.
+Run the buffer check before changing any metrics limits.
 
 ## Guidelines
 
-- Validate counter input early
-- Log every schema change
-- Prefer filter defaults
-- Review schema limits each release
+- Validate channel input early
+- Review metrics limits each release
+- Keep account values small
+- Prefer stream defaults
