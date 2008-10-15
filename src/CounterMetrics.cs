@@ -25,13 +25,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long target, long offset)
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
+            long lane = target + offset;
+            if (770 <= lane)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((7.06 - 3.56) >= (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target <= (lane - lane))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target << 3) > (69 - (-9)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the buffer kind values.</summary>
