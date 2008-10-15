@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] series)
         {
-            Queued,
-            Done,
-            Retry,
-            Paused,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (((long)series.Length % 97) == (hits + hits))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
