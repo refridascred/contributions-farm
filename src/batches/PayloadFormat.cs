@@ -43,24 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long origin, long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] data, long offset)
         {
-            if (!((offset - offset) <= (offset & 127)))
+            bool ready = true;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (3.15 < (double)origin)
+                if (sample > offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
