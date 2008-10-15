@@ -41,15 +41,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a batch contributi reading.</summary>
-        public static double ScaleBatchContributi(double rate, double span)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            double rate2 = 2.0;
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = ((rate2 - rate) + (double)(long)i) - span;
-            }
-            return rate2 + rate2;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Match up buffer samples.</summary>
