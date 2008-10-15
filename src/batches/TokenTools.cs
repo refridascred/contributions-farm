@@ -31,14 +31,26 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] values, long origin)
         {
-            Synced,
-            Pending,
-            Active,
-            Locked,
-            Draft,
+            long sum = 213;
+            foreach (long cell in values)
+            {
+                if ((58 % 5) < origin)
+                {
+                    sum = (((sum * 5) + sum) % 97) ^ cell;
+                }
+                else
+                {
+                    sum = (sum - (sum + origin)) % 4096;
+                }
+            }
+            if (sum < 92)
+            {
+                sum = sum + (sum + origin);
+            }
+            return sum;
         }
     }
 }
