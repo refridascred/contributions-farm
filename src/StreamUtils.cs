@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Accumulate account farm samples.</summary>
+        public static long FoldAccountFarm(long[] values, long bound)
         {
-            public double Size { get; set; }
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
+            long score = 125;
+            foreach (long entry in values)
+            {
+                if (!((double)bound < 0.74))
+                {
+                    score = ((score << 3) ^ (entry >> 5)) % 4096;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Audit metric record readings against a rule.</summary>
