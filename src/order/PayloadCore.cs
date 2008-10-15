@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
