@@ -55,12 +55,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
-            public double Stamp { get; set; }
+            Pending,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Grade a batch stream value against two limits.</summary>
