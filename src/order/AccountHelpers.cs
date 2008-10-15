@@ -47,12 +47,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitBudget = 14.61;
-        public const string RetryDepth = "cached";
-        public const double HardFormat = 51.04;
-        public const double BurstScore = 27.25;
-        public const long MaxCount = 4798;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Audit schema cluster readings against a rule.</summary>
         public static long MeasureSchemaClusterGaps(long[] readings)
