@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double bias, double offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] series, long limit)
         {
-            double drift = bias;
-            if (drift < (double)7)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                drift = drift + (double)287;
+                if (datum < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (offset - 6.0);
-            }
-            return drift - bias;
+            return ready;
         }
 
         /// <summary>Fold a list of token readings.</summary>
