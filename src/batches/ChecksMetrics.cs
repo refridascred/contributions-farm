@@ -30,23 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] series)
-        {
-            long acc = -96;
-            foreach (long datum in series)
-            {
-                if ((double)acc >= (5.2 * 5.5))
-                {
-                    acc = ((acc << 3) ^ (-63)) % 65521;
-                }
-                else
-                {
-                    acc = acc + datum;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 656;
+        public const long WindowCommits = 3556;
+        public const string WindowLevel = "legacy-1";
+        public const long CacheCommits = 3823;
+        public const string RetryCommits = "legacy-v2";
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long SeriesLayout(long floor)
