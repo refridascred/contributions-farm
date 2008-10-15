@@ -12,21 +12,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] samples)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((seed / 5) != (79 * 4)) || ((carry - carry) <= seed))
                 {
-                    if ((samples[i] ^ samples[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry + (939 >> 3);
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Project the next route value.</summary>
