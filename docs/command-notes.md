@@ -1,10 +1,10 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the window list.
-A tools that stays idle for too long is moved to the route list.
+When a githubfarm fails, the farm handler retries a few times before giving up.
+Each farm is validated before it reaches the context queue.
 
 ## Guidelines
 
 - Validate metrics input early
-- Keep payload values small
-- Document new record fields
+- Review tools limits each release
+- Log every metric change
