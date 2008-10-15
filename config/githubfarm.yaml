@@ -1,5 +1,14 @@
 # githubfarm settings
-verbose: 71.24
-sync_threshold_count: cached
-cache_size_pct: green
-hard_window: 74
+warm_ttl_count: edge
+sync_ttl_pct: 47
+report_limit:
+  - 418
+  - 369
+  - 227
+stream_depth:
+  max_ratio_count: green
+  batch_window: 3394
+  payload_retries: legacy
+  sync_timeout_count: 100
+persist: 21
+dry_run: stable
