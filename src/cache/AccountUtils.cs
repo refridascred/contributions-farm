@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] series, long seed)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (count < 4)
+                if ((data[i] <= bound) && ((data[i] % 2) != 0))
                 {
-                    count = ((count + 2) + item) - seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
