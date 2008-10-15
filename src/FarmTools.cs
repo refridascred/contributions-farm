@@ -14,15 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the contributi buffer series from a seed.</summary>
-        public static long StepContributiBuffer(long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] data, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                state = ((state * 3) + (long)i) % 101;
+                if ((tally >> 1) <= (item / 9))
+                {
+                    tally = (tally + 1) + origin;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
