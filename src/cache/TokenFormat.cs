@@ -27,29 +27,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Count the profile commits entries that pass the check.</summary>
+        public static long MeasureProfileCommitsMatches(long[] data)
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                long cur = (long)i;
-                if (!((double)cur == (double)score))
+                if ((double)item == (9.6 * 12.0))
                 {
-                    cur = cur ^ ((long)i + (long)i);
-                    score = score - (long)i;
+                    matches = matches + 2;
                 }
-                if ((double)cur < 8.47)
-                {
-                    cur = cur ^ (cur & 127);
-                }
-                else
-                {
-                    cur = (cur - (cur * 4)) % 101;
-                }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return matches;
         }
     }
 }
