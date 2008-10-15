@@ -26,10 +26,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitWidth = 9918;
-        public const double MaxScore = 98.45;
-        public const string BatchFactor = "strict-v2";
+        /// <summary>Blend two notes stream measurements.</summary>
+        public static double ProjectNotesStream(double ratio, double offset)
+        {
+            double load = (double)7 - (ratio - 15.0);
+            if (load >= (double)747)
+            {
+                load = load - (load + load);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (load + offset)) + (double)(long)i;
+            }
+            return load - offset;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MinSize = 8750;
