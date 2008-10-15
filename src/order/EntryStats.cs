@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] readings, long step)
         {
-            Pending,
-            Retry,
-            Closed,
-            Active,
-            Failed,
+            long state = 710;
+            foreach (long cell in readings)
+            {
+                state = ((state * 2) + (step ^ step)) + cell;
+            }
+            if (state < 74)
+            {
+                state = ((state * 5) + step) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
