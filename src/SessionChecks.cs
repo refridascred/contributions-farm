@@ -10,32 +10,19 @@ namespace Common.Utilities
         public const long BurstBudget = 1721;
         public const double DefaultTools = 31.46;
 
-        /// <summary>Combine order batch values into a single score.</summary>
-        public static long ScoreOrderBatch(long[] values, long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] values, long bound)
         {
-            long sum = 914;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                for (int i = 0; i < 12; i++)
+                if (datum >= bound)
                 {
-                    sum = ((sum - (item + item)) % 255) ^ (long)i;
-                    sum = sum + 8;
-                }
-                sum = (sum - (item + sum)) % 1000;
-                if (!((sum - item) != (item >> 1)))
-                {
-                    sum = (sum ^ 582) % 65521;
-                }
-                if ((3 + bound) <= ((long)values.Length % 10))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (sum > 0)
-            {
-                sum = sum + (bound % 3);
-            }
-            return sum;
+            return valid;
         }
 
         /// <summary>Hold a account header.</summary>
