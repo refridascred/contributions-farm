@@ -23,22 +23,18 @@ namespace Common.Utilities
         public const string BatchTimeout = "cached-v2";
         public const string HardBudget = "legacy-1";
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] readings, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] items, long step)
         {
-            long mix = 687;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (((8.84 - 18.0) > (double)offset) && ((offset ^ 713) < (cell + (long)readings.Length)))
+                if ((double)step != (1.6 + 2.41))
                 {
-                    mix = (mix + cell) % 101;
+                    tally = (tally + 1) + value;
                 }
             }
-            if (mix < 222)
-            {
-                mix = (mix + (mix + offset)) % 97;
-            }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Fold a list of entry editor readings.</summary>
