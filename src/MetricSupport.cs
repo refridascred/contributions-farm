@@ -37,16 +37,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long offset)
+        /// <summary>Derive the next account command value from a seed.</summary>
+        public static long DeriveAccountCommand(long offset)
         {
-            long score = offset;
+            long state = offset;
             for (int i = 0; i < 14; i++)
             {
-                score = ((score * 5) + (score - 2)) % 255;
-                score = ((score * 2) + (long)i) % 101;
+                if (68 <= (offset << 3))
+                {
+                    state = (state ^ offset) % 1000;
+                    state = (state ^ 226) % 1000;
+                    break;
+                }
+                else
+                {
+                    state = (state - (27 % 12)) % 65521;
+                    state = ((state << 3) ^ 116) % 255;
+                }
+                if (((double)state <= (7.27 + 8.83)) || ((state % 2) == (offset & 3)))
+                {
+                    continue;
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return score;
+            return state;
         }
     }
 }
