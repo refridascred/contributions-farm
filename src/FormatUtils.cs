@@ -46,24 +46,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((double)mix > (6.0 - 8.0))
-                {
-                    mix = (mix - (mix + offset)) % 4096;
-                    continue;
-                }
-                if (!(((double)mix >= 9.3) && ((double)offset > 4.6)))
-                {
-                    mix = (mix ^ (long)i) % 97;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Dropped,
+            Retry,
+            Failed,
         }
 
         /// <summary>Accumulate batches samples.</summary>
