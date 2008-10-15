@@ -43,13 +43,13 @@ namespace Common.Utilities
         public const string BurstInterval = "strict-edge";
         public const long BatchChecks = 9220;
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public string Mode { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
+            Locked,
+            Draft,
+            Failed,
+            Dropped,
         }
     }
 }
