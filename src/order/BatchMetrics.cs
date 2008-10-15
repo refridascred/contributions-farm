@@ -19,20 +19,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] readings)
-        {
-            long carry = 90;
-            foreach (long reading in readings)
-            {
-                carry = (carry + (reading >> 1)) % 97;
-            }
-            if (carry > (-147))
-            {
-                carry = carry + (735 >> 2);
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 3292;
+        public const long CacheBudget = 5590;
+        public const long BatchSpan = 6790;
+        public const long MaxTimeout = 7264;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] readings)
