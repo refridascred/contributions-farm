@@ -42,19 +42,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] series, long seed)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long floor)
         {
-            bool found = true;
-            foreach (long item in series)
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Combine context values into a single score.</summary>
