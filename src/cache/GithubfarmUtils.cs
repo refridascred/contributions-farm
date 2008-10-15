@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long limit, long target)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            if ((target > (target >> 3)) || (limit <= (798 * 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (target >= (limit ^ limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target & 3) < (limit ^ target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Active,
+            Draft,
+            Synced,
+            Retry,
         }
 
         /// <summary>Adjust a session reading.</summary>
