@@ -1,8 +1,6 @@
 {
-  "sync_depth": 29,
-  "metric_timeout": 32.93,
-  "verbose": "open",
-  "idle_depth": 99,
-  "batch_threshold_ms": 52,
-  "filter_capacity": 85.65
+  "compress": 5178,
+  "idle_size_s": ["fallback", "open"],
+  "hard_window": [479, 199],
+  "warm_window_s": 8266
 }
