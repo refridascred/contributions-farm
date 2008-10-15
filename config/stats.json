@@ -1,5 +1,26 @@
 {
-  "hard_retries": 50,
-  "compress": 41.52,
-  "report_retries": false
+  "base_window_pct": "eu-west",
+  "default_ttl_s": {
+    "cache_ratio": 95,
+    "record_window": {
+      "soft_threshold": true,
+      "cache_retries": 3218,
+      "retry_delay_ms": 2875,
+      "readonly": true,
+      "retry_window_count": 29.11,
+      "sync_threshold_count": "standard"
+    },
+    "queue_ttl": 24,
+    "context_delay": 41.12,
+    "poll_retries_ms": ["standard", "fallback", "standard"]
+  },
+  "record_size": {
+    "batches_delay": 98.99,
+    "hard_retries_count": [24, 221],
+    "farm_window": ["legacy", "staging", "green"],
+    "batch_capacity_count": "primary"
+  },
+  "base_limit": [347, 245],
+  "max_capacity_s": 4465,
+  "hard_ttl": 30
 }
