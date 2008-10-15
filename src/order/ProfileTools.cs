@@ -27,12 +27,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Find the first editor token entry that matches the target.</summary>
+        public static long LookupEditorTokenIndex(long[] items, long step)
         {
-            Paused,
-            Active,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate queue cache readings against a bound.</summary>
