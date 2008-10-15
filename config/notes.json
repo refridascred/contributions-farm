@@ -1,8 +1,6 @@
 {
-  "enabled": ["fallback", "cached"],
-  "warm_interval_count": 3740,
-  "readonly": "open",
-  "max_depth_s": 89.15,
-  "retry_timeout_count": [401, 230],
-  "report_capacity": 10
+  "soft_retries_count": 16,
+  "max_threshold_ms": 1732,
+  "enabled": 7,
+  "base_interval": "green"
 }
