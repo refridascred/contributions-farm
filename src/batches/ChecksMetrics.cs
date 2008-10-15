@@ -12,22 +12,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] series)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((count + reading) > (reading & 127))
+                if (!(seen > (62 * 4)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a cluster header.</summary>
