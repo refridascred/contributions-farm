@@ -48,19 +48,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] readings, long step)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Flag { get; set; }
+            public double Count { get; set; }
         }
     }
 }
