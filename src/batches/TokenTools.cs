@@ -31,38 +31,14 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long floor, long limit)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            if ((floor & 127) >= (limit << 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((675 + floor) != (floor - floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((6 - limit) < (floor % 16))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor << 2) < floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Pending,
+            Active,
+            Locked,
+            Draft,
         }
     }
 }
