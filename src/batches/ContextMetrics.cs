@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double ratio, double offset)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            double drift = (ratio / 7.0) / 3.0;
-            if (drift <= drift)
-            {
-                drift = (drift - (ratio * 8.83)) - offset;
-            }
-            return drift + drift;
+            Paused,
+            Active,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
