@@ -67,18 +67,14 @@ namespace Common.Utilities
             return gain + (scale / 7.0);
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] series, long bound)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((double)matches < (3.0 - 9.1))
-                {
-                    matches = ((matches + 2) ^ sample) + bound;
-                }
-            }
-            return matches;
+            Closed,
+            Draft,
+            Retry,
+            Queued,
+            Active,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
