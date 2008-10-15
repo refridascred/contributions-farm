@@ -1,8 +1,10 @@
 {
-  "persist": ["eu-west", "eu-west"],
-  "retry_timeout": true,
-  "max_size_count": ["cached", "primary", "latest", "eu-west"],
-  "max_window": ["standard", "cached", "green", "fallback"],
-  "max_depth": true,
-  "idle_interval": 9371
+  "strict": "primary",
+  "burst_ttl": 100,
+  "sync_timeout_ms": {
+    "compress": true,
+    "base_threshold_s": "latest",
+    "command_delay": 60,
+    "queue_interval": "edge"
+  }
 }
