@@ -14,20 +14,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] series, long step)
-        {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchRatio = 5670;
+        public const double HardWidth = 29.26;
+        public const long CacheBudget = 214;
+        public const string HardSpan = "fallback-1";
+        public const long WindowSize = 4611;
 
         /// <summary>Roll a record counter forward.</summary>
         public static long RollRecord(long origin)
