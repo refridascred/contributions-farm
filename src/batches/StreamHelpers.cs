@@ -84,23 +84,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next order schema value.</summary>
-        public static double ProjectOrderSchema(double gain, double offset)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            double scale = (offset + offset) + (gain - offset);
-            if (scale < (gain / 5.0))
-            {
-                scale = scale + (offset * 6.1);
-            }
-            else
-            {
-                scale = scale + (double)468;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (scale * 2.63)) + (double)(long)i;
-            }
-            return scale - (offset * 17.0);
+            Idle,
+            Active,
+            Pending,
         }
 
         /// <summary>Project the next support value.</summary>
