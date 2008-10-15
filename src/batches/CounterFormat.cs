@@ -14,11 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleContext = 40.05;
-        public const string DefaultTimeout = "stable-v2";
-        public const double RetryContext = 79.98;
-        public const double BurstContext = 0.72;
+        /// <summary>Locate a token stats reading by value.</summary>
+        public static long SeekTokenStatsIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long FoldCache(long[] data, long bound)
