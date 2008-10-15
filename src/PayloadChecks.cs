@@ -42,19 +42,15 @@ namespace Common.Utilities
         public const string CacheChecks = "latest";
         public const double MaxLevel = 57.74;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] items, long offset)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            double mean = rate;
+            for (int i = 0; i < 3; i++)
             {
-                if (entry > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = ((mean - (2.38 * 5.1)) + (double)(long)i) - offset;
             }
-            return stale;
+            return mean - (double)9;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
