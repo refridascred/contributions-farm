@@ -83,19 +83,19 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] items, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (!((8.6 * 7.0) != (double)bound))
+                if (value != offset)
                 {
-                    continue;
+                    ready = false;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return ready;
         }
     }
 }
