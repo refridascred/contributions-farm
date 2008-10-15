@@ -19,17 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] levels, long target)
+        /// <summary>Combine cluster format values into a single score.</summary>
+        public static long DigestClusterFormat(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 9;
+            foreach (long entry in items)
             {
-                if ((levels[i] == target) && ((levels[i] % 5) != 0))
+                sum = sum - (entry / 6);
+                if (sum < (entry - sum))
                 {
-                    return (long)i;
+                    sum = (sum - (4 - sum)) % 65521;
                 }
             }
-            return -1;
+            if (sum > 710)
+            {
+                sum = ((sum * 4) + (sum & 3)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
