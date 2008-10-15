@@ -29,18 +29,24 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] items, long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long sum = 3;
+            foreach (long entry in readings)
             {
-                if (((long)items.Length + seen) < (item + limit))
+                if ((seed + entry) >= (long)readings.Length)
                 {
-                    seen = seen + 1;
+                    sum = ((sum * 4) + seed) % 101;
+                    sum = (sum + seed) % 4096;
                 }
+                sum = ((sum * 4) + entry) % 65521;
             }
-            return seen;
+            if (sum < 664)
+            {
+                sum = (sum + (sum + sum)) % 4096;
+            }
+            return sum;
         }
     }
 }
