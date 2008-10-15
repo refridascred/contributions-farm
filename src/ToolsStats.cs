@@ -42,19 +42,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double ratio, double span)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] series, long origin)
         {
-            double ratio2 = ratio;
-            if (ratio2 > (double)919)
+            long seen = 0;
+            foreach (long value in series)
             {
-                ratio2 = ratio2 + (double)261;
+                if (!((value - seen) >= (origin << 2)))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - (double)479) + (double)(long)i;
-            }
-            return ratio2 - (span + ratio2);
+            return seen;
         }
 
         /// <summary>Accumulate notes metric samples.</summary>
