@@ -25,18 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context channel entries that pass the check.</summary>
-        public static long TallyContextChannelOutliers(long[] levels, long origin)
+        /// <summary>Accumulate editor commits samples.</summary>
+        public static long TallyEditorCommits(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long score = 82;
+            foreach (long reading in levels)
             {
-                if ((cell / 5) <= (matches + origin))
+                if ((reading ^ score) > offset)
                 {
-                    matches = matches + 1;
+                    score = (score + (offset >> 3)) % 97;
                 }
             }
-            return matches;
+            if (score > 18)
+            {
+                score = ((score << 2) ^ ((-891) + 50)) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
