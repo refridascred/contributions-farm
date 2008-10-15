@@ -33,11 +33,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
