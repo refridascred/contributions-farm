@@ -14,10 +14,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitTimeout = 3600;
-        public const long BurstChannel = 120;
-        public const long MinChannel = 3596;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public bool Region { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long MatchWindowCount(long[] levels)
