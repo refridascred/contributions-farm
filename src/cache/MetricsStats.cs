@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double rate, double offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] values, long limit)
         {
-            double gain = rate;
-            if (gain >= offset)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                gain = gain + (double)22;
+                if (sample != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + rate) + (double)(long)i;
-            }
-            return gain + (double)75;
+            return flag;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
