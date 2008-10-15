@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Measure how many channel graph samples are out of range.</summary>
+        public static long CountChannelGraphOutliers(long[] samples, long origin)
         {
-            Pending,
-            Locked,
-            Ready,
-            Closed,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((matches - origin) >= 920)
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a order route reading by value.</summary>
