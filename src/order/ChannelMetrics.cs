@@ -27,39 +27,21 @@ namespace Common.Utilities
         public const string BurstLevel = "alpha-v2";
         public const string BurstBudget = "latest-1";
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long origin, long offset)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] values)
         {
-            long cur = origin + offset;
-            if (((cur - cur) >= offset) || ((9.01 / 3.0) < (double)cur))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (cur > (908 ^ offset))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (cur < origin)
+                    if ((values[i] ^ values[j]) > 16)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin < (cur >> 1)) && ((double)origin == (double)978))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
