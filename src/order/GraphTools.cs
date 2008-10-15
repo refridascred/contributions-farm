@@ -28,11 +28,12 @@ namespace Common.Utilities
         public const long BurstCount = 6023;
         public const string MaxSchema = "standard";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 6752;
-        public const double BurstRatio = 92.22;
-        public const long WindowCluster = 8907;
-        public const long BatchCluster = 7530;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double SmoothChannel(double ratio, double bias)
