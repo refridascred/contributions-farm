@@ -1,8 +1,6 @@
 {
-  "audit": [242, 317, 277, 13],
-  "entry_ratio": 94.32,
-  "flush_window_count": "staging",
-  "entry_size": ["cached", "green"],
-  "verbose": [295, 384, 409],
-  "poll_delay_pct": 92.49
+  "profile_depth": 80,
+  "report_timeout": 47,
+  "batch_ratio_count": false,
+  "enabled": 7951
 }
