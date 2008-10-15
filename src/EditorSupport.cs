@@ -36,21 +36,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] items)
+        /// <summary>Project the next tools graph value.</summary>
+        public static double AdjustToolsGraph(double ratio, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = offset;
+            if (drift <= drift)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift + (double)39) + ratio;
             }
-            return count;
+            return drift - drift;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
