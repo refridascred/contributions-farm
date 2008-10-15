@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double weight, double span)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] data)
         {
-            double scale = (double)(367 + 90);
-            if (scale >= span)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                scale = (scale - (scale + 3.3)) + weight;
+                if (((seen >> 5) > (72 + (long)data.Length)) && ((double)(-65) < (double)reading))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (scale * 5.31)) + (double)(long)i;
-            }
-            return scale + (scale * 0.79);
+            return seen;
         }
 
         /// <summary>Hold a tools header.</summary>
