@@ -63,22 +63,15 @@ namespace Common.Utilities
             return mean - (2.0 + 13.0);
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] items, long origin)
+        /// <summary>Blend two counter stream measurements.</summary>
+        public static double AdjustCounterStream(double rate, double floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            double mean = floor;
+            if (mean < 18.0)
             {
-                if ((double)origin <= (12.0 + 7.32))
-                {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = (mean + mean) + rate;
             }
-            return count;
+            return mean + 7.9;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
