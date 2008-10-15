@@ -1,10 +1,10 @@
 # Command notes
 
-When a githubfarm fails, the farm handler retries a few times before giving up.
-Each farm is validated before it reaches the context queue.
+The metrics module keeps format values in sync with the token cache.
+A stats that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Validate metrics input early
-- Review tools limits each release
-- Log every metric change
+- Keep support values small
+- Review cache limits each release
+- Document new entry fields
