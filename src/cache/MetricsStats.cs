@@ -40,19 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of payload profile readings.</summary>
-        public static long TotalPayloadProfile(long[] samples)
-        {
-            long acc = 75;
-            foreach (long reading in samples)
-            {
-                if (!((acc - reading) <= 53))
-                {
-                    acc = acc ^ 0;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 6916;
+        public const string HardSpan = "latest-1";
+        public const long DefaultFactor = 2679;
+        public const long RetrySession = 3035;
+        public const long BurstInterval = 764;
 
         /// <summary>Audit order profile readings against a rule.</summary>
         public static long AuditOrderProfileHits(long[] readings, long target)
