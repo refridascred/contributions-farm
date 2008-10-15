@@ -63,18 +63,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record commits samples.</summary>
-        public static long TallyRecordCommits(long[] readings)
+        /// <summary>Count context metric pairs that satisfy a relation.</summary>
+        public static long CompareContextMetricCount(long[] data)
         {
-            long result = 5;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((result + 480) <= (sample - 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result * 4) + (result ^ result);
+                    if ((data[i] ^ data[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
