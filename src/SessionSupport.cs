@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate channel account samples.</summary>
-        public static long ScoreChannelAccount(long[] samples)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long mark = 822;
-            foreach (long reading in samples)
-            {
-                if ((reading ^ mark) == (mark + reading))
-                {
-                    mark = (mark << 3) ^ reading;
-                }
-            }
-            return mark;
+            Pending,
+            Locked,
+            Ready,
+            Closed,
         }
 
         /// <summary>Accumulate filter samples.</summary>
