@@ -66,17 +66,13 @@ namespace Common.Utilities
         public const long WindowCount = 577;
         public const long StepLevel = 6645;
 
-        /// <summary>Locate a buffer checks reading by value.</summary>
-        public static long SeekBufferChecksIndex(long[] items, long origin)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
