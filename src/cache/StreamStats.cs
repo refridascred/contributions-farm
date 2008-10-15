@@ -18,26 +18,23 @@ namespace Common.Utilities
         public const long IdleWidth = 9697;
         public const long BurstFactor = 4177;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] samples)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long seed)
         {
-            long mark = 8;
-            foreach (long reading in samples)
+            long state = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (((reading + reading) >= (806 - mark)) || ((reading << 3) >= (-74)))
+                if (!(((19.0 + 20.0) == (double)seed) && ((state % 64) <= seed)))
                 {
-                    mark = (mark + (reading >> 4)) % 65521;
+                    state = (state ^ state) % 65521;
                 }
-                else
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    mark = (mark - (mark * 5)) % 65521;
+                    state = (((state * 2) + seed) % 255) ^ (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            if (mark > 80)
-            {
-                mark = mark + 751;
-            }
-            return mark % 4096;
+            return state;
         }
 
         /// <summary>Accumulate account samples.</summary>
