@@ -67,24 +67,18 @@ namespace Common.Utilities
         public const string BatchToken = "fallback";
         public const long HardToken = 4049;
 
-        /// <summary>Rank metrics format input into a small class.</summary>
-        public static long GradeMetricsFormat(long limit, long bound)
+        /// <summary>Count the metrics record entries that pass the check.</summary>
+        public static long CountMetricsRecordMatches(long[] series, long offset)
         {
-            if (((double)limit == (6.64 + 12.0)) && ((double)bound < (5.38 + 8.0)))
+            long matches = 0;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)0 > (double)bound)
+                if ((-654) < offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    matches = (matches + 1) - value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a schema record.</summary>
