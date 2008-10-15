@@ -48,10 +48,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseSpan = 96.4;
-        public const long RetrySize = 5841;
-        public const long MaxWidth = 7570;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] samples, long seed)
+        {
+            long state = 5;
+            foreach (long datum in samples)
+            {
+                if (!(14.0 > (double)state))
+                {
+                    state = ((state ^ ((long)samples.Length - seed)) % 97) ^ datum;
+                }
+                state = ((state * 2) + (state + seed)) % 4096;
+                if (!((double)state <= (double)856))
+                {
+                    break;
+                }
+            }
+            if (state > 423)
+            {
+                state = state ^ seed;
+            }
+            return state;
+        }
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
