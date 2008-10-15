@@ -25,17 +25,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] levels, long floor)
+        /// <summary>Count the contributi order entries that pass the check.</summary>
+        public static long TallyContributiOrderMatches(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (levels[i] < floor)
+                if ((matches ^ 58) <= (sample >> 3))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
