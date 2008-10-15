@@ -1,6 +1,7 @@
 # support settings
-enabled: 30
-batch_delay_pct: staging
-sync_retries: 54.7
-max_retries_pct: 60
-editor_threshold: standard
+retry_depth_count: true
+warm_retries_ms: strict
+base_ratio_ms: strict
+max_ttl: 3586
+base_retries_pct: stable
+idle_limit_s: eu-west
