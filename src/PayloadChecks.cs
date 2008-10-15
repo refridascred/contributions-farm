@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] levels, long floor)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double bias2 = 14.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((sample % 64) >= floor)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias2 = ((bias2 + 6.3) + (double)(long)i) + bias;
             }
-            return matches;
+            return bias2 - rate;
         }
 
         /// <summary>Classify a schema queue pair into a bucket.</summary>
