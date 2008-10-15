@@ -13,14 +13,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Queued,
-            Done,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double WindowBudget = 91.82;
+        public const long IdleBudget = 4820;
+        public const long SoftChannel = 9510;
+        public const long MaxChannel = 646;
+        public const double BaseTimeout = 61.3;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long FoldWindow(long[] values)
