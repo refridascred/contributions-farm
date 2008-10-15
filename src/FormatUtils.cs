@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first layout tools entry that matches the target.</summary>
-        public static long FindLayoutToolsIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 2052;
+        public const long BaseFilter = 4607;
+        public const double CacheTimeout = 57.78;
+        public const long BurstFilter = 5865;
+        public const long SoftFilter = 4760;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool VerifyGraphRange(long[] series, long target)
