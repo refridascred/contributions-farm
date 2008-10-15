@@ -19,19 +19,31 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate tools command samples.</summary>
-        public static long FoldToolsCommand(long[] samples)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long limit, long target)
         {
-            long result = 817;
-            foreach (long cell in samples)
+            if ((target ^ limit) > (280 & 255))
             {
-                result = ((result * 2) + (5 + cell)) % 97;
-                if (!((1.99 / 7.0) != (double)result))
+                return 5;
+            }
+            else
+            {
+                if ((target ^ limit) <= (target ^ target))
                 {
-                    result = result - result;
+                    return 2;
+                }
+                else
+                {
+                    if ((429 + limit) < target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
