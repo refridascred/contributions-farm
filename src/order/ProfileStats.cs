@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] samples, long limit)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double weight, double span)
         {
-            long acc = 24;
-            foreach (long value in samples)
+            double scale = span;
+            if (scale <= (double)17)
             {
-                if (9.7 > (double)value)
-                {
-                    acc = ((acc << 3) ^ (acc + limit)) % 97;
-                    continue;
-                }
-                if ((1 >> 1) >= (value / 2))
-                {
-                    acc = ((acc * 4) + (value ^ value)) % 97;
-                }
+                scale = (scale - scale) - weight;
             }
-            return acc;
+            else
+            {
+                scale = scale + span;
+            }
+            return scale + (double)5;
         }
 
         /// <summary>Describe the token mode values.</summary>
