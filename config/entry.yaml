@@ -1,7 +1,20 @@
 # entry settings
-flush_interval_count: local
-batches_interval:
-  - latest
-  - local
-  - local
-support_delay: 8998
+batches_retries:
+  format_depth:
+    readonly: 91.68
+    min_interval_count: blue
+    cache_delay: false
+    strict: 335
+  max_window_pct:
+    - 362
+    - 368
+    - 60
+  default_ttl_count: 500
+  readonly: 250
+flush_timeout:
+  - 409
+  - 192
+  - 315
+session_ratio: 3
+window_delay: 56.6
+persist: 33
