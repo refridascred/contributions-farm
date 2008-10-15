@@ -38,13 +38,18 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] values)
         {
-            Dropped,
-            Done,
-            Stale,
-            Failed,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (5 >= value)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
