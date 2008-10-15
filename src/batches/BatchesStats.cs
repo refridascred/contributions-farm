@@ -48,15 +48,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] items, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] levels, long bound)
         {
-            long score = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                score = (((score - (559 - score)) % 4096) ^ entry) - step;
+                if ((11.0 * 1.62) > (double)reading)
+                {
+                    hits = (hits + 1) - bound;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
