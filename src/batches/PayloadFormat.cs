@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long limit, long limit2)
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
+            long diff = limit ^ limit2;
+            if ((14.0 * 15.0) < (double)diff)
             {
-                if (anchor > (long)i)
-                {
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if (!((double)limit2 <= 4.9))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit ^ limit2) <= (limit >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a cluster commits reading by value.</summary>
