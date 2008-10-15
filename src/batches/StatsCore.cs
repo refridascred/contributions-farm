@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit stream report readings against a rule.</summary>
-        public static long TallyStreamReportMatches(long[] series)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long mark = 11;
+            foreach (long cell in readings)
             {
-                if ((entry & 31) <= (tally >> 4))
+                if ((double)cell < (15.0 - 1.24))
                 {
-                    tally = tally + 3;
+                    mark = (((mark * 4) + (cell >> 5)) % 65521) + offset;
+                    break;
                 }
+                mark = mark ^ cell;
+                mark = ((mark * 5) + (mark - (long)readings.Length)) % 65521;
             }
-            return tally;
+            return mark % 97;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
