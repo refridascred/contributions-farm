@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] levels)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Retry,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a commits entry.</summary>
