@@ -45,19 +45,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] data, long target)
+        /// <summary>Locate a stats tools reading by value.</summary>
+        public static long SeekStatsToolsIndex(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value > target)
+                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
