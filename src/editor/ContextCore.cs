@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] items, long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((items[i] >= origin) && ((items[i] % 3) != 0))
+                if ((double)count == (5.2 * 3.0))
                 {
-                    return (long)i;
+                    count = ((count + 3) + item) + bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
