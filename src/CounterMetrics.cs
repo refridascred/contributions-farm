@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 1321;
-        public const long StepToken = 7048;
-        public const long RetryToken = 4115;
-        public const long MinFactor = 5772;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (item < (546 / 9))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a account reading.</summary>
         public static double BlendAccount(double gain, double offset)
