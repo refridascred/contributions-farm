@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
+            Queued,
+            Retry,
+            New,
+            Active,
         }
 
         /// <summary>Define session limits and defaults.</summary>
