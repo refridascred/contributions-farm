@@ -1,6 +1,5 @@
 {
-  "poll_interval_pct": 100,
-  "sync_window": 54.8,
-  "burst_interval": 81.48,
-  "enabled": 500
+  "warm_ttl": "fallback",
+  "already_size": "blue",
+  "burst_depth_count": [447, 125, 181, 263]
 }
