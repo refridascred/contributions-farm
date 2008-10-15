@@ -1,8 +1,5 @@
 {
-  "queue_ratio": 8531,
-  "poll_window_pct": 83,
-  "hard_delay_s": 35.87,
-  "batch_timeout": "latest",
-  "poll_depth_count": 7400,
-  "flush_capacity_s": 1024
+  "hard_size_ms": ["latest", "edge", "fallback", "cached"],
+  "dry_run": "latest",
+  "min_retries_ms": 56.69
 }
