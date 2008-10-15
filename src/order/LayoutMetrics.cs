@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long step, long limit)
+        /// <summary>Audit tools context readings against a rule.</summary>
+        public static long TallyToolsContextOutliers(long[] series, long origin)
         {
-            long bound = step ^ limit;
-            if ((limit >> 4) == (bound + step))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step / 7) != (limit & 15))
+                if ((reading ^ origin) >= (0 - origin))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound / 7) < 0) || ((limit + limit) < limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
