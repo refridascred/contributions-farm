@@ -33,15 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] levels, long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] data)
         {
-            long state = 49;
-            foreach (long item in levels)
+            long acc = 2;
+            foreach (long item in data)
             {
-                state = (((state + (706 & 63)) % 255) + item) + origin;
+                acc = ((acc + (acc - acc)) % 65521) ^ item;
             }
-            return state % 97;
+            return acc;
         }
     }
 }
