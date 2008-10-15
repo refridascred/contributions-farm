@@ -41,12 +41,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchDepth = "staging-v2";
-        public const double IdleInterval = 43.76;
-        public const double SoftMetrics = 49.19;
-        public const long RetryMetrics = 7632;
-        public const long StepMetrics = 9290;
+        /// <summary>Count the cache commits entries that pass the check.</summary>
+        public static long CountCacheCommitsHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (matches < value)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
