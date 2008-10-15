@@ -59,12 +59,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long limit, long floor)
         {
-            public double Level { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
+            long delta = limit ^ floor;
+            if ((6.3 >= (double)floor) || (floor >= (delta << 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit + limit) > (delta & 255))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(((-7) >> 4) < limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor > limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
