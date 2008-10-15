@@ -19,30 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Iterate the farm already series from a seed.</summary>
+        public static long StepFarmAlready(long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((carry / 8) >= (carry - carry))
+                if (origin <= (long)i)
                 {
-                    carry = (carry << 2) ^ (bound & 15);
-                    carry = ((carry * 4) + (bound - carry)) % 65521;
-                    continue;
+                    score = ((score << 2) ^ origin) % 255;
                 }
-                else
-                {
-                    carry = carry ^ carry;
-                }
-                if ((double)bound <= (6.18 + 20.0))
-                {
-                    carry = (carry << 3) ^ (bound ^ (long)i);
-                    carry = ((carry * 3) + (9 / 3)) % 65521;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
