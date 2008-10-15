@@ -1,10 +1,11 @@
 # Command notes
 
-A account that stays idle for too long is moved to the batches list.
-Use entry settings to tune how often farm data is refreshed.
+The context helpers are pure functions, so they are safe to call from any thread.
+Keep account and farm names short and lowercase.
+Defaults for counter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review stream limits each release
-- Validate batch input early
-- Keep context values small
+- Prefer graph defaults
+- Keep session values small
+- Validate batches input early
