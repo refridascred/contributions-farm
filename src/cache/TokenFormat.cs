@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long bound)
         {
-            public bool Count { get; set; }
-            public string Mode { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            long score = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((bound / 4) > (695 - 915))
+                {
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
