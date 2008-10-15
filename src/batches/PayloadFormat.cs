@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Roll a layout buffer counter forward.</summary>
+        public static long RollLayoutBuffer(long seed)
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            long state = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
