@@ -1,6 +1,8 @@
-id,count,ratio
-1,19.51,standard
-2,legacy,986
-3,eu-west,stable
-4,73.01,edge
-5,736,854
+id,ratio,rank
+1,blue,fallback
+2,887,cached
+3,edge,69
+4,767,7
+5,10.22,414
+6,619,888
+7,fallback,722
