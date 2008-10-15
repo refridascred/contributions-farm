@@ -70,14 +70,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Paused,
-            Failed,
-            Closed,
-            Stale,
-            Active,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardSize = 4021;
+        public const long BurstStats = 7621;
+        public const long BaseStats = 9613;
+        public const long HardSpan = 8840;
     }
 }
