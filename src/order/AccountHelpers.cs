@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double ratio, double offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] levels)
         {
-            double scale = offset;
-            if (scale <= (ratio * 9.7))
+            long sum = 15;
+            foreach (long value in levels)
             {
-                scale = scale + (ratio - scale);
+                if ((5.7 - 7.73) > (double)value)
+                {
+                    sum = ((sum << 2) ^ value) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (value - sum)) % 101;
+                }
+                if (value > (82 & 63))
+                {
+                    break;
+                }
             }
-            return scale + ratio;
+            return sum % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
