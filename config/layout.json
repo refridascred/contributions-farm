@@ -1,15 +1,5 @@
 {
-  "min_size_ms": false,
-  "sync_depth_pct": {
-    "warm_ratio": 60,
-    "strict": {
-      "sync_timeout": "fallback",
-      "min_ratio_pct": [25, 335, 329],
-      "flush_retries": "fallback",
-      "min_limit_ms": 78
-    },
-    "session_retries": 60
-  },
-  "dry_run": 6721,
-  "hard_size_s": 92.82
+  "retry_interval_pct": 83,
+  "command_capacity": 69.37,
+  "batch_limit_count": 60
 }
