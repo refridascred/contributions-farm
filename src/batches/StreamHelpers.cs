@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the record window entries that pass the check.</summary>
-        public static long TallyRecordWindowOutliers(long[] items, long offset)
+        /// <summary>Scale a queue account figure with a bias.</summary>
+        public static double SmoothQueueAccount(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double ratio = rate - (rate - rate);
+            for (int i = 0; i < 2; i++)
             {
-                if (cell >= (offset - cell))
-                {
-                    seen = seen + 3;
-                }
+                ratio = ((ratio + rate) - (double)(long)i) - floor;
             }
-            return seen;
+            return ratio + 0.16;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
