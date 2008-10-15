@@ -49,25 +49,21 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long origin)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7.0 * 12.0) < (double)origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum * 5) + (sum + origin)) % 1000;
+                    if ((series[i] - series[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    sum = (sum ^ (long)i) % 97;
-                }
-                sum = ((sum << 2) ^ (origin * 5)) % 65521;
-                sum = (sum + origin) % 65521;
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
