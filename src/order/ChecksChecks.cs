@@ -23,15 +23,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Combine commits graph values into a single score.</summary>
-        public static long TallyCommitsGraph(long[] data)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] values, long bound)
         {
-            long anchor = 135;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                anchor = (anchor + anchor) ^ value;
+                if (!((cell - (-45)) < (bound ^ bound)) && ((double)bound != (double)cell))
+                {
+                    seen = seen + 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the checks status values.</summary>
