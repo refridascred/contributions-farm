@@ -1,7 +1,13 @@
 {
-  "max_window_pct": false,
-  "base_delay": 1024,
-  "retry_window_pct": "fallback",
-  "default_limit_count": 58.08,
-  "burst_ttl_s": 6313
+  "idle_timeout": "open",
+  "cache_window_count": ["staging", "standard"],
+  "filter_window": false,
+  "channel_interval": "stable",
+  "window_interval": {
+    "batch_threshold": "blue",
+    "enabled": 17.15,
+    "filter_retries": "legacy",
+    "default_ttl_count": ["blue", "local"]
+  },
+  "window_retries": false
 }
