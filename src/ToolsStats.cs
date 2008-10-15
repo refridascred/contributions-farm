@@ -57,21 +57,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of counter cluster readings.</summary>
-        public static long OverlapCounterClusterCount(long[] samples)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((long)i + 56) < floor) && ((long)i > (75 + 771)))
                 {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = total + ((long)i ^ total);
                 }
+                if (!!((total & 1) > ((long)i / 4)))
+                {
+                    total = (total ^ 799) % 1000;
+                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
