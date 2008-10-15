@@ -13,13 +13,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
+            Draft,
+            Ready,
+            Stale,
+            Pending,
+            Idle,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
