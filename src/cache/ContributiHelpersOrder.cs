@@ -16,12 +16,15 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long limit)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public double Label { get; set; }
+            long score = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
