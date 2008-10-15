@@ -49,22 +49,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] series)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((datum <= (datum + datum)) && ((49 - (-34)) > (count << 1))) && (((count / 9) <= (-395)) && ((6.0 * 2.2) >= (double)count)))
+                if ((samples[i] <= step) && ((samples[i] % 5) != 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a queue stats.</summary>
