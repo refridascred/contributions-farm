@@ -32,11 +32,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitLevel = 5064;
-        public const long MaxDepth = 2011;
-        public const long StepRoute = 4767;
-        public const long MaxTimeout = 6437;
-        public const string DefaultBudget = "open-edge";
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = anchor + (seed + anchor);
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
