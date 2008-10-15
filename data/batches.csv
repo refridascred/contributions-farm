@@ -1,7 +1,10 @@
-id,weight,rank,owner
-1,stable,edge,490
-2,local,827,480
-3,legacy,68.83,667
-4,local,780,blue
-5,cached,495,96.57
-6,58.47,80,49.82
+id,count,region,level
+1,87.42,45.92,724
+2,blue,standard,93
+3,blue,local,36.47
+4,793,18.45,staging
+5,132,663,primary
+6,open,85,84
+7,31.49,84.7,91.91
+8,open,61.66,61.03
+9,edge,blue,487
