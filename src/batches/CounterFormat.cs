@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long BaseStream = 7020;
         public const long HardStream = 4668;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] samples, long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
+                if ((matches ^ matches) < 3)
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
