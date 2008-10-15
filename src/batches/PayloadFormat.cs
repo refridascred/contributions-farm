@@ -12,16 +12,21 @@ namespace Common.Utilities
             return (mean + (5.0 / 9.0)) + offset;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] readings)
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor - 7) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
