@@ -14,13 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] readings, long target)
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-            public bool Region { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((((tally + target) < ((-3) + target)) && ((tally + 246) <= target)) || ((target ^ target) > (1 % 10)))
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
