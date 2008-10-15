@@ -66,15 +66,25 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double gain, double floor)
+        /// <summary>Grade a batch stream value against two limits.</summary>
+        public static long GradeBatchStream(long origin, long seed)
         {
-            double weight = 0.1;
-            if (weight > (floor - gain))
+            long lane = origin - seed;
+            if (((lane - origin) > (659 + origin)) && (seed <= (origin + (-262))))
             {
-                weight = weight - gain;
+                return 5;
             }
-            return weight - (gain / 4.0);
+            else
+            {
+                if (((4.72 + 2.9) != (double)origin) && ((double)origin > (14.0 + 5.73)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
