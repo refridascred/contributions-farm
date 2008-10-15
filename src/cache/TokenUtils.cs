@@ -24,19 +24,13 @@ namespace Common.Utilities
             return bias2 + (double)17;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double scale, double offset)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            double mean = (double)65 - (double)41;
-            if (mean <= (scale * 6.3))
-            {
-                mean = (mean - scale) - offset;
-            }
-            else
-            {
-                mean = mean - (8.28 - mean);
-            }
-            return mean - scale;
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
     }
 }
