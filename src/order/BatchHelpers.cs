@@ -33,18 +33,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate stats support samples.</summary>
-        public static long CombineStatsSupport(long[] samples)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] data)
         {
-            long mix = 63;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((mix / 9) != (mix % 64))
+                if ((value * 4) != (value * 2))
                 {
-                    mix = ((mix * 2) + mix) - reading;
+                    hits = hits + 1;
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
