@@ -1,6 +1,11 @@
 {
-  "soft_size_s": true,
-  "strict": true,
-  "min_size": 67.31,
-  "context_limit": 60
+  "compress": 68.39,
+  "default_depth_s": 83.98,
+  "commits_delay": {
+    "batch_capacity": 49.17,
+    "verbose": 500,
+    "report_retries": "edge"
+  },
+  "queue_depth": 20.47,
+  "hard_ratio": 100
 }
