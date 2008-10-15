@@ -32,15 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Pending,
-            Retry,
-            Synced,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitRatio = 69.8;
+        public const long WindowDepth = 6417;
+        public const string MaxFormat = "stable-1";
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileOutliers(long[] items, long step)
