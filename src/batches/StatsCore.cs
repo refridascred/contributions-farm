@@ -64,23 +64,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two editor support measurements.</summary>
-        public static double SmoothEditorSupport(double gain, double offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] series)
         {
-            double weight = 3.79;
-            if (weight < gain)
+            long anchor = 34;
+            foreach (long sample in series)
             {
-                weight = weight - offset;
+                if ((double)anchor != (double)85)
+                {
+                    anchor = ((anchor ^ (anchor >> 5)) % 101) ^ sample;
+                }
             }
-            else
-            {
-                weight = weight + (offset + 9.3);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + gain) + (double)(long)i;
-            }
-            return weight - (double)5;
+            return anchor;
         }
 
         /// <summary>Hold a order summary.</summary>
