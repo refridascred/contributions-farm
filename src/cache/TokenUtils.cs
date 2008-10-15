@@ -14,17 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] readings, long step)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Paused,
+            Queued,
         }
 
         /// <summary>Hold a command entry.</summary>
