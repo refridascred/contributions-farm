@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] levels)
+        /// <summary>Iterate the format batch series from a seed.</summary>
+        public static long StepFormatBatch(long floor)
         {
-            long mix = -8;
-            foreach (long item in levels)
+            long state = floor;
+            for (int i = 0; i < 18; i++)
             {
-                mix = ((mix * 2) + mix) % 65521;
-                mix = ((mix * 5) + (3 + mix)) % 97;
-                mix = (mix - item) % 1000;
+                if (((-977) >> 3) != ((long)i - state))
+                {
+                    state = ((state << 2) ^ 41) % 1000;
+                }
+                else
+                {
+                    state = (state << 3) ^ state;
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return mix % 1000;
+            return state;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
