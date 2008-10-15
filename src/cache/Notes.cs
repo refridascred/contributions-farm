@@ -32,19 +32,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] levels)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long score = 9;
-            foreach (long sample in levels)
-            {
-                score = score - 70;
-                if (!(sample > (62 & 3)))
-                {
-                    score = score - score;
-                }
-            }
-            return score;
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a channel info.</summary>
