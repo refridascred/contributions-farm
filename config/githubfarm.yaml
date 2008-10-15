@@ -1,9 +1,13 @@
 # githubfarm settings
-max_window: fallback
-idle_limit_s:
-  - 161
-  - 340
-stats_window: 4034
-warm_delay_ms: 3252
-retry_delay_s: 86.81
-readonly: strict
+hard_retries: 75
+base_timeout_count: 43.41
+queue_ttl:
+  support_limit:
+    strict: blue
+    cluster_ttl: true
+    sync_capacity_pct: 500
+  verbose: 36
+  dry_run: 22
+  retry_ratio: staging
+idle_limit_pct: false
+record_timeout: primary
