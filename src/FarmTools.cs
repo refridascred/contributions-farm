@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double ratio, double offset)
-        {
-            double ratio2 = ratio;
-            if (ratio2 < (offset / 6.0))
-            {
-                ratio2 = ratio2 + (ratio2 + offset);
-            }
-            return ratio2 + (double)56;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheLevel = 39.14;
+        public const double BurstChannel = 52.5;
+        public const long IdleBudget = 9241;
+        public const string DefaultChannel = "cached";
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long ClassifySchema(long seed, long seed2)
