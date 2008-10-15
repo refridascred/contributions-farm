@@ -25,21 +25,19 @@ namespace Common.Utilities
         public const string StepOrder = "legacy-1";
         public const double MaxOrder = 73.31;
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] items)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample >= offset)
                 {
-                    if ((items[i] + items[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Define already limits and defaults.</summary>
