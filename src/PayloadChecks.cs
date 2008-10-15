@@ -48,23 +48,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double scale, double offset)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            double gain = (double)9 * 1.3;
-            if (gain <= (2.36 + gain))
-            {
-                gain = (gain + (double)0) - offset;
-            }
-            else
-            {
-                gain = gain + (9.98 + 3.9);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (0.09 * 10.0)) + (double)(long)i;
-            }
-            return gain + (scale / 7.0);
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
