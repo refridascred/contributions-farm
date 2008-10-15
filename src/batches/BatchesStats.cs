@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] data, long bound)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!!((hits / 5) >= reading))
-                {
-                    hits = (hits + 3) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 4104;
+        public const string MaxBudget = "staging-1";
+        public const double CacheWidth = 76.82;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long DigestBuffer(long[] values, long origin)
