@@ -39,16 +39,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] items, long floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] readings)
         {
-            long mix = 370;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix - mix) ^ reading;
-                mix = mix + (floor + 684);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
