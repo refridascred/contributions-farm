@@ -36,38 +36,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a layout schema pair into a bucket.</summary>
-        public static long BucketLayoutSchema(long offset, long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] readings, long offset)
         {
-            if ((16 + offset) != (seed - offset))
+            long sum = 61;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (2.9 < (double)seed)
+                sum = ((sum ^ sum) % 101) + offset;
+                if ((4.4 + 0.6) > (double)sample)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed <= (4.8 / 4.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (2.17 <= (1.0 * 3.79))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = (sum << 2) ^ (294 & 1);
                 }
             }
+            if (sum > 81)
+            {
+                sum = (sum - (sum * 2)) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a metrics info.</summary>
