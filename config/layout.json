@@ -1,9 +1,5 @@
 {
-  "editor_depth": true,
-  "hard_interval_count": 250,
-  "warm_timeout_ms": {
-    "burst_limit": ["standard", "eu-west", "blue", "fallback"],
-    "cache_ratio": 7221,
-    "cache_depth_ms": "cached"
-  }
+  "warm_size_s": 77.31,
+  "strict": 500,
+  "flush_ttl": 5760
 }
