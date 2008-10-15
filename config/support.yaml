@@ -1,4 +1,11 @@
 # support settings
-burst_depth_s: false
-readonly: false
-route_depth: false
+persist: 9.34
+order_ratio:
+  - blue
+  - cached
+  - blue
+  - strict
+warm_threshold_ms:
+  - strict
+  - cached
+  - fallback
