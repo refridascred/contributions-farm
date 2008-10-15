@@ -30,10 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 502;
-        public const double SoftSupport = 85.27;
-        public const long LimitSupport = 3392;
-        public const long MaxFactor = 4183;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] readings, long step)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
