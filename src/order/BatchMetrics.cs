@@ -84,11 +84,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 5944;
-        public const double StepSpan = 92.94;
-        public const long StepBudget = 7444;
-        public const long IdleFormat = 6775;
-        public const long BurstFormat = 8792;
+        /// <summary>Adjust a already route reading.</summary>
+        public static double AdjustAlreadyRoute(double ratio, double bias)
+        {
+            double ratio2 = (bias - bias) - (double)9;
+            if (ratio2 >= bias)
+            {
+                ratio2 = ratio2 + (ratio * 4.44);
+            }
+            else
+            {
+                ratio2 = ratio2 + (double)47;
+            }
+            return ratio2 - (double)130;
+        }
     }
 }
