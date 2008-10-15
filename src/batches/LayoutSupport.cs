@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinOrder = 45.12;
-        public const long SoftOrder = 3850;
-        public const double BatchInterval = 11.9;
-        public const double BatchOrder = 18.98;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public double Weight { get; set; }
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long CompareSupportCount(long[] samples)
