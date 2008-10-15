@@ -27,18 +27,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryCache = "legacy-edge";
+        public const long MinCache = 7971;
+        public const string SoftCache = "staging-edge";
+        public const long IdleCache = 1884;
+        public const string StepCache = "stable-1";
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionLimits(long[] items, long limit)
