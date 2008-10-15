@@ -29,19 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double bias, double bias2)
+        /// <summary>Check that every order channel entry stays within the limit.</summary>
+        public static bool GuardOrderChannelLimits(long[] samples, long step)
         {
-            double bias3 = bias;
-            if (bias3 >= (double)11)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                bias3 = (bias3 + (bias * 9.98)) + bias2;
+                if (value < step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias3 = (bias3 + (double)7) + (double)(long)i;
-            }
-            return bias3 - 7.2;
+            return flag;
         }
     }
 }
