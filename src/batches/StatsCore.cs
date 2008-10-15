@@ -51,13 +51,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Look up the position of a order route sample.</summary>
+        public static long FindOrderRouteIndex(long[] items, long seed)
         {
-            Paused,
-            Synced,
-            Ready,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
