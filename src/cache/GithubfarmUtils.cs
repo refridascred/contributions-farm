@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] readings, long offset)
+        /// <summary>Compare every pair of layout farm readings.</summary>
+        public static long CompareLayoutFarmCount(long[] items)
         {
             long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((long)readings.Length >= (-708))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits + 2) + sample) - offset;
+                    if ((items[i] + items[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
