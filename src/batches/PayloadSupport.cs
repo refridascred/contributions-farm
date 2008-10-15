@@ -12,19 +12,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long seed)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (((seed / 5) != (79 * 4)) || ((carry - carry) <= seed))
+                if ((52 + mark) == (origin << 2))
                 {
-                    carry = carry + (939 >> 3);
+                    mark = (mark << 3) ^ (origin * 4);
+                    break;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
+                mark = (mark + (origin * 3)) % 255;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
