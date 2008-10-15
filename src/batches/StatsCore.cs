@@ -14,15 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double rate, double span)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            double gain = rate;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = ((gain - rate) + (double)(long)i) - span;
-            }
-            return gain - gain;
+            public long Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Classify a queue tools pair into a bucket.</summary>
