@@ -76,17 +76,13 @@ namespace Common.Utilities
             return scale - (floor / 6.0);
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] values, long limit)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
