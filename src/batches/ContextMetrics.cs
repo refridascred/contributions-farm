@@ -23,11 +23,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] items)
         {
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)matches == (double)datum)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next batch value.</summary>
