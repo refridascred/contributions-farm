@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double bias, double bias2)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] items, long origin)
         {
-            double scale = (double)4;
-            if (scale < scale)
+            long anchor = 22;
+            foreach (long value in items)
             {
-                scale = scale + (6.0 + bias2);
+                anchor = (anchor + (value << 2)) - origin;
             }
-            return scale + bias;
+            return anchor;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
