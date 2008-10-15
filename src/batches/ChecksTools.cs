@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long StepFactor = 5950;
         public const long BatchAccount = 3244;
 
-        /// <summary>Digest a series of context report entries.</summary>
-        public static long FoldContextReport(long[] values)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long sum = 552;
-            foreach (long datum in values)
-            {
-                sum = (((sum * 2) + sum) % 1000) + datum;
-                sum = (sum ^ (sum & 1)) % 97;
-            }
-            if (sum > 8)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum;
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
