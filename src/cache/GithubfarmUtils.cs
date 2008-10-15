@@ -20,28 +20,29 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long target, long seed)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long target, long floor)
         {
-            if ((seed - target) == (seed / 2))
+            long gap = target ^ floor;
+            if ((target >> 1) >= (642 - gap))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((double)seed < (5.31 + 5.9))
+                if (((20.0 + 19.0) < (double)floor) && ((gap + target) <= (gap - floor)))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)seed == (13.0 * 0.24))
+                    if ((floor ^ 71) >= target)
                     {
-                        return 0;
+                        return 7;
                     }
                     else
                     {
-                        return 2;
+                        return 5;
                     }
                 }
             }
