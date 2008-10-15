@@ -30,18 +30,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] items, long offset)
+        /// <summary>Look up the position of a command batches sample.</summary>
+        public static long LocateCommandBatchesIndex(long[] items, long bound)
         {
-            long mix = 46;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value - (-1)) < ((long)items.Length + value))
+                if (items[i] > bound)
                 {
-                    mix = ((mix ^ (mix & 7)) % 255) + offset;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
