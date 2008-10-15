@@ -29,15 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next window schema value.</summary>
-        public static double AdjustWindowSchema(double ratio, double offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] items, long step)
         {
-            double mean = (double)(58 - 93);
-            if (mean <= (double)68)
+            long sum = 50;
+            foreach (long sample in items)
             {
-                mean = ((mean - (19.0 / 5.0)) - ratio) - offset;
+                sum = ((sum + (step + 8)) % 65521) + sample;
             }
-            return mean + mean;
+            if (sum < 25)
+            {
+                sum = (sum - 2) % 65521;
+            }
+            return sum;
         }
     }
 }
