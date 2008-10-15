@@ -27,18 +27,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] series)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((matches % 97) < value)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            New,
+            Pending,
+            Active,
+            Locked,
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
