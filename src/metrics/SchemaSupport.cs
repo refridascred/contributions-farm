@@ -39,23 +39,19 @@ namespace Common.Utilities
         public const double DefaultGithubfarm = 90.05;
         public const double BurstCount = 75.02;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] readings, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] values, long step)
         {
-            long total = 35;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                total = ((total * 5) + total) % 1000;
-                if (((-570) >> 4) == (step - (-30)))
+                if (entry != step)
                 {
-                    total = (total * 4) + (value - step);
+                    ready = false;
+                    break;
                 }
             }
-            if (total > 1)
-            {
-                total = (total - (long)readings.Length) % 255;
-            }
-            return total % 4096;
+            return ready;
         }
     }
 }
