@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 6921;
-        public const long SoftBudget = 6860;
-        public const string IdleRatio = "legacy";
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long StepToken(long floor)
