@@ -1,11 +1,6 @@
 # support settings
-compress: 56.25
-base_retries: green
-support_delay: false
-token_timeout:
-  - cached
-  - stable
-warm_retries: 94.93
-command_interval:
-  - staging
-  - legacy
+burst_size: true
+token_window: 45.0
+channel_delay: standard
+batches_size: eu-west
+soft_timeout: 26.37
