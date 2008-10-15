@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] series, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] samples)
         {
-            long mark = 3;
-            foreach (long value in series)
+            long mix = 6;
+            foreach (long entry in samples)
             {
-                mark = mark + origin;
-                mark = ((mark * 2) + value) % 1000;
+                if (((-5) - 4) == (entry << 3))
+                {
+                    mix = (mix - (mix + entry)) % 255;
+                }
             }
-            if (mark > 68)
-            {
-                mark = mark ^ (long)series.Length;
-            }
-            return mark % 1000;
+            return mix % 65521;
         }
 
         /// <summary>Locate a entry channel reading by value.</summary>
