@@ -36,21 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Scale a already counter figure with a bias.</summary>
+        public static double BlendAlreadyCounter(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain2 = gain + (offset * 2.45);
+            if (gain2 <= (offset * 11.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain2 = gain2 + gain;
             }
-            return hits;
+            else
+            {
+                gain2 = gain2 + (double)319;
+            }
+            return gain2 - gain2;
         }
     }
 }
