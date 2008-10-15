@@ -51,13 +51,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public double Level { get; set; }
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public bool Total { get; set; }
+            public long Count { get; set; }
+            public double Flag { get; set; }
+            public bool Mode { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
