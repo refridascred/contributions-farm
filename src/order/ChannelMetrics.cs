@@ -14,17 +14,38 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] samples, long floor)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long bound, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset % 3) > (bound & 127))
             {
-                if ((samples[i] <= floor) && ((samples[i] % 2) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((bound + 81) == (bound - bound))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((417 ^ offset) != (offset & 63))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound % 16) != (bound / 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
