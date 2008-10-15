@@ -27,22 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] readings, long floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((2 - sample) >= sample)
+                if (reading <= origin)
                 {
-                    matches = (matches + 1) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Measure how many record checks samples are out of range.</summary>
