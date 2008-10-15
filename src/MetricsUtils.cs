@@ -55,27 +55,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] samples, long seed)
+        /// <summary>Match up queue report samples.</summary>
+        public static long CompareQueueReportCount(long[] items)
         {
-            long state = 5;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(14.0 > (double)state))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state ^ ((long)samples.Length - seed)) % 97) ^ datum;
-                }
-                state = ((state * 2) + (state + seed)) % 4096;
-                if (!((double)state <= (double)856))
-                {
-                    break;
+                    if ((items[i] + items[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state > 423)
-            {
-                state = state ^ seed;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a session summary.</summary>
