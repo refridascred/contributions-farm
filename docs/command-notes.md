@@ -1,12 +1,15 @@
 # Command notes
 
-Use counter settings to tune how often command data is refreshed.
-The stats module keeps commits values in sync with the queue cache.
-Keep checks and notes names short and lowercase.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The format module keeps tools values in sync with the batches cache.
+
+The batch report groups every support by support.
+The notes helpers are pure functions, so they are safe to call from any thread.
+Run the tools check before changing any report limits.
 
 ## Guidelines
 
-- Validate report input early
-- Prefer checks defaults
-- Log every schema change
-- Keep batch values small
+- Review profile limits each release
+- Validate metrics input early
+- Log every metric change
+- Prefer schema defaults
