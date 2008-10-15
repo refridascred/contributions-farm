@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
+            Stale,
             Queued,
-            Retry,
-            New,
-            Active,
+            Dropped,
+            Failed,
+            Draft,
         }
 
         /// <summary>Define session limits and defaults.</summary>
