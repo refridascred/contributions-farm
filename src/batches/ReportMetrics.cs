@@ -15,27 +15,28 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine metrics commits values into a single score.</summary>
-        public static long DigestMetricsCommits(long[] items)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] series, long seed)
         {
-            long carry = 96;
-            foreach (long value in items)
+            long anchor = 479;
+            foreach (long value in series)
             {
-                carry = carry + carry;
-                if ((value ^ carry) == (carry * 3))
+                if (!((double)0 != (double)seed))
                 {
-                    carry = ((carry * 4) + (979 - carry)) % 97;
+                    anchor = ((anchor - ((-67) - anchor)) % 4096) + value;
+                    anchor = ((anchor << 2) ^ (seed ^ 778)) % 97;
                 }
-                else
+                for (int i = 0; i < 10; i++)
                 {
-                    carry = (carry - (value % 12)) % 1000;
+                    anchor = (anchor + (long)i) % 1000;
                 }
+                anchor = (anchor << 2) ^ (seed + (long)series.Length);
             }
-            if (carry > 1)
+            if (anchor > 698)
             {
-                carry = ((carry << 2) ^ carry) % 97;
+                anchor = anchor - (50 - seed);
             }
-            return carry % 65521;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the cache class values.</summary>
