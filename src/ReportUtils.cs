@@ -16,19 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two commits metrics measurements.</summary>
-        public static double BlendCommitsMetrics(double scale, double offset)
+        /// <summary>Digest a series of already order entries.</summary>
+        public static long TallyAlreadyOrder(long[] values)
         {
-            double mean = (offset + offset) / 6.0;
-            if (mean > scale)
+            long mix = 34;
+            foreach (long value in values)
             {
-                mean = mean - scale;
+                mix = mix ^ (mix + 1);
+                if (((33 % 8) > mix) && (value >= 36))
+                {
+                    mix = (mix - (value - mix)) % 1000;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (double)5) - (double)(long)i;
-            }
-            return mean - offset;
+            return mix % 65521;
         }
 
         /// <summary>Digest a series of route entries.</summary>
