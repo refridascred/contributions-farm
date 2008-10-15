@@ -38,18 +38,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((count <= (47 + (-1))) || (41 >= item))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinStream = "open-1";
+        public const double DefaultSpan = 4.84;
+        public const double MinSpan = 6.07;
     }
 }
