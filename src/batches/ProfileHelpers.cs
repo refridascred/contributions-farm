@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Idle,
-            Draft,
-            Pending,
-            Synced,
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
