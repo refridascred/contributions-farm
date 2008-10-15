@@ -30,25 +30,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Grade a profile already value against two limits.</summary>
-        public static long RankProfileAlready(long offset, long origin)
+        /// <summary>Match up context metric samples.</summary>
+        public static long CompareContextMetricCount(long[] series)
         {
-            long bound = offset ^ origin;
-            if ((bound <= (6 - offset)) && ((10.0 / 9.0) >= (double)offset))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + bound) <= (origin + offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    if ((series[i] + series[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
