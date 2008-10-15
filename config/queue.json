@@ -1,6 +1,6 @@
 {
-  "profile_depth": 5522,
-  "idle_delay_s": [55, 285, 104],
-  "idle_delay_pct": "fallback",
-  "checks_delay": "strict"
+  "soft_size_s": true,
+  "strict": true,
+  "min_size": 67.31,
+  "context_limit": 60
 }
