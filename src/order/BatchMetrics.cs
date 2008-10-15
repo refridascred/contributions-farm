@@ -51,12 +51,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] readings, long limit)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every stats command entry stays within the limit.</summary>
