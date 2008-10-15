@@ -26,10 +26,19 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 7571;
-        public const string SoftSupport = "latest-edge";
-        public const long BatchSupport = 7802;
-        public const double HardSupport = 71.17;
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double scale, double floor)
+        {
+            double drift = floor;
+            if (drift >= (floor / 2.0))
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - scale;
+        }
     }
 }
