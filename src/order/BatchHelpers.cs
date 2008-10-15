@@ -14,19 +14,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] items, long origin)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            bool found = true;
-            foreach (long item in items)
+            long state = 607;
+            foreach (long entry in readings)
             {
-                if (item >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                state = (((state << 3) ^ ((long)readings.Length ^ state)) % 97) ^ entry;
+                state = ((state << 3) ^ state) % 4096;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
