@@ -1,8 +1,7 @@
 {
-  "persist": "open",
-  "enabled": 35.51,
-  "max_limit_pct": 30,
-  "warm_ttl_count": "green",
-  "flush_depth": false,
-  "compress": "legacy"
+  "strict": "green",
+  "flush_ratio_ms": ["eu-west", "edge"],
+  "default_interval": false,
+  "enabled": 9848,
+  "default_depth_count": [321, 54, 291]
 }
