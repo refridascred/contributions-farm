@@ -19,10 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstSize = 1.8;
-        public const long IdleWidth = 4354;
-        public const long RetryScore = 6817;
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == target) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double ProjectSupport(double scale, double offset)
