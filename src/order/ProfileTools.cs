@@ -39,19 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue cache readings against a bound.</summary>
-        public static bool ValidateQueueCacheLimits(long[] samples, long offset)
+        /// <summary>Digest a series of schema profile entries.</summary>
+        public static long DigestSchemaProfile(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long sum = -570;
+            foreach (long entry in series)
             {
-                if (reading > offset)
+                if ((sum / 8) < (sum * 3))
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum ^ sum) % 101) + entry;
                 }
             }
-            return ready;
+            return sum % 97;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
