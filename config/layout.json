@@ -1,5 +1,8 @@
 {
-  "contributi_delay": 81.72,
-  "sync_threshold": "green",
-  "readonly": [155, 461, 105, 56]
+  "sync_depth": 18.1,
+  "idle_retries_pct": false,
+  "warm_delay_pct": "legacy",
+  "strict": "standard",
+  "hard_size_pct": 64.63,
+  "notes_ttl": "strict"
 }
