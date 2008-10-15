@@ -23,10 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 7711;
-        public const string BatchFormat = "standard-v2";
-        public const long MinFormat = 2732;
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long WeighSession(long[] values)
