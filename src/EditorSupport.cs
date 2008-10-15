@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] series)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (7.22 >= (double)tally)
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
