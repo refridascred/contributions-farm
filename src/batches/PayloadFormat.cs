@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultRatio = 44.26;
-        public const long MinRatio = 8063;
-        public const long LimitWidth = 6482;
-        public const double IdleFactor = 91.75;
-        public const string BaseInterval = "local-v2";
+        /// <summary>Locate a cluster commits reading by value.</summary>
+        public static long LookupClusterCommitsIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long WeighAccount(long[] levels)
