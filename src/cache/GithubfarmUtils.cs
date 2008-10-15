@@ -19,23 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] series, long target)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double scale, double floor)
         {
-            long mark = 87;
-            foreach (long sample in series)
+            double rate = 0.12 + scale;
+            if (rate < (rate / 4.0))
             {
-                mark = ((mark * 5) + (mark - sample)) % 65521;
-                if (((482 + target) != (mark >> 4)) || ((double)mark > (0.69 / 9.0)))
-                {
-                    break;
-                }
+                rate = rate - (floor / 4.0);
             }
-            if (mark > 9)
-            {
-                mark = mark + (578 + target);
-            }
-            return mark;
+            return rate - rate;
         }
 
         /// <summary>Adjust a cache profile reading.</summary>
