@@ -48,23 +48,21 @@ namespace Common.Utilities
             return (ratio + (ratio + ratio)) + scale;
         }
 
-        /// <summary>Digest a series of filter farm entries.</summary>
-        public static long DigestFilterFarm(long[] readings)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] series)
         {
-            long mix = 32;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 3) + (mix & 3)) % 65521;
-                if (((2 + sample) == (mix / 6)) && ((-61) >= (sample ^ (long)readings.Length)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = mix + mix;
+                    if ((series[i] + series[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < (-8))
-            {
-                mix = mix ^ (mix - (-48));
-            }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
