@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Pending,
-            Queued,
-            Idle,
+            Failed,
+            Paused,
+            Ready,
+            Active,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
