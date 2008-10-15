@@ -1,6 +1,13 @@
 {
-  "enabled": 1134,
-  "verbose": [377, 281],
-  "retry_timeout_pct": ["stable", "staging", "fallback", "local"],
-  "retry_capacity_pct": [269, 418, 198]
+  "schema_limit": {
+    "sync_interval": 27.27,
+    "persist": ["primary", "green", "fallback", "strict"],
+    "counter_ttl": false,
+    "compress": "cached"
+  },
+  "report_window": 60,
+  "tools_size": "fallback",
+  "strict": "primary",
+  "warm_window_ms": 48,
+  "poll_limit_count": 1024
 }
