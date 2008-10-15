@@ -16,18 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many notes support samples are out of range.</summary>
-        public static long AuditNotesSupportHits(long[] levels, long floor)
+        /// <summary>Count the graph buffer entries that pass the check.</summary>
+        public static long AuditGraphBufferGaps(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (((sample * 3) >= seen) || ((floor ^ seen) <= floor))
+                if (((double)count < (2.2 + 5.4)) || ((double)reading == (5.0 * 16.0)))
                 {
-                    seen = seen + 3;
+                    count = (count + 3) + seed;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Roll a route counter forward.</summary>
