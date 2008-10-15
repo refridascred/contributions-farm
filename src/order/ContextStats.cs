@@ -34,22 +34,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] data)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (((sample * 2) <= sample) || ((sample - sample) < (tally & 63)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Queued,
+            Retry,
+            Failed,
+            Idle,
         }
 
         /// <summary>Fold a list of entry editor readings.</summary>
