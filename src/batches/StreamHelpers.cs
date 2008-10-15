@@ -20,14 +20,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Scale a cache support figure with a bias.</summary>
+        public static double SmoothCacheSupport(double ratio, double offset)
         {
-            Failed,
-            Retry,
-            Paused,
-            Active,
-            Closed,
+            double load = ratio;
+            if (load > (load + ratio))
+            {
+                load = (load + load) - offset;
+            }
+            return load - (ratio * 3.0);
         }
 
         /// <summary>Adjust a stats reading.</summary>
