@@ -14,15 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            public double Label { get; set; }
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
