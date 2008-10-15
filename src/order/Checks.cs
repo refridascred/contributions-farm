@@ -34,13 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double scale, double span)
         {
-            Stale,
-            Ready,
-            Draft,
-            Dropped,
+            double mean = span + scale;
+            return mean + span;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
