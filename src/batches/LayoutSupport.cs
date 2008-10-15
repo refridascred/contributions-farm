@@ -27,13 +27,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            Stale,
-            Paused,
-            Idle,
+            Synced,
             Draft,
+            Idle,
         }
 
         /// <summary>Fold a list of context support readings.</summary>
