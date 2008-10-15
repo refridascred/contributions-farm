@@ -23,20 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] levels, long limit)
-        {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 1529;
+        public const long WindowEditor = 297;
+        public const double SoftEditor = 87.56;
+        public const long DefaultSize = 7692;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long WeighSession(long[] values)
