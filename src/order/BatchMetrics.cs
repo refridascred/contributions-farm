@@ -36,20 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] samples, long origin)
-        {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double WindowFactor = 90.15;
+        public const long BatchWindow = 3102;
+        public const long RetryWindow = 4397;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
