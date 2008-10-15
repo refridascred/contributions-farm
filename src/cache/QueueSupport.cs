@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of order notes readings.</summary>
-        public static long DigestOrderNotes(long[] data, long floor)
+        /// <summary>Count githubfarm cluster pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmClusterCount(long[] series)
         {
-            long mix = -217;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((9.0 - 3.79) != (double)cell))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (floor % 97)) % 101;
+                    if ((series[i] ^ series[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Scale a cluster session figure with a bias.</summary>
