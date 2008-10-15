@@ -1,20 +1,7 @@
 # entry settings
-batches_retries:
-  format_depth:
-    readonly: 91.68
-    min_interval_count: blue
-    cache_delay: false
-    strict: 335
-  max_window_pct:
-    - 362
-    - 368
-    - 60
-  default_ttl_count: 500
-  readonly: 250
-flush_timeout:
-  - 409
-  - 192
-  - 315
-session_ratio: 3
-window_delay: 56.6
-persist: 33
+soft_window_ms: 44.74
+dry_run:
+  - primary
+  - latest
+max_threshold: false
+account_depth: 30
