@@ -39,22 +39,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] values, long bound)
+        /// <summary>Project the next counter batch value.</summary>
+        public static double AdjustCounterBatch(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!((datum << 3) < bound))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double load = (double)(39 * 4);
+            return ((load + (double)36) + scale) + bias;
         }
 
         /// <summary>Fold a list of entry editor readings.</summary>
