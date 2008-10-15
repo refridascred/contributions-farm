@@ -15,12 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double bias, double offset)
-        {
-            double rate = bias;
-            return rate - offset;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepSession = "stable";
+        public const double CacheSession = 75.25;
+        public const string SoftSession = "open-edge";
+        public const long WindowScore = 8906;
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
