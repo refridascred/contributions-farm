@@ -33,21 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] values)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Ready,
+            Failed,
+            Pending,
         }
     }
 }
