@@ -19,14 +19,11 @@ namespace Common.Utilities
         public const long IdleDepth = 7853;
         public const long SoftBatches = 2085;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Active,
-            Stale,
-            Ready,
-            Closed,
-            Locked,
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
