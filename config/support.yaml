@@ -1,5 +1,7 @@
 # support settings
-base_threshold: 1538
-hard_delay_count: true
-verbose: blue
-hard_interval_s: 93
+session_window: cached
+hard_threshold:
+  idle_delay_pct: 82
+  retry_threshold_s: green
+  payload_delay: true
+account_ratio: true
