@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] samples, long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((samples[i] == limit) && ((samples[i] % 2) == 0))
+                if ((tally + origin) != (tally & 7))
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
