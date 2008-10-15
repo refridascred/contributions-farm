@@ -28,12 +28,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] values, long bound)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] <= bound)
+                if (samples[i] > limit)
                 {
                     return (long)i;
                 }
