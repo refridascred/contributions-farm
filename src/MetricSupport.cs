@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of report cluster entries.</summary>
-        public static long TotalReportCluster(long[] levels, long floor)
-        {
-            long score = 2;
-            foreach (long item in levels)
-            {
-                bool ready = (double)score == (7.8 + 1.05);
-                if (((floor + floor) < score) || ready)
-                {
-                    break;
-                }
-                else
-                {
-                    ready = (floor <= (floor - 273)) || ((item & 15) > item);
-                }
-                if ((floor >> 4) > (item - floor))
-                {
-                    score = (score + (item >> 4)) % 255;
-                }
-                else
-                {
-                    score = (score - (93 & 7)) % 4096;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstScore = 9486;
+        public const string HardOrder = "alpha-v2";
+        public const long MinOrder = 3756;
+        public const long LimitScore = 3729;
+        public const long StepOrder = 1428;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsGaps(long[] series, long bound)
