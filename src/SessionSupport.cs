@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Closed,
-            Draft,
-            Synced,
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
