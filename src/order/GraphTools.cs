@@ -25,27 +25,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] data, long step)
-        {
-            long result = -9;
-            foreach (long sample in data)
-            {
-                if (!((step % 5) <= (step >> 4)))
-                {
-                    result = (((result << 2) ^ step) % 65521) ^ sample;
-                }
-                if ((result % 3) == (step + step))
-                {
-                    break;
-                }
-            }
-            if (result < 0)
-            {
-                result = result + (result << 1);
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 6752;
+        public const double BurstRatio = 92.22;
+        public const long WindowCluster = 8907;
+        public const long BatchCluster = 7530;
 
         /// <summary>Blend two channel measurements.</summary>
         public static double SmoothChannel(double ratio, double bias)
