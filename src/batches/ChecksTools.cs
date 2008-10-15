@@ -13,13 +13,20 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Digest a series of context report entries.</summary>
+        public static long FoldContextReport(long[] values)
         {
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
-            public double Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            long sum = 552;
+            foreach (long datum in values)
+            {
+                sum = (((sum * 2) + sum) % 1000) + datum;
+                sum = (sum ^ (sum & 1)) % 97;
+            }
+            if (sum > 8)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
