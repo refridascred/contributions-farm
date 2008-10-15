@@ -59,12 +59,23 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 6916;
-        public const string HardSpan = "latest-1";
-        public const long DefaultFactor = 2679;
-        public const long RetrySession = 3035;
-        public const long BurstInterval = 764;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((long)samples.Length / 5) <= reading)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit order profile readings against a rule.</summary>
         public static long AuditOrderProfileHits(long[] readings, long target)
