@@ -27,19 +27,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] values, long bound)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long value in values)
+            double weight2 = offset;
+            if (weight2 >= (weight2 - weight))
             {
-                if (value > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                weight2 = weight2 - (offset * 15.0);
             }
-            return ok;
+            return weight2 + offset;
         }
     }
 }
