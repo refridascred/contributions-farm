@@ -13,12 +13,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long offset, long origin)
         {
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
+            if ((origin & 63) > origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (offset < (origin ^ 177))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((offset + 3) <= (offset % 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
