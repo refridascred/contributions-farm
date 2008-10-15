@@ -1,4 +1,8 @@
 # entry settings
-burst_size_ms: 77
-min_limit_s: strict
-stats_ratio: 1.23
+batch_ttl: green
+flush_interval:
+  - open
+  - green
+  - latest
+  - standard
+context_timeout: open
