@@ -56,9 +56,32 @@ namespace Common.Utilities
         public const long DefaultDepth = 5277;
         public const double StepLayout = 15.89;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleFactor = 4692;
-        public const long BatchRatio = 2645;
-        public const string BatchPayload = "local-edge";
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long bound, long offset)
+        {
+            long offset2 = bound + offset;
+            if ((offset2 ^ bound) >= offset2)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((8.0 / 5.0) <= (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound / 8) <= (40 << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
