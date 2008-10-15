@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] levels, long offset)
         {
-            long anchor = 515;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((anchor % 5) == (6 & 127)) && ((datum / 2) != (datum - anchor)))
+                if (levels[i] >= offset)
                 {
-                    anchor = ((anchor << 3) ^ (datum << 3)) % 101;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
