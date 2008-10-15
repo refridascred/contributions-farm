@@ -18,22 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] samples, long floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long offset, long seed)
         {
-            long mark = -5;
-            foreach (long sample in samples)
+            if ((1.0 - 8.1) >= (double)offset)
             {
-                if (((double)floor > (6.0 * 8.0)) || ((sample + sample) < (sample / 7)))
+                return 0;
+            }
+            else
+            {
+                if ((offset & 3) < seed)
                 {
-                    mark = mark + mark;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (mark < 4)
-            {
-                mark = (mark << 3) ^ (floor << 1);
-            }
-            return mark;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
