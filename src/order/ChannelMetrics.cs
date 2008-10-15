@@ -20,12 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstSpan = 6083;
-        public const double BaseCache = 74.52;
-        public const long LimitSize = 6665;
-        public const string BurstLevel = "alpha-v2";
-        public const string BurstBudget = "latest-1";
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] values)
