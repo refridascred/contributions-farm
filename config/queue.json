@@ -1,6 +1,8 @@
 {
-  "min_threshold": "stable",
-  "readonly": true,
-  "sync_timeout_s": 250,
-  "hard_limit_count": 8440
+  "persist": "open",
+  "enabled": 35.51,
+  "max_limit_pct": 30,
+  "warm_ttl_count": "green",
+  "flush_depth": false,
+  "compress": "legacy"
 }
