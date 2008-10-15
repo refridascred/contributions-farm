@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 97;
-        public const string DefaultMetric = "fallback";
-        public const long RetryMetric = 5446;
-        public const string IdleMetric = "cached";
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Blend two stream measurements.</summary>
         public static double BlendStream(double gain, double floor)
