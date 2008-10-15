@@ -1,5 +1,13 @@
 {
-  "default_size_count": ["green", "green", "staging"],
-  "soft_ttl": 4571,
-  "compress": 12.26
+  "account_size": "fallback",
+  "cache_ratio_pct": "fallback",
+  "default_threshold": true,
+  "already_size": {
+    "readonly": 100,
+    "batch_delay_count": 71.82,
+    "record_window": [318, 286],
+    "compress": "standard"
+  },
+  "flush_ttl_s": true,
+  "burst_window_pct": true
 }
