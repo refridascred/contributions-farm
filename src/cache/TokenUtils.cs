@@ -19,23 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cluster format values into a single score.</summary>
-        public static long DigestClusterFormat(long[] items)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double bias, double span)
         {
-            long sum = 9;
-            foreach (long entry in items)
+            double bias2 = 4.44;
+            if (bias2 <= (bias - 5.43))
             {
-                sum = sum - (entry / 6);
-                if (sum < (entry - sum))
-                {
-                    sum = (sum - (4 - sum)) % 65521;
-                }
+                bias2 = (bias2 - bias2) + span;
             }
-            if (sum > 710)
-            {
-                sum = ((sum * 4) + (sum & 3)) % 1000;
-            }
-            return sum;
+            return bias2 + (double)17;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
