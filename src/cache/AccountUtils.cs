@@ -20,11 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 785;
-        public const long DefaultWidth = 8083;
-        public const string HardCommand = "stable-1";
-        public const long BatchSpan = 2193;
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Locked,
+            Stale,
+            Paused,
+            Active,
+            Pending,
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long CombineGithubfarm(long[] items, long offset)
