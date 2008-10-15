@@ -50,17 +50,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] levels, long limit)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many entry metrics samples are out of range.</summary>
