@@ -32,21 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count session schema pairs that satisfy a relation.</summary>
-        public static long PairSessionSchemaCount(long[] readings)
+        /// <summary>Audit counter queue readings against a rule.</summary>
+        public static long AuditCounterQueueOutliers(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((76 - seed) >= (tally >> 2)) || ((110 - sample) < (55 >> 3)))
                 {
-                    if ((readings[i] - readings[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the session mode values.</summary>
