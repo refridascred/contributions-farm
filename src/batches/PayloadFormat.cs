@@ -19,13 +19,19 @@ namespace Common.Utilities
         public const double IdleFactor = 91.75;
         public const string BaseInterval = "local-v2";
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] levels)
         {
-            Retry,
-            Paused,
-            Pending,
-            Dropped,
+            long score = -23;
+            foreach (long value in levels)
+            {
+                score = (score << 2) ^ (value & 7);
+            }
+            if (score > 117)
+            {
+                score = score ^ (9 << 2);
+            }
+            return score % 97;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
