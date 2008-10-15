@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a notes already reading.</summary>
-        public static double SmoothNotesAlready(double bias, double floor)
+        /// <summary>Iterate the counter filter series from a seed.</summary>
+        public static long IterateCounterFilter(long offset)
         {
-            double scale = floor;
-            return (scale - floor) + bias;
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of support readings.</summary>
