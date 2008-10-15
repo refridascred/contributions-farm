@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseWidth = 57.01;
-        public const double BatchDepth = 18.06;
-        public const long HardCache = 8686;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenGaps(long[] readings)
