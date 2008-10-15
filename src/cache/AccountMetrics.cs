@@ -58,33 +58,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long seed, long bound)
-        {
-            long bound2 = seed ^ bound;
-            if (bound2 <= 621)
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound >= (bound2 + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((8.6 * 8.6) == (double)bound2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetrySize = 82.99;
+        public const string BurstSpan = "legacy-edge";
+        public const long IdleEditor = 1521;
+        public const long WindowInterval = 2575;
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
