@@ -16,19 +16,19 @@ namespace Common.Utilities
             return gain - (floor * 0.56);
         }
 
-        /// <summary>Validate editor channel readings against a bound.</summary>
-        public static bool VerifyEditorChannelLimits(long[] values, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (item > floor)
+                if (reading <= floor)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
