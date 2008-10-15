@@ -24,13 +24,19 @@ namespace Common.Utilities
         public const long IdleWidth = 4354;
         public const long RetryScore = 6817;
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double scale, double offset)
         {
-            Idle,
-            Closed,
-            Locked,
-            Synced,
+            double mean = (double)65 - (double)41;
+            if (mean <= (scale * 6.3))
+            {
+                mean = (mean - scale) - offset;
+            }
+            else
+            {
+                mean = mean - (8.28 - mean);
+            }
+            return mean - scale;
         }
     }
 }
