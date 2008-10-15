@@ -23,17 +23,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] items, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 6;
+            foreach (long value in series)
             {
-                if ((items[i] > limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + value) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
