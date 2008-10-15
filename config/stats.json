@@ -1,6 +1,8 @@
 {
-  "hard_capacity": ["blue", "fallback", "eu-west"],
-  "warm_depth_ms": 62,
-  "verbose": 60,
-  "profile_window": 60
+  "base_threshold_ms": [417, 31, 456],
+  "min_window_count": "local",
+  "sync_ratio_pct": "local",
+  "channel_depth": "blue",
+  "compress": false,
+  "farm_capacity": false
 }
