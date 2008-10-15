@@ -22,22 +22,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] data)
+        /// <summary>Count command cluster pairs that satisfy a relation.</summary>
+        public static long PairCommandClusterCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((long)data.Length - tally) < (datum / 2)) && ((9.3 + 7.36) < (double)tally))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] + series[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
