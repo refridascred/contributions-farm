@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue local stable standard; do
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in green strict standard open; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=314
-log "limit is ${BUFFER_LIMIT}"
