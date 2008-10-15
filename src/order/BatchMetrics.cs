@@ -41,16 +41,18 @@ namespace Common.Utilities
         public const long BatchWindow = 3102;
         public const long RetryWindow = 4397;
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] levels, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                mark = (mark - (25 ^ mark)) % 101;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if ((item >> 5) < ((-43) - (long)levels.Length))
+                {
+                    count = (count + 2) - seed;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
