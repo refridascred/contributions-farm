@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultRatio = 5456;
-        public const long WindowFactor = 7074;
-        public const long LimitRatio = 9153;
+        /// <summary>Combine entry account values into a single score.</summary>
+        public static long TotalEntryAccount(long[] series, long target)
+        {
+            long mix = 6;
+            foreach (long cell in series)
+            {
+                mix = ((mix - target) % 4096) ^ cell;
+            }
+            if (mix > 6)
+            {
+                mix = mix ^ target;
+            }
+            return mix;
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double BlendContributi(double scale, double span)
