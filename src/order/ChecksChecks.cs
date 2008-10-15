@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double BatchDepth = 18.06;
         public const long HardCache = 8686;
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] readings, long origin)
         {
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-            public double Token { get; set; }
-            public long Mode { get; set; }
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
