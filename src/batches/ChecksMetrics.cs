@@ -74,15 +74,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Project the next queue commits value.</summary>
-        public static double ScaleQueueCommits(double weight, double offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] samples)
         {
-            double bias = (0.85 / 8.0) - (weight + weight);
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                bias = ((bias - (weight + 7.0)) - (double)(long)i) - offset;
+                if (hits < (sample + 6))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return bias - (weight * 7.1);
+            return hits;
         }
     }
 }
