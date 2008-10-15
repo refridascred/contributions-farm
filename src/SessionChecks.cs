@@ -25,12 +25,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Validate contributi stats readings against a bound.</summary>
+        public static bool CheckContributiStatsRange(long[] readings, long floor)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
