@@ -25,26 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] data, long bound)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long target)
         {
-            long mark = 23;
-            foreach (long reading in data)
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((bound & 63) != (722 ^ bound))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    mark = (mark - 313) % 255;
+                    anchor = (anchor + (target + target)) + (long)i2;
                 }
-                if ((mark > bound) && (mark < reading))
+                if (((long)i / 8) >= 585)
                 {
-                    mark = mark - (166 + bound);
+                    anchor = anchor ^ (target & 1);
                 }
+                anchor = anchor + (anchor >> 2);
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            if (mark > 49)
-            {
-                mark = (mark << 3) ^ bound;
-            }
-            return mark % 97;
+            return anchor;
         }
     }
 }
