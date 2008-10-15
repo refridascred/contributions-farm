@@ -21,21 +21,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long limit, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long next = limit - floor;
+            if (((-107) - limit) <= (limit - next))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (76 >= (limit - limit))
                 {
-                    if ((series[i] ^ series[j]) == 18)
+                    return 0;
+                }
+                else
+                {
+                    if (limit >= (next + next))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
