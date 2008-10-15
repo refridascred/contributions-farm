@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of buffer schema readings.</summary>
-        public static long CombineBufferSchema(long[] items, long bound)
-        {
-            long acc = 585;
-            foreach (long cell in items)
-            {
-                acc = (((acc + (-33)) % 4096) + cell) - bound;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseWidth = "standard-edge";
+        public const long RetryBudget = 3210;
+        public const long StepProfile = 4573;
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
