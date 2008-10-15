@@ -25,23 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long target)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] series, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (!(target > mix))
+                if (cell != bound)
                 {
-                    mix = mix + target;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    mix = mix - (170 + (long)i);
-                }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
