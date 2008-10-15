@@ -35,12 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardInterval = 9747;
-        public const long MaxCount = 5209;
-        public const long WindowRatio = 744;
-        public const long BaseTimeout = 9726;
-        public const double SoftToken = 0.38;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
