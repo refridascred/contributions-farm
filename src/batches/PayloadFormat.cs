@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double weight, double offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] levels)
         {
-            double mean = weight / 9.0;
-            return (mean + (5.0 / 9.0)) + offset;
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!((tally + tally) < tally) || ((tally + entry) < (tally * 5)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
