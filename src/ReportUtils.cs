@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many buffer format samples are out of range.</summary>
-        public static long TallyBufferFormatMatches(long[] samples)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((datum + seen) <= (datum / 5)) && !((seen & 1) == (seen + seen)))
-                {
-                    seen = seen + 3;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Blend two commits metrics measurements.</summary>
