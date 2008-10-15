@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            Stale,
-            Queued,
-            Closed,
-            Pending,
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
