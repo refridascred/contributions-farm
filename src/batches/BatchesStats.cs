@@ -27,21 +27,20 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] items)
+        /// <summary>Accumulate notes queue samples.</summary>
+        public static long FoldNotesQueue(long[] items)
         {
-            long total = 6;
-            foreach (long value in items)
+            long total = 0;
+            foreach (long sample in items)
             {
-                total = (total + value) % 1000;
-                if (!((value & 1) > (value + value)))
+                if ((17.0 - 4.08) == (double)sample)
                 {
-                    total = (total << 2) ^ (total % 7);
+                    total = (total ^ 4) % 65521;
                 }
-                else
-                {
-                    total = (total - (total & 7)) % 1000;
-                }
+            }
+            if (total < 6)
+            {
+                total = (total + (total ^ total)) % 97;
             }
             return total;
         }
