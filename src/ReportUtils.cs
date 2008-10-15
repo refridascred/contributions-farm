@@ -50,22 +50,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] samples, long bound)
+        /// <summary>Count the account route entries that pass the check.</summary>
+        public static long MeasureAccountRouteOutliers(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((bound << 2) <= (38 * 2))
+                if (reading < (matches ^ 49))
                 {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 1) - origin;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
