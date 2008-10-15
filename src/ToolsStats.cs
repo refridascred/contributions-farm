@@ -87,16 +87,19 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] samples)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] series, long target)
         {
-            long acc = 2;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long entry in series)
             {
-                acc = acc + acc;
-                acc = ((acc << 2) ^ (acc - item)) % 101;
+                if (entry > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc % 4096;
+            return found;
         }
     }
 }
