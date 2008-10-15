@@ -76,17 +76,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] readings, long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((readings[i] == offset) && ((readings[i] % 2) != 0))
+                if (!(anchor < (202 << 3)))
                 {
-                    return (long)i;
+                    anchor = (anchor * 3) + (origin / 6);
                 }
+                anchor = ((anchor * 5) + (anchor * 4)) % 1000;
+                anchor = (anchor ^ (origin % 10)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
     }
 }
