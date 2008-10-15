@@ -23,11 +23,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long origin)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            long state = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                state = (state + (state ^ origin)) % 4096;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
