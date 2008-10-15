@@ -22,20 +22,10 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] readings, long target)
-        {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowInterval = "primary-v2";
+        public const long LimitCluster = 2083;
+        public const string CacheCluster = "local-v2";
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowGaps(long[] series, long floor)
