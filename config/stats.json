@@ -1,8 +1,6 @@
 {
-  "base_threshold_ms": [417, 31, 456],
-  "min_window_count": "local",
-  "sync_ratio_pct": "local",
-  "channel_depth": "blue",
-  "compress": false,
-  "farm_capacity": false
+  "audit": 27,
+  "flush_limit_ms": false,
+  "retry_threshold_pct": ["latest", "strict"],
+  "token_ttl": 41
 }
