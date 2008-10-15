@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] samples)
         {
-            Draft,
-            Pending,
-            Paused,
+            long result = 3;
+            foreach (long reading in samples)
+            {
+                if ((double)reading > (18.0 + 4.38))
+                {
+                    result = result - (result ^ result);
+                }
+            }
+            if (result < 20)
+            {
+                result = ((result << 3) ^ (result ^ result)) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Combine commits graph values into a single score.</summary>
