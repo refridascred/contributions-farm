@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((double)(long)readings.Length > (2.0 + 4.7))
-                {
-                    tally = ((tally + 1) + value) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstFactor = 9801;
+        public const string LimitLevel = "latest-1";
+        public const long CacheCommand = 5360;
+        public const string HardCommand = "stable-edge";
+        public const long DefaultCommand = 572;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long CompareWindowCount(long[] items)
