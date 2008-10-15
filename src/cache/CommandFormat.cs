@@ -31,19 +31,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((4.4 / 7.0) > (double)8)
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxCount = 49.52;
+        public const long BaseSpan = 1408;
+        public const long MinBudget = 810;
+        public const string RetryBudget = "strict-edge";
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
