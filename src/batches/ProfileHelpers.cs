@@ -68,14 +68,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Synced,
-            Paused,
-            Closed,
-            Retry,
-            Dropped,
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
