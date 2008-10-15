@@ -60,11 +60,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheDepth = 71.03;
-        public const string BatchSize = "latest-edge";
-        public const long WindowCount = 577;
-        public const long StepLevel = 6645;
+        /// <summary>Rank metrics format input into a small class.</summary>
+        public static long GradeMetricsFormat(long limit, long bound)
+        {
+            if (((double)limit == (6.64 + 12.0)) && ((double)bound < (5.38 + 8.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)0 > (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
