@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of layout farm readings.</summary>
-        public static long CompareLayoutFarmCount(long[] items)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = weight * 4.7;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = ((gain - (double)76) + (double)(long)i) - bias;
             }
-            return hits;
+            return gain - weight;
         }
 
         /// <summary>Adjust a session reading.</summary>
