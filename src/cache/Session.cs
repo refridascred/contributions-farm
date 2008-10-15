@@ -45,17 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] series, long origin)
+        /// <summary>Measure how many record checks samples are out of range.</summary>
+        public static long AuditRecordChecksMatches(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((series[i] == origin) && ((series[i] % 3) == 0))
+                if (seen < (reading * 3))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
