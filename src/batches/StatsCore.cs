@@ -25,19 +25,31 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Validate batches filter readings against a bound.</summary>
-        public static bool CheckBatchesFilterBounds(long[] levels, long seed)
+        /// <summary>Classify a queue tools pair into a bucket.</summary>
+        public static long BucketQueueTools(long target, long bound)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            if ((double)bound != (double)target)
             {
-                if (entry <= seed)
+                return 4;
+            }
+            else
+            {
+                if ((bound * 4) <= 821)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)bound < (19.0 / 6.0)) && ((bound % 7) <= (bound >> 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the order state values.</summary>
