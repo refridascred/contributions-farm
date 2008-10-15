@@ -19,16 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftWidth = 4100;
+        public const double WindowCommand = 22.7;
+        public const double IdleCount = 36.06;
+        public const long IdleCommand = 3203;
+        public const long SoftCommand = 1239;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long WeighQueue(long[] values)
