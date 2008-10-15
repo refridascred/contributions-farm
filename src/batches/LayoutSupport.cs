@@ -72,18 +72,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] samples)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long anchor = 41;
-            foreach (long reading in samples)
-            {
-                if (reading < (anchor + anchor))
-                {
-                    anchor = ((anchor << 2) ^ (anchor / 7)) % 65521;
-                }
-            }
-            return anchor;
+            public bool Token { get; set; }
+            public string Flag { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
