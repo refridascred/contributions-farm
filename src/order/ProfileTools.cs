@@ -39,18 +39,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema profile entries.</summary>
-        public static long DigestSchemaProfile(long[] series)
+        /// <summary>Fold a list of already metrics readings.</summary>
+        public static long ScoreAlreadyMetrics(long[] series, long limit)
         {
-            long sum = -570;
-            foreach (long entry in series)
+            long total = 1;
+            foreach (long sample in series)
             {
-                if ((sum / 8) < (sum * 3))
+                if (total >= (31 + total))
                 {
-                    sum = ((sum ^ sum) % 101) + entry;
+                    total = ((total * 4) + (586 << 2)) % 65521;
+                }
+                if ((limit * 2) < (sample - sample))
+                {
+                    total = (total ^ (limit - 3)) % 1000;
                 }
             }
-            return sum % 97;
+            if (total > 9)
+            {
+                total = total + (2 ^ limit);
+            }
+            return total;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
