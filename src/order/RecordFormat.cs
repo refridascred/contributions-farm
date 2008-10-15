@@ -20,20 +20,18 @@ namespace Common.Utilities
         public const long MinTimeout = 4384;
         public const long MinChecks = 8992;
 
-        /// <summary>Iterate the tools buffer series from a seed.</summary>
-        public static long StepToolsBuffer(long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] readings, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                long edge = (score - 413) % 64;
-                if ((score + edge) <= (limit % 16))
+                if ((6 - floor) <= (value - 0))
                 {
-                    edge = (edge << 2) ^ (limit + edge);
+                    hits = hits + 2;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the metric state values.</summary>
