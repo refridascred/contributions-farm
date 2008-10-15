@@ -15,18 +15,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit context window readings against a rule.</summary>
-        public static long TallyContextWindowMatches(long[] data, long step)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            if (offset < bound)
             {
-                if (entry <= (matches % 60))
+                return 1;
+            }
+            else
+            {
+                if (!((bound + offset) == (87 << 3)))
                 {
-                    matches = (matches + 2) + step;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
