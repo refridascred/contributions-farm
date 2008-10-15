@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] data, long limit)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] data, long target)
         {
-            long score = 5;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long sample in data)
             {
-                score = (score - (74 + datum)) % 4096;
-                if ((limit - score) < (score + (-18)))
+                if (sample > target)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (score > 9)
-            {
-                score = score - (score / 2);
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Define command limits and defaults.</summary>
