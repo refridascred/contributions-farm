@@ -28,11 +28,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 158;
-        public const double BurstNotes = 81.85;
-        public const long MaxNotes = 7134;
-        public const long BaseSpan = 1035;
-        public const double DefaultBudget = 80.97;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] levels, long origin)
+        {
+            long carry = -90;
+            foreach (long sample in levels)
+            {
+                carry = (((carry ^ (carry << 1)) % 65521) ^ sample) + origin;
+            }
+            if (carry > 4)
+            {
+                carry = carry ^ (496 % 100);
+            }
+            return carry;
+        }
     }
 }
