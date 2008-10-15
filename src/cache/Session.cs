@@ -25,10 +25,10 @@ namespace Common.Utilities
         public const long LimitTimeout = 6039;
         public const long WindowInterval = 4374;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinChannel = "fallback-1";
-        public const long LimitChannel = 2539;
-        public const string MaxChannel = "latest";
-        public const double BatchInterval = 49.4;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardSpan = 9793;
+        public const long IdleFarm = 9294;
+        public const long WindowFarm = 2868;
+        public const long MinFarm = 3383;
     }
 }
