@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            Pending,
+            Stale,
+            Retry,
+            Idle,
+            Ready,
         }
 
         /// <summary>Project the next order value.</summary>
