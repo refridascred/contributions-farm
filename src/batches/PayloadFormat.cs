@@ -32,10 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 925;
-        public const long BaseEditor = 1088;
-        public const long SoftScore = 2068;
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Retry,
+            Paused,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long ScoreRoute(long[] items, long origin)
