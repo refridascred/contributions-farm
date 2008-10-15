@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] items)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] samples, long bound)
         {
-            long result = 702;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((result + 28) <= (5 + result)))
+                if (samples[i] <= bound)
                 {
-                    result = ((result + (result % 12)) % 1000) - entry;
-                }
-                else
-                {
-                    result = (result * 3) + (result - result);
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
