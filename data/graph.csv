@@ -1,10 +1,7 @@
-id,region,ratio,state,active
-1,standard,155,latest,275
-2,67.31,legacy,358,strict
-3,787,58.11,open,78.78
-4,192,1,edge,383
-5,79,436,787,stable
-6,green,647,602,806
-7,214,530,24,71.82
-8,189,green,666,strict
-9,895,stable,73.75,960
+id,active,weight
+1,0.08,latest
+2,fallback,standard
+3,19.81,strict
+4,628,528
+5,943,778
+6,856,466
