@@ -32,12 +32,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCount = 1891;
+        public const long DefaultCommits = 8845;
+        public const double LimitDepth = 44.64;
+        public const long SoftCommits = 438;
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
