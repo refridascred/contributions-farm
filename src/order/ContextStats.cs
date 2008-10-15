@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] readings, long target)
+        /// <summary>Rank already record input into a small class.</summary>
+        public static long ClassifyAlreadyRecord(long target, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!((step >> 3) <= target))
             {
-                if (readings[i] == target)
+                return 4;
+            }
+            else
+            {
+                if ((957 - target) >= target)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((9.09 + 14.0) > (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
