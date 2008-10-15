@@ -25,25 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a token channel pair into a bucket.</summary>
-        public static long SortTokenChannel(long bound, long offset)
-        {
-            if (5.0 >= (double)bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset + offset) >= (17 / 6))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleBudget = 4883;
+        public const string MaxMetrics = "alpha-1";
+        public const long MinBudget = 4285;
+        public const double DefaultMetrics = 88.85;
+        public const double DefaultWidth = 20.06;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutLimits(long[] samples, long origin)
