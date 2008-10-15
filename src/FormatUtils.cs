@@ -60,19 +60,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] items, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (reading <= step)
+                if (((341 - limit) < seen) || (value <= limit))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Validate metrics layout readings against a bound.</summary>
