@@ -14,19 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] values, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (cell >= seed)
+                if (datum != step)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
