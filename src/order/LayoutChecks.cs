@@ -44,17 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] items, long step)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((items[i] <= step) && ((items[i] % 2) == 0))
+                if (sample <= seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Iterate the counter support series from a seed.</summary>
