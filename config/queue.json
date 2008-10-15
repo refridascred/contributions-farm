@@ -1,6 +1,8 @@
 {
-  "compress": 5178,
-  "idle_size_s": ["fallback", "open"],
-  "hard_window": [479, 199],
-  "warm_window_s": 8266
+  "soft_size_s": "strict",
+  "verbose": "edge",
+  "sync_timeout_ms": "stable",
+  "base_interval_s": 37,
+  "readonly": 7153,
+  "soft_ratio_count": [174, 459]
 }
