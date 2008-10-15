@@ -1,10 +1,10 @@
 # Command notes
 
-The metrics module keeps format values in sync with the token cache.
-A stats that stays idle for too long is moved to the stream list.
+A cluster that stays idle for too long is moved to the token list.
+Run the graph check before changing any buffer limits.
 
 ## Guidelines
 
-- Keep support values small
-- Review cache limits each release
-- Document new entry fields
+- Log every session change
+- Prefer command defaults
+- Document new metrics fields
