@@ -1,7 +1,10 @@
-id,rank,label,count,token
-1,27.89,blue,latest,25.39
-2,738,2.94,641,220
-3,strict,edge,blue,standard
-4,804,0,121,local
-5,latest,2.5,451,cached
-6,140,593,14.3,54.45
+id,rank,state,ratio
+1,green,latest,78.99
+2,218,6,23.09
+3,37.94,634,19.01
+4,55.97,edge,932
+5,18,open,blue
+6,strict,15.44,35
+7,6.38,235,61.94
+8,77.48,279,87.69
+9,67.45,787,eu-west
