@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] items, long target)
+        /// <summary>Look up the position of a notes record sample.</summary>
+        public static long LocateNotesRecordIndex(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)tally < (double)target)
+                if (items[i] < step)
                 {
-                    tally = (tally + 3) - entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate stats window samples.</summary>
