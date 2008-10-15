@@ -43,22 +43,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch queue values into a single score.</summary>
-        public static long TallyBatchQueue(long[] samples)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long bound, long floor)
         {
-            long state = 6;
-            foreach (long sample in samples)
+            if ((double)floor <= (1.52 - 1.3))
             {
-                if (state > sample)
+                return 2;
+            }
+            else
+            {
+                if (!((bound % 7) == (bound - floor)))
                 {
-                    state = state ^ (977 >> 5);
+                    return 7;
                 }
                 else
                 {
-                    state = (state << 2) ^ (long)samples.Length;
+                    if ((floor & 15) <= (24 + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((floor + floor) <= floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
