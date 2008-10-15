@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const double BatchInterval = 11.9;
         public const double BatchOrder = 18.98;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxTimeout = 6425;
-        public const long MinChannel = 4752;
-        public const string SoftSize = "primary-edge";
-        public const long BurstChannel = 1803;
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
