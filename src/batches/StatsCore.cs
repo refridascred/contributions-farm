@@ -65,17 +65,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] levels)
+        public static long AuditBatchGaps(long[] items)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (((datum % 5) < (94 % 10)) || ((count + datum) > (datum + datum)))
+                if ((((double)matches <= (14.0 - 8.8)) && ((matches + matches) == (matches / 3))) && (((double)matches > (double)value) || ((value % 97) < (292 ^ matches))))
                 {
-                    count = count + 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a order summary.</summary>
