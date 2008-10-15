@@ -44,25 +44,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] series, long bound)
+        /// <summary>Look up the position of a window buffer sample.</summary>
+        public static long LocateWindowBufferIndex(long[] samples, long step)
         {
-            long score = 432;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((0.47 + 3.4) == (double)sample)
+                if (samples[i] < step)
                 {
-                    score = score - score;
-                    score = ((score << 3) ^ (bound - (-281))) % 1000;
+                    return (long)i;
                 }
-                else
-                {
-                    score = (score ^ (bound - 414)) % 1000;
-                    score = (score - (bound >> 4)) % 255;
-                }
-                score = ((score << 2) ^ (score ^ sample)) % 1000;
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Compare every pair of counter cluster readings.</summary>
