@@ -20,11 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the profile commits entries that pass the check.</summary>
