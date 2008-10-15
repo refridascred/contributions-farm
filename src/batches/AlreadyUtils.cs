@@ -49,11 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Count the graph account entries that pass the check.</summary>
+        public static long MeasureGraphAccountOutliers(long[] values)
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((40 << 1) == (reading % 16))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the contributi level values.</summary>
