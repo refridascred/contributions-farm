@@ -19,11 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the cache account entries that pass the check.</summary>
