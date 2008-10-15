@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] data, long bound)
         {
-            Closed,
-            Draft,
-            Active,
-            Pending,
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count command cluster pairs that satisfy a relation.</summary>
