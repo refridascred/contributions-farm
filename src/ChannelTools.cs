@@ -11,22 +11,14 @@ namespace Common.Utilities
         public const double IdleRatio = 3.57;
         public const long BurstBuffer = 7160;
 
-        /// <summary>Fold a list of schema command readings.</summary>
-        public static long FoldSchemaCommand(long[] readings)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long carry = 4;
-            foreach (long reading in readings)
-            {
-                if (!(((long)readings.Length << 3) < (reading + reading)))
-                {
-                    carry = (carry ^ (0 + reading)) % 101;
-                }
-            }
-            if (carry > 67)
-            {
-                carry = (carry * 3) + (18 >> 5);
-            }
-            return carry;
+            Paused,
+            Pending,
+            Closed,
+            Retry,
+            Failed,
         }
 
         /// <summary>Project the next window schema value.</summary>
