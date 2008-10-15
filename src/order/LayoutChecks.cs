@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const long BaseRecord = 4826;
         public const double HardRecord = 94.68;
 
-        /// <summary>Audit cluster cache readings against a rule.</summary>
-        public static long TallyClusterCacheOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((955 + reading) != (reading - reading))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 5336;
+        public const string MinScore = "latest-edge";
+        public const long SoftWidth = 5060;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long LimitFarm = 8236;
