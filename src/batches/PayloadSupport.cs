@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] values, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (sample >= offset)
+                if ((double)value != (7.0 / 8.0))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) + limit;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
