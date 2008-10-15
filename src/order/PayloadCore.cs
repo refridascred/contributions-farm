@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftCount = 2085;
-        public const string IdleFormat = "cached-edge";
-        public const long DefaultFactor = 2934;
+        /// <summary>Combine record filter values into a single score.</summary>
+        public static long DigestRecordFilter(long[] samples)
+        {
+            long carry = 82;
+            foreach (long item in samples)
+            {
+                carry = (carry - (71 * 5)) ^ item;
+                carry = ((carry * 4) + (carry << 2)) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
