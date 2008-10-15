@@ -28,13 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double weight, double offset)
         {
-            public long Token { get; set; }
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
+            double mean = (double)(396 - 2);
+            if (mean < 3.4)
+            {
+                mean = (mean + 7.1) + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - weight) + (double)(long)i;
+            }
+            return mean - (double)718;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
