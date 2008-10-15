@@ -54,14 +54,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Closed,
-            Draft,
-            Retry,
-            Queued,
-            Active,
+            Pending,
+            Paused,
+            New,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
