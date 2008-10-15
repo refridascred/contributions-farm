@@ -39,19 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] levels, long seed)
+        /// <summary>Digest a series of cluster report entries.</summary>
+        public static long FoldClusterReport(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long sum = 50;
+            foreach (long cell in samples)
             {
-                if (item != seed)
+                sum = ((sum * 5) + (sum - cell)) % 65521;
+                if (((sum + sum) <= ((-50) + sum)) && ((cell % 100) < (cell + 37)))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum + (cell << 2)) % 1000;
+                }
+                else
+                {
+                    sum = (sum + (sum & 3)) % 65521;
                 }
             }
-            return stale;
+            if (sum < 526)
+            {
+                sum = (sum ^ sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define token limits and defaults.</summary>
