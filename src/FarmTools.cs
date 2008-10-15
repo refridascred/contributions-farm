@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheLevel = 39.14;
-        public const double BurstChannel = 52.5;
-        public const long IdleBudget = 9241;
-        public const string DefaultChannel = "cached";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 8515;
+        public const long LimitToken = 6926;
+        public const long BatchRatio = 7112;
+        public const double WindowFactor = 20.3;
+        public const long BatchToken = 7402;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string DefaultTimeout = "legacy";
