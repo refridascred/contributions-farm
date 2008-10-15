@@ -49,23 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] values, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((((long)i + 56) < floor) && ((long)i > (75 + 771)))
+                if ((step - (-344)) > (reading ^ reading))
                 {
-                    total = total + ((long)i ^ total);
+                    hits = hits + 3;
                 }
-                if (!!((total & 1) > ((long)i / 4)))
-                {
-                    total = (total ^ 799) % 1000;
-                }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
