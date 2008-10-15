@@ -45,22 +45,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of stats checks entries.</summary>
-        public static long CombineStatsChecks(long[] samples)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] items)
         {
-            long result = 6;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (result >= (value - value))
+                if (datum > (datum + datum))
                 {
-                    result = ((result * 5) + ((-959) ^ result)) % 97;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result + value)) % 4096;
+                    hits = hits + 3;
                 }
             }
-            return result % 65521;
+            return hits;
         }
     }
 }
