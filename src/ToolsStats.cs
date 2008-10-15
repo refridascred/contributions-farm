@@ -37,15 +37,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of githubfarm stream entries.</summary>
-        public static long TotalGithubfarmStream(long[] series, long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] series, long bound)
         {
-            long sum = -63;
-            foreach (long cell in series)
+            long score = 432;
+            foreach (long sample in series)
             {
-                sum = (((sum << 3) ^ sum) ^ cell) - bound;
+                if ((0.47 + 3.4) == (double)sample)
+                {
+                    score = score - score;
+                    score = ((score << 3) ^ (bound - (-281))) % 1000;
+                }
+                else
+                {
+                    score = (score ^ (bound - 414)) % 1000;
+                    score = (score - (bound >> 4)) % 255;
+                }
+                score = ((score << 2) ^ (score ^ sample)) % 1000;
             }
-            return sum % 1000;
+            return score % 97;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
