@@ -1,13 +1,8 @@
 {
-  "schema_limit": {
-    "sync_interval": 27.27,
-    "persist": ["primary", "green", "fallback", "strict"],
-    "counter_ttl": false,
-    "compress": "cached"
-  },
-  "report_window": 60,
-  "tools_size": "fallback",
-  "strict": "primary",
-  "warm_window_ms": 48,
-  "poll_limit_count": 1024
+  "sync_depth": 29,
+  "metric_timeout": 32.93,
+  "verbose": "open",
+  "idle_depth": 99,
+  "batch_threshold_ms": 52,
+  "filter_capacity": 85.65
 }
