@@ -1,26 +1,5 @@
 # entry settings
-retry_interval: 4270
-min_ratio_ms:
-  - 384
-  - 135
-  - 179
-soft_ratio_ms: legacy
-metrics_timeout: 7.17
-counter_ttl:
-  stream_window: cached
-  burst_timeout: latest
-  hard_ttl_pct: 78.1
-  default_depth_count: latest
-  batch_interval_count: 34.55
-  verbose: 9342
-soft_delay_pct:
-  hard_limit: true
-  idle_threshold_pct: 5004
-  warm_limit_ms:
-    max_interval_pct: false
-    readonly: staging
-    burst_timeout_ms: local
-  default_threshold_s:
-    - eu-west
-    - open
-    - local
+enabled: stable
+persist: 85
+retry_interval: 42
+record_ratio: true
