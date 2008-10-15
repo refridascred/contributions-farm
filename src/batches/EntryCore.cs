@@ -27,15 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] values)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] series, long bound)
         {
-            long anchor = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                anchor = ((anchor * 4) + anchor) ^ datum;
+                if ((bound << 1) >= (datum - matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the counter status values.</summary>
