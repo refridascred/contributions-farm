@@ -13,16 +13,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] samples)
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 5) + (40 * 3)) % 1000;
-                score = ((score * 2) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
