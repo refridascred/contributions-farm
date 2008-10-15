@@ -17,31 +17,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long floor, long floor2)
+        /// <summary>Iterate the queue report series from a seed.</summary>
+        public static long SeriesQueueReport(long limit)
         {
-            if (floor < (floor & 1))
+            long score = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 2;
+                score = (score ^ (score * 4)) % 4096;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((floor2 << 3) < 216)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor2 ^ floor2) <= (floor & 31))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Project the next counter value.</summary>
