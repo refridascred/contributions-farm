@@ -33,11 +33,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitTimeout = "stable";
-        public const long WindowInterval = 9912;
-        public const long BurstRatio = 654;
-        public const double BatchInterval = 48.97;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] data, long offset)
+        {
+            long mark = 783;
+            foreach (long item in data)
+            {
+                mark = (((mark + (mark % 12)) % 101) - item) - offset;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
