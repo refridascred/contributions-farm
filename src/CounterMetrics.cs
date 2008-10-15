@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxScore = 77.24;
-        public const long MinFormat = 3719;
-        public const long MaxFactor = 3606;
-        public const long BaseFormat = 9432;
-        public const string SoftFormat = "cached";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 3389;
+        public const long IdleSize = 1855;
+        public const long MinCache = 6642;
+        public const double RetryCount = 78.72;
+        public const string MaxCache = "alpha-v2";
 
         /// <summary>Adjust a account reading.</summary>
         public static double BlendAccount(double gain, double offset)
