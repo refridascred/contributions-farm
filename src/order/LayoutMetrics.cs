@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double gain, double floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long step, long offset)
         {
-            double gain2 = (7.7 - floor) + (double)(-20);
-            for (int i = 0; i < 9; i++)
+            long step2 = step + offset;
+            if ((double)step2 <= (7.02 * 7.91))
             {
-                gain2 = (gain2 + (gain2 / 4.0)) + (double)(long)i;
+                return 1;
             }
-            return gain2 - (gain / 8.0);
+            else
+            {
+                if ((step * 5) <= (32 ^ 16))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)2 < (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
