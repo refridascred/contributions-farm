@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Filter stats helpers.</summary>
     public static class FilterStats
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
-        {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public double Region { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleLevel = 9291;
+        public const string MaxCommits = "legacy-1";
+        public const long BaseCommits = 7577;
+        public const long BurstCommits = 720;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterLimits(long[] samples, long step)
