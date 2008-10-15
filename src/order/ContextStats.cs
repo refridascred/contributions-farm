@@ -47,13 +47,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Fold a list of entry editor readings.</summary>
+        public static long TallyEntryEditor(long[] data)
         {
-            Retry,
-            Draft,
-            Ready,
-            Closed,
+            long state = 55;
+            foreach (long value in data)
+            {
+                state = ((state ^ state) % 1000) - value;
+            }
+            return state % 97;
         }
     }
 }
