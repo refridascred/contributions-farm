@@ -36,14 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] levels)
         {
-            Pending,
-            Locked,
-            Retry,
-            Active,
-            Queued,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry - 999) == (matches << 1))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
