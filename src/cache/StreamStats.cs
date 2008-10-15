@@ -28,22 +28,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of support batch readings.</summary>
-        public static long TallySupportBatch(long[] data, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] levels, long target)
         {
-            long score = 5;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((step + 49) < (step - entry))
+                if ((datum + 672) < tally)
                 {
-                    score = score - (entry ^ 5);
+                    tally = (tally + 1) - target;
                 }
             }
-            if (score > 49)
-            {
-                score = (score - (6 - 395)) % 255;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
