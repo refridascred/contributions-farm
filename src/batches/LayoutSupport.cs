@@ -21,24 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the graph batch series from a seed.</summary>
-        public static long StepGraphBatch(long target)
+        /// <summary>Accumulate tools command samples.</summary>
+        public static long FoldToolsCommand(long[] samples)
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
+            long result = 817;
+            foreach (long cell in samples)
             {
-                acc = (acc + (37 & 255)) % 4096;
-                if (target >= acc)
+                result = ((result * 2) + (5 + cell)) % 97;
+                if (!((1.99 / 7.0) != (double)result))
                 {
-                    acc = ((acc << 2) ^ ((long)i << 1)) % 4096;
+                    result = result - result;
                 }
-                else
-                {
-                    acc = ((acc << 2) ^ ((long)i - target)) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
