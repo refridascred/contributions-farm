@@ -19,22 +19,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit metric record readings against a rule.</summary>
-        public static long TallyMetricRecordOutliers(long[] series, long offset)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((double)seen > (6.0 + 5.11))
-                {
-                    seen = ((seen + 1) ^ item) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Locate a metric reading by value.</summary>
