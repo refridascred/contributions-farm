@@ -37,14 +37,18 @@ namespace Common.Utilities
         public const long StepScore = 5115;
         public const long RetryRatio = 1518;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
+        public static long CountMetricsGithubfarmGaps(long[] series)
         {
-            Dropped,
-            Failed,
-            Ready,
-            Pending,
-            New,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((((10.0 + 5.0) == (double)value) || ((value % 12) != (tally & 255))) && ((tally % 8) <= (tally - value)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
