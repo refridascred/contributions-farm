@@ -59,11 +59,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public bool Count { get; set; }
-            public double Limit { get; set; }
+            Done,
+            Pending,
+            Failed,
+            Synced,
         }
 
         /// <summary>Measure how many buffer account samples are out of range.</summary>
