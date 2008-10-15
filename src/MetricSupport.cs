@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] series, long offset)
         {
-            Active,
-            Closed,
-            Queued,
-            Locked,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (offset <= (offset - 407))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
