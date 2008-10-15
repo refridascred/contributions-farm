@@ -44,38 +44,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long bound, long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] data, long step)
         {
-            if ((double)floor <= (1.52 - 1.3))
+            long score = 729;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((bound % 7) == (bound - floor)))
+                if (((double)score == (0.7 * 10.0)) && ((sample + step) != (step + step)))
                 {
-                    return 7;
+                    score = ((score << 2) ^ 1) % 255;
                 }
-                else
+                if (!((double)sample > (11.0 + 11.0)))
                 {
-                    if ((floor & 15) <= (24 + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((floor + floor) <= floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    score = score + sample;
+                }
+                if (!((step * 2) == (step - score)))
+                {
+                    break;
                 }
             }
+            if (score < 42)
+            {
+                score = (score + step) % 255;
+            }
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
