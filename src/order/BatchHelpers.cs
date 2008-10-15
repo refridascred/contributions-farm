@@ -23,14 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] items, long origin)
         {
-            Retry,
-            Active,
-            Ready,
-            Failed,
-            Closed,
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
