@@ -1,6 +1,5 @@
 # entry settings
-compress:
-  - 149
-  - 426
-cache_window_s: 30
-batch_ratio_ms: 62
+default_capacity_s: blue
+min_threshold_ms: edge
+poll_threshold_pct: false
+commits_size: 69
