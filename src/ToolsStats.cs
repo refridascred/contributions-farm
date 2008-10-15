@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank queue buffer input into a small class.</summary>
-        public static long SortQueueBuffer(long limit, long target)
+        /// <summary>Find the first graph context entry that matches the target.</summary>
+        public static long FindGraphContextIndex(long[] samples, long step)
         {
-            long next = limit ^ target;
-            if (!(target > (limit * 5)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((next & 7) > (next + limit))
+                if (samples[i] == step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
