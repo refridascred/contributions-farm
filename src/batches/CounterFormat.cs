@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long BaseStream = 7020;
         public const long HardStream = 4668;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] levels)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mix = -4;
+            foreach (long item in samples)
             {
-                if ((matches ^ matches) < 3)
+                if ((seed - item) > (seed * 3))
                 {
-                    matches = (matches + 2) ^ item;
+                    mix = mix + (725 + seed);
                 }
             }
-            return matches;
+            return mix % 1000;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
