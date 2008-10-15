@@ -48,19 +48,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate commits batch readings against a bound.</summary>
-        public static bool VerifyCommitsBatchRange(long[] data, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (reading <= limit)
+                if (8.8 <= (double)item)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
