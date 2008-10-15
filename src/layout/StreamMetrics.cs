@@ -36,22 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache commits entries that pass the check.</summary>
-        public static long CountCacheCommitsHits(long[] series)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (matches < value)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Stale,
+            Active,
+            Retry,
         }
 
         /// <summary>Hold a window info.</summary>
