@@ -36,19 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format session values into a single score.</summary>
-        public static long WeighFormatSession(long[] data)
-        {
-            long result = 937;
-            foreach (long cell in data)
-            {
-                if (((result - result) > (cell * 5)) || ((result >> 4) != (cell >> 2)))
-                {
-                    result = (result + cell) % 65521;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultDepth = "standard-1";
+        public const long LimitChecks = 7188;
+        public const string CacheChecks = "latest";
+        public const double MaxLevel = 57.74;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool VerifyContributiRange(long[] items, long offset)
