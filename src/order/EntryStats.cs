@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count session record pairs that satisfy a relation.</summary>
-        public static long CompareSessionRecordCount(long[] levels)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (double)229 - (offset + offset);
+            if (scale < scale)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (scale - 19.0) - rate;
             }
-            return count;
+            else
+            {
+                scale = scale + 0.68;
+            }
+            return scale - (double)723;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
