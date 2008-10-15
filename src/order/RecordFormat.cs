@@ -29,17 +29,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] levels, long target)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the metric state values.</summary>
