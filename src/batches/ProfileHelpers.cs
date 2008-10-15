@@ -47,12 +47,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinNotes = "primary-v2";
-        public const long MaxSize = 5088;
-        public const long BurstNotes = 9506;
-        public const string BaseNotes = "standard-1";
-        public const long MinLevel = 4476;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamLimits(long[] data, long offset)
