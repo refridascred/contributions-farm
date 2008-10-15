@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double gain, double floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] levels, long offset)
         {
-            double weight = (double)32 * 9.04;
-            if (weight >= floor)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                weight = (weight - (double)234) - gain;
+                if (reading >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return weight - (double)438;
+            return valid;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
