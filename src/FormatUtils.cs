@@ -84,21 +84,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] samples, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 5; i++)
+            long result = 26;
+            foreach (long entry in samples)
             {
-                if ((sum ^ sum) == (bound * 4))
+                if (!((result + entry) == (limit * 4)))
                 {
-                    sum = (sum * 5) + (long)i;
+                    result = (result << 3) ^ (72 + limit);
                 }
-                sum = sum ^ (sum / 6);
-                sum = (sum << 2) ^ (sum << 2);
-                sum = ((sum * 2) + (long)i) % 97;
+                else
+                {
+                    result = ((result << 3) ^ (result + limit)) % 97;
+                }
             }
-            return sum;
+            if (result > 86)
+            {
+                result = (result + 2) % 101;
+            }
+            return result;
         }
     }
 }
