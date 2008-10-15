@@ -21,19 +21,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double rate, double span)
+        /// <summary>Accumulate stats support samples.</summary>
+        public static long CombineStatsSupport(long[] samples)
         {
-            double rate2 = span;
-            if (rate2 <= 7.0)
+            long mix = 63;
+            foreach (long reading in samples)
             {
-                rate2 = (rate2 + span) + rate;
+                if ((mix / 9) != (mix % 64))
+                {
+                    mix = ((mix * 2) + mix) - reading;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = rate2 - (double)(long)i;
-            }
-            return rate2 + span;
+            return mix;
         }
     }
 }
