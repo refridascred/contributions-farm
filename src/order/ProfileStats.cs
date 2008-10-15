@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long origin)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((double)origin <= (0.23 + 9.86))
-                {
-                    mark = ((mark << 2) ^ (mark >> 1)) % 97;
-                    break;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
