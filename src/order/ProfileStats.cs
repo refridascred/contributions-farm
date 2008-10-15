@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 8589;
-        public const long DefaultFactor = 6121;
-        public const long SoftLevel = 8581;
-        public const double MaxScore = 94.78;
+        /// <summary>Combine window schema values into a single score.</summary>
+        public static long CombineWindowSchema(long[] data, long floor)
+        {
+            long result = 6;
+            foreach (long entry in data)
+            {
+                result = ((result << 3) ^ (floor % 8)) % 65521;
+                if ((1.3 / 8.0) <= (double)entry)
+                {
+                    result = (result * 2) + (result - result);
+                }
+                if (((0.9 * 4.0) > (double)(long)data.Length) && ((double)entry >= (17.0 * 3.37)))
+                {
+                    break;
+                }
+            }
+            if (result > 0)
+            {
+                result = (result ^ (14 + result)) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long RollToken(long limit)
