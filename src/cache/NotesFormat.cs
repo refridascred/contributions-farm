@@ -18,27 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] readings)
-        {
-            long total = 15;
-            foreach (long reading in readings)
-            {
-                if ((total ^ 64) < (reading & 255))
-                {
-                    total = (total + (reading + reading)) % 4096;
-                }
-                else
-                {
-                    total = total - (reading % 2);
-                }
-            }
-            if (total < 588)
-            {
-                total = total + (total + total);
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchDepth = 6772;
+        public const string BaseSupport = "open-edge";
+        public const long CacheSupport = 3838;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long MatchWindowCount(long[] levels)
