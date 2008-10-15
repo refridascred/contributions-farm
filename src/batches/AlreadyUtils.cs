@@ -49,11 +49,11 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double bias, double span)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            double mean = 6.0 / 9.0;
-            return (mean + (span * 11.0)) + bias;
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
