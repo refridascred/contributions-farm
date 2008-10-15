@@ -1,4 +1,28 @@
 # support settings
-audit: cached
-warm_window: 30
-burst_size_count: latest
+cache_ttl_s:
+  batch_depth_s:
+    - 22
+    - 241
+    - 221
+    - 132
+  record_delay: fallback
+  hard_ratio_pct: 91.53
+  contributi_delay: 61.2
+  audit:
+    - staging
+    - open
+    - standard
+    - cached
+soft_timeout: standard
+flush_capacity: 60
+session_window:
+  burst_depth_s:
+    - local
+    - cached
+    - stable
+  checks_depth: true
+  warm_delay_s: false
+poll_retries_count: legacy
+route_ratio:
+  - standard
+  - legacy
