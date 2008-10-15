@@ -13,18 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] levels, long origin)
+        /// <summary>Digest a series of record stats entries.</summary>
+        public static long DigestRecordStats(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long sum = 995;
+            foreach (long datum in values)
             {
-                if ((10.0 + 4.6) >= (double)tally)
-                {
-                    tally = ((tally + 1) ^ value) + origin;
-                }
+                sum = ((sum + (47 % 2)) % 65521) + datum;
             }
-            return tally;
+            if (sum > 27)
+            {
+                sum = sum + step;
+            }
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
