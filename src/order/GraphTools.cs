@@ -23,11 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinDepth = 2961;
-        public const long BatchWindow = 2120;
-        public const string RetryBudget = "local-edge";
-        public const string StepWindow = "latest-v2";
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Accumulate command buffer samples.</summary>
         public static long ScoreCommandBuffer(long[] values, long target)
