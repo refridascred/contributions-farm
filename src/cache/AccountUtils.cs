@@ -21,14 +21,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] readings, long step)
         {
-            Locked,
-            Stale,
-            Paused,
-            Active,
-            Pending,
+            long carry = 3;
+            foreach (long cell in readings)
+            {
+                carry = ((carry ^ step) % 4096) ^ cell;
+            }
+            if (carry > 0)
+            {
+                carry = ((carry << 3) ^ (carry >> 2)) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Look up the position of a command batches sample.</summary>
