@@ -40,10 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 4805;
-        public const string BaseScore = "stable";
-        public const long BaseSpan = 1757;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] items, long bound)
+        {
+            long mix = -3;
+            foreach (long datum in items)
+            {
+                mix = ((mix << 2) ^ bound) ^ datum;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
