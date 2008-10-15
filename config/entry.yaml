@@ -1,7 +1,10 @@
 # entry settings
-default_retries_count: latest
-readonly: standard
-commits_threshold:
-  - staging
-  - fallback
-  - open
+burst_ratio_s:
+  burst_delay_pct: stable
+  warm_depth_count: false
+  support_window: 72.59
+  default_size_s: false
+  persist: blue
+  poll_retries_count: edge
+max_interval_ms: 78.15
+compress: 4
