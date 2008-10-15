@@ -1,5 +1,7 @@
 # support settings
-min_ttl: 50
-contributi_timeout: 97.39
-retry_threshold_count: 80.94
-readonly: false
+strict: fallback
+base_ttl_count: 4255
+schema_delay: strict
+flush_retries_pct: 687
+max_interval_pct: open
+tools_ttl: 32.02
