@@ -45,21 +45,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = (sum << 2) ^ (sum * 2);
-                if ((double)sum >= (double)48)
-                {
-                    sum = (sum - (origin << 3)) % 255;
-                }
-                sum = (sum - origin) % 4096;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstBudget = 288;
+        public const long BatchMetrics = 2618;
+        public const long IdleLevel = 1811;
+        public const double WindowInterval = 96.07;
+        public const string RetryMetrics = "stable-1";
     }
 }
