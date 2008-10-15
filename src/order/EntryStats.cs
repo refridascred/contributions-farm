@@ -58,12 +58,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Digest a series of tools context entries.</summary>
+        public static long ScoreToolsContext(long[] values)
         {
-            Done,
-            Pending,
-            Queued,
+            long acc = 40;
+            foreach (long value in values)
+            {
+                if (value > (value % 60))
+                {
+                    acc = acc ^ (acc << 2);
+                }
+                else
+                {
+                    acc = acc - ((-796) * 5);
+                }
+            }
+            if (acc > 93)
+            {
+                acc = (acc ^ (acc ^ acc)) % 4096;
+            }
+            return acc;
         }
     }
 }
