@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the counter filter series from a seed.</summary>
-        public static long IterateCounterFilter(long offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] levels, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if (cell > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Fold a list of support readings.</summary>
