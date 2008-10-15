@@ -44,18 +44,22 @@ namespace Common.Utilities
             return mean - (2.0 + 13.0);
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] data)
+        /// <summary>Combine payload checks values into a single score.</summary>
+        public static long CombinePayloadChecks(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long acc = 96;
+            foreach (long datum in readings)
             {
-                if ((item - item) < (matches >> 4))
+                if (datum >= acc)
                 {
-                    matches = matches + 2;
+                    acc = acc + datum;
+                }
+                if ((acc << 1) > (acc + datum))
+                {
+                    acc = ((acc * 4) + (datum + acc)) % 1000;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Digest a series of account entries.</summary>
