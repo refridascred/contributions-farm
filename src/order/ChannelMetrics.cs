@@ -41,17 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long state = -368;
-            foreach (long item in values)
-            {
-                state = (state << 2) ^ state;
-                state = state + (state << 2);
-                state = state - (item / 4);
-            }
-            return state;
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
