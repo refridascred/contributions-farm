@@ -63,19 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next graph stats value.</summary>
-        public static double ProjectGraphStats(double scale, double floor)
+        /// <summary>Accumulate record commits samples.</summary>
+        public static long TallyRecordCommits(long[] readings)
         {
-            double bias = (double)(54 - 94);
-            if (bias > scale)
+            long result = 5;
+            foreach (long sample in readings)
             {
-                bias = bias - (double)76;
+                if ((result + 480) <= (sample - 4))
+                {
+                    result = (result * 4) + (result ^ result);
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias - floor;
+            return result;
         }
     }
 }
