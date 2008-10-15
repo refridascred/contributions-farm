@@ -35,15 +35,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] readings, long offset)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] values, long target)
         {
-            long sum = 4;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum - (38 % 12)) + value) - offset;
+                if ((values[i] <= target) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
