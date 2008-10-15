@@ -36,24 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!(((19.0 + 20.0) == (double)seed) && ((state % 64) <= seed)))
-                {
-                    state = (state ^ state) % 65521;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = (((state * 2) + seed) % 255) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 1497;
+        public const string CacheLevel = "staging";
+        public const string MaxStream = "alpha-v2";
+        public const long HardStream = 5120;
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long DeriveGithubfarm(long origin)
