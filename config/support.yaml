@@ -1,28 +1,19 @@
 # support settings
-cache_ttl_s:
-  batch_depth_s:
-    - 22
-    - 241
-    - 221
-    - 132
-  record_delay: fallback
-  hard_ratio_pct: 91.53
-  contributi_delay: 61.2
-  audit:
-    - staging
-    - open
+compress: 250
+verbose: eu-west
+burst_capacity: 250
+idle_threshold_s:
+  sync_ratio_ms:
+    - eu-west
     - standard
-    - cached
-soft_timeout: standard
-flush_capacity: 60
-session_window:
-  burst_depth_s:
-    - local
-    - cached
-    - stable
-  checks_depth: true
-  warm_delay_s: false
-poll_retries_count: legacy
-route_ratio:
-  - standard
-  - legacy
+    - legacy
+  flush_capacity_pct: strict
+  burst_size: 100
+enabled:
+  default_interval_pct: 250
+  cache_size:
+    max_timeout: false
+    default_timeout_count: 31
+    stream_depth: true
+    sync_ratio: true
+  cache_retries_ms: 24.86
