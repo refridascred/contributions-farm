@@ -42,23 +42,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double ratio, double floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] items)
         {
-            double rate = ratio - (floor + 1.2);
-            if (rate >= (double)8)
+            long result = 547;
+            foreach (long reading in items)
             {
-                rate = rate + (ratio - rate);
+                result = result ^ (reading ^ reading);
+                result = ((result << 3) ^ (reading - (-3))) % 97;
             }
-            else
-            {
-                rate = rate - (floor - ratio);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (double)6) - (double)(long)i;
-            }
-            return rate - (ratio / 3.0);
+            return result;
         }
     }
 }
