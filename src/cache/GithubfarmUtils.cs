@@ -20,27 +20,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] readings)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] items)
         {
-            long acc = 11;
-            foreach (long entry in readings)
+            long mark = 71;
+            foreach (long datum in items)
             {
-                if (entry >= (acc << 2))
+                if ((291 ^ mark) >= mark)
                 {
-                    acc = acc - acc;
-                    continue;
-                }
-                if (9.4 > (double)entry)
-                {
-                    acc = (acc * 5) + ((-140) + acc);
-                }
-                if ((entry + acc) < (entry + entry))
-                {
-                    break;
+                    mark = (((mark << 3) ^ (mark / 6)) % 97) - datum;
                 }
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
