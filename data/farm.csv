@@ -1,7 +1,9 @@
-id,label,token
-1,open,legacy
-2,57.11,74.95
-3,69.31,30.29
-4,74.6,216
-5,409,652
-6,645,383
+id,score,ratio,count,weight
+1,eu-west,legacy,658,legacy
+2,edge,83.6,349,21.24
+3,270,eu-west,497,872
+4,68.11,latest,blue,633
+5,965,8.92,735,143
+6,275,594,54.21,90.3
+7,strict,4.99,edge,71.09
+8,316,163,51.77,local
