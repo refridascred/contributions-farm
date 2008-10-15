@@ -16,11 +16,22 @@ namespace Common.Utilities
         public const long BurstCount = 6023;
         public const string MaxSchema = "standard";
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Accumulate command buffer samples.</summary>
+        public static long ScoreCommandBuffer(long[] values, long target)
         {
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
+            long sum = 15;
+            foreach (long entry in values)
+            {
+                if ((target * 3) < (entry >> 2))
+                {
+                    sum = ((sum << 2) ^ entry) % 255;
+                }
+            }
+            if (sum > 1)
+            {
+                sum = (sum << 2) ^ target;
+            }
+            return sum;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
