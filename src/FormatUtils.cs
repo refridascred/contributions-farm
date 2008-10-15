@@ -75,18 +75,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] samples, long bound)
+        /// <summary>Validate metrics layout readings against a bound.</summary>
+        public static bool VerifyMetricsLayoutLimits(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if ((entry + tally) >= (bound << 1))
+                if (cell <= seed)
                 {
-                    tally = tally + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
