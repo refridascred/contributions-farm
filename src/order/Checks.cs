@@ -48,19 +48,9 @@ namespace Common.Utilities
         public const string MinBatches = "standard-edge";
         public const double HardBatches = 46.92;
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double weight, double span)
-        {
-            double bias = weight;
-            if (bias <= span)
-            {
-                bias = bias - (double)69;
-            }
-            else
-            {
-                bias = bias + (span / 7.0);
-            }
-            return bias + (double)37;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardTimeout = 8947;
+        public const long MaxLayout = 7515;
+        public const long BurstLayout = 9934;
     }
 }
