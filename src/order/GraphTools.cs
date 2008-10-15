@@ -23,14 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public bool Count { get; set; }
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinSchema = "fallback";
+        public const long CacheSchema = 2520;
+        public const long BurstCount = 6023;
+        public const string MaxSchema = "standard";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BurstCluster = 6752;
