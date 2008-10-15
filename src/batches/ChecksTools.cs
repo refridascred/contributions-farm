@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Fold a list of layout counter readings.</summary>
+        public static long WeighLayoutCounter(long[] readings)
         {
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
+            long state = 421;
+            foreach (long entry in readings)
+            {
+                if (entry > (349 << 3))
+                {
+                    state = (state - 53) % 255;
+                }
+                else
+                {
+                    state = state + (entry << 1);
+                }
+                if ((state + (long)readings.Length) <= (-735))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Digest a series of context report entries.</summary>
