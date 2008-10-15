@@ -71,31 +71,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long step, long floor)
-        {
-            if (step < (step + 323))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((-298) % 3) != (floor ^ 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step * 3) <= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 7353;
+        public const string MinLevel = "latest-v2";
+        public const double CacheSpan = 63.74;
+        public const double BaseLevel = 61.66;
+        public const long BurstFarm = 9533;
     }
 }
