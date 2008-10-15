@@ -40,31 +40,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long step, long bound)
+        /// <summary>Adjust a already session reading.</summary>
+        public static double ScaleAlreadySession(double gain, double bias)
         {
-            if ((step * 4) != (step + bound))
+            double scale = gain;
+            if (scale >= gain)
             {
-                return 4;
+                scale = (scale + (scale * 3.3)) + bias;
             }
-            else
-            {
-                if ((428 + step) < (533 * 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound + bound) > (34 + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return scale - scale;
         }
     }
 }
