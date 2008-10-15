@@ -14,15 +14,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double scale, double span)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] samples, long seed)
         {
-            double mean = 6.98;
-            if (mean > 9.0)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                mean = ((mean + (double)40) + scale) + span;
+                if ((cell / 2) > (117 + 69))
+                {
+                    tally = (tally + 1) - seed;
+                }
             }
-            return mean + (mean / 7.0);
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
