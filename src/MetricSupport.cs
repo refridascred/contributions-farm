@@ -25,18 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] series, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long origin, long floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            if (((floor / 6) != (349 & 15)) || ((4.0 + 4.01) == (double)floor))
             {
-                if (offset <= (offset - 407))
+                return 4;
+            }
+            else
+            {
+                if ((0 + origin) == (origin << 2))
                 {
-                    seen = (seen + 1) + cell;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
