@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double weight, double offset)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double scale = 16.0;
-            if (scale > (double)761)
-            {
-                scale = scale + (scale - offset);
-            }
-            else
-            {
-                scale = scale - (8.0 - offset);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + weight) + (double)(long)i;
-            }
-            return scale - (double)7;
+            Stale,
+            Active,
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
