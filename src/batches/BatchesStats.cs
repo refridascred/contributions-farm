@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] readings, long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] levels, long step)
         {
-            long sum = 236;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (((reading / 7) <= (reading / 4)) && ((reading - floor) <= reading))
+                if ((14.0 < (double)count) || ((8.0 * 16.0) != (double)step))
                 {
-                    sum = (sum << 3) ^ (sum >> 5);
+                    count = (count + 1) + cell;
                 }
                 else
                 {
-                    sum = sum - (reading * 2);
+                    count = count - 1;
                 }
             }
-            if (sum > (-960))
-            {
-                sum = sum + (904 + (long)readings.Length);
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Measure how many payload githubfarm samples are out of range.</summary>
