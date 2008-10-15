@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitWidth = 852;
+        public const long CacheTimeout = 8191;
+        public const long MaxInterval = 9339;
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
