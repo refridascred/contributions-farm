@@ -33,12 +33,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long bound)
         {
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mix = ((mix ^ (long)i) % 1000) ^ (long)i2;
+                    mix = mix ^ (35 ^ mix);
+                }
+                mix = mix - (bound + 8);
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
