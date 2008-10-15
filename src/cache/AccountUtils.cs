@@ -28,17 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] readings, long bound)
+        /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
+        public static long CountBatchGithubfarmHits(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((readings[i] == bound) && ((readings[i] % 5) == 0))
+                if (step >= (5 - matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - cell;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
