@@ -34,19 +34,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every metric queue entry stays within the limit.</summary>
-        public static bool ValidateMetricQueueLimits(long[] values, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (entry >= origin)
+                if (((sample * 2) <= sample) || ((sample - sample) < (tally & 63)))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Fold a list of entry editor readings.</summary>
