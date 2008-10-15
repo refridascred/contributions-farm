@@ -1,10 +1,17 @@
 {
-  "strict": "primary",
-  "burst_ttl": 100,
-  "sync_timeout_ms": {
-    "compress": true,
-    "base_threshold_s": "latest",
-    "command_delay": 60,
-    "queue_interval": "edge"
+  "commits_depth": ["staging", "staging"],
+  "idle_limit_count": "latest",
+  "default_limit_s": "staging",
+  "warm_retries_s": {
+    "cache_timeout_pct": 96.68,
+    "flush_capacity_s": {
+      "batch_interval_s": 60.88,
+      "hard_timeout_pct": [63, 311, 424, 67],
+      "token_delay": [9, 118, 388, 46],
+      "cache_delay_pct": "staging",
+      "compress": 74
+    },
+    "dry_run": "fallback",
+    "base_limit_count": 36
   }
 }
