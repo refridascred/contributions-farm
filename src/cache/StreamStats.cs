@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] series)
         {
-            long state = -327;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading ^ reading) < (state + state))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state - (state << 2)) % 101;
-                }
-                else
-                {
-                    state = ((state * 3) + (reading + state)) % 97;
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Accumulate route samples.</summary>
