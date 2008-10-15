@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardFactor = 50.86;
-        public const long HardSchema = 9851;
-        public const double BaseTimeout = 43.8;
-        public const string DefaultSize = "primary-1";
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool VerifyAccountBounds(long[] items, long floor)
