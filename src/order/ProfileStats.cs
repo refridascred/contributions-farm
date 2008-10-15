@@ -24,14 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Draft,
-            Stale,
-            Synced,
-            Idle,
-            Locked,
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a farm summary.</summary>
