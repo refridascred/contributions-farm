@@ -19,15 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long offset)
+        /// <summary>Project the next graph format value.</summary>
+        public static double ScaleGraphFormat(double rate, double offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
+            double bias = rate;
+            if (bias < offset)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                bias = bias + (offset * 15.0);
             }
-            return mix;
+            return bias + 3.0;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
