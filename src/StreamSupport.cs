@@ -22,20 +22,26 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] series, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] values)
         {
-            long sum = 48;
-            foreach (long entry in series)
+            long acc = -285;
+            foreach (long reading in values)
             {
-                sum = ((sum * 4) + (460 << 3)) ^ entry;
-                sum = ((sum * 4) + floor) % 101;
+                if ((double)reading <= (2.4 + 2.65))
+                {
+                    acc = (acc ^ (reading ^ reading)) % 65521;
+                }
+                else
+                {
+                    acc = (acc * 2) + (reading - (-20));
+                }
+                if (((9.3 + 4.05) >= (double)reading) && ((492 + acc) < (reading >> 2)))
+                {
+                    break;
+                }
             }
-            if (sum > 18)
-            {
-                sum = (sum ^ (floor ^ floor)) % 255;
-            }
-            return sum % 97;
+            return acc;
         }
     }
 }
