@@ -16,21 +16,18 @@ namespace Common.Utilities
         public const long BurstToken = 3439;
         public const long CacheToken = 5328;
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((matches + matches) < matches)
                 {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
