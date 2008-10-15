@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long mix = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            Dropped,
+            Active,
+            Synced,
+            Pending,
+            Retry,
         }
 
         /// <summary>Audit context window readings against a rule.</summary>
