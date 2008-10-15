@@ -42,15 +42,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                acc = (acc + (floor + (long)i)) % 1000;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Combine context values into a single score.</summary>
