@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] levels, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (count < (floor - 413))
+                if (!((double)matches >= (3.0 * 8.0)))
                 {
-                    count = (count + 1) - cell;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine cluster format values into a single score.</summary>
