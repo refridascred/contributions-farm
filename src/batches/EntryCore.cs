@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit profile stream readings against a rule.</summary>
-        public static long MeasureProfileStreamMatches(long[] items, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((value - tally) >= (tally + floor))
+                if ((2.9 + 20.0) <= (double)hits)
                 {
-                    tally = tally + 3;
+                    hits = ((hits + 3) + entry) + step;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
