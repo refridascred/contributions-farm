@@ -14,22 +14,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseEntry = "alpha-1";
+        public const string LimitEntry = "alpha-edge";
+        public const long SoftEntry = 9079;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
