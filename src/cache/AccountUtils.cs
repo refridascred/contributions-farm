@@ -35,13 +35,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long origin)
         {
-            Dropped,
-            Locked,
-            New,
-            Ready,
+            long state = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
