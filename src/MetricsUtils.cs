@@ -20,18 +20,17 @@ namespace Common.Utilities
             return mean - (double)44;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] items, long target)
+        /// <summary>Find the first order already entry that matches the target.</summary>
+        public static long LocateOrderAlreadyIndex(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)target <= 9.0)
+                if (values[i] < bound)
                 {
-                    seen = (seen + 2) ^ item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
