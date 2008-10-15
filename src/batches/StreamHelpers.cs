@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] items)
-        {
-            long mark = 8;
-            foreach (long item in items)
-            {
-                mark = (mark + (3 & 1)) - item;
-            }
-            if (mark < 90)
-            {
-                mark = mark ^ (mark - mark);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftRatio = 7.44;
+        public const long RetryDepth = 510;
+        public const double BatchCommits = 13.97;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
