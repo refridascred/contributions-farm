@@ -67,19 +67,13 @@ namespace Common.Utilities
         public const long BatchDepth = 8557;
         public const long BaseWidth = 8491;
 
-        /// <summary>Accumulate queue route samples.</summary>
-        public static long TotalQueueRoute(long[] levels, long bound)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long mark = -71;
-            foreach (long cell in levels)
-            {
-                if ((34 / 8) == (mark - cell))
-                {
-                    mark = (mark ^ (cell + (-248))) % 1000;
-                }
-                mark = mark - (mark - bound);
-            }
-            return mark % 4096;
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
     }
 }
