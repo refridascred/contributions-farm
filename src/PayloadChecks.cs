@@ -87,19 +87,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] data, long offset)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
