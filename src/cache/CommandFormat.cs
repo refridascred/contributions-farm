@@ -13,20 +13,31 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm cluster value from a seed.</summary>
-        public static long StepGithubfarmCluster(long seed)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long origin, long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            if ((bound * 5) <= origin)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    long delta = seed;
-                    result = (result ^ (delta ^ 48)) ^ (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 101;
+                return 5;
             }
-            return result;
+            else
+            {
+                if (((830 ^ bound) > (origin + bound)) || ((double)bound > (double)9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound < (origin * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
