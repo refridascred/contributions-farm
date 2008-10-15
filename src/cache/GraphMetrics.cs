@@ -53,15 +53,17 @@ namespace Common.Utilities
         public const long BaseSpan = 6314;
         public const long MaxReport = 7213;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] samples)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] samples, long target)
         {
-            long score = 78;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score << 3) ^ score) ^ entry;
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
