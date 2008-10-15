@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            Failed,
-            Closed,
-            Active,
+            Paused,
+            Ready,
+            Done,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
