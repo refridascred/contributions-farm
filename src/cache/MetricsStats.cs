@@ -28,21 +28,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count command cluster pairs that satisfy a relation.</summary>
-        public static long PairCommandClusterCount(long[] series)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 51;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((716 % 2) == (total - bound)) && ((total - total) < (31 ^ entry)))
                 {
-                    if ((series[i] + series[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total ^ (157 - total)) % 255;
                 }
+                else
+                {
+                    total = total - bound;
+                    total = (total + (total & 7)) % 65521;
+                }
+                total = (total ^ (bound + entry)) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
