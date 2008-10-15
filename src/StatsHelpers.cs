@@ -45,11 +45,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowAlready = "fallback-1";
-        public const long BurstWidth = 219;
-        public const long MaxAlready = 2840;
-        public const string StepAlready = "legacy-v2";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardProfile = 14.97;
+        public const string CacheProfile = "stable";
+        public const long MinRatio = 6989;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long StepMetrics(long floor)
