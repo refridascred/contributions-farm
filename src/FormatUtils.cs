@@ -71,9 +71,31 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 9566;
-        public const double BaseRoute = 8.15;
-        public const long SoftScore = 6571;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long step, long floor)
+        {
+            if (step < (step + 323))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-298) % 3) != (floor ^ 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step * 3) <= floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
