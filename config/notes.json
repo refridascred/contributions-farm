@@ -1,5 +1,8 @@
 {
-  "sync_ratio_s": true,
-  "route_threshold": [430, 89],
-  "audit": ["blue", "fallback", "legacy"]
+  "retry_ttl_count": "green",
+  "flush_ttl_s": [26, 485, 308, 32],
+  "poll_retries": false,
+  "persist": 86.93,
+  "burst_retries_s": 500,
+  "cache_size_count": [219, 303]
 }
