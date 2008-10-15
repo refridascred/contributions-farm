@@ -21,15 +21,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] series, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if (datum != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Rank session format input into a small class.</summary>
