@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long StepFactor = 5950;
         public const long BatchAccount = 3244;
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 345;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)carry < 3.0))
                 {
-                    if ((levels[i] + levels[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry - (entry + entry)) % 255;
                 }
+                carry = (carry ^ (entry ^ entry)) % 255;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
