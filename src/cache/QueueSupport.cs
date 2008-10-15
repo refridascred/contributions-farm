@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] data)
+        /// <summary>Check that every checks counter entry stays within the limit.</summary>
+        public static bool GuardChecksCounterBounds(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (!(((double)reading < (2.4 - 20.0)) || ((reading + 455) == (reading + (-227)))))
+                if (reading > floor)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Scale a cluster session figure with a bias.</summary>
