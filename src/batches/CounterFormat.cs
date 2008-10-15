@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Retry,
-            Closed,
-            Locked,
-            Done,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 777;
+        public const double RetryWidth = 61.57;
+        public const long SoftGithubfarm = 1233;
+        public const long LimitGithubfarm = 440;
+        public const long BatchGithubfarm = 7667;
 
         /// <summary>Locate a token stats reading by value.</summary>
         public static long SeekTokenStatsIndex(long[] series, long floor)
