@@ -50,9 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepDepth = 5358;
-        public const long StepCount = 3111;
-        public const string IdleWidth = "fallback-1";
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
