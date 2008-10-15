@@ -44,22 +44,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the graph account entries that pass the check.</summary>
-        public static long MeasureGraphAccountOutliers(long[] values)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            double scale = ratio;
+            if (scale > 10.0)
             {
-                if ((40 << 1) == (reading % 16))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = (scale - scale) - offset;
             }
-            return tally;
+            return scale + (double)11;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
