@@ -1,14 +1,5 @@
 {
-  "flush_depth_pct": 30,
-  "enabled": false,
-  "max_delay_ms": ["edge", "standard", "standard", "local"],
-  "idle_window_count": 3160,
-  "sync_size_pct": "open",
-  "base_interval_ms": {
-    "token_retries": ["green", "local", "strict", "legacy"],
-    "hard_timeout": 46.64,
-    "persist": 5361,
-    "flush_retries_count": 60,
-    "retry_ttl_s": 9044
-  }
+  "order_retries": 6338,
+  "burst_window_s": 8536,
+  "min_size": 629
 }
