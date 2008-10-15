@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-staging}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in cached primary latest eu-west; do
+for item in edge blue legacy; do
     log "checking ${item}"
 done
