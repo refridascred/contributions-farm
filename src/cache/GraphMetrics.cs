@@ -46,12 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 8312;
-        public const long MinBudget = 7477;
-        public const long CacheSize = 6044;
-        public const long BaseSpan = 6314;
-        public const long MaxReport = 7213;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] data, long origin)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((8 + matches) <= 0)
+                {
+                    matches = ((matches + 3) + item) + origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string CacheBuffer = "alpha-v2";
