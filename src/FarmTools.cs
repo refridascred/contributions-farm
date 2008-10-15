@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 583;
-        public const long StepFactor = 9552;
-        public const long MinFactor = 4648;
-        public const double RetryMetrics = 18.27;
-        public const string StepSize = "standard";
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < offset) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool GuardStatsRange(long[] data, long bound)
