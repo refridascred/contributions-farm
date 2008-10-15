@@ -23,21 +23,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Match up farm githubfarm samples.</summary>
-        public static long MatchFarmGithubfarmCount(long[] levels)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Audit tools notes readings against a rule.</summary>
