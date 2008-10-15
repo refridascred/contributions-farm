@@ -36,10 +36,22 @@ namespace Common.Utilities
             return scale + (11.0 / 4.0);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 1294;
-        public const double HardScore = 62.66;
-        public const long DefaultMetric = 5355;
+        /// <summary>Match up checks editor samples.</summary>
+        public static long OverlapChecksEditorCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long SeriesPayload(long step)
