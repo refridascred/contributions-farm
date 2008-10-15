@@ -47,32 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long target, long seed)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long step = target ^ seed;
-            if ((step + step) < 8)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((246 <= seed) && ((step - target) != (seed - target)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed >> 1) == (target / 6)) || ((double)target > (3.0 * 0.6)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
