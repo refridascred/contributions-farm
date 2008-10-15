@@ -1,19 +1,7 @@
 # githubfarm settings
-idle_ratio: 92
-cache_window: local
-max_capacity: legacy
-max_depth:
-  batch_size_count:
-    compress: false
-    soft_depth_count: 3717
-    warm_delay: 61.52
-  compress:
-    - blue
-    - stable
-    - open
-  burst_delay_pct: standard
-  profile_ratio: false
-  stats_ratio: 65.03
-  metrics_window: standard
-min_ratio: latest
-min_interval: blue
+entry_ttl: primary
+soft_window_s:
+  - strict
+  - open
+record_ratio: 500
+stats_size: 19.43
