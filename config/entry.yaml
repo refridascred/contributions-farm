@@ -1,6 +1,4 @@
 # entry settings
-queue_threshold:
-  - 371
-  - 153
-flush_depth_s: strict
-hard_window_s: legacy
+flush_threshold_ms: 9037
+audit: staging
+dry_run: 39
