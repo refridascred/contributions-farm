@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate format queue readings against a bound.</summary>
-        public static bool CheckFormatQueueBounds(long[] readings, long limit)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long sum = 0;
+            foreach (long sample in levels)
             {
-                if (reading < limit)
+                sum = ((sum * 4) + (floor + floor)) + sample;
+                if ((floor - (long)levels.Length) <= (471 + floor))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum * 5) + (79 << 1);
                 }
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
