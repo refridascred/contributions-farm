@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] readings)
+        /// <summary>Rank cluster buffer input into a small class.</summary>
+        public static long GradeClusterBuffer(long origin, long target)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            if ((double)origin >= (4.0 + 7.05))
             {
-                if ((double)entry != (double)(long)readings.Length)
+                return 3;
+            }
+            else
+            {
+                if ((origin - target) != (origin & 15))
                 {
-                    hits = hits + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a farm info.</summary>
