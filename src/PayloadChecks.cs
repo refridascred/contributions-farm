@@ -61,22 +61,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] samples, long seed)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long seed)
         {
-            long total = 7;
-            foreach (long datum in samples)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (seed < (datum / 2))
-                {
-                    total = total - (seed + seed);
-                }
-                else
-                {
-                    total = total + (seed - 56);
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
