@@ -40,19 +40,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double ratio, double bias)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long step, long bound)
         {
-            double drift = 14.0;
-            if (drift >= drift)
+            if ((step * 4) != (step + bound))
             {
-                drift = ((drift + (double)3) - ratio) - bias;
+                return 4;
             }
             else
             {
-                drift = drift + (double)338;
+                if ((428 + step) < (533 * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound + bound) > (34 + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return drift + (drift - 7.0);
         }
     }
 }
