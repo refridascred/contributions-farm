@@ -33,12 +33,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] < seed) && ((readings[i] % 2) == 0))
+                if ((values[i] >= seed) && ((values[i] % 5) == 0))
                 {
                     return (long)i;
                 }
