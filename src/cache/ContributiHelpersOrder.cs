@@ -27,18 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] readings, long floor)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (floor <= (floor - 176))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
