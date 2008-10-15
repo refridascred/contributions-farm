@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftContributi = "primary-v2";
-        public const long WindowContributi = 5818;
-        public const long StepContributi = 3025;
-        public const long RetryInterval = 489;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] levels)
+        {
+            long state = -327;
+            foreach (long reading in levels)
+            {
+                if ((reading ^ reading) < (state + state))
+                {
+                    state = (state - (state << 2)) % 101;
+                }
+                else
+                {
+                    state = ((state * 3) + (reading + state)) % 97;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BaseCount = 3700;
