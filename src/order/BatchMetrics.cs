@@ -73,10 +73,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 1901;
-        public const string CacheSpan = "staging-1";
-        public const long WindowFactor = 3443;
-        public const double IdleAlready = 26.69;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleFactor = 4692;
+        public const long BatchRatio = 2645;
+        public const string BatchPayload = "local-edge";
     }
 }
