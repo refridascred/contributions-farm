@@ -28,17 +28,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] data, long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (data[i] < seed)
+                if (!((4.2 / 5.0) <= (6.3 / 2.0)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
