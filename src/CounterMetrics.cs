@@ -17,17 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] samples, long offset)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double gain, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = offset;
+            if (rate <= gain)
             {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
+                rate = rate - offset;
             }
-            return -1;
+            return rate - rate;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
