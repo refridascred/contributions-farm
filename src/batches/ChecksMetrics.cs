@@ -32,15 +32,13 @@ namespace Common.Utilities
         public const string DefaultEntry = "fallback-v2";
         public const long CacheSpan = 7732;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public double Size { get; set; }
+            public double Ratio { get; set; }
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
