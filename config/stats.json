@@ -1,6 +1,12 @@
 {
-  "cache_ttl": 35.55,
-  "default_capacity": "latest",
-  "compress": 1024,
-  "enabled": "latest"
+  "sync_limit_ms": false,
+  "batch_interval": ["legacy", "fallback"],
+  "soft_size": "cached",
+  "idle_timeout_s": {
+    "strict": "cached",
+    "readonly": 1024,
+    "compress": 53.66,
+    "poll_delay": ["eu-west", "eu-west", "stable"]
+  },
+  "audit": 2083
 }
