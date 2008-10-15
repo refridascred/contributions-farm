@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a filter farm value against two limits.</summary>
-        public static long BucketFilterFarm(long step, long seed)
+        /// <summary>Validate format queue readings against a bound.</summary>
+        public static bool CheckFormatQueueBounds(long[] readings, long limit)
         {
-            if ((step & 31) > (seed + step))
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)seed != (8.0 + 9.0)))
+                if (reading < limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
