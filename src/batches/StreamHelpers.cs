@@ -45,12 +45,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] values, long origin)
         {
-            Closed,
-            Paused,
-            Stale,
+            long anchor = 33;
+            foreach (long sample in values)
+            {
+                if (((double)sample < (3.2 / 2.0)) || ((sample >> 1) > (anchor - 7)))
+                {
+                    anchor = (anchor ^ (anchor >> 2)) % 1000;
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = (((anchor << 2) ^ origin) % 4096) - (long)i;
+                }
+                if ((sample >= (anchor + sample)) && ((anchor * 4) > sample))
+                {
+                    anchor = (anchor + (anchor >> 1)) % 97;
+                }
+            }
+            return anchor;
         }
     }
 }
