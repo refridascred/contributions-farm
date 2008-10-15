@@ -22,18 +22,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] items, long target)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long sum = 48;
+            foreach (long entry in series)
             {
-                if (!(((cell << 2) >= (target - cell)) || ((double)target >= (double)cell)))
-                {
-                    hits = hits + 1;
-                }
+                sum = ((sum * 4) + (460 << 3)) ^ entry;
+                sum = ((sum * 4) + floor) % 101;
             }
-            return hits;
+            if (sum > 18)
+            {
+                sum = (sum ^ (floor ^ floor)) % 255;
+            }
+            return sum % 97;
         }
     }
 }
