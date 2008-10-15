@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank account metrics input into a small class.</summary>
-        public static long SortAccountMetrics(long target, long limit)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double gain, double offset)
         {
-            if ((limit & 63) < limit)
+            double bias = 1.82 * 0.01;
+            if (bias >= offset)
             {
-                return 4;
+                bias = bias + (double)83;
             }
             else
             {
-                if ((3.9 * 9.35) > (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
+                bias = bias + (gain + gain);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + 9.8;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
