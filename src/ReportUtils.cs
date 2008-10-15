@@ -49,38 +49,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long origin, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] samples, long bound)
         {
-            if ((origin << 3) < (origin + seed))
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6.64 / 6.0) == (double)seed)
+                if ((bound << 2) <= (38 * 2))
                 {
-                    return 5;
+                    count = (count + 2) + value;
                 }
                 else
                 {
-                    if ((seed - 954) <= seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)seed >= (14.0 - 7.63))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
