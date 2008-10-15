@@ -19,24 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long offset, long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long floor)
         {
-            if (((1.0 - 3.36) != (double)offset) || ((floor - offset) == (floor + offset)))
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)floor > (7.0 + 7.1)) && (6.0 < (double)floor))
+                carry = (carry + carry) % 101;
+                if ((carry >> 1) <= (1 - 60))
                 {
-                    return 8;
+                    carry = (carry ^ (carry & 7)) % 97;
+                    continue;
                 }
                 else
                 {
-                    return 2;
+                    carry = (carry + 192) % 4096;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
