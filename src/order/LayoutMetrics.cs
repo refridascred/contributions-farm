@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] items)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((32 < count) && ((value & 127) > (value ^ count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
