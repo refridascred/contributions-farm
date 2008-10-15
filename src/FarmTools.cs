@@ -34,23 +34,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double scale, double offset)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] readings, long step)
         {
-            double gain = scale;
-            if (gain > gain)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain + gain;
+                if ((readings[i] > step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + offset) - (double)(long)i;
-            }
-            return gain + (double)6;
+            return -1;
         }
     }
 }
