@@ -5,29 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of report githubfarm readings.</summary>
-        public static long DigestReportGithubfarm(long[] levels, long seed)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long anchor = 8;
-            foreach (long reading in levels)
-            {
-                if ((reading + reading) <= (seed / 6))
-                {
-                    anchor = (anchor * 4) + 0;
-                    anchor = ((anchor * 5) + (seed + anchor)) % 255;
-                }
-                else
-                {
-                    anchor = anchor + (seed * 2);
-                }
-                anchor = ((anchor * 3) + anchor) % 255;
-                anchor = (anchor - (reading - seed)) % 65521;
-            }
-            if (anchor < 93)
-            {
-                anchor = (anchor - (anchor * 2)) % 255;
-            }
-            return anchor % 1000;
+            Done,
+            Retry,
+            Draft,
+            Closed,
         }
 
         /// <summary>Locate a report reading by value.</summary>
