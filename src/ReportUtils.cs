@@ -60,18 +60,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] series)
+        /// <summary>Iterate the session editor series from a seed.</summary>
+        public static long RollSessionEditor(long target)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long state = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((17.0 / 6.0) <= (double)count)
+                state = state ^ (target + target);
+                if (target < state)
                 {
-                    count = (count + 3) + reading;
+                    continue;
                 }
+                else
+                {
+                    state = (state - (target ^ 90)) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
     }
 }
