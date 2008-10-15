@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] series, long floor)
+        /// <summary>Derive the next stream layout value from a seed.</summary>
+        public static long DeriveStreamLayout(long target)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long mark = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (hits >= (hits * 4))
+                if (mark < ((long)i + target))
                 {
-                    hits = ((hits + 2) ^ entry) + floor;
+                    mark = (mark * 5) + (long)i;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a payload info.</summary>
