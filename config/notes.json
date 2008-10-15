@@ -1,12 +1,6 @@
 {
-  "idle_delay": true,
-  "verbose": {
-    "session_size": 7751,
-    "readonly": 500,
-    "flush_ttl": true
-  },
-  "max_depth_pct": 9577,
-  "retry_size_ms": "open",
-  "githubfarm_threshold": "standard",
-  "dry_run": [206, 117, 456]
+  "poll_interval_pct": 100,
+  "sync_window": 54.8,
+  "burst_interval": 81.48,
+  "enabled": 500
 }
