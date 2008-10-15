@@ -29,23 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((limit + limit) > (long)i) || ((long)i == (total * 4)))
-                {
-                    total = total + ((long)i - (long)i);
-                }
-                else
-                {
-                    total = total + limit;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
         }
     }
 }
