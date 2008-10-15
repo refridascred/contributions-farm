@@ -37,18 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch githubfarm samples are out of range.</summary>
-        public static long CountBatchGithubfarmHits(long[] data, long step)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (step >= (5 - matches))
+                if ((items[i] >= target) && ((items[i] % 5) != 0))
                 {
-                    matches = (matches + 1) - cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
