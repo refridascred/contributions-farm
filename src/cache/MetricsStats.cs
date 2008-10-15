@@ -50,22 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] samples, long origin)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double rate, double span)
         {
-            long total = 81;
-            foreach (long cell in samples)
+            double mean = span - rate;
+            if (mean <= (span + rate))
             {
-                if ((cell ^ 79) <= origin)
-                {
-                    total = (total - origin) % 97;
-                }
-                else
-                {
-                    total = total + (origin + 365);
-                }
+                mean = mean - (double)82;
             }
-            return total % 1000;
+            return mean - mean;
         }
 
         /// <summary>Define session limits and defaults.</summary>
