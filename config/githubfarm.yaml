@@ -1,17 +1,18 @@
 # githubfarm settings
-audit: 3.25
-default_ratio_ms:
-  - 462
-  - 202
-dry_run:
-  counter_delay: 500
-  record_ratio:
-    - blue
-    - primary
-  strict:
-    - strict
-    - green
-  graph_size: 77
-  dry_run: cached
-flush_threshold_pct: green
-compress: 26.15
+batch_threshold:
+  cache_interval:
+    filter_limit:
+      - 380
+      - 119
+      - 134
+    base_timeout_pct:
+      - green
+      - fallback
+      - blue
+    audit: 4162
+    default_interval_pct: staging
+  metric_timeout: open
+  max_interval: false
+  commits_ttl: 97.12
+compress: 2.88
+hard_depth: eu-west
