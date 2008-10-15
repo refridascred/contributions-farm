@@ -27,10 +27,24 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 8986;
-        public const double WindowBatches = 90.05;
-        public const string MinLevel = "open";
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    carry = (carry - floor) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    carry = carry + ((long)i3 - 579);
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferHits(long[] levels)
