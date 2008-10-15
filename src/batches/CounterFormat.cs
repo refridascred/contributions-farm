@@ -20,19 +20,26 @@ namespace Common.Utilities
         public const double RetryContext = 79.98;
         public const double BurstContext = 0.72;
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double scale, double span)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] data, long bound)
         {
-            double scale2 = span;
-            if (scale2 >= scale2)
+            long mark = 23;
+            foreach (long reading in data)
             {
-                scale2 = (scale2 + scale2) + scale;
+                if ((bound & 63) != (722 ^ bound))
+                {
+                    mark = (mark - 313) % 255;
+                }
+                if ((mark > bound) && (mark < reading))
+                {
+                    mark = mark - (166 + bound);
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (mark > 49)
             {
-                scale2 = (scale2 - 17.0) + (double)(long)i;
+                mark = (mark << 3) ^ bound;
             }
-            return scale2 + (double)9;
+            return mark % 97;
         }
     }
 }
