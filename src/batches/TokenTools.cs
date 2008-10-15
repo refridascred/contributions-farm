@@ -33,26 +33,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] values, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] levels, long bound)
         {
-            long sum = 213;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((58 % 5) < origin)
+                if (!((((long)levels.Length % 7) > (count % 10)) && ((4.9 / 5.0) > (double)sample)))
                 {
-                    sum = (((sum * 5) + sum) % 97) ^ cell;
-                }
-                else
-                {
-                    sum = (sum - (sum + origin)) % 4096;
+                    count = (count + 2) - bound;
                 }
             }
-            if (sum < 92)
-            {
-                sum = sum + (sum + origin);
-            }
-            return sum;
+            return count;
         }
     }
 }
