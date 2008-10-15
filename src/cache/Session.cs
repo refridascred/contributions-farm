@@ -27,22 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools notes readings against a rule.</summary>
-        public static long MeasureToolsNotesHits(long[] items)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((reading - 45) > ((long)items.Length & 3))
+                if ((2 - sample) >= sample)
                 {
-                    tally = tally + 3;
+                    matches = (matches + 1) + floor;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many record checks samples are out of range.</summary>
