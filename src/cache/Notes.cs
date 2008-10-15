@@ -32,11 +32,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCount = 1891;
-        public const long DefaultCommits = 8845;
-        public const double LimitDepth = 44.64;
-        public const long SoftCommits = 438;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            New,
+            Stale,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
