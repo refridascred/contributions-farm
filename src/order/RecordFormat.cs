@@ -27,11 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double weight, double bias)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            double gain = 2.07;
-            return (gain + bias) + weight;
+            public bool Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a cluster record.</summary>
