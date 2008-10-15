@@ -31,22 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] data)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double scale, double span)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double scale2 = span;
+            if (scale2 >= scale2)
             {
-                if (((cell / 8) == (7 >> 4)) && ((2.7 - 6.2) >= (double)tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale2 = (scale2 + scale2) + scale;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 - 17.0) + (double)(long)i;
+            }
+            return scale2 + (double)9;
         }
     }
 }
