@@ -38,18 +38,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] values)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long result = 63;
-            foreach (long datum in values)
-            {
-                if (datum >= (datum - result))
-                {
-                    result = ((result << 3) ^ result) % 97;
-                }
-            }
-            return result;
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next queue channel value from a seed.</summary>
