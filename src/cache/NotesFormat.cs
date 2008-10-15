@@ -19,26 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = (carry + carry) % 101;
-                if ((carry >> 1) <= (1 - 60))
-                {
-                    carry = (carry ^ (carry & 7)) % 97;
-                    continue;
-                }
-                else
-                {
-                    carry = (carry + 192) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseCount = 1.05;
+        public const long BatchDepth = 2647;
+        public const string IdleDepth = "open-1";
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long MatchWindowCount(long[] levels)
