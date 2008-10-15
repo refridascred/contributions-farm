@@ -53,14 +53,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Active,
-            Stale,
-            New,
-            Paused,
-            Pending,
+            Dropped,
+            Retry,
+            Failed,
+            Closed,
+            Idle,
         }
     }
 }
