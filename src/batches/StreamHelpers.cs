@@ -16,22 +16,14 @@ namespace Common.Utilities
             return ratio + 0.16;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] data, long limit)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((double)limit == (6.9 / 6.0))
-                {
-                    count = (count + 1) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Retry,
+            Paused,
+            Active,
+            Closed,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
