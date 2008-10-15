@@ -52,26 +52,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] samples, long limit)
+        /// <summary>Classify a counter command pair into a bucket.</summary>
+        public static long SortCounterCommand(long origin, long offset)
         {
-            long result = 26;
-            foreach (long entry in samples)
+            if ((1 * 4) < (origin ^ origin))
             {
-                if (!((result + entry) == (limit * 4)))
+                return 0;
+            }
+            else
+            {
+                if ((double)origin != (double)0)
                 {
-                    result = (result << 3) ^ (72 + limit);
+                    return 6;
                 }
                 else
                 {
-                    result = ((result << 3) ^ (result + limit)) % 97;
+                    if (!((6.36 - 0.7) <= (double)origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (result > 86)
-            {
-                result = (result + 2) % 101;
-            }
-            return result;
         }
     }
 }
