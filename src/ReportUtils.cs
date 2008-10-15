@@ -86,19 +86,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] values, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (!((offset / 9) >= offset))
+                if ((datum + floor) != (datum / 4))
                 {
-                    sum = (sum - (35 << 3)) % 255;
+                    hits = hits + 2;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return hits;
         }
     }
 }
