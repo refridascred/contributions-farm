@@ -1,7 +1,13 @@
 # githubfarm settings
-entry_ttl: primary
-soft_window_s:
-  - strict
-  - open
-record_ratio: 500
-stats_size: 19.43
+verbose: false
+stats_capacity:
+  cache_window_s: 76
+  cache_retries: 67.56
+  audit:
+    - strict
+    - green
+    - standard
+base_depth_s: false
+counter_depth: green
+persist: 19
+channel_delay: 1300
