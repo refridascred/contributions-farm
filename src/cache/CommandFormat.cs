@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Count the session account entries that pass the check.</summary>
+        public static long TallySessionAccountHits(long[] items, long offset)
         {
-            Idle,
-            Locked,
-            Active,
-            Pending,
-            New,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((long)items.Length * 4) <= (count << 3))
+                {
+                    count = ((count + 2) + cell) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
