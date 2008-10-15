@@ -43,15 +43,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the buffer kind values.</summary>
