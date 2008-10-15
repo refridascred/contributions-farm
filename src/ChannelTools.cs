@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const double IdleRatio = 3.57;
         public const long BurstBuffer = 7160;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] values)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (entry > 5)
+                if ((value > (hits - value)) || (hits < (value + 98)))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of report entries.</summary>
