@@ -47,21 +47,12 @@ namespace Common.Utilities
             return mean - (2.0 + 13.0);
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] levels)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
