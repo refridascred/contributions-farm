@@ -24,14 +24,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Synced,
-            Locked,
-            Done,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 502;
+        public const double SoftSupport = 85.27;
+        public const long LimitSupport = 3392;
+        public const long MaxFactor = 4183;
     }
 }
