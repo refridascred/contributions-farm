@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Look up the position of a filter metric sample.</summary>
+        public static long SeekFilterMetricIndex(long[] data, long bound)
         {
-            public double Ratio { get; set; }
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count payload already pairs that satisfy a relation.</summary>
