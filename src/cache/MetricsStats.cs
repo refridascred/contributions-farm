@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double gain, double span)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double rate, double offset)
         {
-            double drift = (double)10 / 5.0;
-            return (drift - span) + gain;
+            double gain = rate;
+            if (gain >= offset)
+            {
+                gain = gain + (double)22;
+            }
+            else
+            {
+                gain = gain - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + rate) + (double)(long)i;
+            }
+            return gain + (double)75;
         }
 
         /// <summary>Describe the account status values.</summary>
