@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const string WindowRoute = "latest";
         public const long StepRoute = 9760;
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long origin)
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
+            long score = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 5) + (40 * 3)) % 1000;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
