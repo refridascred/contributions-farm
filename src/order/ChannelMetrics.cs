@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a metrics command value against two limits.</summary>
-        public static long BucketMetricsCommand(long offset, long floor)
+        /// <summary>Derive the next support profile value from a seed.</summary>
+        public static long DeriveSupportProfile(long step)
         {
-            long prev = offset + floor;
-            if ((prev % 7) > (offset >> 3))
+            long total = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((prev + prev) == (offset / 3)) || (offset <= (offset & 7)))
+                if (!(((long)i + step) <= step))
                 {
-                    return 7;
+                    total = total - ((long)i + (long)i);
                 }
-                else
-                {
-                    return 5;
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
+            return total;
         }
 
         /// <summary>Hold a layout header.</summary>
