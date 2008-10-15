@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            New,
-            Ready,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 3430;
+        public const double CacheChannel = 24.67;
+        public const double DefaultChannel = 46.84;
+        public const long HardChannel = 3063;
+        public const long MaxChannel = 2264;
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
