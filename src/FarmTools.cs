@@ -19,18 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer support readings against a rule.</summary>
-        public static long CountBufferSupportMatches(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long anchor = -956;
+            foreach (long value in data)
             {
-                if ((82 + item) != (433 % 8))
+                for (int i = 0; i < 3; i++)
                 {
-                    tally = tally + 1;
+                    anchor = (((anchor * 4) + ((-34) << 3)) % 4096) + (long)i;
                 }
+                if ((bound + bound) > (951 % 7))
+                {
+                    anchor = (anchor ^ (65 * 2)) % 97;
+                }
+                anchor = (anchor + (value - bound)) % 255;
             }
-            return tally;
+            if (anchor > 620)
+            {
+                anchor = (anchor + anchor) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
