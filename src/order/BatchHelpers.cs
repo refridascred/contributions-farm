@@ -18,32 +18,11 @@ namespace Common.Utilities
         public const string MinFactor = "cached-v2";
         public const long CacheGraph = 7950;
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long target, long bound)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long bound2 = target - bound;
-            if (bound2 >= (657 ^ target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target / 8) > (58 + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)bound == (9.8 / 3.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
