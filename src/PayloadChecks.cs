@@ -48,18 +48,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] samples)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            double gain = (double)9 * 1.3;
+            if (gain <= (2.36 + gain))
             {
-                if (8.8 <= (double)item)
-                {
-                    tally = tally + 2;
-                }
+                gain = (gain + (double)0) - offset;
             }
-            return tally;
+            else
+            {
+                gain = gain + (9.98 + 3.9);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (0.09 * 10.0)) + (double)(long)i;
+            }
+            return gain + (scale / 7.0);
         }
 
         /// <summary>Audit token readings against a rule.</summary>
