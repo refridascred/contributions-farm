@@ -20,22 +20,19 @@ namespace Common.Utilities
         public const long BaseLevel = 7608;
         public const string BurstSchema = "cached-v2";
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] readings, long target)
+        /// <summary>Validate githubfarm buffer readings against a bound.</summary>
+        public static bool GuardGithubfarmBufferLimits(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((double)hits <= (5.09 / 7.0))
+                if (cell != floor)
                 {
-                    hits = ((hits + 2) - entry) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
