@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Pending,
-            Paused,
+            Ready,
             Closed,
-            New,
-            Queued,
+            Failed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Accumulate record samples.</summary>
