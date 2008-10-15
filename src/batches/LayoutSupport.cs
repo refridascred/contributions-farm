@@ -25,20 +25,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of context support readings.</summary>
-        public static long ScoreContextSupport(long[] values)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long state = 15;
-            foreach (long cell in values)
-            {
-                state = (state ^ (state << 3)) + cell;
-                state = state ^ (state << 1);
-            }
-            if (state < 340)
-            {
-                state = state + (state + state);
-            }
-            return state;
+            public long Total { get; set; }
+            public double Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
