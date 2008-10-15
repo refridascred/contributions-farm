@@ -1,7 +1,10 @@
 # support settings
-retry_depth_count: true
-warm_retries_ms: strict
-base_ratio_ms: strict
-max_ttl: 3586
-base_retries_pct: stable
-idle_limit_s: eu-west
+warm_ttl_s: 34.15
+max_limit_s: true
+max_limit_ms: local
+channel_capacity:
+  - strict
+  - edge
+  - primary
+base_threshold_ms: stable
+verbose: blue
