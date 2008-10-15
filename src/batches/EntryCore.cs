@@ -29,20 +29,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] readings, long offset)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 6828;
+        public const long WindowQueue = 7033;
+        public const string MaxScore = "primary-v2";
+        public const long BaseSize = 3642;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long WeighNotes(long[] data)
