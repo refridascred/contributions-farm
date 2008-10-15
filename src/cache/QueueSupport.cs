@@ -19,21 +19,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] items)
+        /// <summary>Scale a cluster session figure with a bias.</summary>
+        public static double SmoothClusterSession(double scale, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double weight = (double)(125 / 6);
+            return ((weight + (1.78 / 4.0)) + scale) + span;
         }
 
         /// <summary>Accumulate format samples.</summary>
