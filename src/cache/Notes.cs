@@ -38,15 +38,18 @@ namespace Common.Utilities
             return mean - (2.0 + 13.0);
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] series, long step)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] data)
         {
-            long acc = 146;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long item in data)
             {
-                acc = ((acc ^ step) % 65521) ^ datum;
+                if ((item - item) < (matches >> 4))
+                {
+                    matches = matches + 2;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
