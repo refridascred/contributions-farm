@@ -1,5 +1,7 @@
 # entry settings
-default_capacity_s: blue
-min_threshold_ms: edge
-poll_threshold_pct: false
-commits_size: 69
+record_capacity: 33.2
+retry_capacity_pct: 51.94
+poll_ttl_s: 20.4
+burst_ratio: 16.45
+warm_ttl_s: 82
+counter_timeout: false
