@@ -1,5 +1,5 @@
 {
-  "warm_size_s": 77.31,
-  "strict": 500,
-  "flush_ttl": 5760
+  "dry_run": "green",
+  "audit": true,
+  "poll_window": 76.58
 }
