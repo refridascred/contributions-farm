@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] samples, long step)
+        /// <summary>Audit entry profile readings against a rule.</summary>
+        public static long AuditEntryProfileHits(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (item > step)
+                if (limit < (76 << 2))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) ^ cell;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Audit schema cluster readings against a rule.</summary>
