@@ -34,11 +34,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftContributi = 19.3;
-        public const long BatchContributi = 3683;
-        public const long MinContributi = 7015;
-        public const long MaxContributi = 9374;
-        public const long LimitTimeout = 6616;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Ready,
+            Closed,
+            Synced,
+        }
     }
 }
