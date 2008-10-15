@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultRatio = 5560;
-        public const long RetryTimeout = 1123;
-        public const long CacheCounter = 8122;
-        public const double BatchCounter = 43.75;
-        public const double HardCounter = 37.64;
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == seed) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long ScoreStats(long[] series)
