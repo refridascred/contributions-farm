@@ -1,13 +1,8 @@
 {
-  "min_timeout": 8907,
-  "cache_limit": "staging",
-  "persist": true,
-  "soft_threshold_ms": "eu-west",
-  "warm_limit_s": "standard",
-  "burst_window_s": {
-    "layout_retries": 43.4,
-    "strict": [395, 79, 96],
-    "cache_ratio": "open",
-    "poll_interval_s": 78.01
-  }
+  "max_depth": 21.94,
+  "burst_timeout": 4536,
+  "min_delay_ms": ["edge", "cached"],
+  "retry_ttl_ms": "strict",
+  "cache_depth_s": 51.15,
+  "graph_retries": "blue"
 }
