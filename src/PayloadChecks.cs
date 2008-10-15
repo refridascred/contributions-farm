@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 9481;
-        public const long DefaultInterval = 1657;
-        public const long SoftGithubfarm = 4004;
-        public const long StepInterval = 3335;
-        public const long BatchGithubfarm = 3371;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] levels, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample % 64) >= floor)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
