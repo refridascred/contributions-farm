@@ -14,10 +14,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseEntry = "alpha-1";
-        public const string LimitEntry = "alpha-edge";
-        public const long SoftEntry = 9079;
+        /// <summary>Iterate the contributi buffer series from a seed.</summary>
+        public static long StepContributiBuffer(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool GuardProfileLimits(long[] data, long offset)
