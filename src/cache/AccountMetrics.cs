@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Roll a format commits counter forward.</summary>
+        public static long SeriesFormatCommits(long origin)
         {
-            long state = 975;
-            foreach (long value in readings)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (!!((state ^ value) <= value))
-                {
-                    state = state + (state / 4);
-                }
-                if ((state << 2) >= (value + state))
-                {
-                    state = ((state << 2) ^ (state & 31)) % 1000;
-                }
+                anchor = (anchor + (origin - anchor)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            if (state > 76)
-            {
-                state = ((state << 3) ^ state) % 97;
-            }
-            return state % 1000;
+            return anchor;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
