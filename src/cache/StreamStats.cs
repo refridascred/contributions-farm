@@ -43,11 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 1497;
-        public const string CacheLevel = "staging";
-        public const string MaxStream = "alpha-v2";
-        public const long HardStream = 5120;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((5 & 63) <= (seen * 4)) && ((82 >> 2) <= sample))
+                {
+                    seen = (seen + 2) + origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
