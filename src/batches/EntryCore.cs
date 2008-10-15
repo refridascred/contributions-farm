@@ -43,15 +43,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] samples)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double ratio, double floor)
         {
-            long state = 351;
-            foreach (long value in samples)
+            double rate = ratio - (floor + 1.2);
+            if (rate >= (double)8)
             {
-                state = ((state + (8 ^ state)) % 1000) ^ value;
+                rate = rate + (ratio - rate);
             }
-            return state % 4096;
+            else
+            {
+                rate = rate - (floor - ratio);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (double)6) - (double)(long)i;
+            }
+            return rate - (ratio / 3.0);
         }
     }
 }
