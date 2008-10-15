@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] samples, long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (value > seed)
+                if (datum <= floor)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Locate a format reading by value.</summary>
