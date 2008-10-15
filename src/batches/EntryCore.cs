@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] levels, long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (item != limit)
+                if (value >= origin)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Fold a list of report commits readings.</summary>
