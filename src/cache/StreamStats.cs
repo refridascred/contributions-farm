@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] levels)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            if (!(floor > (bound / 3)))
             {
-                if ((seen > (value + seen)) && ((1.6 * 6.62) == (double)value))
+                return 7;
+            }
+            else
+            {
+                if (floor > bound)
                 {
-                    seen = seen + 2;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((bound / 3) >= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate route samples.</summary>
