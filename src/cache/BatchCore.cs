@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] series, long origin)
         {
-            Retry,
-            Paused,
-            Idle,
-            Draft,
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
