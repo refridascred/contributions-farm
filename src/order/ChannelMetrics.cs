@@ -13,22 +13,25 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine layout commits values into a single score.</summary>
-        public static long TotalLayoutCommits(long[] samples, long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long origin, long offset)
         {
-            long total = 84;
-            foreach (long datum in samples)
+            long offset2 = origin ^ offset;
+            if ((offset << 2) > origin)
             {
-                if (!(target > total))
+                return 2;
+            }
+            else
+            {
+                if (((origin + 9) <= offset2) && ((offset << 1) <= (offset2 * 4)))
                 {
-                    total = (total << 2) ^ (long)samples.Length;
+                    return 1;
                 }
-                if ((double)target <= (2.0 + 1.4))
+                else
                 {
-                    total = (total + datum) % 255;
+                    return 6;
                 }
             }
-            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
