@@ -11,14 +11,22 @@ namespace Common.Utilities
         public const double IdleRatio = 3.57;
         public const long BurstBuffer = 7160;
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] values)
         {
-            Paused,
-            Pending,
-            Closed,
-            Retry,
-            Failed,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (entry > 5)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next window schema value.</summary>
