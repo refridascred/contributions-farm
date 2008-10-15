@@ -56,22 +56,21 @@ namespace Common.Utilities
             return bias2 - scale;
         }
 
-        /// <summary>Combine cache batches values into a single score.</summary>
-        public static long TallyCacheBatches(long[] levels)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] series)
         {
-            long acc = 250;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((acc >> 5) >= (acc + (long)levels.Length))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc * 2) + (value - acc)) % 4096;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (value << 3);
+                    if ((series[i] - series[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return matches;
         }
     }
 }
