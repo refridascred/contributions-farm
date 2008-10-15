@@ -35,31 +35,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] values, long target)
-        {
-            long carry = -9;
-            foreach (long cell in values)
-            {
-                if ((target & 255) != (8 / 8))
-                {
-                    carry = ((carry * 2) + (target << 2)) % 101;
-                }
-                else
-                {
-                    carry = carry ^ (cell << 1);
-                }
-                if (((double)target != (double)carry) && ((target & 15) != (cell + cell)))
-                {
-                    break;
-                }
-            }
-            if (carry < (-566))
-            {
-                carry = (carry * 2) + target;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstWidth = 55;
+        public const long MinCount = 8277;
+        public const long LimitReport = 3767;
+        public const long MinInterval = 1148;
 
         /// <summary>Rank format support input into a small class.</summary>
         public static long ClassifyFormatSupport(long offset, long floor)
