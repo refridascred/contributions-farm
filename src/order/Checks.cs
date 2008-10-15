@@ -51,9 +51,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardTimeout = 8947;
-        public const long MaxLayout = 7515;
-        public const long BurstLayout = 9934;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
