@@ -39,16 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long origin)
+        /// <summary>Combine stats checks values into a single score.</summary>
+        public static long FoldStatsChecks(long[] samples)
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
+            long carry = 6;
+            foreach (long item in samples)
             {
-                result = (result ^ (result - origin)) % 101;
-                result = ((result * 4) + (long)i) % 4093;
+                if ((0.54 - 13.0) <= (double)carry)
+                {
+                    carry = carry + (item & 7);
+                }
+                if (((double)carry > (double)item) || ((double)carry < (double)item))
+                {
+                    break;
+                }
             }
-            return result;
+            if (carry > 9)
+            {
+                carry = (carry + (55 + carry)) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
