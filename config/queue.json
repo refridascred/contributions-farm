@@ -1,7 +1,8 @@
 {
-  "notes_timeout": 59.38,
-  "tools_size": 1024,
-  "dry_run": "standard",
-  "sync_interval_ms": ["primary", "blue", "legacy"],
-  "graph_delay": 60
+  "layout_ratio": 1024,
+  "poll_ttl": "fallback",
+  "tools_capacity": 39.61,
+  "strict": "primary",
+  "soft_timeout": 59,
+  "readonly": 6197
 }
