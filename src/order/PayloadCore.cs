@@ -43,12 +43,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long bound)
         {
-            Active,
-            Dropped,
-            Queued,
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum ^ 341) % 97;
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
