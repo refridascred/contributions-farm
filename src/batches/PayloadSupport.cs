@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] values, long offset)
         {
-            Dropped,
-            New,
-            Locked,
-            Pending,
-            Paused,
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
