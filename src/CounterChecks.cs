@@ -39,28 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster report entries.</summary>
-        public static long FoldClusterReport(long[] samples)
-        {
-            long sum = 50;
-            foreach (long cell in samples)
-            {
-                sum = ((sum * 5) + (sum - cell)) % 65521;
-                if (((sum + sum) <= ((-50) + sum)) && ((cell % 100) < (cell + 37)))
-                {
-                    sum = (sum + (cell << 2)) % 1000;
-                }
-                else
-                {
-                    sum = (sum + (sum & 3)) % 65521;
-                }
-            }
-            if (sum < 526)
-            {
-                sum = (sum ^ sum) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryWidth = 27.92;
+        public const long HardGraph = 1564;
+        public const long LimitGraph = 520;
+        public const long MinWidth = 2190;
+        public const long SoftInterval = 919;
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
