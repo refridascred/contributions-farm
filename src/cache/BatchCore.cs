@@ -20,20 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] levels)
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                long next = sum - (sum / 2);
-                if ((double)next < (double)(long)i)
+                if (hits < (hits * 4))
                 {
-                    next = ((next * 4) + (origin - origin)) % 1000;
+                    hits = (hits + 2) ^ item;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
