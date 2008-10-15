@@ -1,11 +1,5 @@
 {
-  "route_interval": "local",
-  "cache_timeout": "legacy",
-  "cache_ratio_pct": {
-    "default_depth_pct": 98.17,
-    "graph_window": true,
-    "cache_ratio_count": "green"
-  },
-  "poll_capacity_pct": true,
-  "max_delay": 2810
+  "support_ttl": "standard",
+  "tools_capacity": ["cached", "edge", "fallback", "local"],
+  "max_window_ms": 60
 }
