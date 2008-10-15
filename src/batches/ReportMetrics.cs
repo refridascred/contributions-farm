@@ -34,22 +34,12 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] data)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((1 / 4) < tally)
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Idle,
+            Closed,
         }
     }
 }
