@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a context tools reading by value.</summary>
-        public static long LocateContextToolsIndex(long[] samples, long offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double gain, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = gain * 11.0;
+            if (ratio <= (double)132)
             {
-                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + floor;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - 13.0) - (double)(long)i;
+            }
+            return ratio - (double)96;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
