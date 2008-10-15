@@ -35,19 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] levels, long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] items, long step)
         {
-            long result = 66;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                result = ((result << 3) ^ (item << 2)) % 101;
+                if (reading <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (result < 662)
-            {
-                result = ((result << 3) ^ origin) % 65521;
-            }
-            return result % 65521;
+            return flag;
         }
 
         /// <summary>Combine already values into a single score.</summary>
