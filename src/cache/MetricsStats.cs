@@ -21,22 +21,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate metrics session samples.</summary>
-        public static long WeighMetricsSession(long[] items, long limit)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] samples)
         {
-            long mark = 58;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((sample ^ limit) <= sample) && (4.0 >= (double)mark))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = ((mark * 4) + (sample & 31)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ sample) % 65521;
+                    if ((samples[i] + samples[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the payload mode values.</summary>
