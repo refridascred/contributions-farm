@@ -49,20 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] readings, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 5914;
+        public const double CacheTimeout = 67.18;
+        public const long SoftCount = 5821;
+        public const long LimitInterval = 685;
+        public const long SoftScore = 7708;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
