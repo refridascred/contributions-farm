@@ -43,15 +43,15 @@ namespace Common.Utilities
         public const double BurstCount = 37.48;
         public const long BatchProfile = 7119;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Scale a report channel figure with a bias.</summary>
+        public static double BlendReportChannel(double weight, double span)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            double gain = span;
+            for (int i = 0; i < 4; i++)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                gain = (gain + weight) + (double)(long)i;
             }
-            return carry;
+            return gain + (double)91;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
