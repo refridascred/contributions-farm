@@ -45,18 +45,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] levels, long bound)
+        /// <summary>Digest a series of stats checks entries.</summary>
+        public static long CombineStatsChecks(long[] samples)
         {
-            long carry = -592;
-            foreach (long cell in levels)
+            long result = 6;
+            foreach (long value in samples)
             {
-                if ((cell * 3) < (cell - carry))
+                if (result >= (value - value))
                 {
-                    carry = (carry ^ (carry + carry)) + bound;
+                    result = ((result * 5) + ((-959) ^ result)) % 97;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (result + value)) % 4096;
                 }
             }
-            return carry;
+            return result % 65521;
         }
     }
 }
