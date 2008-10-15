@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+for item in legacy stable green open; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-edge}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=104
+COMMAND_LIMIT=246
 log "limit is ${COMMAND_LIMIT}"
