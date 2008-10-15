@@ -28,22 +28,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] items, long origin)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] data, long seed)
         {
-            long result = 178;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((77 - 2) >= ((long)items.Length >> 4))
+                if (data[i] < seed)
                 {
-                    result = ((result - (result + result)) % 1000) + reading;
+                    return (long)i;
                 }
             }
-            if (result < 68)
-            {
-                result = (result - (origin & 127)) % 4096;
-            }
-            return result;
+            return -1;
         }
     }
 }
