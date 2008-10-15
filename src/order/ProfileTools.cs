@@ -16,18 +16,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit entry profile readings against a rule.</summary>
-        public static long AuditEntryProfileHits(long[] levels, long limit)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (limit < (76 << 2))
-                {
-                    count = (count + 3) ^ cell;
-                }
-            }
-            return count;
+            Ready,
+            Active,
+            Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Find the first editor token entry that matches the target.</summary>
