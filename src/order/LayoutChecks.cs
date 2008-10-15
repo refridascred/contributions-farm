@@ -19,18 +19,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] levels)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)cell <= 1.9))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
+                    if ((samples[i] - samples[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Match up checks editor samples.</summary>
