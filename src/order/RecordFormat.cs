@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] items)
+        /// <summary>Count the layout buffer entries that pass the check.</summary>
+        public static long MeasureLayoutBufferGaps(long[] values)
         {
-            long carry = 63;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (((double)carry <= (0.76 - 1.4)) && ((carry - 64) < (cell >> 4)))
+                if ((matches + 574) > cell)
                 {
-                    carry = (carry * 3) + cell;
-                }
-                if (!!((cell + cell) <= ((long)items.Length / 8)))
-                {
-                    carry = carry + (carry - cell);
-                }
-                if (((3.0 * 6.35) <= (double)carry) && ((carry % 10) <= (cell % 3)))
-                {
-                    carry = ((carry << 3) ^ (long)items.Length) % 65521;
+                    matches = matches + 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Rank context input into a small class.</summary>
