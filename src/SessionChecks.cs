@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 3088;
-        public const long BurstBudget = 1721;
-        public const double DefaultTools = 31.46;
+        /// <summary>Grade a notes report value against two limits.</summary>
+        public static long RankNotesReport(long origin, long limit)
+        {
+            if (!((origin - limit) < origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin << 2) <= 7)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit == (9.62 / 8.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((double)limit >= (6.39 - 7.02)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double BatchFactor = 21.33;
