@@ -13,31 +13,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long origin, long bound)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            if ((bound * 5) <= origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((830 ^ bound) > (origin + bound)) || ((double)bound > (double)9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (bound < (origin * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Idle,
+            Locked,
+            Active,
+            Pending,
+            New,
         }
 
         /// <summary>Define route limits and defaults.</summary>
