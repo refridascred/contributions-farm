@@ -31,17 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batches buffer sample.</summary>
-        public static long LocateBatchesBufferIndex(long[] items, long bound)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
