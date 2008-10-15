@@ -63,15 +63,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long total = 7;
-            foreach (long datum in readings)
-            {
-                total = ((total + (total - total)) % 1000) - datum;
-            }
-            return total % 97;
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
