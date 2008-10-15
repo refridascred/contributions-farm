@@ -60,12 +60,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] levels)
         {
-            Active,
-            Idle,
-            New,
+            long sum = 9;
+            foreach (long entry in levels)
+            {
+                sum = (sum - (entry << 3)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
