@@ -11,27 +11,14 @@ namespace Common.Utilities
         public const string HardQueue = "standard-v2";
         public const long BurstDepth = 2037;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] readings)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long acc = 0;
-            foreach (long datum in readings)
-            {
-                acc = (acc - (acc + 12)) % 1000;
-                if (((long)readings.Length * 2) <= acc)
-                {
-                    acc = acc + ((-322) + acc);
-                }
-                if (0 > (datum - 1))
-                {
-                    break;
-                }
-            }
-            if (acc > 14)
-            {
-                acc = ((acc << 2) ^ (87 >> 2)) % 4096;
-            }
-            return acc;
+            Retry,
+            Active,
+            Ready,
+            Failed,
+            Closed,
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
