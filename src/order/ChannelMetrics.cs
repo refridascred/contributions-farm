@@ -34,10 +34,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseSpan = 6262;
-        public const long CacheLevel = 8019;
-        public const long WindowBuffer = 7495;
-        public const long RetryTimeout = 6046;
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double rate, double span)
+        {
+            double bias = rate;
+            return (bias + (double)991) + span;
+        }
     }
 }
