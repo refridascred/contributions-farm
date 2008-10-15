@@ -28,38 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long floor, long origin)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long origin)
         {
-            if (!((9.0 * 7.4) < (double)floor))
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin ^ origin) != (floor / 7)) && ((4.55 - 7.87) >= (double)floor))
+                sum = (sum << 2) ^ (sum * 2);
+                if ((double)sum >= (double)48)
                 {
-                    return 6;
+                    sum = (sum - (origin << 3)) % 255;
                 }
-                else
-                {
-                    if (floor >= 4)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin & 31) > 809)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                sum = (sum - origin) % 4096;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
+            return sum;
         }
     }
 }
