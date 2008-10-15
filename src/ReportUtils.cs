@@ -13,10 +13,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "staging-edge";
-        public const long SoftFactor = 5649;
-        public const long SoftScore = 5401;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] values, long origin)
+        {
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long TallyRoute(long[] samples)
