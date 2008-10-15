@@ -76,24 +76,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long limit, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] readings)
         {
-            if (limit < (limit + limit))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit + step) > (limit / 6))
+                if ((9.36 - 6.9) != (double)value)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
