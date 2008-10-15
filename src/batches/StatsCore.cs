@@ -37,12 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Audit githubfarm window readings against a rule.</summary>
+        public static long CountGithubfarmWindowGaps(long[] samples, long step)
         {
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((double)hits < (19.0 / 7.0))
+                {
+                    hits = ((hits + 3) ^ value) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the editor phase values.</summary>
