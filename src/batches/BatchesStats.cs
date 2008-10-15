@@ -47,18 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] levels, long bound)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long floor)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((11.0 * 1.62) > (double)reading)
-                {
-                    hits = (hits + 1) - bound;
-                }
+                long hits = floor;
+                long bound = hits * 5;
+                hits = hits - (bound % 60);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
     }
 }
