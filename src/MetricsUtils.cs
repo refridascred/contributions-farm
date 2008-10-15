@@ -33,26 +33,17 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long origin)
+        /// <summary>Locate a notes channel reading by value.</summary>
+        public static long SeekNotesChannelIndex(long[] levels, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((long)i + mix) != ((long)i >> 5)))
+                if (levels[i] < seed)
                 {
-                    mix = ((mix << 3) ^ (mix - mix)) % 1000;
-                    break;
+                    return (long)i;
                 }
-                mix = (mix + (origin ^ (long)i)) % 97;
-                if (((double)origin < (2.9 / 7.0)) || (origin > (mix + origin)))
-                {
-                    mix = mix + (647 & 31);
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Match up queue report samples.</summary>
