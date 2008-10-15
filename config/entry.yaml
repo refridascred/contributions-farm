@@ -1,9 +1,4 @@
 # entry settings
-soft_threshold_ms: 1024
-readonly: fallback
-enabled:
-  - 364
-  - 165
-  - 168
-  - 276
-command_delay: true
+dry_run: green
+hard_capacity_ms: 90
+poll_limit_ms: open
