@@ -1,6 +1,26 @@
 {
-  "max_depth_s": false,
-  "commits_size": 57,
-  "strict": true,
-  "flush_depth_s": "blue"
+  "cache_threshold": {
+    "warm_capacity": {
+      "editor_window": 250,
+      "idle_ttl": "edge",
+      "warm_window": "cached"
+    },
+    "command_ttl": ["staging", "blue", "primary"],
+    "base_capacity_s": "open"
+  },
+  "batch_threshold_ms": "local",
+  "batch_ratio": {
+    "schema_window": 60,
+    "retry_depth_s": {
+      "flush_retries_s": ["stable", "standard", "local", "primary"],
+      "dry_run": [360, 67],
+      "already_ttl": "cached",
+      "max_interval_count": "legacy"
+    },
+    "default_depth_ms": 68,
+    "soft_limit_count": "staging",
+    "context_threshold": 75.69,
+    "layout_limit": "staging"
+  },
+  "dry_run": ["green", "open", "stable"]
 }
