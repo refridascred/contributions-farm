@@ -26,15 +26,39 @@ namespace Common.Utilities
         public const long RetryCount = 5314;
         public const long LimitTimeout = 9580;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long step, long step2)
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
+            long lane = step - step2;
+            if ((9.0 / 7.0) > (double)step)
             {
-                total = ((total * 2) + (long)i) % 97;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((lane * 3) > (step << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((971 & 31) <= lane)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (lane < step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank filter input into a small class.</summary>
