@@ -25,10 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 5336;
-        public const string MinScore = "latest-edge";
-        public const long SoftWidth = 5060;
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double ratio, double span)
+        {
+            double scale = ratio;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (span / 2.0)) + (double)(long)i;
+            }
+            return scale + (11.0 / 4.0);
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinMetric = 1294;
