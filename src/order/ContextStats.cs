@@ -31,12 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchDepth = 4959;
-        public const string BurstContributi = "open";
-        public const double CacheSize = 54.58;
-        public const long WindowContributi = 7487;
-        public const double StepWidth = 97.94;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public long Total { get; set; }
+            public bool Size { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Fold a list of entry editor readings.</summary>
         public static long TallyEntryEditor(long[] data)
