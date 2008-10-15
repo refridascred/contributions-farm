@@ -21,9 +21,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 7082;
-        public const long MinDepth = 4382;
-        public const long WindowSession = 115;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Queued,
+            Active,
+            Idle,
+            Failed,
+        }
     }
 }
