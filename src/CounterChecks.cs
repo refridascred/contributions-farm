@@ -62,18 +62,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count the metrics record entries that pass the check.</summary>
-        public static long CountMetricsRecordMatches(long[] series, long offset)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((-654) < offset)
+                if (series[i] == origin)
                 {
-                    matches = (matches + 1) - value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
