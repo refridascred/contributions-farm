@@ -71,12 +71,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryGraph = "open";
+        public const double BaseLevel = 38.14;
+        public const long BaseGraph = 7861;
+        public const long MinGraph = 9691;
     }
 }
