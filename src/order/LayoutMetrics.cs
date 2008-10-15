@@ -29,13 +29,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Match up report token samples.</summary>
+        public static long PairReportTokenCount(long[] items)
         {
-            Queued,
-            Active,
-            Idle,
-            Failed,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
