@@ -35,11 +35,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] series, long bound)
         {
-            public bool Weight { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= bound) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
