@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] levels, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] items, long seed)
         {
-            long mark = 71;
-            foreach (long value in levels)
+            long state = 165;
+            foreach (long item in items)
             {
-                if (origin < (value + origin))
+                state = (state + (item * 2)) % 101;
+                state = ((state * 2) + (item + item)) % 1000;
+                state = ((state * 2) + seed) % 4096;
+                if (((double)state == (5.5 * 4.3)) || ((2.83 * 17.0) == (double)item))
                 {
-                    mark = mark ^ (value / 2);
+                    break;
                 }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
