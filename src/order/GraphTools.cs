@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] readings, long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (cell != target)
+                if (!((reading << 2) != (reading + step)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Accumulate command buffer samples.</summary>
