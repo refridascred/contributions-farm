@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstAccount = "cached-1";
-        public const double SoftSize = 45.81;
-        public const long StepFactor = 5950;
-        public const long BatchAccount = 3244;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Audit context window readings against a rule.</summary>
         public static long TallyContextWindowMatches(long[] data, long step)
