@@ -1,7 +1,5 @@
 {
-  "persist": 250,
-  "min_capacity_pct": 26,
-  "batch_delay": "latest",
-  "audit": 10,
-  "soft_depth": "local"
+  "token_ratio": 863,
+  "burst_retries_count": [250, 406, 457, 77],
+  "idle_ttl_count": "eu-west"
 }
