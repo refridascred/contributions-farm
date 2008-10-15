@@ -13,18 +13,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate already metrics samples.</summary>
-        public static long TallyAlreadyMetrics(long[] series)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] readings)
         {
-            long mark = -802;
-            foreach (long item in series)
+            long acc = 267;
+            foreach (long reading in readings)
             {
-                if (mark > (item >> 3))
+                if ((reading & 7) <= (reading >> 5))
                 {
-                    mark = ((mark * 5) + item) % 4096;
+                    acc = ((acc * 5) + acc) % 4096;
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 65521;
                 }
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Combine format tools values into a single score.</summary>
