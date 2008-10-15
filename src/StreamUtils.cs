@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Closed,
-            Failed,
-            Locked,
-            Idle,
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a cache snapshot.</summary>
