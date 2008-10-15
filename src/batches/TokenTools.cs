@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit account report readings against a rule.</summary>
-        public static long MeasureAccountReportHits(long[] samples)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (!((value + (-7)) <= (hits ^ 6)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Project the next order value.</summary>
