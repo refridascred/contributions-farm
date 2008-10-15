@@ -36,39 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long offset, long limit)
-        {
-            if ((offset + offset) >= (offset & 255))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((offset + 93) > 36) || ((limit + limit) <= offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((6.61 - 4.1) >= (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset + limit) < ((-79) << 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleChecks = 10.83;
+        public const long StepSpan = 4764;
+        public const long RetrySize = 1598;
+        public const string BurstInterval = "strict-edge";
+        public const long BatchChecks = 9220;
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
