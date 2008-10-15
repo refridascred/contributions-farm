@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many channel graph samples are out of range.</summary>
-        public static long CountChannelGraphOutliers(long[] samples, long origin)
+        /// <summary>Locate a context tools reading by value.</summary>
+        public static long LocateContextToolsIndex(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((matches - origin) >= 920)
+                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
                 {
-                    matches = (matches + 3) + sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the window command entries that pass the check.</summary>
