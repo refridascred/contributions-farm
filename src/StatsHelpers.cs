@@ -29,11 +29,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long origin)
         {
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long anchor = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = anchor - (origin >> 5);
+                anchor = anchor ^ (473 & 7);
+                anchor = (anchor ^ (origin * 2)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
