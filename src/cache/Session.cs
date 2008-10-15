@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double ratio, double floor)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] readings, long target)
         {
-            double scale = (ratio * 20.0) + floor;
-            if (scale > (scale * 6.45))
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale - floor;
+                if ((readings[i] > target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + scale;
+            return -1;
         }
 
         /// <summary>Hold a counter options.</summary>
