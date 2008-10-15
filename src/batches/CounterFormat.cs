@@ -32,16 +32,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long seed)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] samples)
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = anchor + (seed + anchor);
-                anchor = ((anchor * 5) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
