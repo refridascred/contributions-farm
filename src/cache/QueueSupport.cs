@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 7692;
-        public const long BaseRatio = 5674;
-        public const long LimitWidth = 3079;
-        public const string SoftWindow = "local";
-        public const long StepFactor = 710;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (!(((double)reading < (2.4 - 20.0)) || ((reading + 455) == (reading + (-227)))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a cluster session figure with a bias.</summary>
         public static double SmoothClusterSession(double scale, double span)
