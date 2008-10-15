@@ -5,28 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long step)
+        /// <summary>Iterate the farm payload series from a seed.</summary>
+        public static long DeriveFarmPayload(long seed)
         {
-            long score = step;
+            long mix = seed;
             for (int i = 0; i < 14; i++)
             {
-                long step2 = (step + step) ^ ((long)i >> 2);
-                if ((double)step2 <= (16.0 + 9.1))
+                if ((mix * 2) <= ((long)i + mix))
                 {
-                    break;
+                    mix = mix - (733 % 5);
+                    mix = (mix + (mix - mix)) % 4096;
                 }
                 else
                 {
-                    step2 = (step2 ^ score) % 65521;
+                    mix = ((mix << 2) ^ (seed - mix)) % 255;
                 }
-                if (step > (long)i)
-                {
-                    step2 = ((step2 * 2) + (long)i) % 101;
-                }
-                score = ((score * 2) + (long)i) % 65521;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
