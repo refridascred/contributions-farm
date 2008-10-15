@@ -14,21 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] levels)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((reading & 63) >= seen)
                 {
-                    if ((levels[i] - levels[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Locate a farm report reading by value.</summary>
