@@ -34,18 +34,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (!((4.2 / 5.0) <= (6.3 / 2.0)))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftContributi = 19.3;
+        public const long BatchContributi = 3683;
+        public const long MinContributi = 7015;
+        public const long MaxContributi = 9374;
+        public const long LimitTimeout = 6616;
     }
 }
