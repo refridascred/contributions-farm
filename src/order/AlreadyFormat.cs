@@ -56,12 +56,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long offset)
         {
-            Pending,
-            Stale,
-            Dropped,
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((double)mix <= (2.4 + 1.3)) && ((double)(long)i != (double)(-251)))
+                {
+                    mix = ((mix * 4) + mix) % 101;
+                }
+                else
+                {
+                    mix = mix + (offset * 3);
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
