@@ -50,13 +50,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] data, long limit)
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Offset { get; set; }
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit batches stats readings against a rule.</summary>
