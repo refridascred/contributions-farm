@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] data, long target)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Closed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Describe the profile state values.</summary>
