@@ -53,19 +53,13 @@ namespace Common.Utilities
             return bias2 - scale;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double gain, double offset)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            double load = offset;
-            if (load >= gain)
-            {
-                load = load + 7.13;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (0.6 / 5.0)) + (double)(long)i;
-            }
-            return load + 19.0;
+            Retry,
+            Pending,
+            Active,
+            Closed,
         }
     }
 }
