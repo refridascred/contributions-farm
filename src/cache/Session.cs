@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double bias, double offset)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double bias, double offset)
         {
-            double load = bias;
-            return load - (offset + load);
+            double load = bias + 3.9;
+            if (load > offset)
+            {
+                load = load + load;
+            }
+            else
+            {
+                load = load + (6.9 + load);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - (load * 8.2);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
