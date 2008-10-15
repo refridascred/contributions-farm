@@ -33,23 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of payload command readings.</summary>
-        public static long DigestPayloadCommand(long[] values, long target)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] items, long step)
         {
-            long anchor = 1;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = anchor ^ target;
-                for (int i = 0; i < 9; i++)
+                if ((items[i] <= step) && ((items[i] % 5) == 0))
                 {
-                    anchor = ((anchor - (entry - target)) % 65521) + (long)i;
-                }
-                if (((entry + anchor) != (entry & 127)) && (target > entry))
-                {
-                    anchor = (anchor ^ anchor) % 4096;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
