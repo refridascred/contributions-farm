@@ -33,18 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (hits > ((long)levels.Length / 8))
-                {
-                    hits = ((hits + 1) - sample) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseRecord = 39.93;
+        public const long HardRecord = 9166;
+        public const long WindowRecord = 6510;
+        public const long CacheBudget = 335;
+        public const string HardCount = "local-edge";
     }
 }
