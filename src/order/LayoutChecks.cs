@@ -46,21 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] series)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((offset * 3) > (3 + hits))
                 {
-                    if ((series[i] + series[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
