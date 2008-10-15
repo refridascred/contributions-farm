@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Measure how many buffer format samples are out of range.</summary>
+        public static long TallyBufferFormatMatches(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((datum + seen) <= (datum / 5)) && !((seen & 1) == (seen + seen)))
                 {
-                    if ((series[i] - series[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a format snapshot.</summary>
