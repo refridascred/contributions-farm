@@ -12,21 +12,17 @@ namespace Common.Utilities
             return (mean + (5.0 / 9.0)) + offset;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] levels, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (levels[i] <= step)
                 {
-                    if ((readings[i] + readings[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
