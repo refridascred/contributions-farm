@@ -1,12 +1,12 @@
 {
-  "hard_ratio_pct": true,
-  "hard_timeout": "eu-west",
-  "warm_delay_count": false,
-  "editor_window": {
-    "cache_retries": 22,
-    "compress": "standard",
-    "batch_timeout_ms": 7584,
-    "persist": 30,
-    "support_interval": 4752
-  }
+  "max_interval": "green",
+  "already_window": "legacy",
+  "profile_threshold": {
+    "retry_ratio_pct": true,
+    "readonly": false,
+    "session_threshold": 99,
+    "audit": "primary"
+  },
+  "graph_ttl": ["latest", "open", "staging", "cached"],
+  "min_depth_ms": [392, 85, 278]
 }
