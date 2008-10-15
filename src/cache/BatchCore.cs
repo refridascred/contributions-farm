@@ -35,13 +35,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] items, long target)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] readings, long offset)
         {
             bool found = true;
-            foreach (long reading in items)
+            foreach (long item in readings)
             {
-                if (reading > target)
+                if (item > offset)
                 {
                     found = false;
                     break;
