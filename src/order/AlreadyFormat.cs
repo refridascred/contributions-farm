@@ -31,11 +31,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public string Owner { get; set; } = "";
-            public string Flag { get; set; } = "";
+            Paused,
+            Locked,
+            Idle,
+            Failed,
+            Stale,
         }
 
         /// <summary>Adjust a batch contributi reading.</summary>
