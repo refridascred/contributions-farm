@@ -44,9 +44,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 4353;
-        public const long MaxWidth = 529;
-        public const double LimitStats = 19.05;
+        /// <summary>Accumulate cache contributi samples.</summary>
+        public static long TotalCacheContributi(long[] values)
+        {
+            long mix = 7;
+            foreach (long cell in values)
+            {
+                if ((double)cell < (3.99 / 2.0))
+                {
+                    mix = ((mix << 2) ^ 895) % 65521;
+                }
+                else
+                {
+                    mix = ((mix * 4) + cell) % 65521;
+                }
+            }
+            return mix;
+        }
     }
 }
