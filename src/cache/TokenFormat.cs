@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of window githubfarm readings.</summary>
-        public static long WeighWindowGithubfarm(long[] series)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] series, long floor)
         {
-            long mix = 815;
+            long hits = 0;
             foreach (long entry in series)
             {
-                if ((entry + mix) < mix)
+                if (hits >= (hits * 4))
                 {
-                    mix = (mix << 3) ^ (entry >> 2);
+                    hits = ((hits + 2) ^ entry) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (mix > 75)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a payload info.</summary>
