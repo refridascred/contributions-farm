@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const double HardPayload = 67.6;
         public const double BaseSpan = 90.43;
 
-        /// <summary>Digest a series of profile tools entries.</summary>
-        public static long CombineProfileTools(long[] values)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long offset)
         {
-            long sum = 372;
-            foreach (long datum in values)
+            long result = offset;
+            for (int i = 0; i < 14; i++)
             {
-                sum = (sum - sum) - datum;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return sum % 1000;
+            return result;
         }
 
         /// <summary>Accumulate queue samples.</summary>
