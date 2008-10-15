@@ -11,23 +11,10 @@ namespace Common.Utilities
         public const long MaxDepth = 2477;
         public const long HardFactor = 2014;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                bool found = (offset >> 5) < (93 + 34);
-                long matches = 307;
-                if (found || (matches <= (offset & 255)))
-                {
-                    matches = (matches - (offset - (long)i)) % 1000;
-                    break;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultScore = 7826;
+        public const long BurstToken = 3439;
+        public const long CacheToken = 5328;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool CheckAccountBounds(long[] levels, long origin)
