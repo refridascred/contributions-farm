@@ -1,4 +1,5 @@
 # support settings
-poll_limit_ms: 8743
-idle_limit_s: 1107
-schema_threshold: blue
+base_threshold: 1538
+hard_delay_count: true
+verbose: blue
+hard_interval_s: 93
