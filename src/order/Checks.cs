@@ -47,11 +47,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 6813;
+        public const double MaxMetrics = 27.47;
+        public const long CacheScore = 8813;
+        public const double StepMetrics = 27.32;
+        public const long BatchSize = 530;
     }
 }
