@@ -60,18 +60,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] levels, long limit)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (((341 - limit) < seen) || (value <= limit))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Validate metrics layout readings against a bound.</summary>
