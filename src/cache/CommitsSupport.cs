@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Paused,
-            Done,
-            Closed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepLayout = "open-1";
+        public const double BatchScore = 51.99;
+        public const long BatchCount = 5987;
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
