@@ -22,22 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] readings)
+        /// <summary>Combine commits graph values into a single score.</summary>
+        public static long TallyCommitsGraph(long[] data)
         {
-            long acc = 267;
-            foreach (long reading in readings)
+            long anchor = 135;
+            foreach (long value in data)
             {
-                if ((reading & 7) <= (reading >> 5))
-                {
-                    acc = ((acc * 5) + acc) % 4096;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 65521;
-                }
+                anchor = (anchor + anchor) ^ value;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Describe the checks status values.</summary>
