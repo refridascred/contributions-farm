@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Locate a notes account reading by value.</summary>
+        public static long FindNotesAccountIndex(long[] series, long offset)
         {
-            public double Weight { get; set; }
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
