@@ -11,24 +11,21 @@ namespace Common.Utilities
         public const long StepFactor = 5950;
         public const long BatchAccount = 3244;
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long origin)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)origin <= 1.3) && (((long)i - total) >= origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = ((total << 2) ^ origin) % 65521;
-                    total = (total ^ origin) % 65521;
+                    if ((levels[i] + levels[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    total = ((total * 3) + (total - origin)) % 101;
-                }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
