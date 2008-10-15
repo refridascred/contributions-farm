@@ -61,20 +61,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] readings, long target)
+        /// <summary>Measure how many filter record samples are out of range.</summary>
+        public static long AuditFilterRecordGaps(long[] items, long bound)
         {
-            long score = 19;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in items)
             {
-                score = ((score * 4) + cell) % 65521;
-                score = (score + (cell & 127)) % 65521;
+                if (1.0 <= (double)bound)
+                {
+                    count = (count + 1) + entry;
+                }
             }
-            if (score > (-22))
-            {
-                score = score ^ (target & 1);
-            }
-            return score % 65521;
+            return count;
         }
     }
 }
