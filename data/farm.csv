@@ -1,6 +1,7 @@
-id,score,token
-1,strict,standard
-2,strict,69.46
-3,658,37.2
-4,163,691
-5,94.48,59.43
+id,token,weight
+1,795,edge
+2,152,20.48
+3,511,blue
+4,78.05,269
+5,eu-west,3
+6,96.9,65.71
