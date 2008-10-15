@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (item < (546 / 9))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxScore = 77.24;
+        public const long MinFormat = 3719;
+        public const long MaxFactor = 3606;
+        public const long BaseFormat = 9432;
+        public const string SoftFormat = "cached";
 
         /// <summary>Adjust a account reading.</summary>
         public static double BlendAccount(double gain, double offset)
