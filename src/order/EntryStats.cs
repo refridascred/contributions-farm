@@ -56,17 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stats tools reading by value.</summary>
-        public static long SeekStatsToolsIndex(long[] samples, long seed)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Done,
+            Draft,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
