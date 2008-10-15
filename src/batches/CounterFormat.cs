@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 777;
-        public const double RetryWidth = 61.57;
-        public const long SoftGithubfarm = 1233;
-        public const long LimitGithubfarm = 440;
-        public const long BatchGithubfarm = 7667;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Locked,
+            Pending,
+            Synced,
+            New,
+        }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long DeriveMetrics(long origin)
