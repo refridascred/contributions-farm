@@ -23,18 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload githubfarm samples are out of range.</summary>
-        public static long MeasurePayloadGithubfarmOutliers(long[] samples)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell >= 3.2)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            New,
+            Stale,
+            Retry,
+            Done,
         }
 
         /// <summary>Hold a contributi info.</summary>
