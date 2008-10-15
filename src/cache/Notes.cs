@@ -47,22 +47,21 @@ namespace Common.Utilities
             return mean - (2.0 + 13.0);
         }
 
-        /// <summary>Combine payload checks values into a single score.</summary>
-        public static long CombinePayloadChecks(long[] readings)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] levels)
         {
-            long acc = 96;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= acc)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = acc + datum;
-                }
-                if ((acc << 1) > (acc + datum))
-                {
-                    acc = ((acc * 4) + (datum + acc)) % 1000;
+                    if ((levels[i] - levels[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Digest a series of account entries.</summary>
