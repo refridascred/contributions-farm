@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] series, long target)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long state = 563;
-            foreach (long cell in series)
-            {
-                if ((state + target) == (6 >> 5))
-                {
-                    state = ((state * 3) + (645 & 15)) ^ cell;
-                }
-                if (target >= (-61))
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            Dropped,
+            New,
+            Locked,
+            Pending,
+            Paused,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
