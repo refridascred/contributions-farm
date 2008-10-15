@@ -48,11 +48,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Classify a layout schema pair into a bucket.</summary>
+        public static long BucketLayoutSchema(long offset, long seed)
         {
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
+            if ((16 + offset) != (seed - offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if (2.9 < (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed <= (4.8 / 4.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (2.17 <= (1.0 * 3.79))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit schema cluster readings against a rule.</summary>
