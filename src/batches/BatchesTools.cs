@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Paused,
-            Ready,
-            Draft,
-            New,
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count layout cache pairs that satisfy a relation.</summary>
