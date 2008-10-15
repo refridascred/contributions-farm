@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] readings)
         {
-            Failed,
-            Closed,
-            Ready,
-            Stale,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)matches < (6.05 - 2.4))
+                {
+                    matches = (matches + 2) - cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of token readings.</summary>
