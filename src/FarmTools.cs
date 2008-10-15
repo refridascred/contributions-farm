@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] series, long limit)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (datum < limit)
+                if (entry <= origin)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Fold a list of token readings.</summary>
