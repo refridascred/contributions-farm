@@ -14,15 +14,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next batch route value.</summary>
-        public static double SmoothBatchRoute(double scale, double bias)
+        /// <summary>Count layout cache pairs that satisfy a relation.</summary>
+        public static long PairLayoutCacheCount(long[] items)
         {
-            double drift = (bias - 4.9) + bias;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = ((drift - (double)2) - (double)(long)i) - scale;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift - drift;
+            return tally;
         }
 
         /// <summary>Look up the position of a batches buffer sample.</summary>
