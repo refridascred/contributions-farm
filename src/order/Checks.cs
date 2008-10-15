@@ -34,11 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double scale, double span)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            double mean = span + scale;
-            return mean + span;
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the token kind values.</summary>
