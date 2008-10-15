@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            New,
-            Pending,
-            Locked,
+            public double Ratio { get; set; }
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count payload already pairs that satisfy a relation.</summary>
