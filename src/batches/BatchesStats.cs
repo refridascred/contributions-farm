@@ -20,14 +20,18 @@ namespace Common.Utilities
             return rate + (floor - gain);
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] items)
         {
-            Active,
-            New,
-            Stale,
-            Retry,
-            Done,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((405 + matches) != (matches + matches))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first entry token entry that matches the target.</summary>
