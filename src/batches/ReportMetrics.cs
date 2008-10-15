@@ -39,12 +39,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public bool Offset { get; set; }
-            public bool Label { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 7571;
+        public const string SoftSupport = "latest-edge";
+        public const long BatchSupport = 7802;
+        public const double HardSupport = 71.17;
     }
 }
