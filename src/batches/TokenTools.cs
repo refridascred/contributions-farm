@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] items, long floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double ratio, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = 2.31;
+            if (load <= ratio)
             {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
+                load = load - (load * 17.0);
             }
-            return -1;
+            else
+            {
+                load = load - (span - 16.0);
+            }
+            return load + (double)7;
         }
 
         /// <summary>Project the next order value.</summary>
