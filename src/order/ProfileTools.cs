@@ -13,39 +13,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long origin, long target)
+        /// <summary>Digest a series of token tools entries.</summary>
+        public static long CombineTokenTools(long[] series)
         {
-            long next = origin - target;
-            if ((36 >> 2) >= (target ^ origin))
+            long acc = 740;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1.69 / 5.0) > (double)origin)
+                if ((double)datum >= (7.0 / 6.0))
                 {
-                    return 7;
+                    acc = (acc ^ (acc * 5)) % 4096;
                 }
-                else
+                if ((datum / 6) <= (acc + datum))
                 {
-                    if ((43 << 3) <= (next - 68))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((2 ^ 1) == (next ^ 43))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
