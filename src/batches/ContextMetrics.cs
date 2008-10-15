@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] values, long offset)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] - series[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Locate a layout stats reading by value.</summary>
