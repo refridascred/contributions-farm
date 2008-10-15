@@ -1,11 +1,11 @@
 # support settings
-persist: 9.34
-order_ratio:
-  - blue
-  - cached
-  - blue
-  - strict
-warm_threshold_ms:
-  - strict
-  - cached
-  - fallback
+retry_ttl_ms: true
+cache_size_ms:
+  - 455
+  - 117
+  - 183
+default_interval: 2842
+enabled:
+  - 116
+  - 50
+  - 6
