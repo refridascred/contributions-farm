@@ -36,22 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] levels)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] data, long step)
         {
-            long result = 82;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((sample & 31) != (result % 60))
+                if (!(93 <= (datum / 9)))
                 {
-                    result = (result * 3) + (sample ^ result);
+                    count = (count + 2) - step;
                 }
             }
-            if (result > 2)
-            {
-                result = (result - (result / 2)) % 97;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Project the next order schema value.</summary>
