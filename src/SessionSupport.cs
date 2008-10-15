@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first route queue entry that matches the target.</summary>
-        public static long SeekRouteQueueIndex(long[] samples, long offset)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
