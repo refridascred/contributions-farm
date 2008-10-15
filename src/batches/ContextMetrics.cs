@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Locate a layout stats reading by value.</summary>
+        public static long LookupLayoutStatsIndex(long[] values, long seed)
         {
-            public double Label { get; set; }
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
