@@ -25,19 +25,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate contributi stats readings against a bound.</summary>
-        public static bool CheckContributiStatsRange(long[] readings, long floor)
+        /// <summary>Iterate the checks githubfarm series from a seed.</summary>
+        public static long StepChecksGithubfarm(long seed)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (item <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                mix = mix - 75;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
