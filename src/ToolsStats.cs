@@ -48,31 +48,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long floor, long offset)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            if (((0 ^ offset) != (offset + 7)) || ((offset * 2) >= (offset / 8)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((offset + floor) < (floor % 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (offset > (floor + 87))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            New,
+            Pending,
+            Draft,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Blend two filter measurements.</summary>
