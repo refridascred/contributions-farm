@@ -1,8 +1,8 @@
 {
-  "idle_interval_count": 4650,
-  "already_ratio": "open",
-  "max_limit": 81,
-  "sync_delay": "green",
-  "readonly": "cached",
-  "sync_capacity_s": "local"
+  "persist": ["eu-west", "eu-west"],
+  "retry_timeout": true,
+  "max_size_count": ["cached", "primary", "latest", "eu-west"],
+  "max_window": ["standard", "cached", "green", "fallback"],
+  "max_depth": true,
+  "idle_interval": 9371
 }
