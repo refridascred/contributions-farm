@@ -1,7 +1,16 @@
 # entry settings
-record_capacity: 33.2
-retry_capacity_pct: 51.94
-poll_ttl_s: 20.4
-burst_ratio: 16.45
-warm_ttl_s: 82
-counter_timeout: false
+enabled:
+  warm_delay: fallback
+  support_limit: 1024
+  soft_delay:
+    - 107
+    - 444
+token_limit: 4.41
+flush_window_s: 3471
+tools_window: 9858
+idle_retries_s:
+  warm_retries_ms: 94.52
+  warm_delay: 45
+  audit: 30
+  persist: 5607
+  flush_retries: 500
