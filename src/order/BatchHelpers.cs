@@ -33,18 +33,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] series, long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] values, long floor)
         {
-            long result = 886;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((reading + 21) <= result)
+                if ((hits - cell) >= 706)
                 {
-                    result = (result << 3) ^ (seed & 255);
+                    hits = (hits + 3) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return result % 65521;
+            return hits;
         }
     }
 }
