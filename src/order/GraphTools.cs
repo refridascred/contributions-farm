@@ -22,17 +22,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a batches buffer sample.</summary>
-        public static long SeekBatchesBufferIndex(long[] samples, long floor)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Dropped,
+            Paused,
+            Pending,
         }
 
         /// <summary>Blend two layout measurements.</summary>
