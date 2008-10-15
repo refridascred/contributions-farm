@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window command entries that pass the check.</summary>
-        public static long CountWindowCommandMatches(long[] data)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] samples, long offset)
         {
             long seen = 0;
-            foreach (long sample in data)
+            foreach (long item in samples)
             {
-                if ((seen ^ sample) > (sample + seen))
+                if (offset > item)
                 {
-                    seen = seen + 3;
+                    seen = seen + 1;
                 }
             }
             return seen;
