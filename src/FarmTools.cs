@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 8515;
-        public const long LimitToken = 6926;
-        public const long BatchRatio = 7112;
-        public const double WindowFactor = 20.3;
-        public const long BatchToken = 7402;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (datum > (2 - 756))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit buffer support readings against a rule.</summary>
         public static long CountBufferSupportMatches(long[] readings)
