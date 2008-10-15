@@ -55,19 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] readings, long origin)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Synced,
+            Ready,
+            Failed,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
