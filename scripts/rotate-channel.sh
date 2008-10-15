@@ -6,11 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-standard}"
 case "${mode}" in
     stable)
         log "fast path"
@@ -19,3 +15,6 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=232
+log "limit is ${CHANNEL_LIMIT}"
