@@ -14,11 +14,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 9617;
-        public const double BatchInterval = 2.16;
-        public const long MinTimeout = 4384;
-        public const long MinChecks = 8992;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] series, long bound)
+        {
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LookupEntryIndex(long[] levels, long target)
