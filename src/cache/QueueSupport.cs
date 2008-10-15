@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count githubfarm cluster pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmClusterCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 7692;
+        public const long BaseRatio = 5674;
+        public const long LimitWidth = 3079;
+        public const string SoftWindow = "local";
+        public const long StepFactor = 710;
 
         /// <summary>Scale a cluster session figure with a bias.</summary>
         public static double SmoothClusterSession(double scale, double span)
