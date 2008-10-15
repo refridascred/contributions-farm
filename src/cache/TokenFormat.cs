@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] items)
         {
-            Done,
-            Active,
-            Ready,
-            Idle,
+            long carry = 3;
+            foreach (long datum in items)
+            {
+                carry = ((carry * 4) + (carry << 3)) % 97;
+                if (carry < datum)
+                {
+                    carry = (carry - 74) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
