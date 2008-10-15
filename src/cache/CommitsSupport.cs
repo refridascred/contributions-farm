@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats window samples.</summary>
-        public static long FoldStatsWindow(long[] data)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long score = 3;
-            foreach (long entry in data)
-            {
-                score = ((score * 4) + (score & 255)) % 65521;
-                if (6.8 >= (double)(long)data.Length)
-                {
-                    score = score - (score + entry);
-                }
-            }
-            return score;
+            Paused,
+            Done,
+            Closed,
         }
 
         /// <summary>Check that every record commits entry stays within the limit.</summary>
