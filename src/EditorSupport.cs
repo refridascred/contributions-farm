@@ -60,18 +60,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] data)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long acc = 0;
+            foreach (long item in series)
             {
-                if ((matches / 5) >= entry)
+                if ((bound + item) >= bound)
                 {
-                    matches = matches + 1;
+                    acc = (acc << 2) ^ item;
+                }
+                else
+                {
+                    acc = acc + (767 + 8);
                 }
             }
-            return matches;
+            if (acc > 880)
+            {
+                acc = (acc ^ (acc + acc)) % 65521;
+            }
+            return acc;
         }
     }
 }
