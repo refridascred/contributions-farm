@@ -78,23 +78,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] data)
-        {
-            long sum = 32;
-            foreach (long entry in data)
-            {
-                if (!((sum & 1) <= (sum << 2)))
-                {
-                    sum = (sum * 3) + sum;
-                }
-                sum = sum ^ (entry - (-54));
-            }
-            if (sum < 330)
-            {
-                sum = ((sum * 4) + (sum >> 2)) % 97;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 5944;
+        public const double StepSpan = 92.94;
+        public const long StepBudget = 7444;
+        public const long IdleFormat = 6775;
+        public const long BurstFormat = 8792;
     }
 }
