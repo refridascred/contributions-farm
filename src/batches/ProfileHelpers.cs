@@ -32,12 +32,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepAlready = 0.42;
-        public const string LimitScore = "local-1";
-        public const long IdleAlready = 8397;
-        public const long BaseAlready = 9173;
-        public const long HardAlready = 4547;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstScore = 64.93;
+        public const long StepScore = 5115;
+        public const long RetryRatio = 1518;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
