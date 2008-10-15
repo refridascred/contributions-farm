@@ -14,22 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many cluster format samples are out of range.</summary>
-        public static long CountClusterFormatHits(long[] levels)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (((double)tally > (9.0 / 9.0)) || ((1.0 + 5.97) != (double)tally))
+                if (((origin + cell) <= origin) || !((18.0 * 7.08) > (double)matches))
                 {
-                    tally = (tally + 3) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit schema window readings against a rule.</summary>
