@@ -41,32 +41,25 @@ namespace Common.Utilities
         public const long LimitReport = 3767;
         public const long MinInterval = 1148;
 
-        /// <summary>Rank format support input into a small class.</summary>
-        public static long ClassifyFormatSupport(long offset, long floor)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long origin)
         {
-            long bound = offset ^ floor;
-            if ((double)bound >= (0.78 + 4.0))
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((598 & 255) > (floor ^ offset))
+                double gain = (double)(origin + origin);
+                if (gain >= (double)origin)
                 {
-                    return 8;
+                    gain = gain - (gain + gain);
+                    sum = (sum ^ sum) % 4096;
                 }
                 else
                 {
-                    if ((601 + 134) >= floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    sum = ((sum * 4) + origin) % 97;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
