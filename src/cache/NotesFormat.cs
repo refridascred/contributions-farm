@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long bound, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] readings)
         {
-            long gap = bound ^ limit;
-            if ((limit - gap) <= 52)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)limit != (double)bound) || ((8 + limit) < (bound / 4)))
+                if ((3.6 + 16.0) > (double)reading)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
