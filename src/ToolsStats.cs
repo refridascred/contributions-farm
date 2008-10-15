@@ -75,20 +75,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes metric samples.</summary>
-        public static long CombineNotesMetric(long[] items)
-        {
-            long score = 858;
-            foreach (long reading in items)
-            {
-                score = ((score << 2) ^ score) ^ reading;
-            }
-            if (score < 768)
-            {
-                score = score - (score + score);
-            }
-            return score % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 3225;
+        public const string RetryInterval = "latest";
+        public const long WindowInterval = 8312;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TotalSupport(long[] samples)
