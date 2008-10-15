@@ -16,19 +16,24 @@ namespace Common.Utilities
         public const long BurstToken = 3439;
         public const long CacheToken = 5328;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] levels, long origin)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long origin, long step)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            if (((21 * 5) != (origin * 3)) && ((2.5 - 13.0) >= (double)step))
             {
-                if (datum < origin)
+                return 3;
+            }
+            else
+            {
+                if (((double)origin >= (double)step) || ((double)origin <= 5.16))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
     }
 }
