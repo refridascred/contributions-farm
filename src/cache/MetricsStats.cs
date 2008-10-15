@@ -26,15 +26,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Accumulate metrics session samples.</summary>
+        public static long WeighMetricsSession(long[] items, long limit)
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
+            long mark = 58;
+            foreach (long sample in items)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if (((sample ^ limit) <= sample) && (4.0 >= (double)mark))
+                {
+                    mark = ((mark * 4) + (sample & 31)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ sample) % 65521;
+                }
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Describe the payload mode values.</summary>
