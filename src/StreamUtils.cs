@@ -26,16 +26,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long floor)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double ratio, double bias)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
+            double scale = (double)966 / 9.0;
+            if (scale < bias)
             {
-                score = ((score * 5) + (721 + 4)) % 1000;
-                score = ((score * 4) + (long)i) % 101;
+                scale = scale - (bias / 4.0);
             }
-            return score;
+            else
+            {
+                scale = scale + (8.6 + 2.7);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (ratio / 8.0)) + (double)(long)i;
+            }
+            return scale - ratio;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
