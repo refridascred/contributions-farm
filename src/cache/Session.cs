@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxInterval = 2598;
-        public const double RetryWidth = 79.64;
-        public const double StepSpan = 55.92;
-        public const string MaxReport = "strict-1";
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LookupCommitsIndex(long[] readings, long step)
