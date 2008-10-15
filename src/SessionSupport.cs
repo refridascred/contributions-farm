@@ -14,22 +14,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] values, long bound)
+        /// <summary>Locate a order route reading by value.</summary>
+        public static long FindOrderRouteIndex(long[] samples, long seed)
         {
-            long total = 93;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (total >= (item + item))
+                if (samples[i] > seed)
                 {
-                    total = (total + (bound - item)) % 4096;
-                }
-                else
-                {
-                    total = total - (80 & 31);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a graph record.</summary>
