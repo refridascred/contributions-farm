@@ -1,7 +1,9 @@
 {
-  "metric_interval": 34,
-  "retry_timeout_count": 250,
-  "sync_threshold_count": ["latest", "legacy", "edge"],
-  "cluster_ratio": true,
-  "burst_window": "legacy"
+  "min_ratio_ms": ["fallback", "blue", "latest", "green"],
+  "persist": {
+    "burst_size": true,
+    "enabled": 1024,
+    "max_delay": "standard"
+  },
+  "default_capacity_s": 12
 }
