@@ -18,19 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] items, long origin)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long seed, long target)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            if ((seed < (target * 2)) && ((2.5 - 1.0) >= (double)seed))
             {
-                if (entry < origin)
+                return 1;
+            }
+            else
+            {
+                if ((target >> 3) < seed)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)target > (2.6 * 0.94)) && ((3.0 - 6.89) != (double)target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
