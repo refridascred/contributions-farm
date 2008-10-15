@@ -33,18 +33,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] data)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long result = 886;
+            foreach (long reading in series)
             {
-                if ((value * 4) != (value * 2))
+                if ((reading + 21) <= result)
                 {
-                    hits = hits + 1;
+                    result = (result << 3) ^ (seed & 255);
                 }
             }
-            return hits;
+            return result % 65521;
         }
     }
 }
