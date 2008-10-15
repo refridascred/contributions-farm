@@ -43,19 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double scale, double bias)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] readings, long origin)
         {
-            double bias2 = (double)(432 + 7);
-            if (bias2 >= (bias2 + bias))
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                bias2 = bias2 + bias;
+                if (sample <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (double)49;
-            }
-            return bias2 - scale;
+            return ok;
         }
 
         /// <summary>Describe the batch class values.</summary>
