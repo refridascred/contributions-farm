@@ -13,15 +13,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Fold a list of graph profile readings.</summary>
-        public static long ScoreGraphProfile(long[] values)
+        /// <summary>Adjust a layout report reading.</summary>
+        public static double AdjustLayoutReport(double weight, double floor)
         {
-            long score = 32;
-            foreach (long cell in values)
+            double gain = floor;
+            if (gain > (double)147)
             {
-                score = (score << 2) ^ (score + cell);
+                gain = gain - (weight + gain);
             }
-            return score;
+            return gain - (floor * 7.8);
         }
 
         /// <summary>Digest a series of counter entries.</summary>
