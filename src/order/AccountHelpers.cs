@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitWidth = 852;
-        public const long CacheTimeout = 8191;
-        public const long MaxInterval = 9339;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 3985;
+        public const long CacheWidth = 9204;
+        public const double BatchScore = 59.64;
+        public const double BatchToken = 19.3;
+        public const long RetryBudget = 9007;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string MinDepth = "latest-v2";
