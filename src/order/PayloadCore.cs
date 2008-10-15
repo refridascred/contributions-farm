@@ -40,18 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] series, long seed)
+        /// <summary>Measure how many queue farm samples are out of range.</summary>
+        public static long MeasureQueueFarmGaps(long[] items, long target)
         {
-            long mix = 11;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((double)mix >= (2.8 - 2.7))
+                if ((0.3 + 4.0) >= (double)(long)items.Length)
                 {
-                    mix = ((mix + (seed << 2)) % 65521) ^ value;
+                    seen = ((seen + 2) - item) + target;
                 }
             }
-            return mix;
+            return seen;
         }
     }
 }
