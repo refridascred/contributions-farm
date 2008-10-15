@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a order githubfarm reading by value.</summary>
-        public static long LocateOrderGithubfarmIndex(long[] levels, long seed)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
