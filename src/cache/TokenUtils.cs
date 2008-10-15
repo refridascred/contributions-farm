@@ -30,17 +30,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] series, long bound)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)974 - (15.0 / 9.0);
+            if (mean <= (double)53)
             {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mean = mean - rate;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + rate) + (double)(long)i;
+            }
+            return mean - (rate + offset);
         }
     }
 }
