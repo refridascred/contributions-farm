@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] readings, long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 384;
+            foreach (long entry in readings)
             {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
+                acc = ((acc - 67) % 255) - entry;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
