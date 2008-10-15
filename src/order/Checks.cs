@@ -30,12 +30,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Adjust a metrics cache reading.</summary>
+        public static double AdjustMetricsCache(double bias, double span)
         {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            double ratio = span;
+            if (ratio <= 4.4)
+            {
+                ratio = ratio - span;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (bias - span)) - (double)(long)i;
+            }
+            return ratio - (ratio * 4.5);
         }
 
         /// <summary>Describe the token kind values.</summary>
