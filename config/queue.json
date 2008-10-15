@@ -1,6 +1,5 @@
 {
-  "readonly": 58.57,
-  "warm_limit_s": ["blue", "blue", "eu-west", "local"],
-  "default_capacity_pct": true,
-  "farm_retries": 91.13
+  "retry_timeout": "local",
+  "cache_threshold": 67,
+  "default_threshold_ms": "fallback"
 }
