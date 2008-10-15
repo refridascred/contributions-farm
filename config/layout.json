@@ -1,5 +1,7 @@
 {
-  "hard_threshold_s": "primary",
-  "metrics_retries": [223, 246, 403],
-  "readonly": 30
+  "retry_interval_count": 500,
+  "dry_run": true,
+  "max_delay": 60,
+  "burst_retries": "fallback",
+  "farm_depth": 5531
 }
