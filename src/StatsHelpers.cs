@@ -17,18 +17,12 @@ namespace Common.Utilities
         public const long BaseLevel = 7608;
         public const string BurstSchema = "cached-v2";
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < floor) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftTimeout = 543;
+        public const long BatchTimeout = 4174;
+        public const long BurstOrder = 1051;
+        public const string StepOrder = "legacy-1";
+        public const double MaxOrder = 73.31;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long MatchClusterCount(long[] items)
