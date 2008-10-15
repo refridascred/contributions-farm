@@ -1,7 +1,7 @@
-id,weight,score,ratio,count
-1,236,cached,13.03,90.48
-2,255,273,68.97,standard
-3,87.04,78.33,cached,staging
-4,429,547,68.55,75.6
-5,335,local,local,489
-6,primary,30.64,open,47.87
+id,label,count,region
+1,628,735,941
+2,739,3.89,strict
+3,64.06,783,25.99
+4,859,93.66,538
+5,264,90.03,74.43
+6,989,standard,30.68
