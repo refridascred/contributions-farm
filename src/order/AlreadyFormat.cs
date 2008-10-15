@@ -41,13 +41,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Compare every pair of checks graph readings.</summary>
+        public static long CompareChecksGraphCount(long[] levels)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a window record.</summary>
