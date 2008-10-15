@@ -1,7 +1,7 @@
-id,active,state,score
-1,edge,stable,169
-2,660,primary,78.64
-3,811,696,open
-4,eu-west,676,808
-5,standard,primary,111
-6,69.77,96.1,local
+id,label,token
+1,open,legacy
+2,57.11,74.95
+3,69.31,30.29
+4,74.6,216
+5,409,652
+6,645,383
