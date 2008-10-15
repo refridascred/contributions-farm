@@ -34,19 +34,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics cluster readings against a bound.</summary>
-        public static bool ValidateMetricsClusterLimits(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseSpan = 6262;
+        public const long CacheLevel = 8019;
+        public const long WindowBuffer = 7495;
+        public const long RetryTimeout = 6046;
     }
 }
