@@ -15,12 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] readings, long origin)
         {
-            Draft,
-            Stale,
-            Done,
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the queue status values.</summary>
