@@ -12,21 +12,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((52 + mark) == (origin << 2))
-                {
-                    mark = (mark << 3) ^ (origin * 4);
-                    break;
-                }
-                mark = (mark + (origin * 3)) % 255;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public double Count { get; set; }
+            public double Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
