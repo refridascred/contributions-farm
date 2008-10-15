@@ -1,7 +1,22 @@
 {
-  "farm_depth": "blue",
-  "flush_capacity_count": "green",
-  "report_ttl": 16,
-  "persist": 9.14,
-  "flush_ratio_ms": 24.93
+  "command_ttl": 8117,
+  "contributi_timeout": {
+    "retry_interval": {
+      "graph_interval": "open",
+      "default_delay": true,
+      "default_interval_s": "local",
+      "min_limit": "blue"
+    },
+    "schema_timeout": "blue",
+    "verbose": 34
+  },
+  "base_limit_count": [245, 133],
+  "batch_timeout": {
+    "cache_capacity_pct": 3209,
+    "sync_interval": "stable",
+    "default_window_ms": [285, 135, 457, 292],
+    "warm_capacity_pct": "cached",
+    "filter_retries": 2990
+  },
+  "cache_retries_pct": 4436
 }
