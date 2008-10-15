@@ -26,22 +26,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate command buffer samples.</summary>
-        public static long ScoreCommandBuffer(long[] values, long target)
+        /// <summary>Look up the position of a batches buffer sample.</summary>
+        public static long SeekBatchesBufferIndex(long[] samples, long floor)
         {
-            long sum = 15;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target * 3) < (entry >> 2))
+                if (samples[i] == floor)
                 {
-                    sum = ((sum << 2) ^ entry) % 255;
+                    return (long)i;
                 }
             }
-            if (sum > 1)
-            {
-                sum = (sum << 2) ^ target;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Blend two layout measurements.</summary>
