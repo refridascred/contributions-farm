@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long result = 78;
-            foreach (long sample in readings)
-            {
-                if (!((result << 2) == (sample >> 1)))
-                {
-                    result = (result << 2) ^ (sample >> 5);
-                }
-                else
-                {
-                    result = result + sample;
-                    result = (result - (sample - result)) % 65521;
-                }
-                if ((3.4 / 8.0) > (double)result)
-                {
-                    result = result - result;
-                }
-            }
-            return result;
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Accumulate account samples.</summary>
