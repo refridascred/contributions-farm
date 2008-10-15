@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit schema record readings against a rule.</summary>
-        public static long TallySchemaRecordOutliers(long[] items, long step)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (((-2) + hits) <= (hits - 81))
-                {
-                    hits = ((hits + 3) ^ item) - step;
-                }
-            }
-            return hits;
+            Failed,
+            Locked,
+            Stale,
+            Draft,
         }
 
         /// <summary>Rank route notes input into a small class.</summary>
