@@ -21,12 +21,21 @@ namespace Common.Utilities
         public const string SoftSession = "open-edge";
         public const long WindowScore = 8906;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] series)
         {
-            public bool Weight { get; set; }
-            public double Token { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
