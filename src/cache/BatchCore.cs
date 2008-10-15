@@ -25,17 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] readings, long target)
+        /// <summary>Count the context channel entries that pass the check.</summary>
+        public static long TallyContextChannelOutliers(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (readings[i] >= target)
+                if ((cell / 5) <= (matches + origin))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
