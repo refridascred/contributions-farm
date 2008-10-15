@@ -42,17 +42,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] levels, long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (levels[i] < limit)
+                if (datum <= (113 * 2))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
