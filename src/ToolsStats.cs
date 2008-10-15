@@ -49,10 +49,20 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 7414;
-        public const long CacheFilter = 5738;
-        public const long SoftTimeout = 9267;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double ratio, double span)
+        {
+            double ratio2 = ratio;
+            if (ratio2 > (double)919)
+            {
+                ratio2 = ratio2 + (double)261;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 - (double)479) + (double)(long)i;
+            }
+            return ratio2 - (span + ratio2);
+        }
 
         /// <summary>Accumulate notes metric samples.</summary>
         public static long CombineNotesMetric(long[] items)
