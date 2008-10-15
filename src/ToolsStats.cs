@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long step, long seed)
+        /// <summary>Rank queue buffer input into a small class.</summary>
+        public static long SortQueueBuffer(long limit, long target)
         {
-            long step2 = step + seed;
-            if ((1.7 / 3.0) >= (double)step)
+            long next = limit ^ target;
+            if (!(target > (limit * 5)))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (!((6.89 / 3.0) > (double)step2))
+                if ((next & 7) > (next + limit))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    return 2;
+                    return 5;
                 }
             }
         }
