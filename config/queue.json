@@ -1,7 +1,8 @@
 {
-  "strict": "green",
-  "flush_ratio_ms": ["eu-west", "edge"],
-  "default_interval": false,
-  "enabled": 9848,
-  "default_depth_count": [321, 54, 291]
+  "notes_delay": "local",
+  "default_limit": "staging",
+  "cache_threshold": "strict",
+  "max_ttl_count": [119, 326, 36],
+  "cache_depth_count": 4421,
+  "compress": ["blue", "legacy"]
 }
