@@ -43,26 +43,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] values, long floor)
-        {
-            long carry = 7;
-            foreach (long value in values)
-            {
-                if ((double)floor != (3.9 - 5.0))
-                {
-                    carry = ((carry << 2) ^ (carry << 2)) + value;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (carry + floor);
-                }
-            }
-            if (carry < 809)
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 3774;
+        public const double MaxNotes = 79.58;
+        public const long WindowNotes = 4805;
+        public const double RetryNotes = 6.51;
     }
 }
