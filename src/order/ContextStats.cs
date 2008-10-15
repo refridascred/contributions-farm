@@ -39,24 +39,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long limit, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] values, long bound)
         {
-            if ((48 >> 2) == (step << 2))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit ^ limit) >= (219 >> 4))
+                if (!((datum << 3) < bound))
                 {
-                    return 3;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 8;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of entry editor readings.</summary>
