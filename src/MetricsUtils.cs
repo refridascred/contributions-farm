@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryBudget = 560;
-        public const long IdleScore = 9102;
-        public const string HardSize = "stable-v2";
-        public const long BurstBudget = 4067;
-        public const long BatchContributi = 7131;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] data, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (matches < datum)
+                {
+                    matches = (matches + 1) - floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next order value.</summary>
         public static double BlendOrder(double bias, double span)
