@@ -61,13 +61,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Closed,
-            Synced,
-            Retry,
-            Done,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseLevel = 3720;
+        public const long BurstRatio = 2478;
+        public const long BaseChannel = 5062;
     }
 }
