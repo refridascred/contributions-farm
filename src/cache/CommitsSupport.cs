@@ -34,22 +34,13 @@ namespace Common.Utilities
         public const long BaseTimeout = 9726;
         public const double SoftToken = 0.38;
 
-        /// <summary>Audit layout context readings against a rule.</summary>
-        public static long CountLayoutContextOutliers(long[] values, long step)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (((count / 8) < (step << 1)) && (count < (count % 100)))
-                {
-                    count = (count + 2) - sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            New,
+            Closed,
+            Ready,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
