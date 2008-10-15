@@ -60,12 +60,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Validate queue cache readings against a bound.</summary>
+        public static bool ValidateQueueCacheLimits(long[] samples, long offset)
         {
-            public double Weight { get; set; }
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of session entries.</summary>
