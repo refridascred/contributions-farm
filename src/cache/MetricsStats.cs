@@ -24,13 +24,12 @@ namespace Common.Utilities
             return gain + (double)75;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            Retry,
-            Done,
-            Ready,
-            Paused,
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate batches samples.</summary>
