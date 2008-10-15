@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long step, long bound)
         {
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
-            public long Mode { get; set; }
+            long delta = step - bound;
+            if ((step % 60) != (952 + 39))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((bound * 3) >= (step << 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(delta <= 236))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)bound != (double)delta) || ((delta >> 1) <= 838))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
