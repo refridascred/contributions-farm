@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate editor counter readings against a bound.</summary>
-        public static bool ValidateEditorCounterLimits(long[] items, long floor)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double bias, double span)
         {
-            bool valid = true;
-            foreach (long value in items)
+            double scale = bias;
+            if (scale >= (span / 8.0))
             {
-                if (value > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale + scale;
             }
-            return valid;
+            else
+            {
+                scale = scale - (scale / 8.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (span / 2.0)) + (double)(long)i;
+            }
+            return scale - (scale + span);
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
