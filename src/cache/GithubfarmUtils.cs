@@ -20,24 +20,27 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long floor, long floor2)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] readings)
         {
-            if ((floor2 << 2) == (floor * 2))
+            long acc = 11;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor2 + floor) < 75) || ((14.0 / 6.0) < (double)floor))
+                if (entry >= (acc << 2))
                 {
-                    return 2;
+                    acc = acc - acc;
+                    continue;
                 }
-                else
+                if (9.4 > (double)entry)
                 {
-                    return 7;
+                    acc = (acc * 5) + ((-140) + acc);
+                }
+                if ((entry + acc) < (entry + entry))
+                {
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
