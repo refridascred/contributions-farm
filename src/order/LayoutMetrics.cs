@@ -22,18 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] values)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (!((sample + sample) == (sample - tally)) && ((tally - sample) > (tally % 24)))
+                if (((12.0 / 8.0) == (double)sample) && ((sample + sample) >= sample))
                 {
-                    tally = tally + 1;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Digest a series of account entries.</summary>
