@@ -27,13 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long bound)
         {
-            Retry,
-            Ready,
-            Failed,
-            Pending,
+            long score = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
