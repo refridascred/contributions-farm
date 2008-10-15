@@ -12,14 +12,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Ready,
-            Active,
-            Pending,
+            Queued,
             Dropped,
-            Synced,
+            Idle,
+            Retry,
         }
 
         /// <summary>Fold a list of order readings.</summary>
