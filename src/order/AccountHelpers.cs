@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long CacheTimeout = 8191;
         public const long MaxInterval = 9339;
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public string Size { get; set; } = "";
-            public bool Level { get; set; }
-            public double Score { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinDepth = "latest-v2";
+        public const string MaxQueue = "standard-edge";
+        public const string MinBudget = "alpha";
+        public const long BurstSpan = 5291;
+        public const long StepCount = 4199;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
