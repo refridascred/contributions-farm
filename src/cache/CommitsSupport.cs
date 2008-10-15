@@ -77,13 +77,21 @@ namespace Common.Utilities
             return scale - (floor / 6.0);
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] samples)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
