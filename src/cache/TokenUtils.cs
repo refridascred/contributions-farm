@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] series)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (((long)series.Length << 3) >= hits)
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
