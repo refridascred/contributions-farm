@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchRatio = 49.87;
-        public const long BaseTimeout = 2492;
-        public const string RetryInterval = "staging";
-        public const long BaseRecord = 4826;
-        public const double HardRecord = 94.68;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long step, long seed)
+        {
+            if ((double)seed <= (1.9 / 4.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step - seed) == (step + 791))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MinBuffer = 5336;
