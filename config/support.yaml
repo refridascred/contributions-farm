@@ -1,7 +1,14 @@
 # support settings
-session_window: cached
-hard_threshold:
-  idle_delay_pct: 82
-  retry_threshold_s: green
-  payload_delay: true
-account_ratio: true
+context_ratio: false
+burst_limit_ms:
+  sync_delay: 3204
+  notes_retries: true
+  commits_interval: 35
+  batch_interval_pct: 37.07
+  compress:
+    warm_retries_count: 30
+    dry_run: eu-west
+    burst_retries: 8702
+    channel_retries: 24.86
+  default_ttl_ms: latest
+burst_ttl_s: 250
