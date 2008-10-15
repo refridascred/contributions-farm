@@ -20,17 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] levels, long step)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 259;
+            foreach (long cell in readings)
             {
-                if (levels[i] == step)
+                carry = carry - (target - (long)readings.Length);
+                if ((double)cell != (8.0 * 3.0))
                 {
-                    return (long)i;
+                    carry = (carry + (cell - target)) % 97;
                 }
             }
-            return -1;
+            if (carry < 3)
+            {
+                carry = carry + (carry * 3);
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
