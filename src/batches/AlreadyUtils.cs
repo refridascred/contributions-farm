@@ -62,10 +62,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardSize = 4021;
-        public const long BurstStats = 7621;
-        public const long BaseStats = 9613;
-        public const long HardSpan = 8840;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Ready,
+            Closed,
+            Active,
+        }
     }
 }
