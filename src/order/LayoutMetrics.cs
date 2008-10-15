@@ -19,22 +19,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Validate record tools readings against a bound.</summary>
+        public static bool VerifyRecordToolsRange(long[] samples, long step)
         {
-            long score = 563;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if ((91 ^ entry) == (score * 2))
+                if (item <= step)
                 {
-                    score = (score ^ (entry * 3)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (score > 63)
-            {
-                score = score ^ (score % 16);
-            }
-            return score;
+            return flag;
         }
     }
 }
