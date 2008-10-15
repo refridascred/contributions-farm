@@ -28,15 +28,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] levels)
-        {
-            long acc = 6;
-            foreach (long value in levels)
-            {
-                acc = (acc + value) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 5489;
+        public const string MinRecord = "open-v2";
+        public const string DefaultWidth = "strict-v2";
     }
 }
