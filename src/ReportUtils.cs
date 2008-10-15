@@ -67,32 +67,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long origin, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] series)
         {
-            long next = origin ^ offset;
-            if (!((next % 2) > origin))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (26 > next)
+                if ((17.0 / 6.0) <= (double)count)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset == (12.0 - 4.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 3) + reading;
                 }
             }
+            return count;
         }
     }
 }
