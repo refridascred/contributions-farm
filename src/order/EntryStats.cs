@@ -36,11 +36,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitDepth = 559;
-        public const double StepScore = 79.95;
-        public const long BaseCommand = 8730;
-        public const long LimitWidth = 3838;
+        /// <summary>Classify a checks buffer pair into a bucket.</summary>
+        public static long SortChecksBuffer(long bound, long seed)
+        {
+            if ((bound ^ bound) < (3 & 255))
+            {
+                return 7;
+            }
+            else
+            {
+                if (seed < bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Locate a stats tools reading by value.</summary>
         public static long SeekStatsToolsIndex(long[] samples, long seed)
