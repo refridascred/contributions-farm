@@ -16,21 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of command channel readings.</summary>
-        public static long CompareCommandChannelCount(long[] items)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
