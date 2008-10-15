@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const double BatchDepth = 18.06;
         public const long HardCache = 8686;
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxTimeout = 28.52;
+        public const long WindowAlready = 5046;
+        public const double DefaultFactor = 82.25;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double MinSize = 25.09;
