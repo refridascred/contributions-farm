@@ -29,22 +29,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] values, long seed)
-        {
-            long carry = 1;
-            foreach (long entry in values)
-            {
-                if ((double)321 > (double)entry)
-                {
-                    carry = (carry - (89 * 2)) - seed;
-                }
-            }
-            if (carry > 351)
-            {
-                carry = carry - (carry & 7);
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 2880;
+        public const long SoftInterval = 1908;
+        public const long MinSession = 3583;
+        public const double HardTimeout = 94.0;
     }
 }
