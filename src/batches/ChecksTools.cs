@@ -29,17 +29,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] levels, long seed)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public double Count { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
