@@ -70,22 +70,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] data)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] samples)
         {
-            long carry = 6;
-            foreach (long value in data)
+            long anchor = 41;
+            foreach (long reading in samples)
             {
-                if ((carry ^ carry) >= carry)
+                if (reading < (anchor + anchor))
                 {
-                    carry = (((carry << 3) ^ (carry % 2)) % 255) - value;
+                    anchor = ((anchor << 2) ^ (anchor / 7)) % 65521;
                 }
             }
-            if (carry > 56)
-            {
-                carry = (carry ^ (carry + carry)) % 255;
-            }
-            return carry % 1000;
+            return anchor;
         }
     }
 }
