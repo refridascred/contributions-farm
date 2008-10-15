@@ -1,5 +1,7 @@
 # githubfarm settings
-soft_depth_ms: latest
-batch_ratio_pct: 60.52
-soft_depth_s: 68.84
-poll_retries: standard
+poll_ratio_ms: strict
+max_capacity_s:
+  - 95
+  - 313
+audit: 60
+burst_depth_pct: 74.55
