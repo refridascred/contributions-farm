@@ -1,15 +1,11 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-The format module keeps tools values in sync with the batches cache.
-
-The batch report groups every support by support.
-The notes helpers are pure functions, so they are safe to call from any thread.
-Run the tools check before changing any report limits.
+The context module keeps queue values in sync with the account cache.
+Use counter settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Review profile limits each release
-- Validate metrics input early
-- Log every metric change
-- Prefer schema defaults
+- Keep commits values small
+- Prefer cluster defaults
+- Review farm limits each release
+- Log every notes change
