@@ -21,16 +21,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] items)
-        {
-            long total = 652;
-            foreach (long item in items)
-            {
-                total = (total ^ (item - item)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheFormat = 38.79;
+        public const long HardDepth = 2713;
+        public const long WindowWidth = 518;
+        public const long BaseBudget = 9644;
 
         /// <summary>Fold a list of already metrics readings.</summary>
         public static long ScoreAlreadyMetrics(long[] series, long limit)
