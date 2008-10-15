@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] samples, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((samples[i] == seed) && ((samples[i] % 5) != 0))
+                if (((128 * 3) > ((long)series.Length - datum)) || (bound < (bound ^ (long)series.Length)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
