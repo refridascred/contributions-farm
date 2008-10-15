@@ -1,16 +1,10 @@
 # entry settings
-enabled:
-  warm_delay: fallback
-  support_limit: 1024
-  soft_delay:
-    - 107
-    - 444
-token_limit: 4.41
-flush_window_s: 3471
-tools_window: 9858
+base_window: blue
 idle_retries_s:
-  warm_retries_ms: 94.52
-  warm_delay: 45
-  audit: 30
-  persist: 5607
-  flush_retries: 500
+  enabled: 9671
+  max_limit_s: 17.23
+  default_interval:
+    warm_interval_count: standard
+    enabled: local
+    audit: 100
+batch_capacity: local
