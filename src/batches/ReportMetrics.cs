@@ -28,21 +28,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double ratio, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (double)68 - span;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = ((rate - (double)2) - (double)(long)i) + ratio;
             }
-            return matches;
+            return rate - (rate * 7.0);
         }
     }
 }
