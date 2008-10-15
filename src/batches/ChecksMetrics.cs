@@ -57,12 +57,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Count the command editor entries that pass the check.</summary>
+        public static long TallyCommandEditorHits(long[] items, long step)
         {
-            Active,
-            Ready,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (9 < (321 + datum))
+                {
+                    hits = (hits + 1) - step;
+                }
+            }
+            return hits;
         }
     }
 }
