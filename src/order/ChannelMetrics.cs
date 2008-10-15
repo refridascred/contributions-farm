@@ -13,12 +13,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardCount = 7815;
-        public const long BatchBuffer = 9428;
-        public const string DefaultWidth = "alpha-v2";
-        public const string MinBuffer = "standard-v2";
-        public const long WindowScore = 600;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryBudget = 2987;
+        public const long MaxFactor = 653;
+        public const long StepFilter = 1055;
+        public const long BatchRatio = 5807;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double IdleSchema = 60.16;
