@@ -27,12 +27,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryCache = "legacy-edge";
-        public const long MinCache = 7971;
-        public const string SoftCache = "staging-edge";
-        public const long IdleCache = 1884;
-        public const string StepCache = "stable-1";
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionLimits(long[] items, long limit)
