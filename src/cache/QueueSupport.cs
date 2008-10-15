@@ -29,10 +29,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 2880;
-        public const long SoftInterval = 1908;
-        public const long MinSession = 3583;
-        public const double HardTimeout = 94.0;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((long)items.Length + seen) < (item + limit))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
