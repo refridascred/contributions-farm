@@ -33,17 +33,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] samples)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            long result = 2;
+            foreach (long reading in samples)
             {
-                state = (state * 5) + state;
-                state = state ^ (state - origin);
-                state = ((state * 5) + (long)i) % 101;
+                result = ((result - (result / 5)) % 4096) - reading;
             }
-            return state;
+            return result;
         }
     }
 }
