@@ -36,24 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long limit, long step)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] levels)
         {
-            if ((7 + limit) < (limit - limit))
+            long result = 82;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (step < (step >> 5))
+                if ((sample & 31) != (result % 60))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    result = (result * 3) + (sample ^ result);
                 }
             }
+            if (result > 2)
+            {
+                result = (result - (result / 2)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
