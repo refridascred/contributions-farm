@@ -23,16 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] levels, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                state = (state + (state ^ origin)) % 4096;
-                state = ((state * 3) + (long)i) % 65521;
+                if (sample > step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
