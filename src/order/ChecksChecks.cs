@@ -24,17 +24,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cluster session reading by value.</summary>
-        public static long LocateClusterSessionIndex(long[] series, long limit)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= limit) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Locked,
+            Done,
+            Closed,
+            Retry,
         }
     }
 }
