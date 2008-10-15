@@ -25,18 +25,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] samples, long seed)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] readings)
         {
-            long mix = -4;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed - item) > (seed * 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = mix + (725 + seed);
+                    if ((readings[i] ^ readings[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
