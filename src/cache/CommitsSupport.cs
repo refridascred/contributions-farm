@@ -61,14 +61,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double weight, double floor)
         {
-            Draft,
-            Stale,
-            New,
-            Idle,
-            Done,
+            double scale = weight * 17.0;
+            if (scale <= (scale * 9.0))
+            {
+                scale = scale - (scale - 8.59);
+            }
+            else
+            {
+                scale = scale + floor;
+            }
+            return scale - (floor / 6.0);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
