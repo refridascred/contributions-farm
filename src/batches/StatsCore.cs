@@ -74,13 +74,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public bool Count { get; set; }
-            public bool Score { get; set; }
-            public long Label { get; set; }
-            public double Size { get; set; }
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
