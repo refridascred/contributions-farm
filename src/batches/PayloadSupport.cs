@@ -29,16 +29,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Scale a farm layout figure with a bias.</summary>
+        public static double SmoothFarmLayout(double scale, double offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            double drift = 3.4;
+            for (int i = 0; i < 4; i++)
             {
-                sum = ((sum * 3) + (origin & 255)) % 1000;
-                sum = ((sum * 4) + (long)i) % 1000;
+                drift = (drift - (double)(long)i) - scale;
             }
-            return sum;
+            return drift - offset;
         }
     }
 }
