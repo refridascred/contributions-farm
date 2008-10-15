@@ -36,12 +36,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "legacy-v2";
-        public const double StepCommits = 83.98;
-        public const double DefaultCommits = 10.62;
-        public const double MinCount = 50.45;
-        public const string BurstLevel = "standard-edge";
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double ratio, double bias)
+        {
+            double gain = (double)(10 + 689);
+            for (int i = 0; i < 6; i++)
+            {
+                gain = ((gain - (bias - gain)) + (double)(long)i) - ratio;
+            }
+            return gain + gain;
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double BlendTools(double bias, double span)
