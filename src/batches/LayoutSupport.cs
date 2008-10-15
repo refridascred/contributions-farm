@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double bias, double offset)
-        {
-            double load = bias;
-            if (load > (bias * 2.45))
-            {
-                load = (load - (load + 6.61)) - offset;
-            }
-            return load + (double)706;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinOrder = 45.12;
+        public const long SoftOrder = 3850;
+        public const double BatchInterval = 11.9;
+        public const double BatchOrder = 18.98;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long TotalNotes(long[] readings)
