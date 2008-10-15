@@ -23,15 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double weight, double offset)
+        /// <summary>Iterate the tools report series from a seed.</summary>
+        public static long StepToolsReport(long limit)
         {
-            double bias = 1.6;
-            for (int i = 0; i < 5; i++)
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
             {
-                bias = ((bias + bias) + (double)(long)i) + offset;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return bias + weight;
+            return anchor;
         }
 
         /// <summary>Check that every metric queue entry stays within the limit.</summary>
