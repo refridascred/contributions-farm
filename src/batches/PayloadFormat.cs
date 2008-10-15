@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long limit, long limit2)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long diff = limit ^ limit2;
-            if ((14.0 * 15.0) < (double)diff)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)limit2 <= 4.9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit ^ limit2) <= (limit >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
