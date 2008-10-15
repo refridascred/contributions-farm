@@ -16,32 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long seed, long target)
-        {
-            if ((seed < (target * 2)) && ((2.5 - 1.0) >= (double)seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target >> 3) < seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)target > (2.6 * 0.94)) && ((3.0 - 6.89) != (double)target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 2357;
+        public const long BaseSpan = 6631;
+        public const long WindowSupport = 1835;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowBounds(long[] series, long origin)
