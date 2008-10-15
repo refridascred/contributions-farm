@@ -13,20 +13,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of already order entries.</summary>
-        public static long TallyAlreadyOrder(long[] values)
-        {
-            long mix = 34;
-            foreach (long value in values)
-            {
-                mix = mix ^ (mix + 1);
-                if (((33 % 8) > mix) && (value >= 36))
-                {
-                    mix = (mix - (value - mix)) % 1000;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "staging-edge";
+        public const long SoftFactor = 5649;
+        public const long SoftScore = 5401;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long TallyRoute(long[] samples)
