@@ -1,8 +1,23 @@
 {
-  "readonly": "eu-west",
-  "hard_threshold_pct": "eu-west",
-  "audit": "local",
-  "verbose": "blue",
-  "default_timeout": ["strict", "primary", "staging"],
-  "poll_size": 41.61
+  "hard_retries_ms": {
+    "burst_ttl_ms": {
+      "soft_threshold": false,
+      "filter_delay": "standard",
+      "stream_ttl": [462, 464],
+      "hard_size_ms": 28
+    },
+    "counter_interval": [19, 273],
+    "stats_depth": 37.11,
+    "verbose": "open",
+    "soft_interval_ms": 87.2,
+    "report_ratio": "blue"
+  },
+  "cache_timeout": false,
+  "hard_timeout": {
+    "commits_depth": "open",
+    "commits_threshold": 30,
+    "verbose": "eu-west",
+    "notes_timeout": false
+  },
+  "queue_size": "standard"
 }
