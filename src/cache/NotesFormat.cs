@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] readings)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((3.6 + 16.0) > (double)reading)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Failed,
+            New,
+            Pending,
         }
 
         /// <summary>Compare every pair of entry githubfarm readings.</summary>
