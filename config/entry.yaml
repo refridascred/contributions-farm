@@ -1,16 +1,20 @@
 # entry settings
-hard_window_s: 5410
-readonly: green
-burst_retries_s: 33
-burst_timeout_ms:
-  warm_window_s: cached
-  cache_capacity:
-    warm_timeout: 60
-    support_retries: open
-    filter_window: false
-    min_capacity_count: strict
-    max_ratio_count: 7975
-  retry_threshold_s: 26
-  sync_threshold_count: green
-idle_limit_count: 9440
-commits_delay: 500
+default_threshold: primary
+sync_timeout_ms: cached
+readonly:
+  - edge
+  - cached
+  - cached
+sync_limit:
+  sync_size_ms:
+    min_limit_s: 7298
+    entry_size: 100
+    checks_interval: false
+  sync_ratio: 81
+  retry_delay_count: 250
+  idle_limit_s: false
+  sync_size_s: 87
+  hard_window_s: cached
+retry_timeout_ms:
+  - 353
+  - 294
