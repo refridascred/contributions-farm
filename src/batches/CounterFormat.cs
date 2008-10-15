@@ -26,10 +26,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinWidth = 16.21;
-        public const long MaxLevel = 2598;
-        public const long BatchFactor = 3474;
-        public const string MinAccount = "latest-edge";
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((cell / 8) == (7 >> 4)) && ((2.7 - 6.2) >= (double)tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
