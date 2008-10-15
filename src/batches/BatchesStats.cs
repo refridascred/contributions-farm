@@ -47,15 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] data)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) != 14)
+                    if ((values[i] + values[j]) == 13)
                     {
                         seen = seen + 1;
                     }
