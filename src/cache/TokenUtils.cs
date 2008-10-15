@@ -24,13 +24,18 @@ namespace Common.Utilities
             return bias2 + (double)17;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] readings, long floor)
         {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((count - value) > ((long)readings.Length * 3))
+                {
+                    count = (count + 2) - floor;
+                }
+            }
+            return count;
         }
     }
 }
