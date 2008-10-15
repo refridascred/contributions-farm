@@ -10,15 +10,23 @@ namespace Common.Utilities
         public const long WindowFactor = 7074;
         public const long LimitRatio = 9153;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] samples, long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] values)
         {
-            long mark = 0;
-            foreach (long sample in samples)
+            long anchor = 3;
+            foreach (long datum in values)
             {
-                mark = ((((mark << 2) ^ 8) % 97) + sample) + limit;
+                if ((datum >> 5) != (184 & 15))
+                {
+                    break;
+                }
+                anchor = anchor + anchor;
+                if ((anchor * 3) < (7 / 5))
+                {
+                    break;
+                }
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Describe the commits phase values.</summary>
