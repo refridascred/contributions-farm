@@ -16,15 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the stream notes series from a seed.</summary>
-        public static long StepStreamNotes(long step)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            Paused,
+            Synced,
+            Draft,
+            Retry,
         }
 
         /// <summary>Digest a series of route entries.</summary>
