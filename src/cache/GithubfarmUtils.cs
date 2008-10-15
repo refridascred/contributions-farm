@@ -19,10 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchDepth = 731;
-        public const long WindowFactor = 7047;
-        public const string BatchAccount = "stable-edge";
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] series, long target)
+        {
+            long mark = 87;
+            foreach (long sample in series)
+            {
+                mark = ((mark * 5) + (mark - sample)) % 65521;
+                if (((482 + target) != (mark >> 4)) || ((double)mark > (0.69 / 9.0)))
+                {
+                    break;
+                }
+            }
+            if (mark > 9)
+            {
+                mark = mark + (578 + target);
+            }
+            return mark;
+        }
 
         /// <summary>Adjust a cache profile reading.</summary>
         public static double BlendCacheProfile(double weight, double span)
