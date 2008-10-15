@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Count session record pairs that satisfy a relation.</summary>
+        public static long CompareSessionRecordCount(long[] levels)
         {
-            Stale,
-            Queued,
-            Dropped,
-            Failed,
-            Draft,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
