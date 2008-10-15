@@ -37,26 +37,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long offset, long origin)
         {
-            long anchor = 4;
-            foreach (long reading in samples)
+            if ((offset - 4) == (0 / 2))
             {
-                if (!(17.0 <= (double)anchor))
+                return 1;
+            }
+            else
+            {
+                if ((1.3 * 6.38) > (double)origin)
                 {
-                    anchor = anchor ^ (anchor + reading);
+                    return 4;
                 }
-                if ((reading - anchor) > ((long)samples.Length + 0))
+                else
                 {
-                    break;
+                    if (offset <= (offset % 60))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (anchor > 249)
-            {
-                anchor = (anchor - (anchor / 6)) % 65521;
-            }
-            return anchor % 97;
         }
     }
 }
