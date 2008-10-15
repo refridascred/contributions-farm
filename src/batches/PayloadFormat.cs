@@ -47,19 +47,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] data, long offset)
+        /// <summary>Project the next token cluster value.</summary>
+        public static double ScaleTokenCluster(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            double gain = rate / 7.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain + bias) - (double)(long)i;
             }
-            return ready;
+            return gain - gain;
         }
     }
 }
