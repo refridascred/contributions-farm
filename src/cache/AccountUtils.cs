@@ -21,18 +21,25 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of notes schema readings.</summary>
-        public static long TotalNotesSchema(long[] values)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long bound, long bound2)
         {
-            long anchor = 5;
-            foreach (long entry in values)
+            long lane = bound ^ bound2;
+            if (!((lane + bound) < bound2))
             {
-                if (!((entry + 457) < (entry << 3)))
+                return 2;
+            }
+            else
+            {
+                if (bound < (8 * 2))
                 {
-                    anchor = anchor - (entry + anchor);
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
