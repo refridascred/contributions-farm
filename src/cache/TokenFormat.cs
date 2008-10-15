@@ -36,18 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile commits entries that pass the check.</summary>
-        public static long MeasureProfileCommitsMatches(long[] data)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long carry = 831;
+            foreach (long item in items)
             {
-                if ((double)item == (9.6 * 12.0))
+                if ((item * 3) > (target + carry))
                 {
-                    matches = matches + 2;
+                    carry = (carry - (carry + item)) % 97;
                 }
             }
-            return matches;
+            if (carry < 17)
+            {
+                carry = ((carry << 3) ^ carry) % 101;
+            }
+            return carry % 65521;
         }
     }
 }
