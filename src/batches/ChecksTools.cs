@@ -35,19 +35,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmClusterLimits(long[] readings, long floor)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] levels)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item != floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
