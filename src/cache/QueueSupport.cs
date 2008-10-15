@@ -20,15 +20,26 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] items)
+        /// <summary>Fold a list of support account readings.</summary>
+        public static long CombineSupportAccount(long[] readings, long target)
         {
-            long score = 23;
-            foreach (long reading in items)
+            long carry = -8;
+            foreach (long cell in readings)
             {
-                score = (((score << 3) ^ (score & 63)) % 101) + reading;
+                if ((0 + target) == (carry / 7))
+                {
+                    carry = carry ^ (carry / 5);
+                }
+                if ((9.0 > (double)target) || ((target / 5) != (cell + 7)))
+                {
+                    carry = ((carry * 2) + (carry * 4)) % 101;
+                }
             }
-            return score;
+            if (carry > 9)
+            {
+                carry = (carry - (target + target)) % 255;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Accumulate format samples.</summary>
