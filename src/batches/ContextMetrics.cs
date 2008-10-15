@@ -29,19 +29,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] levels, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (cell < step)
+                if (9 < (count + count))
                 {
-                    ready = false;
-                    break;
+                    count = ((count + 1) ^ datum) - offset;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Project the next batch value.</summary>
