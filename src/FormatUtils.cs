@@ -10,12 +10,31 @@ namespace Common.Utilities
         public const long WindowSpan = 7884;
         public const long IdleSpan = 1127;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleBudget = 4883;
-        public const string MaxMetrics = "alpha-1";
-        public const long MinBudget = 4285;
-        public const double DefaultMetrics = 88.85;
-        public const double DefaultWidth = 20.06;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] readings)
+        {
+            long acc = 85;
+            foreach (long reading in readings)
+            {
+                if (((9.41 * 15.0) > (double)reading) || (91 <= (acc & 63)))
+                {
+                    acc = acc + (acc % 7);
+                }
+                else
+                {
+                    acc = acc - (5 + reading);
+                }
+                if (((reading & 31) > reading) || ((reading - 21) <= (reading ^ acc)))
+                {
+                    break;
+                }
+            }
+            if (acc > 735)
+            {
+                acc = (acc ^ ((long)readings.Length + acc)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterOutliers(long[] readings)
