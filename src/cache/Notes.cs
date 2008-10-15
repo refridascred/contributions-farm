@@ -64,15 +64,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] levels)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long mix = 28;
-            foreach (long reading in levels)
-            {
-                mix = ((mix * 5) + (reading + mix)) % 65521;
-            }
-            return mix;
+            Queued,
+            Stale,
+            Dropped,
         }
     }
 }
