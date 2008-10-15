@@ -54,22 +54,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] items, long target)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long step)
         {
-            long carry = 831;
-            foreach (long item in items)
+            long acc = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((item * 3) > (target + carry))
-                {
-                    carry = (carry - (carry + item)) % 97;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            if (carry < 17)
-            {
-                carry = ((carry << 3) ^ carry) % 101;
-            }
-            return carry % 65521;
+            return acc;
         }
     }
 }
