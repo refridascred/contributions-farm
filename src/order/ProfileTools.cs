@@ -26,17 +26,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first editor token entry that matches the target.</summary>
-        public static long LookupEditorTokenIndex(long[] items, long step)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long seed, long seed2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long edge = seed + seed2;
+            if ((seed2 & 7) < (edge - seed2))
             {
-                if ((items[i] > step) && ((items[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if (((seed + seed2) < edge) && (seed < (edge / 8)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of already metrics readings.</summary>
