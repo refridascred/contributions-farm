@@ -17,10 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryRatio = 2841;
-        public const string MinNotes = "alpha-edge";
-        public const long StepNotes = 6183;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Stale,
+            Failed,
+            Dropped,
+            Pending,
+            Done,
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long ScoreFilter(long[] items)
