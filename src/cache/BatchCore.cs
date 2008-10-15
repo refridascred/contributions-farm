@@ -15,22 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] levels)
+        /// <summary>Check that every batches account entry stays within the limit.</summary>
+        public static bool CheckBatchesAccountRange(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (hits < (hits * 4))
+                if (entry > step)
                 {
-                    hits = (hits + 2) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
