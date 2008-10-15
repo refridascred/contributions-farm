@@ -35,17 +35,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] samples, long floor)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Locked,
+            New,
+            Ready,
         }
     }
 }
