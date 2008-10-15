@@ -29,17 +29,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] items, long step)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((items[i] <= step) && ((items[i] % 5) == 0))
+                if (((limit + limit) > (long)i) || ((long)i == (total * 4)))
                 {
-                    return (long)i;
+                    total = total + ((long)i - (long)i);
                 }
+                else
+                {
+                    total = total + limit;
+                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
     }
 }
