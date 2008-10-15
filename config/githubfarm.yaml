@@ -1,13 +1,16 @@
 # githubfarm settings
-hard_retries: 75
-base_timeout_count: 43.41
-queue_ttl:
-  support_limit:
-    strict: blue
-    cluster_ttl: true
-    sync_capacity_pct: 500
-  verbose: 36
-  dry_run: 22
-  retry_ratio: staging
-idle_limit_pct: false
-record_timeout: primary
+min_depth_count: false
+default_capacity_pct:
+  - 8
+  - 288
+  - 51
+default_timeout_pct: latest
+dry_run:
+  - 416
+  - 392
+  - 193
+  - 479
+audit:
+  - 133
+  - 11
+idle_limit_count: 3.72
