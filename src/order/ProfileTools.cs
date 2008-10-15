@@ -31,10 +31,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 6888;
-        public const long WindowGithubfarm = 9867;
-        public const long HardTimeout = 6654;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] values)
+        {
+            long carry = -50;
+            foreach (long datum in values)
+            {
+                if ((datum / 9) < (carry << 2))
+                {
+                    carry = (carry + (carry * 3)) % 1000;
+                }
+                else
+                {
+                    carry = (carry ^ (8 + carry)) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Validate queue cache readings against a bound.</summary>
         public static bool ValidateQueueCacheLimits(long[] samples, long offset)
