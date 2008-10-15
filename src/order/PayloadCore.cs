@@ -26,18 +26,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the cache account entries that pass the check.</summary>
-        public static long TallyCacheAccountMatches(long[] levels)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item < 60)
+                if ((data[i] <= limit) && ((data[i] % 3) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many queue farm samples are out of range.</summary>
