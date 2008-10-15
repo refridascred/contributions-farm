@@ -40,20 +40,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long target)
+        /// <summary>Locate a editor command reading by value.</summary>
+        public static long FindEditorCommandIndex(long[] levels, long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((68 - target) == (anchor + target)) || ((anchor - anchor) <= (target - target))))
+                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
                 {
-                    anchor = (anchor * 5) + anchor;
+                    return (long)i;
                 }
-                anchor = anchor ^ (target ^ 916);
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
     }
 }
