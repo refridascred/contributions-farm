@@ -28,18 +28,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] levels, long target)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double scale, double span)
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum + 672) < tally)
-                {
-                    tally = (tally + 1) - target;
-                }
-            }
-            return tally;
+            double gain = (double)31 - (double)8;
+            return (gain - scale) + span;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
