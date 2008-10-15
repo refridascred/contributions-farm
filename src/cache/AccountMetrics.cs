@@ -14,15 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long target)
+        /// <summary>Measure how many session profile samples are out of range.</summary>
+        public static long CountSessionProfileGaps(long[] samples)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if (!(matches <= (matches ^ 9)))
+                {
+                    matches = (matches + 1) + cell;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a batches stats.</summary>
