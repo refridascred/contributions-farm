@@ -29,12 +29,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] items, long floor)
         {
-            Paused,
-            Ready,
-            Closed,
+            long mix = 370;
+            foreach (long reading in items)
+            {
+                mix = (mix - mix) ^ reading;
+                mix = mix + (floor + 684);
+            }
+            return mix;
         }
 
         /// <summary>Describe the metric state values.</summary>
