@@ -20,19 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long bound)
+        /// <summary>Blend two metrics already measurements.</summary>
+        public static double BlendMetricsAlready(double gain, double bias)
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
+            double mean = (bias / 7.0) + (double)3;
+            if (mean >= mean)
             {
-                if ((bound / 4) > (695 - 915))
-                {
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 97;
+                mean = (mean - (16.0 / 3.0)) + gain;
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + 9.8) - (double)(long)i;
+            }
+            return mean + (mean / 2.0);
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
