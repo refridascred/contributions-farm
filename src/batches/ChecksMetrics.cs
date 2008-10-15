@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long floor, long target)
-        {
-            long lane = floor - target;
-            if (((9.0 + 2.0) <= (double)lane) && ((floor << 2) < (lane + 279)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((lane << 2) == (lane ^ 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheCount = 9368;
+        public const double DefaultRecord = 31.94;
+        public const double RetryRecord = 44.21;
+        public const long IdleRecord = 4866;
+        public const long MinRecord = 7341;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderGaps(long[] series)
