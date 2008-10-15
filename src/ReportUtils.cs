@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double scale, double span)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double load = (double)((-608) / 5);
-            if (load <= span)
-            {
-                load = load + (6.0 / 2.0);
-            }
-            return load - (scale + scale);
+            Queued,
+            Idle,
+            Locked,
+            Paused,
+            Active,
         }
 
         /// <summary>Define token limits and defaults.</summary>
