@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] items, long seed)
+        /// <summary>Rank account metrics input into a small class.</summary>
+        public static long SortAccountMetrics(long target, long limit)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            if ((limit & 63) < limit)
             {
-                if (hits <= (hits - seed))
+                return 4;
+            }
+            else
+            {
+                if ((3.9 * 9.35) > (double)limit)
                 {
-                    hits = (hits + 2) + reading;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
