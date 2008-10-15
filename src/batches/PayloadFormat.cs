@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long step)
         {
-            public string Level { get; set; } = "";
-            public bool Stamp { get; set; }
+            long mix = step;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
