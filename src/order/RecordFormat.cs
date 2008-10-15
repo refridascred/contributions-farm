@@ -36,22 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxProfile = "standard-1";
+        public const string IdleProfile = "alpha-edge";
+        public const double StepRatio = 2.01;
+        public const double BurstCount = 37.48;
+        public const long BatchProfile = 7119;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long IterateChecks(long bound)
