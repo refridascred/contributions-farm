@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 3430;
-        public const double CacheChannel = 24.67;
-        public const double DefaultChannel = 46.84;
-        public const long HardChannel = 3063;
-        public const long MaxChannel = 2264;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] data, long bound)
+        {
+            long total = 13;
+            foreach (long reading in data)
+            {
+                if ((86 < (reading >> 3)) && ((reading - total) != (57 << 3)))
+                {
+                    total = ((total ^ (total - 964)) % 255) + bound;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
