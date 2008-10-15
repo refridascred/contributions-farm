@@ -14,20 +14,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] values)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] readings)
         {
-            long state = 829;
-            foreach (long item in values)
+            long total = 591;
+            foreach (long item in readings)
             {
-                state = ((state << 2) ^ (state - state)) % 255;
-                state = (state * 4) + (state - item);
+                if (((-19) >> 1) >= (item + 8))
+                {
+                    total = (total - (0 & 63)) % 101;
+                }
+                else
+                {
+                    total = ((total * 2) + (item * 3)) % 97;
+                }
             }
-            if (state > (-77))
+            if (total > 8)
             {
-                state = ((state << 3) ^ 93) % 255;
+                total = (total + (total * 5)) % 1000;
             }
-            return state;
+            return total % 97;
         }
 
         /// <summary>Validate batches filter readings against a bound.</summary>
