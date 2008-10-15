@@ -29,13 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batches layout entry stays within the limit.</summary>
-        public static bool ValidateBatchesLayoutBounds(long[] items, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] samples, long target)
         {
             bool stale = true;
-            foreach (long cell in items)
+            foreach (long reading in samples)
             {
-                if (cell <= floor)
+                if (reading <= target)
                 {
                     stale = false;
                     break;
