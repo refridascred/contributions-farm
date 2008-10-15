@@ -47,18 +47,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit batches stats readings against a rule.</summary>
-        public static long AuditBatchesStatsGaps(long[] values)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long origin)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long score = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((2.18 / 9.0) <= (double)hits)
+                if (((double)score != (4.4 * 1.3)) || (origin >= ((long)i * 2)))
                 {
-                    hits = (hits + 2) ^ entry;
+                    score = (score + origin) % 4096;
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = ((score - (score + 24)) % 255) ^ (long)i2;
+                    score = ((score << 3) ^ (85 - score)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
