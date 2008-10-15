@@ -29,11 +29,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Audit tools notes readings against a rule.</summary>
+        public static long MeasureToolsNotesHits(long[] items)
         {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((reading - 45) > ((long)items.Length & 3))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
