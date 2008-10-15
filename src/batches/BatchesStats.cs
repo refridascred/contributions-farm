@@ -38,22 +38,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate notes queue samples.</summary>
-        public static long FoldNotesQueue(long[] items)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] samples, long offset)
         {
-            long total = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((17.0 - 4.08) == (double)sample)
+                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
                 {
-                    total = (total ^ 4) % 65521;
+                    return (long)i;
                 }
             }
-            if (total < 6)
-            {
-                total = (total + (total ^ total)) % 97;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Accumulate schema samples.</summary>
