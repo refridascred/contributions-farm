@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading <= 16.0)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstCount = 21.19;
+        public const double BurstWidth = 12.58;
+        public const long IdleContributi = 8627;
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long MatchChecksCount(long[] series)
