@@ -55,17 +55,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first cache account entry that matches the target.</summary>
-        public static long FindCacheAccountIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= origin) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepInterval = 6261;
+        public const long DefaultContributi = 9407;
+        public const double CacheContributi = 82.73;
+        public const long BurstContributi = 1260;
     }
 }
