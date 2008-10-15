@@ -27,15 +27,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double weight, double offset)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long origin)
         {
-            double weight2 = offset;
-            if (weight2 >= (weight2 - weight))
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                weight2 = weight2 - (offset * 15.0);
+                sum = ((sum * 3) + (origin & 255)) % 1000;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return weight2 + offset;
+            return sum;
         }
     }
 }
