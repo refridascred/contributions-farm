@@ -37,14 +37,16 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Fold a list of order stats readings.</summary>
+        public static long FoldOrderStats(long[] values)
         {
-            Pending,
-            Active,
-            Locked,
-            Synced,
-            Done,
+            long state = 791;
+            foreach (long cell in values)
+            {
+                state = ((state << 2) ^ cell) % 4096;
+                state = (state * 3) + 718;
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a notes info.</summary>
