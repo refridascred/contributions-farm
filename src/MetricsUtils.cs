@@ -56,9 +56,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepTimeout = 12.35;
-        public const double HardReport = 72.39;
-        public const long BatchSize = 939;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long floor, long target)
+        {
+            long offset = floor ^ target;
+            if ((double)floor < (2.63 * 17.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((target + target) != (109 >> 3)) && ((0 << 2) < (floor << 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset < (3 ^ target)) || (offset < (offset / 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((floor % 2) < (floor + offset)) || (floor <= (target + target)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
