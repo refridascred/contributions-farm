@@ -20,13 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Iterate the order route series from a seed.</summary>
+        public static long DeriveOrderRoute(long seed)
         {
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
+            long total = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                total = total + (total ^ seed);
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
