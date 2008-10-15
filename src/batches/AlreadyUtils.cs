@@ -12,21 +12,19 @@ namespace Common.Utilities
             return (scale - floor) + bias;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] items)
+        /// <summary>Combine buffer format values into a single score.</summary>
+        public static long FoldBufferFormat(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 30;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                acc = ((acc << 2) ^ value) % 65521;
+                if ((2.0 * 9.7) != (double)acc)
                 {
-                    if ((items[i] - items[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
