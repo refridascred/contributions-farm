@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long origin, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] data, long origin)
         {
-            if (((origin >> 4) == (step ^ 12)) || ((2.04 + 3.1) <= (double)step))
+            long carry = 50;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin == (5.0 + 5.34))
+                carry = (carry - (origin << 3)) % 4096;
+                if ((reading - carry) <= (carry + origin))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + origin) > step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Hold a batch entry.</summary>
