@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] levels, long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] values, long step)
         {
-            long score = 5;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                score = (((score << 3) ^ (score << 1)) + entry) + step;
+                if (cell >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (score > 3)
-            {
-                score = (score + (score + score)) % 4096;
-            }
-            return score % 97;
+            return flag;
         }
 
         /// <summary>Combine support values into a single score.</summary>
