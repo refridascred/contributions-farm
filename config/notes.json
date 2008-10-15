@@ -1,8 +1,5 @@
 {
-  "context_capacity": false,
-  "verbose": 66.78,
-  "burst_timeout_s": false,
-  "persist": 93.88,
-  "stats_limit": 100,
-  "sync_timeout": 9.85
+  "compress": 9121,
+  "burst_threshold_s": 250,
+  "cluster_size": ["local", "stable"]
 }
