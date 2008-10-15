@@ -1,10 +1,6 @@
-id,count,region,level
-1,87.42,45.92,724
-2,blue,standard,93
-3,blue,local,36.47
-4,793,18.45,staging
-5,132,663,primary
-6,open,85,84
-7,31.49,84.7,91.91
-8,open,61.66,61.03
-9,edge,blue,487
+id,token,active
+1,89.34,1.97
+2,edge,233
+3,edge,54.98
+4,latest,89.06
+5,701,9.88
