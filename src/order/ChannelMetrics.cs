@@ -13,37 +13,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] readings)
-        {
-            long carry = 90;
-            foreach (long entry in readings)
-            {
-                long span = 9;
-                if ((span >> 4) > (span + carry))
-                {
-                    break;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ entry;
-                    span = (span ^ (carry / 8)) % 97;
-                }
-                if ((carry << 1) < (2 - 507))
-                {
-                    carry = (carry << 3) ^ entry;
-                }
-                else
-                {
-                    carry = carry - (carry & 3);
-                }
-            }
-            if (carry > (-49))
-            {
-                carry = ((carry * 2) + carry) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardCount = 7815;
+        public const long BatchBuffer = 9428;
+        public const string DefaultWidth = "alpha-v2";
+        public const string MinBuffer = "standard-v2";
+        public const long WindowScore = 600;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double IdleSchema = 60.16;
