@@ -31,16 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] series)
-        {
-            long carry = 511;
-            foreach (long datum in series)
-            {
-                carry = (carry - (carry << 2)) - datum;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchDepth = 4959;
+        public const string BurstContributi = "open";
+        public const double CacheSize = 54.58;
+        public const long WindowContributi = 7487;
+        public const double StepWidth = 97.94;
 
         /// <summary>Fold a list of entry editor readings.</summary>
         public static long TallyEntryEditor(long[] data)
