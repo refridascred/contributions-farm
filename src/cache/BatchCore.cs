@@ -30,31 +30,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long offset, long seed)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] readings, long target)
         {
-            if ((double)offset == (double)seed)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + seed) > (seed ^ 93))
+                if (readings[i] >= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((8 - offset) <= (seed - 682))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
