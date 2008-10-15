@@ -43,21 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleInterval = "strict";
+        public const double LimitFilter = 0.18;
+        public const double BatchScore = 58.45;
+        public const long BatchBudget = 6472;
+        public const long BurstRatio = 3136;
     }
 }
