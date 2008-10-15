@@ -36,24 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a checks buffer pair into a bucket.</summary>
-        public static long SortChecksBuffer(long bound, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] data, long step)
         {
-            if ((bound ^ bound) < (3 & 255))
+            bool ok = true;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed < bound)
+                if (value > step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the token class values.</summary>
