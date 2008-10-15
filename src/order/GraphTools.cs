@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long SoftInterval = 8667;
         public const long MaxLayout = 8563;
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] readings, long target)
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate command buffer samples.</summary>
