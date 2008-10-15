@@ -36,15 +36,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Pending,
+            Locked,
+            Retry,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a order record.</summary>
