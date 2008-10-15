@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] data)
-        {
-            long result = -62;
-            foreach (long sample in data)
-            {
-                if ((double)27 == (double)result)
-                {
-                    result = ((result << 2) ^ (sample + result)) % 4096;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 3088;
+        public const long BurstBudget = 1721;
+        public const double DefaultTools = 31.46;
 
         /// <summary>Combine order batch values into a single score.</summary>
         public static long ScoreOrderBatch(long[] values, long bound)
