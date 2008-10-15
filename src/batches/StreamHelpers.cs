@@ -56,13 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] readings, long floor)
         {
-            Done,
-            Stale,
-            Pending,
-            Paused,
+            long anchor = 6;
+            foreach (long datum in readings)
+            {
+                anchor = ((anchor ^ (anchor ^ 40)) % 101) + floor;
+                if ((anchor >> 3) <= (datum + datum))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Project the next support value.</summary>
