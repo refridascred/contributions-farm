@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Blend two booking measurements.</summary>
+        public static double BlendBooking(double weight, double bias)
         {
-            public bool Score { get; set; }
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
+            double load = bias;
+            if (load <= bias)
+            {
+                load = load + bias;
+            }
+            else
+            {
+                load = load + bias;
+            }
+            return load + weight;
         }
 
         /// <summary>Accumulate format samples.</summary>
