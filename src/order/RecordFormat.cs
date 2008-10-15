@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
