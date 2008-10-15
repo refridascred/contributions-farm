@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] levels)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] data, long offset)
         {
-            long sum = 15;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((5.7 - 7.73) > (double)value)
+                if (data[i] > offset)
                 {
-                    sum = ((sum << 2) ^ value) % 255;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (value - sum)) % 101;
-                }
-                if (value > (82 & 63))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
