@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] readings)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] levels, long limit)
         {
-            long state = 2;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((state > (state / 7)) || (8.4 >= (double)sample))
+                if (item != limit)
                 {
-                    state = (state << 3) ^ sample;
+                    ok = false;
+                    break;
                 }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
