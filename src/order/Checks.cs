@@ -20,18 +20,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] levels, long step)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((1 & 7) <= (seen + seen))
+                if ((data[i] < offset) && ((data[i] % 2) != 0))
                 {
-                    seen = ((seen + 2) + datum) - step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a window info.</summary>
