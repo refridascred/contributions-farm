@@ -66,10 +66,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardDepth = 6042;
-        public const long BatchDepth = 8557;
-        public const long BaseWidth = 8491;
+        /// <summary>Measure how many buffer account samples are out of range.</summary>
+        public static long AuditBufferAccountGaps(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (((cell + 9) <= (hits + cell)) || ((13.0 + 10.0) > (double)cell))
+                {
+                    hits = (hits + 3) - bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
