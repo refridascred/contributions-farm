@@ -1,5 +1,8 @@
 {
-  "default_retries_ms": "green",
-  "audit": 4964,
-  "schema_size": true
+  "channel_interval": true,
+  "poll_timeout_count": true,
+  "sync_interval_ms": ["standard", "primary", "eu-west", "cached"],
+  "min_depth_ms": 86,
+  "batch_interval_s": 14.77,
+  "command_timeout": 71
 }
