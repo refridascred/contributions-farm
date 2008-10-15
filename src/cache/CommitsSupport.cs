@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepLayout = "open-1";
-        public const double BatchScore = 51.99;
-        public const long BatchCount = 5987;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Locked,
+            Queued,
+            Dropped,
+            New,
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long HardInterval = 9747;
