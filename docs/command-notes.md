@@ -1,11 +1,11 @@
 # Command notes
 
-The stream report groups every token by payload.
-Use editor settings to tune how often support data is refreshed.
+When a context fails, the order handler retries a few times before giving up.
+Keep schema and queue names short and lowercase.
+The order module keeps channel values in sync with the token cache.
 
 ## Guidelines
 
-- Document new entry fields
-- Review command limits each release
-- Log every format change
-- Validate tools input early
+- Prefer metrics defaults
+- Keep already values small
+- Log every profile change
