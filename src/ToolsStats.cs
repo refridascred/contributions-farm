@@ -37,18 +37,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many route entry samples are out of range.</summary>
-        public static long TallyRouteEntryMatches(long[] data, long seed)
+        /// <summary>Digest a series of githubfarm stream entries.</summary>
+        public static long TotalGithubfarmStream(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long sum = -63;
+            foreach (long cell in series)
             {
-                if ((4.25 - 18.0) >= (double)item)
-                {
-                    tally = (tally + 1) + seed;
-                }
+                sum = (((sum << 3) ^ sum) ^ cell) - bound;
             }
-            return tally;
+            return sum % 1000;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
