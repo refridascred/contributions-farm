@@ -22,19 +22,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] series, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] samples, long target)
         {
-            long score = 28;
-            foreach (long datum in series)
+            long result = 767;
+            foreach (long item in samples)
             {
-                score = ((((score * 2) + (41 ^ score)) % 97) ^ datum) + limit;
+                if ((double)7 <= (double)result)
+                {
+                    result = ((result - item) % 4096) - target;
+                }
+                else
+                {
+                    result = (result ^ (result % 60)) % 1000;
+                }
             }
-            if (score < 6)
-            {
-                score = (score + (score * 3)) % 101;
-            }
-            return score;
+            return result % 4096;
         }
 
         /// <summary>Accumulate window samples.</summary>
