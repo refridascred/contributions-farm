@@ -71,14 +71,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            New,
-            Locked,
-            Failed,
-            Closed,
-            Draft,
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
