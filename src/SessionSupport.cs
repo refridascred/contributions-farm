@@ -37,13 +37,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            Stale,
-            Ready,
-            Retry,
-            Pending,
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
