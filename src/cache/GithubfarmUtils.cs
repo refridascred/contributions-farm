@@ -19,20 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] series, long origin)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchDepth = 731;
+        public const long WindowFactor = 7047;
+        public const string BatchAccount = "stable-edge";
 
         /// <summary>Adjust a cache profile reading.</summary>
         public static double BlendCacheProfile(double weight, double span)
