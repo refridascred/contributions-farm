@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const double BatchDepth = 18.06;
         public const long HardCache = 8686;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] readings, long origin)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
