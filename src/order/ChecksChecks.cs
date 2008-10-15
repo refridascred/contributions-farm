@@ -25,22 +25,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the contributi order entries that pass the check.</summary>
-        public static long TallyContributiOrderMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((matches ^ 58) <= (sample >> 3))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinSize = 25.09;
+        public const long BurstStream = 2498;
+        public const string SoftRatio = "legacy-1";
+        public const long MaxSize = 6524;
+        public const string SoftTimeout = "local";
     }
 }
