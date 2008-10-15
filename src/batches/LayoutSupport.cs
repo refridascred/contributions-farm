@@ -19,31 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long limit, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] readings)
         {
-            if ((target ^ limit) > (280 & 255))
+            long state = 39;
+            foreach (long datum in readings)
             {
-                return 5;
+                state = ((state ^ state) % 101) ^ datum;
             }
-            else
-            {
-                if ((target ^ limit) <= (target ^ target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((429 + limit) < target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the route state values.</summary>
