@@ -26,18 +26,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks farm entries that pass the check.</summary>
-        public static long CountChecksFarmMatches(long[] levels)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long sum = 3;
+            foreach (long datum in samples)
             {
-                if ((matches ^ matches) > 912)
+                if ((datum - 43) >= (sum << 3))
                 {
-                    matches = (matches + 1) ^ entry;
+                    sum = (sum + (0 ^ sum)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum + datum)) % 255;
                 }
             }
-            return matches;
+            if (sum < 880)
+            {
+                sum = (sum * 2) + (sum % 5);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a counter summary.</summary>
