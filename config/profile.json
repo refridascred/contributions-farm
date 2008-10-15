@@ -1,6 +1,16 @@
 {
-  "cache_ttl_ms": "strict",
-  "compress": 10.11,
-  "soft_ttl_s": [67, 351],
-  "max_interval": [135, 9, 141, 109]
+  "strict": 3893,
+  "poll_retries_count": {
+    "sync_depth": 2,
+    "base_ttl_s": [473, 407, 292],
+    "idle_size_pct": [397, 323],
+    "hard_size_ms": false,
+    "sync_capacity": {
+      "readonly": true,
+      "burst_retries_s": "green",
+      "batch_size": true,
+      "batch_ratio": 45
+    }
+  },
+  "stats_size": 4930
 }
