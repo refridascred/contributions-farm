@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] readings, long target)
         {
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
