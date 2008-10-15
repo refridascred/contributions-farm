@@ -25,23 +25,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine buffer batch values into a single score.</summary>
-        public static long TotalBufferBatch(long[] levels)
-        {
-            long mark = 6;
-            foreach (long entry in levels)
-            {
-                if ((((long)levels.Length * 5) <= entry) || ((double)entry < (5.4 / 9.0)))
-                {
-                    mark = (mark * 5) + mark;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ mark) % 4096;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseEditor = "standard";
+        public const double HardCount = 95.2;
+        public const long SoftEditor = 3406;
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
