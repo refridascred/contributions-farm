@@ -20,15 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double scale, double span)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] levels, long target)
         {
-            double load = span;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                load = ((load + (3.0 * 7.6)) + (double)(long)i) - scale;
+                if ((double)count <= (double)target)
+                {
+                    count = (count + 3) + entry;
+                }
             }
-            return load - 8.0;
+            return count;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
