@@ -1,13 +1,13 @@
 {
-  "account_size": "fallback",
-  "cache_ratio_pct": "fallback",
-  "default_threshold": true,
-  "already_size": {
-    "readonly": 100,
-    "batch_delay_count": 71.82,
-    "record_window": [318, 286],
-    "compress": "standard"
-  },
-  "flush_ttl_s": true,
-  "burst_window_pct": true
+  "max_interval_pct": "fallback",
+  "metric_delay": 30,
+  "warm_depth": 6526,
+  "dry_run": "latest",
+  "enabled": {
+    "command_ratio": 30,
+    "verbose": false,
+    "soft_capacity": [79, 36, 393],
+    "base_depth_count": 5085,
+    "poll_limit_s": "latest"
+  }
 }
