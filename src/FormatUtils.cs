@@ -32,13 +32,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public long Flag { get; set; }
+            Dropped,
+            Idle,
+            Done,
+            Queued,
         }
 
         /// <summary>Digest a series of order entries.</summary>
