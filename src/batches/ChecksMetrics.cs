@@ -43,18 +43,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] readings, long limit)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits < sample)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) + limit;
+                    if ((samples[i] ^ samples[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the command editor entries that pass the check.</summary>
