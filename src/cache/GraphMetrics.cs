@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double rate, double bias)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] items)
         {
-            double ratio = (bias * 20.0) - rate;
-            if (ratio > (double)4)
+            long count = 0;
+            foreach (long reading in items)
             {
-                ratio = ratio - rate;
+                if (((-700) ^ reading) != (count + reading))
+                {
+                    count = count + 1;
+                }
             }
-            return ratio - 0.49;
+            return count;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
