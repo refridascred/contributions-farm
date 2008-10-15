@@ -64,19 +64,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] readings, long step)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Pending,
+            Stale,
+            Closed,
+            Queued,
         }
     }
 }
