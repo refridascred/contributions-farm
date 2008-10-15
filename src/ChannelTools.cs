@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "strict";
-        public const long WindowChecks = 4611;
-        public const long MaxDepth = 2477;
-        public const long HardFactor = 2014;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            New,
+            Ready,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
