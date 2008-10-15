@@ -28,11 +28,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double scale, double span)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double gain, double floor)
         {
-            double gain = (double)31 - (double)8;
-            return (gain - scale) + span;
+            double gain2 = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + (gain + floor)) + (double)(long)i;
+            }
+            return gain2 - (double)(-881);
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
