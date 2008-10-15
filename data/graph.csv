@@ -1,7 +1,7 @@
-id,label,score,token
-1,48.53,local,standard
-2,2,56,latest
-3,65,25.19,477
-4,17.03,950,cached
-5,495,201,22.95
-6,231,edge,11.52
+id,weight,label
+1,latest,246
+2,96.25,40.55
+3,52.35,808
+4,96.24,683
+5,777,106
+6,650,edge
