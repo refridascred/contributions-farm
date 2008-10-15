@@ -1,8 +1,6 @@
 {
-  "base_depth_s": 3866,
-  "flush_capacity_count": "standard",
-  "stream_delay": ["edge", "local", "green"],
-  "burst_delay_s": 60,
-  "hard_window_s": "cached",
-  "sync_retries": "stable"
+  "warm_delay": 500,
+  "idle_ttl": ["primary", "cached"],
+  "retry_interval_count": "staging",
+  "compress": "primary"
 }
