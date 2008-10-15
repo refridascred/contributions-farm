@@ -1,5 +1,5 @@
 {
-  "idle_interval_count": 500,
-  "base_threshold_count": [40, 90],
-  "record_ratio": true
+  "default_retries_ms": "green",
+  "audit": 4964,
+  "schema_size": true
 }
