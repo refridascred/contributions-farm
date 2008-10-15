@@ -50,16 +50,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] values)
         {
-            long result = 547;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in values)
             {
-                result = result ^ (reading ^ reading);
-                result = ((result << 3) ^ (reading - (-3))) % 97;
+                if ((item + item) == (item - tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
