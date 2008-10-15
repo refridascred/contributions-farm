@@ -12,18 +12,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] items, long step)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!((reading << 2) != (reading + step)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Synced,
+            Ready,
+            Idle,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Look up the position of a batches buffer sample.</summary>
