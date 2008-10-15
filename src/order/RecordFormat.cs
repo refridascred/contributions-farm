@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstCount = 21.19;
-        public const double BurstWidth = 12.58;
-        public const long IdleContributi = 8627;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] items)
+        {
+            long carry = 63;
+            foreach (long cell in items)
+            {
+                if (((double)carry <= (0.76 - 1.4)) && ((carry - 64) < (cell >> 4)))
+                {
+                    carry = (carry * 3) + cell;
+                }
+                if (!!((cell + cell) <= ((long)items.Length / 8)))
+                {
+                    carry = carry + (carry - cell);
+                }
+                if (((3.0 * 6.35) <= (double)carry) && ((carry % 10) <= (cell % 3)))
+                {
+                    carry = ((carry << 3) ^ (long)items.Length) % 65521;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long GradeContext(long origin, long bound)
