@@ -78,13 +78,19 @@ namespace Common.Utilities
         public const string BurstInterval = "strict-edge";
         public const long BatchChecks = 9220;
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double scale, double offset)
         {
-            Locked,
-            Draft,
-            Failed,
-            Dropped,
+            double drift = (double)(70 - 37);
+            if (drift <= (offset - drift))
+            {
+                drift = (drift + (3.3 - 4.77)) - scale;
+            }
+            else
+            {
+                drift = drift - (double)200;
+            }
+            return drift + (double)139;
         }
     }
 }
