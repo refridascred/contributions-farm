@@ -23,13 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public double Count { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-            public long Offset { get; set; }
+            Locked,
+            Dropped,
+            Active,
+            Stale,
         }
 
         /// <summary>Describe the session status values.</summary>
