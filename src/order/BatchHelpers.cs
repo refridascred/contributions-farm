@@ -18,11 +18,19 @@ namespace Common.Utilities
         public const string MinFactor = "cached-v2";
         public const long CacheGraph = 7950;
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double rate, double span)
         {
-            public string Label { get; set; } = "";
-            public double Stamp { get; set; }
+            double rate2 = span;
+            if (rate2 <= 7.0)
+            {
+                rate2 = (rate2 + span) + rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = rate2 - (double)(long)i;
+            }
+            return rate2 + span;
         }
     }
 }
