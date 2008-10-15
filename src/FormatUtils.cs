@@ -33,13 +33,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public double Flag { get; set; }
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate metrics layout readings against a bound.</summary>
