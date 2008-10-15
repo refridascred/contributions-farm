@@ -73,12 +73,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 1901;
+        public const string CacheSpan = "staging-1";
+        public const long WindowFactor = 3443;
+        public const double IdleAlready = 26.69;
     }
 }
