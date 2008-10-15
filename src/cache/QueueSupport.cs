@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] samples, long limit)
         {
-            Done,
-            Retry,
-            Draft,
-            Closed,
+            long anchor = -35;
+            foreach (long value in samples)
+            {
+                anchor = (anchor - (value + anchor)) + limit;
+                if ((689 / 6) != (anchor + value))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Locate a report reading by value.</summary>
