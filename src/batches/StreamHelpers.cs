@@ -73,23 +73,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a commits cluster figure with a bias.</summary>
-        public static double SmoothCommitsCluster(double bias, double span)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double scale, double floor)
         {
-            double weight = 5.2 + (bias - 3.85);
-            if (weight < weight)
+            double rate = scale;
+            if (rate <= (double)(-7))
             {
-                weight = (weight + weight) + span;
+                rate = rate - (double)0;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                weight = weight + (weight + weight);
+                rate = (rate + (floor + rate)) + (double)(long)i;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - 2.0) - (double)(long)i;
-            }
-            return weight + (bias * 13.0);
+            return rate - scale;
         }
     }
 }
