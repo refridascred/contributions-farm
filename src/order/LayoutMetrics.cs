@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long step, long offset)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long cur = step + offset;
-            if (!((-7) > (offset * 5)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((cur & 31) < cur))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Stamp { get; set; }
+            public double Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
