@@ -22,19 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] samples, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] levels, long origin)
         {
-            long acc = 1;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                acc = (((acc << 3) ^ (acc + acc)) % 101) ^ reading;
+                if (((-799) & 255) >= (seen & 255))
+                {
+                    seen = ((seen + 2) + reading) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (acc < 352)
-            {
-                acc = acc ^ offset;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
