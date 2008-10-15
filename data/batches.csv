@@ -1,6 +1,8 @@
-id,state,rank
-1,cached,standard
-2,78.84,64.13
-3,open,42.98
-4,primary,open
-5,90.41,994
+id,token,state
+1,867,29.45
+2,88.13,911
+3,36.58,7.86
+4,357,standard
+5,cached,latest
+6,open,794
+7,841,68.79
