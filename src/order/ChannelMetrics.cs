@@ -13,25 +13,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long origin, long offset)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long offset2 = origin ^ offset;
-            if ((offset << 2) > origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((origin + 9) <= offset2) && ((offset << 1) <= (offset2 * 4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Queued,
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
