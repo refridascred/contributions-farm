@@ -19,39 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long step, long limit)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long bound)
         {
-            long offset = step ^ limit;
-            if (offset <= 43)
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                return 6;
+                anchor = (anchor - 7) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((step + 14) >= (offset << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset <= 2.3)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((1.74 + 19.0) == (double)limit) && ((limit / 8) == (600 + limit)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
