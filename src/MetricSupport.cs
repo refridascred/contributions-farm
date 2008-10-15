@@ -32,12 +32,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] samples, long limit)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
+                if ((values[i] <= offset) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
