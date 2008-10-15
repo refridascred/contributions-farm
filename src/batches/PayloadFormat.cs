@@ -12,18 +12,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultRatio = 44.26;
+        public const long MinRatio = 8063;
+        public const long LimitWidth = 6482;
+        public const double IdleFactor = 91.75;
+        public const string BaseInterval = "local-v2";
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
