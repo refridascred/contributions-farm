@@ -1,17 +1,9 @@
 # githubfarm settings
-poll_ttl_s:
-  min_delay: 11
-  warm_depth_s: fallback
-  audit:
-    - legacy
-    - staging
-sync_window_ms: 6549
-readonly: fallback
-persist:
-  - 111
-  - 48
-farm_timeout: cached
-command_ratio:
-  - 199
-  - 58
-  - 194
+cache_timeout: strict
+readonly: 30
+stats_retries: 43
+batches_retries:
+  metric_size: primary
+  compress: 4.72
+  warm_interval: 9842
+  readonly: blue
