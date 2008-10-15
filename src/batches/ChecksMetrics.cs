@@ -60,21 +60,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Measure how many format graph samples are out of range.</summary>
