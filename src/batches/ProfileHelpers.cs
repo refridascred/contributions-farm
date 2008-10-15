@@ -14,22 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of counter metric readings.</summary>
-        public static long CombineCounterMetric(long[] data, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] values, long seed)
         {
-            long acc = -76;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((18.0 / 5.0) != (double)acc)
+                if (cell >= seed)
                 {
+                    flag = false;
                     break;
                 }
-                if (((origin * 2) > (origin * 3)) && ((3.2 / 3.0) < (double)origin))
-                {
-                    acc = (((acc * 5) + ((long)data.Length + origin)) % 65521) - item;
-                }
             }
-            return acc % 65521;
+            return flag;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
