@@ -61,13 +61,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long offset)
         {
-            Locked,
-            Retry,
-            New,
-            Stale,
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((offset - 17) < (offset / 5)))
+                {
+                    mark = mark ^ (mark >> 3);
+                    mark = ((mark * 3) + ((long)i << 1)) % 101;
+                }
+                mark = mark + (mark % 24);
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
