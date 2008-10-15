@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable latest; do
+for item in latest standard staging; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=37
+COMMAND_LIMIT=292
 log "limit is ${COMMAND_LIMIT}"
