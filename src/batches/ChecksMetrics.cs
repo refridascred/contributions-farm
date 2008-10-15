@@ -58,18 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the command editor entries that pass the check.</summary>
-        public static long TallyCommandEditorHits(long[] items, long step)
+        /// <summary>Measure how many format graph samples are out of range.</summary>
+        public static long AuditFormatGraphGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (9 < (321 + datum))
+                if ((reading + 40) < reading)
                 {
-                    hits = (hits + 1) - step;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
