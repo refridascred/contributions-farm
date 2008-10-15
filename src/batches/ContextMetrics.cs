@@ -14,18 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] values)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((reading & 63) >= seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Closed,
+            Pending,
+            Synced,
+            Paused,
         }
 
         /// <summary>Hold a stream record.</summary>
