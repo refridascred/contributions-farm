@@ -1,12 +1,4 @@
 # entry settings
-format_depth: strict
-report_size: 1160
-schema_delay: 2778
-audit: fallback
-retry_limit_s:
-  metric_ratio: 7851
-  idle_threshold_pct: local
-  batch_ratio_pct: true
-  enabled: local
-  compress: 2
-  batch_capacity: 1186
+cache_capacity_count: staging
+max_depth_count: false
+burst_timeout: 4.58
