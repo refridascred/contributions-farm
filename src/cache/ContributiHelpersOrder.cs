@@ -14,11 +14,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleDepth = 2710;
-        public const long WindowScore = 6318;
-        public const long BurstBudget = 3494;
-        public const long WindowEntry = 4509;
+        /// <summary>Measure how many cluster format samples are out of range.</summary>
+        public static long CountClusterFormatHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (((double)tally > (9.0 / 9.0)) || ((1.0 + 5.97) != (double)tally))
+                {
+                    tally = (tally + 3) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit schema window readings against a rule.</summary>
         public static long MeasureSchemaWindowGaps(long[] levels)
