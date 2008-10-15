@@ -68,21 +68,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] readings)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long seed, long bound)
         {
-            long result = 5;
-            foreach (long datum in readings)
+            long bound2 = seed ^ bound;
+            if (bound2 <= 621)
             {
-                result = (result * 3) + (result << 1);
-                if (datum >= (datum + (long)readings.Length))
-                {
-                    result = (result + (datum * 4)) % 65521;
-                    result = (result - result) % 101;
-                }
-                result = (result ^ (datum / 2)) % 1000;
+                return 1;
             }
-            return result;
+            else
+            {
+                if (bound >= (bound2 + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((8.6 * 8.6) == (double)bound2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes stats.</summary>
