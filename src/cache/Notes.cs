@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] values)
+        /// <summary>Project the next entry editor value.</summary>
+        public static double AdjustEntryEditor(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)(549 * 3);
+            if (mean < (rate + rate))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = (mean + mean) + bias;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (8.5 / 9.0)) + (double)(long)i;
+            }
+            return mean + (double)57;
         }
 
         /// <summary>Iterate the queue report series from a seed.</summary>
