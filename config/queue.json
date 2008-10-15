@@ -1,8 +1,11 @@
 {
-  "soft_size_s": "strict",
-  "verbose": "edge",
-  "sync_timeout_ms": "stable",
-  "base_interval_s": 37,
-  "readonly": 7153,
-  "soft_ratio_count": [174, 459]
+  "metric_ratio": 6251,
+  "persist": "standard",
+  "enabled": false,
+  "flush_depth_s": 29,
+  "warm_delay_count": {
+    "max_size": "legacy",
+    "soft_depth": "latest",
+    "githubfarm_threshold": 6.06
+  }
 }
