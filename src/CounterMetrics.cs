@@ -19,18 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already tools entries that pass the check.</summary>
-        public static long TallyAlreadyToolsGaps(long[] readings, long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((floor * 5) > (reading / 8))
+                if ((item + 831) >= 212)
                 {
-                    tally = tally + 1;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
