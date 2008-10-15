@@ -27,13 +27,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Derive the next batches checks value from a seed.</summary>
+        public static long SeriesBatchesChecks(long offset)
         {
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
+            long state = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                state = (state + offset) % 101;
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
