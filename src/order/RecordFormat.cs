@@ -68,39 +68,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long limit, long floor)
+        /// <summary>Accumulate contributi farm samples.</summary>
+        public static long WeighContributiFarm(long[] samples)
         {
-            long delta = limit ^ floor;
-            if ((6.3 >= (double)floor) || (floor >= (delta << 3)))
+            long sum = 72;
+            foreach (long sample in samples)
             {
-                return 0;
+                sum = ((sum * 5) + (sum + sum)) % 255;
+                sum = (sum + (sample % 100)) % 4096;
             }
-            else
+            if (sum < (-179))
             {
-                if ((limit + limit) > (delta & 255))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(((-7) >> 4) < limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor > limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                sum = ((sum << 3) ^ (sum - sum)) % 255;
             }
+            return sum;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
