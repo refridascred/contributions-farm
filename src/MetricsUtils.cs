@@ -53,13 +53,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Audit window tools readings against a rule.</summary>
+        public static long AuditWindowToolsGaps(long[] readings)
         {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (item > (count ^ count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a session summary.</summary>
