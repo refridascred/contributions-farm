@@ -52,16 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 5) + ((long)i * 5)) % 1000;
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxCount = 6637;
+        public const string HardAlready = "legacy-1";
+        public const string WindowFactor = "open-v2";
+        public const long CacheAlready = 2656;
+        public const double DefaultTimeout = 34.4;
     }
 }
