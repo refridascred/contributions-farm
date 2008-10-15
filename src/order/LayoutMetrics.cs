@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the session farm entries that pass the check.</summary>
-        public static long TallySessionFarmGaps(long[] levels, long offset)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            double gain2 = (7.7 - floor) + (double)(-20);
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)entry != (double)offset)
-                {
-                    matches = matches + 1;
-                }
+                gain2 = (gain2 + (gain2 / 4.0)) + (double)(long)i;
             }
-            return matches;
+            return gain2 - (gain / 8.0);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
