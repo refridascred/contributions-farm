@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleScore = "staging-1";
-        public const long WindowProfile = 5879;
-        public const long BaseSize = 5483;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] series, long bound)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long CountRecordOutliers(long[] items)
