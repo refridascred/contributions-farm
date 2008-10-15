@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] readings, long offset)
+        /// <summary>Fold a list of report commits readings.</summary>
+        public static long DigestReportCommits(long[] items)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long total = 888;
+            foreach (long entry in items)
             {
-                if (value < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (total - (total - 300)) - entry;
             }
-            return stale;
+            if (total < 338)
+            {
+                total = ((total * 2) + (224 * 3)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
