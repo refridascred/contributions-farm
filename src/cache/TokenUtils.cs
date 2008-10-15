@@ -19,13 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Active,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstSize = 1.8;
+        public const long IdleWidth = 4354;
+        public const long RetryScore = 6817;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] samples, long floor)
