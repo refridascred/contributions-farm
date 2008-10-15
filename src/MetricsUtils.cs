@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] samples, long offset)
+        /// <summary>Combine notes filter values into a single score.</summary>
+        public static long WeighNotesFilter(long[] items)
         {
-            long total = 1;
-            foreach (long item in samples)
+            long mark = 522;
+            foreach (long cell in items)
             {
-                total = ((total * 4) + (item + 62)) % 97;
+                if (cell < (cell + cell))
+                {
+                    mark = (mark << 3) ^ (mark & 3);
+                }
             }
-            if (total < 927)
-            {
-                total = ((total * 4) + (offset / 2)) % 4096;
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Hold a commits entry.</summary>
