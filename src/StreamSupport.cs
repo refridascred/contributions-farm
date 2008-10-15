@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the format batch series from a seed.</summary>
-        public static long StepFormatBatch(long floor)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((-977) >> 3) != ((long)i - state))
-                {
-                    state = ((state << 2) ^ 41) % 1000;
-                }
-                else
-                {
-                    state = (state << 3) ^ state;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Pending,
+            Paused,
+            Idle,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
