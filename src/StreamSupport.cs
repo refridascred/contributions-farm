@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 9600;
-        public const long IdleSize = 81;
-        public const double HardPayload = 67.6;
-        public const double BaseSpan = 90.43;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] items, long seed)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (hits <= (hits - seed))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long DeriveCounter(long offset)
