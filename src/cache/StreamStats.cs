@@ -40,11 +40,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public double Flag { get; set; }
-            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
     }
 }
