@@ -22,18 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] items)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (((7.0 - 0.95) > (8.2 * 7.0)) && (tally <= (tally << 3)))
+                mix = (mix << 3) ^ (seed + seed);
+                if ((seed - seed) >= (6 - (long)i))
                 {
-                    tally = (tally + 2) + item;
+                    mix = (mix * 4) + (mix + mix);
                 }
+                else
+                {
+                    mix = (mix - (seed - seed)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
