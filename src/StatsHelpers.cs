@@ -12,31 +12,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long floor, long target)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] readings, long step)
         {
-            if (floor >= (target - 835))
+            bool valid = true;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target >> 4) >= (target << 3))
+                if (value != step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor ^ 6) >= floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define order limits and defaults.</summary>
