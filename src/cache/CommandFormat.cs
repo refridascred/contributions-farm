@@ -40,25 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long target, long target2)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long cur = target ^ target2;
-            if ((target / 5) > (cur ^ target))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target2 + cur) > (cur & 31))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Adjust a filter reading.</summary>
