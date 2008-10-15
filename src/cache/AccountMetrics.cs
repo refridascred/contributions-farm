@@ -96,18 +96,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] data, long target)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((double)count >= (2.38 / 5.0))
-                {
-                    count = ((count + 3) ^ reading) + target;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
