@@ -39,21 +39,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count farm batch pairs that satisfy a relation.</summary>
-        public static long PairFarmBatchCount(long[] samples)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 511;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (carry - (carry << 2)) - datum;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Fold a list of entry editor readings.</summary>
