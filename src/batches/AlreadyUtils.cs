@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] samples)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                anchor = (anchor - (anchor << 3)) % 97;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor * 3) + ((long)i2 + origin)) % 255;
                 }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
