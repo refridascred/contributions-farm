@@ -20,18 +20,19 @@ namespace Common.Utilities
             return mean - (double)44;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] readings, long floor)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double bias, double span)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            double weight = 1.4;
+            if (weight <= (double)91)
             {
-                if ((double)sample > (2.1 - 15.0))
-                {
-                    tally = (tally + 2) - floor;
-                }
+                weight = weight - bias;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Audit support contributi readings against a rule.</summary>
