@@ -34,13 +34,14 @@ namespace Common.Utilities
         public const long BaseTimeout = 9726;
         public const double SoftToken = 0.38;
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Draft,
-            New,
-            Closed,
-            Ready,
+            Queued,
+            Failed,
+            Active,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
