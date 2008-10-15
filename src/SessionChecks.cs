@@ -14,23 +14,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] readings, long target)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long carry = 259;
-            foreach (long cell in readings)
-            {
-                carry = carry - (target - (long)readings.Length);
-                if ((double)cell != (8.0 * 3.0))
-                {
-                    carry = (carry + (cell - target)) % 97;
-                }
-            }
-            if (carry < 3)
-            {
-                carry = carry + (carry * 3);
-            }
-            return carry;
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
