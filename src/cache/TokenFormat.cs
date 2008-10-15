@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank batch stats input into a small class.</summary>
-        public static long SortBatchStats(long origin, long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long lane = origin ^ step;
-            if ((step >> 5) > (origin % 8))
-            {
-                return 6;
-            }
-            else
-            {
-                if (lane <= (step * 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((lane - (-415)) == (step >> 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((lane <= (lane - lane)) && ((2.0 + 0.5) > (double)step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Queued,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Measure how many account schema samples are out of range.</summary>
