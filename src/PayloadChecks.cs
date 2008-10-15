@@ -36,11 +36,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultDepth = "standard-1";
-        public const long LimitChecks = 7188;
-        public const string CacheChecks = "latest";
-        public const double MaxLevel = 57.74;
+        /// <summary>Classify a schema queue pair into a bucket.</summary>
+        public static long SortSchemaQueue(long limit, long offset)
+        {
+            if ((limit / 3) < 692)
+            {
+                return 4;
+            }
+            else
+            {
+                if (4.23 <= (double)limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + offset) <= limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next batches value.</summary>
         public static double ProjectBatches(double rate, double offset)
