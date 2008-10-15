@@ -1,6 +1,8 @@
 {
-  "base_limit_s": 28,
-  "default_timeout_s": 7,
-  "soft_capacity_ms": 60,
-  "warm_limit_s": "staging"
+  "sync_capacity_count": false,
+  "burst_depth_s": 7025,
+  "schema_capacity": 16.4,
+  "soft_window_ms": "green",
+  "max_depth": 5745,
+  "cache_delay": 79
 }
