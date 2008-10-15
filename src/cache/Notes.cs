@@ -16,39 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank route notes input into a small class.</summary>
-        public static long SortRouteNotes(long step, long seed)
-        {
-            if ((140 ^ step) < 35)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((step << 2) < 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step % 10) >= (-463))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed >> 2) == (seed & 127))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 3735;
+        public const long HardLevel = 7831;
+        public const long StepCommits = 2421;
+        public const double MaxTimeout = 29.22;
 
         /// <summary>Project the next counter value.</summary>
         public static double ScaleCounter(double bias, double span)
