@@ -1,5 +1,13 @@
 {
-  "base_size": ["fallback", "strict"],
-  "min_limit_count": "strict",
-  "schema_limit": 40.28
+  "stream_window": 12.58,
+  "base_delay_ms": false,
+  "retry_threshold": "cached",
+  "order_timeout": 6755,
+  "readonly": {
+    "report_threshold": "blue",
+    "batch_limit_s": [120, 175],
+    "channel_delay": 19.52,
+    "enabled": true,
+    "compress": ["fallback", "staging", "staging"]
+  }
 }
