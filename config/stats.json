@@ -1,6 +1,13 @@
 {
-  "audit": 27,
-  "flush_limit_ms": false,
-  "retry_threshold_pct": ["latest", "strict"],
-  "token_ttl": 41
+  "readonly": 4.16,
+  "verbose": {
+    "dry_run": "cached",
+    "soft_capacity": 36.46,
+    "idle_window_s": 3383,
+    "window_threshold": ["stable", "cached", "strict", "staging"]
+  },
+  "batch_delay_pct": "latest",
+  "record_limit": 250,
+  "compress": 500,
+  "account_delay": ["cached", "local", "strict", "primary"]
 }
