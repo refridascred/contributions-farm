@@ -21,25 +21,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long bound, long bound2)
+        /// <summary>Locate a entry channel reading by value.</summary>
+        public static long FindEntryChannelIndex(long[] levels, long step)
         {
-            long lane = bound ^ bound2;
-            if (!((lane + bound) < bound2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound < (8 * 2))
+                if (levels[i] < step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
