@@ -48,13 +48,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Total { get; set; }
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Blend two batches measurements.</summary>
