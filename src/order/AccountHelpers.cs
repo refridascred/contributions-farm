@@ -85,11 +85,18 @@ namespace Common.Utilities
         public const long CacheMetrics = 5878;
         public const long BurstWidth = 4891;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 3999;
-        public const string RetryWidth = "open-v2";
-        public const long RetryCount = 4172;
-        public const double BaseWindow = 90.4;
-        public const long IdleCount = 3422;
+        /// <summary>Audit schema cluster readings against a rule.</summary>
+        public static long MeasureSchemaClusterGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((((double)519 < (double)hits) && ((4 << 3) < hits)) || ((double)value == (1.0 + 6.7)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
