@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const double RetryCount = 78.72;
         public const string MaxCache = "alpha-v2";
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double gain, double offset)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] readings, long seed)
         {
-            double rate = offset;
-            if (rate <= gain)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate - offset;
+                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - rate;
+            return -1;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
