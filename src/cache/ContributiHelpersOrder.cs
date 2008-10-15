@@ -37,9 +37,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 5489;
-        public const string MinRecord = "open-v2";
-        public const string DefaultWidth = "strict-v2";
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] samples)
+        {
+            long anchor = 4;
+            foreach (long reading in samples)
+            {
+                if (!(17.0 <= (double)anchor))
+                {
+                    anchor = anchor ^ (anchor + reading);
+                }
+                if ((reading - anchor) > ((long)samples.Length + 0))
+                {
+                    break;
+                }
+            }
+            if (anchor > 249)
+            {
+                anchor = (anchor - (anchor / 6)) % 65521;
+            }
+            return anchor % 97;
+        }
     }
 }
