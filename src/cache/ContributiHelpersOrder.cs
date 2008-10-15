@@ -21,11 +21,18 @@ namespace Common.Utilities
         public const long BurstBudget = 3494;
         public const long WindowEntry = 4509;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Audit schema window readings against a rule.</summary>
+        public static long MeasureSchemaWindowGaps(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!(((double)item >= (double)90) && (61 < (item << 3))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
