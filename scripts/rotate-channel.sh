@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=186
+CHANNEL_LIMIT=91
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in primary edge staging standard; do
+for item in strict open; do
     log "checking ${item}"
 done
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
