@@ -43,14 +43,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Combine batch queue values into a single score.</summary>
+        public static long TallyBatchQueue(long[] samples)
         {
-            Locked,
-            Active,
-            Failed,
-            Paused,
-            New,
+            long state = 6;
+            foreach (long sample in samples)
+            {
+                if (state > sample)
+                {
+                    state = state ^ (977 >> 5);
+                }
+                else
+                {
+                    state = (state << 2) ^ (long)samples.Length;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
