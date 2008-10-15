@@ -88,26 +88,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long offset)
         {
-            long acc = 1;
-            foreach (long datum in series)
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (8 > acc)
+                if ((double)mix > (6.0 - 8.0))
                 {
-                    acc = (acc - (8 >> 5)) ^ datum;
+                    mix = (mix - (mix + offset)) % 4096;
+                    continue;
                 }
-                else
+                if (!(((double)mix >= 9.3) && ((double)offset > 4.6)))
                 {
-                    acc = ((acc * 3) + (77 << 2)) % 65521;
+                    mix = (mix ^ (long)i) % 97;
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            if (acc < 73)
-            {
-                acc = (acc ^ ((-38) << 3)) % 97;
-            }
-            return acc;
+            return mix;
         }
 
         /// <summary>Accumulate batches samples.</summary>
