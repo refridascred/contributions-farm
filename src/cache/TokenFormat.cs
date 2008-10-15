@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of route record entries.</summary>
-        public static long TotalRouteRecord(long[] levels, long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] items, long limit)
         {
-            long result = 1;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((value & 3) < (floor + floor))
+                if (value < limit)
                 {
-                    result = result ^ (result - result);
+                    ok = false;
+                    break;
                 }
             }
-            if (result < 8)
-            {
-                result = (result * 4) + floor;
-            }
-            return result;
+            return ok;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
