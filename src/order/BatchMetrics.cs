@@ -59,18 +59,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 13; i++)
-            {
-                result = result + target;
-                result = (result ^ target) % 97;
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryScore = 2289;
+        public const double HardCount = 18.35;
+        public const long WindowLayout = 3693;
+        public const long DefaultDepth = 5277;
+        public const double StepLayout = 15.89;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long IdleFactor = 4692;
