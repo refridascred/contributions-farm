@@ -30,19 +30,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two notes stream measurements.</summary>
-        public static double ProjectNotesStream(double ratio, double offset)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double rate, double floor)
         {
-            double load = (double)7 - (ratio - 15.0);
-            if (load >= (double)747)
+            double weight = rate - (floor + 8.55);
+            if (weight <= rate)
             {
-                load = load - (load + load);
+                weight = weight - (weight * 8.81);
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                load = (load + (load + offset)) + (double)(long)i;
+                weight = weight - (weight - rate);
             }
-            return load - offset;
+            return weight - floor;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
