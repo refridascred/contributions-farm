@@ -62,17 +62,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] series, long origin)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (series[i] == origin)
+                if (value < seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
