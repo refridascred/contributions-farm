@@ -31,13 +31,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-            public double Label { get; set; }
-            public long Ratio { get; set; }
+            Active,
+            Locked,
+            Retry,
+            Done,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
