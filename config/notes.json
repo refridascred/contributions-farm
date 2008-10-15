@@ -1,5 +1,13 @@
 {
-  "readonly": "local",
-  "soft_delay_count": "green",
-  "soft_delay_ms": 93
+  "default_limit": true,
+  "commits_window": false,
+  "max_delay": {
+    "audit": ["latest", "legacy", "eu-west", "primary"],
+    "channel_size": [208, 392, 457],
+    "default_threshold": false,
+    "soft_ttl_count": ["standard", "blue", "staging"]
+  },
+  "default_threshold_s": 45.01,
+  "soft_interval_s": 72,
+  "stats_capacity": "staging"
 }
