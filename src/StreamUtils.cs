@@ -19,12 +19,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Look up the position of a channel batches sample.</summary>
+        public static long LocateChannelBatchesIndex(long[] samples, long floor)
         {
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
