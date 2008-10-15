@@ -26,13 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
-            public double Label { get; set; }
+            Active,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a session options.</summary>
