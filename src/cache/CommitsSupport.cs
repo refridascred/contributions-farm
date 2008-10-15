@@ -26,19 +26,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every record commits entry stays within the limit.</summary>
-        public static bool ValidateRecordCommitsRange(long[] data, long seed)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Active,
+            Retry,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
