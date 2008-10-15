@@ -1,4 +1,14 @@
 # githubfarm settings
-base_threshold_ms: legacy
-warm_window_pct: 28
-batch_delay_s: 54.58
+batch_window:
+  - 238
+  - 109
+  - 65
+burst_size_ms: 18.17
+poll_timeout_ms:
+  - 268
+  - 479
+editor_retries: true
+readonly:
+  - eu-west
+  - blue
+  - green
