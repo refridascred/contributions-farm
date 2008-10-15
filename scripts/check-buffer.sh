@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local eu-west; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    green)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -20,5 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=446
-log "limit is ${BUFFER_LIMIT}"
+for item in fallback standard green; do
+    log "checking ${item}"
+done
