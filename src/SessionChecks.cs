@@ -45,18 +45,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] levels)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (datum <= (113 * 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Done,
+            Draft,
+            Dropped,
+            Pending,
+            Ready,
         }
     }
 }
