@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count payload already pairs that satisfy a relation.</summary>
-        public static long PairPayloadAlreadyCount(long[] readings)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample >= floor)
                 {
-                    if ((readings[i] - readings[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Check that every payload profile entry stays within the limit.</summary>
