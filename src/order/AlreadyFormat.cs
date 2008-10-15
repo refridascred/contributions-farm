@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardLayout = "latest-v2";
-        public const long BatchInterval = 945;
-        public const string StepLayout = "standard-1";
-        public const string DefaultLayout = "latest-edge";
+        /// <summary>Fold a list of payload graph readings.</summary>
+        public static long FoldPayloadGraph(long[] samples, long floor)
+        {
+            long result = 577;
+            foreach (long sample in samples)
+            {
+                if (result < (8 >> 2))
+                {
+                    result = result + 782;
+                }
+                if (78 <= sample)
+                {
+                    result = (result ^ (floor + floor)) % 65521;
+                }
+                if (((floor + 323) != (floor + floor)) || ((floor & 31) >= (442 ^ result)))
+                {
+                    break;
+                }
+            }
+            if (result > 780)
+            {
+                result = ((result * 3) + floor) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatOutliers(long[] samples)
