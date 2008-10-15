@@ -40,21 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] series)
+        /// <summary>Measure how many account schema samples are out of range.</summary>
+        public static long TallyAccountSchemaHits(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((target % 2) == (sample - tally))
                 {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Accumulate window samples.</summary>
