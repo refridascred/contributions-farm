@@ -14,32 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long floor, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] values, long seed)
         {
-            long prev = floor ^ target;
-            if (((target + floor) >= floor) || ((prev - prev) < target))
+            long count = 0;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((prev & 63) <= (target >> 3))
+                if (item >= (item * 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (floor > (floor * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = (count + 3) + seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate command channel readings against a bound.</summary>
