@@ -29,25 +29,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long floor, long target)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] levels)
         {
-            long lane = floor + target;
-            if ((double)target > (double)69)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((lane & 63) == (target - target)) || ((floor - target) < (lane / 4)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    if ((levels[i] ^ levels[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the tools kind values.</summary>
