@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheLayout = "alpha-1";
-        public const long BatchLayout = 26;
-        public const string LimitLayout = "stable";
-        public const string RetryFactor = "staging-edge";
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] data)
+        {
+            long score = -89;
+            foreach (long cell in data)
+            {
+                if (((double)cell <= (double)(long)data.Length) || ((double)cell < 6.03))
+                {
+                    score = ((score << 2) ^ score) % 101;
+                }
+            }
+            if (score < 7)
+            {
+                score = (score << 3) ^ score;
+            }
+            return score;
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long PairCounterCount(long[] readings)
