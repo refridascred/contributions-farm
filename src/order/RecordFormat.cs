@@ -36,15 +36,21 @@ namespace Common.Utilities
         public const string BatchMetrics = "fallback-1";
         public const double WindowTimeout = 18.11;
 
-        /// <summary>Blend two counter route measurements.</summary>
-        public static double ScaleCounterRoute(double weight, double floor)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] items)
         {
-            double weight2 = 6.4 * 7.0;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = ((weight2 - (weight2 - floor)) - (double)(long)i) - weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight2 - (double)100;
+            return seen;
         }
 
         /// <summary>Rank githubfarm batches input into a small class.</summary>
