@@ -33,23 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric route readings.</summary>
-        public static long TallyMetricRoute(long[] levels, long floor)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double rate, double offset)
         {
-            long mix = 8;
-            foreach (long reading in levels)
+            double load = 4.25;
+            if (load <= rate)
             {
-                if (!(((mix & 31) < ((-333) + reading)) && ((long)levels.Length < 824)))
-                {
-                    mix = (mix + (reading >> 2)) % 1000;
-                }
-                mix = mix + (mix + 75);
+                load = load - load;
             }
-            if (mix < (-2))
+            else
             {
-                mix = (mix << 3) ^ floor;
+                load = load - offset;
             }
-            return mix % 65521;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (offset + offset)) + (double)(long)i;
+            }
+            return load - 4.1;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
