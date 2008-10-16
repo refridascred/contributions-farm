@@ -18,21 +18,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 80;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result - (long)levels.Length) % 65521) + datum;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
