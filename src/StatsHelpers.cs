@@ -52,10 +52,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardProfile = 14.97;
-        public const string CacheProfile = "stable";
-        public const long MinRatio = 6989;
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public bool Region { get; set; }
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TallyEditor(long[] series)
