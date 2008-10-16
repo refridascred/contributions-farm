@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] levels, long limit)
+        /// <summary>Classify a editor already pair into a bucket.</summary>
+        public static long BucketEditorAlready(long offset, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((floor > (offset & 63)) && (floor <= (offset / 4)))
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if (((floor * 3) >= (5 + 72)) || ((7 + 5) <= (floor * 4)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor - offset) > (floor + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
