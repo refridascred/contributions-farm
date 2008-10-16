@@ -61,15 +61,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] levels, long seed)
         {
-            long carry = 16;
-            foreach (long datum in readings)
+            long mix = 61;
+            foreach (long sample in levels)
             {
-                carry = (carry + (carry % 97)) + datum;
+                if (!((mix + 0) == (sample - seed)))
+                {
+                    mix = mix - seed;
+                }
+                if (((double)seed <= (double)9) || ((sample + sample) == (63 >> 4)))
+                {
+                    break;
+                }
             }
-            return carry % 65521;
+            if (mix > 86)
+            {
+                mix = ((mix * 3) + (mix / 2)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
