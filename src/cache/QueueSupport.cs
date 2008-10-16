@@ -33,17 +33,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] readings, long limit)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
