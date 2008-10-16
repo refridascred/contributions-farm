@@ -79,22 +79,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] samples)
+        /// <summary>Classify a stream cluster pair into a bucket.</summary>
+        public static long BucketStreamCluster(long offset, long step)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            if (offset < (offset % 10))
             {
-                if ((sample > (seen ^ (long)samples.Length)) || (((sample & 127) <= seen) || (8 <= (seen * 4))))
+                return 7;
+            }
+            else
+            {
+                if ((step <= (step + offset)) || ((step % 60) != (offset >> 5)))
                 {
-                    seen = seen + 2;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((step + 7) < (offset >> 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
