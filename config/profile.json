@@ -1,11 +1,6 @@
 {
-  "entry_window": {
-    "farm_ratio": "local",
-    "flush_retries_s": true,
-    "compress": 83.75,
-    "verbose": true
-  },
-  "contributi_delay": 74,
-  "compress": 100,
-  "support_interval": [333, 385]
+  "poll_retries_pct": "latest",
+  "warm_threshold_ms": "fallback",
+  "burst_depth": ["local", "standard", "latest", "cached"],
+  "stream_capacity": [320, 274]
 }
