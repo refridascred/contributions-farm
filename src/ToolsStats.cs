@@ -70,27 +70,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] levels, long seed)
-        {
-            long mix = 61;
-            foreach (long sample in levels)
-            {
-                if (!((mix + 0) == (sample - seed)))
-                {
-                    mix = mix - seed;
-                }
-                if (((double)seed <= (double)9) || ((sample + sample) == (63 >> 4)))
-                {
-                    break;
-                }
-            }
-            if (mix > 86)
-            {
-                mix = ((mix * 3) + (mix / 2)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 6613;
+        public const long BurstCluster = 670;
+        public const string BurstSize = "cached-v2";
+        public const string BaseInterval = "primary-edge";
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
