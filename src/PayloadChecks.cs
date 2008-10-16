@@ -80,16 +80,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long step)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                result = (result << 3) ^ (result + result);
-                result = ((result * 2) + (long)i) % 1000;
+                if (!((carry << 3) <= (step % 24)))
+                {
+                    carry = carry + (carry + (long)i);
+                    carry = carry - (step * 4);
+                }
+                carry = (carry + (carry ^ (long)i)) % 255;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return result;
+            return carry;
         }
     }
 }
