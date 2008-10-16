@@ -30,25 +30,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long offset)
+        /// <summary>Compare every pair of batches farm readings.</summary>
+        public static long OverlapBatchesFarmCount(long[] items)
         {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor ^ (anchor - offset)) % 255;
-                if (((long)i - offset) >= (54 - anchor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = anchor + anchor;
-                    break;
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    anchor = (anchor << 3) ^ (anchor + offset);
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a metrics options.</summary>
