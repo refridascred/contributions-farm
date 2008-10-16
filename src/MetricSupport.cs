@@ -34,14 +34,13 @@ namespace Common.Utilities
             return ratio - (scale - ratio);
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Active,
-            Pending,
-            Ready,
-            Draft,
-            Stale,
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
