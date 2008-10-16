@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit githubfarm already readings against a rule.</summary>
-        public static long MeasureGithubfarmAlreadyHits(long[] items)
+        /// <summary>Count batches githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchBatchesGithubfarmCount(long[] levels)
         {
             long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)datum < 9.1)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] ^ levels[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
