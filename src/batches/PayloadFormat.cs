@@ -27,22 +27,11 @@ namespace Common.Utilities
         public const double MaxCount = 6.58;
         public const long WindowReport = 1083;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 3214;
+        public const long CacheRatio = 6934;
+        public const long LimitFilter = 7175;
+        public const long LimitLevel = 6042;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BurstScore = 4268;
