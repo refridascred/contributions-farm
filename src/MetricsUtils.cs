@@ -46,18 +46,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] series, long limit)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((reading >> 2) > 190)
+                if (datum > bound)
                 {
-                    tally = (tally + 3) - limit;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
