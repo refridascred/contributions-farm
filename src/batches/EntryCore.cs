@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] samples, long offset)
         {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < offset) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up filter samples.</summary>
