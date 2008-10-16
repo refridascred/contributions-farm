@@ -33,13 +33,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] items, long limit)
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
