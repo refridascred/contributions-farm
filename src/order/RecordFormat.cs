@@ -32,12 +32,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowMetrics = "local-v2";
-        public const long SoftSpan = 923;
-        public const long MinSpan = 7356;
-        public const string BatchMetrics = "fallback-1";
-        public const double WindowTimeout = 18.11;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsGaps(long[] items)
