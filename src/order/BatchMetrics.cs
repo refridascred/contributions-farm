@@ -61,11 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public double Level { get; set; }
+            long result = 8;
+            foreach (long value in levels)
+            {
+                if ((9.98 + 9.58) != (double)value)
+                {
+                    result = (result << 2) ^ (result - result);
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
