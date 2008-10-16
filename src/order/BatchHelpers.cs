@@ -24,12 +24,11 @@ namespace Common.Utilities
             return scale - (4.21 - rate);
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            public bool Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Derive the next stats profile value from a seed.</summary>
