@@ -15,21 +15,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Digest a series of graph payload entries.</summary>
+        public static long WeighGraphPayload(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((5.6 * 8.8) < (double)entry) && (((-70) + score) <= floor))
                 {
-                    if ((series[i] ^ series[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score - (entry ^ floor)) % 255;
+                }
+                else
+                {
+                    score = score - (floor + 601);
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Check that every support batches entry stays within the limit.</summary>
