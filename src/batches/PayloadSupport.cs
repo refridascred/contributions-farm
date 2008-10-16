@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of order window readings.</summary>
-        public static long OverlapOrderWindowCount(long[] data)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell < seed)
                 {
-                    if ((data[i] ^ data[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
