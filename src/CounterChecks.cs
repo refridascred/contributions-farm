@@ -37,13 +37,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
             Done,
-            Closed,
-            Failed,
-            Synced,
+            Idle,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a window info.</summary>
