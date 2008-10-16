@@ -20,10 +20,17 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 3874;
-        public const string IdleScore = "latest-v2";
-        public const long MaxTools = 3321;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total << 3) ^ (total + (long)i)) % 255;
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long FoldMetrics(long[] samples)
