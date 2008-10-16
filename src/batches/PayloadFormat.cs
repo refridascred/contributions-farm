@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] items, long target)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double weight, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = floor;
+            if (drift < (drift / 2.0))
             {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
+                drift = drift + (2.9 + floor);
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + weight) + (double)(long)i;
+            }
+            return drift - (double)43;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
