@@ -35,18 +35,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] levels, long bound)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (!((((long)levels.Length % 7) > (count % 10)) && ((4.9 / 5.0) > (double)sample)))
-                {
-                    count = (count + 2) - bound;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
