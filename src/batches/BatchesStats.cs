@@ -42,11 +42,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public double Weight { get; set; }
-            public double Mode { get; set; }
+            Draft,
+            Failed,
+            Retry,
+            Stale,
         }
     }
 }
