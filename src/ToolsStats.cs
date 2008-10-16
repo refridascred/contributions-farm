@@ -70,11 +70,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 6613;
-        public const long BurstCluster = 670;
-        public const string BurstSize = "cached-v2";
-        public const string BaseInterval = "primary-edge";
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long target, long origin)
+        {
+            if ((double)target > (7.52 / 5.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target / 9) >= (7 - target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((origin % 97) != (target - 25)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target ^ target) == (463 - origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
