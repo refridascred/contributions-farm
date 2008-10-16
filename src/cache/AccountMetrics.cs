@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a format commits counter forward.</summary>
-        public static long SeriesFormatCommits(long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] samples, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                anchor = (anchor + (origin - anchor)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((entry * 5) == (entry - seed))
+                {
+                    seen = seen + 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
