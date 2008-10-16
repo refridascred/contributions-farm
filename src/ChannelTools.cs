@@ -15,22 +15,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of graph payload entries.</summary>
-        public static long WeighGraphPayload(long[] items, long floor)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] readings)
         {
-            long score = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((5.6 * 8.8) < (double)entry) && (((-70) + score) <= floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score - (entry ^ floor)) % 255;
-                }
-                else
-                {
-                    score = score - (floor + 601);
+                    if ((readings[i] + readings[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Count the editor record entries that pass the check.</summary>
