@@ -39,12 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Look up the position of a graph payload sample.</summary>
+        public static long FindGraphPayloadIndex(long[] items, long target)
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count window schema pairs that satisfy a relation.</summary>
