@@ -13,18 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the graph buffer entries that pass the check.</summary>
-        public static long AuditGraphBufferGaps(long[] data, long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double rate, double span)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double mean = (rate - span) / 6.0;
+            if (mean <= 16.0)
             {
-                if (((double)count < (2.2 + 5.4)) || ((double)reading == (5.0 * 16.0)))
-                {
-                    count = (count + 3) + seed;
-                }
+                mean = mean + (0.4 - 11.0);
             }
-            return count;
+            else
+            {
+                mean = mean - (rate + span);
+            }
+            return mean + (double)3;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
