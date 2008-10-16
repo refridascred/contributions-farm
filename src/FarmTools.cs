@@ -20,20 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((9.25 * 15.0) >= (double)floor))
-                {
-                    result = result ^ result;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinSpan = 88.12;
+        public const long SoftFactor = 3774;
+        public const string RetryCount = "fallback-edge";
+        public const long HardMetrics = 3152;
+        public const string DefaultDepth = "legacy-v2";
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long TallyBatchHits(long[] samples, long limit)
