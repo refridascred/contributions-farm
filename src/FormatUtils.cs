@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double rate, double floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] series, long offset)
         {
-            double mean = (floor + floor) * 17.0;
-            if (mean >= rate)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                mean = mean - floor;
+                if (cell > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean + (floor - rate);
+            return stale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
