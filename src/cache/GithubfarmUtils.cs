@@ -20,11 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double bias, double floor)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            double gain = (floor * 2.9) / 3.0;
-            return (gain + (3.39 / 2.0)) + bias;
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
