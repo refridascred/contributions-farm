@@ -20,21 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] samples)
+        /// <summary>Fold a list of editor graph readings.</summary>
+        public static long ScoreEditorGraph(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 599;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((total ^ origin) <= origin) && ((total % 97) == (total * 5)))
                 {
-                    if ((samples[i] ^ samples[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = total - value;
+                    total = (total + (value ^ 8)) % 97;
+                }
+                if ((double)origin == (1.48 - 1.0))
+                {
+                    total = ((total << 3) ^ (total + 8)) % 4096;
                 }
             }
-            return seen;
+            return total % 65521;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
