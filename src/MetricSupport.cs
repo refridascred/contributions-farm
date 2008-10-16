@@ -12,18 +12,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of schema commits readings.</summary>
-        public static long FoldSchemaCommits(long[] series, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] readings)
         {
-            long state = 916;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((double)state < (13.0 + 7.35))
+                if (((cell * 5) < seen) && ((double)seen >= 9.0))
                 {
-                    state = ((((state << 2) ^ (501 + 449)) % 65521) - reading) + floor;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
