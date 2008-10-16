@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] data, long seed)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + (long)data.Length) < seed)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Locked,
+            Retry,
+            Active,
+            Pending,
         }
 
         /// <summary>Define account limits and defaults.</summary>
