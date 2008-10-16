@@ -14,24 +14,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long step, long bound)
+        /// <summary>Count route payload pairs that satisfy a relation.</summary>
+        public static long CompareRoutePayloadCount(long[] samples)
         {
-            if ((step / 5) >= step)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (step < (bound >> 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    if ((samples[i] ^ samples[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
