@@ -42,12 +42,19 @@ namespace Common.Utilities
         public const long StepAccount = 4758;
         public const long CacheAccount = 2646;
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double scale, double span)
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            double mean = 15.0;
+            if (mean <= (scale / 8.0))
+            {
+                mean = (mean + scale) - span;
+            }
+            else
+            {
+                mean = mean - (scale * 8.9);
+            }
+            return mean + mean;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
