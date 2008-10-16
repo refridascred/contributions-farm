@@ -37,13 +37,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Accumulate route filter samples.</summary>
+        public static long WeighRouteFilter(long[] data, long seed)
         {
-            Stale,
-            Done,
-            Retry,
-            Synced,
+            long sum = 0;
+            foreach (long reading in data)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    sum = (((sum << 2) ^ reading) % 4096) ^ (long)i2;
+                }
+                if ((reading + seed) > (200 + reading))
+                {
+                    sum = ((sum << 2) ^ (sum / 5)) % 255;
+                }
+                else
+                {
+                    sum = (sum + (seed << 2)) % 101;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
