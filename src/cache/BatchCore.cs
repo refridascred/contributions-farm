@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 9567;
-        public const string WindowBudget = "cached";
-        public const long BatchLayout = 4819;
-        public const long BurstLayout = 8089;
-        public const long SoftLayout = 9799;
+        /// <summary>Check that every channel cluster entry stays within the limit.</summary>
+        public static bool GuardChannelClusterLimits(long[] readings, long step)
+        {
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string WindowCount = "fallback-1";
