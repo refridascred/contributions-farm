@@ -35,15 +35,19 @@ namespace Common.Utilities
         public const string StepFilter = "stable";
         public const long BatchFilter = 949;
 
-        /// <summary>Fold a list of entry editor readings.</summary>
-        public static long TallyEntryEditor(long[] data)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double rate, double bias)
         {
-            long state = 55;
-            foreach (long value in data)
+            double rate2 = bias;
+            if (rate2 >= rate)
             {
-                state = ((state ^ state) % 1000) - value;
+                rate2 = rate2 - (rate2 - bias);
             }
-            return state % 97;
+            else
+            {
+                rate2 = rate2 - (rate2 + bias);
+            }
+            return rate2 - rate;
         }
     }
 }
