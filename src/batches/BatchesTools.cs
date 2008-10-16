@@ -27,11 +27,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitLevel = "cached-v2";
-        public const string DefaultSpan = "strict-v2";
-        public const long SoftWidth = 8050;
-        public const long MinAlready = 4412;
-        public const long RetryAlready = 645;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] values, long seed)
+        {
+            long result = 8;
+            foreach (long entry in values)
+            {
+                if ((131 + result) <= (entry / 6))
+                {
+                    result = result ^ (entry - result);
+                }
+                if (((871 - seed) != ((-52) & 1)) || (8 <= (entry * 3)))
+                {
+                    result = result + 873;
+                }
+            }
+            if (result < 89)
+            {
+                result = (result * 5) + seed;
+            }
+            return result;
+        }
     }
 }
