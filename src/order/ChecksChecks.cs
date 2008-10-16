@@ -14,15 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double gain, double floor)
+        /// <summary>Fold a list of payload editor readings.</summary>
+        public static long DigestPayloadEditor(long[] values)
         {
-            double mean = (floor + floor) / 6.0;
-            for (int i = 0; i < 2; i++)
+            long carry = -3;
+            foreach (long cell in values)
             {
-                mean = ((mean - floor) + (double)(long)i) + gain;
+                carry = ((carry << 3) ^ (28 >> 5)) - cell;
             }
-            return mean - (double)(-210);
+            if (carry < 55)
+            {
+                carry = ((carry * 5) + (carry + carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Check that every cache metric entry stays within the limit.</summary>
