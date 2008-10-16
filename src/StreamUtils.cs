@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] data, long step)
+        /// <summary>Fold a list of format contributi readings.</summary>
+        public static long TallyFormatContributi(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long result = 7;
+            foreach (long value in samples)
             {
-                if (((47 + 6) >= step) && !((double)sample == (double)seen))
+                if (((value - value) != (result << 2)) && ((value * 3) >= value))
                 {
-                    seen = seen + 1;
+                    result = (result << 3) ^ result;
                 }
             }
-            return seen;
+            if (result > 9)
+            {
+                result = result ^ (long)samples.Length;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a channel batches sample.</summary>
