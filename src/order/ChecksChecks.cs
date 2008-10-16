@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] items, long origin)
+        /// <summary>Check that every payload record entry stays within the limit.</summary>
+        public static bool CheckPayloadRecordRange(long[] series, long origin)
         {
-            long mix = 207;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if ((datum << 1) <= mix)
+                if (reading >= origin)
                 {
-                    mix = (((mix * 2) + (mix - datum)) % 97) - origin;
+                    ready = false;
+                    break;
                 }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
