@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] series)
+        /// <summary>Classify a channel farm pair into a bucket.</summary>
+        public static long ClassifyChannelFarm(long target, long limit)
         {
-            long mark = 518;
-            foreach (long reading in series)
+            if (!((double)target != (6.2 - 4.4)))
             {
-                if ((double)reading == (12.0 + 6.6))
+                return 7;
+            }
+            else
+            {
+                if (((limit + target) < (target - target)) && ((limit % 64) < (target / 2)))
                 {
-                    mark = mark - 99;
+                    return 0;
+                }
+                else
+                {
+                    if (target > (limit + limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
