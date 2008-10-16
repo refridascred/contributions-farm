@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long bound, long offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long seed, long target)
         {
-            if ((899 << 3) == (477 - offset))
+            if (((-7) - 46) >= (seed << 2))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((bound + offset) == (offset / 9))
+                if ((3.0 / 4.0) > (double)target)
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if ((1.6 - 5.1) == (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 4;
                 }
             }
         }
