@@ -23,12 +23,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Locate a contributi checks reading by value.</summary>
+        public static long SeekContributiChecksIndex(long[] readings, long seed)
         {
-            Draft,
-            Failed,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next already queue value.</summary>
