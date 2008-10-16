@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const double MinRatio = 61.91;
         public const long BaseCount = 2843;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Dropped,
-            Retry,
-            Active,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardContext = 67.65;
+        public const long MaxLevel = 8462;
+        public const long MinTimeout = 3681;
+        public const string LimitScore = "primary-1";
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricHits(long[] data, long offset)
