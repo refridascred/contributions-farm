@@ -20,12 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long step, long floor)
         {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            if ((step + floor) > floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((834 & 7) > floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
