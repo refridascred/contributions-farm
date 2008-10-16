@@ -25,21 +25,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] levels)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public bool Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
