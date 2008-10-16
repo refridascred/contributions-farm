@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] levels, long target)
         {
-            New,
-            Queued,
-            Locked,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((target ^ matches) < (matches << 1))
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
