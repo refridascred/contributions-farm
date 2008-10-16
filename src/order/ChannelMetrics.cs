@@ -20,10 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 2957;
-        public const long StepBatch = 2357;
-        public const string SoftRatio = "primary-v2";
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long seed, long origin)
+        {
+            if ((4.0 + 8.0) >= (double)origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((3 + origin) == ((-93) << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)seed <= (5.1 + 1.2)) || ((seed % 97) >= (53 >> 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long SeekFilterIndex(long[] values, long step)
