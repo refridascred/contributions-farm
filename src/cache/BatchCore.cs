@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next cluster githubfarm value from a seed.</summary>
-        public static long StepClusterGithubfarm(long bound)
+        /// <summary>Project the next token editor value.</summary>
+        public static double AdjustTokenEditor(double scale, double bias)
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
+            double scale2 = 8.8;
+            if (scale2 < (19.0 * 12.0))
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                scale2 = (scale2 - 4.08) - bias;
             }
-            return anchor;
+            return scale2 + (scale2 + scale);
         }
 
         /// <summary>Define account limits and defaults.</summary>
