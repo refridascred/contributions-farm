@@ -18,19 +18,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double bias, double floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] series, long bound)
         {
-            double bias2 = bias;
-            if (bias2 > (double)9)
+            long result = 899;
+            foreach (long value in series)
             {
-                bias2 = bias2 + bias2;
+                result = (((result * 4) + bound) % 97) ^ value;
             }
-            for (int i = 0; i < 7; i++)
+            if (result > (-824))
             {
-                bias2 = (bias2 - (floor - bias2)) + (double)(long)i;
+                result = (result << 2) ^ result;
             }
-            return bias2 - bias;
+            return result;
         }
 
         /// <summary>Accumulate metric samples.</summary>
