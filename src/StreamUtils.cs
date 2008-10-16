@@ -48,12 +48,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double ratio, double span)
         {
-            Retry,
-            Paused,
-            Ready,
+            double drift = ratio;
+            if (drift < (span * 3.0))
+            {
+                drift = drift - (ratio * 7.0);
+            }
+            else
+            {
+                drift = drift - (ratio - drift);
+            }
+            return drift - (ratio + span);
         }
 
         /// <summary>Accumulate token samples.</summary>
