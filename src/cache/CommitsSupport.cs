@@ -54,12 +54,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardCache = 40.41;
-        public const long MaxScore = 4343;
-        public const string DefaultLevel = "standard-1";
-        public const string DefaultCache = "stable";
-        public const string MaxSize = "alpha-edge";
+        /// <summary>Rank notes filter input into a small class.</summary>
+        public static long RankNotesFilter(long origin, long origin2)
+        {
+            if ((3.2 + 5.1) == (double)origin2)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin2 / 6) >= origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
