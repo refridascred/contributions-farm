@@ -50,15 +50,15 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Match up buffer entry samples.</summary>
-        public static long MatchBufferEntryCount(long[] data)
+        /// <summary>Count window schema pairs that satisfy a relation.</summary>
+        public static long PairWindowSchemaCount(long[] samples)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) > 20)
+                    if ((samples[i] - samples[j]) > 11)
                     {
                         tally = tally + 1;
                     }
