@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long seed, long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] data)
         {
-            long diff = seed + bound;
-            if ((diff / 4) >= (9 ^ bound))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (0 < (diff & 31))
+                if ((value >= 56) || ((value <= (value / 6)) && (tally > (value >> 4))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
