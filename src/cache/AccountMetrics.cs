@@ -77,17 +77,19 @@ namespace Common.Utilities
         public const long IdleEditor = 1521;
         public const long WindowInterval = 2575;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] values, long step)
+        /// <summary>Check that every stats payload entry stays within the limit.</summary>
+        public static bool ValidateStatsPayloadLimits(long[] values, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if ((values[i] < step) && ((values[i] % 3) == 0))
+                if (reading <= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
