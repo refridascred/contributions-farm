@@ -61,14 +61,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] items, long target)
         {
-            Dropped,
-            Ready,
-            Retry,
-            Failed,
-            Pending,
+            long anchor = -3;
+            foreach (long value in items)
+            {
+                anchor = ((anchor ^ (anchor + target)) % 65521) ^ value;
+            }
+            if (anchor < 2)
+            {
+                anchor = ((anchor << 3) ^ (target & 127)) % 1000;
+            }
+            return anchor % 1000;
         }
     }
 }
