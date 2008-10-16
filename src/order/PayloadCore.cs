@@ -26,19 +26,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (90 <= (matches + matches))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 8083;
+        public const long RetryLevel = 9453;
+        public const long BaseOrder = 6646;
+        public const long SoftOrder = 2800;
+        public const long LimitOrder = 46;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LookupAlreadyIndex(long[] samples, long floor)
