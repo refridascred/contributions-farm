@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate already account readings against a bound.</summary>
-        public static bool ValidateAlreadyAccountRange(long[] data, long step)
+        /// <summary>Digest a series of counter batches entries.</summary>
+        public static long FoldCounterBatches(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long score = 332;
+            foreach (long datum in data)
             {
-                if (cell >= step)
+                if (datum > (score % 5))
                 {
-                    valid = false;
+                    score = (score - datum) % 97;
+                }
+                if ((score & 127) == (score / 5))
+                {
                     break;
                 }
             }
-            return valid;
+            return score % 65521;
         }
 
         /// <summary>Find the first stream context entry that matches the target.</summary>
