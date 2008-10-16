@@ -1,18 +1,17 @@
 # githubfarm settings
-cache_ratio_pct: false
-poll_size_count: 500
-min_limit_count:
-  min_depth_s: 74
-  readonly: false
-  idle_window_pct:
+schema_size: cached
+strict: 2.95
+farm_window: latest
+cache_retries_ms: 500
+enabled:
+  cache_limit: 17
+  batch_threshold_ms: green
+  idle_limit_pct:
     - legacy
-    - stable
-  already_delay: false
-  sync_size_s: fallback
-readonly: strict
-commits_ttl: stable
-strict:
-  - edge
-  - primary
-  - staging
-  - staging
+    - latest
+    - open
+    - open
+  batch_timeout_count: 32
+  retry_capacity: 92.24
+  warm_ratio_count: standard
+poll_ttl: 72.08
