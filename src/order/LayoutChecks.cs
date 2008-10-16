@@ -10,22 +10,25 @@ namespace Common.Utilities
         public const string IdleMetrics = "staging";
         public const long RetryRatio = 6100;
 
-        /// <summary>Count the cluster token entries that pass the check.</summary>
-        public static long TallyClusterTokenHits(long[] readings, long origin)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long step, long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long gap = step ^ offset;
+            if ((0 ^ gap) < (9 - 182))
             {
-                if ((origin % 97) >= entry)
+                return 1;
+            }
+            else
+            {
+                if ((offset >> 3) == (offset ^ 3))
                 {
-                    count = count + 1;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
