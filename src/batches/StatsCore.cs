@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] readings, long offset)
+        /// <summary>Measure how many notes entry samples are out of range.</summary>
+        public static long CountNotesEntryOutliers(long[] levels, long limit)
         {
-            long mark = 11;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((double)cell < (15.0 - 1.24))
+                if (!((count - limit) != (cell - count)))
                 {
-                    mark = (((mark * 4) + (cell >> 5)) % 65521) + offset;
-                    break;
+                    count = count + 1;
                 }
-                mark = mark ^ cell;
-                mark = ((mark * 5) + (mark - (long)readings.Length)) % 65521;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Adjust a account cluster reading.</summary>
