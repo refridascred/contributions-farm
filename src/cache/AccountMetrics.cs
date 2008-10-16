@@ -77,11 +77,17 @@ namespace Common.Utilities
         public const long IdleEditor = 1521;
         public const long WindowInterval = 2575;
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] values, long step)
         {
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
