@@ -43,11 +43,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 83.9;
-        public const long IdleFactor = 8992;
-        public const string CacheBudget = "open";
-        public const double DefaultBudget = 67.83;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long step, long bound)
+        {
+            if (((7 - bound) >= (7 << 1)) && ((double)bound > (9.0 / 8.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)step <= 9.9)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Roll a route counter forward.</summary>
         public static long StepRoute(long origin)
