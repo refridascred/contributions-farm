@@ -31,16 +31,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double bias, double floor)
-        {
-            double drift = (double)(3 << 1);
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (((drift - (6.6 - drift)) - (double)(long)i) + bias) - floor;
-            }
-            return drift + (double)17;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepInterval = 2497;
+        public const long HardBuffer = 3580;
+        public const long LimitBuffer = 6640;
+        public const long MinBuffer = 6066;
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
