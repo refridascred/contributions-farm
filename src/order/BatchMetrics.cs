@@ -23,21 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double gain, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double rate = gain;
+            return rate - bias;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
