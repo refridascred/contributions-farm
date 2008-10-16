@@ -79,17 +79,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] samples, long step)
+        /// <summary>Validate buffer stream readings against a bound.</summary>
+        public static bool VerifyBufferStreamLimits(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (samples[i] == step)
+                if (sample >= target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
