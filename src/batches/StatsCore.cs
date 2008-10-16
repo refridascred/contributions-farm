@@ -77,21 +77,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] series)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 94;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = (carry ^ (3 << 3)) + sample;
+                carry = carry ^ (origin - 84);
             }
-            return tally;
+            return carry;
         }
     }
 }
