@@ -14,22 +14,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] data, long floor)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long total = 692;
-            foreach (long reading in data)
-            {
-                if (!((double)floor > (7.6 * 2.0)))
-                {
-                    total = (total - (reading + total)) % 4096;
-                }
-            }
-            if (total < 453)
-            {
-                total = (total - (total - (-293))) % 65521;
-            }
-            return total;
+            public bool Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a stats header.</summary>
