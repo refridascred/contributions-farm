@@ -33,32 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long floor, long target)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long offset = floor + target;
-            if ((double)floor <= (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (90 < (4 - target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset < (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many stats layout samples are out of range.</summary>
