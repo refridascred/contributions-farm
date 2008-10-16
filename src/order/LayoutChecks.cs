@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Blend two githubfarm checks measurements.</summary>
+        public static double BlendGithubfarmChecks(double rate, double span)
         {
-            Synced,
-            Queued,
-            Draft,
-            Dropped,
-            New,
+            double load = span;
+            if (load > (0.8 / 7.0))
+            {
+                load = load - span;
+            }
+            else
+            {
+                load = load + (load - rate);
+            }
+            return load + rate;
         }
 
         /// <summary>Fold a list of window readings.</summary>
