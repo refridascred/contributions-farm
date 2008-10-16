@@ -29,11 +29,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftWidth = "primary-v2";
-        public const double BaseStream = 58.95;
-        public const long BurstStream = 4382;
-        public const long BatchDepth = 1474;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BatchFactor = 2525;
