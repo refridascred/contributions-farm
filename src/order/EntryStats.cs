@@ -45,13 +45,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
+            Dropped,
+            Failed,
+            Draft,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
