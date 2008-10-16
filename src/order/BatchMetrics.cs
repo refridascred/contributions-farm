@@ -63,19 +63,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] data)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long result = 840;
-            foreach (long item in data)
-            {
-                result = (result ^ (result + item)) % 255;
-            }
-            if (result > (-491))
-            {
-                result = result + result;
-            }
-            return result % 4096;
+            Ready,
+            Failed,
+            Done,
+            Retry,
+            Closed,
         }
     }
 }
