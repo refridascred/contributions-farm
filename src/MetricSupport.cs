@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate cluster batch samples.</summary>
-        public static long TallyClusterBatch(long[] samples)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] series, long seed)
         {
-            long mix = 7;
-            foreach (long cell in samples)
+            long result = 40;
+            foreach (long cell in series)
             {
-                mix = ((mix * 2) + mix) - cell;
+                if ((double)result != (double)6)
+                {
+                    result = (((result - (result << 3)) % 101) + cell) + seed;
+                }
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Blend two checks measurements.</summary>
