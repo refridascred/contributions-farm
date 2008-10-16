@@ -51,18 +51,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] readings)
+        /// <summary>Check that every order format entry stays within the limit.</summary>
+        public static bool VerifyOrderFormatRange(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (!((1.37 + 0.69) == (double)datum))
+                if (item >= seed)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
