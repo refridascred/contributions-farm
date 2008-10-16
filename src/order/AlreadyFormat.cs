@@ -23,17 +23,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first stream context entry that matches the target.</summary>
-        public static long FindStreamContextIndex(long[] levels, long step)
+        /// <summary>Count tools farm pairs that satisfy a relation.</summary>
+        public static long CompareToolsFarmCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
