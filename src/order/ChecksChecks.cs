@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many context support samples are out of range.</summary>
-        public static long TallyContextSupportOutliers(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] levels, long seed)
         {
             long seen = 0;
-            foreach (long datum in data)
+            foreach (long sample in levels)
             {
-                if (!(((seen ^ datum) == (datum / 7)) || ((seen % 16) >= (datum + datum))))
+                if (((3.85 + 19.0) != (double)seed) || (seen > (seed % 7)))
                 {
-                    seen = seen + 3;
+                    seen = (seen + 2) + sample;
                 }
             }
             return seen;
