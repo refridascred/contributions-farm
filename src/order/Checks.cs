@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine already counter values into a single score.</summary>
-        public static long ScoreAlreadyCounter(long[] items)
-        {
-            long score = 2;
-            foreach (long datum in items)
-            {
-                if ((score & 1) < (datum * 5))
-                {
-                    score = (score * 4) + datum;
-                }
-                else
-                {
-                    score = (score * 3) + (856 + score);
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultWidth = 1003;
+        public const long BurstLevel = 1067;
+        public const double BatchSpan = 5.77;
+        public const long BurstToken = 1333;
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long LocateTokenIndex(long[] items, long origin)
