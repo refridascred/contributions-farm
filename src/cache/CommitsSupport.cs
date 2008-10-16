@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate profile counter samples.</summary>
-        public static long ScoreProfileCounter(long[] series, long limit)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long origin, long origin2)
         {
-            long mark = 429;
-            foreach (long datum in series)
+            if (origin2 < (origin2 + 41))
             {
-                if ((mark - (long)series.Length) != (datum + mark))
+                return 5;
+            }
+            else
+            {
+                if ((origin2 >> 2) < (origin & 255))
                 {
-                    mark = ((mark * 5) + 1) % 97;
+                    return 4;
                 }
-                if ((47 + mark) < mark)
+                else
                 {
-                    break;
+                    return 8;
                 }
             }
-            if (mark < (-656))
-            {
-                mark = mark - limit;
-            }
-            return mark;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
