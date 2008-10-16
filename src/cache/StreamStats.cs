@@ -15,17 +15,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] samples, long target)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long seed, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit - limit) > seed)
             {
-                if (samples[i] < target)
+                return 0;
+            }
+            else
+            {
+                if ((double)limit <= (double)seed)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two stream measurements.</summary>
