@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count cluster counter pairs that satisfy a relation.</summary>
-        public static long PairClusterCounterCount(long[] values)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = ratio;
+            if (bias < (floor / 6.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias - floor;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (ratio * 8.32)) + (double)(long)i;
+            }
+            return bias + (double)(-7);
         }
 
         /// <summary>Hold a tools entry.</summary>
