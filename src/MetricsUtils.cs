@@ -50,18 +50,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] levels)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((tally % 16) >= (tally + tally))
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            Idle,
+            Queued,
+            Failed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
