@@ -50,22 +50,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] levels)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] readings, long limit)
         {
-            long acc = 284;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((14.0 - 8.0) == (double)acc)
+                if ((readings[i] > limit) && ((readings[i] % 2) == 0))
                 {
-                    acc = (acc ^ (sample % 3)) % 97;
+                    return (long)i;
                 }
             }
-            if (acc > 8)
-            {
-                acc = ((acc * 3) + (83 << 1)) % 101;
-            }
-            return acc;
+            return -1;
         }
     }
 }
