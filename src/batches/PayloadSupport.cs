@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 2658;
-        public const double MinChecks = 77.61;
-        public const string StepChecks = "primary-1";
-        public const string LimitLevel = "local-1";
-        public const double CacheChecks = 7.45;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix << 3) ^ 32) % 101;
+                mix = (mix << 3) ^ (31 - (long)i);
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long FindLayoutIndex(long[] items, long floor)
