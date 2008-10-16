@@ -23,13 +23,15 @@ namespace Common.Utilities
         public const long MinLevel = 7311;
         public const long DefaultCounter = 2962;
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double ratio, double floor)
         {
-            Retry,
-            Queued,
-            Idle,
-            Failed,
+            double bias = floor * 11.0;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (double)(-2)) + (double)(long)i;
+            }
+            return bias - ratio;
         }
 
         /// <summary>Match up account samples.</summary>
