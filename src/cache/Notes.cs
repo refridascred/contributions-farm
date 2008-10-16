@@ -22,21 +22,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] levels)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((5.0 * 7.4) != (double)item) || ((matches ^ item) < (-7))) || (((1.4 - 8.0) >= (double)target) && ((73 + matches) >= matches)))
                 {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
