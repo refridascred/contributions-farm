@@ -1,8 +1,7 @@
-id,score,rank,count,region
-1,270,primary,standard,829
-2,52.96,strict,open,29.09
-3,892,64.32,584,807
-4,31.56,fallback,602,eu-west
-5,staging,444,565,959
-6,54.7,605,7,66.12
-7,39.95,9.96,791,28.54
+id,state,rank,owner,label
+1,eu-west,staging,331,47
+2,500,204,primary,54.55
+3,456,green,eu-west,380
+4,stable,571,blue,308
+5,4.75,774,latest,eu-west
+6,707,eu-west,blue,146
