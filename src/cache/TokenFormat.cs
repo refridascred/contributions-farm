@@ -27,13 +27,21 @@ namespace Common.Utilities
             return ((scale + scale) + rate) + bias;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] samples)
         {
-            Stale,
-            Closed,
-            Queued,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
