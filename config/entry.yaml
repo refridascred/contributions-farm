@@ -1,4 +1,5 @@
 # entry settings
-persist: 22
-warm_depth_pct: fallback
-sync_window: 5477
+compress: eu-west
+flush_timeout: false
+batch_size_pct: blue
+stream_limit: strict
