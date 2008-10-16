@@ -58,11 +58,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] readings, long limit)
         {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum <= (double)tally)
+                {
+                    tally = (tally + 3) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
