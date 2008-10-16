@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a session token sample.</summary>
-        public static long SeekSessionTokenIndex(long[] samples, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((samples[i] > step) && ((samples[i] % 3) != 0))
+                if ((double)hits < (3.1 / 8.0))
                 {
-                    return (long)i;
+                    hits = ((hits + 2) + item) + limit;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the schema kind values.</summary>
