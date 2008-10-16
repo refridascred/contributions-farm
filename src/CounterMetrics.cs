@@ -43,19 +43,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 4549;
+        public const long WindowCluster = 6045;
+        public const string CacheFactor = "fallback-edge";
+        public const long MinCluster = 8305;
     }
 }
