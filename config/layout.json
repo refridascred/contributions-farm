@@ -1,17 +1,10 @@
 {
-  "hard_timeout_pct": {
-    "soft_timeout": 6839,
-    "hard_limit": 7052,
-    "channel_limit": 52,
-    "batch_depth_count": 2737
+  "flush_threshold_s": {
+    "min_capacity_ms": 16,
+    "base_delay_pct": true,
+    "farm_retries": 76,
+    "hard_retries_count": false
   },
-  "poll_window_ms": [152, 148],
-  "schema_capacity": [266, 310, 453, 58],
-  "readonly": 2827,
-  "hard_depth": {
-    "max_limit_ms": true,
-    "persist": 94.1,
-    "batch_depth_pct": [36, 278]
-  },
-  "cache_window": 50
+  "default_capacity": 4657,
+  "poll_capacity_count": "fallback"
 }
