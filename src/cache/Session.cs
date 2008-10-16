@@ -27,35 +27,35 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank route batch input into a small class.</summary>
-        public static long BucketRouteBatch(long origin, long target)
+        /// <summary>Grade a window payload value against two limits.</summary>
+        public static long ClassifyWindowPayload(long bound, long seed)
         {
-            long cur = origin - target;
-            if (cur > (target ^ target))
+            long delta = bound - seed;
+            if ((bound >> 3) <= (bound * 5))
             {
                 return 6;
             }
             else
             {
-                if (((origin % 100) >= (target % 24)) || ((origin / 8) < (-469)))
+                if ((seed / 7) > delta)
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)target >= (5.0 * 19.0))
+                    if (bound > (seed + delta))
                     {
-                        return 2;
+                        return 5;
                     }
                     else
                     {
-                        if ((target <= (target >> 3)) || ((double)cur < 17.0))
+                        if (!((bound / 9) <= bound))
                         {
                             return 7;
                         }
                         else
                         {
-                            return 4;
+                            return 0;
                         }
                     }
                 }
