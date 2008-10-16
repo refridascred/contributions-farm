@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Audit githubfarm stream readings against a rule.</summary>
+        public static long CountGithubfarmStreamGaps(long[] samples)
         {
-            Queued,
-            Retry,
-            Locked,
-            Idle,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((6.5 * 5.3) >= 14.0)
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate format samples.</summary>
