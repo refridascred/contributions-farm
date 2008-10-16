@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] series, long offset)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (offset > (99 + offset))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 2) + cell;
+                    if ((levels[i] - levels[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
