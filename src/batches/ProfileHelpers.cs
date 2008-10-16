@@ -14,22 +14,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] data, long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (!((count - count) <= (step + 5)))
+                if ((sample <= (6 + seen)) && ((seen + sample) <= (seen << 3)))
                 {
-                    count = (count + 3) - datum;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the support class values.</summary>
