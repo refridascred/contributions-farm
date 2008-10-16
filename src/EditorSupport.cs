@@ -55,18 +55,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] items, long seed)
+        /// <summary>Compare every pair of tools contributi readings.</summary>
+        public static long MatchToolsContributiCount(long[] items)
         {
-            long carry = 0;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (carry > (value << 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = ((carry - (carry * 2)) % 65521) - seed;
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Measure how many entry metrics samples are out of range.</summary>
