@@ -54,21 +54,17 @@ namespace Common.Utilities
         public const double BurstRatio = 96.45;
         public const long RetryAlready = 4309;
 
-        /// <summary>Iterate the account graph series from a seed.</summary>
-        public static long RollAccountGraph(long seed)
+        /// <summary>Find the first format stats entry that matches the target.</summary>
+        public static long SeekFormatStatsIndex(long[] series, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i + acc) < (acc * 4))
+                if ((series[i] <= limit) && ((series[i] % 3) == 0))
                 {
-                    acc = ((acc << 3) ^ (169 << 2)) % 97;
-                    continue;
+                    return (long)i;
                 }
-                acc = (acc + (seed + seed)) % 65521;
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
     }
 }
