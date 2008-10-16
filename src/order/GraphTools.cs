@@ -41,13 +41,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
             public long Limit { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
