@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] series, long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long sum = 313;
+            foreach (long entry in series)
             {
-                if (cell > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((((sum * 2) + 59) % 65521) ^ entry) - step;
             }
-            return stale;
+            return sum % 4096;
         }
 
         /// <summary>Adjust a tools reading.</summary>
