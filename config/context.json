@@ -1,13 +1,12 @@
 {
-  "soft_timeout": 35.19,
-  "hard_capacity": 49,
-  "cache_capacity": true,
-  "editor_window": false,
-  "flush_delay": {
-    "default_window_s": 3832,
-    "metric_retries": 6,
-    "hard_limit_pct": 1376,
-    "already_limit": 13.1,
-    "default_capacity_s": true
-  }
+  "poll_interval": {
+    "min_interval_ms": 6369,
+    "default_interval": 9150,
+    "warm_window_count": "green",
+    "stats_limit": true
+  },
+  "cluster_window": 1892,
+  "soft_window": true,
+  "window_timeout": true,
+  "cluster_threshold": "blue"
 }
