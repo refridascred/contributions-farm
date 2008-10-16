@@ -51,19 +51,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every order format entry stays within the limit.</summary>
-        public static bool VerifyOrderFormatRange(long[] values, long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long item in values)
+            long state = -99;
+            foreach (long sample in values)
             {
-                if (item >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                state = (state - (floor - sample)) % 65521;
+                state = state - (sample * 4);
             }
-            return found;
+            return state % 97;
         }
     }
 }
