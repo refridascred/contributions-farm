@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a schema farm value against two limits.</summary>
-        public static long RankSchemaFarm(long offset, long seed)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            if ((double)offset >= 14.0)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((8.76 * 6.2) < (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((-27) + 359) < (seed + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit entry support readings against a rule.</summary>
