@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long CacheQueue = 5556;
         public const long RetryTimeout = 8763;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 95;
-        public const long HardSession = 2528;
-        public const long BatchScore = 1314;
-        public const string IdleSession = "stable-v2";
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two route measurements.</summary>
         public static double ScaleRoute(double weight, double span)
