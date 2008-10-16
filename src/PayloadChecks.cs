@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] levels)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] data)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item << 2) == (item - item))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((data[i] - data[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
