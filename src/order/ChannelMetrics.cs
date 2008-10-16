@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long offset, long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] samples, long offset)
         {
-            if ((offset & 15) > step)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((4.6 - 16.0) != (double)offset)
+                if (datum <= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count route payload pairs that satisfy a relation.</summary>
