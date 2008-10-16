@@ -41,14 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Locked,
-            Idle,
-            Failed,
-            Paused,
-            Retry,
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
