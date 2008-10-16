@@ -20,11 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a cluster session figure with a bias.</summary>
-        public static double SmoothClusterSession(double scale, double span)
+        /// <summary>Derive the next metrics editor value from a seed.</summary>
+        public static long RollMetricsEditor(long limit)
         {
-            double weight = (double)(125 / 6);
-            return ((weight + (1.78 / 4.0)) + scale) + span;
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = acc - ((long)i * 5);
+                acc = (acc + (limit + limit)) % 1000;
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
