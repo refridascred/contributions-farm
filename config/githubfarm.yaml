@@ -1,7 +1,8 @@
 # githubfarm settings
-soft_retries_ms: true
-idle_delay_count: true
-verbose: false
-window_timeout: blue
-min_interval_s: 10.63
-enabled: 1.42
+base_threshold_pct: 37.46
+poll_interval: true
+poll_retries_ms:
+  - green
+  - open
+  - stable
+  - local
