@@ -1,5 +1,12 @@
 {
-  "base_threshold": 72.07,
-  "warm_capacity": [240, 18],
-  "min_interval": 81.58
+  "max_ratio": 71.33,
+  "editor_threshold": "edge",
+  "githubfarm_interval": true,
+  "graph_size": {
+    "already_depth": 7376,
+    "strict": 2,
+    "max_delay_count": 84.51
+  },
+  "order_capacity": true,
+  "report_window": 15.13
 }
