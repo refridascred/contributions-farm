@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long step, long limit)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long offset = step + limit;
-            if (((offset << 1) != (step + step)) || ((double)offset == (double)step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((7.1 / 6.0) <= (double)step) && ((double)limit <= (double)offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Stale,
+            Queued,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
