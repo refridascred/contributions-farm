@@ -37,10 +37,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowRatio = 97.76;
-        public const long StepAccount = 4758;
-        public const long CacheAccount = 2646;
+        /// <summary>Locate a buffer metric reading by value.</summary>
+        public static long LookupBufferMetricIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two commits measurements.</summary>
         public static double ScaleCommits(double scale, double span)
