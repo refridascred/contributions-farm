@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultSize = 41.26;
-        public const long RetryContributi = 3280;
-        public const long SoftScore = 1459;
-        public const double CacheContributi = 40.12;
+        /// <summary>Look up the position of a queue layout sample.</summary>
+        public static long SeekQueueLayoutIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
