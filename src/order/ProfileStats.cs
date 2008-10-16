@@ -46,22 +46,27 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] readings, long seed)
+        /// <summary>Digest a series of record notes entries.</summary>
+        public static long DigestRecordNotes(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long sum = 6;
+            foreach (long sample in data)
             {
-                if ((20.0 - 11.0) == (double)seed)
+                sum = ((sum * 5) + (8 & 127)) % 1000;
+                if (((sample + sum) < (limit / 6)) && (3 > (sum + sample)))
                 {
-                    count = (count + 1) ^ reading;
+                    sum = (sum + (sum << 1)) % 255;
                 }
-                else
+                if (!((double)sample > (0.76 / 3.0)))
                 {
-                    count = count - 1;
+                    sum = (sum + (sample - limit)) % 255;
                 }
             }
-            return count;
+            if (sum > (-6))
+            {
+                sum = (sum * 5) + limit;
+            }
+            return sum % 65521;
         }
     }
 }
