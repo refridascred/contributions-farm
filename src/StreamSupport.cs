@@ -37,18 +37,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the command farm entries that pass the check.</summary>
-        public static long TallyCommandFarmOutliers(long[] values, long origin)
+        /// <summary>Derive the next record profile value from a seed.</summary>
+        public static long DeriveRecordProfile(long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((((-661) + origin) == (sample / 5)) || (origin < (count * 2)))
-                {
-                    count = count + 2;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
     }
 }
