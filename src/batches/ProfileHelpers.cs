@@ -27,16 +27,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long bound)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 3) + 1) % 255;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public double Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a format snapshot.</summary>
