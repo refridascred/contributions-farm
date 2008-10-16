@@ -25,14 +25,38 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long floor, long limit)
         {
-            Stale,
-            Queued,
-            Paused,
-            Closed,
-            Active,
+            if ((floor * 4) > limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit <= (floor * 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit / 2) < (floor & 127))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((7.52 / 6.0) != (double)limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
