@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] items, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long mix = 12;
+            foreach (long sample in series)
             {
-                if (entry != seed)
+                for (int i = 0; i < 5; i++)
                 {
-                    ready = false;
-                    break;
+                    mix = (((mix * 3) + (long)i) ^ sample) - origin;
                 }
+                mix = mix ^ (mix + 72);
             }
-            return ready;
+            if (mix < 449)
+            {
+                mix = (mix ^ (-77)) % 65521;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Adjust a account cluster reading.</summary>
