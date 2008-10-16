@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long target, long limit)
         {
-            public double Level { get; set; }
-            public bool Score { get; set; }
+            long diff = target ^ limit;
+            if (!((target / 7) <= (target >> 4)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((diff + diff) <= (diff + 401))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit * 5) == (diff ^ target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit - (-35)) > (diff % 10))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
