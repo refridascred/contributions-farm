@@ -20,12 +20,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] samples, long seed)
         {
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-            public double Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < seed) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
