@@ -39,14 +39,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Idle,
-            Done,
-            New,
-            Paused,
-            Closed,
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
