@@ -39,18 +39,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] levels)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((sample << 2) > sample))
                 {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
