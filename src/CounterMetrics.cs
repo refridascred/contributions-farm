@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public double Token { get; set; }
-            public long Limit { get; set; }
+            Locked,
+            Draft,
+            Ready,
+            Done,
+            New,
         }
 
         /// <summary>Check that every payload command entry stays within the limit.</summary>
