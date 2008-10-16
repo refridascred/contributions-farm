@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] series, long target)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public bool Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
