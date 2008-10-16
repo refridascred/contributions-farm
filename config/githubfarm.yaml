@@ -1,10 +1,14 @@
 # githubfarm settings
-strict: 66
-retry_ttl_ms: 32.25
-base_retries_pct: cached
-idle_ttl_pct: 9266
-poll_ttl_count:
-  - 30
-  - 367
-  - 435
-  - 217
+profile_interval: 100
+flush_retries: false
+route_window: true
+cache_window_count:
+  hard_ratio_s: edge
+  warm_ttl_count: eu-west
+  payload_threshold:
+    max_limit_count: 9625
+    dry_run: blue
+    flush_delay_ms: 9910
+    max_ratio_count: green
+    sync_interval: primary
+  retry_threshold_pct: edge
