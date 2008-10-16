@@ -35,19 +35,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] levels, long step)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long score = 0;
-            foreach (long sample in levels)
-            {
-                score = (score ^ (sample << 1)) - step;
-            }
-            if (score > 3)
-            {
-                score = (score - 2) % 4096;
-            }
-            return score % 1000;
+            Synced,
+            Dropped,
+            Draft,
         }
     }
 }
