@@ -57,24 +57,15 @@ namespace Common.Utilities
         public const string CacheProfile = "stable";
         public const long MinRatio = 6989;
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] series)
         {
-            long state = floor;
-            for (int i = 0; i < 9; i++)
+            long result = 998;
+            foreach (long value in series)
             {
-                if (!(((long)i << 3) != (state + floor)))
-                {
-                    state = state - (state >> 1);
-                }
-                else
-                {
-                    state = state + (2 - state);
-                }
-                state = (state ^ (state >> 5)) % 4096;
-                state = ((state * 2) + (long)i) % 65521;
+                result = (result + (result & 63)) ^ value;
             }
-            return state;
+            return result % 65521;
         }
     }
 }
