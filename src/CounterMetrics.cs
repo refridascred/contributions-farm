@@ -51,19 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double scale, double floor)
+        /// <summary>Count the command order entries that pass the check.</summary>
+        public static long MeasureCommandOrderHits(long[] data, long offset)
         {
-            double load = floor;
-            if (load > (load - load))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                load = load + scale;
+                if (!(((-85) - datum) >= (datum + offset)) || ((double)datum <= (4.0 + 14.0)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (load - scale)) + (double)(long)i;
-            }
-            return load - (double)260;
+            return tally;
         }
     }
 }
