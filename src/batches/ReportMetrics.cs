@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] readings)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] levels, long bound)
         {
-            long acc = 661;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (((4 + 374) >= sample) || (acc > (sample - sample)))
+                if (sample <= bound)
                 {
-                    acc = acc ^ acc;
+                    valid = false;
+                    break;
                 }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
