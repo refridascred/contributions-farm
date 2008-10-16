@@ -31,12 +31,12 @@ namespace Common.Utilities
         public const double BaseDepth = 58.34;
         public const long BatchScore = 6124;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            Active,
-            Ready,
+            Idle,
             Dropped,
+            Failed,
         }
     }
 }
