@@ -24,13 +24,23 @@ namespace Common.Utilities
             return scale - (scale + span);
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double weight, double offset)
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
+            double bias = offset;
+            if (bias > 9.0)
+            {
+                bias = (bias - (9.38 * 17.0)) - weight;
+            }
+            else
+            {
+                bias = bias - (2.0 - offset);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - 8.32) - (double)(long)i;
+            }
+            return bias + (offset / 7.0);
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
