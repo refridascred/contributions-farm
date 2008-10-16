@@ -37,15 +37,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double ratio, double floor)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            double bias = floor * 11.0;
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (double)(-2)) + (double)(long)i;
-            }
-            return bias - ratio;
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine filter support values into a single score.</summary>
