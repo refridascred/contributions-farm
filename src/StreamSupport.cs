@@ -22,14 +22,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] data)
         {
-            Idle,
-            Draft,
-            New,
-            Locked,
-            Paused,
+            long score = 480;
+            foreach (long datum in data)
+            {
+                score = score - datum;
+            }
+            if (score < 20)
+            {
+                score = (score * 5) + (score & 31);
+            }
+            return score % 1000;
         }
     }
 }
