@@ -1,5 +1,11 @@
 {
-  "retry_window_pct": ["fallback", "edge"],
-  "graph_capacity": 95.16,
-  "hard_window": 93
+  "sync_interval_s": false,
+  "readonly": "cached",
+  "audit": "eu-west",
+  "strict": 74.11,
+  "verbose": {
+    "buffer_timeout": "blue",
+    "poll_interval": "staging",
+    "flush_delay_pct": 6.5
+  }
 }
