@@ -38,15 +38,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] samples, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] items)
         {
-            long acc = 33;
-            foreach (long cell in samples)
+            long mark = 8;
+            foreach (long value in items)
             {
-                acc = (((acc + acc) % 4096) ^ cell) - offset;
+                if ((3.04 + 4.3) == (double)value)
+                {
+                    mark = (mark - (mark % 97)) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ (mark + mark)) % 97;
+                }
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
