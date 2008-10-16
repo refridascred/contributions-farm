@@ -18,22 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] samples)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long bound, long bound2)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            if (((251 + bound2) < (bound2 ^ bound2)) && ((bound - bound) == (71 + bound)))
             {
-                if (!((matches * 2) == (datum - 15)) && (((long)samples.Length - matches) >= (matches - matches)))
+                return 6;
+            }
+            else
+            {
+                if (bound > bound2)
                 {
-                    matches = matches + 3;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (bound <= (0 & 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the already class values.</summary>
