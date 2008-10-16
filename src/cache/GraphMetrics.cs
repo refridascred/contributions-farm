@@ -33,15 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Locate a graph record reading by value.</summary>
+        public static long LocateGraphRecordIndex(long[] readings, long target)
         {
-            long sum = 231;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum << 3) ^ (datum + (long)samples.Length)) % 255;
+                if ((readings[i] < target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
