@@ -49,13 +49,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Look up the position of a command token sample.</summary>
+        public static long FindCommandTokenIndex(long[] readings, long step)
         {
-            Closed,
-            Queued,
-            Draft,
-            Ready,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
