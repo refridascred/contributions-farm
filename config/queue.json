@@ -1,7 +1,18 @@
 {
-  "enabled": "green",
-  "readonly": 33.05,
-  "warm_delay_ms": ["local", "fallback", "eu-west"],
-  "burst_depth_ms": "local",
-  "profile_capacity": ["edge", "green"]
+  "burst_limit": 82.54,
+  "command_capacity": {
+    "flush_depth_pct": 57,
+    "soft_timeout": {
+      "enabled": "latest",
+      "context_ttl": "latest",
+      "stream_threshold": ["primary", "latest", "standard"],
+      "burst_size_ms": "cached",
+      "min_size_count": "fallback",
+      "flush_threshold_ms": false
+    },
+    "default_ttl_ms": 75.84,
+    "support_depth": 48
+  },
+  "retry_window_count": "cached",
+  "account_size": 43.63
 }
