@@ -44,17 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] readings, long offset)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double bias, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = bias;
+            if (scale >= (double)2)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - floor;
             }
-            return -1;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale - (bias / 5.0);
         }
     }
 }
