@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next token editor value.</summary>
-        public static double AdjustTokenEditor(double scale, double bias)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] items, long offset)
         {
-            double scale2 = 8.8;
-            if (scale2 < (19.0 * 12.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                scale2 = (scale2 - 4.08) - bias;
+                if ((items[i] > offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale2 + (scale2 + scale);
+            return -1;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
