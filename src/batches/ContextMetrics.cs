@@ -69,22 +69,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit payload metrics readings against a rule.</summary>
-        public static long AuditPayloadMetricsOutliers(long[] levels, long offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((5.0 - 13.0) == (double)value)
+                if (series[i] == step)
                 {
-                    matches = (matches + 1) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
