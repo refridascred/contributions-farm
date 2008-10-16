@@ -78,13 +78,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] levels)
         {
-            New,
-            Synced,
-            Failed,
-            Idle,
+            long anchor = -682;
+            foreach (long datum in levels)
+            {
+                if ((datum + anchor) > (datum % 100))
+                {
+                    anchor = (anchor ^ (anchor & 3)) % 4096;
+                }
+                if ((double)datum < (5.0 - 9.0))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
