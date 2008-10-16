@@ -60,19 +60,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two farm record measurements.</summary>
-        public static double ScaleFarmRecord(double scale, double span)
+        /// <summary>Count the buffer command entries that pass the check.</summary>
+        public static long CountBufferCommandMatches(long[] values, long bound)
         {
-            double scale2 = scale;
-            if (scale2 <= (scale2 + scale))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                scale2 = scale2 - (span - scale);
+                if ((double)sample == (0.81 - 5.0))
+                {
+                    hits = (hits + 3) - bound;
+                }
             }
-            else
-            {
-                scale2 = scale2 + (double)2;
-            }
-            return scale2 + (span + span);
+            return hits;
         }
     }
 }
