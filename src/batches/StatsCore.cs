@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many notes entry samples are out of range.</summary>
-        public static long CountNotesEntryOutliers(long[] levels, long limit)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!((count - limit) != (cell - count)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Adjust a account cluster reading.</summary>
