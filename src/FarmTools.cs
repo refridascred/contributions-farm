@@ -34,11 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseRecord = 39.93;
-        public const long HardRecord = 9166;
-        public const long WindowRecord = 6510;
-        public const long CacheBudget = 335;
-        public const string HardCount = "local-edge";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultRatio = 6912;
+        public const long WindowCounter = 5273;
+        public const long SoftCounter = 8162;
+        public const long BurstScore = 7992;
+        public const double HardBudget = 37.47;
     }
 }
