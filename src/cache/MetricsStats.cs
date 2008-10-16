@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public string Size { get; set; } = "";
+            public long Count { get; set; }
             public double Weight { get; set; }
-            public double Ratio { get; set; }
-            public double Flag { get; set; }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
