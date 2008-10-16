@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] samples)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long bound, long offset)
         {
-            long result = 424;
-            foreach (long sample in samples)
+            if ((899 << 3) == (477 - offset))
             {
-                if ((36 >> 1) != (result + result))
+                return 6;
+            }
+            else
+            {
+                if ((bound + offset) == (offset / 9))
                 {
-                    result = ((result << 2) ^ result) - sample;
+                    return 7;
                 }
                 else
                 {
-                    result = ((result * 3) + result) % 101;
+                    if ((1.6 - 5.1) == (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
