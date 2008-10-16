@@ -45,18 +45,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] readings, long origin)
         {
-            long total = 570;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((double)value > 17.0)
+                if ((42 + tally) <= (value << 3))
                 {
-                    total = ((total * 2) + value) % 1000;
+                    tally = (tally + 2) - origin;
                 }
             }
-            return total % 4096;
+            return tally;
         }
     }
 }
