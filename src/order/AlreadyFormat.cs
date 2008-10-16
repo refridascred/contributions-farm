@@ -46,19 +46,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] readings, long limit)
+        /// <summary>Validate token graph readings against a bound.</summary>
+        public static bool CheckTokenGraphBounds(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (cell >= limit)
+                if (entry >= offset)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Fold a list of support readings.</summary>
