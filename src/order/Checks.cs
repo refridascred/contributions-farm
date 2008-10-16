@@ -23,18 +23,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] levels, long offset)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((offset / 4) < reading) && !((matches + reading) <= (offset % 97)))
+                if (items[i] < origin)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two layout measurements.</summary>
