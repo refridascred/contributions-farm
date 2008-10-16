@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] samples, long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (datum > origin)
+                if ((25 % 60) >= (count + cell))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) - offset;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
