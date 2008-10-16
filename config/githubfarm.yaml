@@ -1,10 +1,25 @@
 # githubfarm settings
-payload_ttl: true
-batch_timeout:
-  idle_delay_count: false
-  metric_timeout: 21
-  token_timeout: true
-  poll_limit_pct: false
-  counter_capacity: 44
-readonly: green
-max_depth_ms: edge
+sync_retries:
+  - staging
+  - standard
+  - open
+  - edge
+token_retries: edge
+base_retries:
+  checks_window: 14.42
+  compress: 250
+  hard_timeout:
+    - 471
+    - 219
+    - 304
+    - 299
+  stream_capacity: 500
+  verbose:
+    compress: false
+    filter_threshold: staging
+    readonly: cached
+    editor_timeout: false
+    warm_size_s: 26.97
+    stats_retries: 7743
+  max_timeout_pct: false
+enabled: 30
