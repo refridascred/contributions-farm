@@ -31,22 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] items)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)1 != (double)(long)items.Length)
+                if (data[i] <= offset)
                 {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
