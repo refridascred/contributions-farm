@@ -5,28 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] data, long offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long floor, long limit)
         {
-            long total = 8;
-            foreach (long value in data)
+            if ((16.0 + 7.22) <= (4.7 / 7.0))
             {
-                bool stale = ((72 + total) <= 775) && ((double)offset == (10.0 - 2.3));
-                if (stale && (total > (total << 3)))
+                return 3;
+            }
+            else
+            {
+                if ((limit % 10) <= (limit - floor))
                 {
-                    stale = (value ^ (-352)) != (total % 8);
+                    return 0;
                 }
-                total = (total - (value >> 4)) % 4096;
-                if (((value + value) != (80 << 3)) || (total <= value))
+                else
                 {
-                    break;
+                    if ((floor % 2) != (limit + limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (total < 268)
-            {
-                total = (total ^ 13) % 101;
-            }
-            return total;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
