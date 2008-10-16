@@ -33,24 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster counter input into a small class.</summary>
-        public static long RankClusterCounter(long offset, long origin)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            if (((6.2 - 2.9) < (double)offset) && ((offset << 2) >= origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset + offset) == (offset - origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Active,
+            New,
+            Done,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
