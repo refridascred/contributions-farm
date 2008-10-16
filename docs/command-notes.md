@@ -1,14 +1,12 @@
 # Command notes
 
-Defaults for batch live in the config folder and can be overridden per environment.
-Use farm settings to tune how often farm data is refreshed.
-
-Keep layout and checks names short and lowercase.
-Each githubfarm is validated before it reaches the metric queue.
-Run the record check before changing any profile limits.
+Keep account and account names short and lowercase.
+A metric that stays idle for too long is moved to the counter list.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review batches limits each release
-- Document new order fields
-- Keep route values small
+- Review buffer limits each release
+- Document new window fields
+- Log every account change
+- Keep editor values small
