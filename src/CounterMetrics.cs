@@ -25,10 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseEditor = "standard";
-        public const double HardCount = 95.2;
-        public const long SoftEditor = 3406;
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public double Token { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long OverlapChecksCount(long[] readings)
