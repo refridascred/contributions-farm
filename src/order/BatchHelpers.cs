@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long offset, long target)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long slot = offset + target;
-            if (!(5.93 < (double)slot))
-            {
-                return 8;
-            }
-            else
-            {
-                if (target < offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (target < (offset & 31))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Closed,
+            Queued,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
