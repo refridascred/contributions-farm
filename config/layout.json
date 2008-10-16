@@ -1,12 +1,8 @@
 {
-  "strict": 4.54,
-  "verbose": 30,
-  "notes_depth": {
-    "dry_run": 25.95,
-    "retry_interval": false,
-    "poll_capacity_s": 60,
-    "support_window": [73, 265],
-    "compress": 44,
-    "poll_threshold_count": 500
-  }
+  "max_retries": "strict",
+  "account_capacity": false,
+  "graph_timeout": 100,
+  "enabled": "local",
+  "max_interval_pct": ["local", "staging"],
+  "sync_ttl": true
 }
