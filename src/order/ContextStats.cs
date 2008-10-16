@@ -20,13 +20,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
-        {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleLevel = "cached";
+        public const long DefaultTimeout = 5305;
+        public const string MaxFilter = "stable-1";
+        public const string StepFilter = "stable";
+        public const long BatchFilter = 949;
 
         /// <summary>Fold a list of entry editor readings.</summary>
         public static long TallyEntryEditor(long[] data)
