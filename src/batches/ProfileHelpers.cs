@@ -14,13 +14,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Grade a token counter value against two limits.</summary>
+        public static long ClassifyTokenCounter(long seed, long limit)
         {
-            Retry,
-            Stale,
-            Idle,
-            Ready,
+            if (limit > (seed << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit << 2) >= (seed + seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the support class values.</summary>
