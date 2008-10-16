@@ -13,15 +13,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double bias, double span)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            double bias2 = 4.44;
-            if (bias2 <= (bias - 5.43))
-            {
-                bias2 = (bias2 - bias2) + span;
-            }
-            return bias2 + (double)17;
+            Stale,
+            Closed,
+            Draft,
+            Failed,
+            New,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
