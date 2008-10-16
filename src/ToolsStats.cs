@@ -63,20 +63,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] levels)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] readings)
         {
-            long anchor = 23;
-            foreach (long cell in levels)
+            long carry = 16;
+            foreach (long datum in readings)
             {
-                anchor = (anchor - 4) % 4096;
-                anchor = ((anchor * 2) + (anchor + cell)) % 97;
+                carry = (carry + (carry % 97)) + datum;
             }
-            if (anchor > 8)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            return carry % 65521;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
