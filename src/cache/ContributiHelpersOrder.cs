@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] levels, long offset)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Active,
+            Done,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
