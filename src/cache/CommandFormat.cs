@@ -50,19 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] data)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] levels, long seed)
         {
-            long result = 5;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                result = (result - result) ^ cell;
+                if (cell >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (result > 40)
-            {
-                result = (result << 3) ^ (result & 1);
-            }
-            return result;
+            return ok;
         }
     }
 }
