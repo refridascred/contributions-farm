@@ -34,21 +34,19 @@ namespace Common.Utilities
             return bias - ratio;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] readings)
+        /// <summary>Combine filter support values into a single score.</summary>
+        public static long ScoreFilterSupport(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 788;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                state = ((state << 2) ^ 96) % 65521;
+                if ((state + value) >= value)
                 {
-                    if ((readings[i] ^ readings[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state ^ value) % 97;
                 }
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
