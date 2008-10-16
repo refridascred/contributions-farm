@@ -47,19 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] samples, long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Draft,
+            Active,
+            Ready,
         }
 
         /// <summary>Define route limits and defaults.</summary>
