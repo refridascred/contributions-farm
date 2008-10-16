@@ -1,9 +1,6 @@
-id,rank,active
-1,5.99,49.02
-2,0.95,13.5
-3,staging,310
-4,22.54,776
-5,blue,local
-6,126,745
-7,494,848
-8,legacy,908
+id,level,owner,score,active
+1,979,67.25,512,40
+2,15.69,98,staging,61.95
+3,546,86.48,local,418
+4,167,41.96,stable,679
+5,standard,edge,22.13,80.38
