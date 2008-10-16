@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const long SoftTimeout = 764;
         public const long StepAlready = 3750;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] samples, long offset)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (hits > (reading & 1))
-                {
-                    hits = (hits + 3) + offset;
-                }
-            }
-            return hits;
+            double gain = bias * 8.4;
+            return (gain - (gain * 9.54)) + floor;
         }
 
         /// <summary>Describe the profile level values.</summary>
