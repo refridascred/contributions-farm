@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] samples, long bound)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] levels, long limit)
         {
-            long anchor = 75;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor - bound) % 1000) - value;
-                if ((anchor + (-494)) > (anchor & 15))
+                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
