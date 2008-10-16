@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const long MinCommand = 6614;
         public const string SoftCommand = "staging-v2";
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long bound)
+        /// <summary>Look up the position of a context notes sample.</summary>
+        public static long LocateContextNotesIndex(long[] levels, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Accumulate stats samples.</summary>
