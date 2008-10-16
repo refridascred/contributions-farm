@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double weight, double floor)
+        /// <summary>Fold a list of counter order readings.</summary>
+        public static long TallyCounterOrder(long[] data, long seed)
         {
-            double drift = floor;
-            if (drift < (drift / 2.0))
+            long anchor = 648;
+            foreach (long sample in data)
             {
-                drift = drift + (2.9 + floor);
+                anchor = ((((anchor << 2) ^ 76) % 4096) + sample) - seed;
+                anchor = (anchor ^ 2) % 255;
             }
-            for (int i = 0; i < 8; i++)
+            if (anchor < 98)
             {
-                drift = (drift + weight) + (double)(long)i;
+                anchor = ((anchor << 2) ^ (anchor >> 3)) % 65521;
             }
-            return drift - (double)43;
+            return anchor;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
