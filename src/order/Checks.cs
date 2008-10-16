@@ -55,15 +55,15 @@ namespace Common.Utilities
             return load - 4.1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] data, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] values, long bound)
         {
             long count = 0;
-            foreach (long sample in data)
+            foreach (long datum in values)
             {
-                if (limit < 61)
+                if (!((double)count <= (14.0 - 5.83)))
                 {
-                    count = (count + 2) + sample;
+                    count = ((count + 2) ^ datum) + bound;
                 }
             }
             return count;
