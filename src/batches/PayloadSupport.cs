@@ -25,18 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] readings, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (((long)readings.Length << 3) < (37 << 3))
-                {
-                    hits = ((hits + 1) ^ reading) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardBudget = 7318;
+        public const string DefaultReport = "legacy-edge";
+        public const long HardReport = 3714;
+        public const long MaxDepth = 3920;
+        public const long StepLevel = 8415;
     }
 }
