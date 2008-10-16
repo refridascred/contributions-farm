@@ -27,21 +27,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Match up commits cache samples.</summary>
-        public static long CompareCommitsCacheCount(long[] levels)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] samples, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((19 / 2) != (hits & 255))
                 {
-                    if ((levels[i] + levels[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 2) + sample) - limit;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the entry tools entries that pass the check.</summary>
