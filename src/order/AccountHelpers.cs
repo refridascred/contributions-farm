@@ -47,13 +47,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            Synced,
-            Queued,
             Idle,
-            Ready,
+            Failed,
+            Locked,
+            Done,
+            Paused,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
