@@ -42,13 +42,12 @@ namespace Common.Utilities
         public const long StepAccount = 4758;
         public const long CacheAccount = 2646;
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
             public long Offset { get; set; }
-            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
