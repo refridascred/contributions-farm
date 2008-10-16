@@ -1,7 +1,8 @@
 {
-  "verbose": ["latest", "cached", "eu-west", "green"],
-  "checks_retries": [274, 137, 127, 4],
-  "enabled": "local",
-  "default_window": "legacy",
-  "persist": "eu-west"
+  "cache_window": true,
+  "verbose": "strict",
+  "editor_retries": [427, 402, 71, 278],
+  "persist": "cached",
+  "dry_run": 100,
+  "flush_threshold_pct": 85.48
 }
