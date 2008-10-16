@@ -1,8 +1,6 @@
 {
-  "hard_timeout_pct": "primary",
-  "batches_delay": 4506,
-  "graph_ratio": 28,
-  "schema_ratio": "eu-west",
-  "min_ttl": "green",
-  "flush_window": ["standard", "primary", "eu-west", "cached"]
+  "warm_interval_ms": ["cached", "latest", "cached", "eu-west"],
+  "githubfarm_delay": ["open", "cached"],
+  "sync_retries_count": true,
+  "already_interval": true
 }
