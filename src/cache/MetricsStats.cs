@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] values, long limit)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample != limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
