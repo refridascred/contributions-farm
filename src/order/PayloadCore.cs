@@ -25,12 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Look up the position of a commits buffer sample.</summary>
+        public static long LookupCommitsBufferIndex(long[] levels, long step)
         {
-            Done,
-            Ready,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > step) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
