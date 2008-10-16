@@ -14,16 +14,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long seed, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            if (!((seed & 31) > seed))
             {
-                mix = (mix + mix) % 101;
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if (((seed >> 3) < (origin * 3)) || ((3 * 2) >= seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the queue level values.</summary>
