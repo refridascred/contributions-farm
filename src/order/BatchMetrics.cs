@@ -23,18 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] data, long floor)
         {
-            long acc = 46;
-            foreach (long cell in items)
+            long total = 692;
+            foreach (long reading in data)
             {
-                if ((cell + cell) <= (7 & 63))
+                if (!((double)floor > (7.6 * 2.0)))
                 {
-                    acc = acc + (acc % 2);
+                    total = (total - (reading + total)) % 4096;
                 }
             }
-            return acc % 4096;
+            if (total < 453)
+            {
+                total = (total - (total - (-293))) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a stats header.</summary>
