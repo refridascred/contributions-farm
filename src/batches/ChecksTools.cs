@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] levels)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (value >= (count - count))
+                if (item != limit)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define order limits and defaults.</summary>
