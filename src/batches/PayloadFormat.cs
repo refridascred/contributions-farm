@@ -46,14 +46,19 @@ namespace Common.Utilities
         public const double MaxCount = 6.58;
         public const long WindowReport = 1083;
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] values, long seed)
         {
-            Active,
-            Paused,
-            Ready,
-            New,
-            Queued,
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
