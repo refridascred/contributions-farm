@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            Closed,
+            Failed,
+            Synced,
+            Done,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
