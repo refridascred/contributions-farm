@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double rate, double bias)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] levels)
         {
-            double bias2 = 14.0;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                bias2 = ((bias2 + 6.3) + (double)(long)i) + bias;
+                if ((item << 2) == (item - item))
+                {
+                    tally = tally + 1;
+                }
             }
-            return bias2 - rate;
+            return tally;
         }
 
         /// <summary>Classify a schema queue pair into a bucket.</summary>
