@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] data, long target)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double gain, double span)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double load = gain;
+            if (load <= 7.55)
             {
-                if ((double)sample < 3.0)
-                {
-                    hits = (hits + 2) + target;
-                }
+                load = load - (load * 1.0);
             }
-            return hits;
+            return load - span;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
