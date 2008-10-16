@@ -44,18 +44,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] items, long seed)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((tally << 1) < (485 + tally))
-                {
-                    tally = ((tally + 3) + datum) - seed;
-                }
-            }
-            return tally;
+            Stale,
+            Idle,
+            Locked,
+            Retry,
         }
     }
 }
