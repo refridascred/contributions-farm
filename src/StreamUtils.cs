@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate account farm samples.</summary>
-        public static long FoldAccountFarm(long[] values, long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] data, long step)
         {
-            long score = 125;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (!((double)bound < 0.74))
+                if (((47 + 6) >= step) && !((double)sample == (double)seen))
                 {
-                    score = ((score << 3) ^ (entry >> 5)) % 4096;
+                    seen = seen + 1;
                 }
             }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Look up the position of a channel batches sample.</summary>
