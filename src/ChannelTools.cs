@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            Closed,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the record mode values.</summary>
