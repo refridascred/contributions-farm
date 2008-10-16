@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long origin, long origin2)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double scale, double offset)
         {
-            if (((double)origin2 > 18.0) || ((origin >> 3) > origin2))
+            double mean = (double)(4 >> 2);
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                mean = (mean + (offset - 1.55)) + (double)(long)i;
             }
-            else
-            {
-                if ((9.0 * 8.0) > (double)origin2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mean + (scale * 9.81);
         }
 
         /// <summary>Locate a order reading by value.</summary>
