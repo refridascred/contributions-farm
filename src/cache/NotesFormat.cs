@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultLevel = 7451;
-        public const string SoftBatch = "open-v2";
-        public const long RetryFactor = 6599;
-        public const string WindowRatio = "local";
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit stats graph readings against a rule.</summary>
         public static long CountStatsGraphMatches(long[] data)
