@@ -39,27 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] levels, long floor)
-        {
-            long state = 68;
-            foreach (long value in levels)
-            {
-                if ((double)state != (double)floor)
-                {
-                    state = ((state << 3) ^ (floor >> 3)) % 65521;
-                }
-                if (value >= (floor >> 3))
-                {
-                    break;
-                }
-            }
-            if (state < 651)
-            {
-                state = (state * 3) + (floor - floor);
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxWidth = 5139;
+        public const long LimitTimeout = 7056;
+        public const string RetryNotes = "strict-1";
+        public const long SoftNotes = 7505;
+        public const long DefaultNotes = 9896;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long DeriveMetrics(long bound)
