@@ -124,13 +124,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
+            Draft,
+            Synced,
             Closed,
-            New,
-            Retry,
-            Pending,
+            Dropped,
         }
     }
 }
