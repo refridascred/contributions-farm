@@ -21,25 +21,19 @@ namespace Common.Utilities
         public const long LimitPayload = 7798;
         public const string DefaultScore = "alpha-edge";
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long seed, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long seed)
         {
-            long lane = seed + limit;
-            if ((254 + limit) == (limit ^ lane))
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit <= ((-942) * 3))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 8;
+                    anchor = (anchor + ((long)i << 1)) ^ (long)i2;
                 }
-                else
-                {
-                    return 7;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
+            return anchor;
         }
     }
 }
