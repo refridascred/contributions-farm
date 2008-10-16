@@ -1,5 +1,23 @@
 {
-  "default_interval": 60,
-  "retry_window_pct": true,
-  "idle_capacity_count": 76.3
+  "verbose": 500,
+  "burst_window_pct": {
+    "min_window_s": 35.52,
+    "readonly": 10.7,
+    "cache_size": 40.7,
+    "batch_window_pct": 9875
+  },
+  "window_delay": {
+    "cache_interval": "legacy",
+    "soft_delay_count": 917,
+    "default_threshold_s": "local",
+    "context_interval": {
+      "record_ratio": 26,
+      "base_interval_s": 51.14,
+      "editor_size": "legacy"
+    },
+    "audit": 27.61,
+    "base_size": false
+  },
+  "report_retries": 6.25,
+  "retry_retries_pct": false
 }
