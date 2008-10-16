@@ -33,22 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftBudget = 7465;
+        public const double MaxWidth = 20.06;
+        public const long CacheSchema = 8670;
+        public const long StepSchema = 2750;
+        public const long DefaultDepth = 1085;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenHits(long[] readings)
