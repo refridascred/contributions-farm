@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of token githubfarm entries.</summary>
-        public static long CombineTokenGithubfarm(long[] items, long target)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long mark = 6;
-            foreach (long item in items)
-            {
-                if ((item & 15) > 860)
-                {
-                    mark = (mark ^ item) + target;
-                }
-            }
-            if (mark < 70)
-            {
-                mark = ((mark << 2) ^ (mark >> 2)) % 101;
-            }
-            return mark % 1000;
+            Ready,
+            Idle,
+            New,
         }
 
         /// <summary>Describe the batch state values.</summary>
