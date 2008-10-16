@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Validate account queue readings against a bound.</summary>
+        public static bool GuardAccountQueueLimits(long[] samples, long target)
         {
-            Paused,
-            Failed,
-            Draft,
-            Done,
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit account notes readings against a rule.</summary>
