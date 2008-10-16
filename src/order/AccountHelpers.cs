@@ -57,14 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Idle,
-            Failed,
-            Locked,
-            Done,
-            Paused,
+            Queued,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
