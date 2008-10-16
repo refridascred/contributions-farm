@@ -42,12 +42,16 @@ namespace Common.Utilities
             return drift - 8.1;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long origin)
         {
-            Dropped,
-            Failed,
-            Draft,
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = ((mix << 3) ^ ((long)i << 1)) % 97;
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
