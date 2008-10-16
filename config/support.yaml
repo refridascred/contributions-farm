@@ -1,14 +1,9 @@
 # support settings
-min_window_s: 54.99
-batch_size_s: false
-audit: false
-soft_limit_s: blue
-min_timeout_count:
-  checks_limit: open
-  base_window_ms: blue
-  persist: cached
-  poll_limit: cached
-  verbose:
-    - primary
-    - staging
-  poll_ttl_ms: local
+idle_ratio_count:
+  - blue
+  - standard
+  - edge
+  - latest
+poll_ttl_ms: 30
+burst_depth: 60
+profile_threshold: blue
