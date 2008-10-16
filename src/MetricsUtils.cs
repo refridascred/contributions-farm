@@ -64,13 +64,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] items, long seed)
         {
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public bool Mode { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
