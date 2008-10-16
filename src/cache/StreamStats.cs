@@ -25,13 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] samples, long target)
         {
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two stream measurements.</summary>
