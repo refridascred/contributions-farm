@@ -38,13 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
+            public long Stamp { get; set; }
             public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
