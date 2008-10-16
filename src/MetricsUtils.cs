@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((9 >= (seen - 936)) || (((seen ^ 65) >= (12 << 1)) || ((seen + seen) >= (datum ^ seen))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitCounter = 76.24;
+        public const long CacheBudget = 3880;
+        public const long BaseCounter = 9803;
+        public const long SoftLevel = 7128;
+        public const double BurstBudget = 2.17;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long GradeMetric(long offset, long limit)
