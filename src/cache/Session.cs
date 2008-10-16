@@ -36,13 +36,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] series)
         {
-            public string Label { get; set; } = "";
-            public double Count { get; set; }
-            public double Rank { get; set; }
-            public double Flag { get; set; }
+            long anchor = 0;
+            foreach (long item in series)
+            {
+                anchor = (anchor ^ anchor) % 4096;
+                if ((double)item > (5.84 / 7.0))
+                {
+                    anchor = anchor - (8 >> 5);
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
