@@ -1,4 +1,4 @@
 # support settings
-soft_threshold: 0.34
-burst_capacity_s: local
-persist: 32
+poll_timeout_s: 9789
+readonly: staging
+max_window_pct: 250
