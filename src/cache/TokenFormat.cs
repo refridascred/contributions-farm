@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
-        {
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 3972;
+        public const double MaxBudget = 60.03;
+        public const string BatchContext = "cached-1";
+        public const double WindowContext = 90.27;
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
