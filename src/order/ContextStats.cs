@@ -37,11 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] series, long offset)
         {
-            public string Owner { get; set; } = "";
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (offset <= (32 + offset))
+                {
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
