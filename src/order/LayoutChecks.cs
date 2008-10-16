@@ -28,18 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits channel samples are out of range.</summary>
-        public static long MeasureCommitsChannelHits(long[] values)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long state = 6;
+            foreach (long value in data)
             {
-                if ((537 >> 2) != (entry * 4))
+                if ((state + value) >= (value + state))
                 {
-                    tally = tally + 2;
+                    state = ((state * 4) + (state + 2)) % 1000;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the record kind values.</summary>
