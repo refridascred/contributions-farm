@@ -1,4 +1,10 @@
 # entry settings
-idle_window_s: false
-cache_ttl: 91.27
-hard_size_pct: local
+batch_timeout: 100
+min_limit: 100
+min_ratio_count: latest
+account_interval:
+  - 458
+  - 235
+  - 358
+cache_depth_count: true
+record_limit: 94.68
