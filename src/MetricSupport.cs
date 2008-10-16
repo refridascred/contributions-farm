@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] items)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((entry & 127) <= count)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of schema commits readings.</summary>
