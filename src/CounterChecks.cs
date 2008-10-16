@@ -63,17 +63,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a report metric reading by value.</summary>
-        public static long LocateReportMetricIndex(long[] items, long limit)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
