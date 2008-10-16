@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] items, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] items, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (items[i] <= origin)
+                if (sample <= floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
