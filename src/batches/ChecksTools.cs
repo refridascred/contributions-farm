@@ -35,21 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = step;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((readings[i] ^ readings[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score * 5) + score) ^ (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
