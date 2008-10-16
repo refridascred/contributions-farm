@@ -3,10 +3,7 @@ CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
     rank INTEGER,
-    token TEXT,
     owner TEXT NOT NULL
 );
 
 CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
-
-INSERT INTO commits_records (rank, token, owner) VALUES (52, 'cached', 'latest');
