@@ -27,22 +27,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate counter graph samples.</summary>
-        public static long ScoreCounterGraph(long[] data, long bound)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long total = 24;
-            foreach (long value in data)
-            {
-                if (total <= (value + value))
-                {
-                    total = total ^ (total * 4);
-                }
-                if ((double)bound < 4.1)
-                {
-                    break;
-                }
-            }
-            return total % 97;
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
