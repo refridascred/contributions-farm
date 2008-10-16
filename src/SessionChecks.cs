@@ -28,12 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
