@@ -1,17 +1,7 @@
 # entry settings
-token_retries: green
-dry_run: local
-burst_capacity: legacy
-batch_delay: legacy
-compress:
-  min_window_s: 2.26
-  default_ratio_pct: true
-  base_interval_count: green
-  audit: 17.14
-  persist:
-    - primary
-    - green
-    - blue
-    - primary
-  default_ratio_count: strict
-max_limit_count: local
+token_ratio: true
+queue_threshold: 12.04
+window_ratio: 500
+strict: 12.35
+graph_interval: 53
+warm_size_ms: false
