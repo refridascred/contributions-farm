@@ -47,19 +47,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] data)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long acc = -49;
-            foreach (long entry in data)
-            {
-                acc = (acc + (acc * 4)) ^ entry;
-            }
-            if (acc > 4)
-            {
-                acc = (acc - (acc / 6)) % 101;
-            }
-            return acc % 65521;
+            Closed,
+            Queued,
+            Draft,
+            Ready,
         }
 
         /// <summary>Describe the layout mode values.</summary>
