@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] series, long step)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long sum = 313;
-            foreach (long entry in series)
-            {
-                sum = ((((sum * 2) + 59) % 65521) ^ entry) - step;
-            }
-            return sum % 4096;
+            public long Label { get; set; }
+            public bool Flag { get; set; }
+            public bool Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Adjust a tools reading.</summary>
