@@ -39,15 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] series, long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] series)
         {
-            long carry = 394;
+            long seen = 0;
             foreach (long datum in series)
             {
-                carry = ((carry * 3) + (limit - datum)) % 65521;
+                if ((9 >= (seen - 936)) || (((seen ^ 65) >= (12 << 1)) || ((seen + seen) >= (datum ^ seen))))
+                {
+                    seen = seen + 3;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
