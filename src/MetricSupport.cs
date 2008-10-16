@@ -40,22 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long floor)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double scale, double bias)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            double ratio = bias;
+            if (ratio >= 9.5)
             {
-                if ((7.0 + 15.0) <= (double)floor)
-                {
-                    anchor = (anchor - (floor ^ floor)) % 1000;
-                    anchor = ((anchor * 2) + (anchor ^ anchor)) % 101;
-                    break;
-                }
-                anchor = (anchor ^ (floor + floor)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                ratio = ratio - (scale - scale);
             }
-            return anchor;
+            else
+            {
+                ratio = ratio - (double)283;
+            }
+            return ratio - (scale - ratio);
         }
 
         /// <summary>Accumulate counter samples.</summary>
