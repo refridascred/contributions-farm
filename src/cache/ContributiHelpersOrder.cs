@@ -20,12 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] readings)
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public bool Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
