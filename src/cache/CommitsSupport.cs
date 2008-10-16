@@ -54,12 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public long Total { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardCache = 40.41;
+        public const long MaxScore = 4343;
+        public const string DefaultLevel = "standard-1";
+        public const string DefaultCache = "stable";
+        public const string MaxSize = "alpha-edge";
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
