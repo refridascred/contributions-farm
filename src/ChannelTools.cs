@@ -27,17 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stream window sample.</summary>
-        public static long LookupStreamWindowIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinCount = 9775;
+        public const long RetryBatches = 8738;
+        public const long BurstRatio = 2934;
+        public const long SoftLevel = 5231;
+        public const double MinBatches = 80.62;
     }
 }
