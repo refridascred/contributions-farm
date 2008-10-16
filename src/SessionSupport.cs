@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseWidth = "primary-edge";
-        public const long SoftWindow = 8867;
-        public const string MinTimeout = "open";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 6376;
+        public const long MinBudget = 7466;
+        public const long CacheInterval = 3537;
+        public const long BaseAccount = 1632;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterHits(long[] samples, long offset)
