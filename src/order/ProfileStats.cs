@@ -37,22 +37,16 @@ namespace Common.Utilities
         public const long RetryScore = 3805;
         public const double SoftSupport = 51.97;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] samples)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long target)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)count > (7.7 - 9.0)) || !((7.0 * 20.0) != (double)count))
-                {
-                    count = (count + 1) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = anchor ^ (642 & 255);
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Audit window context readings against a rule.</summary>
