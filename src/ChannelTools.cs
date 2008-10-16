@@ -13,18 +13,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] values)
+        /// <summary>Count the buffer farm entries that pass the check.</summary>
+        public static long MeasureBufferFarmHits(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (!((double)86 > (double)entry) || !((entry % 12) >= count))
+                if ((limit % 3) >= (tally & 15))
                 {
-                    count = count + 2;
+                    tally = (tally + 3) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Adjust a batches reading.</summary>
