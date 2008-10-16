@@ -58,26 +58,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] values, long limit)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long seed, long floor)
         {
-            long total = 9;
-            foreach (long entry in values)
+            if (1.1 > (double)floor)
             {
-                if ((17.0 + 4.21) == (double)limit)
+                return 5;
+            }
+            else
+            {
+                if ((floor - seed) > floor)
                 {
-                    total = ((total - total) % 4096) ^ entry;
+                    return 6;
                 }
                 else
                 {
-                    total = (total - (42 / 4)) % 65521;
+                    if ((3.72 - 0.75) < (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (total > (-6))
-            {
-                total = (total ^ (total + 14)) % 97;
-            }
-            return total % 97;
         }
 
         /// <summary>Describe the entry kind values.</summary>
