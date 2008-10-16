@@ -44,19 +44,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] samples, long offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long offset)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (value > offset)
-                {
-                    flag = false;
-                    break;
-                }
+                long hits = mix << 2;
+                mix = (mix * 5) + hits;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return flag;
+            return mix;
         }
     }
 }
