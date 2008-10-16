@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double scale, double offset)
+        /// <summary>Find the first token route entry that matches the target.</summary>
+        public static long LocateTokenRouteIndex(long[] data, long bound)
         {
-            double ratio = 2.27;
-            if (ratio <= scale)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio - (double)7) - offset;
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + scale;
+            return -1;
         }
 
         /// <summary>Hold a report summary.</summary>
