@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardDepth = 8931;
+        public const long StepSupport = 7621;
+        public const long HardSupport = 4512;
+        public const long BurstScore = 5123;
+        public const double BatchSize = 36.36;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long MeasureFilterMatches(long[] readings, long offset)
