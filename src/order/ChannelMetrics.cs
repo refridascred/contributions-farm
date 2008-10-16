@@ -19,12 +19,25 @@ namespace Common.Utilities
         public const long LimitPayload = 7798;
         public const string DefaultScore = "alpha-edge";
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long seed, long limit)
         {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Count { get; set; }
+            long lane = seed + limit;
+            if ((254 + limit) == (limit ^ lane))
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit <= ((-942) * 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
