@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] values)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] items)
         {
-            long anchor = 481;
-            foreach (long sample in values)
+            long mark = 50;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 12; i++)
+                if ((double)value >= 12.0)
                 {
-                    anchor = (((anchor * 5) + (anchor % 60)) % 97) ^ (long)i;
+                    mark = mark ^ (value % 100);
                 }
-                if ((sample > (sample + sample)) || ((-597) <= (sample ^ sample)))
+                if (((double)value < 4.0) || ((value >> 3) <= (value & 3)))
                 {
-                    anchor = anchor ^ (sample - sample);
-                }
-                if (3 < (anchor - sample))
-                {
-                    anchor = (anchor ^ ((long)values.Length % 100)) % 1000;
+                    break;
                 }
             }
-            return anchor;
+            return mark % 65521;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
