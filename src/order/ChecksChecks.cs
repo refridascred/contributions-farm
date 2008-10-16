@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] readings, long origin)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long origin, long origin2)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            if (((double)origin2 > 18.0) || ((origin >> 3) > origin2))
             {
-                if (datum < origin)
+                return 4;
+            }
+            else
+            {
+                if ((9.0 * 8.0) > (double)origin2)
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return valid;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
