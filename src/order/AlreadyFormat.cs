@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of counter batches entries.</summary>
-        public static long FoldCounterBatches(long[] data)
-        {
-            long score = 332;
-            foreach (long datum in data)
-            {
-                if (datum > (score % 5))
-                {
-                    score = (score - datum) % 97;
-                }
-                if ((score & 127) == (score / 5))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinSpan = 8403;
+        public const long IdleFactor = 3098;
+        public const long StepProfile = 1269;
+        public const long WindowProfile = 6602;
 
         /// <summary>Count tools farm pairs that satisfy a relation.</summary>
         public static long CompareToolsFarmCount(long[] readings)
