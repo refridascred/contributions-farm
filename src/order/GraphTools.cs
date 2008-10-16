@@ -12,17 +12,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] items, long step)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Pending,
+            Paused,
+            Done,
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
