@@ -27,21 +27,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count cluster session pairs that satisfy a relation.</summary>
-        public static long CompareClusterSessionCount(long[] samples)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((levels[i] == limit) && ((levels[i] % 2) != 0))
                 {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
