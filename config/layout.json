@@ -1,17 +1,12 @@
 {
-  "retry_window_count": false,
-  "buffer_interval": {
-    "retry_delay_ms": "latest",
-    "poll_capacity": "latest",
-    "verbose": {
-      "retry_limit": 3537,
-      "hard_ratio": 3217,
-      "channel_depth": "strict",
-      "flush_depth_pct": "strict",
-      "soft_ratio_ms": "fallback"
-    },
-    "dry_run": "blue",
-    "batches_delay": "green"
+  "warm_threshold_pct": "primary",
+  "retry_threshold": 64.81,
+  "dry_run": {
+    "sync_size_ms": false,
+    "hard_depth": "primary",
+    "default_window_s": "green",
+    "base_ratio_ms": false,
+    "soft_window_count": [96, 196]
   },
-  "queue_delay": 3497
+  "min_timeout_count": 500
 }
