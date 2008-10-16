@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long target, long step)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double weight, double floor)
         {
-            if (target >= (target >> 2))
+            double scale = weight;
+            for (int i = 0; i < 3; i++)
             {
-                return 7;
+                scale = (scale + (floor / 6.0)) + (double)(long)i;
             }
-            else
-            {
-                if ((target % 8) < (766 - step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((6.78 + 4.6) < (double)step) && ((target - step) >= (734 % 8)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step % 3) > target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return scale + floor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
