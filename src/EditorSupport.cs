@@ -27,22 +27,11 @@ namespace Common.Utilities
         public const long BaseSpan = 6631;
         public const long WindowSupport = 1835;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] levels)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (!(((value ^ value) >= value) || ((value / 5) > hits)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double drift = bias;
+            return (drift + 15.0) + scale;
         }
 
         /// <summary>Describe the token state values.</summary>
