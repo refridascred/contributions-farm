@@ -35,19 +35,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine format graph values into a single score.</summary>
-        public static long TallyFormatGraph(long[] data)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] samples, long limit)
         {
-            long mark = 636;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                mark = (mark ^ (mark << 1)) + entry;
+                if (((seen << 2) > (seen + 733)) && (((long)samples.Length - seen) >= limit))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
             }
-            if (mark < 5)
-            {
-                mark = mark - mark;
-            }
-            return mark;
+            return seen;
         }
     }
 }
