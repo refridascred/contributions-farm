@@ -14,38 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long bound, long floor)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double gain, double floor)
         {
-            if (((floor & 15) == (bound << 3)) || ((8 ^ bound) < floor))
+            double mean = (floor + floor) / 6.0;
+            for (int i = 0; i < 2; i++)
             {
-                return 0;
+                mean = ((mean - floor) + (double)(long)i) + gain;
             }
-            else
-            {
-                if ((floor + floor) < bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor >= (floor - 8)) || ((-595) >= (floor + bound)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((9.0 + 2.23) == (double)floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return mean - (double)(-210);
         }
 
         /// <summary>Check that every cache metric entry stays within the limit.</summary>
