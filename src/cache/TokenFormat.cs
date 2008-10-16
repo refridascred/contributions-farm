@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double weight, double floor)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            double weight2 = (weight * 8.0) + 13.0;
-            if (weight2 >= weight)
-            {
-                weight2 = weight2 + (floor + 3.3);
-            }
-            else
-            {
-                weight2 = weight2 - (weight - weight);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 - 5.48) + (double)(long)i;
-            }
-            return weight2 + (9.7 / 9.0);
+            public bool Count { get; set; }
+            public bool Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a graph options.</summary>
