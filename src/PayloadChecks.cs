@@ -32,31 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a schema queue pair into a bucket.</summary>
-        public static long SortSchemaQueue(long limit, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] readings, long offset)
         {
-            if ((limit / 3) < 692)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (4.23 <= (double)limit)
+                if ((4.49 - 9.3) == (double)entry)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset + offset) <= limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = (seen + 2) - offset;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of account order entries.</summary>
