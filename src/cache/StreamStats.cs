@@ -41,24 +41,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long origin)
+        /// <summary>Compare every pair of format channel readings.</summary>
+        public static long OverlapFormatChannelCount(long[] items)
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 2) + (mark - origin)) % 65521;
-                if (mark < origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = mark - (mark % 16);
+                    if ((items[i] - items[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if ((608 + origin) <= origin)
-                {
-                    mark = ((mark * 2) + (1 & 15)) % 1000;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return count;
         }
     }
 }
