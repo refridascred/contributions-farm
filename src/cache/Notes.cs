@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate schema layout readings against a bound.</summary>
-        public static bool GuardSchemaLayoutLimits(long[] samples, long origin)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 2170;
+        public const string WindowChecks = "local-1";
+        public const long SoftFactor = 8607;
+        public const string IdleChecks = "standard-edge";
+        public const long MaxTimeout = 6775;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
