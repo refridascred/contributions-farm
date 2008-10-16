@@ -32,18 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] samples)
+        /// <summary>Check that every support batches entry stays within the limit.</summary>
+        public static bool ValidateSupportBatchesRange(long[] data, long limit)
         {
-            long acc = 6;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if ((0.14 + 18.0) < (double)acc)
+                if (item != limit)
                 {
-                    acc = (acc + (datum - datum)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return ok;
         }
     }
 }
