@@ -1,13 +1,10 @@
 # entry settings
-default_delay: 77
-persist: edge
-cache_delay: 66.88
-buffer_retries:
-  - standard
-  - strict
-window_interval: local
-account_depth:
+min_limit: 250
+readonly: 71.46
+metrics_window: 500
+poll_ratio_pct:
   - green
   - stable
-  - eu-west
-  - fallback
+  - cached
+  - stable
+base_interval_pct: 500
