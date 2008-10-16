@@ -1,4 +1,10 @@
 # githubfarm settings
-dry_run: 78.51
-max_timeout: true
-soft_limit_count: strict
+strict: 66
+retry_ttl_ms: 32.25
+base_retries_pct: cached
+idle_ttl_pct: 9266
+poll_ttl_count:
+  - 30
+  - 367
+  - 435
+  - 217
