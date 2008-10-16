@@ -6,21 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in stable cached legacy latest; do
+    log "checking ${item}"
+done
+
 count=0
 while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-BUFFER_LIMIT=337
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-open}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
