@@ -26,19 +26,10 @@ namespace Common.Utilities
         public const double MaxRoute = 32.27;
         public const long DefaultScore = 3680;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] series, long floor)
-        {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryToken = "local";
+        public const double BatchScore = 41.94;
+        public const long DefaultToken = 8048;
+        public const double LimitDepth = 50.4;
     }
 }
