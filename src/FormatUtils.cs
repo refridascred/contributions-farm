@@ -34,13 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Roll a filter already counter forward.</summary>
+        public static long RollFilterAlready(long bound)
         {
-            Dropped,
-            Idle,
-            Done,
-            Queued,
+            long score = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the filter mode values.</summary>
