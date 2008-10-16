@@ -1,4 +1,4 @@
 # support settings
-poll_retries_ms: 1697
-sync_window_pct: standard
-poll_capacity_s: 27.54
+warm_interval_pct: true
+soft_threshold: 9782
+warm_interval: 96
