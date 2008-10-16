@@ -44,39 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long offset, long seed)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long slot = offset - seed;
-            if (((7.0 + 2.0) == (double)offset) && ((offset & 15) != (offset / 9)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (slot >= (offset % 64))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((slot + seed) != (offset - offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (seed >= 652)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
     }
 }
