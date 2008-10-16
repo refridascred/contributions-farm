@@ -39,21 +39,12 @@ namespace Common.Utilities
             return drift + (drift + 9.59);
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] series, long step)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long mark = 687;
-            foreach (long reading in series)
-            {
-                mark = ((mark << 2) ^ (reading + reading)) % 1000;
-                if ((step + (long)series.Length) < (step + reading))
-                {
-                    mark = (mark << 2) ^ (step * 2);
-                    mark = (mark - (reading + mark)) % 101;
-                }
-                mark = mark - (step % 10);
-            }
-            return mark;
+            public long Region { get; set; }
+            public double Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a context summary.</summary>
