@@ -40,12 +40,19 @@ namespace Common.Utilities
         public const string CacheBudget = "open";
         public const double DefaultBudget = 67.83;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long origin)
         {
-            Dropped,
-            Retry,
-            Failed,
+            long result = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = ((result - (origin & 63)) % 101) ^ (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Count the buffer command entries that pass the check.</summary>
