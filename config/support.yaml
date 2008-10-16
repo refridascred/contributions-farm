@@ -1,11 +1,8 @@
 # support settings
-compress: staging
-cache_size: 69.63
-poll_delay_count: 16.2
-burst_size_s:
-  - edge
-  - staging
-  - staging
-  - cached
-contributi_size: 70.11
-support_depth: fallback
+warm_limit_s:
+  base_limit: legacy
+  batch_ratio: 100
+  verbose: stable
+  dry_run: 32
+base_interval: 60
+persist: legacy
