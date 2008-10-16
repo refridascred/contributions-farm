@@ -61,10 +61,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstScore = 4268;
-        public const double MaxBudget = 41.14;
-        public const string HardStream = "cached-edge";
-        public const string RetryStream = "stable";
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutLimits(long[] levels, long step)
+        {
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
