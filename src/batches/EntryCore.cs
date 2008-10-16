@@ -64,19 +64,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] readings, long limit)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long bound)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix << 3) ^ (mix - 378)) % 101;
+                mix = (mix ^ (bound * 4)) % 255;
+                mix = (mix << 3) ^ mix;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
