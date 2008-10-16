@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetrySpan = "local-edge";
-        public const long CacheInterval = 4651;
-        public const string DefaultEditor = "open-1";
-        public const long WindowEditor = 3367;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((reading ^ seen) < (-165))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long FindAlreadyIndex(long[] levels, long step)
