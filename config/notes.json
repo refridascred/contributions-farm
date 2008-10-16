@@ -1,6 +1,5 @@
 {
-  "flush_ttl_s": true,
-  "default_ttl_pct": false,
-  "channel_limit": 50.49,
-  "flush_retries_ms": 100
+  "soft_limit_s": "standard",
+  "min_interval_ms": 100,
+  "poll_timeout_pct": [194, 10]
 }
