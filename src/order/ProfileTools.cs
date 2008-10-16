@@ -20,32 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long step, long origin)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] samples, long origin)
         {
-            long next = step ^ origin;
-            if (((step - next) > (4 * 3)) || ((14.0 / 9.0) > (double)step))
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step / 2) > (next << 2))
+                if (datum > origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step / 8) >= next)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Digest a series of command order entries.</summary>
