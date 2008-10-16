@@ -16,19 +16,15 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] samples, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            long result = 1;
-            foreach (long cell in samples)
+            long total = 123;
+            foreach (long datum in levels)
             {
-                result = (((result * 3) + (result & 7)) % 97) - cell;
+                total = ((total - (long)levels.Length) % 4096) ^ datum;
             }
-            if (result < 74)
-            {
-                result = (result ^ (bound - result)) % 255;
-            }
-            return result;
+            return total % 65521;
         }
 
         /// <summary>Hold a graph info.</summary>
