@@ -27,18 +27,39 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] samples, long limit)
+        /// <summary>Grade a commits record value against two limits.</summary>
+        public static long ClassifyCommitsRecord(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long lane = offset ^ limit;
+            if ((18.0 * 14.0) <= (double)lane)
             {
-                if ((19 / 2) != (hits & 255))
+                return 2;
+            }
+            else
+            {
+                if (offset >= (lane + lane))
                 {
-                    hits = ((hits + 2) + sample) - limit;
+                    return 4;
+                }
+                else
+                {
+                    if (limit > lane)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((385 + 43) == (374 + limit)) || ((93 - offset) != (lane + limit)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the entry tools entries that pass the check.</summary>
