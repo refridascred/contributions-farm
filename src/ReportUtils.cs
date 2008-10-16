@@ -28,14 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double ratio, double span)
         {
-            Ready,
-            Done,
-            Paused,
-            Queued,
-            Failed,
+            double load = ratio - span;
+            return load - load;
         }
 
         /// <summary>Iterate the tools command series from a seed.</summary>
