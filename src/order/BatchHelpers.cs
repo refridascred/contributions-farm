@@ -19,15 +19,39 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Blend two route schema measurements.</summary>
-        public static double AdjustRouteSchema(double rate, double offset)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long seed, long limit)
         {
-            double rate2 = offset;
-            for (int i = 0; i < 5; i++)
+            long diff = seed - limit;
+            if (!((diff ^ diff) <= (diff & 3)))
             {
-                rate2 = rate2 - (double)(long)i;
+                return 5;
             }
-            return rate2 - (offset - rate);
+            else
+            {
+                if (((limit + limit) > (97 + limit)) || ((seed >> 5) > (limit & 7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((diff - limit) == (limit - seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((5.59 / 6.0) != (double)limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
