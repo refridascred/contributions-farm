@@ -50,18 +50,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit order profile readings against a rule.</summary>
-        public static long AuditOrderProfileHits(long[] readings, long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long acc = 284;
+            foreach (long sample in levels)
             {
-                if ((target <= (92 - target)) || ((matches % 24) < (value / 7)))
+                if ((14.0 - 8.0) == (double)acc)
                 {
-                    matches = matches + 3;
+                    acc = (acc ^ (sample % 3)) % 97;
                 }
             }
-            return matches;
+            if (acc > 8)
+            {
+                acc = ((acc * 3) + (83 << 1)) % 101;
+            }
+            return acc;
         }
     }
 }
