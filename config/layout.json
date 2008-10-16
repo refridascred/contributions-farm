@@ -1,8 +1,5 @@
 {
-  "max_retries": "strict",
-  "account_capacity": false,
-  "graph_timeout": 100,
-  "enabled": "local",
-  "max_interval_pct": ["local", "staging"],
-  "sync_ttl": true
+  "strict": 7,
+  "verbose": 32.55,
+  "burst_interval": "standard"
 }
