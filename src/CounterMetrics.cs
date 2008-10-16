@@ -38,19 +38,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every payload command entry stays within the limit.</summary>
-        public static bool VerifyPayloadCommandLimits(long[] items, long bound)
+        /// <summary>Find the first notes layout entry that matches the target.</summary>
+        public static long LookupNotesLayoutIndex(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum > bound)
+                if (readings[i] >= offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Project the next queue value.</summary>
