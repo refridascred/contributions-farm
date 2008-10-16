@@ -1,6 +1,6 @@
 {
-  "audit": 67.85,
-  "min_window": true,
-  "readonly": ["latest", "cached", "eu-west"],
-  "contributi_window": 46
+  "audit": 30,
+  "burst_limit_s": "local",
+  "base_interval": true,
+  "schema_size": "staging"
 }
