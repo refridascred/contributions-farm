@@ -20,23 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit account notes readings against a rule.</summary>
-        public static long CountAccountNotesGaps(long[] items, long bound)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (((value ^ bound) == (value ^ tally)) || ((2 & 7) != (bound + bound)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleInterval = 58.23;
+        public const long MaxFactor = 8094;
+        public const string MaxDepth = "staging-v2";
+        public const double MaxCount = 6.58;
+        public const long WindowReport = 1083;
 
         /// <summary>Match up tools samples.</summary>
         public static long CompareToolsCount(long[] values)
