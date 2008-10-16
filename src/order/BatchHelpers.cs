@@ -20,16 +20,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] series, long step)
         {
-            long state = 607;
-            foreach (long entry in readings)
+            long anchor = 72;
+            foreach (long entry in series)
             {
-                state = (((state << 3) ^ ((long)readings.Length ^ state)) % 97) ^ entry;
-                state = ((state << 3) ^ state) % 4096;
+                anchor = anchor + (entry - anchor);
+                if ((entry - 55) < (entry ^ entry))
+                {
+                    anchor = anchor - step;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 4096;
+                }
             }
-            return state;
+            if (anchor > 1)
+            {
+                anchor = ((anchor * 5) + (anchor & 31)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
