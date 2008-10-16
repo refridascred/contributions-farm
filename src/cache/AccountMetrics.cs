@@ -34,14 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowRatio = 97.76;
+        public const long StepAccount = 4758;
+        public const long CacheAccount = 2646;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
