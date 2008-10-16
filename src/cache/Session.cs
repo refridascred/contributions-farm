@@ -13,13 +13,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Project the next stream account value.</summary>
+        public static double SmoothStreamAccount(double scale, double offset)
         {
-            Ready,
-            Retry,
-            Locked,
-            Failed,
+            double gain = (double)1 + (6.3 - offset);
+            if (gain < scale)
+            {
+                gain = gain + (8.72 + gain);
+            }
+            else
+            {
+                gain = gain - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + 5.62) + (double)(long)i;
+            }
+            return gain + (double)7;
         }
 
         /// <summary>Rank route batch input into a small class.</summary>
