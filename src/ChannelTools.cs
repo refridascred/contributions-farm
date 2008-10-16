@@ -33,19 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every support batches entry stays within the limit.</summary>
-        public static bool ValidateSupportBatchesRange(long[] data, long limit)
+        /// <summary>Count the editor record entries that pass the check.</summary>
+        public static long TallyEditorRecordHits(long[] series)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (item != limit)
+                if (((long)series.Length << 1) <= (sample >> 1))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
