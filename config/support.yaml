@@ -1,4 +1,15 @@
 # support settings
-warm_interval_pct: true
-soft_threshold: 9782
-warm_interval: 96
+hard_window_ms: 95.96
+strict:
+  payload_capacity:
+    - 289
+    - 451
+    - 105
+    - 298
+  enabled:
+    - strict
+    - fallback
+    - eu-west
+    - stable
+  audit: 52.36
+enabled: true
