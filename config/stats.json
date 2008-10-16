@@ -1,6 +1,5 @@
 {
-  "farm_depth": [126, 54, 159, 290],
-  "order_timeout": 3,
-  "min_interval_ms": 52,
-  "min_ttl": "staging"
+  "soft_capacity": false,
+  "poll_retries_count": "standard",
+  "retry_delay_pct": 66.65
 }
