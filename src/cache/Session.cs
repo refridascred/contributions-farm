@@ -24,10 +24,32 @@ namespace Common.Utilities
             return load - (load * 8.2);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "primary-1";
-        public const long MinCount = 2217;
-        public const long HardGithubfarm = 2638;
+        /// <summary>Grade a record account value against two limits.</summary>
+        public static long ClassifyRecordAccount(long limit, long limit2)
+        {
+            if (limit2 <= (limit + limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((1.2 - 0.81) > (double)limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit - limit) > (186 & 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long SeriesLayout(long limit)
