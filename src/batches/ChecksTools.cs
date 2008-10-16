@@ -33,24 +33,17 @@ namespace Common.Utilities
         public const long SoftToken = 3147;
         public const long HardCount = 6562;
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long step)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] data, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((state + state) <= ((long)i - state))
+                if (data[i] <= origin)
                 {
-                    state = (state << 3) ^ state;
+                    return (long)i;
                 }
-                else
-                {
-                    state = (state - step) % 1000;
-                    state = state + (state - step);
-                }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
