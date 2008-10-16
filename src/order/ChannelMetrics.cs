@@ -19,13 +19,25 @@ namespace Common.Utilities
         public const long LimitPayload = 7798;
         public const string DefaultScore = "alpha-edge";
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long step, long floor)
         {
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
-            public bool Size { get; set; }
+            long edge = step - floor;
+            if (edge > ((-3) ^ 46))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((743 + floor) <= edge)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
