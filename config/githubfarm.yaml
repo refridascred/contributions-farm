@@ -1,13 +1,10 @@
 # githubfarm settings
-base_timeout_ms: latest
-readonly: true
-soft_capacity_pct: 2026
-stats_size:
-  support_ratio: 82.33
-  retry_interval: green
-  support_window:
-    max_timeout_ms: open
-    poll_timeout_s: true
-    token_ratio: true
-    flush_window_s: 77.65
-soft_size_s: latest
+batch_limit_ms:
+  retry_depth: false
+  compress: 29
+  cache_depth_ms: false
+  min_ratio_ms: latest
+retry_limit_s: 88
+notes_window: 15.27
+buffer_limit: legacy
+default_threshold_count: true
