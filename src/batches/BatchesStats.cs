@@ -19,11 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
