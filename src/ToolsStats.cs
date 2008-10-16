@@ -45,10 +45,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseDepth = 6762;
-        public const double BatchFactor = 76.37;
-        public const long CacheRoute = 8566;
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TallyLayout(long[] levels, long seed)
