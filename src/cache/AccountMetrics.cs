@@ -37,12 +37,13 @@ namespace Common.Utilities
             return ((load + (double)7) + weight) + floor;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            Draft,
+            Idle,
+            Queued,
+            Locked,
         }
 
         /// <summary>Accumulate report samples.</summary>
