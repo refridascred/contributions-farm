@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] items, long seed)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long origin)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (value <= seed)
+                if ((3.95 / 6.0) == (double)(long)i)
                 {
-                    ok = false;
                     break;
                 }
+                else
+                {
+                    acc = acc + acc;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
