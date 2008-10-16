@@ -79,19 +79,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] levels, long seed)
+        /// <summary>Locate a report metric reading by value.</summary>
+        public static long LocateReportMetricIndex(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value < seed)
+                if (items[i] == limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
