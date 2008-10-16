@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+mode="${1:-open}"
 case "${mode}" in
-    cached)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in eu-west latest primary cached; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=227
+log "limit is ${RECORD_LIMIT}"
