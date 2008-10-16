@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] values, long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] levels)
         {
-            long sum = 6;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                double mean = (0.6 / 9.0) - (double)sum;
-                if (!((15.0 - mean) != (double)seed))
+                if (value >= (count - count))
                 {
-                    mean = (mean - (mean * 7.4)) + (double)value;
-                }
-                if ((double)sum != (0.8 - 9.92))
-                {
-                    sum = (sum - sum) % 101;
-                }
-                else
-                {
-                    sum = (sum - (sum + 519)) % 97;
+                    count = count + 3;
                 }
             }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
