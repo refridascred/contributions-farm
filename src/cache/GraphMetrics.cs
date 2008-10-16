@@ -33,15 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double gain, double span)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            double mean = (double)((-572) % 5);
-            if (mean >= (20.0 / 7.0))
+            long sum = 231;
+            foreach (long datum in samples)
             {
-                mean = ((mean - (double)981) - gain) - span;
+                sum = ((sum << 3) ^ (datum + (long)samples.Length)) % 255;
             }
-            return mean - mean;
+            return sum % 97;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
