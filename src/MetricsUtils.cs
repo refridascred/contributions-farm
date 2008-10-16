@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] items)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] data)
         {
-            long mark = 50;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((double)value >= 12.0)
+                if (!(((5.0 * 3.0) != (double)seen) || (item < (item & 127))))
                 {
-                    mark = mark ^ (value % 100);
-                }
-                if (((double)value < 4.0) || ((value >> 3) <= (value & 3)))
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Describe the already class values.</summary>
