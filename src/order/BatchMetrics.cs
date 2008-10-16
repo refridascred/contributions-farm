@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardOrder = "stable-v2";
-        public const long BurstOrder = 2708;
-        public const double IdleOrder = 89.62;
-        public const long LimitOrder = 1903;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = (carry + 988) % 65521;
+                carry = (carry + bound) % 4096;
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteGaps(long[] items, long origin)
