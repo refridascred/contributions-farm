@@ -18,33 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a format buffer pair into a bucket.</summary>
-        public static long ClassifyFormatBuffer(long seed, long seed2)
-        {
-            long step = seed - seed2;
-            if ((seed2 + 743) < 96)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed2 % 12) < ((-67) - step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step / 2) <= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryRatio = 9257;
+        public const double RetryCommand = 94.02;
+        public const long WindowFactor = 6080;
+        public const long SoftCommand = 2382;
+        public const double BatchScore = 38.13;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long CombineProfile(long[] data)
