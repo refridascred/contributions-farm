@@ -25,31 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long step, long floor)
+        /// <summary>Count command metric pairs that satisfy a relation.</summary>
+        public static long CompareCommandMetricCount(long[] series)
         {
-            if ((floor + floor) < step)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step ^ floor) >= (floor * 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((24 - step) < (step - floor))
+                    if ((series[i] + series[j]) < 9)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank notes filter input into a small class.</summary>
