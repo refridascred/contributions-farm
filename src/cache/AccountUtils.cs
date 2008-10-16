@@ -13,17 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long bound)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long floor)
         {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
             {
-                total = (total ^ (bound - total)) % 1000;
-                total = (total << 2) ^ (bound + total);
-                total = ((total * 4) + (long)i) % 1000;
+                mix = ((mix << 2) ^ floor) % 97;
+                if ((floor % 24) == (mix % 2))
+                {
+                    mix = mix + mix;
+                    mix = ((mix * 3) + ((long)i + floor)) % 97;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
