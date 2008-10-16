@@ -15,26 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] data)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] levels, long limit)
         {
-            long state = 45;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((entry ^ state) > (59 & 127)))
+                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
                 {
-                    state = (state - entry) % 1000;
-                }
-                else
-                {
-                    state = (state + (state & 255)) % 1000;
+                    return (long)i;
                 }
             }
-            if (state < 6)
-            {
-                state = state - (6 % 8);
-            }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Describe the tools level values.</summary>
