@@ -37,11 +37,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long offset)
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark << 3) ^ 68) % 1000;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
