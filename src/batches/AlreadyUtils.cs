@@ -85,13 +85,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Check that every queue metrics entry stays within the limit.</summary>
+        public static bool VerifyQueueMetricsLimits(long[] levels, long target)
         {
-            Locked,
-            Idle,
-            Synced,
-            Failed,
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
