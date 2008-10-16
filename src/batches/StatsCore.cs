@@ -55,14 +55,25 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Rank stream commits input into a small class.</summary>
+        public static long GradeStreamCommits(long limit, long origin)
         {
-            Paused,
-            Idle,
-            Locked,
-            New,
-            Queued,
+            long prev = limit - origin;
+            if (origin <= (2 - limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((16.0 * 3.1) >= (double)prev)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a report snapshot.</summary>
