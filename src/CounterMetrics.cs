@@ -26,22 +26,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of metrics editor readings.</summary>
-        public static long OverlapMetricsEditorCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardProfile = 34.6;
+        public const long SoftProfile = 4488;
+        public const string MinCount = "primary-edge";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long StepCluster = 4549;
