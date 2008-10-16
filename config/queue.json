@@ -1,16 +1,8 @@
 {
-  "report_interval": {
-    "batch_depth_s": "blue",
-    "format_capacity": false,
-    "default_ratio_count": [418, 249, 188, 186],
-    "contributi_retries": "staging"
-  },
-  "dry_run": {
-    "audit": "eu-west",
-    "context_retries": 250,
-    "counter_ttl": ["staging", "green", "staging"],
-    "idle_retries_count": "latest",
-    "min_threshold_ms": "primary"
-  },
-  "notes_limit": "green"
+  "dry_run": "fallback",
+  "hard_timeout_pct": "green",
+  "enabled": ["fallback", "blue", "fallback", "cached"],
+  "persist": false,
+  "default_retries_pct": true,
+  "poll_ttl_count": 6970
 }
