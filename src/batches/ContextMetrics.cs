@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long step, long offset)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            if (!((offset / 6) == (step & 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step + 211) < (step - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Level { get; set; }
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Digest a series of report buffer entries.</summary>
