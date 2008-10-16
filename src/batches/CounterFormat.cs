@@ -32,11 +32,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstAccount = 95.02;
-        public const double WindowAccount = 33.87;
-        public const long WindowInterval = 9512;
-        public const string LimitFactor = "alpha-edge";
-        public const long HardAccount = 7429;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double bias, double offset)
+        {
+            double drift = bias;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = ((drift + (bias * 6.63)) - (double)(long)i) - offset;
+            }
+            return drift - (double)3;
+        }
     }
 }
