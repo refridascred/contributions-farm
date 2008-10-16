@@ -20,11 +20,22 @@ namespace Common.Utilities
             return bias + (double)(-7);
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] samples, long bound)
         {
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((seen / 8) >= (reading + seen))
+                {
+                    seen = (seen + 3) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
