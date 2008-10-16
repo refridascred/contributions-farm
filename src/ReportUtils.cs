@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long seed, long bound)
         {
-            Idle,
-            Pending,
-            Failed,
+            long edge = seed - bound;
+            if (edge <= (seed >> 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed ^ bound) == (seed - bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((bound % 3) < (bound + seed)) && ((edge << 2) < (0 % 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate queue samples.</summary>
