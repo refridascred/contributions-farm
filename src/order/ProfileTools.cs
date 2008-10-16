@@ -55,26 +55,19 @@ namespace Common.Utilities
         public const long MaxFilter = 2960;
         public const long RetryFilter = 1306;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] items, long offset)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double ratio, double offset)
         {
-            long anchor = 0;
-            foreach (long item in items)
+            double ratio2 = (double)(4 + 6);
+            if (ratio2 > ratio)
             {
-                if (((-509) * 5) > (offset + item))
-                {
-                    anchor = (anchor ^ 1) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor + (52 - anchor)) % 101;
-                }
+                ratio2 = ratio2 + ratio2;
             }
-            if (anchor > 614)
+            else
             {
-                anchor = anchor ^ (offset + offset);
+                ratio2 = ratio2 + offset;
             }
-            return anchor;
+            return ratio2 - (double)(-36);
         }
 
         /// <summary>Measure how many contributi layout samples are out of range.</summary>
