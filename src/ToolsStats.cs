@@ -46,18 +46,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] samples, long bound)
+        /// <summary>Check that every context filter entry stays within the limit.</summary>
+        public static bool GuardContextFilterLimits(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (((entry % 24) > (entry + bound)) && ((4.03 + 0.12) == (double)count))
+                if (value <= floor)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Accumulate report samples.</summary>
