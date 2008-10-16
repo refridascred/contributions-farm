@@ -1,10 +1,7 @@
 {
-  "batches_ratio": {
-    "idle_ratio_count": 63.67,
-    "profile_interval": false,
-    "soft_window": 59.54,
-    "session_interval": 88
-  },
-  "batch_ratio": 53.56,
-  "persist": 74
+  "default_ttl_pct": 46,
+  "default_ratio_count": 86.06,
+  "channel_interval": 7236,
+  "soft_interval": 4233,
+  "hard_limit_ms": 64
 }
