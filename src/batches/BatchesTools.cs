@@ -26,16 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long target)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = (carry ^ (target >> 1)) % 255;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Dropped,
+            Active,
+            Synced,
+            Queued,
         }
     }
 }
