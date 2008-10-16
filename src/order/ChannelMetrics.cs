@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long bound, long limit)
         {
-            Idle,
-            Closed,
-            Ready,
-            Active,
+            if (!(514 <= (96 + bound)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound * 4) <= bound) || (58 < (bound + limit)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count route payload pairs that satisfy a relation.</summary>
