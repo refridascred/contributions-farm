@@ -39,31 +39,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank cache channel input into a small class.</summary>
-        public static long GradeCacheChannel(long limit, long offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            if (((offset ^ limit) >= (limit % 8)) || ((double)limit > (1.5 / 4.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit - 23) != (offset >> 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (limit < (limit ^ (-7)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
