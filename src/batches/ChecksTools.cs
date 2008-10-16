@@ -46,15 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next already queue value.</summary>
-        public static double BlendAlreadyQueue(double rate, double floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] items)
         {
-            double weight = rate / 9.0;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                weight = (weight - 19.0) - (double)(long)i;
+                if ((double)1 != (double)(long)items.Length)
+                {
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return weight + floor;
+            return tally;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
