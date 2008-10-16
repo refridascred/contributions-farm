@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
+            Locked,
+            Idle,
+            Retry,
+            Draft,
+            Failed,
         }
 
         /// <summary>Hold a stats options.</summary>
