@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] readings, long step)
         {
-            public bool Total { get; set; }
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a window header.</summary>
