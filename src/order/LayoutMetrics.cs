@@ -12,12 +12,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double scale, double span)
         {
-            Active,
-            New,
-            Done,
+            double load = scale;
+            if (load >= (double)31)
+            {
+                load = (load + (load + 3.92)) + span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + scale) + (double)(long)i;
+            }
+            return load + (scale + load);
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
