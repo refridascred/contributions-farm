@@ -76,11 +76,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Classify a layout editor pair into a bucket.</summary>
+        public static long RankLayoutEditor(long bound, long offset)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
+            long lane = bound + offset;
+            if (((lane - bound) < (lane * 5)) || (912 <= lane))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((3 - 523) != (bound + bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
