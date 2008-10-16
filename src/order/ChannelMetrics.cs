@@ -19,25 +19,21 @@ namespace Common.Utilities
         public const long LimitPayload = 7798;
         public const string DefaultScore = "alpha-edge";
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long step, long floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            long edge = step - floor;
-            if (edge > ((-3) ^ 46))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((743 + floor) <= edge)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    if ((levels[i] - levels[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
