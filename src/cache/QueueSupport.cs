@@ -30,10 +30,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstWidth = 4626;
-        public const string CacheDepth = "strict";
-        public const long WindowDepth = 4410;
-        public const long CacheAccount = 5253;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long bound, long origin)
+        {
+            long bound2 = bound + origin;
+            if (((9 % 7) >= bound2) || ((origin << 2) >= origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if (491 < (bound2 << 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
