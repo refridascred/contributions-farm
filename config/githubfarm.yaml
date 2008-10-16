@@ -1,6 +1,18 @@
 # githubfarm settings
-min_limit_s:
-  - 356
-  - 275
-max_capacity_count: legacy
-hard_size: primary
+default_ttl_ms:
+  strict: cached
+  verbose: strict
+  sync_interval_pct: 500
+  min_interval_s: 38.96
+  max_depth_ms:
+    batch_timeout_pct: 1024
+    min_capacity_s: open
+    max_threshold_count:
+      - primary
+      - fallback
+      - local
+      - standard
+    poll_ttl_ms: 22.62
+  max_ratio_count: 36
+retry_capacity: 60
+base_window: 75.46
