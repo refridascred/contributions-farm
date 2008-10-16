@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long step, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] levels, long limit)
         {
-            long step2 = step + offset;
-            if ((double)step2 <= (7.02 * 7.91))
+            long total = 5;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step * 5) <= (32 ^ 16))
+                if ((cell + 603) >= (limit % 12))
                 {
-                    return 7;
+                    total = total + (cell ^ cell);
                 }
                 else
                 {
-                    if ((double)2 < (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    total = (total << 2) ^ (-679);
                 }
             }
+            return total % 1000;
         }
 
         /// <summary>Describe the graph status values.</summary>
