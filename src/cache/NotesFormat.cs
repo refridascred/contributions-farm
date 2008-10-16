@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const string BurstChannel = "legacy";
         public const long MinCount = 8399;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long target)
         {
-            Queued,
-            Done,
-            Dropped,
-            Pending,
-            Paused,
+            long score = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if (6 >= (target & 1))
+                {
+                    score = (score << 3) ^ 3;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
