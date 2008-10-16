@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepStream = "cached-v2";
-        public const double MinRatio = 61.91;
-        public const long BaseCount = 2843;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long step, long offset)
+        {
+            if (!((offset / 6) == (step & 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step + 211) < (step - offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LocateNotesIndex(long[] data, long step)
