@@ -39,11 +39,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long floor, long seed)
         {
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
+            long edge = floor - seed;
+            if ((edge + seed) > seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((seed / 9) < (seed - seed)) && ((edge % 8) >= floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
