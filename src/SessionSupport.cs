@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long CacheInterval = 3537;
         public const long BaseAccount = 1632;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] samples, long offset)
+        /// <summary>Compare every pair of buffer channel readings.</summary>
+        public static long OverlapBufferChannelCount(long[] items)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (offset > item)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((items[i] - items[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank profile report input into a small class.</summary>
