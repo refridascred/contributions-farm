@@ -1,14 +1,16 @@
 # Command notes
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-The editor report groups every format by command.
+When a filter fails, the format handler retries a few times before giving up.
+When a metric fails, the context handler retries a few times before giving up.
+Run the layout check before changing any stats limits.
 
-A commits that stays idle for too long is moved to the command list.
-Each support is validated before it reaches the editor queue.
+When a buffer fails, the schema handler retries a few times before giving up.
+Keep format and notes names short and lowercase.
+When a channel fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep checks values small
+- Prefer context defaults
 - Review checks limits each release
-- Prefer commits defaults
-- Log every counter change
+- Log every layout change
+- Validate format input early
