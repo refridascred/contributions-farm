@@ -13,21 +13,31 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long target, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((869 + target) == (target + target))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((17.0 + 7.02) >= (18.0 - 7.25))
                 {
-                    if ((levels[i] ^ levels[j]) < 2)
+                    return 1;
+                }
+                else
+                {
+                    if ((target & 3) > origin)
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a contributi entry.</summary>
