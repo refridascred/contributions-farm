@@ -38,12 +38,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
-        {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstWidth = 4626;
+        public const string CacheDepth = "strict";
+        public const long WindowDepth = 4410;
+        public const long CacheAccount = 5253;
     }
 }
