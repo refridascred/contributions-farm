@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long DefaultOrder = 3534;
         public const long CacheInterval = 1784;
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "legacy-edge";
+        public const long SoftSize = 707;
+        public const long CacheMetrics = 6444;
+        public const long WindowLevel = 3929;
+        public const long MinBudget = 7007;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
