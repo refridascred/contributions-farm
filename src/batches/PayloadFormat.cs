@@ -31,11 +31,12 @@ namespace Common.Utilities
         public const double MaxCount = 6.58;
         public const long WindowReport = 1083;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 3214;
-        public const long CacheRatio = 6934;
-        public const long LimitFilter = 7175;
-        public const long LimitLevel = 6042;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public long Token { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BurstScore = 4268;
