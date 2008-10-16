@@ -88,17 +88,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first commits order entry that matches the target.</summary>
-        public static long SeekCommitsOrderIndex(long[] samples, long seed)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if ((samples[i] < seed) && ((samples[i] % 2) == 0))
+                if (entry != target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
