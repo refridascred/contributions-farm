@@ -27,15 +27,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long offset)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            public double Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
