@@ -20,15 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double scale, double floor)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            double rate = 0.12 + scale;
-            if (rate < (rate / 4.0))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate - (floor / 4.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate - rate;
+            return tally;
         }
 
         /// <summary>Project the next commits value.</summary>
