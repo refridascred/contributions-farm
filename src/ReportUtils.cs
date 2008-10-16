@@ -11,21 +11,11 @@ namespace Common.Utilities
         public const long BaseContext = 1840;
         public const double HardScore = 85.36;
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] samples)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the contributi level values.</summary>
