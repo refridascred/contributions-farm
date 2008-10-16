@@ -1,10 +1,12 @@
 {
-  "idle_depth_ms": {
-    "poll_size_pct": 60,
-    "warm_limit_ms": 4919,
-    "soft_window": true,
-    "max_retries": 69.84
+  "readonly": {
+    "max_limit_count": 64.84,
+    "dry_run": 40,
+    "base_delay_ms": "green",
+    "flush_retries_count": "strict",
+    "min_interval": 71.43
   },
-  "window_timeout": [498, 212],
-  "audit": 4882
+  "verbose": 577,
+  "account_capacity": 60,
+  "batch_retries": ["fallback", "open"]
 }
