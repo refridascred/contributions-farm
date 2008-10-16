@@ -1,20 +1,10 @@
 # githubfarm settings
-entry_retries: 5966
-cluster_depth: edge
-warm_depth:
-  - latest
-  - eu-west
-  - latest
-  - staging
-flush_interval_ms: stable
-record_ratio: 60
-account_retries:
-  queue_interval: 47.18
-  batch_ratio:
-    - 135
-    - 441
-  persist: 100
-  sync_retries: 250
-  profile_limit:
-    - stable
-    - eu-west
+payload_ttl: true
+batch_timeout:
+  idle_delay_count: false
+  metric_timeout: 21
+  token_timeout: true
+  poll_limit_pct: false
+  counter_capacity: 44
+readonly: green
+max_depth_ms: edge
