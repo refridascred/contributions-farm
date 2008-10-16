@@ -50,17 +50,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] readings, long limit)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Closed,
+            Done,
+            New,
+            Locked,
         }
     }
 }
