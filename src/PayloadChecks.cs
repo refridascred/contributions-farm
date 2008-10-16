@@ -64,21 +64,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] items)
+        /// <summary>Roll a record cache counter forward.</summary>
+        public static long IterateRecordCache(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
