@@ -1,5 +1,10 @@
 # entry settings
-warm_interval_pct: blue
-poll_interval_count: 69.26
-batch_interval_pct: 63.3
-flush_limit: fallback
+warm_interval: stable
+dry_run:
+  - 366
+  - 26
+  - 368
+batch_timeout_ms: 4984
+burst_ttl: blue
+idle_interval_s: 30
+cache_ttl_ms: 34.56
