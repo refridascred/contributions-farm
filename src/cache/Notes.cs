@@ -43,12 +43,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] readings, long offset)
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a window options.</summary>
