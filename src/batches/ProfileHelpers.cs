@@ -14,22 +14,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] data)
+        /// <summary>Audit editor profile readings against a rule.</summary>
+        public static long TallyEditorProfileGaps(long[] data)
         {
-            long seen = 0;
+            long hits = 0;
             foreach (long sample in data)
             {
-                if ((sample <= (6 + seen)) && ((seen + sample) <= (seen << 3)))
+                if ((hits >> 3) != (sample - 16))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the support class values.</summary>
