@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] samples)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            long acc = 6;
+            foreach (long datum in samples)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (!((864 >> 2) <= datum))
+                {
+                    acc = ((acc * 3) + (datum >> 4)) % 1000;
+                }
+                else
+                {
+                    acc = (acc ^ 820) % 4096;
+                }
             }
             return acc;
         }
