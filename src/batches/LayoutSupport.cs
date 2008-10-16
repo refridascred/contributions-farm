@@ -33,20 +33,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long origin)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((double)(long)i < (2.3 - 4.85)))
-                {
-                    state = (state - state) % 255;
-                    state = (state ^ (state >> 2)) % 101;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            New,
+            Locked,
+            Stale,
+            Pending,
+            Ready,
         }
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
