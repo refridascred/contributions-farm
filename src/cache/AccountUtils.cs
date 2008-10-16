@@ -26,21 +26,29 @@ namespace Common.Utilities
         public const string LimitBatch = "alpha";
         public const string WindowBatch = "alpha-1";
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] values)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = target;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)i < ((long)i + target)) || (((long)i + (long)i) == ((long)i * 5)))
                 {
-                    if ((values[i] + values[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = result ^ ((long)i % 10);
+                    result = (result ^ (target + target)) % 1000;
                 }
+                if (((double)result < 1.84) && ((double)(long)i <= (4.0 + 7.93)))
+                {
+                    result = (result << 2) ^ (result % 3);
+                }
+                if ((result % 60) >= result)
+                {
+                    result = result ^ (result - result);
+                    break;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
     }
 }
