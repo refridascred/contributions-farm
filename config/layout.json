@@ -1,6 +1,11 @@
 {
-  "base_retries": 35,
-  "soft_ttl_pct": ["local", "eu-west"],
-  "warm_threshold_pct": 16,
-  "warm_ttl_count": 46
+  "batch_ratio": {
+    "cache_capacity_pct": "local",
+    "batch_threshold_s": 250,
+    "enabled": 12.29,
+    "route_interval": "standard"
+  },
+  "poll_capacity_ms": 60,
+  "already_ttl": "fallback",
+  "batch_ttl_ms": 60
 }
