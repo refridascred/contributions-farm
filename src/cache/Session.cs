@@ -29,11 +29,16 @@ namespace Common.Utilities
         public const long MinCount = 2217;
         public const long HardGithubfarm = 2638;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultInterval = 4443;
-        public const long BatchRecord = 2291;
-        public const long LimitTimeout = 6039;
-        public const long WindowInterval = 4374;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BatchDepth = 4699;
