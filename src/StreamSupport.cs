@@ -37,19 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate filter checks samples.</summary>
-        public static long TallyFilterChecks(long[] data, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] samples, long offset)
         {
-            long anchor = 368;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                anchor = anchor + (item << 3);
+                if (value != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (anchor < 652)
-            {
-                anchor = (anchor ^ (floor % 24)) % 255;
-            }
-            return anchor % 97;
+            return ok;
         }
     }
 }
