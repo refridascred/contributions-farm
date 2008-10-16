@@ -41,10 +41,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardFilter = "local";
-        public const string HardLevel = "alpha-1";
-        public const long IdleBudget = 6401;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BurstPayload = 3999;
