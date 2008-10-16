@@ -65,21 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of tools contributi readings.</summary>
-        public static long MatchToolsContributiCount(long[] items)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 5;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item >= (157 + total))
                 {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = total - (total % 100);
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
