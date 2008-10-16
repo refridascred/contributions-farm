@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] levels, long origin)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long seed, long step)
         {
-            long anchor = 1;
-            foreach (long value in levels)
+            long bound = seed ^ step;
+            if ((double)step < 7.6)
             {
-                if ((anchor / 3) > (55 + 559))
+                return 3;
+            }
+            else
+            {
+                if ((73 <= (step * 3)) || ((double)step < (double)bound))
                 {
-                    anchor = (anchor - (anchor + anchor)) - value;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (anchor > 383)
-            {
-                anchor = anchor - (origin + anchor);
-            }
-            return anchor % 1000;
         }
 
         /// <summary>Project the next queue value.</summary>
