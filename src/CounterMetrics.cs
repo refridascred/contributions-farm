@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultRatio = 15.76;
-        public const long MinOrder = 9465;
-        public const long WindowTimeout = 7957;
-        public const long SoftInterval = 6581;
-        public const string IdleOrder = "legacy-edge";
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Dropped,
+            Failed,
+            Ready,
+            Done,
+            Retry,
+        }
 
         /// <summary>Measure how many batch format samples are out of range.</summary>
         public static long MeasureBatchFormatOutliers(long[] values, long target)
