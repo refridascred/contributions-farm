@@ -1,7 +1,9 @@
-id,owner,active,count
-1,479,586,staging
-2,stable,edge,207
-3,95.6,112,302
-4,local,81.22,stable
-5,latest,38.06,stable
-6,228,481,432
+id,count,weight
+1,576,blue
+2,452,open
+3,452,eu-west
+4,85.7,91.36
+5,edge,520
+6,128,41.67
+7,79.13,64.46
+8,56.01,staging
