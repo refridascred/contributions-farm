@@ -19,19 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double scale, double bias)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] readings, long limit)
         {
-            double ratio = bias;
-            if (ratio >= 9.5)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                ratio = ratio - (scale - scale);
+                if (item >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)283;
-            }
-            return ratio - (scale - ratio);
+            return stale;
         }
 
         /// <summary>Hold a route options.</summary>
