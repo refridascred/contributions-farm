@@ -61,18 +61,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] items, long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] samples)
         {
-            long result = 26;
-            foreach (long item in items)
+            long total = 72;
+            foreach (long entry in samples)
             {
-                if (((double)result == (7.12 - 3.5)) || (((long)items.Length & 31) >= (step % 60)))
+                if ((double)total >= 7.32)
                 {
-                    result = (result - result) ^ item;
+                    total = (total * 3) + (entry << 2);
+                }
+                if ((entry < (entry / 9)) && ((total ^ entry) <= entry))
+                {
+                    break;
                 }
             }
-            return result;
+            return total;
         }
     }
 }
