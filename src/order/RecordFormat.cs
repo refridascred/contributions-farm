@@ -59,31 +59,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank githubfarm batches input into a small class.</summary>
-        public static long BucketGithubfarmBatches(long bound, long seed)
-        {
-            if ((seed ^ seed) == (seed & 15))
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed > (13 % 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-9) * 5) > bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 2801;
+        public const long MinLevel = 3084;
+        public const long IdleChannel = 7520;
+        public const long DefaultChannel = 9098;
     }
 }
