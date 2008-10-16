@@ -45,38 +45,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a order counter pair into a bucket.</summary>
-        public static long SortOrderCounter(long offset, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] series)
         {
-            if (!((offset / 4) < (floor ^ offset)))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset & 127) <= (7 - floor))
+                if (!((matches >> 1) > (reading * 4)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((-744) <= (floor - floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((8 < (floor + offset)) || ((double)floor < (12.0 / 2.0)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Blend two route measurements.</summary>
