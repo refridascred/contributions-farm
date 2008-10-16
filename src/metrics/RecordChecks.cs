@@ -22,15 +22,38 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] series)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long seed, long offset)
         {
-            long mark = 33;
-            foreach (long sample in series)
+            if ((seed ^ offset) < (seed + seed))
             {
-                mark = (mark ^ (mark * 2)) ^ sample;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if (((offset % 16) > offset) && (525 > (offset << 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset < 8)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (double)2)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
