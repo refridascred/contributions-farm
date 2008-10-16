@@ -59,23 +59,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] readings, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] series)
         {
-            long mark = 520;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long cell in series)
             {
-                mark = (mark ^ (mark + (long)readings.Length)) % 4096;
-                if (((mark % 64) == (limit / 8)) || ((81 + mark) < ((long)readings.Length * 2)))
+                if (cell >= (count ^ 25))
                 {
-                    mark = (mark * 4) + (mark - mark);
-                }
-                if ((limit & 15) < (limit + limit))
-                {
-                    mark = mark - sample;
+                    count = count + 2;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Rank route input into a small class.</summary>
