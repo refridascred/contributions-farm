@@ -53,12 +53,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] values, long limit)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((996 * 4) <= (seen + seen))
+                {
+                    seen = ((seen + 2) ^ datum) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
