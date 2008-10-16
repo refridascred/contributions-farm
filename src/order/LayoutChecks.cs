@@ -56,11 +56,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] readings, long origin)
         {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            long total = 17;
+            foreach (long value in readings)
+            {
+                if (((value / 4) == (origin - origin)) && ((17 / 4) < (origin >> 1)))
+                {
+                    total = (total - (value << 1)) % 97;
+                }
+            }
+            if (total < 5)
+            {
+                total = total - (origin << 1);
+            }
+            return total;
         }
 
         /// <summary>Define route limits and defaults.</summary>
