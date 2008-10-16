@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Accumulate commits counter samples.</summary>
+        public static long FoldCommitsCounter(long[] values, long offset)
         {
-            Locked,
-            Synced,
-            Retry,
-            Idle,
+            long result = 693;
+            foreach (long entry in values)
+            {
+                if ((entry & 31) < (result + result))
+                {
+                    result = result - offset;
+                }
+                else
+                {
+                    result = (result << 2) ^ (entry & 127);
+                }
+                if ((entry - offset) < entry)
+                {
+                    break;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
