@@ -34,11 +34,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultRatio = 6912;
-        public const long WindowCounter = 5273;
-        public const long SoftCounter = 8162;
-        public const long BurstScore = 7992;
-        public const double HardBudget = 37.47;
+        /// <summary>Count window support pairs that satisfy a relation.</summary>
+        public static long PairWindowSupportCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
