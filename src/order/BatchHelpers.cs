@@ -32,21 +32,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up command metric samples.</summary>
-        public static long MatchCommandMetricCount(long[] levels)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (tally < (7 / 5))
                 {
-                    if ((levels[i] + levels[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) + sample;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
