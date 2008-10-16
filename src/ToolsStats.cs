@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first graph context entry that matches the target.</summary>
-        public static long FindGraphContextIndex(long[] samples, long step)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] samples, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 75;
+            foreach (long value in samples)
             {
-                if (samples[i] == step)
+                anchor = ((anchor - bound) % 1000) - value;
+                if ((anchor + (-494)) > (anchor & 15))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
