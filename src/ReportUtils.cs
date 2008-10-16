@@ -60,12 +60,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] values, long floor)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            long state = 82;
+            foreach (long datum in values)
+            {
+                if (((long)values.Length & 3) <= (6 ^ floor))
+                {
+                    state = ((state << 2) ^ (state << 3)) ^ datum;
+                }
+            }
+            if (state < 55)
+            {
+                state = (state ^ (state / 4)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Iterate the tools command series from a seed.</summary>
