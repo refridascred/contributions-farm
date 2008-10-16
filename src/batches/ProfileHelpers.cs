@@ -14,19 +14,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] levels)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] data, long step)
         {
-            long carry = 5;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                carry = ((carry << 3) ^ (carry - carry)) ^ cell;
-                if ((double)carry >= 4.5)
+                if (!((count - count) <= (step + 5)))
                 {
-                    break;
+                    count = (count + 3) - datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the support class values.</summary>
