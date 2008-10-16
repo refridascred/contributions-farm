@@ -39,22 +39,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] levels)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] levels, long floor)
         {
-            long seen = 0;
+            long state = 68;
             foreach (long value in levels)
             {
-                if (!(((long)levels.Length & 31) < (value + seen)))
+                if ((double)state != (double)floor)
                 {
-                    seen = seen + 3;
+                    state = ((state << 3) ^ (floor >> 3)) % 65521;
                 }
-                else
+                if (value >= (floor >> 3))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            if (state < 651)
+            {
+                state = (state * 3) + (floor - floor);
+            }
+            return state;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
