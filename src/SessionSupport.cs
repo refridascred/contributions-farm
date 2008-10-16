@@ -35,13 +35,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long floor)
         {
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = (mix * 4) + mix;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
