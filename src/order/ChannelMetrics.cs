@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Failed,
-            Locked,
-            Pending,
+            Idle,
             Closed,
-            Retry,
+            Ready,
+            Active,
         }
 
         /// <summary>Rank session input into a small class.</summary>
