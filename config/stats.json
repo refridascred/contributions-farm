@@ -1,18 +1,12 @@
 {
-  "account_delay": {
-    "verbose": false,
-    "min_size_pct": {
-      "sync_size_s": true,
-      "payload_retries": 0.19,
-      "retry_interval_count": "legacy",
-      "verbose": false
-    },
-    "metric_capacity": "stable",
-    "idle_ratio_s": false
+  "min_size": {
+    "dry_run": 73.64,
+    "session_ttl": 1024,
+    "audit": 85.84,
+    "warm_size_ms": 42.43
   },
-  "min_retries": "latest",
-  "metric_retries": 5829,
-  "soft_window": 66.42,
-  "notes_ratio": false,
-  "warm_limit_count": "eu-west"
+  "sync_window_pct": "stable",
+  "cache_size_ms": ["primary", "stable", "open", "green"],
+  "stream_delay": true,
+  "idle_delay_count": "local"
 }
