@@ -1,12 +1,6 @@
 {
-  "support_depth": {
-    "persist": 3.9,
-    "base_threshold_ms": false,
-    "min_window_s": [406, 135],
-    "stream_delay": 100,
-    "strict": 60
-  },
-  "enabled": 6.76,
-  "idle_threshold_pct": "legacy",
-  "batch_interval_ms": "cached"
+  "poll_ratio": "eu-west",
+  "compress": "eu-west",
+  "cache_limit_count": 30,
+  "default_retries_pct": false
 }
