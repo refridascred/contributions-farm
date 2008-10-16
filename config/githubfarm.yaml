@@ -1,8 +1,7 @@
 # githubfarm settings
-enabled:
-  - 271
-  - 24
-  - 231
-  - 385
-route_timeout: 9113
-burst_timeout: 41
+persist: true
+account_ratio:
+  - 157
+  - 156
+sync_ttl: 100
+sync_threshold_ms: 60
