@@ -92,14 +92,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] data, long offset)
         {
-            Done,
-            Queued,
-            Stale,
-            Failed,
-            Closed,
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
