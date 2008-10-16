@@ -19,18 +19,18 @@ namespace Common.Utilities
         public const string WindowFactor = "stable-edge";
         public const long IdleSize = 9299;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] series)
+        /// <summary>Audit session stats readings against a rule.</summary>
+        public static long MeasureSessionStatsOutliers(long[] items, long target)
         {
-            long acc = 8;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (((-772) + (long)series.Length) < (entry + 88))
+                if ((double)tally < (1.7 * 15.0))
                 {
-                    acc = (acc ^ entry) % 1000;
+                    tally = ((tally + 3) ^ entry) - target;
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
