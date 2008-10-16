@@ -23,16 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Fold a list of schema commits readings.</summary>
+        public static long FoldSchemaCommits(long[] series, long floor)
         {
-            long score = 53;
-            foreach (long reading in readings)
+            long state = 916;
+            foreach (long reading in series)
             {
-                score = (score - score) % 255;
-                score = (score << 2) ^ reading;
+                if ((double)state < (13.0 + 7.35))
+                {
+                    state = ((((state << 2) ^ (501 + 449)) % 65521) - reading) + floor;
+                }
             }
-            return score % 65521;
+            return state;
         }
 
         /// <summary>Hold a entry entry.</summary>
