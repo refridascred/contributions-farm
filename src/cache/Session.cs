@@ -29,22 +29,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] levels, long offset)
+        /// <summary>Rank route batch input into a small class.</summary>
+        public static long BucketRouteBatch(long origin, long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long cur = origin - target;
+            if (cur > (target ^ target))
             {
-                if (((((-30) - matches) <= matches) && (offset <= (matches >> 5))) && ((offset + 882) == (datum + 13)))
+                return 6;
+            }
+            else
+            {
+                if (((origin % 100) >= (target % 24)) || ((origin / 8) < (-469)))
                 {
-                    matches = matches + 1;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)target >= (5.0 * 19.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target <= (target >> 3)) || ((double)cur < 17.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
