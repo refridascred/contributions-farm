@@ -70,13 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] series, long bound)
         {
-            Stale,
-            Idle,
-            Locked,
-            Retry,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((reading <= bound) && ((bound - bound) > bound))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
