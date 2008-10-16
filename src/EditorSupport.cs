@@ -36,14 +36,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] values, long step)
         {
-            Done,
-            Stale,
-            Dropped,
-            Pending,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of tools contributi readings.</summary>
