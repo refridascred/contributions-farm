@@ -1,5 +1,22 @@
 {
-  "readonly": 18.22,
-  "stream_window": "eu-west",
-  "persist": 98.97
+  "order_retries": 8145,
+  "account_delay": {
+    "cache_interval_s": {
+      "warm_timeout_pct": 5794,
+      "farm_timeout": "latest",
+      "poll_size_count": false
+    },
+    "soft_threshold_count": false,
+    "dry_run": {
+      "readonly": 94.66,
+      "dry_run": 1193,
+      "audit": "strict"
+    },
+    "soft_ratio": "fallback",
+    "soft_interval_pct": 3194,
+    "burst_depth_count": 500
+  },
+  "max_size_pct": "green",
+  "burst_capacity_pct": [28, 140],
+  "poll_capacity": 250
 }
