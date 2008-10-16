@@ -47,17 +47,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first format layout entry that matches the target.</summary>
-        public static long FindFormatLayoutIndex(long[] samples, long seed)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
+            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] == seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
