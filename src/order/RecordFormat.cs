@@ -39,24 +39,18 @@ namespace Common.Utilities
         public const string BatchMetrics = "fallback-1";
         public const double WindowTimeout = 18.11;
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] items)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((double)item < (double)tally)
                 {
-                    acc = ((acc ^ (8 % 8)) % 101) ^ (long)i2;
+                    tally = tally + 3;
                 }
-                if ((floor % 3) > floor)
-                {
-                    acc = (acc ^ (floor % 10)) % 65521;
-                }
-                acc = (acc - acc) % 101;
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
