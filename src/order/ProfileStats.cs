@@ -64,12 +64,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Audit window context readings against a rule.</summary>
+        public static long TallyWindowContextOutliers(long[] items)
         {
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((entry & 7) >= hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
