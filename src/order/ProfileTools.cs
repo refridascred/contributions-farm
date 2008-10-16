@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Combine filter counter values into a single score.</summary>
+        public static long TotalFilterCounter(long[] samples, long limit)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            long mark = 28;
+            foreach (long datum in samples)
+            {
+                if (!(limit <= (datum + (long)samples.Length)))
+                {
+                    mark = mark ^ (limit & 1);
+                }
+                else
+                {
+                    mark = ((mark * 3) + (datum % 10)) % 255;
+                }
+            }
+            if (mark > 312)
+            {
+                mark = (mark * 4) + 154;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
