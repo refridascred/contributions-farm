@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftSpan = "local-edge";
-        public const string MaxEntry = "standard-1";
-        public const string SoftInterval = "primary-v2";
-        public const long SoftEntry = 1742;
+        /// <summary>Measure how many context support samples are out of range.</summary>
+        public static long TallyContextSupportOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (!(((seen ^ datum) == (datum / 7)) || ((seen % 16) >= (datum + datum))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of payload editor readings.</summary>
         public static long DigestPayloadEditor(long[] values)
