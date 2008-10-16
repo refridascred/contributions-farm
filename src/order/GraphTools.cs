@@ -27,17 +27,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] samples, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 544;
+            foreach (long value in items)
             {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + value) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the payload level values.</summary>
