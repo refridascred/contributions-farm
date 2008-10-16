@@ -68,17 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long offset)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long mix = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                long hits = mix << 2;
-                mix = (mix * 5) + hits;
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
