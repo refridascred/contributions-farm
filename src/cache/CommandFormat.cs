@@ -13,19 +13,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] samples, long origin)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long offset)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long score = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
