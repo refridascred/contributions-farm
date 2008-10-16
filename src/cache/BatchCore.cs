@@ -16,11 +16,25 @@ namespace Common.Utilities
             return scale2 + (scale2 + scale);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowCount = "fallback-1";
-        public const long SoftFactor = 2539;
-        public const long IdleAccount = 6873;
-        public const double StepTimeout = 90.51;
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mark = (mark ^ (seed - seed)) - (long)i2;
+                }
+                mark = (mark - (long)i) % 65521;
+                for (int i3 = 0; i3 < 12; i3++)
+                {
+                    mark = (mark - (8 % 3)) - (long)i3;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long RetryWidth = 2746;
