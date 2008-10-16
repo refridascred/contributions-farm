@@ -28,39 +28,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long step, long floor)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long span = step - floor;
-            if ((double)step < (double)floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if (span >= (span >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor & 15) < (span * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)floor != (9.2 - 7.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Idle,
+            New,
+            Done,
+            Synced,
+            Failed,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
