@@ -1,6 +1,28 @@
 # support settings
-cache_timeout_pct: 30
-retry_threshold: eu-west
-sync_threshold_pct:
-  - 205
-  - 346
+max_window: 83.63
+cluster_size: 2703
+support_ratio: true
+burst_capacity_ms: open
+persist:
+  buffer_timeout: latest
+  sync_timeout: false
+  persist:
+    min_interval_count: 44
+    idle_limit_s: open
+    dry_run: 28
+  max_depth: blue
+  max_timeout_pct:
+    burst_window_ms: 41.96
+    min_ratio_s: 68.08
+    strict:
+      - 157
+      - 296
+    cache_limit_count:
+      - open
+      - strict
+    tools_timeout: strict
+  session_retries:
+    - 16
+    - 413
+    - 475
+batch_ratio_pct: fallback
