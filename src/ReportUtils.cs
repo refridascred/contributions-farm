@@ -38,21 +38,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] data)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Done,
+            Paused,
+            Queued,
+            Failed,
         }
 
         /// <summary>Iterate the tools command series from a seed.</summary>
