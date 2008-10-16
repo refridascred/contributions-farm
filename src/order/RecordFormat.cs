@@ -84,18 +84,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] data, long seed)
+        /// <summary>Rank githubfarm batches input into a small class.</summary>
+        public static long BucketGithubfarmBatches(long bound, long seed)
         {
-            long carry = 332;
-            foreach (long datum in data)
+            if ((seed ^ seed) == (seed & 15))
             {
-                if ((datum / 4) <= (carry & 1))
+                return 8;
+            }
+            else
+            {
+                if (seed > (13 % 3))
                 {
-                    carry = ((carry - ((long)data.Length - datum)) % 4096) - seed;
+                    return 2;
+                }
+                else
+                {
+                    if (((-9) * 5) > bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return carry;
         }
     }
 }
