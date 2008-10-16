@@ -28,11 +28,13 @@ namespace Common.Utilities
             return mean + (double)3;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowCommits = "strict-1";
-        public const long BaseCommits = 1224;
-        public const long HardCommits = 4535;
-        public const double LimitCommits = 33.8;
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public long Level { get; set; }
+            public double Mode { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool ValidateWindowBounds(long[] items, long offset)
