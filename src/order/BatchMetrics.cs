@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long step)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long floor)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                total = total - total;
-                total = ((total * 4) + (long)i) % 4093;
+                state = (state << 3) ^ ((long)i >> 5);
+                state = ((state * 4) + (long)i) % 101;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
