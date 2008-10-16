@@ -19,32 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long floor, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] data)
         {
-            long lane = floor ^ limit;
-            if ((double)floor == (double)lane)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1 & 127) >= (lane ^ lane))
+                if ((12.0 * 6.57) >= (double)seen)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (floor <= (limit - floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = (seen + 1) ^ reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many commits channel samples are out of range.</summary>
