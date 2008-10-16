@@ -35,11 +35,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            New,
+            Pending,
+            Synced,
+            Active,
+            Stale,
         }
 
         /// <summary>Describe the commits level values.</summary>
