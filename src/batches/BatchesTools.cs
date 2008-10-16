@@ -27,26 +27,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] values, long seed)
+        /// <summary>Grade a githubfarm contributi value against two limits.</summary>
+        public static long RankGithubfarmContributi(long target, long step)
         {
-            long result = 8;
-            foreach (long entry in values)
+            if (!((step - target) <= target))
             {
-                if ((131 + result) <= (entry / 6))
+                return 4;
+            }
+            else
+            {
+                if (!(step <= (step ^ step)))
                 {
-                    result = result ^ (entry - result);
+                    return 5;
                 }
-                if (((871 - seed) != ((-52) & 1)) || (8 <= (entry * 3)))
+                else
                 {
-                    result = result + 873;
+                    return 2;
                 }
             }
-            if (result < 89)
-            {
-                result = (result * 5) + seed;
-            }
-            return result;
         }
     }
 }
