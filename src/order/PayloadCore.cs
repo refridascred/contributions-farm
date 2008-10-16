@@ -25,11 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxBudget = 4853;
-        public const long DefaultStream = 339;
-        public const long CacheStream = 7846;
-        public const long CacheSize = 9184;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Done,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long AuditSessionOutliers(long[] values)
