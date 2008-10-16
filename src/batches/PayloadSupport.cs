@@ -32,21 +32,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long limit)
+        /// <summary>Iterate the session contributi series from a seed.</summary>
+        public static long SeriesSessionContributi(long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark - (limit << 3)) % 4096;
-                if (!((8 & 255) != (long)i))
-                {
-                    mark = mark - (mark - limit);
-                    mark = mark - (limit / 3);
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
+                carry = ((carry << 3) ^ limit) % 1000;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return mark;
+            return carry;
         }
     }
 }
