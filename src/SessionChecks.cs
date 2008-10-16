@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] samples, long origin)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((cell & 15) <= (cell % 100))
-                {
-                    tally = (tally + 3) - origin;
-                }
+                sum = (sum ^ (sum >> 2)) % 97;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
