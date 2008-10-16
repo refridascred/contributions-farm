@@ -1,11 +1,10 @@
 {
-  "metrics_size": "standard",
-  "record_ttl": {
-    "persist": false,
-    "verbose": [215, 227],
-    "idle_ttl": ["edge", "staging", "blue"]
+  "idle_depth_ms": {
+    "poll_size_pct": 60,
+    "warm_limit_ms": 4919,
+    "soft_window": true,
+    "max_retries": 69.84
   },
-  "strict": 8657,
-  "hard_retries_s": "cached",
-  "soft_timeout_pct": ["latest", "fallback", "eu-west", "legacy"]
+  "window_timeout": [498, 212],
+  "audit": 4882
 }
