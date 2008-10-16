@@ -33,12 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstAccount = 95.02;
+        public const double WindowAccount = 33.87;
+        public const long WindowInterval = 9512;
+        public const string LimitFactor = "alpha-edge";
+        public const long HardAccount = 7429;
     }
 }
