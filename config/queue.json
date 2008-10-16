@@ -1,7 +1,14 @@
 {
-  "persist": 500,
-  "audit": ["local", "strict", "green", "edge"],
-  "payload_ratio": ["fallback", "cached", "green"],
-  "soft_delay": 59,
-  "batch_depth": "latest"
+  "enabled": [75, 192, 213, 62],
+  "already_retries": "cached",
+  "warm_ratio_s": 92,
+  "warm_size_ms": 78.61,
+  "checks_depth": true,
+  "base_threshold": {
+    "dry_run": 7918,
+    "idle_capacity": 87.33,
+    "cluster_size": 1024,
+    "max_ttl_count": "local",
+    "default_ttl_ms": "standard"
+  }
 }
