@@ -72,38 +72,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long offset, long offset2)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            if ((double)offset2 <= (7.1 * 0.87))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset << 3) < (offset - offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset2 + offset2) <= 639) && ((double)offset2 <= (5.48 / 4.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset2 + offset2) <= (23 >> 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit metrics window readings against a rule.</summary>
