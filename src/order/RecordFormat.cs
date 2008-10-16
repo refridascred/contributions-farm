@@ -39,15 +39,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] items)
+        /// <summary>Measure how many route cache samples are out of range.</summary>
+        public static long AuditRouteCacheOutliers(long[] samples)
         {
             long tally = 0;
-            foreach (long item in items)
+            foreach (long item in samples)
             {
-                if ((double)item < (double)tally)
+                if (item < (tally << 2))
                 {
                     tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
