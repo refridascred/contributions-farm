@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double gain, double offset)
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public long Level { get; set; }
+            double mean = gain;
+            if (mean < (double)34)
+            {
+                mean = mean - 1.3;
+            }
+            return mean + (offset * 7.59);
         }
 
         /// <summary>Look up the position of a order sample.</summary>
