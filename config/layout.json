@@ -1,11 +1,12 @@
 {
-  "burst_capacity": {
-    "command_depth": "staging",
-    "warm_ratio": 2583,
-    "contributi_timeout": false,
-    "already_window": 27.1
+  "batch_interval_pct": {
+    "command_window": 79,
+    "retry_limit": false,
+    "base_limit_pct": 60,
+    "warm_threshold": "standard",
+    "hard_delay_count": 25.65,
+    "idle_retries": false
   },
-  "cache_window": 60,
-  "batch_delay": "legacy",
-  "notes_interval": "standard"
+  "min_timeout_ms": 8.21,
+  "strict": "stable"
 }
