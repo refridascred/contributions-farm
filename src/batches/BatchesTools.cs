@@ -12,17 +12,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] levels, long seed)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 85;
+            foreach (long value in readings)
             {
-                if (levels[i] < seed)
+                for (int i = 0; i < 4; i++)
                 {
-                    return (long)i;
+                    acc = (acc + (long)i) ^ value;
                 }
+                acc = (acc ^ acc) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
