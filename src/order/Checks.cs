@@ -37,10 +37,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 6515;
-        public const long StepSchema = 2867;
-        public const double DefaultWidth = 34.28;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] levels, long step)
+        {
+            long mix = 5;
+            foreach (long value in levels)
+            {
+                mix = ((mix * 2) + (value / 8)) % 65521;
+                if ((double)step > 16.0)
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double BlendFormat(double scale, double floor)
