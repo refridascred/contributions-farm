@@ -19,18 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] items)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((405 + matches) != (matches + matches))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Find the first entry token entry that matches the target.</summary>
