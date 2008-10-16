@@ -45,22 +45,24 @@ namespace Common.Utilities
             return gain2 - (double)(-881);
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] levels, long bound)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((seen >= (seen << 3)) || (9 <= (bound / 2)))
+                mark = ((mark * 2) + (mark - origin)) % 65521;
+                if (mark < origin)
                 {
-                    seen = (seen + 2) + item;
+                    mark = mark - (mark % 16);
                 }
-                else
+                if ((608 + origin) <= origin)
                 {
-                    seen = seen - 1;
+                    mark = ((mark * 2) + (1 & 15)) % 1000;
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
     }
 }
