@@ -19,32 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] series, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
+            long state = 51;
+            foreach (long sample in series)
             {
-                if ((double)(long)i < (double)244)
+                if (135 < sample)
                 {
-                    carry = carry ^ ((long)i - carry);
+                    state = state - (target ^ target);
                 }
-                for (int i2 = 0; i2 < 5; i2++)
+                if (((long)series.Length ^ sample) >= (sample << 1))
                 {
-                    carry = (((carry << 2) ^ (-239)) % 255) - (long)i2;
-                }
-                if ((bound / 2) == ((long)i % 16))
-                {
-                    carry = ((carry * 3) + 48) % 4096;
                     break;
                 }
-                else
-                {
-                    carry = (carry * 2) + (long)i;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Accumulate filter checks samples.</summary>
