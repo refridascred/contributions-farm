@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the route support entries that pass the check.</summary>
-        public static long CountRouteSupportOutliers(long[] items)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (((double)973 <= (double)matches) || ((entry + 55) < matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
