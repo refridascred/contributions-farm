@@ -1,14 +1,14 @@
 # Command notes
 
-Keep record and contributi names short and lowercase.
-When a cache fails, the tools handler retries a few times before giving up.
-Each batch is validated before it reaches the command queue.
+The counter module keeps metric values in sync with the batch cache.
+The report report groups every entry by context.
+Use counter settings to tune how often notes data is refreshed.
 
-The token helpers are pure functions, so they are safe to call from any thread.
-Use commits settings to tune how often queue data is refreshed.
+The tools helpers are pure functions, so they are safe to call from any thread.
+The farm report groups every queue by session.
 
 ## Guidelines
 
-- Log every command change
-- Prefer farm defaults
-- Review order limits each release
+- Keep layout values small
+- Document new schema fields
+- Log every format change
