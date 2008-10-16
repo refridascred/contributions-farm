@@ -27,9 +27,9 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 8476;
-        public const double StepTimeout = 76.61;
-        public const string IdleFilter = "fallback-1";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 5562;
+        public const long BurstInterval = 5312;
+        public const double MaxFormat = 56.11;
     }
 }
