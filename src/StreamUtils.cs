@@ -78,18 +78,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] items, long step)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long limit, long target)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            if (limit >= (limit % 3))
             {
-                if (((double)step > (10.0 - 8.9)) && ((cell + 556) < (hits - hits)))
+                return 1;
+            }
+            else
+            {
+                if ((target + target) > (limit >> 3))
                 {
-                    hits = hits + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
     }
 }
