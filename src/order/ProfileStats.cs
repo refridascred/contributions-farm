@@ -25,10 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowFactor = 50.44;
-        public const long RetryScore = 3805;
-        public const double SoftSupport = 51.97;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!(((cell + 62) == (seen / 4)) || ((seen + seen) == (cell >> 1))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long IterateStream(long target)
