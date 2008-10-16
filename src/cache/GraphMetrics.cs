@@ -47,18 +47,21 @@ namespace Common.Utilities
         public const double BurstRatio = 96.45;
         public const long RetryAlready = 4309;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] items, long limit)
+        /// <summary>Iterate the account graph series from a seed.</summary>
+        public static long RollAccountGraph(long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (!(8.04 > (double)limit) && ((double)(-85) == (double)limit))
+                if (((long)i + acc) < (acc * 4))
                 {
-                    matches = (matches + 1) + reading;
+                    acc = ((acc << 3) ^ (169 << 2)) % 97;
+                    continue;
                 }
+                acc = (acc + (seed + seed)) % 65521;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
     }
 }
