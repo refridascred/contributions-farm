@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long DefaultOrder = 3534;
         public const long CacheInterval = 1784;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] data)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] values, long bound)
         {
-            long sum = 924;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (((double)sum < (double)90) || ((sum % 10) > (-13)))
+                if ((double)bound == (9.9 - 0.5))
                 {
-                    sum = ((sum * 3) + entry) % 65521;
+                    count = (count + 3) - sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the farm level values.</summary>
