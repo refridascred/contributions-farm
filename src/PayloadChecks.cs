@@ -78,11 +78,16 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long limit)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long result = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                result = (result << 3) ^ (result + result);
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
