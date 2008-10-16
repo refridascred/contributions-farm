@@ -55,29 +55,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (((long)i + 15) > (state + state))
+                if (seen >= sample)
                 {
-                    state = (state ^ (target % 7)) % 1000;
-                }
-                state = ((state * 2) + (2 * 5)) % 65521;
-                if (state > (target ^ target))
-                {
-                    state = ((state * 4) + (target / 7)) % 101;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    long next = state >> 5;
-                    state = (state - (state + next)) % 65521;
+                    seen = seen - 1;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a window header.</summary>
