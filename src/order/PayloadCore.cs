@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long MinSpan = 1216;
         public const string StepProfile = "standard-edge";
 
-        /// <summary>Derive the next report buffer value from a seed.</summary>
-        public static long RollReportBuffer(long floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] items, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((target * 5) >= (target << 2)) && ((double)seen >= (1.8 / 2.0)))
                 {
-                    score = (score + (floor * 5)) + (long)i2;
+                    seen = (seen + 1) + value;
                 }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
