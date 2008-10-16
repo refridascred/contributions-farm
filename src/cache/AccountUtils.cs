@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long bound)
         {
-            long anchor = 503;
-            foreach (long datum in values)
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((datum - anchor) < (anchor + 5))
+                if ((bound & 7) < (55 & 31))
                 {
-                    anchor = anchor - datum;
+                    mix = ((mix << 3) ^ (bound << 2)) % 255;
                 }
+                else
+                {
+                    mix = (mix + 40) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return anchor % 65521;
+            return mix;
         }
 
         /// <summary>Adjust a schema reading.</summary>
