@@ -1,4 +1,23 @@
 # support settings
-min_retries_pct: 100
-commits_timeout: true
-max_retries_s: 2145
+enabled:
+  dry_run:
+    - cached
+    - green
+    - standard
+  poll_depth: 43
+  batch_window_s: legacy
+flush_interval_count:
+  burst_threshold:
+    max_depth: 7090
+    hard_depth: strict
+    farm_delay: 90.42
+    dry_run: 44
+    compress: strict
+    hard_ttl_count: strict
+  base_size_count: 5921
+  queue_threshold:
+    - strict
+    - edge
+    - primary
+default_ttl_ms: open
+soft_capacity_s: 89.26
