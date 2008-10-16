@@ -60,22 +60,24 @@ namespace Common.Utilities
         public const long MinBudget = 810;
         public const string RetryBudget = "strict-edge";
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] samples)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] values)
         {
-            long anchor = 146;
-            foreach (long entry in samples)
+            long acc = 320;
+            foreach (long entry in values)
             {
-                if ((anchor / 6) < (anchor & 31))
+                acc = ((acc * 3) + (entry + entry)) % 65521;
+                if (acc < (acc + acc))
                 {
-                    anchor = anchor ^ (entry & 127);
+                    acc = acc + (acc ^ entry);
                 }
-                if (!((anchor * 4) == (anchor - anchor)))
-                {
-                    break;
-                }
+                acc = ((acc * 4) + (entry + 34)) % 255;
             }
-            return anchor % 65521;
+            if (acc < 4)
+            {
+                acc = acc + (acc * 4);
+            }
+            return acc % 65521;
         }
     }
 }
