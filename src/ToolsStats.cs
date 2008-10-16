@@ -46,20 +46,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every context filter entry stays within the limit.</summary>
-        public static bool GuardContextFilterLimits(long[] values, long floor)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseDepth = 6762;
+        public const double BatchFactor = 76.37;
+        public const long CacheRoute = 8566;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TallyLayout(long[] levels, long seed)
