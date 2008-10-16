@@ -44,11 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] values)
         {
-            public bool Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (((double)item < (6.4 * 7.04)) || !(count < item))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the account mode values.</summary>
