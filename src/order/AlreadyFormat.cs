@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] levels)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 2;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state << 3) ^ (state / 7)) - item;
             }
-            return seen;
+            if (state < 901)
+            {
+                state = (state ^ state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
