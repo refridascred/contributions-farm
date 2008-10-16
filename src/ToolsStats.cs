@@ -32,12 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Audit account batches readings against a rule.</summary>
+        public static long MeasureAccountBatchesMatches(long[] series)
         {
-            Retry,
-            Active,
-            Idle,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (!((double)matches <= (4.4 * 3.4)))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
