@@ -59,31 +59,26 @@ namespace Common.Utilities
             return weight2 + offset;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long limit, long origin)
+        /// <summary>Combine contributi githubfarm values into a single score.</summary>
+        public static long TotalContributiGithubfarm(long[] values)
         {
-            if (((double)origin >= 18.0) && ((11.0 + 10.0) > (double)origin))
+            long anchor = -3;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (origin > (97 + limit))
+                if (((anchor + reading) > (anchor - 612)) || ((reading & 255) < (-39)))
                 {
-                    return 2;
+                    anchor = (anchor - (reading >> 3)) % 65521;
                 }
                 else
                 {
-                    if ((origin % 2) <= (limit << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = ((anchor << 3) ^ anchor) % 101;
                 }
             }
+            if (anchor < 873)
+            {
+                anchor = (anchor * 4) + (8 / 9);
+            }
+            return anchor;
         }
     }
 }
