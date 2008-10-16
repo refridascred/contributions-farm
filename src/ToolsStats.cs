@@ -104,12 +104,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Stale,
-            Queued,
-            Active,
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
     }
 }
