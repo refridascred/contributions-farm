@@ -41,12 +41,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] readings, long seed)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine window values into a single score.</summary>
