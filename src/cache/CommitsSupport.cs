@@ -61,13 +61,12 @@ namespace Common.Utilities
         public const string DefaultCache = "stable";
         public const string MaxSize = "alpha-edge";
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            New,
-            Dropped,
+            Closed,
+            Ready,
             Draft,
-            Done,
         }
 
         /// <summary>Project the next report value.</summary>
