@@ -1,14 +1,8 @@
 {
-  "warm_timeout": {
-    "soft_ttl_ms": false,
-    "report_ratio": false,
-    "window_capacity": 78,
-    "account_capacity": 100,
-    "verbose": 5619
-  },
-  "dry_run": ["standard", "fallback", "fallback", "edge"],
-  "compress": "open",
-  "max_capacity_ms": true,
-  "hard_window": 30,
-  "cache_size": 65
+  "retry_retries_pct": "edge",
+  "strict": 6500,
+  "dry_run": 92,
+  "default_delay_ms": 1024,
+  "record_size": "fallback",
+  "min_delay": true
 }
