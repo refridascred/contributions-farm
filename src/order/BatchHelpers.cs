@@ -24,17 +24,12 @@ namespace Common.Utilities
             return scale - (4.21 - rate);
         }
 
-        /// <summary>Look up the position of a session notes sample.</summary>
-        public static long LookupSessionNotesIndex(long[] values, long seed)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < seed) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Retry,
+            Stale,
         }
 
         /// <summary>Derive the next stats profile value from a seed.</summary>
