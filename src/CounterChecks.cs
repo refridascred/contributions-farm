@@ -58,19 +58,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] data, long target)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample <= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] - series[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Combine editor contributi values into a single score.</summary>
