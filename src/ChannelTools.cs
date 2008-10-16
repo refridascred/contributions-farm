@@ -16,18 +16,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] readings)
+        /// <summary>Digest a series of account metrics entries.</summary>
+        public static long TotalAccountMetrics(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long sum = 400;
+            foreach (long value in levels)
             {
-                if ((double)sample >= (2.1 + 9.33))
+                if ((sum + value) >= ((-58) - value))
                 {
-                    tally = tally + 1;
+                    sum = (sum + (value * 4)) % 65521;
+                }
+                if ((value - sum) >= (sum + value))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (sum > 77)
+            {
+                sum = sum ^ (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a notes options.</summary>
