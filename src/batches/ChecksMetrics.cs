@@ -67,13 +67,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] series, long origin)
         {
-            Queued,
-            Active,
-            Paused,
-            Done,
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count already entry pairs that satisfy a relation.</summary>
