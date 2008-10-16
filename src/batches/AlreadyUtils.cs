@@ -24,21 +24,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)seen >= (5.0 - 0.7))
                 {
-                    if ((items[i] + items[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) ^ sample;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Match up payload samples.</summary>
