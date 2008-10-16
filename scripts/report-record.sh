@@ -6,7 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+mode="${1:-staging}"
 case "${mode}" in
     standard)
         log "fast path"
@@ -16,12 +22,8 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-for item in blue legacy edge local; do
-    log "checking ${item}"
-done
+log "ran ${count} rounds"
