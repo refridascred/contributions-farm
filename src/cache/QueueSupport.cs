@@ -20,15 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] series, long floor)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long sum = 9;
-            foreach (long cell in series)
-            {
-                sum = ((sum - (14 ^ sum)) ^ cell) - floor;
-            }
-            return sum % 4096;
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
