@@ -42,19 +42,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] levels, long floor)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Stale,
+            Synced,
+            Draft,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
