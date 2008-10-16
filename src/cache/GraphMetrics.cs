@@ -16,10 +16,25 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepLevel = 2949;
-        public const long IdleReport = 8841;
-        public const string RetryTimeout = "alpha-1";
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long step, long limit)
+        {
+            if (((step - step) > 339) || ((909 >> 3) >= step))
+            {
+                return 7;
+            }
+            else
+            {
+                if (step >= limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsLimits(long[] samples, long seed)
