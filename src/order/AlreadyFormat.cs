@@ -24,11 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 9752;
-        public const string SoftSpan = "open-edge";
-        public const long LimitDepth = 1442;
-        public const double BatchFarm = 6.62;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public bool Rank { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Validate token graph readings against a bound.</summary>
         public static bool CheckTokenGraphBounds(long[] values, long offset)
