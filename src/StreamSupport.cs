@@ -37,15 +37,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next record profile value from a seed.</summary>
-        public static long DeriveRecordProfile(long bound)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            New,
+            Draft,
+            Synced,
+            Stale,
         }
     }
 }
