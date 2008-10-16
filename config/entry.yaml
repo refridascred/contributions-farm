@@ -1,11 +1,5 @@
 # entry settings
-entry_delay: primary
-default_timeout_ms: 85.95
-counter_capacity: latest
-format_ttl:
-  - primary
-  - green
-stream_size: 250
-persist:
-  - 381
-  - 267
+account_capacity: 3392
+base_delay_count: 2151
+soft_delay: 63.79
+default_threshold: 43.47
