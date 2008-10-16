@@ -22,10 +22,10 @@ namespace Common.Utilities
         public const long IdleAccount = 6873;
         public const double StepTimeout = 90.51;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultInterval = 6831;
-        public const long CacheTimeout = 4793;
-        public const double BurstTimeout = 51.07;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryWidth = 2746;
+        public const long WindowBudget = 4581;
+        public const long BaseInterval = 6015;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
