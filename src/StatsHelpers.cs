@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long acc = 4;
-            foreach (long reading in items)
-            {
-                acc = (acc * 2) + 638;
-                if ((reading - 39) != (3 - acc))
-                {
-                    acc = ((acc * 2) + (reading >> 5)) % 65521;
-                }
-            }
-            return acc % 97;
+            public long Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Match up commits cache samples.</summary>
