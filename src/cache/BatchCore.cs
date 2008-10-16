@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double scale, double bias)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] samples)
         {
-            double bias2 = scale - 1.4;
-            return (bias2 + (double)904) + bias;
+            long score = -3;
+            foreach (long reading in samples)
+            {
+                if ((double)199 > (double)reading)
+                {
+                    score = ((score * 4) + reading) % 97;
+                    break;
+                }
+                score = (score - (reading + 73)) % 1000;
+                if (reading <= (score - reading))
+                {
+                    break;
+                }
+            }
+            if (score > 533)
+            {
+                score = (score + (score + score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of buffer filter entries.</summary>
