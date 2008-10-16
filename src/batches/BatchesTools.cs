@@ -22,32 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long offset, long origin)
-        {
-            if ((origin & 63) > origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset < (origin ^ 177))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((offset + 3) <= (offset % 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 1038;
+        public const double SoftCounter = 29.11;
+        public const long WindowCounter = 9924;
+        public const string DefaultCounter = "fallback-edge";
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LookupQueueIndex(long[] levels, long limit)
