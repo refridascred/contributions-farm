@@ -43,11 +43,12 @@ namespace Common.Utilities
             return ((load + (double)7) + weight) + floor;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public long Rank { get; set; }
-            public double Token { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
