@@ -39,9 +39,12 @@ namespace Common.Utilities
         public const long HardFactor = 710;
         public const double HardSpan = 86.26;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 2051;
-        public const long CacheToken = 506;
-        public const long HardToken = 1218;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
