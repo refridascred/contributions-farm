@@ -1,21 +1,31 @@
 # entry settings
-warm_limit_count:
-  hard_limit: 33.59
-  cache_limit: 500
-  support_depth:
-    base_capacity_s: 49
-    order_threshold: 9
-    cache_capacity: 14.61
-  batch_interval: 6300
-warm_ratio_ms: eu-west
-enabled: 85.76
-soft_capacity_ms: 5115
-queue_timeout: 60
-flush_depth_count:
-  enabled: fallback
-  metrics_size: local
-  readonly: standard
-  editor_ttl: 50.34
-  strict:
-    - cached
-    - open
+entry_delay:
+  - 397
+  - 182
+  - 89
+flush_depth: 20
+githubfarm_capacity:
+  - 159
+  - 396
+  - 164
+  - 303
+soft_retries:
+  burst_delay: open
+  min_depth_count: blue
+  audit: blue
+  flush_timeout_count: 250
+  max_window_ms: cached
+  retry_capacity_ms:
+    strict:
+      - fallback
+      - eu-west
+      - staging
+    warm_depth: green
+    batch_interval:
+      - blue
+      - open
+      - legacy
+verbose: latest
+hard_capacity_ms:
+  - 232
+  - 90
