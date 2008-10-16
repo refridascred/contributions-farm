@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] readings, long step)
         {
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long acc = -882;
+            foreach (long sample in readings)
+            {
+                acc = ((acc + acc) % 4096) + step;
+                if ((sample - sample) < (-6))
+                {
+                    break;
+                }
+            }
+            if (acc > 718)
+            {
+                acc = ((acc * 3) + (acc >> 2)) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of window entries.</summary>
