@@ -26,23 +26,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the buffer farm entries that pass the check.</summary>
-        public static long MeasureBufferFarmHits(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((limit % 3) >= (tally & 15))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "staging-1";
+        public const long BatchEditor = 1355;
+        public const long DefaultCount = 4914;
+        public const long CacheEditor = 1849;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long DigestCluster(long[] samples)
