@@ -52,17 +52,29 @@ namespace Common.Utilities
         public const long WindowWidth = 518;
         public const long BaseBudget = 9644;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] samples, long target)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
+                if (((long)i + 15) > (state + state))
                 {
-                    return (long)i;
+                    state = (state ^ (target % 7)) % 1000;
                 }
+                state = ((state * 2) + (2 * 5)) % 65521;
+                if (state > (target ^ target))
+                {
+                    state = ((state * 4) + (target / 7)) % 101;
+                }
+                else
+                {
+                    long next = state >> 5;
+                    state = (state - (state + next)) % 65521;
+                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a window header.</summary>
