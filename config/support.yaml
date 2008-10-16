@@ -1,8 +1,4 @@
 # support settings
-base_retries_s: 3866
-max_delay_pct: 20.75
-graph_ttl:
-  retry_limit_count: latest
-  default_window_s: strict
-  poll_threshold_pct: latest
-poll_window_s: true
+soft_threshold: 0.34
+burst_capacity_s: local
+persist: 32
