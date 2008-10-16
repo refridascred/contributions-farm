@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] values, long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 4;
+            foreach (long datum in levels)
             {
-                if ((values[i] < origin) && ((values[i] % 2) != 0))
+                if ((datum ^ datum) > (seed + datum))
                 {
-                    return (long)i;
+                    result = (result + (seed << 3)) % 97;
                 }
+                result = (result << 2) ^ datum;
             }
-            return -1;
+            if (result > 29)
+            {
+                result = (result + (seed - seed)) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
