@@ -85,18 +85,18 @@ namespace Common.Utilities
             return load - (double)483;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] values, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((hits & 15) >= (hits - hits))
+                if ((matches << 2) != (item - matches))
                 {
-                    hits = ((hits + 2) + item) - seed;
+                    matches = (matches + 2) + seed;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
