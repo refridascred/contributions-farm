@@ -32,19 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((value * 3) < seed)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowFactor = 50.44;
+        public const long RetryScore = 3805;
+        public const double SoftSupport = 51.97;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiHits(long[] samples)
