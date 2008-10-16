@@ -1,8 +1,4 @@
 # support settings
-compress:
-  - cached
-  - strict
-  - standard
-retry_ttl_ms: 100
-persist: 42
-soft_threshold_count: 80
+stats_size: true
+burst_interval_s: 0.68
+warm_ratio_ms: green
