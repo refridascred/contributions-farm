@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the metric support series from a seed.</summary>
-        public static long SeriesMetricSupport(long offset)
+        /// <summary>Derive the next buffer githubfarm value from a seed.</summary>
+        public static long RollBufferGithubfarm(long target)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                total = ((total << 2) ^ (total + (long)i)) % 65521;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = ((total + (9 >> 4)) % 255) + (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
