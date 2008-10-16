@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] data)
         {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
+            long state = 164;
+            foreach (long entry in data)
             {
-                if ((12.0 / 9.0) == (double)(long)i)
-                {
-                    mark = (mark << 3) ^ (target >> 1);
-                    mark = (mark + (target + (long)i)) % 1000;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
+                state = ((state * 5) + (state << 2)) - entry;
             }
-            return mark;
+            if (state > (-840))
+            {
+                state = (state + state) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
