@@ -13,14 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] data, long offset)
         {
-            Draft,
-            Ready,
-            Stale,
-            Pending,
-            Idle,
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
