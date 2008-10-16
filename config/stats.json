@@ -1,6 +1,7 @@
 {
-  "burst_capacity_s": 8,
-  "account_delay": 7447,
-  "cache_limit": "cached",
-  "batch_capacity_count": 30
+  "poll_ttl_pct": 3561,
+  "readonly": "fallback",
+  "flush_delay": [152, 161],
+  "soft_limit_s": 78.72,
+  "soft_limit": 7
 }
