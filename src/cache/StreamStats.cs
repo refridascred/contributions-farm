@@ -15,24 +15,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] samples)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long limit)
         {
-            long acc = 7;
-            foreach (long item in samples)
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)acc < (8.43 * 1.9)) && (acc <= (acc % 5)))
-                {
-                    acc = acc ^ (item - 142);
-                }
-                if (item <= 941)
-                {
-                    break;
-                }
-            }
-            if (acc > 866)
-            {
-                acc = (acc ^ (acc + acc)) % 1000;
+                acc = (acc ^ (limit + limit)) % 4096;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
             return acc;
         }
