@@ -32,19 +32,27 @@ namespace Common.Utilities
         public const string LimitBatch = "alpha";
         public const string WindowBatch = "alpha-1";
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] readings, long seed)
+        /// <summary>Digest a series of counter contributi entries.</summary>
+        public static long FoldCounterContributi(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long anchor = 88;
+            foreach (long datum in values)
             {
-                if (item != seed)
+                if (((anchor - datum) > (datum + datum)) && ((long)values.Length == (anchor ^ 24)))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor + (datum - anchor)) % 1000;
+                    anchor = ((anchor << 3) ^ (anchor * 5)) % 65521;
+                }
+                if (((double)anchor >= (2.0 - 1.9)) && ((datum << 1) > (anchor * 3)))
+                {
+                    anchor = (anchor << 3) ^ (target + anchor);
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (anchor + datum);
                 }
             }
-            return valid;
+            return anchor;
         }
     }
 }
