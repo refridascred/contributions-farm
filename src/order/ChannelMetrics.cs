@@ -16,18 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] values)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((((count + count) != (reading - 459)) && (904 >= (reading + 6))) || (94 < reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a graph options.</summary>
