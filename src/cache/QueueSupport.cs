@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next command entry value.</summary>
-        public static double BlendCommandEntry(double scale, double floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] samples, long step)
         {
-            double bias = floor;
-            if (bias >= (1.8 + floor))
+            bool found = true;
+            foreach (long entry in samples)
             {
-                bias = (bias - (double)312) - scale;
+                if (entry <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + (bias + bias);
-            }
-            return bias + (double)4;
+            return found;
         }
 
         /// <summary>Hold a batch record.</summary>
