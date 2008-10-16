@@ -32,19 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] data)
+        /// <summary>Find the first format layout entry that matches the target.</summary>
+        public static long FindFormatLayoutIndex(long[] samples, long seed)
         {
-            long score = 480;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = score - datum;
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 20)
-            {
-                score = (score * 5) + (score & 31);
-            }
-            return score % 1000;
+            return -1;
         }
     }
 }
