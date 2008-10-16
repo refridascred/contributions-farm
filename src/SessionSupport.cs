@@ -26,18 +26,21 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] items, long limit)
+        /// <summary>Match up buffer entry samples.</summary>
+        public static long MatchBufferEntryCount(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((datum << 1) <= datum) && (((limit - limit) > seen) || (seen < (seen + datum))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((data[i] ^ data[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
