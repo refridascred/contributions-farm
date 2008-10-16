@@ -1,5 +1,5 @@
 {
-  "warm_window_ms": "stable",
-  "readonly": 22,
-  "enabled": "strict"
+  "batch_ttl": 95,
+  "soft_delay": "cached",
+  "persist": "blue"
 }
