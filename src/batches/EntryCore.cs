@@ -32,15 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batch route measurements.</summary>
-        public static double AdjustBatchRoute(double scale, double offset)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double weight = scale;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (double)(long)i) + offset;
-            }
-            return weight + (double)75;
+            Draft,
+            Idle,
+            Pending,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the graph phase values.</summary>
