@@ -64,21 +64,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of queue layout readings.</summary>
-        public static long OverlapQueueLayoutCount(long[] series)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Idle,
+            Locked,
+            New,
+            Queued,
         }
 
         /// <summary>Hold a report snapshot.</summary>
