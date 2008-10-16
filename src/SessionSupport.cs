@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double scale, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double load = (double)(55 << 1);
+            return (load + floor) + scale;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
