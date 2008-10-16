@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long offset, long origin)
-        {
-            if ((origin / 5) == (origin * 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin > (offset - offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset % 97) < 680))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((3 ^ origin) > (offset / 8))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 1400;
+        public const long CacheCount = 1660;
+        public const long MaxInterval = 9556;
+        public const long LimitGraph = 541;
 
         /// <summary>Look up the position of a graph payload sample.</summary>
         public static long FindGraphPayloadIndex(long[] items, long target)
