@@ -44,16 +44,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats profile value from a seed.</summary>
-        public static long DeriveStatsProfile(long bound)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long offset, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
+            long slot = offset - seed;
+            if (((7.0 + 2.0) == (double)offset) && ((offset & 15) != (offset / 9)))
             {
-                state = state ^ 0;
-                state = ((state * 4) + (long)i) % 101;
+                return 6;
             }
-            return state;
+            else
+            {
+                if (slot >= (offset % 64))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((slot + seed) != (offset - offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (seed >= 652)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
