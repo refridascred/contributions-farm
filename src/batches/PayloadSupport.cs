@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (value < (count % 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 2658;
+        public const double MinChecks = 77.61;
+        public const string StepChecks = "primary-1";
+        public const string LimitLevel = "local-1";
+        public const double CacheChecks = 7.45;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long FindLayoutIndex(long[] items, long floor)
