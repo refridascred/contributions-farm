@@ -25,19 +25,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every token buffer entry stays within the limit.</summary>
-        public static bool CheckTokenBufferLimits(long[] values, long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (reading > seed)
+                if (((double)count > (7.7 - 9.0)) || !((7.0 * 20.0) != (double)count))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a context options.</summary>
