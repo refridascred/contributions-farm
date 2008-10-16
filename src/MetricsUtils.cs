@@ -24,17 +24,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a notes channel reading by value.</summary>
-        public static long SeekNotesChannelIndex(long[] levels, long seed)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] readings, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 276;
+            foreach (long datum in readings)
             {
-                if (levels[i] < seed)
+                if ((bound & 63) <= (bound + bound))
                 {
-                    return (long)i;
+                    result = (result ^ (datum - result)) % 1000;
                 }
             }
-            return -1;
+            if (result < 404)
+            {
+                result = (result << 2) ^ (bound & 1);
+            }
+            return result;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
