@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long bound, long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] readings, long limit)
         {
-            long slot = bound + offset;
-            if ((7 <= (bound & 15)) || ((slot << 2) < bound))
+            long state = 18;
+            foreach (long reading in readings)
             {
-                return 8;
+                state = ((state - (state + (-48))) - reading) - limit;
             }
-            else
-            {
-                if (((offset - offset) <= (195 + bound)) || (97 > (offset - 47)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return state % 97;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
