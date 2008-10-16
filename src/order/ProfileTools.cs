@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] items, long floor)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
