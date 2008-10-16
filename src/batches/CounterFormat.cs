@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] items)
         {
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((6.91 / 7.0) > (double)(long)items.Length)
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
