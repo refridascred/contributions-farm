@@ -23,18 +23,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] items, long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long step, long offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            if ((offset < (1 ^ step)) && ((step / 4) <= (3 % 3)))
             {
-                if (hits <= (floor >> 3))
+                return 7;
+            }
+            else
+            {
+                if ((5 + offset) <= offset)
                 {
-                    hits = (hits + 1) ^ item;
+                    return 5;
+                }
+                else
+                {
+                    if (step >= (89 % 10))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
