@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
-            {
-                long tally = (step % 5) << 3;
-                state = ((state * 4) + (tally + 2)) % 4096;
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Pending,
+            Synced,
+            Done,
+            Ready,
         }
 
         /// <summary>Describe the batch status values.</summary>
