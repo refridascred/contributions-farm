@@ -1,8 +1,11 @@
 {
-  "poll_ratio": ["edge", "standard", "latest"],
-  "order_retries": 79.19,
-  "filter_depth": "standard",
-  "compress": 6756,
-  "cache_limit": 100,
-  "min_retries_count": ["fallback", "cached"]
+  "entry_window": {
+    "farm_ratio": "local",
+    "flush_retries_s": true,
+    "compress": 83.75,
+    "verbose": true
+  },
+  "contributi_delay": 74,
+  "compress": 100,
+  "support_interval": [333, 385]
 }
