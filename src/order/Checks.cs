@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] levels, long offset)
         {
-            Pending,
-            Synced,
-            Done,
-            Ready,
+            long total = 7;
+            foreach (long reading in levels)
+            {
+                total = ((total << 2) ^ (reading >> 2)) - offset;
+            }
+            return total;
         }
 
         /// <summary>Describe the batch status values.</summary>
