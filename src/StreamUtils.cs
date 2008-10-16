@@ -67,18 +67,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel schema samples are out of range.</summary>
-        public static long AuditChannelSchemaOutliers(long[] data, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] series)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long score = 51;
+            foreach (long datum in series)
             {
-                if ((datum - count) == (count >> 4))
-                {
-                    count = (count + 2) - origin;
-                }
+                score = (((score << 2) ^ (score / 3)) % 1000) - datum;
             }
-            return count;
+            if (score < 1)
+            {
+                score = score ^ (score / 5);
+            }
+            return score % 97;
         }
     }
 }
