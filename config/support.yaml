@@ -1,9 +1,17 @@
 # support settings
-idle_ratio_count:
-  - blue
-  - standard
-  - edge
-  - latest
-poll_ttl_ms: 30
-burst_depth: 60
-profile_threshold: blue
+batch_delay: 250
+hard_retries_s:
+  entry_ttl: 500
+  hard_capacity: 250
+  retry_ratio_ms:
+    - green
+    - primary
+    - strict
+    - local
+  poll_window:
+    - blue
+    - local
+burst_ratio_ms: 100
+retry_threshold: staging
+compress: 80.54
+cache_window: true
