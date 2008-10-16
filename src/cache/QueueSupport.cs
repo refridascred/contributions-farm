@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] values, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] data, long seed)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (value >= floor)
+                if ((286 & 31) > seed)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a batch record.</summary>
