@@ -64,18 +64,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] series)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (!((matches >> 1) > (reading * 4)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Queued,
+            Active,
+            Paused,
+            Done,
         }
 
         /// <summary>Blend two route measurements.</summary>
