@@ -50,22 +50,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] levels, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] levels)
         {
-            long matches = 0;
+            long tally = 0;
             foreach (long cell in levels)
             {
-                if (matches > (matches & 7))
+                if ((tally % 16) >= (tally + tally))
                 {
-                    matches = ((matches + 2) ^ cell) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a session summary.</summary>
