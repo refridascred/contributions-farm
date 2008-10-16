@@ -13,25 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the batches queue series from a seed.</summary>
-        public static long RollBatchesQueue(long seed)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] samples, long origin)
         {
-            long mark = seed;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (!((8.0 / 6.0) > (double)(long)i))
+                if (sample >= origin)
                 {
-                    mark = (mark - (long)i) % 97;
-                }
-                long tally = (long)i / 3;
-                if (tally > (long)i)
-                {
-                    mark = (mark - mark) % 4096;
+                    ready = false;
                     break;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
