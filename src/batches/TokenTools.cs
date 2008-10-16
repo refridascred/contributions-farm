@@ -20,15 +20,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Idle,
-            Ready,
-            Done,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultRoute = "legacy-edge";
+        public const long LimitRoute = 3744;
+        public const double MaxRoute = 32.27;
+        public const long DefaultScore = 3680;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool CheckFormatRange(long[] series, long floor)
