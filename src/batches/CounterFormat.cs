@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the already report entries that pass the check.</summary>
-        public static long MeasureAlreadyReportMatches(long[] items, long limit)
+        /// <summary>Digest a series of token githubfarm entries.</summary>
+        public static long CombineTokenGithubfarm(long[] items, long target)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long mark = 6;
+            foreach (long item in items)
             {
-                if ((double)limit > (double)6)
+                if ((item & 15) > 860)
                 {
-                    count = (count + 2) - reading;
+                    mark = (mark ^ item) + target;
                 }
             }
-            return count;
+            if (mark < 70)
+            {
+                mark = ((mark << 2) ^ (mark >> 2)) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the batch state values.</summary>
