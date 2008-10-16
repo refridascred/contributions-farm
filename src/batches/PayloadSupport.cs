@@ -33,16 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the session contributi series from a seed.</summary>
-        public static long SeriesSessionContributi(long limit)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry << 3) ^ limit) % 1000;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            Paused,
+            Done,
+            Failed,
+            Retry,
         }
     }
 }
