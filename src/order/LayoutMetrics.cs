@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 48.26;
-        public const long CacheMetrics = 8851;
-        public const double MaxMetrics = 96.48;
-        public const double WindowScore = 33.93;
-        public const long HardMetrics = 4449;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public double Limit { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
