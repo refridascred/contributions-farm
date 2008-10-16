@@ -39,19 +39,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] levels, long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long score = 0;
+            foreach (long sample in levels)
             {
-                if (reading < step)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score ^ (sample << 1)) - step;
             }
-            return stale;
+            if (score > 3)
+            {
+                score = (score - 2) % 4096;
+            }
+            return score % 1000;
         }
     }
 }
