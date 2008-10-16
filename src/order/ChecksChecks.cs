@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double scale, double offset)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            double mean = (double)(4 >> 2);
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (offset - 1.55)) + (double)(long)i;
-            }
-            return mean + (scale * 9.81);
+            Closed,
+            Done,
+            Idle,
+            Active,
+            Synced,
         }
 
         /// <summary>Describe the format mode values.</summary>
