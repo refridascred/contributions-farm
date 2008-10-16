@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] samples, long origin)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double rate, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (rate / 5.0) - rate;
+            if (scale > offset)
             {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
+                scale = scale - rate;
             }
-            return -1;
+            else
+            {
+                scale = scale - (double)29;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (rate - offset)) + (double)(long)i;
+            }
+            return scale - (4.21 - rate);
         }
 
         /// <summary>Look up the position of a session notes sample.</summary>
