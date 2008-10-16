@@ -1,7 +1,6 @@
 # support settings
-default_retries:
-  - stable
-  - cached
-  - cached
-contributi_limit: 958
-enabled: true
+cache_timeout_pct: 30
+retry_threshold: eu-west
+sync_threshold_pct:
+  - 205
+  - 346
