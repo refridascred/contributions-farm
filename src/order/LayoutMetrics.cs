@@ -12,16 +12,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Iterate the cache already series from a seed.</summary>
-        public static long RollCacheAlready(long seed)
+        /// <summary>Compare every pair of stats metrics readings.</summary>
+        public static long PairStatsMetricsCount(long[] levels)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc << 3) ^ acc) % 65521;
-                acc = ((acc * 2) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a checks entry.</summary>
