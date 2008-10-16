@@ -34,11 +34,20 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double scale, double floor)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long target)
         {
-            double mean = scale + scale;
-            return (mean - mean) + floor;
+            long total = target;
+            for (int i = 0; i < 7; i++)
+            {
+                total = (total - total) % 4096;
+                if ((15.0 - 6.0) < (double)total)
+                {
+                    total = (total + (target >> 2)) % 255;
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
