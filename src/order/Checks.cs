@@ -37,13 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
-        {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 6515;
+        public const long StepSchema = 2867;
+        public const double DefaultWidth = 34.28;
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double BlendFormat(double scale, double floor)
