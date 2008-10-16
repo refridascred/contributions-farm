@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseBudget = 6801;
+        public const long HardTimeout = 3791;
+        public const double MaxCount = 98.86;
+        public const long SoftSpan = 6888;
+        public const string BurstLayout = "strict-v2";
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long SeekOrderIndex(long[] levels, long limit)
