@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] values)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((matches & 63) < (reading % 24))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] - samples[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
