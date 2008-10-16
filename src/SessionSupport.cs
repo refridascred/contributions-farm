@@ -24,21 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count window schema pairs that satisfy a relation.</summary>
-        public static long PairWindowSchemaCount(long[] samples)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
