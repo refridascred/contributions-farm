@@ -1,17 +1,10 @@
 {
-  "queue_ratio": {
-    "window_ttl": "edge",
-    "retry_size_ms": 500,
-    "compress": {
-      "contributi_interval": 1358,
-      "hard_ratio_count": true,
-      "min_limit_s": 27.47,
-      "warm_ratio": "primary"
-    },
-    "retry_depth_ms": 6.37,
-    "hard_retries_count": 100
-  },
-  "verbose": "stable",
-  "warm_retries_count": 95.13,
-  "poll_retries_ms": 42.43
+  "channel_interval": [199, 499],
+  "soft_threshold_count": true,
+  "flush_interval_s": false,
+  "base_depth": {
+    "cache_ttl_ms": "primary",
+    "checks_depth": [19, 498, 327, 157],
+    "enabled": false
+  }
 }
