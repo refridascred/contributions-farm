@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((target ^ matches) < (matches << 1))
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheLevel = 5738;
+        public const string IdleMetrics = "staging";
+        public const long RetryRatio = 6100;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterGaps(long[] levels, long limit)
