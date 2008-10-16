@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long limit, long step)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] items, long target)
         {
-            if ((7 % 10) <= (limit << 3))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit + 9) <= limit) && ((limit + limit) > (limit - step)))
+                if (items[i] >= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((0.6 - 3.1) != (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit < (limit % 12))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
