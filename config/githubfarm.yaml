@@ -1,14 +1,19 @@
 # githubfarm settings
-payload_window:
-  hard_limit_s:
-    - stable
-    - eu-west
-    - latest
-  flush_retries_count: standard
-  max_interval: 5.95
-  strict: 2520
-  idle_limit_count: 30
-  warm_window: open
-min_limit_s: true
-dry_run: 32
-base_ratio_ms: 3.62
+base_ratio_pct:
+  - 297
+  - 153
+  - 61
+  - 333
+flush_delay_pct:
+  readonly: latest
+  warm_interval:
+    hard_window_s: primary
+    poll_delay:
+      - 202
+      - 449
+      - 400
+    enabled: 250
+    hard_interval: 98.18
+    dry_run: true
+  route_window: 48.35
+filter_ttl: 250
