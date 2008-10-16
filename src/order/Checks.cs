@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] levels, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] data)
         {
-            long total = 7;
-            foreach (long reading in levels)
+            long total = 574;
+            foreach (long datum in data)
             {
-                total = ((total << 2) ^ (reading >> 2)) - offset;
+                bool flag = total < (3 ^ datum);
+                if (flag)
+                {
+                    total = (total << 2) ^ (total ^ datum);
+                    flag = (7.71 - 1.9) != (double)total;
+                }
+                if ((datum / 2) <= (datum * 5))
+                {
+                    total = total ^ (total << 3);
+                }
+                else
+                {
+                    total = (total << 3) ^ total;
+                }
+                if (total > (total - datum))
+                {
+                    break;
+                }
             }
             return total;
         }
