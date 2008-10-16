@@ -35,19 +35,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long step)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long origin)
         {
-            long score = step;
-            for (int i = 0; i < 15; i++)
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    score = ((score * 5) + score) ^ (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 97;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
