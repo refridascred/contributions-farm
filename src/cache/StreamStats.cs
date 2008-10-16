@@ -35,15 +35,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double gain, double floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            double gain2 = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + (gain + floor)) + (double)(long)i;
-            }
-            return gain2 - (double)(-881);
+            Pending,
+            Ready,
+            Synced,
+            Queued,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
