@@ -20,17 +20,19 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Look up the position of a graph payload sample.</summary>
-        public static long FindGraphPayloadIndex(long[] items, long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 696;
+            foreach (long entry in series)
             {
-                if (items[i] >= target)
+                carry = carry ^ entry;
+                if ((target + carry) >= target)
                 {
-                    return (long)i;
+                    carry = (carry - ((long)series.Length << 2)) % 4096;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Hold a profile header.</summary>
