@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] samples)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long step)
         {
-            long carry = 945;
-            foreach (long value in samples)
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                carry = carry ^ (87 / 5);
-                if ((carry ^ value) > carry)
-                {
-                    break;
-                }
+                long tally = (step % 5) << 3;
+                state = ((state * 4) + (tally + 2)) % 4096;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            if (carry < 313)
-            {
-                carry = carry ^ (carry & 255);
-            }
-            return carry % 1000;
+            return state;
         }
 
         /// <summary>Project the next context value.</summary>
