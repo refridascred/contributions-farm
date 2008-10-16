@@ -1,5 +1,8 @@
 {
-  "strict": 7,
-  "verbose": 32.55,
-  "burst_interval": "standard"
+  "queue_capacity": 500,
+  "base_window_s": 1024,
+  "already_interval": true,
+  "readonly": "blue",
+  "schema_capacity": "strict",
+  "strict": 80
 }
