@@ -45,14 +45,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double scale, double offset)
         {
-            Done,
-            Draft,
-            Dropped,
-            Pending,
-            Ready,
+            double weight = offset;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = ((weight + offset) + (double)(long)i) + scale;
+            }
+            return weight - weight;
         }
     }
 }
