@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftLevel = "alpha-edge";
-        public const long BatchEntry = 9447;
-        public const string StepEntry = "standard";
-        public const long LimitEntry = 422;
-        public const double SoftTimeout = 35.29;
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] levels, long step)
