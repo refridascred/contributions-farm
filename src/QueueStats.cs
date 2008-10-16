@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const long IdleGraph = 8964;
         public const string HardInterval = "legacy-v2";
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] readings)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (!((long)readings.Length > datum))
+                if ((tally >> 2) > tally)
                 {
-                    hits = hits + 3;
+                    tally = ((tally + 3) + value) - origin;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the farm mode values.</summary>
