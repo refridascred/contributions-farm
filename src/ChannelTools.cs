@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] series)
         {
-            Synced,
-            Done,
-            Paused,
-            Ready,
-            Failed,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (reading > (matches - reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
