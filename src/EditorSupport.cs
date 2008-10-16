@@ -25,21 +25,15 @@ namespace Common.Utilities
         public const long BaseSpan = 6631;
         public const long WindowSupport = 1835;
 
-        /// <summary>Compare every pair of format window readings.</summary>
-        public static long CompareFormatWindowCount(long[] samples)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the token state values.</summary>
