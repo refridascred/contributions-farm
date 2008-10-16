@@ -46,25 +46,18 @@ namespace Common.Utilities
         public const long SoftLevel = 7128;
         public const double BurstBudget = 2.17;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long offset, long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] levels, long bound)
         {
-            long offset2 = offset ^ limit;
-            if ((limit > (offset2 + (-5))) || ((offset2 * 4) <= (89 * 5)))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset2 / 8) >= limit) || ((double)8 <= (double)offset))
+                if (((sample << 3) > bound) || (sample >= (tally + sample)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the profile level values.</summary>
