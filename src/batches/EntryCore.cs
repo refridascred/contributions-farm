@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] data, long target)
+        /// <summary>Blend two batch route measurements.</summary>
+        public static double AdjustBatchRoute(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long value in data)
+            double weight = scale;
+            for (int i = 0; i < 6; i++)
             {
-                if (value >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = (weight + (double)(long)i) + offset;
             }
-            return valid;
+            return weight + (double)75;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
