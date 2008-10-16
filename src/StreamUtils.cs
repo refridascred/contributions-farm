@@ -32,11 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstCount = "staging-v2";
-        public const long WindowBuffer = 3278;
-        public const long HardBuffer = 744;
-        public const long MinBuffer = 3381;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
