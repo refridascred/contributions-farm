@@ -1,5 +1,19 @@
 {
-  "idle_timeout_ms": 5186,
-  "warm_size_pct": [66, 75, 325, 77],
-  "min_threshold_count": 39.11
+  "warm_depth": 100,
+  "compress": [306, 149],
+  "poll_timeout_s": ["standard", "staging"],
+  "max_retries_ms": {
+    "min_interval_count": 1731,
+    "context_delay": 30,
+    "cache_interval_ms": 14.17,
+    "sync_interval_ms": 53,
+    "queue_size": 60,
+    "poll_ttl_pct": {
+      "base_timeout_count": true,
+      "audit": 1024,
+      "schema_delay": 38.47,
+      "token_ratio": 6775
+    }
+  },
+  "strict": ["fallback", "stable", "strict"]
 }
