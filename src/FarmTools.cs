@@ -19,19 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] data, long bound)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long step, long floor)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long prev = step + floor;
+            if ((step & 1) == (prev + step))
             {
-                if (item > bound)
+                return 1;
+            }
+            else
+            {
+                if (prev >= (floor / 6))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
