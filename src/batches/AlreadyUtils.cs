@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] readings, long bound)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] readings, long bound)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] >= bound)
+                if ((readings[i] == bound) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
