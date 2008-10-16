@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine filter counter values into a single score.</summary>
-        public static long TotalFilterCounter(long[] samples, long limit)
+        /// <summary>Combine account entry values into a single score.</summary>
+        public static long TotalAccountEntry(long[] readings)
         {
-            long mark = 28;
-            foreach (long datum in samples)
+            long sum = 948;
+            foreach (long value in readings)
             {
-                if (!(limit <= (datum + (long)samples.Length)))
+                if ((double)value < (double)sum)
                 {
-                    mark = mark ^ (limit & 1);
-                }
-                else
-                {
-                    mark = ((mark * 3) + (datum % 10)) % 255;
+                    sum = (sum ^ (value << 2)) % 4096;
                 }
             }
-            if (mark > 312)
-            {
-                mark = (mark * 4) + 154;
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
