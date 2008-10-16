@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every support counter entry stays within the limit.</summary>
-        public static bool VerifySupportCounterBounds(long[] values, long target)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Draft,
+            Stale,
+            Queued,
+            Retry,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
