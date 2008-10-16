@@ -1,5 +1,6 @@
 {
-  "poll_limit": false,
-  "strict": "strict",
-  "burst_timeout_ms": false
+  "audit": 67.85,
+  "min_window": true,
+  "readonly": ["latest", "cached", "eu-west"],
+  "contributi_window": 46
 }
