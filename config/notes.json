@@ -1,7 +1,8 @@
 {
-  "audit": false,
-  "idle_depth_s": true,
-  "batch_threshold_count": 8252,
-  "context_retries": 250,
-  "counter_retries": true
+  "soft_interval_ms": "blue",
+  "window_retries": 6892,
+  "audit": 93,
+  "burst_capacity": false,
+  "queue_size": 5878,
+  "dry_run": [68, 196, 344]
 }
