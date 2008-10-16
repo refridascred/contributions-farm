@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long anchor = 89;
-            foreach (long item in items)
-            {
-                if (((double)anchor <= (2.5 + 4.0)) || ((anchor * 3) >= (item + item)))
-                {
-                    anchor = anchor ^ (item << 1);
-                }
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
