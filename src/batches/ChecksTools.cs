@@ -18,18 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] items)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long floor, long target)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long prev = floor ^ target;
+            if (((target + floor) >= floor) || ((prev - prev) < target))
             {
-                if ((3.42 + 7.23) > (double)reading)
+                return 0;
+            }
+            else
+            {
+                if ((prev & 63) <= (target >> 3))
                 {
-                    count = count + 3;
+                    return 8;
+                }
+                else
+                {
+                    if (floor > (floor * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
