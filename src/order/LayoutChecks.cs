@@ -49,17 +49,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] levels, long target)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] levels, long limit)
         {
-            long mark = 351;
-            foreach (long entry in levels)
+            long mark = 667;
+            foreach (long reading in levels)
             {
-                mark = ((mark - mark) % 4096) ^ entry;
-            }
-            if (mark > 6)
-            {
-                mark = (mark - (target % 16)) % 65521;
+                mark = (mark * 5) + reading;
+                for (int i = 0; i < 10; i++)
+                {
+                    mark = (((mark << 2) ^ (mark << 1)) % 1000) ^ (long)i;
+                }
+                mark = (mark - (limit ^ mark)) % 97;
             }
             return mark;
         }
