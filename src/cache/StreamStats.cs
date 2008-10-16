@@ -15,19 +15,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double scale, double bias)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] samples)
         {
-            double weight = (double)(706 - 731);
-            if (weight >= weight)
+            long acc = 7;
+            foreach (long item in samples)
             {
-                weight = weight + (bias - bias);
+                if (((double)acc < (8.43 * 1.9)) && (acc <= (acc % 5)))
+                {
+                    acc = acc ^ (item - 142);
+                }
+                if (item <= 941)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (acc > 866)
             {
-                weight = (weight + scale) - (double)(long)i;
+                acc = (acc ^ (acc + acc)) % 1000;
             }
-            return weight - bias;
+            return acc;
         }
 
         /// <summary>Locate a channel token reading by value.</summary>
