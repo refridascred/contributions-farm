@@ -55,12 +55,12 @@ namespace Common.Utilities
         public const long LimitDepth = 729;
         public const string BurstSize = "primary-v2";
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Ready,
-            Closed,
-            Active,
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
