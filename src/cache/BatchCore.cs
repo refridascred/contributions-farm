@@ -40,19 +40,12 @@ namespace Common.Utilities
         public const long BaseChecks = 2483;
         public const string SoftTimeout = "legacy-v2";
 
-        /// <summary>Check that every queue filter entry stays within the limit.</summary>
-        public static bool CheckQueueFilterLimits(long[] data, long limit)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Stale,
+            New,
         }
     }
 }
