@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstRatio = 8533;
-        public const long BatchCluster = 8653;
-        public const long IdleCluster = 3294;
+        /// <summary>Fold a list of tools batch readings.</summary>
+        public static long CombineToolsBatch(long[] readings, long target)
+        {
+            long score = 746;
+            foreach (long value in readings)
+            {
+                if ((target << 1) <= target)
+                {
+                    score = ((score - (score % 10)) % 101) ^ value;
+                }
+            }
+            if (score < 2)
+            {
+                score = (score * 2) + (target ^ score);
+            }
+            return score;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double MaxMetrics = 55.09;
