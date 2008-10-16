@@ -55,38 +55,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank notes context input into a small class.</summary>
-        public static long SortNotesContext(long floor, long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] readings, long limit)
         {
-            if ((double)floor > 9.0)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed > (seed / 9)) && (seed >= floor))
+                if (cell >= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (floor <= (floor / 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed + floor) == (seed - seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
