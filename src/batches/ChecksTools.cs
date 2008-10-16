@@ -20,13 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Done,
-            Synced,
-            Idle,
-            Locked,
+            Draft,
+            Failed,
+            Active,
         }
 
         /// <summary>Project the next already queue value.</summary>
