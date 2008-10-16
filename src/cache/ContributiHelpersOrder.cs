@@ -29,39 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long step, long target)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
-            long gap = step - target;
-            if ((7.0 / 9.0) > (double)target)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step & 15) >= gap)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)gap <= (8.31 / 8.0)))
+                    if ((readings[i] ^ readings[j]) == 17)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)gap >= 16.0)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
