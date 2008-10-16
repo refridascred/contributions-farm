@@ -40,16 +40,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] values, long floor)
+        /// <summary>Iterate the buffer channel series from a seed.</summary>
+        public static long RollBufferChannel(long bound)
         {
-            long state = -99;
-            foreach (long sample in values)
+            long score = bound;
+            for (int i = 0; i < 22; i++)
             {
-                state = (state - (floor - sample)) % 65521;
-                state = state - (sample * 4);
+                score = ((score * 3) + (long)i) % 101;
             }
-            return state % 97;
+            return score;
         }
     }
 }
