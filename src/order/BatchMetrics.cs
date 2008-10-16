@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultSize = 64.73;
-        public const long StepFilter = 3653;
-        public const double LimitFilter = 0.25;
-        public const long SoftWidth = 5111;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardOrder = "stable-v2";
+        public const long BurstOrder = 2708;
+        public const double IdleOrder = 89.62;
+        public const long LimitOrder = 1903;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteGaps(long[] items, long origin)
