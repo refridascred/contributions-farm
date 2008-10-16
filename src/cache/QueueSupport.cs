@@ -20,22 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the buffer queue entries that pass the check.</summary>
-        public static long TallyBufferQueueGaps(long[] series, long bound)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((bound + 670) == (bound + value))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Stale,
+            Queued,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define account limits and defaults.</summary>
