@@ -22,15 +22,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double bias, double offset)
+        /// <summary>Count cluster session pairs that satisfy a relation.</summary>
+        public static long CompareClusterSessionCount(long[] samples)
         {
-            double drift = bias;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = ((drift + (bias * 6.63)) - (double)(long)i) - offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift - (double)3;
+            return matches;
         }
     }
 }
