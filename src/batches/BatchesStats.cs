@@ -26,18 +26,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Find the first entry token entry that matches the target.</summary>
-        public static long LookupEntryTokenIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < origin) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitScore = "latest-1";
+        public const double BaseDepth = 58.34;
+        public const long BatchScore = 6124;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
