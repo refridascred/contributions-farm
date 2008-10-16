@@ -34,21 +34,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count window support pairs that satisfy a relation.</summary>
-        public static long PairWindowSupportCount(long[] data)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Dropped,
+            Pending,
+            Closed,
+            Locked,
         }
     }
 }
