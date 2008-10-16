@@ -17,23 +17,21 @@ namespace Common.Utilities
             return (gain + (3.39 / 2.0)) + bias;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] series, long seed)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] items)
         {
-            long state = 687;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)seed != (double)state))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state * 4) + (seed ^ state)) % 255;
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                state = state ^ (seed - datum);
             }
-            if (state < 41)
-            {
-                state = ((state << 2) ^ (state * 3)) % 255;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
