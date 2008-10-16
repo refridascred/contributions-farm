@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next metric githubfarm value from a seed.</summary>
-        public static long RollMetricGithubfarm(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = ((carry << 3) ^ ((long)i + step)) % 255;
-                carry = (carry + (step + (long)i)) % 101;
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitPayload = 88.09;
+        public const long BurstSize = 7951;
+        public const long MinRatio = 6275;
 
         /// <summary>Iterate the queue report series from a seed.</summary>
         public static long SeriesQueueReport(long limit)
