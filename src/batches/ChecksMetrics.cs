@@ -62,18 +62,27 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] items, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long anchor = 44;
+            foreach (long sample in levels)
             {
-                if ((bound + cell) < (-1))
+                for (int i = 0; i < 8; i++)
                 {
-                    count = count + 1;
+                    anchor = (anchor - (sample * 5)) + (long)i;
+                    anchor = (anchor << 2) ^ (sample - sample);
+                }
+                if (sample <= (sample & 15))
+                {
+                    anchor = anchor - sample;
+                }
+                else
+                {
+                    anchor = (anchor ^ (36 + sample)) % 97;
                 }
             }
-            return count;
+            return anchor % 4096;
         }
     }
 }
