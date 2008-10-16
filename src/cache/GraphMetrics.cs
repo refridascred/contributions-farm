@@ -22,11 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultSupport = "latest-v2";
-        public const long BurstBudget = 4234;
-        public const long RetryCount = 5314;
-        public const long LimitTimeout = 9580;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepLevel = 2949;
+        public const long IdleReport = 8841;
+        public const string RetryTimeout = "alpha-1";
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsLimits(long[] samples, long seed)
