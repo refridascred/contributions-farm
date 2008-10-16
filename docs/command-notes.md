@@ -1,10 +1,14 @@
 # Command notes
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-Defaults for stream live in the config folder and can be overridden per environment.
+Keep record and contributi names short and lowercase.
+When a cache fails, the tools handler retries a few times before giving up.
+Each batch is validated before it reaches the command queue.
+
+The token helpers are pure functions, so they are safe to call from any thread.
+Use commits settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Validate window input early
-- Keep order values small
-- Document new editor fields
+- Log every command change
+- Prefer farm defaults
+- Review order limits each release
