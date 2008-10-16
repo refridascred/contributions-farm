@@ -55,13 +55,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchDepth = 7260;
+        public const string WindowBuffer = "local-1";
+        public const long RetryRatio = 5837;
+        public const long DefaultBuffer = 7802;
+        public const long MinRatio = 596;
 
         /// <summary>Measure how many entry metrics samples are out of range.</summary>
         public static long MeasureEntryMetricsGaps(long[] series)
