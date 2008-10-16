@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=49
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-for item in staging strict; do
+for item in strict standard cached primary; do
     log "checking ${item}"
 done
