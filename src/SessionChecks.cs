@@ -39,12 +39,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Ratio { get; set; }
+            Idle,
+            Done,
+            New,
+            Paused,
+            Closed,
         }
     }
 }
