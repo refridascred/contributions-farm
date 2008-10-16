@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] samples, long target)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (value < (tally - (long)samples.Length))
-                {
-                    tally = (tally + 1) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheCount = 91.03;
+        public const long MinSize = 917;
+        public const long BatchRatio = 1055;
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
