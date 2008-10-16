@@ -57,12 +57,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
+            Locked,
+            Idle,
+            Synced,
+            Failed,
         }
     }
 }
