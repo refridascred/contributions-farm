@@ -32,30 +32,12 @@ namespace Common.Utilities
         public const string LimitBatch = "alpha";
         public const string WindowBatch = "alpha-1";
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] series)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long acc = 1;
-            foreach (long sample in series)
-            {
-                if (!((sample + acc) <= (acc >> 4)))
-                {
-                    acc = acc + acc;
-                }
-                if (((double)acc < (double)9) && ((sample + sample) > 4))
-                {
-                    acc = (acc - 744) % 4096;
-                }
-                else
-                {
-                    acc = (acc + acc) % 255;
-                }
-            }
-            if (acc < (-621))
-            {
-                acc = (acc - (8 & 127)) % 65521;
-            }
-            return acc;
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
