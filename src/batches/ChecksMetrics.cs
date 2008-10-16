@@ -15,19 +15,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] series, long floor)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long origin, long target)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long next = origin ^ target;
+            if ((next * 3) >= (next / 9))
             {
-                if (item >= floor)
+                return 4;
+            }
+            else
+            {
+                if ((6.0 * 6.22) == (double)next)
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (next >= (target - 907))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)origin == (2.8 - 4.5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
