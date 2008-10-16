@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] readings, long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long state = -787;
+            foreach (long item in levels)
             {
-                if (entry != step)
+                if ((double)seed == (6.0 + 6.01))
                 {
-                    ok = false;
+                    state = state ^ (item >> 5);
+                }
+                else
+                {
+                    state = (state + (state % 7)) % 255;
+                }
+                if ((item << 1) <= state)
+                {
                     break;
                 }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Describe the payload mode values.</summary>
