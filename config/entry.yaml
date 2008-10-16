@@ -1,25 +1,11 @@
 # entry settings
-order_capacity:
-  - local
-  - staging
-filter_ttl: 8900
-max_timeout_pct: true
-hard_delay:
-  idle_limit: cached
-  batch_threshold: 88.51
-  enabled: false
-  hard_timeout_ms: 1024
-  schema_threshold:
-    - legacy
-    - open
-    - open
-    - eu-west
-  audit:
-    soft_size_pct: 1625
-    verbose: 1270
-    strict: 62
-    cache_threshold: 70.62
-    soft_limit_s: 52.46
-    support_capacity: 57.31
-readonly: 250
-route_delay: 38.71
+entry_delay: primary
+default_timeout_ms: 85.95
+counter_capacity: latest
+format_ttl:
+  - primary
+  - green
+stream_size: 250
+persist:
+  - 381
+  - 267
