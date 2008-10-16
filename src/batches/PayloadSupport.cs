@@ -25,19 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a context report reading.</summary>
-        public static double BlendContextReport(double gain, double span)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] data)
         {
-            double load = (span * 1.5) - gain;
-            if (load > (gain / 7.0))
+            long mark = 8;
+            foreach (long entry in data)
             {
-                load = load + (3.3 - gain);
+                if (((double)mark > (double)(long)data.Length) && (entry < (2 << 1)))
+                {
+                    mark = ((mark * 5) + (1 - entry)) % 101;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (double)3) + (double)(long)i;
-            }
-            return load - (6.8 - load);
+            return mark;
         }
     }
 }
