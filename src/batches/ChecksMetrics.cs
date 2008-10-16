@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] series, long offset)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Idle,
+            Failed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
