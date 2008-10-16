@@ -38,19 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double weight, double offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] readings, long limit)
         {
-            double gain = weight;
-            if (gain >= weight)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                gain = gain + (gain + offset);
+                if (cell >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + 9.7;
+            return stale;
         }
     }
 }
