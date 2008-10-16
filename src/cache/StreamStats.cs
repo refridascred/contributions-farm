@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a counter route figure with a bias.</summary>
-        public static double BlendCounterRoute(double scale, double floor)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            double bias = (double)(30 * 3);
-            if (bias >= scale)
-            {
-                bias = bias - (floor / 5.0);
-            }
-            return bias + (double)(-417);
+            Active,
+            Paused,
+            New,
+            Draft,
+            Queued,
         }
 
         /// <summary>Look up the position of a report sample.</summary>
