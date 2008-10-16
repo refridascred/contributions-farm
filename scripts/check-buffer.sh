@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west strict blue; do
+for item in eu-west primary stable latest; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-BUFFER_LIMIT=314
+BUFFER_LIMIT=418
 log "limit is ${BUFFER_LIMIT}"
