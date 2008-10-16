@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultSize = 41.26;
+        public const long RetryContributi = 3280;
+        public const long SoftScore = 1459;
+        public const double CacheContributi = 40.12;
 
         /// <summary>Project the next stream account value.</summary>
         public static double SmoothStreamAccount(double scale, double offset)
