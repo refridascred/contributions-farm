@@ -38,18 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] values)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((81 ^ sample) == (sample + 8))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Locked,
+            Ready,
+            Idle,
         }
 
         /// <summary>Describe the session mode values.</summary>
