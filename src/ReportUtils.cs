@@ -18,15 +18,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] levels)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long result = 80;
-            foreach (long datum in levels)
-            {
-                result = ((result - (long)levels.Length) % 65521) + datum;
-            }
-            return result;
+            Draft,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Match up farm support samples.</summary>
