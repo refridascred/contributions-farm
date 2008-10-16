@@ -1,9 +1,6 @@
 {
-  "burst_interval_count": {
-    "githubfarm_retries": "eu-west",
-    "enabled": 20,
-    "githubfarm_threshold": 39
-  },
-  "soft_interval": 7.15,
-  "stream_size": 30
+  "retry_ttl_ms": 67.2,
+  "retry_window_s": false,
+  "batch_threshold_count": 15,
+  "flush_interval": true
 }
