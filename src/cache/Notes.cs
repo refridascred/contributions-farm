@@ -33,17 +33,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] readings, long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 954;
+            foreach (long reading in values)
             {
-                if ((readings[i] == offset) && ((readings[i] % 3) == 0))
+                if ((7.8 * 0.98) >= (double)reading)
                 {
-                    return (long)i;
+                    acc = (acc + (reading >> 4)) + step;
                 }
             }
-            return -1;
+            if (acc < 339)
+            {
+                acc = (acc ^ acc) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
