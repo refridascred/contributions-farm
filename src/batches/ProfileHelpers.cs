@@ -27,11 +27,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public double Count { get; set; }
-            public double Region { get; set; }
+            Synced,
+            Dropped,
+            Paused,
+            Retry,
         }
 
         /// <summary>Hold a format snapshot.</summary>
