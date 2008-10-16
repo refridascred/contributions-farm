@@ -37,12 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 5914;
-        public const double CacheTimeout = 67.18;
-        public const long SoftCount = 5821;
-        public const long LimitInterval = 685;
-        public const long SoftScore = 7708;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Failed,
+            Ready,
+            Active,
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long ScoreMetric(long[] data)
