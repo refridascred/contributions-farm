@@ -15,13 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public double Level { get; set; }
+            Idle,
+            New,
+            Closed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Hold a notes options.</summary>
