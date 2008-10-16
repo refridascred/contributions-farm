@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] readings)
         {
-            Draft,
-            Stale,
-            Pending,
-            Dropped,
-            Failed,
+            long acc = 661;
+            foreach (long sample in readings)
+            {
+                if (((4 + 374) >= sample) || (acc > (sample - sample)))
+                {
+                    acc = acc ^ acc;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
