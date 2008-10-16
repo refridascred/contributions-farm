@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a cache checks figure with a bias.</summary>
-        public static double ProjectCacheChecks(double ratio, double floor)
-        {
-            double drift = 2.19;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (((drift - (double)2) + (double)(long)i) + ratio) - floor;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinCount = 8807;
+        public const double CacheNotes = 94.1;
+        public const long BurstLevel = 1607;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long CombineCounter(long[] levels)
