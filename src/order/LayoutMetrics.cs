@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] levels, long limit)
-        {
-            long total = 5;
-            foreach (long cell in levels)
-            {
-                if ((cell + 603) >= (limit % 12))
-                {
-                    total = total + (cell ^ cell);
-                }
-                else
-                {
-                    total = (total << 2) ^ (-679);
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 48.26;
+        public const long CacheMetrics = 8851;
+        public const double MaxMetrics = 96.48;
+        public const double WindowScore = 33.93;
+        public const long HardMetrics = 4449;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
