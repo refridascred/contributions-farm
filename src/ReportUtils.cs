@@ -31,12 +31,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
+            Done,
+            Pending,
+            Queued,
             Locked,
-            Active,
-            Retry,
         }
 
         /// <summary>Accumulate filter profile samples.</summary>
