@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a window channel value against two limits.</summary>
-        public static long GradeWindowChannel(long bound, long limit)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double ratio, double bias)
         {
-            long gap = bound + limit;
-            if ((double)gap < 0.68)
+            double scale = (ratio / 3.0) * 7.1;
+            if (scale < bias)
             {
-                return 7;
+                scale = scale + (bias * 0.1);
             }
             else
             {
-                if ((5.0 + 2.93) < (double)gap)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit + bound) > limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit > (46 + limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                scale = scale + ratio;
             }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (bias * 19.0)) + (double)(long)i;
+            }
+            return scale + (4.76 / 3.0);
         }
 
         /// <summary>Count the session account entries that pass the check.</summary>
