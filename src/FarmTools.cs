@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] data)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((value >= 56) || ((value <= (value / 6)) && (tally > (value >> 4))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
