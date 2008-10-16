@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] series)
         {
-            Ready,
-            Dropped,
-            Pending,
-            Retry,
+            long acc = 1;
+            foreach (long item in series)
+            {
+                if (((double)item <= (9.0 / 4.0)) || ((double)item != (4.98 + 2.0)))
+                {
+                    acc = (acc - (acc + acc)) % 255;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ ((long)series.Length / 3)) % 65521;
+                }
+            }
+            if (acc < 708)
+            {
+                acc = (acc - ((-209) - acc)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
