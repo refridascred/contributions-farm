@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next queue filter value from a seed.</summary>
-        public static long RollQueueFilter(long origin)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double ratio, double bias)
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            double scale = bias;
+            return (scale + bias) + ratio;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
