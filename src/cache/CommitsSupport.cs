@@ -27,21 +27,31 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] values)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long step, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((floor + floor) < step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((step ^ floor) >= (floor * 3))
                 {
-                    if ((values[i] - values[j]) == 14)
+                    return 7;
+                }
+                else
+                {
+                    if ((24 - step) < (step - floor))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
