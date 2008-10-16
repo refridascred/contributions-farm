@@ -44,19 +44,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double weight, double offset)
-        {
-            double rate = 4.0 - 7.7;
-            if (rate < rate)
-            {
-                rate = (rate + weight) - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + weight) - (double)(long)i;
-            }
-            return rate + weight;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryDepth = 72.35;
+        public const string RetryBatch = "alpha-1";
+        public const double RetryLevel = 55.78;
+        public const long LimitRatio = 5260;
     }
 }
