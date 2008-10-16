@@ -42,20 +42,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a contributi cluster counter forward.</summary>
-        public static long DeriveContributiCluster(long seed)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double bias, double floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
+            double mean = floor;
+            if (mean <= (floor + floor))
             {
-                if (((seed * 5) != (4 << 1)) || ((8.3 / 4.0) <= (double)seed))
-                {
-                    long bound = 79 - ((long)i & 7);
-                    mark = mark ^ (bound + mark);
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
+                mean = (mean - floor) + bias;
             }
-            return mark;
+            else
+            {
+                mean = mean - (double)(-2);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + floor) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Rank stream commits input into a small class.</summary>
