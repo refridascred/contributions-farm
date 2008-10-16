@@ -46,13 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Paused,
-            Synced,
-            Dropped,
-            Queued,
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
