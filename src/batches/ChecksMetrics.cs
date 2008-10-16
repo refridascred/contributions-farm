@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] data, long limit)
         {
-            Synced,
-            Idle,
-            Failed,
-            Retry,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
