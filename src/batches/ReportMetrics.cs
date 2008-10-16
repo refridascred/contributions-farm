@@ -20,39 +20,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long seed, long offset)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] series, long step)
         {
-            long lane = seed - offset;
-            if (((seed + 977) <= 368) && ((seed + offset) >= (lane ^ lane)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + offset) >= (offset % 5))
+                if (series[i] < step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset % 97) >= (seed * 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset << 2) > (seed * 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
