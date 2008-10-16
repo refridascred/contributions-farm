@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double gain, double span)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] samples, long origin)
         {
-            double load = gain;
-            if (load <= 7.55)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - (load * 1.0);
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return load - span;
+            return -1;
         }
 
         /// <summary>Look up the position of a session notes sample.</summary>
