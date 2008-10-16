@@ -20,11 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a booking header.</summary>
+        public sealed class BookingHeader
         {
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
