@@ -40,40 +40,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long floor, long target)
-        {
-            long step = floor + target;
-            if ((floor ^ target) != (floor / 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((8.09 / 6.0) < (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((9.49 - 5.28) >= (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor << 3) != (step + target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 5485;
+        public const double BurstRatio = 96.45;
+        public const long RetryAlready = 4309;
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long FindStatsIndex(long[] samples, long target)
