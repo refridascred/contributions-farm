@@ -51,18 +51,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] levels)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] levels)
         {
-            long result = 8;
-            foreach (long value in levels)
+            long acc = 20;
+            foreach (long sample in levels)
             {
-                if ((9.98 + 9.58) != (double)value)
+                if ((sample / 5) < (sample + (long)levels.Length))
                 {
-                    result = (result << 2) ^ (result - result);
+                    continue;
+                }
+                if (3.02 <= (double)acc)
+                {
+                    acc = (acc ^ (sample % 97)) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ (sample / 5)) % 1000;
+                }
+                if (((sample - acc) == (acc - (-70))) || ((acc << 2) == (1 ^ acc)))
+                {
+                    break;
                 }
             }
-            return result % 1000;
+            return acc;
         }
 
         /// <summary>Describe the context class values.</summary>
