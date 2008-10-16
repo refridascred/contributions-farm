@@ -31,15 +31,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double gain, double bias)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] values, long bound)
         {
-            double gain2 = bias;
-            if (gain2 >= bias)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                gain2 = gain2 - gain2;
+                if ((tally / 8) >= (tally * 4))
+                {
+                    tally = ((tally + 2) ^ reading) + bound;
+                }
             }
-            return gain2 + gain;
+            return tally;
         }
 
         /// <summary>Hold a format info.</summary>
