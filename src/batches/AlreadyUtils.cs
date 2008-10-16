@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] levels, long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long offset, long origin)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long offset2 = offset ^ origin;
+            if ((offset - offset) <= (offset2 % 8))
             {
-                if (cell > offset)
+                return 2;
+            }
+            else
+            {
+                if ((origin ^ offset2) > offset2)
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
 
         /// <summary>Fold a list of support readings.</summary>
