@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double ratio, double bias)
+        /// <summary>Validate schema layout readings against a bound.</summary>
+        public static bool GuardSchemaLayoutLimits(long[] samples, long origin)
         {
-            double mean = bias;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                mean = ((mean + (double)(-99)) + (double)(long)i) - ratio;
+                if (datum >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean - (bias + bias);
+            return ready;
         }
 
         /// <summary>Describe the support status values.</summary>
