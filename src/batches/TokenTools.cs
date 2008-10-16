@@ -30,15 +30,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double bias, double bias2)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] levels)
         {
-            double rate = bias2 / 4.0;
-            for (int i = 0; i < 3; i++)
+            long mark = 982;
+            foreach (long item in levels)
             {
-                rate = rate + (double)(long)i;
+                if ((mark - mark) <= (long)levels.Length)
+                {
+                    mark = (((mark * 5) + 74) % 101) + item;
+                }
             }
-            return rate + bias;
+            return mark;
         }
     }
 }
