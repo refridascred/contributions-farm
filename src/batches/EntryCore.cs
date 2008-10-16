@@ -47,12 +47,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] levels)
         {
-            Draft,
-            Failed,
-            Closed,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (!(((long)levels.Length & 31) < (value + seen)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
