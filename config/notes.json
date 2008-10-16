@@ -1,6 +1,12 @@
 {
-  "warm_interval_ms": ["cached", "latest", "cached", "eu-west"],
-  "githubfarm_delay": ["open", "cached"],
-  "sync_retries_count": true,
-  "already_interval": true
+  "persist": true,
+  "poll_interval_ms": 86.41,
+  "base_retries_ms": "latest",
+  "audit": {
+    "enabled": 49.18,
+    "base_size_ms": 73,
+    "account_ttl": 94,
+    "strict": ["local", "staging"],
+    "window_ttl": "blue"
+  }
 }
