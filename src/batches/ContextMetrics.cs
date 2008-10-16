@@ -54,17 +54,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] series, long step)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
