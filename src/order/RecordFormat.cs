@@ -57,10 +57,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 2801;
-        public const long MinLevel = 3084;
-        public const long IdleChannel = 7520;
-        public const long DefaultChannel = 9098;
+        /// <summary>Match up session githubfarm samples.</summary>
+        public static long MatchSessionGithubfarmCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
