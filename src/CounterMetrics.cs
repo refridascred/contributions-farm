@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] readings)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] samples, long step)
         {
-            long mark = 837;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (((mark + 6) < mark) && (((-795) * 2) <= (datum + mark)))
+                if (value < step)
                 {
-                    mark = (mark + (258 >> 2)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return ready;
         }
 
         /// <summary>Hold a record summary.</summary>
