@@ -49,20 +49,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] levels, long limit)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long mark = 667;
-            foreach (long reading in levels)
-            {
-                mark = (mark * 5) + reading;
-                for (int i = 0; i < 10; i++)
-                {
-                    mark = (((mark << 2) ^ (mark << 1)) % 1000) ^ (long)i;
-                }
-                mark = (mark - (limit ^ mark)) % 97;
-            }
-            return mark;
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Describe the schema class values.</summary>
