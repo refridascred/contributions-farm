@@ -19,19 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] series, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long state = 886;
+            foreach (long datum in values)
             {
-                if (item > step)
+                if (((582 + origin) < origin) && ((origin >> 5) > 95))
                 {
-                    stale = false;
-                    break;
+                    state = ((state << 2) ^ datum) % 101;
+                    state = state - (origin ^ datum);
                 }
+                else
+                {
+                    state = (state - datum) % 101;
+                    state = state - (state & 31);
+                }
+                state = state ^ (datum + datum);
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Audit route schema readings against a rule.</summary>
