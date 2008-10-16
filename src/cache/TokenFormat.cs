@@ -29,9 +29,22 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardBudget = 9813;
-        public const long StepContext = 9785;
-        public const double BaseContext = 66.35;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((7.2 / 6.0) < (double)tally)
+                {
+                    tally = (tally + 1) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
