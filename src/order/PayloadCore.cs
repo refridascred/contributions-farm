@@ -17,15 +17,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next graph support value.</summary>
-        public static double ProjectGraphSupport(double rate, double offset)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            double weight = offset - (double)1;
-            for (int i = 0; i < 4; i++)
-            {
-                weight = ((weight - weight) - (double)(long)i) - rate;
-            }
-            return weight + 18.0;
+            New,
+            Paused,
+            Ready,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
