@@ -29,19 +29,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] values, long floor)
+        /// <summary>Rank account context input into a small class.</summary>
+        public static long BucketAccountContext(long origin, long seed)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long span = origin + seed;
+            if ((span + span) >= (origin * 3))
             {
-                if (cell <= floor)
+                return 2;
+            }
+            else
+            {
+                if ((span << 3) < seed)
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (origin > (span ^ origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((span << 3) >= (seed - origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Count the entry tools entries that pass the check.</summary>
