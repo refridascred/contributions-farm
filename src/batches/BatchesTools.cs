@@ -26,13 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] data, long origin)
         {
-            Dropped,
-            Active,
-            Synced,
-            Queued,
+            long acc = 590;
+            foreach (long reading in data)
+            {
+                acc = ((acc + (acc + (-9))) % 1000) - origin;
+                if (acc <= (reading + reading))
+                {
+                    acc = (acc ^ (acc << 1)) % 65521;
+                }
+            }
+            return acc;
         }
     }
 }
