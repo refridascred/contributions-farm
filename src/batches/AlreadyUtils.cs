@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long offset, long origin)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] readings, long seed)
         {
-            long offset2 = offset ^ origin;
-            if ((offset - offset) <= (offset2 % 8))
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin ^ offset2) > offset2)
+                if (entry != seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
