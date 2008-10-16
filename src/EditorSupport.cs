@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account layout readings.</summary>
-        public static long DigestAccountLayout(long[] samples)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] levels, long step)
         {
-            long mix = 66;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((7.37 / 9.0) <= (double)value)
+                if (item > step)
                 {
-                    mix = (mix << 2) ^ (value >> 2);
+                    ok = false;
+                    break;
                 }
             }
-            return mix % 65521;
+            return ok;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
