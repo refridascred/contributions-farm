@@ -28,11 +28,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double ratio, double span)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long origin)
         {
-            double load = ratio - span;
-            return load - load;
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the tools command series from a seed.</summary>
