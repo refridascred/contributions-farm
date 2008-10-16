@@ -48,19 +48,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double ratio, double span)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] data)
         {
-            double drift = ratio;
-            if (drift < (span * 3.0))
+            long state = 873;
+            foreach (long reading in data)
             {
-                drift = drift - (ratio * 7.0);
+                if ((double)reading <= (10.0 + 15.0))
+                {
+                    state = ((state * 3) + (state & 15)) % 65521;
+                }
             }
-            else
-            {
-                drift = drift - (ratio - drift);
-            }
-            return drift - (ratio + span);
+            return state;
         }
 
         /// <summary>Accumulate token samples.</summary>
