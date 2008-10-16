@@ -17,12 +17,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 2820;
-        public const long RetryContext = 2046;
-        public const long WindowContext = 1038;
-        public const double LimitContext = 52.51;
-        public const long SoftCount = 6734;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinCluster = "legacy-1";
+        public const long StepLevel = 2080;
+        public const long BatchCluster = 4169;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
