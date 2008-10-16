@@ -13,21 +13,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] values, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] readings)
         {
-            long anchor = 77;
-            foreach (long cell in values)
+            long anchor = 417;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 5; i++)
+                anchor = ((anchor << 2) ^ (anchor - anchor)) ^ value;
+                if (!((8.0 / 2.0) < (double)anchor))
                 {
-                    anchor = (((anchor * 4) + (anchor * 3)) + (long)i) - cell;
+                    break;
                 }
-                anchor = ((anchor * 3) + (target & 15)) % 1000;
-            }
-            if (anchor > 63)
-            {
-                anchor = (anchor ^ (target ^ target)) % 255;
             }
             return anchor;
         }
