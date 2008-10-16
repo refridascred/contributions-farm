@@ -14,16 +14,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Derive the next editor githubfarm value from a seed.</summary>
-        public static long StepEditorGithubfarm(long offset)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = carry - (long)i;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Retry,
+            Stale,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the support class values.</summary>
