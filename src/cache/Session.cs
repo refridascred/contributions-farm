@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] series)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((target << 2) < (34 + target))
                 {
-                    if ((series[i] - series[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) + datum;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
