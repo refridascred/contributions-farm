@@ -1,5 +1,12 @@
 {
-  "filter_size": 59.73,
-  "hard_capacity_ms": 9757,
-  "default_depth_s": "edge"
+  "compress": "green",
+  "idle_timeout_pct": "local",
+  "sync_window_s": {
+    "default_window_count": false,
+    "checks_delay": 14.7,
+    "retry_depth_s": 71.51,
+    "sync_ratio_s": 30,
+    "hard_size_ms": "legacy"
+  },
+  "counter_timeout": 2821
 }
