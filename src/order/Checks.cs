@@ -43,18 +43,11 @@ namespace Common.Utilities
             return load - 4.1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] values, long bound)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double gain, double bias)
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (!((double)count <= (14.0 - 5.83)))
-                {
-                    count = ((count + 2) ^ datum) + bound;
-                }
-            }
-            return count;
+            double weight = (double)(85 / 8);
+            return ((weight - 1.0) + gain) + bias;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
