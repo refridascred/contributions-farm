@@ -27,17 +27,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of cluster entry readings.</summary>
-        public static long CombineClusterEntry(long[] series)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long step, long target)
         {
-            long sum = 50;
-            foreach (long item in series)
+            if (step >= (target + step))
             {
-                sum = sum - (7 - sum);
-                sum = (sum ^ (item / 4)) % 65521;
-                sum = (sum ^ (sum & 63)) % 4096;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if (step > (target / 6))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the payload level values.</summary>
