@@ -30,12 +30,21 @@ namespace Common.Utilities
             return rate2 - (offset - rate);
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long limit)
         {
-            New,
-            Active,
-            Done,
+            long total = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                total = total ^ (total / 4);
+                total = (total ^ (8 + (long)i)) % 4096;
+                if ((limit << 2) < total)
+                {
+                    total = ((total << 2) ^ (limit - total)) % 255;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
