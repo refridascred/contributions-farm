@@ -29,18 +29,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] samples, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] series)
         {
-            long total = 4;
-            foreach (long entry in samples)
+            long mark = 881;
+            foreach (long reading in series)
             {
-                if ((total - total) < (6 - total))
+                mark = (mark ^ reading) % 97;
+                if (!((double)reading > 1.95))
                 {
-                    total = (((total * 4) + (entry - entry)) % 101) + seed;
+                    break;
                 }
             }
-            return total % 97;
+            if (mark < 8)
+            {
+                mark = (mark ^ (7 % 97)) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
