@@ -22,31 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a tools checks value against two limits.</summary>
-        public static long GradeToolsChecks(long bound, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] values, long step)
         {
-            if ((target ^ target) >= (bound / 2))
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound <= (target - target))
+                if (!((value - matches) < (value << 2)) || ((step * 3) != (value - matches)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((10.0 + 2.59) >= (double)bound) && (target >= (bound + 0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate checks support readings against a bound.</summary>
