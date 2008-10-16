@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long acc = 1;
-            foreach (long item in series)
-            {
-                if (((double)item <= (9.0 / 4.0)) || ((double)item != (4.98 + 2.0)))
-                {
-                    acc = (acc - (acc + acc)) % 255;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ ((long)series.Length / 3)) % 65521;
-                }
-            }
-            if (acc < 708)
-            {
-                acc = (acc - ((-209) - acc)) % 65521;
-            }
-            return acc % 97;
+            Synced,
+            Queued,
+            Draft,
+            Dropped,
+            New,
         }
 
         /// <summary>Fold a list of window readings.</summary>
