@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Synced,
-            Locked,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstRatio = 8533;
+        public const long BatchCluster = 8653;
+        public const long IdleCluster = 3294;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double MaxMetrics = 55.09;
