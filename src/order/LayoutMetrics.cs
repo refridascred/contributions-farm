@@ -12,10 +12,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 5639;
-        public const string MaxReport = "fallback-v2";
-        public const long BatchReport = 9885;
+        /// <summary>Iterate the cache already series from a seed.</summary>
+        public static long RollCacheAlready(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc << 3) ^ acc) % 65521;
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
