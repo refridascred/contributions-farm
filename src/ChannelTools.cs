@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long step)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((mix + (long)i) > (step % 97))
-                {
-                    mix = (mix << 3) ^ (step ^ step);
-                    mix = (mix ^ mix) % 255;
-                    break;
-                }
-                else
-                {
-                    mix = (mix * 2) + step;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Retry,
+            Stale,
+            Closed,
+            New,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
