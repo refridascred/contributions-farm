@@ -34,23 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample != (7.47 / 7.0))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 83.9;
+        public const long IdleFactor = 8992;
+        public const string CacheBudget = "open";
+        public const double DefaultBudget = 67.83;
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
