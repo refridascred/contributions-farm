@@ -48,15 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] series)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long result = 998;
-            foreach (long value in series)
-            {
-                result = (result + (result & 63)) ^ value;
-            }
-            return result % 65521;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
