@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] samples, long step)
+        /// <summary>Grade a order queue value against two limits.</summary>
+        public static long GradeOrderQueue(long seed, long limit)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            if (!((limit - limit) > seed))
             {
-                if (entry <= step)
+                return 3;
+            }
+            else
+            {
+                if ((0 - limit) < (seed ^ seed))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
