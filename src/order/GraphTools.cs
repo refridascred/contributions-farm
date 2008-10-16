@@ -27,19 +27,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] levels, long limit)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > limit)
+                if (samples[i] == bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the payload level values.</summary>
