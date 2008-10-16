@@ -2,11 +2,9 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    count INTEGER NOT NULL DEFAULT 0,
-    owner TEXT NOT NULL
+    level INTEGER,
+    owner TEXT NOT NULL,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
-
-INSERT INTO commits_records (token, count, owner) VALUES ('stable', 53, 'staging');
-INSERT INTO commits_records (token, count, owner) VALUES ('fallback', 9, 'legacy');
+CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
