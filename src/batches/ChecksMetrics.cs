@@ -13,19 +13,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double rate, double span)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] values)
         {
-            double mean = (rate - span) / 6.0;
-            if (mean <= 16.0)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + (0.4 - 11.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (rate + span);
-            }
-            return mean + (double)3;
+            return hits;
         }
 
         /// <summary>Hold a buffer stats.</summary>
