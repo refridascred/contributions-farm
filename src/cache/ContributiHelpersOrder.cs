@@ -37,31 +37,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long offset, long origin)
-        {
-            if ((offset - 4) == (0 / 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.3 * 6.38) > (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (offset <= (offset % 60))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string SoftGraph = "alpha-v2";
+        public const string IdleGraph = "stable-v2";
+        public const long LimitGraph = 9760;
     }
 }
