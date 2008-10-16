@@ -12,11 +12,9 @@ while [ "${count}" -lt 7 ]; do
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=115
-log "limit is ${CHANNEL_LIMIT}"
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
+for item in local standard blue; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+CHANNEL_LIMIT=441
+log "limit is ${CHANNEL_LIMIT}"
