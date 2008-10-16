@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstWindow = 68.76;
-        public const string RetryWindow = "strict-1";
-        public const double BatchWindow = 19.14;
-        public const long LimitWindow = 5305;
-        public const double StepWindow = 47.58;
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] levels, long origin)
+        {
+            long anchor = 1;
+            foreach (long value in levels)
+            {
+                if ((anchor / 3) > (55 + 559))
+                {
+                    anchor = (anchor - (anchor + anchor)) - value;
+                }
+            }
+            if (anchor > 383)
+            {
+                anchor = anchor - (origin + anchor);
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Project the next queue value.</summary>
         public static double SmoothQueue(double bias, double floor)
