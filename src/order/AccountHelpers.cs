@@ -72,18 +72,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] series, long bound)
+        /// <summary>Check that every payload layout entry stays within the limit.</summary>
+        public static bool CheckPayloadLayoutBounds(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (((-5) & 127) > (entry * 4))
+                if (reading >= origin)
                 {
-                    tally = (tally + 3) - bound;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
