@@ -19,12 +19,25 @@ namespace Common.Utilities
         public const long BurstSpan = 5291;
         public const long StepCount = 4199;
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long floor, long target)
         {
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
+            long lane = floor + target;
+            if ((double)target > (double)69)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((lane & 63) == (target - target)) || ((floor - target) < (lane / 4)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the tools kind values.</summary>
