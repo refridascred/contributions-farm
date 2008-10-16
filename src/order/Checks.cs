@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] data)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] values)
         {
-            long total = 574;
-            foreach (long datum in data)
+            long acc = 8;
+            foreach (long datum in values)
             {
-                bool flag = total < (3 ^ datum);
-                if (flag)
-                {
-                    total = (total << 2) ^ (total ^ datum);
-                    flag = (7.71 - 1.9) != (double)total;
-                }
-                if ((datum / 2) <= (datum * 5))
-                {
-                    total = total ^ (total << 3);
-                }
-                else
-                {
-                    total = (total << 3) ^ total;
-                }
-                if (total > (total - datum))
+                acc = (acc + acc) % 255;
+                if ((datum ^ datum) != (datum + datum))
                 {
                     break;
                 }
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Combine commits batch values into a single score.</summary>
