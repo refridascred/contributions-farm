@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstTimeout = "legacy-edge";
-        public const string BatchToken = "stable-1";
-        public const string LimitFactor = "legacy-1";
-        public const double MaxCount = 11.19;
+        /// <summary>Validate format notes readings against a bound.</summary>
+        public static bool GuardFormatNotesLimits(long[] levels, long step)
+        {
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Fold a list of payload editor readings.</summary>
         public static long DigestPayloadEditor(long[] values)
