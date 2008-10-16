@@ -36,15 +36,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] levels, long seed)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long bound, long limit)
         {
-            long carry = 168;
-            foreach (long entry in levels)
+            if ((bound * 4) > (54 + bound))
             {
-                carry = (carry - (seed << 2)) - entry;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((bound <= (limit - bound)) && ((62 & 15) <= (bound - limit)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound + bound) > limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
