@@ -47,18 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token contributi readings against a rule.</summary>
-        public static long CountTokenContributiHits(long[] readings, long offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (offset <= (seen + seen))
+                if (item <= offset)
                 {
-                    seen = (seen + 2) - cell;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
