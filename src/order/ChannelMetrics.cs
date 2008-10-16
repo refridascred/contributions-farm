@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] series, long offset)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (offset > (99 + offset))
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
