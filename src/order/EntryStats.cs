@@ -32,12 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double gain, double floor)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
+            double drift = (floor + gain) / 3.0;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - 8.1;
         }
 
         /// <summary>Describe the support kind values.</summary>
