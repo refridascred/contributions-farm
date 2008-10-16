@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double scale, double floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] series, long seed)
         {
-            double load = (double)(55 << 1);
-            return (load + floor) + scale;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
