@@ -1,8 +1,5 @@
 {
-  "default_threshold": true,
-  "metrics_delay": [339, 480, 136, 305],
-  "cluster_ttl": 89.4,
-  "hard_timeout": 96.16,
-  "retry_limit": 250,
-  "readonly": true
+  "warm_window_ms": "stable",
+  "readonly": 22,
+  "enabled": "strict"
 }
