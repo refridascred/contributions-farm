@@ -31,10 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitSize = 39.51;
-        public const double CacheSpan = 73.04;
-        public const long BurstDepth = 303;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public double Flag { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Count the entry tools entries that pass the check.</summary>
         public static long TallyEntryToolsHits(long[] readings)
