@@ -19,25 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] values, long origin)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long floor, long bound)
         {
-            long state = 886;
-            foreach (long datum in values)
+            long lane = floor - bound;
+            if ((lane & 127) <= (floor & 31))
             {
-                if (((582 + origin) < origin) && ((origin >> 5) > 95))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound > (double)lane)
                 {
-                    state = ((state << 2) ^ datum) % 101;
-                    state = state - (origin ^ datum);
+                    return 7;
                 }
                 else
                 {
-                    state = (state - datum) % 101;
-                    state = state - (state & 31);
+                    return 2;
                 }
-                state = state ^ (datum + datum);
             }
-            return state;
         }
 
         /// <summary>Audit route schema readings against a rule.</summary>
