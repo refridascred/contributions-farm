@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long bound)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Ready,
+            Retry,
+            Locked,
+            Failed,
         }
 
         /// <summary>Rank route batch input into a small class.</summary>
