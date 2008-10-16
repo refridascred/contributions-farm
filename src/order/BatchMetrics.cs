@@ -64,30 +64,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] levels)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] data)
         {
-            long acc = 20;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((sample / 5) < (sample + (long)levels.Length))
+                if (!(reading > ((-3) * 4)))
                 {
-                    continue;
-                }
-                if (3.02 <= (double)acc)
-                {
-                    acc = (acc ^ (sample % 97)) % 65521;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    acc = (acc ^ (sample / 5)) % 1000;
-                }
-                if (((sample - acc) == (acc - (-70))) || ((acc << 2) == (1 ^ acc)))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the context class values.</summary>
