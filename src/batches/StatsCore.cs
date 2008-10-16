@@ -22,18 +22,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] values)
+        /// <summary>Adjust a account cluster reading.</summary>
+        public static double BlendAccountCluster(double gain, double span)
         {
-            long count = 0;
-            foreach (long value in values)
+            double drift = (double)(-4) - span;
+            if (drift > (drift * 5.87))
             {
-                if (!((value >= (count & 127)) || (value >= (count << 1))))
-                {
-                    count = count + 1;
-                }
+                drift = drift + (double)(-3);
             }
-            return count;
+            else
+            {
+                drift = drift - gain;
+            }
+            return drift + (drift + 9.59);
         }
 
         /// <summary>Describe the route mode values.</summary>
