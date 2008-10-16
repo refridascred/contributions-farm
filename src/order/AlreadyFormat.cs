@@ -59,18 +59,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] items, long floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] readings, long limit)
         {
-            long state = 743;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (floor >= (floor * 3))
+                if (cell >= limit)
                 {
-                    state = (state ^ (reading << 1)) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
