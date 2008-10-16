@@ -16,17 +16,12 @@ namespace Common.Utilities
             return mean + (scale * 9.81);
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] samples, long limit)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= limit) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Check that every cache metric entry stays within the limit.</summary>
