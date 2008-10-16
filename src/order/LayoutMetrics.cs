@@ -13,21 +13,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of layout metrics readings.</summary>
-        public static long MatchLayoutMetricsCount(long[] series)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 822;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score + (score + score)) + item) - step;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the schema kind values.</summary>
