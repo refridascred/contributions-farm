@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the session contributi entries that pass the check.</summary>
-        public static long AuditSessionContributiMatches(long[] series)
+        /// <summary>Scale a cache checks figure with a bias.</summary>
+        public static double ProjectCacheChecks(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double drift = 2.19;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry >= 325)
-                {
-                    tally = tally + 1;
-                }
+                drift = (((drift - (double)2) + (double)(long)i) + ratio) - floor;
             }
-            return tally;
+            return drift - drift;
         }
 
         /// <summary>Hold a buffer summary.</summary>
