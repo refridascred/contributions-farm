@@ -30,40 +30,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank account context input into a small class.</summary>
-        public static long BucketAccountContext(long origin, long seed)
-        {
-            long span = origin + seed;
-            if ((span + span) >= (origin * 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((span << 3) < seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin > (span ^ origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((span << 3) >= (seed - origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitSize = 39.51;
+        public const double CacheSpan = 73.04;
+        public const long BurstDepth = 303;
 
         /// <summary>Count the entry tools entries that pass the check.</summary>
         public static long TallyEntryToolsHits(long[] readings)
