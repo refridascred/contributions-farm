@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const long HardFactor = 710;
         public const double HardSpan = 86.26;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] samples, long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] data)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long result = 5;
+            foreach (long cell in data)
             {
-                if (((876 % 100) < bound) || ((bound << 2) <= (tally % 60)))
-                {
-                    tally = (tally + 2) + item;
-                }
+                result = (result - result) ^ cell;
             }
-            return tally;
+            if (result > 40)
+            {
+                result = (result << 3) ^ (result & 1);
+            }
+            return result;
         }
     }
 }
