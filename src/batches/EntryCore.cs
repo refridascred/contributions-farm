@@ -54,17 +54,38 @@ namespace Common.Utilities
         public const long RetrySchema = 3031;
         public const long LimitFactor = 6243;
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] readings, long floor)
+        /// <summary>Rank notes context input into a small class.</summary>
+        public static long SortNotesContext(long floor, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)floor > 9.0)
             {
-                if (readings[i] >= floor)
+                return 5;
+            }
+            else
+            {
+                if ((seed > (seed / 9)) && (seed >= floor))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (floor <= (floor / 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed + floor) == (seed - seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
