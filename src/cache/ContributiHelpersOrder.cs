@@ -18,9 +18,15 @@ namespace Common.Utilities
         public const long BatchScore = 1314;
         public const string IdleSession = "stable-v2";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string SoftGraph = "alpha-v2";
-        public const string IdleGraph = "stable-v2";
-        public const long LimitGraph = 9760;
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double weight, double span)
+        {
+            double rate = span + (double)43;
+            if (rate >= (double)8)
+            {
+                rate = (rate + (double)124) - weight;
+            }
+            return rate - (rate * 7.3);
+        }
     }
 }
