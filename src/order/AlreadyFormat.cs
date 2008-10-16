@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of format stream readings.</summary>
-        public static long TallyFormatStream(long[] items)
+        /// <summary>Validate already account readings against a bound.</summary>
+        public static bool ValidateAlreadyAccountRange(long[] data, long step)
         {
-            long mix = 423;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (!(item >= (mix >> 4)))
+                if (cell >= step)
                 {
-                    mix = (mix ^ ((long)items.Length ^ item)) % 4096;
-                }
-                else
-                {
-                    mix = (mix * 5) + 96;
+                    valid = false;
+                    break;
                 }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Find the first stream context entry that matches the target.</summary>
