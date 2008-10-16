@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a contributi checks reading by value.</summary>
-        public static long SeekContributiChecksIndex(long[] readings, long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
+                if ((3.42 + 7.23) > (double)reading)
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
