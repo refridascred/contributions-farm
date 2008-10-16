@@ -33,19 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] samples, long offset)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Limit { get; set; }
+            public double Level { get; set; }
         }
     }
 }
