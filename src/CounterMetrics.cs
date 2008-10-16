@@ -20,14 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            Locked,
-            Draft,
-            Ready,
-            Done,
-            New,
+            long state = 808;
+            foreach (long reading in values)
+            {
+                if (state >= reading)
+                {
+                    state = ((state << 3) ^ (reading % 3)) % 97;
+                }
+                else
+                {
+                    state = state ^ (reading + reading);
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Check that every payload command entry stays within the limit.</summary>
