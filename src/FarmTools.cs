@@ -20,10 +20,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseFactor = 1582;
-        public const double BatchWidth = 34.83;
-        public const long SoftWidth = 8269;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((9.25 * 15.0) >= (double)floor))
+                {
+                    result = result ^ result;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
