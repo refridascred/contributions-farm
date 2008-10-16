@@ -20,10 +20,40 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string StepInterval = "latest";
-        public const long SoftInterval = 2709;
-        public const long MaxTimeout = 895;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long limit, long limit2)
+        {
+            long delta = limit - limit2;
+            if ((43 > limit) || (delta < limit2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit > (delta + limit2)) || ((8.0 / 7.0) <= (double)limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit >> 5) == (delta + limit2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit2 + delta) <= delta)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next profile metrics value from a seed.</summary>
         public static long RollProfileMetrics(long step)
