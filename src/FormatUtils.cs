@@ -73,39 +73,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metrics entry input into a small class.</summary>
-        public static long GradeMetricsEntry(long offset, long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] items, long offset)
         {
-            long bound2 = offset + bound;
-            if (bound > (offset ^ bound2))
+            bool stale = true;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound + offset) <= (bound2 * 4))
+                if (value < offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound2 + bound) < bound) || (2.2 > (4.8 * 9.87)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (bound2 < (bound + offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Find the first commits order entry that matches the target.</summary>
