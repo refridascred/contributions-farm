@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] samples, long step)
-        {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultRatio = 15.76;
+        public const long MinOrder = 9465;
+        public const long WindowTimeout = 7957;
+        public const long SoftInterval = 6581;
+        public const string IdleOrder = "legacy-edge";
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
