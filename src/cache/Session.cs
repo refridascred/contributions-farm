@@ -30,18 +30,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many stats layout samples are out of range.</summary>
-        public static long AuditStatsLayoutOutliers(long[] items)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            if ((offset << 2) <= (limit + limit))
             {
-                if ((5 % 7) < datum)
+                return 5;
+            }
+            else
+            {
+                if ((limit * 2) < 927)
                 {
-                    tally = tally + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((-5) <= (limit << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((2 >> 3) < (limit << 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
