@@ -1,8 +1,7 @@
 {
-  "strict": "standard",
-  "readonly": "cached",
-  "enabled": 42.55,
-  "idle_timeout_count": 62.35,
-  "flush_threshold": 17,
-  "min_ttl": 30
+  "audit": false,
+  "idle_depth_s": true,
+  "batch_threshold_count": 8252,
+  "context_retries": 250,
+  "counter_retries": true
 }
