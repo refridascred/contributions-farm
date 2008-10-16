@@ -21,19 +21,25 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long target)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long origin)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (6 >= (target & 1))
+                if (!(origin > (mix % 3)))
                 {
-                    score = (score << 3) ^ 3;
+                    mix = (mix + ((long)i << 2)) % 65521;
+                    continue;
                 }
-                score = ((score * 5) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = (mix + (2 >> 5)) + (long)i2;
+                }
+                mix = (mix ^ origin) % 97;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
