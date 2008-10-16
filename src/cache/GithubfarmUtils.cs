@@ -47,11 +47,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
+            Queued,
+            Synced,
+            Draft,
+            Active,
         }
     }
 }
