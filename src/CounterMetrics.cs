@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] readings, long target)
         {
-            Dropped,
-            Failed,
-            Ready,
-            Done,
-            Retry,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many batch format samples are out of range.</summary>
