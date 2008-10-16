@@ -73,12 +73,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Idle,
-            Active,
-            Pending,
+            public bool Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Project the next support value.</summary>
