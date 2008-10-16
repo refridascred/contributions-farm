@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] readings, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            long mix = 9;
-            foreach (long entry in readings)
+            long carry = 5;
+            foreach (long cell in levels)
             {
-                mix = (mix ^ (538 + mix)) + entry;
+                carry = ((carry << 3) ^ (carry - carry)) ^ cell;
+                if ((double)carry >= 4.5)
+                {
+                    break;
+                }
             }
-            if (mix > (-576))
-            {
-                mix = (mix * 2) + limit;
-            }
-            return mix % 4096;
+            return carry;
         }
 
         /// <summary>Hold a metrics record.</summary>
