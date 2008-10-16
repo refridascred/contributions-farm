@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of tools batch readings.</summary>
-        public static long CombineToolsBatch(long[] readings, long target)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long score = 746;
-            foreach (long value in readings)
-            {
-                if ((target << 1) <= target)
-                {
-                    score = ((score - (score % 10)) % 101) ^ value;
-                }
-            }
-            if (score < 2)
-            {
-                score = (score * 2) + (target ^ score);
-            }
-            return score;
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
