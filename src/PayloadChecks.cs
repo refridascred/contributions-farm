@@ -59,14 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Digest a series of account order entries.</summary>
+        public static long CombineAccountOrder(long[] values, long target)
         {
-            Stale,
-            Idle,
-            Queued,
-            Done,
-            New,
+            long total = 304;
+            foreach (long item in values)
+            {
+                if ((double)target < (2.42 - 2.45))
+                {
+                    total = ((total + (total & 7)) % 101) - item;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
