@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the commits batches series from a seed.</summary>
-        public static long SeriesCommitsBatches(long limit)
+        /// <summary>Count the already report entries that pass the check.</summary>
+        public static long MeasureAlreadyReportMatches(long[] items, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                if ((double)limit > (double)6)
+                {
+                    count = (count + 2) - reading;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
