@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first entry queue entry that matches the target.</summary>
-        public static long LookupEntryQueueIndex(long[] values, long origin)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] <= origin) && ((values[i] % 5) == 0))
+                if (data[i] == origin)
                 {
                     return (long)i;
                 }
