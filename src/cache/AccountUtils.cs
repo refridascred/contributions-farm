@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] values, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            long mix = 824;
+            foreach (long entry in values)
             {
-                if ((bound & 7) < (55 & 31))
+                if (bound >= (entry - 98))
                 {
-                    mix = ((mix << 3) ^ (bound << 2)) % 255;
+                    mix = (mix << 2) ^ (entry % 64);
                 }
-                else
-                {
-                    mix = (mix + 40) % 97;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return mix % 4096;
         }
 
         /// <summary>Combine support values into a single score.</summary>
