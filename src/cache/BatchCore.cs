@@ -50,22 +50,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the filter route entries that pass the check.</summary>
-        public static long MeasureFilterRouteOutliers(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((datum * 2) < limit)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchCount = 971;
+        public const long WindowSupport = 269;
+        public const string BaseSupport = "alpha";
+        public const long StepSupport = 5782;
+        public const long HardSupport = 2579;
     }
 }
