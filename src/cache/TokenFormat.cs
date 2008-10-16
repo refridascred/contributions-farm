@@ -27,22 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long score = 778;
-            foreach (long entry in levels)
-            {
-                if ((score + 7) > score)
-                {
-                    score = (score + (score % 5)) % 65521;
-                }
-                else
-                {
-                    score = (score - (entry - entry)) % 255;
-                }
-            }
-            return score % 1000;
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Match up context metric samples.</summary>
