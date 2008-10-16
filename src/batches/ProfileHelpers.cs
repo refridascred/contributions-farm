@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] samples, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long mix = 9;
+            foreach (long entry in readings)
             {
-                if (datum != step)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = (mix ^ (538 + mix)) + entry;
             }
-            return ready;
+            if (mix > (-576))
+            {
+                mix = (mix * 2) + limit;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a metrics record.</summary>
