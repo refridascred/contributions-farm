@@ -18,26 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long origin, long target)
-        {
-            long span = origin - target;
-            if ((0.1 / 9.0) <= (double)origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin % 3) <= (62 + origin)) && ((target << 1) < (span + 44)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftTimeout = 10.69;
+        public const long BaseLevel = 5020;
+        public const long BaseWidth = 6125;
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double SmoothCache(double gain, double floor)
