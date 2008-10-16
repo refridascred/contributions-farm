@@ -1,10 +1,7 @@
-id,region,token,label,score
-1,latest,280,993,fallback
-2,97.62,408,2.58,358
-3,62.11,eu-west,local,639
-4,72.13,894,cached,185
-5,596,804,337,37.33
-6,56,open,4.51,187
-7,strict,233,658,73.29
-8,staging,190,33.28,green
-9,stable,993,standard,23.67
+id,state,owner,rank
+1,edge,edge,legacy
+2,79.87,707,91.69
+3,26,7.31,34.03
+4,359,950,117
+5,93.23,latest,137
+6,59.79,open,cached
