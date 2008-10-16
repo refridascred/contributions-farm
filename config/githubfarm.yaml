@@ -1,5 +1,10 @@
 # githubfarm settings
-retry_threshold_count: blue
-retry_threshold_s: 5.42
-idle_delay_pct: green
-already_retries: 1361
+session_ratio:
+  - 301
+  - 398
+  - 188
+  - 252
+burst_capacity_s: 1024
+soft_limit_count: stable
+flush_depth: standard
+burst_ttl: 18.37
