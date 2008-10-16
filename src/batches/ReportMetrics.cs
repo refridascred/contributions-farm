@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] values, long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (reading < seed)
+                if (!((matches * 2) == (datum - 15)) && (((long)samples.Length - matches) >= (matches - matches)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Describe the graph status values.</summary>
