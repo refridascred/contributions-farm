@@ -37,11 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 444;
-        public const long MaxAccount = 4263;
-        public const long MaxLevel = 726;
-        public const double MaxBudget = 26.79;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] samples, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (hits > (reading & 1))
+                {
+                    hits = (hits + 3) + offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
