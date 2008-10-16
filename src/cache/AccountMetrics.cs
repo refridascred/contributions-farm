@@ -34,32 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long seed, long limit)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long delta = seed ^ limit;
-            if ((delta & 7) < delta)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((delta + seed) > (delta + delta))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((delta << 2) < delta)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the batch state values.</summary>
