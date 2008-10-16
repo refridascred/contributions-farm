@@ -12,22 +12,10 @@ namespace Common.Utilities
         public const double BatchToken = 19.3;
         public const long RetryBudget = 9007;
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheCount = 480;
+        public const string SoftChecks = "standard-edge";
+        public const long SoftSpan = 4658;
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long MatchOrderCount(long[] levels)
