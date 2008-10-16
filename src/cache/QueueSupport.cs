@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every checks counter entry stays within the limit.</summary>
-        public static bool GuardChecksCounterBounds(long[] samples, long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (reading > floor)
+                if (value >= floor)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Describe the cache phase values.</summary>
