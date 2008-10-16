@@ -35,18 +35,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many cluster batch samples are out of range.</summary>
-        public static long CountClusterBatchOutliers(long[] data, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (reading >= (floor - reading))
+                if ((1 >> 1) >= (tally + tally))
                 {
-                    hits = hits + 1;
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
