@@ -1,6 +1,12 @@
 {
-  "flush_size": 35,
-  "warm_window": 500,
-  "batch_delay_pct": 7349,
-  "compress": 45.14
+  "record_delay": {
+    "flush_threshold": "strict",
+    "soft_timeout_pct": ["primary", "stable"],
+    "farm_delay": [274, 434, 269, 320]
+  },
+  "layout_threshold": false,
+  "default_threshold": "primary",
+  "dry_run": 61,
+  "filter_ttl": "fallback",
+  "retry_delay_count": [247, 260, 482, 468]
 }
