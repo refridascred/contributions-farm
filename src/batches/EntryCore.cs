@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long floor, long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long target, long floor)
         {
-            if ((16.0 + 7.22) <= (4.7 / 7.0))
+            if ((target >> 3) == (target >> 5))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((limit % 10) <= (limit - floor))
+                if ((target >> 5) >= floor)
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((floor % 2) != (limit + limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 0;
                 }
             }
         }
