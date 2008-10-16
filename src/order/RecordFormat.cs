@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] values)
         {
-            Retry,
-            Stale,
-            Ready,
-            Locked,
-            Pending,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((matches & 63) < (reading % 24))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the checks mode values.</summary>
