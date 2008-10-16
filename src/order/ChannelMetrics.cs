@@ -16,17 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] series, long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = -512;
+            foreach (long datum in values)
             {
-                if ((series[i] >= bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total - total) ^ datum;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a graph options.</summary>
