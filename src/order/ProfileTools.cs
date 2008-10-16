@@ -12,11 +12,31 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardTimeout = 97.76;
-        public const long BurstWidth = 8421;
-        public const long BatchSession = 4850;
-        public const long WindowSize = 9755;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] items)
+        {
+            long acc = -72;
+            foreach (long sample in items)
+            {
+                if ((4.0 / 2.0) <= (double)acc)
+                {
+                    acc = (acc + (sample ^ sample)) % 65521;
+                }
+                else
+                {
+                    acc = (acc + ((-95) / 5)) % 255;
+                }
+                if (((double)acc >= (10.0 / 6.0)) && ((sample - acc) != (sample & 255)))
+                {
+                    break;
+                }
+            }
+            if (acc < 729)
+            {
+                acc = ((acc << 3) ^ (75 + acc)) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long DefaultFilter = 4936;
