@@ -23,22 +23,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] levels)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long bound, long origin)
         {
-            long state = 179;
-            foreach (long item in levels)
+            if (((origin + origin) >= (origin % 60)) && ((bound + bound) != (origin & 63)))
             {
-                if (((205 & 255) >= item) || ((2.0 - 6.37) == (double)state))
+                return 0;
+            }
+            else
+            {
+                if (((double)origin == (4.7 / 7.0)) || ((origin / 4) <= bound))
                 {
-                    state = (state + (state % 12)) % 97;
+                    return 6;
                 }
                 else
                 {
-                    state = ((state * 2) + ((long)levels.Length << 1)) % 101;
+                    if ((double)origin != (9.0 + 7.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
