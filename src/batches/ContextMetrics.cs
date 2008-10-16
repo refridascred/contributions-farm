@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const double MinRatio = 61.91;
         public const long BaseCount = 2843;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardContext = 67.65;
-        public const long MaxLevel = 8462;
-        public const long MinTimeout = 3681;
-        public const string LimitScore = "primary-1";
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= seed) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up farm samples.</summary>
         public static long CompareFarmCount(long[] data)
