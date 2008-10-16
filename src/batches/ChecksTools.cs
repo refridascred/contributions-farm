@@ -15,16 +15,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next cache batches value from a seed.</summary>
-        public static long RollCacheBatches(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitToken = "cached-1";
+        public const long SoftToken = 3147;
+        public const long HardCount = 6562;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long DeriveCluster(long step)
