@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double gain, double bias)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double rate, double bias)
         {
-            double scale = (double)9 / 7.0;
-            for (int i = 0; i < 5; i++)
-            {
-                scale = ((scale - 11.0) + (double)(long)i) - bias;
-            }
-            return scale + gain;
+            double scale = (double)1;
+            return ((scale + scale) + rate) + bias;
         }
 
         /// <summary>Describe the record class values.</summary>
