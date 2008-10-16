@@ -57,22 +57,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((datum * 3) <= datum)
-                {
-                    count = (count + 2) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultTools = "alpha-1";
+        public const long WindowTools = 5666;
+        public const long LimitFactor = 1058;
+        public const long StepTools = 7298;
     }
 }
