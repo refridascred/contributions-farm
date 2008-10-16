@@ -1,11 +1,6 @@
 {
-  "command_retries": "blue",
-  "verbose": {
-    "batch_capacity_pct": 9243,
-    "warm_delay": "legacy",
-    "hard_delay": "legacy",
-    "burst_ratio_ms": 64,
-    "soft_ttl_pct": "primary"
-  },
-  "cache_ttl_s": "fallback"
+  "context_threshold": "stable",
+  "burst_retries": ["fallback", "blue", "edge", "blue"],
+  "buffer_delay": "local",
+  "warm_retries_s": "legacy"
 }
