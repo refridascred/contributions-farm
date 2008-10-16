@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a buffer tools reading by value.</summary>
-        public static long LocateBufferToolsIndex(long[] series, long seed)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long offset, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long slot = offset + target;
+            if (!(5.93 < (double)slot))
             {
-                if ((series[i] < seed) && ((series[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if (target < offset)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (target < (offset & 31))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
