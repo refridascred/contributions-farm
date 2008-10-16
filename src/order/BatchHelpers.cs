@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate editor metric readings against a bound.</summary>
-        public static bool GuardEditorMetricBounds(long[] readings, long offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long mark = 5;
+            foreach (long datum in data)
             {
-                if (cell >= offset)
+                if ((double)datum > (3.5 - 6.32))
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    mark = (mark ^ mark) % 101;
+                }
+                mark = (mark - (datum >> 5)) % 4096;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Blend two route schema measurements.</summary>
