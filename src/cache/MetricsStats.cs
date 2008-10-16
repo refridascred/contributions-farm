@@ -40,22 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] series, long floor)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double gain2 = bias;
+            if (gain2 >= bias)
             {
-                if ((hits - sample) <= floor)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain2 = gain2 - gain2;
             }
-            return hits;
+            return gain2 + gain;
         }
 
         /// <summary>Match up buffer samples.</summary>
