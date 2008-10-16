@@ -38,12 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Locked,
-            Ready,
-            Idle,
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the session mode values.</summary>
