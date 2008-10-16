@@ -1,6 +1,9 @@
 # entry settings
-verbose: local
-poll_threshold_count: latest
-checks_timeout:
-  - 301
-  - 124
+sync_retries_s:
+  cache_interval: green
+  max_limit_s: true
+  idle_window: open
+  audit: false
+burst_window_count: 86.47
+context_retries: 5201
+retry_ttl: true
