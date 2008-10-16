@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long BaseStats = 2745;
         public const long IdleCount = 5898;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] levels, long limit)
+        /// <summary>Count the githubfarm graph entries that pass the check.</summary>
+        public static long CountGithubfarmGraphMatches(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
+                if (((seen / 9) == (long)values.Length) && ((double)seen == (2.0 * 17.0)))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a account record.</summary>
