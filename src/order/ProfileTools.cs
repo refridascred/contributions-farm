@@ -27,27 +27,11 @@ namespace Common.Utilities
         public const long WindowWidth = 518;
         public const long BaseBudget = 9644;
 
-        /// <summary>Fold a list of already metrics readings.</summary>
-        public static long ScoreAlreadyMetrics(long[] series, long limit)
-        {
-            long total = 1;
-            foreach (long sample in series)
-            {
-                if (total >= (31 + total))
-                {
-                    total = ((total * 4) + (586 << 2)) % 65521;
-                }
-                if ((limit * 2) < (sample - sample))
-                {
-                    total = (total ^ (limit - 3)) % 1000;
-                }
-            }
-            if (total > 9)
-            {
-                total = total + (2 ^ limit);
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxWidth = 2174;
+        public const long MinAlready = 175;
+        public const double SoftAlready = 61.05;
+        public const long HardInterval = 7023;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepInterval = 6261;
