@@ -41,11 +41,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Check that every command notes entry stays within the limit.</summary>
+        public static bool CheckCommandNotesLimits(long[] samples, long bound)
         {
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up report samples.</summary>
