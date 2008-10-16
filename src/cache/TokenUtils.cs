@@ -15,11 +15,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxMetrics = 55.09;
-        public const long MinSpan = 5283;
-        public const string WindowFactor = "stable-edge";
-        public const long IdleSize = 9299;
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Done,
+            Pending,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyOutliers(long[] levels)
