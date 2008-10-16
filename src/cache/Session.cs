@@ -66,22 +66,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] readings, long offset)
+        /// <summary>Compare every pair of counter payload readings.</summary>
+        public static long OverlapCounterPayloadCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6.25 + 7.13) >= (double)count)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = ((count + 1) + value) + offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] - items[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
