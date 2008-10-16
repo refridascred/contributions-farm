@@ -1,15 +1,16 @@
 # support settings
-hard_window_ms: 95.96
-strict:
-  payload_capacity:
-    - 289
-    - 451
-    - 105
-    - 298
-  enabled:
-    - strict
-    - fallback
-    - eu-west
-    - stable
-  audit: 52.36
-enabled: true
+cache_timeout: primary
+cache_threshold_pct: 72.03
+poll_ttl_ms:
+  audit: 84.54
+  retry_delay_count: 5995
+  flush_window_ms:
+    - primary
+    - latest
+    - primary
+flush_delay:
+  - primary
+  - open
+  - blue
+base_depth_ms: 500
+poll_limit_pct: 500
