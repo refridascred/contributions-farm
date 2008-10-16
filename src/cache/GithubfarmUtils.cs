@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long seed, long step)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long seed, long bound)
         {
-            long bound = seed ^ step;
-            if ((double)step < 7.6)
+            long edge = seed ^ bound;
+            if ((bound + edge) >= 379)
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if ((73 <= (step * 3)) || ((double)step < (double)bound))
+                if (!((seed % 12) < (seed / 7)))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    return 5;
+                    return 2;
                 }
             }
         }
