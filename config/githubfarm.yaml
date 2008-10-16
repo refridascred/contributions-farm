@@ -1,14 +1,18 @@
 # githubfarm settings
-sync_retries: eu-west
-sync_ttl: 2.97
-support_capacity: false
-verbose:
-  - strict
-  - legacy
-  - blue
-retry_ttl_pct: staging
-queue_ttl:
-  cache_ttl: false
-  buffer_window: 41.21
-  retry_interval_count: green
-  account_ttl: true
+cache_ratio_pct: false
+poll_size_count: 500
+min_limit_count:
+  min_depth_s: 74
+  readonly: false
+  idle_window_pct:
+    - legacy
+    - stable
+  already_delay: false
+  sync_size_s: fallback
+readonly: strict
+commits_ttl: stable
+strict:
+  - edge
+  - primary
+  - staging
+  - staging
