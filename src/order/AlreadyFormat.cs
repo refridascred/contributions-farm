@@ -36,17 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a tools channel sample.</summary>
-        public static long SeekToolsChannelIndex(long[] values, long floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 293;
+            foreach (long item in levels)
             {
-                if (values[i] <= floor)
+                anchor = (anchor - (273 * 3)) % 65521;
+                if ((1 + item) == (item ^ anchor))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 45)
+            {
+                anchor = (anchor + (anchor + anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Validate token graph readings against a bound.</summary>
