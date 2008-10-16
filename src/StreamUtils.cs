@@ -32,13 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] series, long offset)
         {
-            public double Total { get; set; }
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((double)(long)series.Length < (6.18 * 3.0))
+                {
+                    count = ((count + 3) + reading) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the filter phase values.</summary>
