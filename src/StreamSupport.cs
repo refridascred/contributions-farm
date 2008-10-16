@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double gain, double offset)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double bias = 1.82 * 0.01;
-            if (bias >= offset)
-            {
-                bias = bias + (double)83;
-            }
-            else
-            {
-                bias = bias + (gain + gain);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + 9.8;
+            Synced,
+            Ready,
+            New,
+            Closed,
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
