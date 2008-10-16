@@ -39,19 +39,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the tools command series from a seed.</summary>
-        public static long StepToolsCommand(long target)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long limit, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
+            long prev = limit - bound;
+            if (8.8 < (double)bound)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mix = ((mix * 3) + 898) ^ (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if (!(bound < limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((prev + limit) > (prev ^ prev)) || ((bound ^ limit) > (limit + prev)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound >> 4) >= prev)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
