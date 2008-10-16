@@ -1,4 +1,14 @@
 # support settings
-poll_timeout_s: 9789
-readonly: staging
-max_window_pct: 250
+min_window_s: 54.99
+batch_size_s: false
+audit: false
+soft_limit_s: blue
+min_timeout_count:
+  checks_limit: open
+  base_window_ms: blue
+  persist: cached
+  poll_limit: cached
+  verbose:
+    - primary
+    - staging
+  poll_ttl_ms: local
