@@ -59,12 +59,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryReport = "cached-v2";
-        public const string IdleReport = "local-1";
-        public const string HardSize = "cached-edge";
-        public const long WindowReport = 6375;
-        public const long DefaultReport = 294;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long LookupPayloadIndex(long[] items, long seed)
