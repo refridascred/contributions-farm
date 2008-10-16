@@ -44,22 +44,37 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a counter farm value against two limits.</summary>
-        public static long GradeCounterFarm(long step, long seed)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long floor, long step)
         {
-            if ((8.8 * 3.0) <= (double)seed)
+            long edge = floor + step;
+            if ((floor + step) >= edge)
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((step + seed) != (77 + seed))
+                if (61 > step)
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    return 5;
+                    if ((floor >> 3) == (edge + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((edge << 2) >= (floor / 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
