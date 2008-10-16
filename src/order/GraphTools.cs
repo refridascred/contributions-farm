@@ -21,24 +21,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long step, long target)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] samples)
         {
-            if (step >= (target + step))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (step > (target / 6))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a schema info.</summary>
