@@ -33,22 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] series)
+        /// <summary>Compare every pair of metrics editor readings.</summary>
+        public static long OverlapMetricsEditorCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)series.Length << 2) < matches)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] ^ samples[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the command order entries that pass the check.</summary>
