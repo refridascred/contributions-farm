@@ -1,21 +1,5 @@
 {
-  "strict": {
-    "compress": "staging",
-    "batch_delay_count": 1024,
-    "poll_window_count": ["latest", "cached", "edge"]
-  },
-  "default_delay": "standard",
-  "readonly": 19,
-  "default_limit_s": {
-    "filter_window": "green",
-    "flush_window_s": {
-      "profile_size": "cached",
-      "cache_interval_count": 60,
-      "min_capacity_s": "primary"
-    },
-    "compress": 83.5,
-    "burst_depth_ms": ["standard", "fallback"],
-    "readonly": true,
-    "sync_window": 13.04
-  }
+  "default_interval": 60,
+  "retry_window_pct": true,
+  "idle_capacity_count": 76.3
 }
