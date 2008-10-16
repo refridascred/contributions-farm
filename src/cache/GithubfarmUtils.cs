@@ -30,18 +30,39 @@ namespace Common.Utilities
             return (gain + (3.39 / 2.0)) + bias;
         }
 
-        /// <summary>Count the batches channel entries that pass the check.</summary>
-        public static long CountBatchesChannelHits(long[] items)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long step, long limit)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long offset = step ^ limit;
+            if (!(offset < step))
             {
-                if (((9 * 2) < (reading - reading)) && (((3.3 - 1.84) > (double)reading) && (145 <= (tally >> 2))))
+                return 7;
+            }
+            else
+            {
+                if (step < (limit >> 2))
                 {
-                    tally = tally + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit <= (404 * 5)) || ((3.51 + 6.9) < (double)step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset & 31) != (limit + step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
