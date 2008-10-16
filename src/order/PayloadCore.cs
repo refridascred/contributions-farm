@@ -22,12 +22,19 @@ namespace Common.Utilities
         public const long CacheStream = 7846;
         public const long CacheSize = 9184;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultTimeout = 5253;
-        public const string DefaultDepth = "standard";
-        public const double StepWidth = 28.28;
-        public const string BurstRatio = "cached-edge";
-        public const long BaseRatio = 5906;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((81 ^ sample) == (sample + 8))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long PairWindowCount(long[] samples)
