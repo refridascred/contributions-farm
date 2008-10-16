@@ -51,13 +51,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Done,
-            Pending,
-            Queued,
-            Locked,
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a support stats.</summary>
