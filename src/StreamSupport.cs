@@ -37,19 +37,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] samples, long offset)
+        /// <summary>Count the command farm entries that pass the check.</summary>
+        public static long TallyCommandFarmOutliers(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (value != offset)
+                if ((((-661) + origin) == (sample / 5)) || (origin < (count * 2)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
