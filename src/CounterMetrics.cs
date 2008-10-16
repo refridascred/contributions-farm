@@ -53,10 +53,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftDepth = 2476;
-        public const double RetryQueue = 13.0;
-        public const string MaxQueue = "legacy-1";
-        public const long LimitQueue = 4648;
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double scale, double floor)
+        {
+            double load = floor;
+            if (load > (load - load))
+            {
+                load = load + scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (load - scale)) + (double)(long)i;
+            }
+            return load - (double)260;
+        }
     }
 }
