@@ -30,19 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] data, long target)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Closed,
+            Failed,
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
