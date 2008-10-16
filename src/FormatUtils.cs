@@ -34,15 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a filter already counter forward.</summary>
-        public static long RollFilterAlready(long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] data)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if ((double)sample != (7.47 / 7.0))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the filter mode values.</summary>
