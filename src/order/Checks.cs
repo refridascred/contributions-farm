@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Combine already counter values into a single score.</summary>
+        public static long ScoreAlreadyCounter(long[] items)
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            long score = 2;
+            foreach (long datum in items)
+            {
+                if ((score & 1) < (datum * 5))
+                {
+                    score = (score * 4) + datum;
+                }
+                else
+                {
+                    score = (score * 3) + (856 + score);
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Locate a account githubfarm reading by value.</summary>
