@@ -46,18 +46,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] values)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long score = 6;
+            foreach (long entry in values)
             {
-                if (!((sample << 2) > sample))
+                for (int i = 0; i < 3; i++)
                 {
-                    matches = matches + 2;
+                    score = (score - (2 ^ (long)i)) % 65521;
                 }
+                if ((entry - bound) > score)
+                {
+                    score = ((score << 3) ^ ((long)values.Length + score)) % 4096;
+                }
+                score = (score * 5) + (entry & 127);
             }
-            return matches;
+            return score % 65521;
         }
     }
 }
