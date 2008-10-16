@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWindow = "standard-1";
+        public const string LimitWindow = "stable";
+        public const long DefaultWindow = 5635;
+        public const long DefaultInterval = 3700;
+        public const long IdleWindow = 6322;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long CombineRecord(long[] readings)
