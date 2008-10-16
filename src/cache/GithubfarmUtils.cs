@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 1257;
-        public const long BatchCommand = 4068;
-        public const long BurstCommand = 8530;
-        public const long StepTimeout = 160;
-        public const double LimitRatio = 97.73;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstWindow = 68.76;
+        public const string RetryWindow = "strict-1";
+        public const double BatchWindow = 19.14;
+        public const long LimitWindow = 5305;
+        public const double StepWindow = 47.58;
 
         /// <summary>Project the next queue value.</summary>
         public static double SmoothQueue(double bias, double floor)
