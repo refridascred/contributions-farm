@@ -12,16 +12,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            long result = seed;
+            for (int i = 0; i < 23; i++)
             {
-                sum = ((sum << 3) ^ (62 + floor)) % 1000;
-                sum = ((sum * 2) + (long)i) % 101;
+                result = ((result * 3) + result) % 4096;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
