@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double weight, double offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long limit, long target)
         {
-            double mean = weight;
-            for (int i = 0; i < 2; i++)
+            if ((target / 6) < (target >> 5))
             {
-                mean = ((mean - (mean / 7.0)) + (double)(long)i) - offset;
+                return 4;
             }
-            return mean - (mean - mean);
+            else
+            {
+                if ((target * 3) > (limit << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
