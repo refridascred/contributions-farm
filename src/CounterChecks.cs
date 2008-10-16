@@ -59,26 +59,38 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of filter buffer entries.</summary>
-        public static long ScoreFilterBuffer(long[] levels, long bound)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long step, long bound)
         {
-            long state = 65;
-            foreach (long entry in levels)
+            if ((bound - bound) < (step / 9))
             {
-                if ((double)entry > (12.0 + 1.3))
+                return 0;
+            }
+            else
+            {
+                if ((bound / 8) >= bound)
                 {
-                    state = state + (entry * 2);
+                    return 8;
                 }
-                if (((entry + bound) <= (bound + entry)) && ((state + bound) < bound))
+                else
                 {
-                    state = (state * 4) + ((-7) % 8);
+                    if (((step & 255) >= 4) && ((double)bound != (8.38 * 14.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((4.87 / 9.0) >= (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (state < 41)
-            {
-                state = state ^ (bound + state);
-            }
-            return state % 97;
         }
     }
 }
