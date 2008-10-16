@@ -37,17 +37,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a channel token reading by value.</summary>
-        public static long LookupChannelTokenIndex(long[] values, long step)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many cluster batch samples are out of range.</summary>
