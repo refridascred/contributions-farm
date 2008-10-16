@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] samples)
-        {
-            long mix = 6;
-            foreach (long entry in samples)
-            {
-                if (((-5) - 4) == (entry << 3))
-                {
-                    mix = (mix - (mix + entry)) % 255;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultFilter = "cached-edge";
+        public const double CacheFilter = 87.73;
+        public const double IdleFilter = 29.8;
+        public const long BurstInterval = 2228;
+        public const double LimitDepth = 51.04;
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long DeriveCache(long bound)
