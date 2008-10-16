@@ -33,12 +33,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
-        {
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxContributi = 90.93;
+        public const long RetryCount = 2655;
+        public const long LimitContributi = 624;
+        public const long SoftContributi = 4553;
+        public const long BatchContributi = 6383;
     }
 }
