@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowCluster = 83.51;
-        public const double IdleBudget = 61.03;
-        public const string RetrySize = "primary-edge";
-        public const long BaseRatio = 2860;
-        public const long HardCluster = 6812;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] items, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
