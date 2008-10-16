@@ -55,23 +55,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] readings, long offset)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long sum = 61;
-            foreach (long sample in readings)
-            {
-                sum = ((sum ^ sum) % 101) + offset;
-                if ((4.4 + 0.6) > (double)sample)
-                {
-                    sum = (sum << 2) ^ (294 & 1);
-                }
-            }
-            if (sum > 81)
-            {
-                sum = (sum - (sum * 2)) % 65521;
-            }
-            return sum % 1000;
+            Synced,
+            Queued,
+            Idle,
+            Ready,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
