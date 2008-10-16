@@ -38,19 +38,20 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] samples, long seed)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long offset)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (item < seed)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    ready = false;
-                    break;
+                    mix = ((mix ^ 313) % 1000) ^ (long)i2;
+                    mix = (mix << 3) ^ 527;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Define already limits and defaults.</summary>
