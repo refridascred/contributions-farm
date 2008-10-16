@@ -20,12 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] < seed) && ((samples[i] % 5) != 0))
+                if (readings[i] >= origin)
                 {
                     return (long)i;
                 }
