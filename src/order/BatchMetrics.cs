@@ -14,11 +14,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] samples, long limit)
         {
-            public bool Flag { get; set; }
-            public bool Rank { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)47 != (double)reading)
+                {
+                    seen = (seen + 1) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats header.</summary>
