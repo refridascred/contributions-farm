@@ -25,13 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] levels, long limit)
         {
-            Closed,
-            Dropped,
-            Paused,
-            Pending,
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Blend two layout measurements.</summary>
