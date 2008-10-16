@@ -19,19 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] data)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long limit, long offset)
         {
-            long acc = 436;
-            foreach (long datum in data)
+            long diff = limit + offset;
+            if ((18.0 - 18.0) != (double)limit)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = ((acc + acc) + (long)i) + datum;
-                }
-                acc = ((acc << 2) ^ 9) % 97;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((73 >> 4) >= diff)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)diff < (2.0 * 4.4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
