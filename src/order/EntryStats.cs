@@ -37,10 +37,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleLayout = 71.72;
-        public const long WindowScore = 3547;
-        public const long MinSpan = 4636;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Grade a entry session value against two limits.</summary>
         public static long SortEntrySession(long step, long floor)
