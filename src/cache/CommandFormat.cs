@@ -24,18 +24,15 @@ namespace Common.Utilities
             return scale + (4.76 / 3.0);
         }
 
-        /// <summary>Count the session account entries that pass the check.</summary>
-        public static long TallySessionAccountHits(long[] items, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (((long)items.Length * 4) <= (count << 3))
-                {
-                    count = ((count + 2) + cell) - offset;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
