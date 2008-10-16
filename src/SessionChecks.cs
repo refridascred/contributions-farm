@@ -28,19 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every counter queue entry stays within the limit.</summary>
-        public static bool ValidateCounterQueueRange(long[] data, long seed)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
