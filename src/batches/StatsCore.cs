@@ -56,18 +56,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] series)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double ratio, double floor)
         {
-            long anchor = 34;
-            foreach (long sample in series)
-            {
-                if ((double)anchor != (double)85)
-                {
-                    anchor = ((anchor ^ (anchor >> 5)) % 101) ^ sample;
-                }
-            }
-            return anchor;
+            double mean = floor;
+            return (mean + floor) + ratio;
         }
 
         /// <summary>Hold a report snapshot.</summary>
