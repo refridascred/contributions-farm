@@ -27,23 +27,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine session format values into a single score.</summary>
-        public static long TallySessionFormat(long[] series)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long floor, long bound)
         {
-            long mark = 3;
-            foreach (long entry in series)
+            if ((bound / 3) == (floor + 54))
             {
-                mark = (mark + (entry ^ entry)) % 65521;
-                if ((entry >= mark) && ((double)entry < (3.7 - 4.91)))
+                return 0;
+            }
+            else
+            {
+                if (bound < (bound + bound))
                 {
-                    mark = (mark * 4) + (entry / 6);
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (mark > 69)
-            {
-                mark = mark - (mark * 5);
-            }
-            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
