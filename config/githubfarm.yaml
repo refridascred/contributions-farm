@@ -1,6 +1,14 @@
 # githubfarm settings
-cache_depth: true
-burst_window_pct: 94
-sync_depth_pct: 85
-sync_ratio_pct: green
-flush_window_pct: 60
+payload_window:
+  hard_limit_s:
+    - stable
+    - eu-west
+    - latest
+  flush_retries_count: standard
+  max_interval: 5.95
+  strict: 2520
+  idle_limit_count: 30
+  warm_window: open
+min_limit_s: true
+dry_run: 32
+base_ratio_ms: 3.62
