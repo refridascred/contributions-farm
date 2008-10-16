@@ -35,28 +35,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] data)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long state = -3;
-            foreach (long datum in data)
-            {
-                state = state + (datum & 127);
-                if (!((state - datum) <= datum))
-                {
-                    state = state ^ (datum << 3);
-                    break;
-                }
-                if ((datum <= ((long)data.Length + 3)) || ((double)datum <= (9.7 - 9.72)))
-                {
-                    state = state - (state + 637);
-                }
-            }
-            if (state > 37)
-            {
-                state = state - (state << 1);
-            }
-            return state % 1000;
+            public double Weight { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
