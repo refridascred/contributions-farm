@@ -49,15 +49,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next token cluster value.</summary>
-        public static double ScaleTokenCluster(double rate, double bias)
-        {
-            double gain = rate / 7.0;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + bias) - (double)(long)i;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstScore = 4268;
+        public const double MaxBudget = 41.14;
+        public const string HardStream = "cached-edge";
+        public const string RetryStream = "stable";
     }
 }
