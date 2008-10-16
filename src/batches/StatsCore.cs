@@ -46,33 +46,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] values, long step)
-        {
-            long mix = 27;
-            foreach (long reading in values)
-            {
-                if (!(9.01 <= (double)mix))
-                {
-                    mix = (mix ^ (mix << 1)) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ (reading + mix)) % 97;
-                    mix = ((mix * 5) + (mix << 1)) % 4096;
-                }
-                mix = ((mix << 3) ^ (98 - reading)) % 101;
-                if ((reading <= (12 + (long)values.Length)) || ((143 & 31) > (step % 24)))
-                {
-                    mix = mix + (7 - mix);
-                }
-                if ((reading >> 4) <= (step + 783))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowLevel = 1639;
+        public const string LimitDepth = "open-1";
+        public const long MaxProfile = 2663;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TotalToken(long[] series)
