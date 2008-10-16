@@ -1,18 +1,12 @@
 {
-  "burst_limit": 82.54,
-  "command_capacity": {
-    "flush_depth_pct": 57,
-    "soft_timeout": {
-      "enabled": "latest",
-      "context_ttl": "latest",
-      "stream_threshold": ["primary", "latest", "standard"],
-      "burst_size_ms": "cached",
-      "min_size_count": "fallback",
-      "flush_threshold_ms": false
-    },
-    "default_ttl_ms": 75.84,
-    "support_depth": 48
+  "support_depth": {
+    "persist": 3.9,
+    "base_threshold_ms": false,
+    "min_window_s": [406, 135],
+    "stream_delay": 100,
+    "strict": 60
   },
-  "retry_window_count": "cached",
-  "account_size": 43.63
+  "enabled": 6.76,
+  "idle_threshold_pct": "legacy",
+  "batch_interval_ms": "cached"
 }
