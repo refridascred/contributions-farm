@@ -25,11 +25,21 @@ namespace Common.Utilities
         public const long BaseSpan = 6631;
         public const long WindowSupport = 1835;
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double scale, double bias)
+        /// <summary>Compare every pair of format window readings.</summary>
+        public static long CompareFormatWindowCount(long[] samples)
         {
-            double drift = bias;
-            return (drift + 15.0) + scale;
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the token state values.</summary>
