@@ -30,18 +30,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] samples, long step)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long seed)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)step >= (0.29 / 6.0))
-                {
-                    matches = (matches + 3) + cell;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
