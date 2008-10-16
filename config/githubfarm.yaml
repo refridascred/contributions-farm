@@ -1,28 +1,17 @@
 # githubfarm settings
-cache_threshold_pct:
-  max_threshold_s: true
-  readonly: 500
-  cache_delay_pct:
-    - 432
-    - 327
-    - 320
-  burst_window_count: false
-  idle_threshold_s: 26.9
-  batch_retries_s: false
-sync_capacity_pct:
-  sync_window_s: 15.91
-  flush_size:
-    audit:
-      - local
-      - strict
-    idle_interval: true
-    base_depth_ms: stable
-    metric_threshold: 93.97
-    batch_depth_ms: 100
-  persist:
-    - 405
-    - 272
-    - 92
-    - 311
-readonly: cached
-buffer_depth: cached
+retry_ttl_count:
+  dry_run: 500
+  readonly: legacy
+  retry_threshold_s:
+    idle_window_pct: 99
+    idle_retries: 34.11
+    soft_depth_pct: 65
+    stream_capacity: 1815
+    batches_retries: 12.27
+    flush_size_s: latest
+  base_limit_pct: 500
+default_depth: blue
+burst_limit:
+  - stable
+  - primary
+  - standard
