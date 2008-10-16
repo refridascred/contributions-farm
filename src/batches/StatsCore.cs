@@ -53,12 +53,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Validate queue profile readings against a bound.</summary>
+        public static bool CheckQueueProfileLimits(long[] samples, long offset)
         {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Total { get; set; }
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank stream commits input into a small class.</summary>
