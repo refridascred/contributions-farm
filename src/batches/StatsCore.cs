@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardTimeout = 3935;
-        public const double StepWindow = 76.01;
-        public const string DefaultInterval = "standard-1";
+        /// <summary>Grade a checks schema value against two limits.</summary>
+        public static long SortChecksSchema(long floor, long bound)
+        {
+            if ((13 - floor) > ((-7) & 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((2.35 / 9.0) == (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long GradeAccount(long seed, long bound)
