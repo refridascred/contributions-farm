@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Active,
-            Paused,
-            New,
-            Draft,
-            Queued,
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
