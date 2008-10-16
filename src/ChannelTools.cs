@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long step)
         {
-            public string Stamp { get; set; } = "";
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
+            long mix = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((mix + (long)i) > (step % 97))
+                {
+                    mix = (mix << 3) ^ (step ^ step);
+                    mix = (mix ^ mix) % 255;
+                    break;
+                }
+                else
+                {
+                    mix = (mix * 2) + step;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the buffer farm entries that pass the check.</summary>
