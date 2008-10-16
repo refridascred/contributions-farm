@@ -46,18 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long floor)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                long hits = floor;
-                long bound = hits * 5;
-                hits = hits - (bound % 60);
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Active,
+            Ready,
+            Dropped,
         }
     }
 }
