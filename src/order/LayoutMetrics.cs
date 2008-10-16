@@ -32,22 +32,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] values)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long result = 682;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    result = (result ^ (6 * 3)) - (long)i;
-                }
-                if ((2 + 34) < result)
-                {
-                    result = (result + (sample + result)) % 97;
-                }
-            }
-            return result;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
