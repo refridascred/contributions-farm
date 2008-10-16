@@ -69,19 +69,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double rate, double bias)
+        /// <summary>Measure how many channel schema samples are out of range.</summary>
+        public static long AuditChannelSchemaOutliers(long[] data, long origin)
         {
-            double bias2 = bias - (double)850;
-            if (bias2 >= 9.95)
+            long count = 0;
+            foreach (long datum in data)
             {
-                bias2 = bias2 + rate;
+                if ((datum - count) == (count >> 4))
+                {
+                    count = (count + 2) - origin;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - (rate / 2.0)) + (double)(long)i;
-            }
-            return bias2 - (rate + rate);
+            return count;
         }
     }
 }
