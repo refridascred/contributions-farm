@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double bias, double span)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] items, long target)
         {
-            double ratio = span;
-            if (ratio <= ratio)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                ratio = ratio - bias;
+                if (reading < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio + span;
+            return ready;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
