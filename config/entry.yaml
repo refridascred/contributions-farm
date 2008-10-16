@@ -1,16 +1,4 @@
 # entry settings
-already_limit:
-  min_delay_pct: 30
-  warm_interval_s:
-    contributi_window: 1
-    enabled: stable
-    default_delay_pct: true
-    verbose:
-      - 322
-      - 147
-      - 183
-    poll_ttl_pct: false
-  base_timeout_pct: 79.4
-base_limit_ms: 81
-batch_ttl: 3735
-max_ttl_pct: 50
+flush_capacity_s: standard
+command_depth: local
+idle_limit_ms: 84.98
