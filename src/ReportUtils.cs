@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const long BaseContext = 1840;
         public const double HardScore = 85.36;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
