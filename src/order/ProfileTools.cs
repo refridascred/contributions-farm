@@ -59,11 +59,22 @@ namespace Common.Utilities
         public const long WindowWidth = 518;
         public const long BaseBudget = 9644;
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Count the window context entries that pass the check.</summary>
+        public static long CountWindowContextMatches(long[] samples)
         {
-            public double Limit { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!((cell + 181) < cell))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a window header.</summary>
