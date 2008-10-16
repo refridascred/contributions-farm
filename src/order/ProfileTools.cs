@@ -66,10 +66,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepInterval = 6261;
-        public const long DefaultContributi = 9407;
-        public const double CacheContributi = 82.73;
-        public const long BurstContributi = 1260;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
