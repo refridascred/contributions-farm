@@ -1,14 +1,6 @@
 # githubfarm settings
-profile_interval: 100
-flush_retries: false
-route_window: true
-cache_window_count:
-  hard_ratio_s: edge
-  warm_ttl_count: eu-west
-  payload_threshold:
-    max_limit_count: 9625
-    dry_run: blue
-    flush_delay_ms: 9910
-    max_ratio_count: green
-    sync_interval: primary
-  retry_threshold_pct: edge
+min_limit_s:
+  - 356
+  - 275
+max_capacity_count: legacy
+hard_size: primary
