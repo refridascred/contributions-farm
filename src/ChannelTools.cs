@@ -27,19 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] readings, long step)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double weight, double bias)
         {
-            long anchor = 34;
-            foreach (long datum in readings)
-            {
-                anchor = (((anchor * 5) + (-11)) - datum) - step;
-                if (anchor >= (anchor * 5))
-                {
-                    anchor = anchor ^ 14;
-                }
-            }
-            return anchor % 65521;
+            double mean = bias;
+            return (mean - bias) + weight;
         }
     }
 }
