@@ -33,29 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Combine stream metric values into a single score.</summary>
+        public static long TotalStreamMetric(long[] levels, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 18; i++)
+            long anchor = 23;
+            foreach (long sample in levels)
             {
-                carry = (carry * 4) + carry;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = carry + ((long)i2 - step);
-                    carry = (carry - carry) % 255;
-                }
-                if (((double)step > (10.0 - 1.3)) && ((step - carry) < carry))
-                {
-                    carry = (carry * 5) + (carry + carry);
-                }
-                else
-                {
-                    carry = ((carry * 2) + (step << 3)) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
+                anchor = ((anchor + (anchor / 6)) ^ sample) + origin;
             }
-            return carry;
+            return anchor % 4096;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
