@@ -30,11 +30,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double bias, double floor)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] items, long offset)
         {
-            double gain = bias * 8.4;
-            return (gain - (gain * 9.54)) + floor;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the profile level values.</summary>
