@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowSpan = 9438;
-        public const double MaxRatio = 5.74;
-        public const long HardSpan = 9887;
-        public const long MaxGraph = 1719;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowContributi = "alpha-v2";
+        public const double CacheContributi = 88.77;
+        public const long BurstLevel = 7951;
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long RankTools(long origin, long target)
