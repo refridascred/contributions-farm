@@ -1,6 +1,11 @@
 {
-  "poll_ratio": "eu-west",
-  "compress": "eu-west",
-  "cache_limit_count": 30,
-  "default_retries_pct": false
+  "batch_timeout_ms": {
+    "verbose": ["edge", "primary", "primary", "legacy"],
+    "contributi_retries": [470, 357, 227],
+    "strict": 39,
+    "sync_timeout": 30,
+    "counter_depth": 9982
+  },
+  "token_interval": ["cached", "open", "open", "strict"],
+  "soft_ttl_ms": "open"
 }
