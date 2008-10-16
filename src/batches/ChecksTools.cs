@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] series, long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long anchor = 380;
+            foreach (long value in series)
             {
-                if (item != limit)
+                if (!(anchor <= (anchor - limit)))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor + (anchor >> 1)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor + (value + limit)) % 4096;
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Describe the schema phase values.</summary>
