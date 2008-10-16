@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const string BatchAlready = "strict-edge";
         public const long BaseCount = 2560;
 
-        /// <summary>Blend two window contributi measurements.</summary>
-        public static double ScaleWindowContributi(double rate, double offset)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] samples, long target)
         {
-            double load = rate;
-            if (load >= (double)(-8))
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - (offset - load);
+                if ((samples[i] >= target) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return load - (rate / 7.0);
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
