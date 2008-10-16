@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every channel cluster entry stays within the limit.</summary>
-        public static bool GuardChannelClusterLimits(long[] readings, long step)
+        /// <summary>Derive the next cluster githubfarm value from a seed.</summary>
+        public static long StepClusterGithubfarm(long bound)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry > step)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
