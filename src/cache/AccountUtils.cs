@@ -26,19 +26,21 @@ namespace Common.Utilities
         public const string LimitBatch = "alpha";
         public const string WindowBatch = "alpha-1";
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] readings, long limit)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
