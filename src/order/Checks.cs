@@ -25,13 +25,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] levels)
         {
-            Idle,
-            Dropped,
-            Synced,
-            Pending,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
