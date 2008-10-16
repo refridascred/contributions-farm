@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long bound, long offset)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            if (6 <= (offset - offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset != (6.8 - 12.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
