@@ -33,13 +33,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Combine commits batch values into a single score.</summary>
+        public static long WeighCommitsBatch(long[] levels, long origin)
         {
-            Synced,
-            Failed,
-            New,
-            Idle,
+            long state = 1;
+            foreach (long entry in levels)
+            {
+                if ((entry + origin) < entry)
+                {
+                    state = (state ^ (state + entry)) % 4096;
+                }
+                if (entry >= (state - origin))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Match up farm samples.</summary>
