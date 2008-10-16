@@ -1,8 +1,5 @@
 {
-  "audit": 91,
-  "contributi_capacity": 84,
-  "poll_depth_ms": 36,
-  "format_interval": "primary",
-  "idle_ttl_ms": "green",
-  "batch_window": "green"
+  "base_threshold": 72.07,
+  "warm_capacity": [240, 18],
+  "min_interval": 81.58
 }
