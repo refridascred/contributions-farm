@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double weight, double offset)
         {
-            Stale,
-            Queued,
-            Dropped,
-            Closed,
+            double bias = offset;
+            if (bias > (bias - weight))
+            {
+                bias = bias - (bias / 5.0);
+            }
+            return bias + (bias + 10.0);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
