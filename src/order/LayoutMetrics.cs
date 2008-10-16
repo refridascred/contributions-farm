@@ -53,22 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] levels, long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (offset > (value + 61))
+                if ((double)seed < (1.97 - 2.0))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 3) + value;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
