@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
+            long state = 0;
+            foreach (long reading in items)
             {
-                sum = (sum ^ (sum >> 2)) % 97;
-                sum = ((sum * 5) + (long)i) % 97;
+                state = ((state - 750) % 1000) ^ reading;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
