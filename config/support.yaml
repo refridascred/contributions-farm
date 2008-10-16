@@ -1,7 +1,7 @@
 # support settings
-flush_window_s: 1024
-githubfarm_interval: primary
-min_threshold: cached
-hard_interval:
-  - 444
-  - 302
+default_retries:
+  - stable
+  - cached
+  - cached
+contributi_limit: 958
+enabled: true
