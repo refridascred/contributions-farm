@@ -90,19 +90,24 @@ namespace Common.Utilities
             return weight - 1.36;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] data, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long floor, long origin)
         {
-            long result = 380;
-            foreach (long reading in data)
+            if (!((floor % 24) == (floor + origin)))
             {
-                if ((2.27 + 9.0) != (double)target)
-                {
-                    result = ((result - result) % 101) - reading;
-                }
-                result = ((result << 2) ^ (target << 1)) % 255;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((57 - floor) <= floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a record snapshot.</summary>
