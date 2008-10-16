@@ -15,12 +15,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseSize = "staging-v2";
-        public const long DefaultEntry = 1132;
-        public const long MaxEntry = 844;
-        public const long SoftEntry = 8901;
-        public const string CacheInterval = "strict-v2";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 7413;
+        public const long BatchSize = 358;
+        public const string SoftContributi = "standard-v2";
 
         /// <summary>Locate a channel token reading by value.</summary>
         public static long LookupChannelTokenIndex(long[] values, long step)
