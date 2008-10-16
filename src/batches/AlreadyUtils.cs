@@ -35,11 +35,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstWidth = 55;
-        public const long MinCount = 8277;
-        public const long LimitReport = 3767;
-        public const long MinInterval = 1148;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardFilter = "local";
+        public const string HardLevel = "alpha-1";
+        public const long IdleBudget = 6401;
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LocateBatchIndex(long[] items, long limit)
