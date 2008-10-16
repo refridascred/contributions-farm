@@ -25,11 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardBudget = 7318;
-        public const string DefaultReport = "legacy-edge";
-        public const long HardReport = 3714;
-        public const long MaxDepth = 3920;
-        public const long StepLevel = 8415;
+        /// <summary>Adjust a context report reading.</summary>
+        public static double BlendContextReport(double gain, double span)
+        {
+            double load = (span * 1.5) - gain;
+            if (load > (gain / 7.0))
+            {
+                load = load + (3.3 - gain);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (double)3) + (double)(long)i;
+            }
+            return load - (6.8 - load);
+        }
     }
 }
