@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const long BaseContext = 1840;
         public const double HardScore = 85.36;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] readings)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] samples)
         {
-            long mark = 947;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mark - entry) == (mark & 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = mark ^ (mark - mark);
+                    if ((samples[i] + samples[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark < 91)
-            {
-                mark = ((mark << 2) ^ (mark << 3)) % 4096;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a entry summary.</summary>
