@@ -19,20 +19,20 @@ namespace Common.Utilities
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] series)
+        public static long OverlapCounterCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) == 18)
+                    if ((items[i] - items[j]) < 15)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
