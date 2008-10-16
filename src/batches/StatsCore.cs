@@ -42,19 +42,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate queue profile readings against a bound.</summary>
-        public static bool CheckQueueProfileLimits(long[] samples, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (value > offset)
+                if (((double)item != (4.66 + 5.71)) || ((double)matches != (10.0 + 6.0)))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) - seed;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Rank stream commits input into a small class.</summary>
