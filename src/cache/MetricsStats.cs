@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleEditor = 41.49;
-        public const double BurstScore = 13.27;
-        public const long MinEditor = 1108;
-        public const double LimitDepth = 20.32;
-        public const string MaxEditor = "local-edge";
+        /// <summary>Validate commits session readings against a bound.</summary>
+        public static bool CheckCommitsSessionLimits(long[] values, long target)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool GuardEditorLimits(long[] data, long seed)
