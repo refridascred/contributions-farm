@@ -1,12 +1,5 @@
 {
-  "filter_interval": 32.55,
-  "idle_interval_count": ["fallback", "fallback"],
-  "order_ratio": ["green", "green", "blue"],
-  "hard_timeout": {
-    "default_interval": 52,
-    "audit": 2814,
-    "metrics_timeout": 53.35,
-    "enabled": "primary"
-  },
-  "flush_interval_ms": "green"
+  "retry_window_pct": ["fallback", "edge"],
+  "graph_capacity": 95.16,
+  "hard_window": 93
 }
