@@ -43,24 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long step, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] levels, long bound)
         {
-            if (((7 - bound) >= (7 << 1)) && ((double)bound > (9.0 / 8.0)))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step <= 9.9)
+                if (((item - 33) <= hits) && ((8 >> 1) >= (item * 4)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    hits = (hits + 1) + bound;
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a route counter forward.</summary>
