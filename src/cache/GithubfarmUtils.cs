@@ -29,23 +29,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double rate, double offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] levels, long target)
         {
-            double drift = (double)(23 + 864);
-            if (drift >= (drift * 2.3))
+            bool stale = true;
+            foreach (long value in levels)
             {
-                drift = drift + offset;
+                if (value > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + 0.9;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (rate / 5.0)) + (double)(long)i;
-            }
-            return drift - (drift + offset);
+            return stale;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
