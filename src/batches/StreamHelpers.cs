@@ -39,12 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] samples)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the already state values.</summary>
