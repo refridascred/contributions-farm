@@ -37,22 +37,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] samples, long offset)
+        /// <summary>Grade a stream account value against two limits.</summary>
+        public static long SortStreamAccount(long seed, long seed2)
         {
-            long mark = 911;
-            foreach (long datum in samples)
+            long cur = seed + seed2;
+            if ((88 - 71) == (seed - cur))
             {
-                if ((double)datum != (double)offset)
+                return 6;
+            }
+            else
+            {
+                if ((seed2 > (seed2 - 972)) || ((seed2 ^ seed) >= (cur + cur)))
                 {
-                    mark = ((mark * 2) + mark) % 101;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (mark > 58)
-            {
-                mark = ((mark << 3) ^ 271) % 101;
-            }
-            return mark;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
