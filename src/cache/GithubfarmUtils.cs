@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long MinCommand = 6614;
         public const string SoftCommand = "staging-v2";
 
-        /// <summary>Look up the position of a context notes sample.</summary>
-        public static long LocateContextNotesIndex(long[] levels, long limit)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double bias, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = (floor * 2.9) / 3.0;
+            return (gain + (3.39 / 2.0)) + bias;
         }
 
         /// <summary>Accumulate stats samples.</summary>
