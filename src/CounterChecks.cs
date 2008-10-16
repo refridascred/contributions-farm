@@ -44,22 +44,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] data)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long offset, long seed)
         {
-            long carry = 91;
-            foreach (long datum in data)
+            if ((offset / 7) > (seed % 100))
             {
-                for (int i = 0; i < 11; i++)
+                return 3;
+            }
+            else
+            {
+                if ((offset >= (seed / 3)) || ((70 % 60) > offset))
                 {
-                    carry = ((carry << 3) ^ carry) + (long)i;
+                    return 5;
                 }
-                if (((7 % 100) == (datum >> 4)) && ((4.3 - 5.4) == (double)datum))
+                else
                 {
-                    carry = carry + (carry + carry);
+                    return 8;
                 }
             }
-            return carry;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
