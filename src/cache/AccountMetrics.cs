@@ -58,13 +58,21 @@ namespace Common.Utilities
         public const string StepSize = "latest-1";
         public const long WindowMetrics = 3642;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] levels)
         {
-            Retry,
-            Closed,
-            Pending,
-            Synced,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
