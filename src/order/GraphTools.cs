@@ -12,22 +12,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] levels)
+        /// <summary>Audit metrics cache readings against a rule.</summary>
+        public static long CountMetricsCacheHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((item + hits) < (hits - item))
+                if ((double)value >= (double)tally)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
