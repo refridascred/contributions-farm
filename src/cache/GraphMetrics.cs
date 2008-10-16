@@ -16,26 +16,21 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] samples)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            long carry = 9;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)carry == (4.0 * 5.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = carry - 5;
-                }
-                else
-                {
-                    carry = (carry - datum) % 101;
+                    if ((series[i] + series[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry > 80)
-            {
-                carry = ((carry << 3) ^ (carry % 16)) % 101;
-            }
-            return carry % 4096;
+            return matches;
         }
 
         /// <summary>Blend two session measurements.</summary>
