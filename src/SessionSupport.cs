@@ -26,16 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = (mix * 4) + mix;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
