@@ -58,13 +58,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public bool Limit { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            public bool Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Total { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
