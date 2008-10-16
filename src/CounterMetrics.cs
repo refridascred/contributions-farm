@@ -53,11 +53,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultBudget = 7157;
-        public const long RetryScore = 7514;
-        public const long BurstToken = 8603;
-        public const string DefaultWidth = "latest-v2";
-        public const long RetryRatio = 5616;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftDepth = 2476;
+        public const double RetryQueue = 13.0;
+        public const string MaxQueue = "legacy-1";
+        public const long LimitQueue = 4648;
     }
 }
