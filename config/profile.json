@@ -1,8 +1,14 @@
 {
-  "retry_retries_pct": "edge",
-  "strict": 6500,
-  "dry_run": 92,
-  "default_delay_ms": 1024,
-  "record_size": "fallback",
-  "min_delay": true
+  "default_threshold": [156, 104, 25],
+  "format_threshold": true,
+  "warm_delay_count": {
+    "hard_depth_pct": ["edge", "fallback"],
+    "hard_threshold_count": 65.97,
+    "cluster_retries": ["blue", "edge", "cached"],
+    "sync_depth": 100,
+    "retry_ttl": "primary",
+    "min_ratio": false
+  },
+  "route_ttl": "standard",
+  "hard_limit_s": 60
 }
