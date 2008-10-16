@@ -20,22 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] series)
         {
-            long state = 808;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (state >= reading)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state << 3) ^ (reading % 3)) % 97;
-                }
-                else
-                {
-                    state = state ^ (reading + reading);
+                    if ((series[i] ^ series[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return tally;
         }
 
         /// <summary>Find the first notes layout entry that matches the target.</summary>
