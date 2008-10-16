@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a checks schema value against two limits.</summary>
-        public static long SortChecksSchema(long floor, long bound)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] items, long offset)
         {
-            if ((13 - floor) > ((-7) & 1))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((2.35 / 9.0) == (double)floor)
+                if (!(offset <= (offset % 2)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    matches = (matches + 3) ^ value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
