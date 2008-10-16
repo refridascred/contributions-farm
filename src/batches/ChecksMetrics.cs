@@ -68,27 +68,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] levels)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            long anchor = 44;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor - (sample * 5)) + (long)i;
-                    anchor = (anchor << 2) ^ (sample - sample);
-                }
-                if (sample <= (sample & 15))
-                {
-                    anchor = anchor - sample;
-                }
-                else
-                {
-                    anchor = (anchor ^ (36 + sample)) % 97;
+                    if ((series[i] - series[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return count;
         }
     }
 }
