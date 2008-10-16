@@ -30,19 +30,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every payload filter entry stays within the limit.</summary>
-        public static bool GuardPayloadFilterRange(long[] readings, long target)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double bias, double bias2)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            double rate = bias2 / 4.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (value != target)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = rate + (double)(long)i;
             }
-            return ready;
+            return rate + bias;
         }
     }
 }
