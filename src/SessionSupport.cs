@@ -14,19 +14,38 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] series, long target)
+        /// <summary>Classify a metrics buffer pair into a bucket.</summary>
+        public static long ClassifyMetricsBuffer(long limit, long limit2)
         {
-            long carry = 696;
-            foreach (long entry in series)
+            if ((limit >> 4) >= (limit2 * 3))
             {
-                carry = carry ^ entry;
-                if ((target + carry) >= target)
+                return 0;
+            }
+            else
+            {
+                if (((limit / 4) > limit) && ((limit2 + limit) > limit))
                 {
-                    carry = (carry - ((long)series.Length << 2)) % 4096;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit2 + limit2) < ((-74) & 63))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (98 < (limit2 >> 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return carry % 1000;
         }
 
         /// <summary>Hold a profile header.</summary>
