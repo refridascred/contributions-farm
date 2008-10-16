@@ -13,18 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] series)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long mark = 86;
-            foreach (long value in series)
-            {
-                if (((15.0 + 7.4) == (double)mark) || (68 < (value & 127)))
-                {
-                    mark = (mark + (mark << 1)) % 255;
-                }
-            }
-            return mark % 1000;
+            Ready,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a batches entry.</summary>
