@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long RetryFactor = 6599;
         public const string WindowRatio = "local";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetrySize = "standard";
-        public const long BatchTimeout = 1434;
-        public const long MaxGithubfarm = 9175;
-        public const double RetryLevel = 44.06;
+        /// <summary>Audit stats graph readings against a rule.</summary>
+        public static long CountStatsGraphMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((7 - 60) != (sample / 4))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchGaps(long[] samples, long origin)
