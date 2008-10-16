@@ -44,13 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] items, long offset)
         {
-            public double Size { get; set; }
-            public double Ratio { get; set; }
-            public double Region { get; set; }
-            public long Count { get; set; }
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a graph info.</summary>
