@@ -36,19 +36,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate contributi filter readings against a bound.</summary>
-        public static bool ValidateContributiFilterLimits(long[] values, long floor)
+        /// <summary>Blend two order format measurements.</summary>
+        public static double BlendOrderFormat(double rate, double span)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            double weight = (double)((-79) & 15);
+            if (weight > (rate + rate))
             {
-                if (cell < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight - 3.2;
             }
-            return ok;
+            else
+            {
+                weight = weight - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (double)627) + (double)(long)i;
+            }
+            return weight - (6.0 / 6.0);
         }
     }
 }
