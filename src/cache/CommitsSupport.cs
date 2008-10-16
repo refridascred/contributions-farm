@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank githubfarm metric input into a small class.</summary>
-        public static long RankGithubfarmMetric(long target, long bound)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long slot = target ^ bound;
-            if (!((20.0 + 5.56) == (double)target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((target & 7) == (target - 927)) || ((slot - target) == (bound - (-340))))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((slot ^ (-365)) == (6 - target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Locked,
+            Synced,
+            Retry,
+            Idle,
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
