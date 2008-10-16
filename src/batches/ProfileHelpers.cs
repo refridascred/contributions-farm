@@ -14,14 +14,16 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Derive the next editor githubfarm value from a seed.</summary>
+        public static long StepEditorGithubfarm(long offset)
         {
-            Synced,
-            Locked,
-            New,
-            Draft,
-            Ready,
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = carry - (long)i;
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the support class values.</summary>
