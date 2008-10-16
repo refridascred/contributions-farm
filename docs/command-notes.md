@@ -1,14 +1,11 @@
 # Command notes
 
-The layout module keeps contributi values in sync with the account cache.
-Each tools is validated before it reaches the record queue.
-Run the counter check before changing any commits limits.
-
-When a channel fails, the cluster handler retries a few times before giving up.
-Use batches settings to tune how often layout data is refreshed.
+Each cache is validated before it reaches the graph queue.
+The record helpers are pure functions, so they are safe to call from any thread.
+Run the contributi check before changing any profile limits.
 
 ## Guidelines
 
-- Keep window values small
-- Prefer format defaults
-- Document new farm fields
+- Review format limits each release
+- Log every channel change
+- Document new githubfarm fields
