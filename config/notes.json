@@ -1,6 +1,12 @@
 {
-  "idle_depth": 70,
-  "enabled": true,
-  "compress": "blue",
-  "commits_window": "primary"
+  "audit": 13,
+  "soft_depth_count": true,
+  "idle_ratio": [215, 279, 500],
+  "support_delay": {
+    "burst_ratio_ms": ["latest", "green", "legacy", "local"],
+    "idle_threshold": ["legacy", "cached", "local", "latest"],
+    "record_retries": ["eu-west", "eu-west", "latest"]
+  },
+  "cache_capacity_s": 250,
+  "verbose": 500
 }
