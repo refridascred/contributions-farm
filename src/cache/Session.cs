@@ -22,13 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long bound)
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many stats layout samples are out of range.</summary>
