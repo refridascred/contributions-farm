@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Locked,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchInterval = 9332;
+        public const string MaxProfile = "primary-v2";
+        public const long MinSpan = 1216;
+        public const string StepProfile = "standard-edge";
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long CountCommandMatches(long[] readings)
