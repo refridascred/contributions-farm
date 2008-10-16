@@ -46,19 +46,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double scale, double floor)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            double rate = scale;
-            if (rate <= (double)(-7))
-            {
-                rate = rate - (double)0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (floor + rate)) + (double)(long)i;
-            }
-            return rate - scale;
+            Active,
+            Dropped,
+            Idle,
+            Pending,
         }
     }
 }
