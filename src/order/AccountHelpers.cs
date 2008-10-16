@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 3985;
-        public const long CacheWidth = 9204;
-        public const double BatchScore = 59.64;
-        public const double BatchToken = 19.3;
-        public const long RetryBudget = 9007;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Ready,
+            Idle,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long ScoreWindow(long[] values)
