@@ -34,13 +34,21 @@ namespace Common.Utilities
         public const long LimitSession = 8323;
         public const string DefaultWidth = "strict-v2";
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Count context report pairs that satisfy a relation.</summary>
+        public static long PairContextReportCount(long[] items)
         {
-            Queued,
-            Paused,
-            New,
-            Active,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
