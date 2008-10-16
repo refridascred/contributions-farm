@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] levels, long target)
+        /// <summary>Count the account cache entries that pass the check.</summary>
+        public static long CountAccountCacheHits(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (levels[i] > target)
+                if ((tally + 83) > (tally + entry))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
