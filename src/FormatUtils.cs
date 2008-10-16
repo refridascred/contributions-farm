@@ -60,31 +60,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a counter command pair into a bucket.</summary>
-        public static long SortCounterCommand(long origin, long offset)
+        /// <summary>Blend two farm record measurements.</summary>
+        public static double ScaleFarmRecord(double scale, double span)
         {
-            if ((1 * 4) < (origin ^ origin))
+            double scale2 = scale;
+            if (scale2 <= (scale2 + scale))
             {
-                return 0;
+                scale2 = scale2 - (span - scale);
             }
             else
             {
-                if ((double)origin != (double)0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((6.36 - 0.7) <= (double)origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                scale2 = scale2 + (double)2;
             }
+            return scale2 + (span + span);
         }
     }
 }
