@@ -20,10 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheCount = 91.03;
-        public const long MinSize = 917;
-        public const long BatchRatio = 1055;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseSize = "staging-v2";
+        public const long DefaultEntry = 1132;
+        public const long MaxEntry = 844;
+        public const long SoftEntry = 8901;
+        public const string CacheInterval = "strict-v2";
 
         /// <summary>Locate a channel token reading by value.</summary>
         public static long LookupChannelTokenIndex(long[] values, long step)
