@@ -37,13 +37,15 @@ namespace Common.Utilities
             return ((load + (double)7) + weight) + floor;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long seed)
         {
-            Draft,
-            Idle,
-            Queued,
-            Locked,
+            long score = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Accumulate report samples.</summary>
