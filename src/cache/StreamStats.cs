@@ -43,18 +43,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Measure how many cluster batch samples are out of range.</summary>
+        public static long CountClusterBatchOutliers(long[] data, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading >= (floor - reading))
                 {
-                    if ((items[i] ^ items[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
