@@ -13,19 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] data, long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long mark = 947;
+            foreach (long entry in readings)
             {
-                if (item != offset)
+                if ((mark - entry) == (mark & 7))
                 {
-                    flag = false;
-                    break;
+                    mark = mark ^ (mark - mark);
                 }
             }
-            return flag;
+            if (mark < 91)
+            {
+                mark = ((mark << 2) ^ (mark << 3)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
