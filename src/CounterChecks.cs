@@ -30,19 +30,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] items, long limit)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
