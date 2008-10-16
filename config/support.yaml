@@ -1,5 +1,9 @@
 # support settings
-idle_delay: 79
-max_threshold_count: 6415
-tools_retries: 10.97
-sync_timeout_count: 7878
+checks_window: true
+max_limit:
+  - 105
+  - 276
+  - 96
+max_delay: 20
+max_limit_s: true
+entry_ratio: latest
