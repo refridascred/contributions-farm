@@ -26,10 +26,10 @@ namespace Common.Utilities
         public const long IdleAccount = 6873;
         public const double StepTimeout = 90.51;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardChecks = 6.39;
-        public const long BaseChecks = 2483;
-        public const string SoftTimeout = "legacy-v2";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultInterval = 6831;
+        public const long CacheTimeout = 4793;
+        public const double BurstTimeout = 51.07;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
