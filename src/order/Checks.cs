@@ -23,17 +23,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Locate a account githubfarm reading by value.</summary>
-        public static long FindAccountGithubfarmIndex(long[] samples, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (samples[i] < seed)
+                if (((offset / 4) < reading) && !((matches + reading) <= (offset % 97)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Blend two layout measurements.</summary>
