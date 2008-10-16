@@ -44,22 +44,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] values, long step)
+        /// <summary>Count the payload schema entries that pass the check.</summary>
+        public static long TallyPayloadSchemaHits(long[] levels)
         {
-            long acc = 954;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((7.8 * 0.98) >= (double)reading)
+                if (datum <= seen)
                 {
-                    acc = (acc + (reading >> 4)) + step;
+                    seen = seen + 3;
                 }
             }
-            if (acc < 339)
-            {
-                acc = (acc ^ acc) % 101;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
