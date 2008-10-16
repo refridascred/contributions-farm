@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 309;
-        public const long IdleStream = 900;
-        public const double BaseCount = 64.47;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TallyBuffer(long[] values, long offset)
