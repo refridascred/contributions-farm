@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] series, long seed)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long result = 40;
-            foreach (long cell in series)
-            {
-                if ((double)result != (double)6)
-                {
-                    result = (((result - (result << 3)) % 101) + cell) + seed;
-                }
-            }
-            return result;
+            Synced,
+            Stale,
+            Ready,
+            Draft,
+            Pending,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
