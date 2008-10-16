@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] values)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double weight = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (26 > (entry & 3))
-                {
-                    seen = seen + 2;
-                }
+                weight = (weight - (weight * 15.0)) + (double)(long)i;
             }
-            return seen;
+            return weight + gain;
         }
 
         /// <summary>Hold a session snapshot.</summary>
