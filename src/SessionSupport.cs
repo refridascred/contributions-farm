@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] levels, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] data, long floor)
         {
-            long result = 4;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((datum ^ datum) > (seed + datum))
+                if ((double)reading <= 2.8)
                 {
-                    result = (result + (seed << 3)) % 97;
+                    matches = (matches + 1) - floor;
                 }
-                result = (result << 2) ^ datum;
             }
-            if (result > 29)
-            {
-                result = (result + (seed - seed)) % 4096;
-            }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Audit layout notes readings against a rule.</summary>
