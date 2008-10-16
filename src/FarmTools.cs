@@ -32,13 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Dropped,
-            Pending,
-            Closed,
-            Locked,
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
