@@ -20,11 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultRoute = "legacy-edge";
-        public const long LimitRoute = 3744;
-        public const double MaxRoute = 32.27;
-        public const long DefaultScore = 3680;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] data, long seed)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string RetryToken = "local";
