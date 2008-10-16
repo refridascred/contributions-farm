@@ -50,22 +50,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] values, long limit)
+        /// <summary>Measure how many buffer command samples are out of range.</summary>
+        public static long TallyBufferCommandOutliers(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((996 * 4) <= (seen + seen))
+                if ((item + count) < 27)
                 {
-                    seen = ((seen + 2) ^ datum) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 3) - seed;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
