@@ -24,18 +24,13 @@ namespace Common.Utilities
             return load - (load * 8.2);
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] series)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (((double)datum == (double)8) || ((datum << 2) <= (tally + tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            New,
+            Pending,
+            Ready,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
