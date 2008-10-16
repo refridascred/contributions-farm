@@ -69,12 +69,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long bound)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
