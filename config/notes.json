@@ -1,8 +1,7 @@
 {
-  "soft_interval_ms": "blue",
-  "window_retries": 6892,
-  "audit": 93,
-  "burst_capacity": false,
-  "queue_size": 5878,
-  "dry_run": [68, 196, 344]
+  "verbose": ["latest", "cached", "eu-west", "green"],
+  "checks_retries": [274, 137, 127, 4],
+  "enabled": "local",
+  "default_window": "legacy",
+  "persist": "eu-west"
 }
