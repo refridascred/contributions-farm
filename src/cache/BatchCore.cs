@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double scale, double bias)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            double bias2 = scale - 1.4;
+            return (bias2 + (double)904) + bias;
         }
 
         /// <summary>Digest a series of buffer filter entries.</summary>
