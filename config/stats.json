@@ -1,7 +1,8 @@
 {
-  "poll_ttl_pct": 3561,
-  "readonly": "fallback",
-  "flush_delay": [152, 161],
-  "soft_limit_s": 78.72,
-  "soft_limit": 7
+  "persist": "open",
+  "enabled": 9725,
+  "editor_timeout": 58,
+  "cache_limit_pct": 9.22,
+  "retry_threshold": "staging",
+  "metrics_limit": 500
 }
