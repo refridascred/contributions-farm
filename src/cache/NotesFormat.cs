@@ -11,26 +11,14 @@ namespace Common.Utilities
         public const string BurstChannel = "legacy";
         public const long MinCount = 8399;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] samples)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long total = 0;
-            foreach (long item in samples)
-            {
-                if ((item ^ total) > (item + item))
-                {
-                    total = (total - (item - item)) % 101;
-                }
-                else
-                {
-                    total = ((total * 2) + (item * 5)) % 1000;
-                }
-            }
-            if (total > 889)
-            {
-                total = total + (total + total);
-            }
-            return total;
+            Queued,
+            Done,
+            Dropped,
+            Pending,
+            Paused,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
