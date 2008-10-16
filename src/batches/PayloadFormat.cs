@@ -72,11 +72,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
+            Locked,
+            Failed,
+            Dropped,
+            Ready,
+            Draft,
         }
     }
 }
