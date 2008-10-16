@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next tools route value from a seed.</summary>
-        public static long IterateToolsRoute(long limit)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
