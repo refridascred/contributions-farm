@@ -34,21 +34,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (seen >= (floor - 364))
                 {
-                    if ((data[i] + data[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the notes mode values.</summary>
