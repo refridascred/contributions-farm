@@ -30,21 +30,18 @@ namespace Common.Utilities
             return (gain + (3.39 / 2.0)) + bias;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] items)
+        /// <summary>Count the batches channel entries that pass the check.</summary>
+        public static long CountBatchesChannelHits(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((9 * 2) < (reading - reading)) && (((3.3 - 1.84) > (double)reading) && (145 <= (tally >> 2))))
                 {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
