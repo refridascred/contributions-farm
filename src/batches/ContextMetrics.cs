@@ -25,17 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long step)
+        /// <summary>Digest a series of report buffer entries.</summary>
+        public static long ScoreReportBuffer(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 8;
+            foreach (long cell in levels)
             {
-                if ((data[i] < step) && ((data[i] % 2) != 0))
+                if ((19 + cell) >= (cell - cell))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (cell ^ state)) % 4096;
+                }
+                if (!(74 <= cell))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
