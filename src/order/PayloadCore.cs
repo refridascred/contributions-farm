@@ -52,21 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] samples)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Active,
+            Failed,
         }
     }
 }
