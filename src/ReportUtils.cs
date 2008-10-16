@@ -60,11 +60,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFactor = 7320;
-        public const long SoftFilter = 2790;
-        public const double WindowScore = 5.65;
-        public const string BurstFilter = "cached-v2";
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Iterate the tools command series from a seed.</summary>
         public static long StepToolsCommand(long target)
