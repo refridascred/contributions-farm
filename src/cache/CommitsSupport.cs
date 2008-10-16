@@ -54,11 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 3929;
-        public const long StepLevel = 8754;
-        public const double BatchQueue = 20.48;
-        public const long StepBudget = 1348;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public long Total { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
