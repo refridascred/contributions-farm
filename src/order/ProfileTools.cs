@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Fold a list of format layout readings.</summary>
+        public static long FoldFormatLayout(long[] data)
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
+            long sum = 71;
+            foreach (long reading in data)
+            {
+                if ((2.32 - 7.72) > (5.0 / 9.0))
+                {
+                    sum = (sum ^ sum) % 65521;
+                    sum = sum + ((-35) / 9);
+                }
+                sum = sum + (reading + sum);
+                if (9.4 < (4.0 + 6.28))
+                {
+                    sum = ((sum * 3) + (reading + 530)) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
