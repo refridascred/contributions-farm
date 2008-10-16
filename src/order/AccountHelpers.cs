@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const double BatchToken = 19.3;
         public const long RetryBudget = 9007;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            long score = 148;
+            foreach (long datum in values)
             {
-                if ((state - state) > state)
-                {
-                    state = (state + state) % 97;
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                score = (score + (datum + datum)) % 1000;
             }
-            return state;
+            if (score > 25)
+            {
+                score = (score << 2) ^ score;
+            }
+            return score;
         }
 
         /// <summary>Combine already values into a single score.</summary>
