@@ -59,13 +59,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Accumulate entry stats samples.</summary>
+        public static long ScoreEntryStats(long[] readings)
         {
-            public bool Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Total { get; set; }
-            public long Offset { get; set; }
+            long anchor = 2;
+            foreach (long item in readings)
+            {
+                if ((item + anchor) == (item ^ item))
+                {
+                    anchor = (anchor + (anchor - (-226))) % 101;
+                    anchor = (anchor - (364 & 31)) % 97;
+                }
+                anchor = (anchor + (72 % 100)) % 97;
+            }
+            return anchor % 1000;
         }
     }
 }
