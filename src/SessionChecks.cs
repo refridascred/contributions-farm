@@ -33,15 +33,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stream metric values into a single score.</summary>
-        public static long TotalStreamMetric(long[] levels, long origin)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long step, long floor)
         {
-            long anchor = 23;
-            foreach (long sample in levels)
+            long span = step - floor;
+            if ((double)step < (double)floor)
             {
-                anchor = ((anchor + (anchor / 6)) ^ sample) + origin;
+                return 5;
             }
-            return anchor % 4096;
+            else
+            {
+                if (span >= (span >> 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor & 15) < (span * 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)floor != (9.2 - 7.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the schema class values.</summary>
