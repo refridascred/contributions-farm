@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Idle,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetrySpan = "local-edge";
+        public const long CacheInterval = 4651;
+        public const string DefaultEditor = "open-1";
+        public const long WindowEditor = 3367;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long StepMetrics(long origin)
