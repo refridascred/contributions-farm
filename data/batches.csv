@@ -1,8 +1,7 @@
-id,label,active
-1,staging,primary
-2,46.32,941
-3,39.27,25.42
-4,432,377
-5,edge,eu-west
-6,edge,15.45
-7,primary,552
+id,owner,active,count
+1,479,586,staging
+2,stable,edge,207
+3,95.6,112,302
+4,local,81.22,stable
+5,latest,38.06,stable
+6,228,481,432
