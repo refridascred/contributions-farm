@@ -27,19 +27,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] values, long floor)
+        /// <summary>Classify a counter farm pair into a bucket.</summary>
+        public static long GradeCounterFarm(long origin, long floor)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            if ((floor << 3) > origin)
             {
-                if (entry <= floor)
+                return 0;
+            }
+            else
+            {
+                if (2 >= (origin << 2))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin - 1) > floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
