@@ -1,5 +1,10 @@
 {
-  "enabled": "latest",
-  "sync_limit_s": "strict",
-  "min_window_ms": "legacy"
+  "batches_ratio": {
+    "idle_ratio_count": 63.67,
+    "profile_interval": false,
+    "soft_window": 59.54,
+    "session_interval": 88
+  },
+  "batch_ratio": 53.56,
+  "persist": 74
 }
