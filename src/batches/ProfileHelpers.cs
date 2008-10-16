@@ -14,18 +14,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit editor profile readings against a rule.</summary>
-        public static long TallyEditorProfileGaps(long[] data)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((hits >> 3) != (sample - 16))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the support class values.</summary>
