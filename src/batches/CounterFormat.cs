@@ -33,17 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first support githubfarm entry that matches the target.</summary>
-        public static long LookupSupportGithubfarmIndex(long[] values, long floor)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
