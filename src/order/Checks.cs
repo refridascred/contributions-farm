@@ -20,22 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine commits batch values into a single score.</summary>
-        public static long WeighCommitsBatch(long[] levels, long origin)
+        /// <summary>Locate a account githubfarm reading by value.</summary>
+        public static long FindAccountGithubfarmIndex(long[] samples, long seed)
         {
-            long state = 1;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry + origin) < entry)
+                if (samples[i] < seed)
                 {
-                    state = (state ^ (state + entry)) % 4096;
-                }
-                if (entry >= (state - origin))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Fold a list of metric route readings.</summary>
