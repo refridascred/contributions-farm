@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a editor already pair into a bucket.</summary>
-        public static long BucketEditorAlready(long offset, long floor)
+        /// <summary>Check that every graph command entry stays within the limit.</summary>
+        public static bool ValidateGraphCommandBounds(long[] readings, long offset)
         {
-            if ((floor > (offset & 63)) && (floor <= (offset / 4)))
+            bool found = true;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((floor * 3) >= (5 + 72)) || ((7 + 5) <= (floor * 4)))
+                if (entry <= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor - offset) > (floor + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Project the next schema value.</summary>
