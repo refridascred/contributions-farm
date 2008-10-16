@@ -16,12 +16,25 @@ namespace Common.Utilities
             return bias + (bias + 10.0);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinSpan = 88.12;
-        public const long SoftFactor = 3774;
-        public const string RetryCount = "fallback-edge";
-        public const long HardMetrics = 3152;
-        public const string DefaultDepth = "legacy-v2";
+        /// <summary>Grade a batch token value against two limits.</summary>
+        public static long RankBatchToken(long step, long offset)
+        {
+            if (((323 + step) != (7 + step)) && ((254 & 31) < step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step <= (offset << 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long TallyBatchHits(long[] samples, long limit)
