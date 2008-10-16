@@ -59,19 +59,11 @@ namespace Common.Utilities
         public const long WindowWidth = 518;
         public const long BaseBudget = 9644;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] levels)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long acc = 4;
-            foreach (long reading in levels)
-            {
-                acc = ((acc - (acc / 7)) % 4096) ^ reading;
-            }
-            if (acc > 127)
-            {
-                acc = acc - (acc & 31);
-            }
-            return acc % 65521;
+            public double Limit { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
