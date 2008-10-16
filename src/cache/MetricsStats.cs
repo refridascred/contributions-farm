@@ -51,15 +51,15 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] readings)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) > 16)
+                    if ((readings[i] - readings[j]) == 2)
                     {
                         count = count + 1;
                     }
