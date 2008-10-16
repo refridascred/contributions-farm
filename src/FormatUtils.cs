@@ -73,21 +73,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up record already samples.</summary>
-        public static long OverlapRecordAlreadyCount(long[] items)
+        /// <summary>Rank metrics entry input into a small class.</summary>
+        public static long GradeMetricsEntry(long offset, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long bound2 = offset + bound;
+            if (bound > (offset ^ bound2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((bound + offset) <= (bound2 * 4))
                 {
-                    if ((items[i] - items[j]) < 12)
+                    return 2;
+                }
+                else
+                {
+                    if (((bound2 + bound) < bound) || (2.2 > (4.8 * 9.87)))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (bound2 < (bound + offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first commits order entry that matches the target.</summary>
