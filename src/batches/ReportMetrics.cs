@@ -18,31 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long bound, long bound2)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            if (((251 + bound2) < (bound2 ^ bound2)) && ((bound - bound) == (71 + bound)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound > bound2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (bound <= (0 & 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
