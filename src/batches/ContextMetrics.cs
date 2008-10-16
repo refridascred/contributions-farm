@@ -16,18 +16,21 @@ namespace Common.Utilities
         public const long MinTimeout = 3681;
         public const string LimitScore = "primary-1";
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] data, long offset)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (9 < (count + count))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count + 1) ^ datum) - offset;
+                    if ((data[i] + data[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the notes mode values.</summary>
