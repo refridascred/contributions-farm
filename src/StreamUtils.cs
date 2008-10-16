@@ -12,23 +12,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long state = 23;
-            foreach (long item in levels)
-            {
-                state = ((state - (state % 97)) % 97) - item;
-                if ((17.0 * 9.2) < 4.61)
-                {
-                    break;
-                }
-            }
-            if (state > (-55))
-            {
-                state = ((state * 2) + (33 - 8)) % 255;
-            }
-            return state % 4096;
+            Paused,
+            Idle,
+            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
