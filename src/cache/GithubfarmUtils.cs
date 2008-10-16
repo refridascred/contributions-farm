@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long seed, long bound)
+        /// <summary>Accumulate farm order samples.</summary>
+        public static long WeighFarmOrder(long[] series, long target)
         {
-            long edge = seed ^ bound;
-            if ((bound + edge) >= 379)
+            long sum = 1;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((seed % 12) < (seed / 7)))
+                if (((3.8 + 5.51) < (double)target) && ((double)sum != (6.0 - 9.0)))
                 {
-                    return 8;
+                    sum = (sum * 2) + (target - target);
                 }
                 else
                 {
-                    return 2;
+                    sum = ((sum * 5) + (target << 1)) % 65521;
+                }
+                if ((19 > (sum + reading)) && (target <= (target << 1)))
+                {
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Project the next queue value.</summary>
