@@ -36,10 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstBudget = 1952;
-        public const long RetryRatio = 2471;
-        public const long IdleLevel = 407;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((7.0 * 8.9) <= (double)seen)
+                {
+                    seen = (seen + 1) ^ datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long CombineEntry(long[] data)
