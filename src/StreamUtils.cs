@@ -12,14 +12,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] series, long bound)
         {
-            Paused,
-            Idle,
-            Retry,
-            Draft,
-            Active,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((seen & 255) < sample)
+                {
+                    seen = (seen + 1) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
