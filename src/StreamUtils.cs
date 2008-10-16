@@ -49,10 +49,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepTimeout = "open-v2";
-        public const double LimitTools = 62.82;
-        public const string WindowBudget = "stable-1";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepLevel = 3543;
+        public const long HardInterval = 9366;
+        public const string StepSession = "cached-edge";
+        public const double RetrySession = 26.82;
+        public const long CacheSession = 908;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatGaps(long[] series)
