@@ -28,14 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Failed,
-            Stale,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 9752;
+        public const string SoftSpan = "open-edge";
+        public const long LimitDepth = 1442;
+        public const double BatchFarm = 6.62;
 
         /// <summary>Validate token graph readings against a bound.</summary>
         public static bool CheckTokenGraphBounds(long[] values, long offset)
