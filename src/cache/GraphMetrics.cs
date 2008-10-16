@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double scale, double floor)
-        {
-            double scale2 = floor + (floor / 4.0);
-            if (scale2 < scale2)
-            {
-                scale2 = scale2 + (scale2 - scale2);
-            }
-            return scale2 + (scale * 7.8);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryFactor = 9092;
+        public const long BatchScore = 3524;
+        public const double DefaultOrder = 29.98;
+        public const long DefaultRatio = 101;
+        public const string MinSpan = "alpha-edge";
 
         /// <summary>Define support limits and defaults.</summary>
         public const string DefaultSupport = "latest-v2";
