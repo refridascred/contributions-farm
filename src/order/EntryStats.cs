@@ -54,22 +54,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] data)
+        /// <summary>Locate a batches channel reading by value.</summary>
+        public static long FindBatchesChannelIndex(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally & 7) <= (value ^ tally))
+                if (readings[i] >= target)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
