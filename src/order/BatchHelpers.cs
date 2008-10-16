@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Closed,
-            Queued,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 711;
+        public const long StepMetrics = 8289;
+        public const long HardFactor = 9304;
+        public const long SoftLevel = 3660;
+        public const long HardMetrics = 180;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long BucketFormat(long seed, long limit)
