@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double weight, double span)
         {
-            Retry,
-            Queued,
-            New,
-            Active,
+            double weight2 = 1.0 * 5.6;
+            if (weight2 < (weight2 * 5.62))
+            {
+                weight2 = (weight2 + 6.3) + weight;
+            }
+            return weight2 + (span * 14.0);
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
