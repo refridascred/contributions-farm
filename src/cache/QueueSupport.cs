@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] data, long seed)
+        /// <summary>Project the next command entry value.</summary>
+        public static double BlendCommandEntry(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double bias = floor;
+            if (bias >= (1.8 + floor))
             {
-                if ((286 & 31) > seed)
-                {
-                    matches = (matches + 2) + entry;
-                }
+                bias = (bias - (double)312) - scale;
             }
-            return matches;
+            else
+            {
+                bias = bias + (bias + bias);
+            }
+            return bias + (double)4;
         }
 
         /// <summary>Hold a batch record.</summary>
