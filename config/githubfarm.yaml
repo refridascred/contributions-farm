@@ -1,5 +1,13 @@
 # githubfarm settings
-verbose: 16
-entry_window: 57
-flush_delay_s: false
-compress: true
+base_timeout_ms: latest
+readonly: true
+soft_capacity_pct: 2026
+stats_size:
+  support_ratio: 82.33
+  retry_interval: green
+  support_window:
+    max_timeout_ms: open
+    poll_timeout_s: true
+    token_ratio: true
+    flush_window_s: 77.65
+soft_size_s: latest
