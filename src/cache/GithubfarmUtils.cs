@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] values, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((values[i] < bound) && ((values[i] % 3) != 0))
+                if ((matches + matches) > (matches & 1))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - datum;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
