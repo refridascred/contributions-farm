@@ -50,15 +50,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Idle,
-            Queued,
-            Failed,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryReport = "cached-v2";
+        public const string IdleReport = "local-1";
+        public const string HardSize = "cached-edge";
+        public const long WindowReport = 6375;
+        public const long DefaultReport = 294;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long LookupPayloadIndex(long[] items, long seed)
