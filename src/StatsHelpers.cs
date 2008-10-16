@@ -48,13 +48,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] data)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
