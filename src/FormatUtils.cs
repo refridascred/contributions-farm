@@ -55,18 +55,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the buffer command entries that pass the check.</summary>
-        public static long CountBufferCommandMatches(long[] values, long bound)
+        /// <summary>Find the first commits order entry that matches the target.</summary>
+        public static long SeekCommitsOrderIndex(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)sample == (0.81 - 5.0))
+                if ((samples[i] < seed) && ((samples[i] % 2) == 0))
                 {
-                    hits = (hits + 3) - bound;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
