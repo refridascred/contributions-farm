@@ -1,8 +1,5 @@
 {
-  "dry_run": "fallback",
-  "hard_timeout_pct": "green",
-  "enabled": ["fallback", "blue", "fallback", "cached"],
-  "persist": false,
-  "default_retries_pct": true,
-  "poll_ttl_count": 6970
+  "poll_timeout": "legacy",
+  "burst_depth": "cached",
+  "channel_limit": "stable"
 }
