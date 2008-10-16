@@ -93,21 +93,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseScore = "legacy-v2";
+        public const double RetryGithubfarm = 6.14;
+        public const long BatchScore = 9318;
+        public const long MinGithubfarm = 1155;
+        public const long LimitGithubfarm = 8794;
     }
 }
