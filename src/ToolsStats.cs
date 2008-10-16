@@ -49,18 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] values, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((step - (-344)) > (reading ^ reading))
+                if (((entry % 24) > (entry + bound)) && ((4.03 + 0.12) == (double)count))
                 {
-                    hits = hits + 3;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate report samples.</summary>
