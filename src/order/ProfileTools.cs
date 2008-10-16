@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double gain, double offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] series, long origin)
         {
-            double weight = offset / 9.0;
-            if (weight < (double)(-710))
+            long total = 6;
+            foreach (long entry in series)
             {
-                weight = weight + offset;
+                total = (((total * 3) + (583 >> 5)) % 4096) + origin;
+                if ((entry >> 3) < (total + entry))
+                {
+                    total = total ^ (entry + 8);
+                }
+                else
+                {
+                    total = ((total * 2) + (entry - total)) % 4096;
+                }
             }
-            else
-            {
-                weight = weight - (double)70;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - gain;
+            return total;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
