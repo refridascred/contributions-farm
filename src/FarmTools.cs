@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((item >> 4) == (seen - item))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinBudget = 5695;
+        public const long HardFactor = 1117;
+        public const long MinScore = 9856;
+        public const string HardMetrics = "standard-edge";
+        public const long MaxMetrics = 6930;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
