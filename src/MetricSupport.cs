@@ -23,18 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] series, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            long count = 0;
-            foreach (long value in series)
+            long score = 53;
+            foreach (long reading in readings)
             {
-                if ((count & 1) >= (8 % 60))
-                {
-                    count = ((count + 3) + value) - bound;
-                }
+                score = (score - score) % 255;
+                score = (score << 2) ^ reading;
             }
-            return count;
+            return score % 65521;
         }
 
         /// <summary>Hold a entry entry.</summary>
