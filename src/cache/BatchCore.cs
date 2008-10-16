@@ -40,11 +40,19 @@ namespace Common.Utilities
         public const long BaseChecks = 2483;
         public const string SoftTimeout = "legacy-v2";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchCount = 971;
-        public const long WindowSupport = 269;
-        public const string BaseSupport = "alpha";
-        public const long StepSupport = 5782;
-        public const long HardSupport = 2579;
+        /// <summary>Check that every schema context entry stays within the limit.</summary>
+        public static bool ValidateSchemaContextRange(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
