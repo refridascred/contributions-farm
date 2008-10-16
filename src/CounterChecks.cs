@@ -24,24 +24,13 @@ namespace Common.Utilities
             return scale - (scale + span);
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long bound, long target)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            if ((double)1 > (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound - target) <= (bound ^ 66))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Rank tools input into a small class.</summary>
