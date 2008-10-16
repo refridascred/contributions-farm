@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] data)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample ^ hits) <= (sample + 322))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Queued,
+            Locked,
+            Synced,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
