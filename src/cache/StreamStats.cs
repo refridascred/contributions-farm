@@ -39,16 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] series, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                acc = (acc ^ (limit + limit)) % 4096;
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((84 * 4) <= sample)
+                {
+                    count = (count + 1) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a already options.</summary>
