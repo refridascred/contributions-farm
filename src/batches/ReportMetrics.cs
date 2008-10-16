@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryNotes = 14.36;
-        public const long SoftRatio = 2117;
-        public const string MinScore = "cached-1";
-        public const double CacheRatio = 63.62;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Draft,
+            Stale,
+            Pending,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
