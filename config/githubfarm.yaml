@@ -1,10 +1,5 @@
 # githubfarm settings
-session_ratio:
-  - 301
-  - 398
-  - 188
-  - 252
-burst_capacity_s: 1024
-soft_limit_count: stable
-flush_depth: standard
-burst_ttl: 18.37
+verbose: 16
+entry_window: 57
+flush_delay_s: false
+compress: true
