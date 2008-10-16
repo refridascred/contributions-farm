@@ -29,15 +29,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double ratio, double floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long step, long target)
         {
-            double scale = floor;
-            if (scale <= scale)
+            long gap = step - target;
+            if ((7.0 / 9.0) > (double)target)
             {
-                scale = (scale - (double)260) - ratio;
+                return 8;
             }
-            return scale + (floor / 5.0);
+            else
+            {
+                if ((step & 15) >= gap)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)gap <= (8.31 / 8.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)gap >= 16.0)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
