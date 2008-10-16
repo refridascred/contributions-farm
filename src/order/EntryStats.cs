@@ -26,12 +26,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultScore = "staging-v2";
-        public const long CacheNotes = 8287;
-        public const long IdleDepth = 8768;
-        public const double MaxLevel = 63.99;
-        public const double BatchFactor = 23.8;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long origin, long target)
+        {
+            long span = origin - target;
+            if ((0.1 / 9.0) <= (double)origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((origin % 3) <= (62 + origin)) && ((target << 1) < (span + 44)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long StepStream(long offset)
