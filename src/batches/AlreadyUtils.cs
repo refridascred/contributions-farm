@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] items, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if (cell >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Match up payload samples.</summary>
