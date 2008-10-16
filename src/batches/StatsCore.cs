@@ -31,17 +31,21 @@ namespace Common.Utilities
             return drift + (drift + 9.59);
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] data, long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 687;
+            foreach (long reading in series)
             {
-                if ((data[i] <= target) && ((data[i] % 3) != 0))
+                mark = ((mark << 2) ^ (reading + reading)) % 1000;
+                if ((step + (long)series.Length) < (step + reading))
                 {
-                    return (long)i;
+                    mark = (mark << 2) ^ (step * 2);
+                    mark = (mark - (reading + mark)) % 101;
                 }
+                mark = mark - (step % 10);
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a context summary.</summary>
