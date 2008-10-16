@@ -20,10 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 2357;
-        public const long BaseSpan = 6631;
-        public const long WindowSupport = 1835;
+        /// <summary>Fold a list of account layout readings.</summary>
+        public static long DigestAccountLayout(long[] samples)
+        {
+            long mix = 66;
+            foreach (long value in samples)
+            {
+                if ((7.37 / 9.0) <= (double)value)
+                {
+                    mix = (mix << 2) ^ (value >> 2);
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long DerivePayload(long bound)
