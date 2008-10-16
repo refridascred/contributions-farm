@@ -44,17 +44,30 @@ namespace Common.Utilities
         public const string LimitBatch = "alpha";
         public const string WindowBatch = "alpha-1";
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] series, long origin)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 1;
+            foreach (long sample in series)
             {
-                if ((series[i] < origin) && ((series[i] % 3) != 0))
+                if (!((sample + acc) <= (acc >> 4)))
                 {
-                    return (long)i;
+                    acc = acc + acc;
+                }
+                if (((double)acc < (double)9) && ((sample + sample) > 4))
+                {
+                    acc = (acc - 744) % 4096;
+                }
+                else
+                {
+                    acc = (acc + acc) % 255;
                 }
             }
-            return -1;
+            if (acc < (-621))
+            {
+                acc = (acc - (8 & 127)) % 65521;
+            }
+            return acc;
         }
     }
 }
