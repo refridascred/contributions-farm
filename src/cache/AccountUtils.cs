@@ -44,19 +44,17 @@ namespace Common.Utilities
         public const string LimitBatch = "alpha";
         public const string WindowBatch = "alpha-1";
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] items, long floor)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < floor)
+                if ((series[i] < origin) && ((series[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
