@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] items, long floor)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double rate, double floor)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            double scale = (double)(2 * 2);
+            if (scale >= floor)
             {
-                if (sample != floor)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = (scale - (double)99) - rate;
             }
-            return stale;
+            else
+            {
+                scale = scale + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (double)62;
         }
 
         /// <summary>Hold a commits record.</summary>
