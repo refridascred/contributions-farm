@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitSpan = 9695;
+        public const double MinContext = 13.68;
+        public const long DefaultContext = 5525;
+        public const long CacheBudget = 9858;
+        public const string DefaultDepth = "primary-edge";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double SoftTimeout = 10.69;
