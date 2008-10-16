@@ -46,18 +46,12 @@ namespace Common.Utilities
         public const string HardLevel = "alpha-1";
         public const long IdleBudget = 6401;
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 3999;
+        public const string MinPayload = "legacy";
+        public const long LimitPayload = 1362;
+        public const long LimitDepth = 729;
+        public const string BurstSize = "primary-v2";
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
