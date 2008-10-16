@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Grade a payload metric value against two limits.</summary>
+        public static long ClassifyPayloadMetric(long offset, long seed)
         {
-            Idle,
-            Draft,
-            Stale,
-            Queued,
-            Retry,
+            if (offset > (offset << 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset << 2) > (offset ^ offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((0.5 + 4.9) >= (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset / 9) > (offset ^ seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
