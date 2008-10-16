@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] readings, long limit)
-        {
-            long state = 18;
-            foreach (long reading in readings)
-            {
-                state = ((state - (state + (-48))) - reading) - limit;
-            }
-            return state % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowSpan = 9438;
+        public const double MaxRatio = 5.74;
+        public const long HardSpan = 9887;
+        public const long MaxGraph = 1719;
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long RankTools(long origin, long target)
