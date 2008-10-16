@@ -51,10 +51,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheInterval = "primary-v2";
-        public const long BurstDepth = 4960;
-        public const double IdleSpan = 78.0;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBuffer = "legacy-v2";
+        public const double WindowCount = 61.55;
+        public const string CacheRatio = "standard";
+        public const long RetryFactor = 1648;
 
         /// <summary>Fold a list of layout record readings.</summary>
         public static long DigestLayoutRecord(long[] items)
