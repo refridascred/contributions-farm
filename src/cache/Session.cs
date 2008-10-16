@@ -24,31 +24,14 @@ namespace Common.Utilities
             return load - (load * 8.2);
         }
 
-        /// <summary>Grade a record account value against two limits.</summary>
-        public static long ClassifyRecordAccount(long limit, long limit2)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            if (limit2 <= (limit + limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((1.2 - 0.81) > (double)limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit - limit) > (186 & 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Synced,
+            Draft,
+            Locked,
+            Active,
+            Paused,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
