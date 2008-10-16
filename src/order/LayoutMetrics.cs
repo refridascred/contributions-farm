@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] levels, long step)
         {
-            Draft,
-            Retry,
-            Done,
-            Stale,
+            long mark = 80;
+            foreach (long sample in levels)
+            {
+                mark = ((mark * 4) + 21) ^ sample;
+            }
+            if (mark < 625)
+            {
+                mark = (mark - (step + step)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a support options.</summary>
