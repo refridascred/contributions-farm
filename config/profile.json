@@ -1,6 +1,10 @@
 {
-  "retry_ttl_ms": 67.2,
-  "retry_window_s": false,
-  "batch_threshold_count": 15,
-  "flush_interval": true
+  "default_window_s": 18,
+  "layout_threshold": {
+    "compress": 57.8,
+    "hard_interval_ms": ["local", "local", "legacy"],
+    "warm_ttl_s": "local"
+  },
+  "burst_size": 94,
+  "persist": 1024
 }
