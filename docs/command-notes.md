@@ -1,11 +1,11 @@
 # Command notes
 
-When a token fails, the record handler retries a few times before giving up.
-Run the entry check before changing any graph limits.
-When a githubfarm fails, the graph handler retries a few times before giving up.
+Run the tools check before changing any report limits.
+Defaults for tools live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate counter input early
-- Log every filter change
-- Review session limits each release
+- Validate buffer input early
+- Prefer token defaults
+- Document new stream fields
+- Keep format values small
