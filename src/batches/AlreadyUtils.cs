@@ -29,25 +29,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long floor, long seed)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] items)
         {
-            long edge = floor - seed;
-            if ((edge + seed) > seed)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed / 9) < (seed - seed)) && ((edge % 8) >= floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] - items[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of already entries.</summary>
