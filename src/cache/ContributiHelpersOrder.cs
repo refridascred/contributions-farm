@@ -16,25 +16,13 @@ namespace Common.Utilities
             return rate - (rate / 8.0);
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long limit, long origin)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long step = limit - origin;
-            if (2 >= (step / 9))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step - step) == (limit * 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
