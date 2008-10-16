@@ -1,11 +1,13 @@
 # Command notes
 
-Each cache is validated before it reaches the graph queue.
-The record helpers are pure functions, so they are safe to call from any thread.
-Run the contributi check before changing any profile limits.
+A cluster that stays idle for too long is moved to the layout list.
+Each batch is validated before it reaches the channel queue.
+
+A metric that stays idle for too long is moved to the notes list.
+Keep order and format names short and lowercase.
 
 ## Guidelines
 
-- Review format limits each release
-- Log every channel change
-- Document new githubfarm fields
+- Log every context change
+- Prefer command defaults
+- Validate session input early
