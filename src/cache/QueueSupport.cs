@@ -27,9 +27,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 5562;
-        public const long BurstInterval = 5312;
-        public const double MaxFormat = 56.11;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] values, long origin)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((double)value >= (double)origin)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
