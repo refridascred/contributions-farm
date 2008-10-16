@@ -24,19 +24,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double scale, double offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] values)
         {
-            double gain = (double)(1 + 461);
-            if (gain >= (1.0 - gain))
+            long carry = 70;
+            foreach (long cell in values)
             {
-                gain = (gain + scale) + offset;
+                carry = ((carry << 3) ^ (carry ^ cell)) % 1000;
+                if ((cell >> 3) != ((long)values.Length >> 4))
+                {
+                    carry = ((carry << 2) ^ cell) % 1000;
+                }
             }
-            else
+            if (carry < 471)
             {
-                gain = gain + (double)(-461);
+                carry = carry + (56 % 60);
             }
-            return gain - scale;
+            return carry;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
