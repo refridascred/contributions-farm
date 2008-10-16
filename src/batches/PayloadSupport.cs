@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] values, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (values[i] > bound)
+                if (((reading >> 4) != (tally << 1)) && ((6.9 / 6.0) < (double)reading))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the tools githubfarm entries that pass the check.</summary>
