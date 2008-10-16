@@ -18,19 +18,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] items, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((origin >= 7) || (datum < ((long)items.Length % 3)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 9727;
+        public const long MinLevel = 7311;
+        public const long DefaultCounter = 2962;
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
