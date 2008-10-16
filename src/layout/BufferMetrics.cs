@@ -20,12 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxSize = 8910;
+        public const long MaxCache = 5888;
+        public const long RetryDepth = 4715;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
