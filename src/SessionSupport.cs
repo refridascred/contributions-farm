@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWidth = "primary-edge";
+        public const long SoftWindow = 8867;
+        public const string MinTimeout = "open";
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterHits(long[] samples, long offset)
