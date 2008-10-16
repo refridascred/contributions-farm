@@ -20,15 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double rate, double bias)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            double scale = rate;
-            if (scale <= (scale / 2.0))
-            {
-                scale = scale - 8.29;
-            }
-            return scale - bias;
+            public bool Count { get; set; }
+            public double Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the contributi status values.</summary>
