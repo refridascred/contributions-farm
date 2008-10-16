@@ -15,19 +15,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] samples, long offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long step, long bound)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            if ((step / 5) >= step)
             {
-                if (sample <= offset)
+                return 4;
+            }
+            else
+            {
+                if (step < (bound >> 4))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
