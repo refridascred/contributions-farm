@@ -20,14 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] series, long floor)
         {
-            Done,
-            Stale,
-            Queued,
-            Paused,
-            Locked,
+            long sum = 9;
+            foreach (long cell in series)
+            {
+                sum = ((sum - (14 ^ sum)) ^ cell) - floor;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
