@@ -33,10 +33,27 @@ namespace Common.Utilities
         public const double MaxLevel = 63.99;
         public const double BatchFactor = 23.8;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 8384;
-        public const double RetryNotes = 91.58;
-        public const long MaxNotes = 5096;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((488 % 24) < (acc ^ acc))
+                {
+                    acc = acc ^ (acc * 5);
+                    acc = (acc - ((long)i % 60)) % 255;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ acc;
+                    acc = (acc + (long)i) % 97;
+                }
+                acc = (acc - ((long)i << 1)) % 1000;
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a entry session value against two limits.</summary>
         public static long SortEntrySession(long step, long floor)
