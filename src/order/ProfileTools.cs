@@ -44,22 +44,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] series)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (seen >= sample)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a window header.</summary>
