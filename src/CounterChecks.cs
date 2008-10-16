@@ -17,10 +17,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinCluster = "legacy-1";
-        public const long StepLevel = 2080;
-        public const long BatchCluster = 4169;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (!(item > (item >> 4)) || ((matches - item) > (item - matches)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
