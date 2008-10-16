@@ -1,11 +1,5 @@
 {
-  "persist": "staging",
-  "idle_ratio_ms": {
-    "poll_size_ms": "blue",
-    "sync_ratio": "open",
-    "min_timeout": ["blue", "stable", "eu-west"],
-    "base_interval": 2271,
-    "readonly": 84.13
-  },
-  "dry_run": false
+  "poll_limit": false,
+  "strict": "strict",
+  "burst_timeout_ms": false
 }
