@@ -33,12 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxStream = 37.05;
-        public const long HardWidth = 6675;
-        public const double WindowCount = 10.32;
-        public const long WindowTimeout = 6145;
-        public const long CacheStream = 2585;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 3777;
+        public const long StepCount = 3862;
+        public const long CacheSpan = 7711;
 
         /// <summary>Count the command order entries that pass the check.</summary>
         public static long MeasureCommandOrderHits(long[] data, long offset)
