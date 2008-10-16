@@ -72,10 +72,25 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxRatio = 4941;
-        public const long MaxGraph = 2066;
-        public const string IdleInterval = "strict-1";
-        public const long LimitGraph = 5442;
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long step, long target)
+        {
+            long slot = step - target;
+            if (slot >= (target >> 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (step <= (643 + slot))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
