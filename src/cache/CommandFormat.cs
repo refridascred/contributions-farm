@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Grade a schema entry value against two limits.</summary>
+        public static long RankSchemaEntry(long offset, long step)
         {
-            public double Token { get; set; }
-            public double Score { get; set; }
-            public long Total { get; set; }
+            if ((7 + step) <= offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step / 5) < 6)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
