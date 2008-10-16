@@ -27,11 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinCount = 9775;
-        public const long RetryBatches = 8738;
-        public const long BurstRatio = 2934;
-        public const long SoftLevel = 5231;
-        public const double MinBatches = 80.62;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] readings, long step)
+        {
+            long anchor = 34;
+            foreach (long datum in readings)
+            {
+                anchor = (((anchor * 5) + (-11)) - datum) - step;
+                if (anchor >= (anchor * 5))
+                {
+                    anchor = anchor ^ 14;
+                }
+            }
+            return anchor % 65521;
+        }
     }
 }
