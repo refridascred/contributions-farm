@@ -7,10 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-TOKEN_LIMIT=145
+TOKEN_LIMIT=72
 log "limit is ${TOKEN_LIMIT}"
