@@ -60,11 +60,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double ratio, double floor)
+        /// <summary>Compare every pair of queue layout readings.</summary>
+        public static long OverlapQueueLayoutCount(long[] series)
         {
-            double mean = floor;
-            return (mean + floor) + ratio;
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a report snapshot.</summary>
