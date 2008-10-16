@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] levels, long seed)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long target, long step)
         {
-            long acc = 4;
-            foreach (long entry in levels)
+            if (target >= (target >> 2))
             {
-                for (int i = 0; i < 5; i++)
+                return 7;
+            }
+            else
+            {
+                if ((target % 8) < (766 - step))
                 {
-                    acc = (((acc << 3) ^ seed) % 255) + (long)i;
+                    return 4;
                 }
-                acc = ((acc << 2) ^ (entry - entry)) % 1000;
+                else
+                {
+                    if (((6.78 + 4.6) < (double)step) && ((target - step) >= (734 % 8)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step % 3) > target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            if (acc > 854)
-            {
-                acc = (acc - (acc - 72)) % 4096;
-            }
-            return acc;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
