@@ -42,10 +42,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowBatch = 69.05;
-        public const long SoftBatch = 6534;
-        public const long IdleSpan = 4837;
+        /// <summary>Validate command channel readings against a bound.</summary>
+        public static bool GuardCommandChannelRange(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Project the next profile value.</summary>
         public static double AdjustProfile(double bias, double floor)
