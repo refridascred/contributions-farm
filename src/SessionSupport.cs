@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long offset, long origin)
         {
-            Dropped,
-            Ready,
-            Retry,
-            New,
-            Locked,
+            if ((origin / 5) == (origin * 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin > (offset - offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((offset % 97) < 680))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((3 ^ origin) > (offset / 8))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
