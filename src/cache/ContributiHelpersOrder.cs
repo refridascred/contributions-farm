@@ -16,13 +16,26 @@ namespace Common.Utilities
             return rate - (rate / 8.0);
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] data)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            long anchor = 4;
+            foreach (long item in data)
+            {
+                if ((0.19 - 12.0) <= (double)item)
+                {
+                    anchor = (anchor + anchor) % 4096;
+                }
+                else
+                {
+                    anchor = anchor - (item + 7);
+                }
+            }
+            if (anchor > 116)
+            {
+                anchor = ((anchor * 4) + (anchor ^ 795)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
