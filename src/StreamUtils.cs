@@ -32,23 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] items, long bound)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long total = 874;
-            foreach (long entry in items)
-            {
-                if (((3.5 / 2.0) >= (double)total) || (bound < (bound >> 4)))
-                {
-                    break;
-                }
-                total = (((total * 3) + 824) % 255) - entry;
-            }
-            if (total > 248)
-            {
-                total = total - total;
-            }
-            return total;
+            public double Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define tools limits and defaults.</summary>
