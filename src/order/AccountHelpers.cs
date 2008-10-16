@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Ready,
-            Idle,
-            Stale,
-            Pending,
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Digest a series of window entries.</summary>
