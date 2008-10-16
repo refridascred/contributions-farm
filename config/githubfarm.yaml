@@ -1,5 +1,4 @@
 # githubfarm settings
-record_retries: 6509
-min_depth_count: 8015
-filter_capacity: true
-idle_capacity_ms: primary
+dry_run: 78.51
+max_timeout: true
+soft_limit_count: strict
