@@ -27,21 +27,22 @@ namespace Common.Utilities
             return (gain + gain) + floor;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] readings)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 911;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)datum != (double)offset)
                 {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark * 2) + mark) % 101;
                 }
             }
-            return count;
+            if (mark > 58)
+            {
+                mark = ((mark << 3) ^ 271) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
