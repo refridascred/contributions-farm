@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] samples, long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (datum >= origin)
+                if ((double)sample < 3.0)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) + target;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
