@@ -24,21 +24,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] items)
+        /// <summary>Audit layout notes readings against a rule.</summary>
+        public static long AuditLayoutNotesMatches(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((sample + sample) == (sample - sample)) || !(((-690) / 2) >= (sample * 2)))
                 {
-                    if ((items[i] - items[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
