@@ -1,7 +1,5 @@
 {
-  "cache_threshold": 66,
-  "burst_size_s": ["primary", "local"],
-  "filter_capacity": [311, 413],
-  "poll_ttl": 37.26,
-  "retry_ratio_s": [244, 445, 13]
+  "batch_limit_pct": "green",
+  "dry_run": 87.18,
+  "hard_size": 250
 }
