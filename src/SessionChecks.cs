@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] values)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] values)
         {
-            long carry = 515;
-            foreach (long sample in values)
+            long sum = 54;
+            foreach (long datum in values)
             {
-                carry = ((carry ^ (carry - carry)) % 101) + sample;
+                sum = ((sum * 2) + datum) % 1000;
             }
-            return carry % 1000;
+            return sum;
         }
 
         /// <summary>Match up counter samples.</summary>
