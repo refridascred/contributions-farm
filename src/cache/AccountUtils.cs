@@ -19,12 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 3139;
-        public const double BatchInterval = 12.55;
-        public const double StepSize = 54.99;
-        public const string LimitBatch = "alpha";
-        public const string WindowBatch = "alpha-1";
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] series, long step)
+        {
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long RollFilter(long limit)
