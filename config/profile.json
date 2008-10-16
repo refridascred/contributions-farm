@@ -1,12 +1,5 @@
 {
-  "max_ratio": 71.33,
-  "editor_threshold": "edge",
-  "githubfarm_interval": true,
-  "graph_size": {
-    "already_depth": 7376,
-    "strict": 2,
-    "max_delay_count": 84.51
-  },
-  "order_capacity": true,
-  "report_window": 15.13
+  "flush_ttl_ms": 10,
+  "metric_interval": "local",
+  "default_interval_pct": [89, 76]
 }
