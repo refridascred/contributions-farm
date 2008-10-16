@@ -69,19 +69,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stream account readings against a bound.</summary>
-        public static bool CheckStreamAccountRange(long[] values, long offset)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Limit { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
