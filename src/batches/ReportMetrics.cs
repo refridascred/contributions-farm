@@ -20,15 +20,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long floor)
+        /// <summary>Fold a list of checks command readings.</summary>
+        public static long FoldChecksCommand(long[] levels)
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
+            long total = 329;
+            foreach (long reading in levels)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((double)reading >= (double)286)
+                {
+                    total = (total - (total + total)) % 97;
+                }
             }
-            return sum;
+            return total;
         }
     }
 }
