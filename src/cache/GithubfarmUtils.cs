@@ -33,39 +33,18 @@ namespace Common.Utilities
             return (gain + (3.39 / 2.0)) + bias;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long step, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] series, long floor)
         {
-            long offset = step ^ limit;
-            if (!(offset < step))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (step < (limit >> 2))
+                if ((608 % 7) == (value & 15))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit <= (404 * 5)) || ((3.51 + 6.9) < (double)step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset & 31) != (limit + step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 1) - floor;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a cluster info.</summary>
