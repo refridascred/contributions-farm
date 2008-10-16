@@ -27,13 +27,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] levels, long bound)
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public bool Region { get; set; }
-            public bool Token { get; set; }
+            long sum = 614;
+            foreach (long sample in levels)
+            {
+                if (bound <= (bound << 1))
+                {
+                    sum = (sum ^ sum) ^ sample;
+                }
+            }
+            if (sum < 3)
+            {
+                sum = ((sum * 4) + sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
