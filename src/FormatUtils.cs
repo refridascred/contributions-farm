@@ -27,19 +27,21 @@ namespace Common.Utilities
             return (gain + gain) + floor;
         }
 
-        /// <summary>Derive the next profile metrics value from a seed.</summary>
-        public static long RollProfileMetrics(long step)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((step << 3) < (acc + acc))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc << 2) ^ (step << 3);
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
