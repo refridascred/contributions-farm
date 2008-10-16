@@ -48,18 +48,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long carry = 9;
+            foreach (long datum in values)
             {
-                if ((61 ^ 740) > (reading % 5))
-                {
-                    tally = tally + 2;
-                }
+                carry = carry - (datum - carry);
+                carry = ((carry << 2) ^ carry) % 65521;
             }
-            return tally;
+            return carry % 4096;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
