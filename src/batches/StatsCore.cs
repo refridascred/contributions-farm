@@ -77,16 +77,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] items, long origin)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long carry = 94;
-            foreach (long sample in items)
-            {
-                carry = (carry ^ (3 << 3)) + sample;
-                carry = carry ^ (origin - 84);
-            }
-            return carry;
+            Ready,
+            Retry,
+            Active,
+            Synced,
+            New,
         }
     }
 }
