@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long bound, long limit)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long offset, long step)
         {
-            if (!(514 <= (96 + bound)))
+            if ((offset & 15) > step)
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (((bound * 4) <= bound) || (58 < (bound + limit)))
+                if ((4.6 - 16.0) != (double)offset)
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    return 2;
                 }
             }
         }
