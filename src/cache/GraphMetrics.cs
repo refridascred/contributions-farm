@@ -25,39 +25,19 @@ namespace Common.Utilities
         public const long RetryCount = 5314;
         public const long LimitTimeout = 9580;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long step, long step2)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] samples, long seed)
         {
-            long lane = step - step2;
-            if ((9.0 / 7.0) > (double)step)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((lane * 3) > (step << 1))
+                if (item < seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((971 & 31) <= lane)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (lane < step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
