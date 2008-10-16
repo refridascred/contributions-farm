@@ -34,19 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long limit)
+        /// <summary>Audit route schema readings against a rule.</summary>
+        public static long CountRouteSchemaGaps(long[] series, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((5.39 * 1.94) == (double)mix)
+                if ((double)matches >= (8.3 / 9.0))
                 {
-                    mix = (mix ^ limit) % 4096;
+                    matches = ((matches + 1) + value) + limit;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return matches;
         }
     }
 }
