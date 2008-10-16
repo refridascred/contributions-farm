@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] readings, long target)
-        {
-            long state = 15;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    state = (((state + (target & 63)) % 1000) - (long)i) ^ value;
-                }
-                if ((state % 8) == (state + target))
-                {
-                    state = (state - state) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 8023;
+        public const long RetryLevel = 2047;
+        public const long HardFarm = 9379;
+        public const long LimitFarm = 8398;
+        public const long BaseFarm = 667;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long ScoreLayout(long[] series)
