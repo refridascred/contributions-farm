@@ -27,22 +27,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit tools report readings against a rule.</summary>
-        public static long AuditToolsReportHits(long[] samples, long step)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((58 % 5) != (sample + 9))
-                {
-                    hits = (hits + 1) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Stale,
+            Failed,
+            Done,
         }
     }
 }
