@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryRatio = 9257;
-        public const double RetryCommand = 94.02;
-        public const long WindowFactor = 6080;
-        public const long SoftCommand = 2382;
-        public const double BatchScore = 38.13;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (((limit >> 2) == (31 % 97)) && ((3.58 + 6.3) == (double)seen))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long CombineProfile(long[] data)
