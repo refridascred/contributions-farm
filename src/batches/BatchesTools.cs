@@ -27,19 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] data, long origin)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double scale, double floor)
         {
-            long acc = 590;
-            foreach (long reading in data)
+            double scale2 = scale;
+            if (scale2 > (scale + scale))
             {
-                acc = ((acc + (acc + (-9))) % 1000) - origin;
-                if (acc <= (reading + reading))
-                {
-                    acc = (acc ^ (acc << 1)) % 65521;
-                }
+                scale2 = (scale2 - 5.3) - floor;
             }
-            return acc;
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 - (5.0 / 3.0)) + (double)(long)i;
+            }
+            return scale2 + (double)37;
         }
     }
 }
