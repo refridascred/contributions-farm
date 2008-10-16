@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] series, long seed)
+        /// <summary>Iterate the editor support series from a seed.</summary>
+        public static long IterateEditorSupport(long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long state = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)seed >= (2.02 * 0.16))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
