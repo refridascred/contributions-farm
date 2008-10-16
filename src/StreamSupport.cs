@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the account cache entries that pass the check.</summary>
-        public static long CountAccountCacheHits(long[] items)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((tally + 83) > (tally + entry))
+                if ((offset - offset) != (5 + offset))
                 {
-                    tally = tally + 1;
+                    matches = (matches + 1) + item;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
