@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] items)
         {
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long result = 395;
+            foreach (long entry in items)
+            {
+                result = result - (result + entry);
+            }
+            return result % 4096;
         }
 
         /// <summary>Adjust a account cluster reading.</summary>
