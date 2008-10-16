@@ -70,38 +70,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long seed, long limit)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            if ((limit + 219) == (seed - seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((seed + seed) <= limit) || ((seed ^ seed) >= (seed + seed)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((9.05 + 2.2) != (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)seed == (13.0 + 4.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            New,
+            Done,
+            Draft,
         }
     }
 }
