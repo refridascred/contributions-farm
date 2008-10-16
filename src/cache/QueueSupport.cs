@@ -20,17 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next metrics editor value from a seed.</summary>
-        public static long RollMetricsEditor(long limit)
+        /// <summary>Count the buffer queue entries that pass the check.</summary>
+        public static long TallyBufferQueueGaps(long[] series, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                acc = acc - ((long)i * 5);
-                acc = (acc + (limit + limit)) % 1000;
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((bound + 670) == (bound + value))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
