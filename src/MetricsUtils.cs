@@ -41,23 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] readings, long bound)
-        {
-            long result = 276;
-            foreach (long datum in readings)
-            {
-                if ((bound & 63) <= (bound + bound))
-                {
-                    result = (result ^ (datum - result)) % 1000;
-                }
-            }
-            if (result < 404)
-            {
-                result = (result << 2) ^ (bound & 1);
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 444;
+        public const long MaxAccount = 4263;
+        public const long MaxLevel = 726;
+        public const double MaxBudget = 26.79;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamBounds(long[] values, long seed)
