@@ -19,20 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of payload editor readings.</summary>
-        public static long DigestPayloadEditor(long[] values)
-        {
-            long carry = -3;
-            foreach (long cell in values)
-            {
-                carry = ((carry << 3) ^ (28 >> 5)) - cell;
-            }
-            if (carry < 55)
-            {
-                carry = ((carry * 5) + (carry + carry)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultWidth = 6796;
+        public const long SoftRatio = 7366;
+        public const long IdleSession = 2019;
+        public const long CacheLevel = 1821;
 
         /// <summary>Check that every cache metric entry stays within the limit.</summary>
         public static bool GuardCacheMetricRange(long[] levels, long seed)
