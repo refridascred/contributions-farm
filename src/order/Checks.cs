@@ -23,11 +23,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public double Offset { get; set; }
-            public double Rank { get; set; }
+            Idle,
+            Dropped,
+            Synced,
+            Pending,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
