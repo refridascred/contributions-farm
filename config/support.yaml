@@ -1,23 +1,29 @@
 # support settings
-enabled:
-  dry_run:
-    - cached
-    - green
+already_retries:
+  - 31
+  - 56
+  - 8
+  - 300
+flush_limit_s: 14
+strict: 30
+poll_window:
+  max_size_s:
     - standard
-  poll_depth: 43
-  batch_window_s: legacy
-flush_interval_count:
-  burst_threshold:
-    max_depth: 7090
-    hard_depth: strict
-    farm_delay: 90.42
-    dry_run: 44
-    compress: strict
-    hard_ttl_count: strict
-  base_size_count: 5921
-  queue_threshold:
-    - strict
-    - edge
-    - primary
-default_ttl_ms: open
-soft_capacity_s: 89.26
+    - eu-west
+    - fallback
+  retry_delay_count: 8231
+  account_size:
+    tools_window: cached
+    strict: 84.31
+    warm_limit_pct:
+      - 489
+      - 240
+      - 48
+    order_capacity: 31
+    max_ratio_count:
+      - eu-west
+      - blue
+      - standard
+      - primary
+  strict: true
+  entry_limit: 39
