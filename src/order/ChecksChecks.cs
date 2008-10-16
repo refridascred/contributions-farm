@@ -38,18 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] items)
+        /// <summary>Check that every cache metric entry stays within the limit.</summary>
+        public static bool GuardCacheMetricRange(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if ((6.9 * 7.8) <= (double)tally)
+                if (entry > seed)
                 {
-                    tally = (tally + 1) ^ value;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
