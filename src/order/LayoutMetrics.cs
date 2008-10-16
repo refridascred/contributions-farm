@@ -27,39 +27,11 @@ namespace Common.Utilities
             return load + (scale + load);
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long target, long step)
-        {
-            long gap = target + step;
-            if ((target << 3) < (target - 42))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((step / 4) >= step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step ^ gap) <= (gap & 127))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((gap & 3) >= (9 % 60))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchGithubfarm = 76.52;
+        public const double BatchLevel = 63.36;
+        public const long BurstLevel = 7675;
+        public const long LimitRatio = 6180;
+        public const long LimitGithubfarm = 3352;
     }
 }
