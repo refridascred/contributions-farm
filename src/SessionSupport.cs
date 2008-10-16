@@ -39,12 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepSpan = 59.73;
-        public const double SoftBudget = 90.39;
-        public const string BatchNotes = "fallback-v2";
-        public const long BurstWidth = 9977;
-        public const long DefaultWidth = 5013;
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Count window schema pairs that satisfy a relation.</summary>
         public static long PairWindowSchemaCount(long[] samples)
