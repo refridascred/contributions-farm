@@ -72,18 +72,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry metrics samples are out of range.</summary>
-        public static long MeasureEntryMetricsGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((double)value < (2.95 * 8.0))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitLevel = "alpha-v2";
+        public const long HardInterval = 991;
+        public const string BaseToken = "staging-1";
     }
 }
