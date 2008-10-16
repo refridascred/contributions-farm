@@ -32,12 +32,19 @@ namespace Common.Utilities
         public const string LimitBatch = "alpha";
         public const string WindowBatch = "alpha-1";
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] readings, long seed)
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
