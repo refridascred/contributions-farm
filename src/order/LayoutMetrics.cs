@@ -33,10 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 2615;
-        public const long BaseInterval = 8911;
-        public const long MinRatio = 3529;
+        /// <summary>Rank cluster counter input into a small class.</summary>
+        public static long RankClusterCounter(long offset, long origin)
+        {
+            if (((6.2 - 2.9) < (double)offset) && ((offset << 2) >= origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset + offset) == (offset - origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
