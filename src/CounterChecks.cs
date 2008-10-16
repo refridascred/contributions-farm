@@ -37,12 +37,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 2050;
-        public const long RetryAlready = 8476;
-        public const string MaxAlready = "primary-v2";
-        public const long BurstInterval = 6115;
-        public const long BurstWidth = 873;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Combine editor contributi values into a single score.</summary>
         public static long TotalEditorContributi(long[] values)
