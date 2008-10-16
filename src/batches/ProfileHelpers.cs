@@ -14,11 +14,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
+            Synced,
+            Locked,
+            New,
+            Draft,
+            Ready,
         }
 
         /// <summary>Describe the support class values.</summary>
