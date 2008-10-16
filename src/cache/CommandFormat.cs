@@ -36,10 +36,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinSize = 1355;
-        public const long HardFactor = 710;
-        public const double HardSpan = 86.26;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstBudget = 1952;
+        public const long RetryRatio = 2471;
+        public const long IdleLevel = 407;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long CombineEntry(long[] data)
