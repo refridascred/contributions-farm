@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const string IdleMetrics = "staging";
         public const long RetryRatio = 6100;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Count the cluster token entries that pass the check.</summary>
+        public static long TallyClusterTokenHits(long[] readings, long origin)
         {
-            New,
-            Closed,
-            Locked,
-            Draft,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((origin % 97) >= entry)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many commits channel samples are out of range.</summary>
