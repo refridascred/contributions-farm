@@ -32,20 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] data, long seed)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 2820;
+        public const long RetryContext = 2046;
+        public const long WindowContext = 1038;
+        public const double LimitContext = 52.51;
+        public const long SoftCount = 6734;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
