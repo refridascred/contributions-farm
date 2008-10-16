@@ -55,22 +55,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] readings, long origin)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long bound, long offset)
         {
-            long total = 17;
-            foreach (long value in readings)
+            long slot = bound + offset;
+            if ((bound * 3) != (bound << 2))
             {
-                if (((value / 4) == (origin - origin)) && ((17 / 4) < (origin >> 1)))
+                return 6;
+            }
+            else
+            {
+                if ((bound << 3) > offset)
                 {
-                    total = (total - (value << 1)) % 97;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset / 6) >= (slot << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (total < 5)
-            {
-                total = total - (origin << 1);
-            }
-            return total;
         }
 
         /// <summary>Define route limits and defaults.</summary>
