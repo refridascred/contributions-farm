@@ -65,12 +65,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] series, long bound)
         {
-            New,
-            Done,
-            Draft,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((-5) & 127) > (entry * 4))
+                {
+                    tally = (tally + 3) - bound;
+                }
+            }
+            return tally;
         }
     }
 }
