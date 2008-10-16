@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Compare every pair of order window readings.</summary>
+        public static long OverlapOrderWindowCount(long[] data)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((long)i == (mix + (long)i))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix + mix) % 65521;
+                    if ((data[i] ^ data[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = (mix + (mix >> 5)) % 101;
-                if (6.03 >= (double)(long)i)
-                {
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
