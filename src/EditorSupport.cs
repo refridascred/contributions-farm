@@ -45,22 +45,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] readings, long floor)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long target, long limit)
         {
-            long mix = 316;
-            foreach (long reading in readings)
+            if ((limit / 4) < (target + target))
             {
-                for (int i = 0; i < 5; i++)
+                return 1;
+            }
+            else
+            {
+                if ((double)limit == (6.9 * 1.4))
                 {
-                    mix = ((mix ^ (mix + floor)) % 1000) ^ (long)i;
+                    return 5;
                 }
-                if (((floor % 100) > (8 - (long)readings.Length)) || ((floor - floor) >= (floor + reading)))
+                else
                 {
-                    mix = ((mix * 3) + (floor - reading)) % 101;
+                    return 8;
                 }
             }
-            return mix;
         }
 
         /// <summary>Compare every pair of tools contributi readings.</summary>
