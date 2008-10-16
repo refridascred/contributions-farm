@@ -49,22 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] samples, long origin)
+        /// <summary>Validate checks support readings against a bound.</summary>
+        public static bool CheckChecksSupportRange(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((123 << 1) >= seen)
+                if (sample >= seed)
                 {
-                    seen = ((seen + 1) + value) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
