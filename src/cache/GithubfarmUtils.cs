@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate farm account readings against a bound.</summary>
-        public static bool CheckFarmAccountBounds(long[] series, long bound)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
