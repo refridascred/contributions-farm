@@ -6,11 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west latest staging green; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=129
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-stable}"
+mode="${1:-latest}"
 case "${mode}" in
     eu-west)
         log "fast path"
