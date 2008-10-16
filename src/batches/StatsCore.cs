@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] series, long origin)
-        {
-            long mix = 12;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = (((mix * 3) + (long)i) ^ sample) - origin;
-                }
-                mix = mix ^ (mix + 72);
-            }
-            if (mix < 449)
-            {
-                mix = (mix ^ (-77)) % 65521;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardTimeout = 3935;
+        public const double StepWindow = 76.01;
+        public const string DefaultInterval = "standard-1";
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long GradeAccount(long seed, long bound)
