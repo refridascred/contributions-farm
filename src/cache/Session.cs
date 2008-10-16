@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first layout session entry that matches the target.</summary>
-        public static long LookupLayoutSessionIndex(long[] items, long target)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= target) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
