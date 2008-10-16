@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxTools = "standard-1";
-        public const long BaseWidth = 8047;
-        public const double CacheTimeout = 51.13;
-        public const long HardBudget = 7516;
+        /// <summary>Check that every order batches entry stays within the limit.</summary>
+        public static bool VerifyOrderBatchesBounds(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ProjectStats(double rate, double bias)
