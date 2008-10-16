@@ -24,14 +24,18 @@ namespace Common.Utilities
         public const string BatchContext = "cached-1";
         public const double WindowContext = 90.27;
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] readings, long target)
         {
-            Draft,
-            Active,
-            New,
-            Dropped,
-            Done,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((851 % 97) != (target & 15))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
     }
 }
