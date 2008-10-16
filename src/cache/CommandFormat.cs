@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double ratio, double bias)
+        /// <summary>Roll a token githubfarm counter forward.</summary>
+        public static long StepTokenGithubfarm(long limit)
         {
-            double scale = (ratio / 3.0) * 7.1;
-            if (scale < bias)
+            long state = limit;
+            for (int i = 0; i < 15; i++)
             {
-                scale = scale + (bias * 0.1);
+                state = state + (limit - limit);
+                state = ((state * 2) + (long)i) % 4093;
             }
-            else
-            {
-                scale = scale + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (bias * 19.0)) + (double)(long)i;
-            }
-            return scale + (4.76 / 3.0);
+            return state;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
