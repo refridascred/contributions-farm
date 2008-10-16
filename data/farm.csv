@@ -1,11 +1,6 @@
-id,score,label,ratio,level
-1,973,464,2.99,555
-2,97.8,stable,780,49.78
-3,blue,local,16.2,230
-4,398,766,574,53
-5,362,36.48,743,58.23
-6,283,11,fallback,strict
-7,cached,staging,green,stable
-8,cached,119,98.98,911
-9,165,327,6.63,459
-10,46.48,14.89,blue,strict
+id,level,token
+1,63.48,818
+2,strict,0.23
+3,standard,61
+4,53.3,781
+5,83.34,355
