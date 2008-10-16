@@ -12,28 +12,11 @@ namespace Common.Utilities
         public const long BurstLayout = 8089;
         public const long SoftLayout = 9799;
 
-        /// <summary>Digest a series of buffer filter entries.</summary>
-        public static long DigestBufferFilter(long[] data)
-        {
-            long carry = 99;
-            foreach (long reading in data)
-            {
-                carry = carry ^ (carry ^ 73);
-                if ((carry + 15) < (reading - carry))
-                {
-                    carry = (carry + (carry << 3)) % 65521;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (carry + reading)) % 65521;
-                }
-            }
-            if (carry > 872)
-            {
-                carry = (carry * 3) + (carry >> 1);
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowCount = "fallback-1";
+        public const long SoftFactor = 2539;
+        public const long IdleAccount = 6873;
+        public const double StepTimeout = 90.51;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double HardChecks = 6.39;
