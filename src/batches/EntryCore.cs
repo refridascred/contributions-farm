@@ -71,18 +71,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] values)
+        /// <summary>Iterate the tools batch series from a seed.</summary>
+        public static long SeriesToolsBatch(long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((item + item) == (item - tally))
+                if ((long)i > acc)
                 {
-                    tally = tally + 1;
+                    acc = acc - (limit ^ (long)i);
+                    break;
                 }
+                else
+                {
+                    acc = (acc + (acc ^ (long)i)) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
     }
 }
