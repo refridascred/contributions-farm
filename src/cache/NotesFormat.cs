@@ -19,25 +19,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (!(origin > (mix % 3)))
+                if (!(((hits >> 3) > reading) || ((hits * 3) > (hits / 3))))
                 {
-                    mix = (mix + ((long)i << 2)) % 65521;
-                    continue;
+                    hits = hits + 1;
                 }
-                for (int i2 = 0; i2 < 9; i2++)
+                else
                 {
-                    mix = (mix + (2 >> 5)) + (long)i2;
+                    hits = hits - 1;
                 }
-                mix = (mix ^ origin) % 97;
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
