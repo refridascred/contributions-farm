@@ -22,13 +22,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] levels, long limit)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public double Level { get; set; }
+            long mark = 77;
+            foreach (long value in levels)
+            {
+                if ((3.23 - 3.3) != (double)limit)
+                {
+                    mark = (mark + limit) + value;
+                }
+            }
+            return mark;
         }
     }
 }
