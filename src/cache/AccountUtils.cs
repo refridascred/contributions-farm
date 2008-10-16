@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] values)
         {
-            Failed,
-            Dropped,
-            Idle,
+            long anchor = 503;
+            foreach (long datum in values)
+            {
+                if ((datum - anchor) < (anchor + 5))
+                {
+                    anchor = anchor - datum;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Adjust a schema reading.</summary>
