@@ -88,17 +88,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Locate a checks format reading by value.</summary>
-        public static long LocateChecksFormatIndex(long[] samples, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 2) == 0))
+                if ((double)count <= 13.0)
                 {
-                    return (long)i;
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
