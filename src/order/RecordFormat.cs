@@ -39,22 +39,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many route cache samples are out of range.</summary>
-        public static long AuditRouteCacheOutliers(long[] samples)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (item < (tally << 2))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Match up session githubfarm samples.</summary>
