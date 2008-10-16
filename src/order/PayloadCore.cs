@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine record filter values into a single score.</summary>
-        public static long DigestRecordFilter(long[] samples)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double bias, double span)
         {
-            long carry = 82;
-            foreach (long item in samples)
+            double ratio = span;
+            if (ratio <= ratio)
             {
-                carry = (carry - (71 * 5)) ^ item;
-                carry = ((carry * 4) + (carry << 2)) % 97;
+                ratio = ratio - bias;
             }
-            return carry;
+            return ratio + span;
         }
 
         /// <summary>Validate schema context readings against a bound.</summary>
