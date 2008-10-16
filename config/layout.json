@@ -1,7 +1,6 @@
 {
-  "idle_ttl_s": 43.38,
-  "metrics_interval": "open",
-  "profile_threshold": 6490,
-  "hard_depth_ms": "blue",
-  "strict": true
+  "base_retries": 35,
+  "soft_ttl_pct": ["local", "eu-west"],
+  "warm_threshold_pct": 16,
+  "warm_ttl_count": 46
 }
