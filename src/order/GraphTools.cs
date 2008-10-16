@@ -42,15 +42,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double rate, double span)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double ratio = rate;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ((ratio - (14.0 * 3.0)) + (double)(long)i) + span;
-            }
-            return ratio - 4.2;
+            Synced,
+            Dropped,
+            Idle,
+            Failed,
         }
 
         /// <summary>Combine window values into a single score.</summary>
