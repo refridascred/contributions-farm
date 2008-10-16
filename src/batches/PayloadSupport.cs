@@ -32,11 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next window cache value.</summary>
-        public static double SmoothWindowCache(double scale, double span)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long limit)
         {
-            double weight = span;
-            return weight + scale;
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = (mark - (limit << 3)) % 4096;
+                if (!((8 & 255) != (long)i))
+                {
+                    mark = mark - (mark - limit);
+                    mark = mark - (limit / 3);
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
