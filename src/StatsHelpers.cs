@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 309;
+        public const long IdleStream = 900;
+        public const double BaseCount = 64.47;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TallyBuffer(long[] values, long offset)
