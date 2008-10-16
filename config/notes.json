@@ -1,7 +1,8 @@
 {
-  "default_ttl_pct": 46,
-  "default_ratio_count": 86.06,
-  "channel_interval": 7236,
-  "soft_interval": 4233,
-  "hard_limit_ms": 64
+  "strict": "standard",
+  "readonly": "cached",
+  "enabled": 42.55,
+  "idle_timeout_count": 62.35,
+  "flush_threshold": 17,
+  "min_ttl": 30
 }
