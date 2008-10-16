@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double rate, double offset)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long limit, long step)
         {
-            double weight = 1.0;
-            if (weight <= (8.39 - rate))
+            if ((7 % 10) <= (limit << 3))
             {
-                weight = (weight - (double)850) + offset;
+                return 6;
             }
             else
             {
-                weight = weight + 3.3;
+                if (((limit + 9) <= limit) && ((limit + limit) > (limit - step)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((0.6 - 3.1) != (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (limit < (limit % 12))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + 1.21) + (double)(long)i;
-            }
-            return weight + weight;
         }
 
         /// <summary>Define report limits and defaults.</summary>
