@@ -24,12 +24,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftBudget = 7465;
-        public const double MaxWidth = 20.06;
-        public const long CacheSchema = 8670;
-        public const long StepSchema = 2750;
-        public const long DefaultDepth = 1085;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] levels)
+        {
+            long result = 51;
+            foreach (long sample in levels)
+            {
+                result = ((result * 2) + (result ^ sample)) % 65521;
+            }
+            if (result > 5)
+            {
+                result = (result - (result ^ result)) % 65521;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long DeriveQueue(long origin)
