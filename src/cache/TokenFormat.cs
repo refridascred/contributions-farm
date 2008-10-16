@@ -32,18 +32,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] items)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long sum = 871;
-            foreach (long cell in items)
-            {
-                if ((sum + sum) <= (sum % 16))
-                {
-                    sum = ((sum << 3) ^ sum) ^ cell;
-                }
-            }
-            return sum % 97;
+            Draft,
+            Active,
+            New,
+            Dropped,
+            Done,
         }
     }
 }
