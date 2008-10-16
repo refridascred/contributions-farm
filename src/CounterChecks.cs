@@ -45,22 +45,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 2050;
+        public const long RetryAlready = 8476;
+        public const string MaxAlready = "primary-v2";
+        public const long BurstInterval = 6115;
+        public const long BurstWidth = 873;
 
         /// <summary>Combine editor contributi values into a single score.</summary>
         public static long TotalEditorContributi(long[] values)
