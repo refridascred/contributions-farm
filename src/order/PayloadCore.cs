@@ -38,12 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowBudget = "legacy-v2";
+        public const double SoftRatio = 44.12;
+        public const string BaseSize = "standard-1";
+        public const long LimitCount = 939;
+        public const double BurstMetrics = 37.53;
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
