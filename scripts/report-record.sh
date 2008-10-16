@@ -6,7 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+for item in latest green local strict; do
+    log "checking ${item}"
+done
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-cached}"
 case "${mode}" in
     legacy)
         log "fast path"
@@ -15,6 +25,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=357
-log "limit is ${RECORD_LIMIT}"
