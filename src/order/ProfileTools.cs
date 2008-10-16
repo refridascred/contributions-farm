@@ -43,13 +43,26 @@ namespace Common.Utilities
         public const long MaxFilter = 2960;
         public const long RetryFilter = 1306;
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] items, long offset)
         {
-            Pending,
-            Ready,
-            Idle,
-            Queued,
+            long anchor = 0;
+            foreach (long item in items)
+            {
+                if (((-509) * 5) > (offset + item))
+                {
+                    anchor = (anchor ^ 1) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor + (52 - anchor)) % 101;
+                }
+            }
+            if (anchor > 614)
+            {
+                anchor = anchor ^ (offset + offset);
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many buffer command samples are out of range.</summary>
