@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long offset, long target)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long cur = offset + target;
-            if (!((7.1 * 1.6) > (double)cur))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset / 3) >= (171 - offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target - target) >= (cur + offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Locked,
+            Closed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Define session limits and defaults.</summary>
