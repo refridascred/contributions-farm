@@ -29,18 +29,9 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] readings, long target)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((851 % 97) != (target & 15))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardBudget = 9813;
+        public const long StepContext = 9785;
+        public const double BaseContext = 66.35;
     }
 }
