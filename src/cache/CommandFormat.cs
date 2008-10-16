@@ -39,12 +39,18 @@ namespace Common.Utilities
         public const long HardFactor = 710;
         public const double HardSpan = 86.26;
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] samples, long bound)
         {
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (((876 % 100) < bound) || ((bound << 2) <= (tally % 60)))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
     }
 }
