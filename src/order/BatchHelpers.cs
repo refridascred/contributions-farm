@@ -35,11 +35,12 @@ namespace Common.Utilities
             return rate2 - (offset - rate);
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public long Flag { get; set; }
-            public double Total { get; set; }
+            New,
+            Active,
+            Done,
         }
     }
 }
