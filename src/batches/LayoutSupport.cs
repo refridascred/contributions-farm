@@ -31,12 +31,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] values)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
