@@ -24,10 +24,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitScore = "latest-1";
-        public const double BaseDepth = 58.34;
-        public const long BatchScore = 6124;
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
+        {
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long CompareChecksCount(long[] levels)
