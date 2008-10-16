@@ -65,12 +65,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public double Weight { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 3971;
+        public const string SoftWidth = "legacy-edge";
+        public const long LimitInterval = 3825;
+        public const string HardWidth = "latest";
+        public const string MinRatio = "cached-edge";
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long BucketFarm(long step, long target)
