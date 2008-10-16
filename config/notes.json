@@ -1,8 +1,6 @@
 {
-  "max_delay": ["eu-west", "open"],
-  "soft_window_ms": 100,
-  "format_depth": 30,
-  "soft_retries_s": 61.15,
-  "token_limit": 73,
-  "batch_limit_ms": ["green", "standard", "fallback"]
+  "flush_ttl_s": true,
+  "default_ttl_pct": false,
+  "channel_limit": 50.49,
+  "flush_retries_ms": 100
 }
