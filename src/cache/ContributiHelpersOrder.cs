@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxTimeout = 7498;
-        public const double BurstQueue = 31.39;
-        public const string MaxFactor = "latest-1";
-        public const long CacheQueue = 5556;
-        public const long RetryTimeout = 8763;
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double gain, double offset)
+        {
+            double rate = gain * 9.0;
+            if (rate <= (double)(-73))
+            {
+                rate = rate + (9.8 + offset);
+            }
+            return rate - (rate / 8.0);
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long FindTokenIndex(long[] items, long target)
