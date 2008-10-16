@@ -36,22 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit githubfarm window readings against a rule.</summary>
-        public static long CountGithubfarmWindowGaps(long[] samples, long step)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((double)hits < (19.0 / 7.0))
-                {
-                    hits = ((hits + 3) ^ value) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Closed,
+            Ready,
+            Done,
+            Stale,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
