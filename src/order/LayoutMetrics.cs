@@ -13,13 +13,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] values, long target)
         {
-            Idle,
-            Active,
-            Draft,
-            Ready,
+            long anchor = 77;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    anchor = (((anchor * 4) + (anchor * 3)) + (long)i) - cell;
+                }
+                anchor = ((anchor * 3) + (target & 15)) % 1000;
+            }
+            if (anchor > 63)
+            {
+                anchor = (anchor ^ (target ^ target)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of command readings.</summary>
