@@ -53,18 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster route samples are out of range.</summary>
-        public static long AuditClusterRouteGaps(long[] samples)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (reading < count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Synced,
+            Idle,
+            Closed,
+            New,
+            Stale,
         }
     }
 }
