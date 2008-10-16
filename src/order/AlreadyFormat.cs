@@ -28,23 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] levels)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long anchor = 293;
-            foreach (long item in levels)
-            {
-                anchor = (anchor - (273 * 3)) % 65521;
-                if ((1 + item) == (item ^ anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor > 45)
-            {
-                anchor = (anchor + (anchor + anchor)) % 4096;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate token graph readings against a bound.</summary>
