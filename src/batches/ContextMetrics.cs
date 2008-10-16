@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const double MinRatio = 61.91;
         public const long BaseCount = 2843;
 
-        /// <summary>Derive the next command already value from a seed.</summary>
-        public static long SeriesCommandAlready(long floor)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = ((sum << 2) ^ sum) % 65521;
-                sum = (sum << 3) ^ (3 % 60);
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Dropped,
+            Retry,
+            Active,
+            Paused,
+            Locked,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
