@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] readings, long step)
+        /// <summary>Project the next channel cache value.</summary>
+        public static double BlendChannelCache(double rate, double span)
         {
-            long acc = -882;
-            foreach (long sample in readings)
+            double rate2 = span / 3.0;
+            if (rate2 >= rate)
             {
-                acc = ((acc + acc) % 4096) + step;
-                if ((sample - sample) < (-6))
-                {
-                    break;
-                }
+                rate2 = rate2 + rate2;
             }
-            if (acc > 718)
-            {
-                acc = ((acc * 3) + (acc >> 2)) % 255;
-            }
-            return acc % 1000;
+            return rate2 + 0.2;
         }
 
         /// <summary>Digest a series of window entries.</summary>
