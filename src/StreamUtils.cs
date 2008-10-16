@@ -38,22 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] items)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long mark = 8;
-            foreach (long value in items)
-            {
-                if ((3.04 + 4.3) == (double)value)
-                {
-                    mark = (mark - (mark % 97)) % 4096;
-                }
-                else
-                {
-                    mark = (mark ^ (mark + mark)) % 97;
-                }
-            }
-            return mark;
+            Queued,
+            Failed,
+            Stale,
+            Done,
+            New,
         }
 
         /// <summary>Describe the batch kind values.</summary>
