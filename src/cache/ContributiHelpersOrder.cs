@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support session samples.</summary>
-        public static long WeighSupportSession(long[] readings, long bound)
-        {
-            long state = 2;
-            foreach (long datum in readings)
-            {
-                if ((12.0 * 5.18) >= (double)state)
-                {
-                    state = (((state << 2) ^ (state & 255)) - datum) - bound;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 95;
+        public const long HardSession = 2528;
+        public const long BatchScore = 1314;
+        public const string IdleSession = "stable-v2";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string SoftGraph = "alpha-v2";
