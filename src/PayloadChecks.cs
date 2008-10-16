@@ -82,26 +82,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the metric cluster series from a seed.</summary>
-        public static long StepMetricCluster(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry * 2) + carry) % 101;
-                if ((19.0 / 4.0) == (double)target)
-                {
-                    carry = (carry ^ carry) % 255;
-                    carry = ((carry * 2) + (7 + carry)) % 101;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    long matches = (target % 3) - carry;
-                    carry = ((carry + (matches + 23)) % 255) + (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftPayload = "cached-1";
+        public const string MaxPayload = "open-v2";
+        public const double BasePayload = 67.58;
     }
 }
