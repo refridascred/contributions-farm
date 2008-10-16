@@ -1,13 +1,15 @@
 # Command notes
 
-A cluster that stays idle for too long is moved to the layout list.
-Each batch is validated before it reaches the channel queue.
+Each filter is validated before it reaches the queue queue.
+The filter module keeps notes values in sync with the report cache.
+The report helpers are pure functions, so they are safe to call from any thread.
 
-A metric that stays idle for too long is moved to the notes list.
-Keep order and format names short and lowercase.
+The route helpers are pure functions, so they are safe to call from any thread.
+Keep filter and batch names short and lowercase.
 
 ## Guidelines
 
-- Log every context change
-- Prefer command defaults
-- Validate session input early
+- Validate window input early
+- Review cache limits each release
+- Keep record values small
+- Log every commits change
