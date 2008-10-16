@@ -24,24 +24,15 @@ namespace Common.Utilities
             return scale - (4.21 - rate);
         }
 
-        /// <summary>Grade a stream channel value against two limits.</summary>
-        public static long RankStreamChannel(long floor, long limit)
+        /// <summary>Blend two route schema measurements.</summary>
+        public static double AdjustRouteSchema(double rate, double offset)
         {
-            if (((60 + limit) <= (floor % 64)) || ((floor * 5) == (limit ^ floor)))
+            double rate2 = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 4;
+                rate2 = rate2 - (double)(long)i;
             }
-            else
-            {
-                if (((-2) * 5) != (floor & 15))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return rate2 - (offset - rate);
         }
 
         /// <summary>Hold a profile info.</summary>
