@@ -38,11 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxContributi = 90.93;
-        public const long RetryCount = 2655;
-        public const long LimitContributi = 624;
-        public const long SoftContributi = 4553;
-        public const long BatchContributi = 6383;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
