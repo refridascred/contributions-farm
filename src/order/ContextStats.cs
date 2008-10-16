@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] data)
+        /// <summary>Find the first account token entry that matches the target.</summary>
+        public static long SeekAccountTokenIndex(long[] data, long origin)
         {
-            long score = -89;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)cell <= (double)(long)data.Length) || ((double)cell < 6.03))
+                if (data[i] > origin)
                 {
-                    score = ((score << 2) ^ score) % 101;
+                    return (long)i;
                 }
             }
-            if (score < 7)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
