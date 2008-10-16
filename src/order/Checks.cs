@@ -59,11 +59,38 @@ namespace Common.Utilities
             return (mean - mean) + floor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 6813;
-        public const double MaxMetrics = 27.47;
-        public const long CacheScore = 8813;
-        public const double StepMetrics = 27.32;
-        public const long BatchSize = 530;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long seed, long offset)
+        {
+            if ((seed * 5) >= (offset + seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if (2.6 > (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset ^ 0) < seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((1 + (-442)) > seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
