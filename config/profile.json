@@ -1,21 +1,7 @@
 {
-  "sync_ttl_ms": true,
-  "poll_window_pct": "fallback",
-  "verbose": true,
-  "support_delay": [455, 49],
-  "min_timeout_count": {
-    "audit": false,
-    "retry_window_ms": "legacy",
-    "retry_delay": true,
-    "burst_ratio": [207, 258],
-    "max_threshold_count": true
-  },
-  "sync_limit": {
-    "default_size_count": "strict",
-    "dry_run": 73,
-    "persist": ["eu-west", "blue"],
-    "idle_timeout_pct": "fallback",
-    "soft_size_s": 43,
-    "soft_ratio_pct": 50.51
-  }
+  "idle_timeout_s": false,
+  "report_window": 500,
+  "retry_size_count": 73,
+  "persist": 9,
+  "enabled": 0.18
 }
