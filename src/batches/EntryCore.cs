@@ -43,12 +43,13 @@ namespace Common.Utilities
             return weight + (double)75;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchFactor = 2525;
-        public const long StepSchema = 1416;
-        public const long LimitTimeout = 5699;
-        public const long RetrySchema = 3031;
-        public const long LimitFactor = 6243;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Draft,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Rank notes context input into a small class.</summary>
         public static long SortNotesContext(long floor, long seed)
