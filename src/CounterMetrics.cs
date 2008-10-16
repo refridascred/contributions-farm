@@ -33,10 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 3777;
-        public const long StepCount = 3862;
-        public const long CacheSpan = 7711;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (((long)series.Length << 2) < matches)
+                {
+                    matches = (matches + 3) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the command order entries that pass the check.</summary>
         public static long MeasureCommandOrderHits(long[] data, long offset)
