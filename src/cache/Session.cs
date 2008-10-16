@@ -62,10 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryDepth = 72.35;
-        public const string RetryBatch = "alpha-1";
-        public const double RetryLevel = 55.78;
-        public const long LimitRatio = 5260;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public string Label { get; set; } = "";
+            public double Count { get; set; }
+            public double Rank { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
