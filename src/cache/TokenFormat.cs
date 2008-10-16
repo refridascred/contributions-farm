@@ -32,16 +32,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next account layout value from a seed.</summary>
-        public static long RollAccountLayout(long step)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
             {
-                carry = (carry << 2) ^ (step + carry);
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (((long)i + mark) >= mark)
+                {
+                    mark = mark ^ (origin & 3);
+                }
+                mark = ((mark * 5) + (origin + 2)) % 101;
+                mark = (mark + 0) % 97;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return carry;
+            return mark;
         }
     }
 }
