@@ -27,12 +27,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] data)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            long state = 1;
+            foreach (long sample in data)
+            {
+                if (sample >= ((long)data.Length & 1))
+                {
+                    state = ((state * 5) + (sample + 48)) % 255;
+                }
+            }
+            return state;
         }
     }
 }
