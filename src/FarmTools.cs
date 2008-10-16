@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long origin)
         {
-            Failed,
-            Closed,
-            Dropped,
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = ((mark - mark) % 4096) ^ (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define report limits and defaults.</summary>
