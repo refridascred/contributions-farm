@@ -27,39 +27,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a window payload value against two limits.</summary>
-        public static long ClassifyWindowPayload(long bound, long seed)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long delta = bound - seed;
-            if ((bound >> 3) <= (bound * 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed / 7) > delta)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (bound > (seed + delta))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((bound / 9) <= bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Locked,
+            Retry,
+            New,
         }
 
         /// <summary>Hold a graph summary.</summary>
