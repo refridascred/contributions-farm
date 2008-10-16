@@ -35,10 +35,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryToken = "local";
-        public const double BatchScore = 41.94;
-        public const long DefaultToken = 8048;
-        public const double LimitDepth = 50.4;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] values)
+        {
+            long score = 79;
+            foreach (long cell in values)
+            {
+                score = (score - score) ^ cell;
+            }
+            return score;
+        }
     }
 }
