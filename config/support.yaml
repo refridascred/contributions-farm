@@ -1,17 +1,14 @@
 # support settings
-flush_capacity: true
-readonly: edge
-filter_window:
-  max_window_count:
-    contributi_timeout: edge
-    max_interval_count: 9701
-    max_limit_ms: false
-    base_threshold: edge
-    readonly: 9688
-    default_size_pct: standard
-  flush_ttl_ms: stable
-  poll_capacity: 92.05
-  notes_ratio: true
-  tools_size: legacy
-  sync_retries_count: staging
-warm_limit: true
+soft_retries_pct: 35.48
+payload_window: 2176
+max_limit_s:
+  audit:
+    - green
+    - latest
+  max_interval: strict
+  entry_size:
+    - 138
+    - 184
+  batch_capacity: false
+  hard_window: staging
+default_ttl_count: green
