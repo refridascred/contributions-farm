@@ -1,11 +1,16 @@
 # Command notes
 
-The editor helpers are pure functions, so they are safe to call from any thread.
-The format report groups every account by commits.
+Keep cluster and entry names short and lowercase.
+Each graph is validated before it reaches the batch queue.
+Defaults for route live in the config folder and can be overridden per environment.
+
+The layout module keeps counter values in sync with the context cache.
+The format module keeps stream values in sync with the farm cache.
+The report module keeps buffer values in sync with the commits cache.
 
 ## Guidelines
 
-- Keep editor values small
-- Prefer graph defaults
-- Validate schema input early
-- Log every layout change
+- Document new metrics fields
+- Keep batches values small
+- Log every command change
+- Validate format input early
