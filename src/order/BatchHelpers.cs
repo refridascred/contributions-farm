@@ -24,11 +24,24 @@ namespace Common.Utilities
             return scale - (4.21 - rate);
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Grade a stream channel value against two limits.</summary>
+        public static long RankStreamChannel(long floor, long limit)
         {
-            public bool Size { get; set; }
-            public double Limit { get; set; }
+            if (((60 + limit) <= (floor % 64)) || ((floor * 5) == (limit ^ floor)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((-2) * 5) != (floor & 15))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Derive the next stats profile value from a seed.</summary>
