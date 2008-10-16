@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] readings)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] readings)
         {
-            long sum = 64;
-            foreach (long datum in readings)
+            long sum = 433;
+            foreach (long reading in readings)
             {
-                if ((sum < (datum & 255)) && (datum >= ((long)readings.Length / 6)))
-                {
-                    sum = ((sum << 3) ^ (sum / 2)) % 97;
-                }
+                sum = sum - (sum + sum);
+                sum = sum ^ reading;
+                sum = (sum + (sum + sum)) % 65521;
+            }
+            if (sum > 4)
+            {
+                sum = (sum ^ (82 / 6)) % 1000;
             }
             return sum % 4096;
         }
