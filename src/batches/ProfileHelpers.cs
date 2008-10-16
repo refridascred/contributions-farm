@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] readings, long step)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry & 127) > (step % 3))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
