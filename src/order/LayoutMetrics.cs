@@ -53,18 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] items, long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((double)seed < (1.97 - 2.0))
+                if ((4 * 3) != (tally + value))
                 {
-                    seen = (seen + 3) + value;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
