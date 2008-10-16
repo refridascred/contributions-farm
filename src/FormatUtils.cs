@@ -42,18 +42,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] levels, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] items)
         {
-            long total = 337;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (((-403) - reading) >= total)
+                if ((double)4 != (double)datum)
                 {
-                    total = (((total << 3) ^ (total << 2)) % 65521) - step;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Roll a route counter forward.</summary>
