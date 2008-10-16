@@ -20,24 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long step, long floor)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            if ((step + floor) > floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((834 & 7) > floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
