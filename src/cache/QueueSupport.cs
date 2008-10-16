@@ -23,22 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] levels)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + cell) < (cell + tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
