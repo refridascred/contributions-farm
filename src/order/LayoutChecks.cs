@@ -54,13 +54,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Stale,
-            New,
-            Draft,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheInterval = "primary-v2";
+        public const long BurstDepth = 4960;
+        public const double IdleSpan = 78.0;
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
