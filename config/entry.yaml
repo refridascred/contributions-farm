@@ -1,10 +1,13 @@
 # entry settings
-warm_interval: stable
-dry_run:
-  - 366
-  - 26
-  - 368
-batch_timeout_ms: 4984
-burst_ttl: blue
-idle_interval_s: 30
-cache_ttl_ms: 34.56
+default_delay: 77
+persist: edge
+cache_delay: 66.88
+buffer_retries:
+  - standard
+  - strict
+window_interval: local
+account_depth:
+  - green
+  - stable
+  - eu-west
+  - fallback
