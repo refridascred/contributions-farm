@@ -32,15 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] items)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] series, long seed)
         {
             long count = 0;
-            foreach (long sample in items)
+            foreach (long value in series)
             {
-                if ((double)count > (8.1 * 7.4))
+                if ((value * 3) < seed)
                 {
-                    count = (count + 1) + sample;
+                    count = count + 3;
                 }
             }
             return count;
