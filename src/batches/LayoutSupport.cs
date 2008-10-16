@@ -39,12 +39,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] readings)
         {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((15.0 + 9.09) >= (double)count)
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
