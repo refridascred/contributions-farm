@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] data, long floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            if ((offset ^ 50) < (offset >> 5))
             {
-                if ((double)reading <= 2.8)
+                return 8;
+            }
+            else
+            {
+                if ((offset + limit) > (12 * 4))
                 {
-                    matches = (matches + 1) - floor;
+                    return 7;
+                }
+                else
+                {
+                    if ((9 >> 3) > offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit layout notes readings against a rule.</summary>
