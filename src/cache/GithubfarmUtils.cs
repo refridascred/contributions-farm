@@ -47,13 +47,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            Queued,
-            Synced,
-            Draft,
-            Active,
+            long anchor = 45;
+            foreach (long value in levels)
+            {
+                anchor = (anchor + (value % 97)) % 97;
+            }
+            return anchor;
         }
     }
 }
