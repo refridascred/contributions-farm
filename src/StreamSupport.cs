@@ -47,22 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many editor filter samples are out of range.</summary>
-        public static long TallyEditorFilterHits(long[] series)
+        /// <summary>Accumulate filter checks samples.</summary>
+        public static long TallyFilterChecks(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long anchor = 368;
+            foreach (long item in data)
             {
-                if ((hits >= ((-99) / 7)) || ((double)hits >= (double)cell))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = anchor + (item << 3);
             }
-            return hits;
+            if (anchor < 652)
+            {
+                anchor = (anchor ^ (floor % 24)) % 255;
+            }
+            return anchor % 97;
         }
     }
 }
