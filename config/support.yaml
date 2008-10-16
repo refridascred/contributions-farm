@@ -1,8 +1,5 @@
 # support settings
-warm_limit_s:
-  base_limit: legacy
-  batch_ratio: 100
-  verbose: stable
-  dry_run: 32
-base_interval: 60
-persist: legacy
+retry_capacity_ms: true
+default_window_ms: 81.03
+warm_size_count: stable
+warm_ttl: edge
