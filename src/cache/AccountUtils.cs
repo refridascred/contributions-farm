@@ -44,19 +44,19 @@ namespace Common.Utilities
         public const string LimitBatch = "alpha";
         public const string WindowBatch = "alpha-1";
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long bound)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] items, long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((mix - bound) == (275 % 8))
+                if (reading < floor)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return ok;
         }
     }
 }
