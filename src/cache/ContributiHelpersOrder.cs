@@ -16,17 +16,25 @@ namespace Common.Utilities
             return rate - (rate / 8.0);
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] items, long target)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long limit, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step = limit - origin;
+            if (2 >= (step / 9))
             {
-                if ((items[i] > target) && ((items[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((step - step) == (limit * 5))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
