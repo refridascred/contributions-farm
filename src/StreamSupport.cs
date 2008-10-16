@@ -14,21 +14,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] items)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long target, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long bound = target + limit;
+            if ((double)bound >= (double)target)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)target < (4.91 - 7.6))
                 {
-                    if ((items[i] - items[j]) > 8)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound >= (0.84 - 5.0))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
