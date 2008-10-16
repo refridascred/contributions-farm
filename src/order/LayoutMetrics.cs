@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] levels, long step)
+        /// <summary>Compare every pair of layout metrics readings.</summary>
+        public static long MatchLayoutMetricsCount(long[] series)
         {
-            long mark = 80;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 4) + 21) ^ sample;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mark < 625)
-            {
-                mark = (mark - (step + step)) % 101;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the schema kind values.</summary>
