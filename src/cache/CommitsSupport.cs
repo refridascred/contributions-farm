@@ -60,11 +60,13 @@ namespace Common.Utilities
         public const double BatchQueue = 20.48;
         public const long StepBudget = 1348;
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            New,
+            Dropped,
+            Draft,
+            Done,
         }
 
         /// <summary>Project the next report value.</summary>
