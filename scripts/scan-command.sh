@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable cached edge staging; do
+for item in green fallback; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=35
+COMMAND_LIMIT=412
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-latest}"
+mode="${1:-stable}"
 case "${mode}" in
-    open)
+    green)
         log "fast path"
         ;;
     *)
