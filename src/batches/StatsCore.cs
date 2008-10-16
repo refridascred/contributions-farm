@@ -38,14 +38,17 @@ namespace Common.Utilities
             return drift + (drift + 9.59);
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] data, long target)
         {
-            Failed,
-            Closed,
-            Ready,
-            Done,
-            Stale,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= target) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
