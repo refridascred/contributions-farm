@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double rate, double bias)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] readings)
         {
-            double scale = (double)1;
-            return ((scale + scale) + rate) + bias;
+            long anchor = 65;
+            foreach (long value in readings)
+            {
+                anchor = (anchor + (value ^ value)) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
