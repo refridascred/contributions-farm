@@ -39,39 +39,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long limit, long bound)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] samples)
         {
-            long prev = limit - bound;
-            if (8.8 < (double)bound)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(bound < limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((prev + limit) > (prev ^ prev)) || ((bound ^ limit) > (limit + prev)))
+                    if ((samples[i] + samples[j]) < 4)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound >> 4) >= prev)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
