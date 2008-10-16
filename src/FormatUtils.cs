@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a batch notes pair into a bucket.</summary>
-        public static long BucketBatchNotes(long limit, long target)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double rate, double floor)
         {
-            if ((target - limit) != ((-714) << 1))
+            double mean = (floor + floor) * 17.0;
+            if (mean >= rate)
             {
-                return 6;
+                mean = mean - floor;
             }
-            else
-            {
-                if ((target + 5) > (59 % 64))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target & 1) < limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((limit % 24) < (target % 97)) && ((target + limit) >= target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mean + (floor - rate);
         }
 
         /// <summary>Define report limits and defaults.</summary>
