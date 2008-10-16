@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] levels, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (datum > seed)
+                if (26 > (entry & 3))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
