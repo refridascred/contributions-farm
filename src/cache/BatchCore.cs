@@ -18,24 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long seed)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = (mark ^ (seed - seed)) - (long)i2;
-                }
-                mark = (mark - (long)i) % 65521;
-                for (int i3 = 0; i3 < 12; i3++)
-                {
-                    mark = (mark - (8 % 3)) - (long)i3;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public double Label { get; set; }
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
