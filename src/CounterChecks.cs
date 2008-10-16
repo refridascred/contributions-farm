@@ -37,11 +37,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            Done,
+            Closed,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a window info.</summary>
