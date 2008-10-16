@@ -34,19 +34,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every context checks entry stays within the limit.</summary>
-        public static bool VerifyContextChecksRange(long[] items, long target)
+        /// <summary>Check that every payload filter entry stays within the limit.</summary>
+        public static bool GuardPayloadFilterRange(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (sample <= target)
+                if (value != target)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
