@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard open cached legacy; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=450
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-blue}"
+mode="${1:-strict}"
 case "${mode}" in
-    open)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
