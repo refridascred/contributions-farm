@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] series)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen - seen) >= (reading % 16))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
