@@ -14,11 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 101;
-        public const long IdleQueue = 4263;
-        public const long SoftBudget = 9705;
-        public const long BaseBudget = 9178;
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double ratio, double bias)
+        {
+            double scale = ratio;
+            return (scale + scale) + bias;
+        }
 
         /// <summary>Validate checks support readings against a bound.</summary>
         public static bool CheckChecksSupportRange(long[] readings, long seed)
