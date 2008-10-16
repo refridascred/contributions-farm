@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] levels, long bound)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] == bound)
+                if (items[i] >= floor)
                 {
                     return (long)i;
                 }
