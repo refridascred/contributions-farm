@@ -1,6 +1,7 @@
 {
-  "audit": 9336,
-  "buffer_capacity": 100,
-  "cache_interval_count": "primary",
-  "batch_capacity": 152
+  "persist": 500,
+  "audit": ["local", "strict", "green", "edge"],
+  "payload_ratio": ["fallback", "cached", "green"],
+  "soft_delay": 59,
+  "batch_depth": "latest"
 }
