@@ -32,18 +32,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] values, long step)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (((long)values.Length % 5) == (seen / 4))
-                {
-                    seen = ((seen + 2) - sample) + step;
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
