@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Iterate the support payload series from a seed.</summary>
+        public static long SeriesSupportPayload(long limit)
         {
-            Closed,
-            New,
-            Ready,
+            long score = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if (score >= ((long)i & 127))
+                {
+                    continue;
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the record mode values.</summary>
