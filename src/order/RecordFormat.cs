@@ -47,19 +47,24 @@ namespace Common.Utilities
         public const string BatchMetrics = "fallback-1";
         public const double WindowTimeout = 18.11;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] levels, long seed)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long floor)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (value < seed)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc ^ (8 % 8)) % 101) ^ (long)i2;
                 }
+                if ((floor % 3) > floor)
+                {
+                    acc = (acc ^ (floor % 10)) % 65521;
+                }
+                acc = (acc - acc) % 101;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Rank githubfarm batches input into a small class.</summary>
