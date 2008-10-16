@@ -99,21 +99,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally * 2) != (tally ^ 5))
                 {
-                    if ((series[i] - series[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 2) - sample) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
