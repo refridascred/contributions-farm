@@ -45,13 +45,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            Synced,
-            Dropped,
+            Locked,
             Idle,
             Failed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Combine window values into a single score.</summary>
