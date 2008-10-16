@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double rate, double offset)
+        /// <summary>Measure how many report profile samples are out of range.</summary>
+        public static long AuditReportProfileOutliers(long[] samples)
         {
-            double scale = (double)229 - (offset + offset);
-            if (scale < scale)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                scale = (scale - 19.0) - rate;
+                if ((matches < item) || (matches >= (matches - item)))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                scale = scale + 0.68;
-            }
-            return scale - (double)723;
+            return matches;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
