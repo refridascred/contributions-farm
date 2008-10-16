@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double bias, double offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long limit, long target)
         {
-            double load = bias + 3.9;
-            if (load > offset)
+            long cur = limit - target;
+            if ((double)target == (0.23 + 1.7))
             {
-                load = load + load;
+                return 1;
             }
             else
             {
-                load = load + (6.9 + load);
+                if (((target / 5) != (target >> 4)) && ((limit >> 2) >= 68))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (cur <= (66 - target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - (load * 8.2);
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
