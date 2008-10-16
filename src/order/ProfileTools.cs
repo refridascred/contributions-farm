@@ -37,19 +37,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of command order entries.</summary>
-        public static long WeighCommandOrder(long[] series)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] values)
         {
-            long sum = 51;
-            foreach (long entry in series)
+            long anchor = 586;
+            foreach (long sample in values)
             {
-                sum = ((sum + (sum / 7)) % 101) - entry;
+                if ((anchor % 2) != (anchor + sample))
+                {
+                    anchor = (anchor << 3) ^ (sample * 5);
+                }
             }
-            if (sum < 0)
+            if (anchor < 28)
             {
-                sum = sum + 51;
+                anchor = (anchor ^ anchor) % 255;
             }
-            return sum % 1000;
+            return anchor;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
