@@ -44,11 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double weight, double bias)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] samples)
         {
-            double mean = bias;
-            return (mean - bias) + weight;
+            long acc = 6;
+            foreach (long datum in samples)
+            {
+                if ((0.14 + 18.0) < (double)acc)
+                {
+                    acc = (acc + (datum - datum)) % 101;
+                }
+            }
+            return acc % 1000;
         }
     }
 }
