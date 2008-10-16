@@ -32,10 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseCount = 3853;
-        public const long MaxFilter = 7868;
-        public const string IdleFilter = "local-v2";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((double)count > (8.1 * 7.4))
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiHits(long[] samples)
