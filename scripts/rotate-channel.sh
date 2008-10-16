@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+CHANNEL_LIMIT=467
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in cached edge; do
+for item in standard staging; do
     log "checking ${item}"
 done
 
-mode="${1:-legacy}"
+mode="${1:-cached}"
 case "${mode}" in
-    strict)
+    fallback)
         log "fast path"
         ;;
     *)
