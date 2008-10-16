@@ -32,18 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] series, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] data, long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((double)(long)series.Length < (6.18 * 3.0))
+                if (!!(324 < (entry - 11)))
                 {
-                    count = ((count + 3) + reading) - offset;
+                    hits = (hits + 3) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the filter phase values.</summary>
