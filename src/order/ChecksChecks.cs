@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Paused,
-            Pending,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstTimeout = "legacy-edge";
+        public const string BatchToken = "stable-1";
+        public const string LimitFactor = "legacy-1";
+        public const double MaxCount = 11.19;
 
         /// <summary>Fold a list of payload editor readings.</summary>
         public static long DigestPayloadEditor(long[] values)
