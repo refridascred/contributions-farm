@@ -47,19 +47,19 @@ namespace Common.Utilities
         public const long MaxLevel = 726;
         public const double MaxBudget = 26.79;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] values, long seed)
+        /// <summary>Adjust a account editor reading.</summary>
+        public static double ProjectAccountEditor(double bias, double floor)
         {
-            bool found = true;
-            foreach (long value in values)
+            double drift = (bias / 7.0) * 2.8;
+            if (drift >= (double)278)
             {
-                if (value < seed)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift - (double)2;
             }
-            return found;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift - (bias / 3.0);
         }
 
         /// <summary>Locate a payload reading by value.</summary>
