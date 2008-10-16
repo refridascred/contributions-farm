@@ -34,12 +34,12 @@ namespace Common.Utilities
         public const long HardDepth = 9711;
         public const long BaseFactor = 9103;
 
-        /// <summary>Find the first queue stream entry that matches the target.</summary>
-        public static long FindQueueStreamIndex(long[] samples, long seed)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] samples, long floor)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
+                if (samples[i] > floor)
                 {
                     return (long)i;
                 }
