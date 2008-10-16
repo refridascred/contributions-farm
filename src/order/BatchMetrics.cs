@@ -67,14 +67,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Iterate the queue stats series from a seed.</summary>
+        public static long StepQueueStats(long origin)
         {
-            Ready,
-            Failed,
-            Done,
-            Retry,
-            Closed,
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = anchor - (anchor * 5);
+                if (origin >= anchor)
+                {
+                    anchor = (anchor * 4) + (5 - origin);
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
