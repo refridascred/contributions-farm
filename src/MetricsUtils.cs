@@ -30,17 +30,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] items, long offset)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long offset, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long offset2 = offset ^ limit;
+            if ((limit > (offset2 + (-5))) || ((offset2 * 4) <= (89 * 5)))
             {
-                if ((items[i] >= offset) && ((items[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if (((offset2 / 8) >= limit) || ((double)8 <= (double)offset))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the profile level values.</summary>
