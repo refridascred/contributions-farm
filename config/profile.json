@@ -1,5 +1,11 @@
 {
-  "burst_delay": true,
-  "burst_retries_pct": 21.96,
-  "cache_interval": 100
+  "command_retries": "blue",
+  "verbose": {
+    "batch_capacity_pct": 9243,
+    "warm_delay": "legacy",
+    "hard_delay": "legacy",
+    "burst_ratio_ms": 64,
+    "soft_ttl_pct": "primary"
+  },
+  "cache_ttl_s": "fallback"
 }
