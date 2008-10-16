@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const long BaseRatio = 2860;
         public const long HardCluster = 6812;
 
-        /// <summary>Audit counter queue readings against a rule.</summary>
-        public static long AuditCounterQueueOutliers(long[] readings, long seed)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (((76 - seed) >= (tally >> 2)) || ((110 - sample) < (55 >> 3)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Retry,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Describe the payload kind values.</summary>
