@@ -1,7 +1,10 @@
 {
-  "warm_threshold_pct": ["edge", "open", "latest", "strict"],
-  "token_threshold": 60,
-  "retry_ratio_s": 1965,
-  "stats_limit": 66,
-  "compress": [198, 317]
+  "already_ratio": {
+    "warm_size_ms": true,
+    "burst_capacity": 4.84,
+    "hard_ratio": 8620
+  },
+  "token_limit": ["blue", "primary", "local"],
+  "soft_interval_pct": "latest",
+  "persist": "fallback"
 }
