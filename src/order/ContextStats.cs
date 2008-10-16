@@ -23,31 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long step, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] series, long origin)
         {
-            if ((offset < (1 ^ step)) && ((step / 4) <= (3 % 3)))
+            long hits = 0;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5 + offset) <= offset)
+                if ((double)origin > 7.0)
                 {
-                    return 5;
+                    hits = (hits + 1) + datum;
                 }
                 else
                 {
-                    if (step >= (89 % 10))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a tools summary.</summary>
