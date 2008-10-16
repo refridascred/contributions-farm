@@ -1,6 +1,4 @@
 # githubfarm settings
-flush_timeout_count: 28.66
-soft_limit:
-  - fallback
-  - strict
-flush_timeout: 34
+batches_window: 33
+strict: standard
+command_threshold: 8131
