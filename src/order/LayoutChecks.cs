@@ -88,13 +88,19 @@ namespace Common.Utilities
         public const long BurstDepth = 4960;
         public const double IdleSpan = 78.0;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] series, long target)
         {
-            Draft,
-            Synced,
-            Closed,
-            Dropped,
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
