@@ -28,31 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank profile report input into a small class.</summary>
-        public static long RankProfileReport(long floor, long bound)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            if (!((1.5 - 7.5) <= (double)bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((18.0 / 7.0) < (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound << 2) >= (8 & 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
