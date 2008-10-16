@@ -1,7 +1,18 @@
 {
-  "dry_run": 33.77,
-  "flush_delay_ms": [216, 489],
-  "burst_ratio_s": "standard",
-  "compress": 40.8,
-  "persist": "strict"
+  "account_delay": {
+    "verbose": false,
+    "min_size_pct": {
+      "sync_size_s": true,
+      "payload_retries": 0.19,
+      "retry_interval_count": "legacy",
+      "verbose": false
+    },
+    "metric_capacity": "stable",
+    "idle_ratio_s": false
+  },
+  "min_retries": "latest",
+  "metric_retries": 5829,
+  "soft_window": 66.42,
+  "notes_ratio": false,
+  "warm_limit_count": "eu-west"
 }
