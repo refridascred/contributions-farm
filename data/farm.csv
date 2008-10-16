@@ -1,9 +1,7 @@
-id,token,count,rank
-1,185,staging,925
-2,125,latest,fallback
-3,474,568,86.46
-4,424,81.45,265
-5,456,164,68.61
-6,50.05,91.44,standard
-7,221,740,736
-8,741,standard,local
+id,region,token
+1,legacy,blue
+2,edge,901
+3,675,primary
+4,266,45.36
+5,17.73,11.82
+6,primary,green
