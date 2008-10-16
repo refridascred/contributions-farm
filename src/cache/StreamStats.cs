@@ -25,16 +25,17 @@ namespace Common.Utilities
         public const long MinSize = 917;
         public const long BatchRatio = 1055;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Locate a channel token reading by value.</summary>
+        public static long LookupChannelTokenIndex(long[] values, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = score ^ 757;
-                score = ((score * 4) + (long)i) % 1000;
+                if ((values[i] > step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Measure how many cluster batch samples are out of range.</summary>
