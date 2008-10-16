@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const string IdleMetrics = "staging";
         public const long RetryRatio = 6100;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] levels, long limit)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((value << 1) > seen)
-                {
-                    seen = (seen + 3) - limit;
-                }
-            }
-            return seen;
+            New,
+            Closed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Measure how many commits channel samples are out of range.</summary>
