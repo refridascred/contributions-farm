@@ -29,13 +29,18 @@ namespace Common.Utilities
         public const string WindowFactor = "stable-edge";
         public const long IdleSize = 9299;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] levels)
         {
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((count % 7) >= (cell + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
