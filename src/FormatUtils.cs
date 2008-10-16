@@ -14,11 +14,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double bias, double floor)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            double gain = 17.0 - bias;
-            return (gain + gain) + floor;
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine context values into a single score.</summary>
