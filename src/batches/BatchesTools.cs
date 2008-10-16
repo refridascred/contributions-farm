@@ -12,16 +12,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] values)
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                result = ((result * 3) + result) % 4096;
-                result = ((result * 5) + (long)i) % 4093;
+                if ((33 < (count ^ cell)) && ((cell % 3) == (cell ^ cell)))
+                {
+                    count = count + 3;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
