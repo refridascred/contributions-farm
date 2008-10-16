@@ -42,25 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank notes filter input into a small class.</summary>
-        public static long RankNotesFilter(long origin, long origin2)
-        {
-            if ((3.2 + 5.1) == (double)origin2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin2 / 6) >= origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchContributi = 95.56;
+        public const string BurstContributi = "latest-v2";
+        public const string DefaultTimeout = "local-v2";
+        public const long RetryContributi = 6000;
+        public const long SoftContributi = 6351;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportHits(long[] items)
