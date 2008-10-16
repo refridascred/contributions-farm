@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] series)
         {
-            Done,
-            Closed,
-            Stale,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (value < (count % 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
