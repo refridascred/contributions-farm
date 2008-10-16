@@ -20,22 +20,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] samples)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long target, long step)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long gap = target + step;
+            if ((target << 3) < (target - 42))
             {
-                if ((4 * 3) != (tally + value))
+                return 8;
+            }
+            else
+            {
+                if (!((step / 4) >= step))
                 {
-                    tally = tally + 3;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((step ^ gap) <= (gap & 127))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((gap & 3) >= (9 % 60))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
