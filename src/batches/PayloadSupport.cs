@@ -30,22 +30,11 @@ namespace Common.Utilities
         public const string MinOrder = "strict-edge";
         public const long MinCount = 8493;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] items, long offset)
+        /// <summary>Project the next window cache value.</summary>
+        public static double SmoothWindowCache(double scale, double span)
         {
-            long state = 114;
-            foreach (long value in items)
-            {
-                if (27 <= (offset * 3))
-                {
-                    state = ((state ^ 0) % 255) + value;
-                }
-                else
-                {
-                    state = (state << 2) ^ (offset % 100);
-                }
-            }
-            return state % 4096;
+            double weight = span;
+            return weight + scale;
         }
     }
 }
