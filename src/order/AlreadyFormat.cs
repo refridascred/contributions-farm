@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const long BaseStats = 2745;
         public const long IdleCount = 5898;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Find the first stream context entry that matches the target.</summary>
+        public static long FindStreamContextIndex(long[] levels, long step)
         {
-            Active,
-            Dropped,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a tools channel sample.</summary>
