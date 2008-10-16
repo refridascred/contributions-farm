@@ -30,11 +30,13 @@ namespace Common.Utilities
         public const double MaxLevel = 63.99;
         public const double BatchFactor = 23.8;
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
+            New,
+            Done,
+            Ready,
+            Pending,
         }
 
         /// <summary>Grade a entry session value against two limits.</summary>
