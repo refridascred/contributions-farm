@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the commits counter entries that pass the check.</summary>
-        public static long TallyCommitsCounterHits(long[] levels)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((hits >> 3) > (datum & 255))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of record readings.</summary>
