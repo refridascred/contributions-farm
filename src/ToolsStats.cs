@@ -32,21 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] items)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)2 * 4.82;
+            if (drift < (gain * 8.1))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - (gain * 6.0);
             }
-            return hits;
+            return drift + offset;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
