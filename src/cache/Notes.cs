@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitPayload = 88.09;
-        public const long BurstSize = 7951;
-        public const long MinRatio = 6275;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double ratio, double bias)
+        {
+            double mean = bias;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = ((mean + (double)(-99)) + (double)(long)i) - ratio;
+            }
+            return mean - (bias + bias);
+        }
 
         /// <summary>Iterate the queue report series from a seed.</summary>
         public static long SeriesQueueReport(long limit)
