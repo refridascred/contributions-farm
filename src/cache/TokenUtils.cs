@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] samples, long seed)
         {
-            public double Stamp { get; set; }
-            public double Level { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (reading < (matches / 8))
+                {
+                    matches = (matches + 2) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
