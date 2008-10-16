@@ -33,9 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdlePayload = "alpha-edge";
-        public const long BasePayload = 8458;
-        public const long RetryInterval = 4849;
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
