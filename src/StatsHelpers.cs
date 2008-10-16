@@ -78,11 +78,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseSize = "stable-1";
-        public const long BatchWidth = 2285;
-        public const long CacheBuffer = 3910;
-        public const long MaxBuffer = 3652;
-        public const long WindowBudget = 1305;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
