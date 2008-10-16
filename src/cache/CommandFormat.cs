@@ -17,15 +17,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Iterate the batches queue series from a seed.</summary>
+        public static long RollBatchesQueue(long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                if (!((8.0 / 6.0) > (double)(long)i))
+                {
+                    mark = (mark - (long)i) % 97;
+                }
+                long tally = (long)i / 3;
+                if (tally > (long)i)
+                {
+                    mark = (mark - mark) % 4096;
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
