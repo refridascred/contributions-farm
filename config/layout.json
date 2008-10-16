@@ -1,11 +1,7 @@
 {
-  "retry_depth_s": "cached",
-  "stats_depth": {
-    "base_size_count": "green",
-    "soft_window_s": true,
-    "format_depth": "legacy",
-    "strict": 65,
-    "warm_delay_pct": 46
-  },
-  "enabled": 55.22
+  "support_timeout": [2, 361, 472, 1],
+  "poll_window_count": 480,
+  "verbose": true,
+  "default_size": ["primary", "strict", "local", "standard"],
+  "soft_threshold": true
 }
