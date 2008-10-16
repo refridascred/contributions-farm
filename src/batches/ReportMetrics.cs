@@ -36,13 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Synced,
-            Active,
             Stale,
             Queued,
+            Paused,
+            Closed,
+            Active,
         }
     }
 }
