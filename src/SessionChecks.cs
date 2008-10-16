@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] values)
+        /// <summary>Measure how many tools cluster samples are out of range.</summary>
+        public static long AuditToolsClusterMatches(long[] readings)
         {
-            long sum = 54;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                sum = ((sum * 2) + datum) % 1000;
+                if ((entry / 3) < (count + entry))
+                {
+                    count = count + 2;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Match up counter samples.</summary>
