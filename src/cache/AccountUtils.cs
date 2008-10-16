@@ -22,29 +22,19 @@ namespace Common.Utilities
         public const string LimitBatch = "alpha";
         public const string WindowBatch = "alpha-1";
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long target)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long bound)
         {
-            long result = target;
-            for (int i = 0; i < 18; i++)
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (((long)i < ((long)i + target)) || (((long)i + (long)i) == ((long)i * 5)))
+                if ((mix - bound) == (275 % 8))
                 {
-                    result = result ^ ((long)i % 10);
-                    result = (result ^ (target + target)) % 1000;
+                    continue;
                 }
-                if (((double)result < 1.84) && ((double)(long)i <= (4.0 + 7.93)))
-                {
-                    result = (result << 2) ^ (result % 3);
-                }
-                if ((result % 60) >= result)
-                {
-                    result = result ^ (result - result);
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 4093;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return result;
+            return mix;
         }
     }
 }
