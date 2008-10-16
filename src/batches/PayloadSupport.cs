@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] values, long origin)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Failed,
+            Queued,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
