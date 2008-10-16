@@ -55,17 +55,18 @@ namespace Common.Utilities
             return load - 4.1;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] items, long offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (items[i] == offset)
+                if (limit < 61)
                 {
-                    return (long)i;
+                    count = (count + 2) + sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
