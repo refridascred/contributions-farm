@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=217
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in edge latest blue; do
+for item in green blue; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-open}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
