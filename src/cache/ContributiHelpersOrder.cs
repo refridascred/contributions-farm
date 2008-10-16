@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double gain, double offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] samples, long target)
         {
-            double rate = gain * 9.0;
-            if (rate <= (double)(-73))
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                rate = rate + (9.8 + offset);
+                if (entry != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate - (rate / 8.0);
+            return ok;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
