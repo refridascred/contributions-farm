@@ -25,12 +25,17 @@ namespace Common.Utilities
         public const long MinSize = 917;
         public const long BatchRatio = 1055;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 6488;
-        public const long MaxSchema = 5001;
-        public const long MaxSize = 5734;
-        public const string SoftCount = "open-edge";
-        public const long BurstSchema = 6597;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                score = score ^ 757;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many cluster batch samples are out of range.</summary>
         public static long CountClusterBatchOutliers(long[] data, long floor)
