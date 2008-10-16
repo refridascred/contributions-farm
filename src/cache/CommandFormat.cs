@@ -36,15 +36,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] series)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] series, long bound)
         {
             long seen = 0;
             foreach (long datum in series)
             {
-                if ((7.0 * 8.9) <= (double)seen)
+                if (seen < (datum & 3))
                 {
-                    seen = (seen + 1) ^ datum;
+                    seen = (seen + 1) - bound;
                 }
             }
             return seen;
