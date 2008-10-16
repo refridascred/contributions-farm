@@ -63,12 +63,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Synced,
-            Dropped,
-            Draft,
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
         }
     }
 }
