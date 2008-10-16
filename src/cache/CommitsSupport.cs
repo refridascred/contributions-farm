@@ -44,40 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long floor, long step)
-        {
-            long edge = floor + step;
-            if ((floor + step) >= edge)
-            {
-                return 7;
-            }
-            else
-            {
-                if (61 > step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor >> 3) == (edge + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((edge << 2) >= (floor / 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 3929;
+        public const long StepLevel = 8754;
+        public const double BatchQueue = 20.48;
+        public const long StepBudget = 1348;
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
