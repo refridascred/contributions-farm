@@ -21,13 +21,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Synced,
-            New,
-            Draft,
-            Stale,
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
