@@ -35,11 +35,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxCount = 49.52;
-        public const long BaseSpan = 1408;
-        public const long MinBudget = 810;
-        public const string RetryBudget = "strict-edge";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinSize = 1355;
+        public const long HardFactor = 710;
+        public const double HardSpan = 86.26;
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long WeighQueue(long[] values)
