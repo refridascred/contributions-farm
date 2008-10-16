@@ -35,18 +35,12 @@ namespace Common.Utilities
         public const long BurstStream = 4382;
         public const long BatchDepth = 1474;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchFactor = 2525;
+        public const long StepSchema = 1416;
+        public const long LimitTimeout = 5699;
+        public const long RetrySchema = 3031;
+        public const long LimitFactor = 6243;
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long SeekStatsIndex(long[] readings, long floor)
