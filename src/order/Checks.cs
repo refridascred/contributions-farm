@@ -38,21 +38,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] levels)
+        /// <summary>Fold a list of metric route readings.</summary>
+        public static long TallyMetricRoute(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 8;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((mix & 31) < ((-333) + reading)) && ((long)levels.Length < 824)))
                 {
-                    if ((levels[i] + levels[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + (reading >> 2)) % 1000;
                 }
+                mix = mix + (mix + 75);
             }
-            return tally;
+            if (mix < (-2))
+            {
+                mix = (mix << 3) ^ floor;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
