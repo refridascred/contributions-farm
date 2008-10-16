@@ -46,11 +46,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheFormat = 38.79;
-        public const long HardDepth = 2713;
-        public const long WindowWidth = 518;
-        public const long BaseBudget = 9644;
+        /// <summary>Digest a series of command order entries.</summary>
+        public static long WeighCommandOrder(long[] series)
+        {
+            long sum = 51;
+            foreach (long entry in series)
+            {
+                sum = ((sum + (sum / 7)) % 101) - entry;
+            }
+            if (sum < 0)
+            {
+                sum = sum + 51;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long RollFarm(long target)
