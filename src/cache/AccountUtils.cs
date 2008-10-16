@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] levels, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((carry << 2) != ((long)i << 3))
+                if (reading < bound)
                 {
-                    carry = carry + (floor ^ floor);
-                    carry = carry - floor;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    carry = carry - carry;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
