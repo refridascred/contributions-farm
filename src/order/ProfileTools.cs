@@ -12,20 +12,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every metrics entry entry stays within the limit.</summary>
-        public static bool VerifyMetricsEntryBounds(long[] values, long step)
-        {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardTimeout = 97.76;
+        public const long BurstWidth = 8421;
+        public const long BatchSession = 4850;
+        public const long WindowSize = 9755;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long DefaultFilter = 4936;
