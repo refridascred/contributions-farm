@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] data, long bound)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long bound, long offset)
         {
-            long count = 0;
-            foreach (long item in data)
+            if (6 <= (offset - offset))
             {
-                if (((double)item == (double)(-5)) && (item < (count ^ item)))
+                return 8;
+            }
+            else
+            {
+                if ((double)offset != (6.8 - 12.0))
                 {
-                    count = (count + 1) - bound;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a report snapshot.</summary>
