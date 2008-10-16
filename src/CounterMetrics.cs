@@ -12,13 +12,28 @@ namespace Common.Utilities
         public const long SoftInterval = 6581;
         public const string IdleOrder = "legacy-edge";
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
+            long state = 448;
+            foreach (long datum in levels)
+            {
+                if ((double)datum >= (2.9 / 3.0))
+                {
+                    state = (state - (datum << 3)) % 65521;
+                }
+                else
+                {
+                    state = (state + (datum - state)) % 65521;
+                }
+                state = state - (datum - state);
+                state = state - (datum - state);
+            }
+            if (state < 43)
+            {
+                state = ((state * 2) + state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of metrics editor readings.</summary>
