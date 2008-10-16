@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] data, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 3;
+            foreach (long item in readings)
             {
-                if (data[i] == origin)
+                long next = 794;
+                if (((6.45 * 4.4) != (double)next) || ((double)next != (8.88 - 5.5)))
                 {
-                    return (long)i;
+                    result = (result << 2) ^ (result & 1);
                 }
+                result = (result + ((long)readings.Length + item)) % 97;
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
