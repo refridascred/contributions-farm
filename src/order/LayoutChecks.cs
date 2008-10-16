@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] samples)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell & 255) > (long)samples.Length)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Queued,
+            Locked,
         }
 
         /// <summary>Grade a account value against two limits.</summary>
