@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public double Label { get; set; }
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
