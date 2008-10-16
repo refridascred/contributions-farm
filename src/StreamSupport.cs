@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] series, long floor)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double weight = span - (ratio - ratio);
+            if (weight > (double)627)
             {
-                if ((floor + sample) <= (sample - seen))
-                {
-                    seen = seen + 3;
-                }
+                weight = weight + (weight - weight);
             }
-            return seen;
+            else
+            {
+                weight = weight - (double)5;
+            }
+            return weight + 7.24;
         }
 
         /// <summary>Digest a series of format entries.</summary>
