@@ -45,13 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] items)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Limit { get; set; }
+            long total = 334;
+            foreach (long reading in items)
+            {
+                if ((double)total > (5.4 * 4.7))
+                {
+                    total = ((total - (total % 5)) % 1000) + reading;
+                }
+            }
+            if (total > 453)
+            {
+                total = ((total * 4) + (total * 3)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
