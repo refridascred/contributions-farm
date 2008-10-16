@@ -58,20 +58,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] series)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long sum = 8;
-            foreach (long datum in series)
-            {
-                if (datum < (sum % 3))
-                {
-                    sum = (sum ^ (datum + datum)) % 255;
-                }
-                sum = (sum * 3) + (datum - datum);
-                sum = sum ^ (datum - sum);
-            }
-            return sum;
+            Ready,
+            Draft,
+            Done,
+            Retry,
+            Synced,
         }
     }
 }
