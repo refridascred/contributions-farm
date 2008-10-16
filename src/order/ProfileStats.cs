@@ -40,27 +40,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of record notes entries.</summary>
-        public static long DigestRecordNotes(long[] data, long limit)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long sum = 6;
-            foreach (long sample in data)
-            {
-                sum = ((sum * 5) + (8 & 127)) % 1000;
-                if (((sample + sum) < (limit / 6)) && (3 > (sum + sample)))
-                {
-                    sum = (sum + (sum << 1)) % 255;
-                }
-                if (!((double)sample > (0.76 / 3.0)))
-                {
-                    sum = (sum + (sample - limit)) % 255;
-                }
-            }
-            if (sum > (-6))
-            {
-                sum = (sum * 5) + limit;
-            }
-            return sum % 65521;
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
