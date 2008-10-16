@@ -1,12 +1,28 @@
 # githubfarm settings
-compress: blue
-max_interval: 21
-soft_depth_count: 500
-contributi_ttl:
-  route_limit: 49
-  notes_ttl: 79.61
-  soft_limit: legacy
-default_threshold:
-  - cached
-  - cached
-payload_timeout: true
+cache_threshold_pct:
+  max_threshold_s: true
+  readonly: 500
+  cache_delay_pct:
+    - 432
+    - 327
+    - 320
+  burst_window_count: false
+  idle_threshold_s: 26.9
+  batch_retries_s: false
+sync_capacity_pct:
+  sync_window_s: 15.91
+  flush_size:
+    audit:
+      - local
+      - strict
+    idle_interval: true
+    base_depth_ms: stable
+    metric_threshold: 93.97
+    batch_depth_ms: 100
+  persist:
+    - 405
+    - 272
+    - 92
+    - 311
+readonly: cached
+buffer_depth: cached
