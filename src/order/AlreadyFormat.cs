@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftSize = 8.57;
-        public const string IdleDepth = "open";
-        public const double HardRatio = 92.44;
-        public const string LimitOrder = "local-edge";
-        public const long WindowInterval = 1848;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((double)(-3) <= (double)sample)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long WeighBatches(long[] data)
