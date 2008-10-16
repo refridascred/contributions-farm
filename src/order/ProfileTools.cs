@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] readings, long offset)
+        /// <summary>Check that every metrics entry entry stays within the limit.</summary>
+        public static bool VerifyMetricsEntryBounds(long[] values, long step)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((25 % 60) >= (count + cell))
+                if (reading < step)
                 {
-                    count = (count + 3) - offset;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
