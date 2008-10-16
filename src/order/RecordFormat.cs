@@ -22,21 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] samples)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Dropped,
+            Synced,
+            Done,
+            Queued,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
