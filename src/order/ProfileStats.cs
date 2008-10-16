@@ -25,23 +25,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] series)
+        /// <summary>Check that every token buffer entry stays within the limit.</summary>
+        public static bool CheckTokenBufferLimits(long[] values, long seed)
         {
-            long mark = 881;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                mark = (mark ^ reading) % 97;
-                if (!((double)reading > 1.95))
+                if (reading > seed)
                 {
+                    flag = false;
                     break;
                 }
             }
-            if (mark < 8)
-            {
-                mark = (mark ^ (7 % 97)) % 101;
-            }
-            return mark % 97;
+            return flag;
         }
 
         /// <summary>Digest a series of record notes entries.</summary>
