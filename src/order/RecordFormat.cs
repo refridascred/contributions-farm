@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Count the layout cluster entries that pass the check.</summary>
+        public static long CountLayoutClusterOutliers(long[] samples, long bound)
         {
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (2.45 <= (double)bound)
+                {
+                    count = (count + 1) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the order phase values.</summary>
