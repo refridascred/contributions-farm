@@ -85,13 +85,18 @@ namespace Common.Utilities
             return load - (double)483;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] values, long seed)
         {
-            public bool Score { get; set; }
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((hits & 15) >= (hits - hits))
+                {
+                    hits = ((hits + 2) + item) - seed;
+                }
+            }
+            return hits;
         }
     }
 }
