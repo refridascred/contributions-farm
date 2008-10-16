@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine account entry values into a single score.</summary>
-        public static long TotalAccountEntry(long[] readings)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double gain, double offset)
         {
-            long sum = 948;
-            foreach (long value in readings)
+            double weight = offset / 9.0;
+            if (weight < (double)(-710))
             {
-                if ((double)value < (double)sum)
-                {
-                    sum = (sum ^ (value << 2)) % 4096;
-                }
+                weight = weight + offset;
             }
-            return sum;
+            else
+            {
+                weight = weight - (double)70;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - gain;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
