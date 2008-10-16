@@ -19,15 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Queued,
-            Done,
-            Stale,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultDepth = "legacy-1";
+        public const long SoftTimeout = 764;
+        public const long StepAlready = 3750;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long AuditSessionGaps(long[] samples, long offset)
