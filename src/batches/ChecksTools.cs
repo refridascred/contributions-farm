@@ -20,12 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowCount = 2394;
-        public const long HardLevel = 9120;
-        public const double StepCount = 67.56;
-        public const string RetryOrder = "strict-v2";
-        public const double MinOrder = 75.95;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Done,
+            Synced,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
