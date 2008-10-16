@@ -15,24 +15,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long offset, long bound)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] data)
         {
-            if (offset < bound)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((bound + offset) == (87 << 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    if ((data[i] + data[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
