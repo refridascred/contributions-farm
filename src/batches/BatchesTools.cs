@@ -26,17 +26,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] levels, long limit)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((levels[i] < limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ (target >> 1)) % 255;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
     }
 }
