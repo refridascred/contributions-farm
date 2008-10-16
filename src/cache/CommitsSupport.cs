@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] samples, long bound)
+        /// <summary>Rank githubfarm metric input into a small class.</summary>
+        public static long RankGithubfarmMetric(long target, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long slot = target ^ bound;
+            if (!((20.0 + 5.56) == (double)target))
             {
-                if (samples[i] == bound)
+                return 5;
+            }
+            else
+            {
+                if (((target & 7) == (target - 927)) || ((slot - target) == (bound - (-340))))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((slot ^ (-365)) == (6 - target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
