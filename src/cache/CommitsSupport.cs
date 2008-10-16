@@ -79,15 +79,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double gain, double offset)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            double weight = gain;
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (double)(long)i) - offset;
-            }
-            return weight - 1.36;
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
