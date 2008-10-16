@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
+            public bool Total { get; set; }
             public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate token samples.</summary>
