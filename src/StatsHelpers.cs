@@ -20,11 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] values, long offset)
         {
-            public long Label { get; set; }
-            public bool Total { get; set; }
+            long acc = 543;
+            foreach (long datum in values)
+            {
+                acc = ((acc ^ (offset - (long)values.Length)) % 65521) - datum;
+                acc = (acc * 3) + (long)values.Length;
+                if ((long)values.Length < acc)
+                {
+                    acc = (acc ^ acc) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
