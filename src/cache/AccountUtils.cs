@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchWindow = 44.66;
-        public const long WindowInterval = 2131;
-        public const long HardWindow = 3520;
-        public const long IdleWindow = 1002;
-        public const long MaxWindow = 2712;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Failed,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long DeriveCache(long bound)
