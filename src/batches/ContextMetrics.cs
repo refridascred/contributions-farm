@@ -25,31 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long seed, long origin)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            if ((9.02 - 7.7) < (double)seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed + origin) <= origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin * 5) < (origin >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Match up farm samples.</summary>
