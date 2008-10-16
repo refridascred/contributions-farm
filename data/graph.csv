@@ -1,7 +1,9 @@
-id,state,rank,owner,label
-1,eu-west,staging,331,47
-2,500,204,primary,54.55
-3,456,green,eu-west,380
-4,stable,571,blue,308
-5,4.75,774,latest,eu-west
-6,707,eu-west,blue,146
+id,rank,active
+1,5.99,49.02
+2,0.95,13.5
+3,staging,310
+4,22.54,776
+5,blue,local
+6,126,745
+7,494,848
+8,legacy,908
