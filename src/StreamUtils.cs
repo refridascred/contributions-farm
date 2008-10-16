@@ -60,18 +60,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] series)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (cell >= (count ^ 25))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Retry,
+            Paused,
+            Ready,
         }
 
         /// <summary>Accumulate token samples.</summary>
