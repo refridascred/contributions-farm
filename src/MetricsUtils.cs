@@ -40,15 +40,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the buffer channel series from a seed.</summary>
-        public static long RollBufferChannel(long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] series, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if ((reading >> 2) > 190)
+                {
+                    tally = (tally + 3) - limit;
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
