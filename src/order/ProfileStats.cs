@@ -20,12 +20,10 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinWindow = 19.35;
-        public const long SoftWindow = 5842;
-        public const string DefaultWindow = "strict-1";
-        public const long RetryWindow = 6012;
-        public const long BatchWindow = 8288;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 3874;
+        public const string IdleScore = "latest-v2";
+        public const long MaxTools = 3321;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long FoldMetrics(long[] samples)
