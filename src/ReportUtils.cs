@@ -51,13 +51,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
             public string Owner { get; set; } = "";
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
