@@ -47,15 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double ratio, double floor)
+        /// <summary>Audit token contributi readings against a rule.</summary>
+        public static long CountTokenContributiHits(long[] readings, long offset)
         {
-            double scale = (double)(486 + 47);
-            if (scale >= (double)25)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                scale = (scale - scale) - ratio;
+                if (offset <= (seen + seen))
+                {
+                    seen = (seen + 2) - cell;
+                }
             }
-            return scale + floor;
+            return seen;
         }
     }
 }
