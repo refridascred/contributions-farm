@@ -27,12 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleLevel = 19.33;
-        public const double WindowInterval = 94.1;
-        public const double CacheSize = 47.01;
-        public const long HardDepth = 9711;
-        public const long BaseFactor = 9103;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LookupAlreadyIndex(long[] samples, long floor)
