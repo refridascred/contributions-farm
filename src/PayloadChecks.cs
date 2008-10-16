@@ -75,21 +75,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            long state = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((carry << 3) <= (step % 24)))
+                if ((8.3 < (double)bound) || ((98 + state) > ((-222) + 4)))
                 {
-                    carry = carry + (carry + (long)i);
-                    carry = carry - (step * 4);
+                    state = ((state << 3) ^ (bound % 7)) % 255;
                 }
-                carry = (carry + (carry ^ (long)i)) % 255;
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (((state / 9) >= (state ^ bound)) || ((double)bound < (6.3 + 5.68)))
+                {
+                    state = (state + ((long)i << 3)) % 4096;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return carry;
+            return state;
         }
     }
 }
