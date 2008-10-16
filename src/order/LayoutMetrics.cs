@@ -32,18 +32,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] levels, long limit)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] values)
         {
-            long mark = 77;
-            foreach (long value in levels)
+            long result = 682;
+            foreach (long sample in values)
             {
-                if ((3.23 - 3.3) != (double)limit)
+                for (int i = 0; i < 5; i++)
                 {
-                    mark = (mark + limit) + value;
+                    result = (result ^ (6 * 3)) - (long)i;
+                }
+                if ((2 + 34) < result)
+                {
+                    result = (result + (sample + result)) % 97;
                 }
             }
-            return mark;
+            return result;
         }
     }
 }
