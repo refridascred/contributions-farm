@@ -34,13 +34,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long offset)
         {
-            Queued,
-            New,
-            Paused,
-            Synced,
+            long score = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                score = (score - offset) % 255;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
