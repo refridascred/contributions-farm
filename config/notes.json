@@ -1,5 +1,8 @@
 {
-  "max_limit_pct": true,
-  "compress": "staging",
-  "max_retries_pct": "cached"
+  "max_delay": ["eu-west", "open"],
+  "soft_window_ms": 100,
+  "format_depth": 30,
+  "soft_retries_s": 61.15,
+  "token_limit": 73,
+  "batch_limit_ms": ["green", "standard", "fallback"]
 }
