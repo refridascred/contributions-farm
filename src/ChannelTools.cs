@@ -15,26 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of account metrics entries.</summary>
-        public static long TotalAccountMetrics(long[] levels)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long sum = 400;
-            foreach (long value in levels)
-            {
-                if ((sum + value) >= ((-58) - value))
-                {
-                    sum = (sum + (value * 4)) % 65521;
-                }
-                if ((value - sum) >= (sum + value))
-                {
-                    break;
-                }
-            }
-            if (sum > 77)
-            {
-                sum = sum ^ (sum + sum);
-            }
-            return sum;
+            public double Count { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a notes options.</summary>
