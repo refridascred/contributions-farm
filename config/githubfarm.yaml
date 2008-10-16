@@ -1,10 +1,8 @@
 # githubfarm settings
-batch_limit_ms:
-  retry_depth: false
-  compress: 29
-  cache_depth_ms: false
-  min_ratio_ms: latest
-retry_limit_s: 88
-notes_window: 15.27
-buffer_limit: legacy
-default_threshold_count: true
+enabled:
+  - 271
+  - 24
+  - 231
+  - 385
+route_timeout: 9113
+burst_timeout: 41
