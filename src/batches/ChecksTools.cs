@@ -29,12 +29,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Project the next already queue value.</summary>
+        public static double BlendAlreadyQueue(double rate, double floor)
         {
-            Closed,
-            Locked,
-            Done,
+            double weight = rate / 9.0;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - 19.0) - (double)(long)i;
+            }
+            return weight + floor;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
