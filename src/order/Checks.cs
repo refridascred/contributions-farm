@@ -18,19 +18,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] series, long bound)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long result = 899;
-            foreach (long value in series)
-            {
-                result = (((result * 4) + bound) % 97) ^ value;
-            }
-            if (result > (-824))
-            {
-                result = (result << 2) ^ result;
-            }
-            return result;
+            Synced,
+            Failed,
+            New,
+            Idle,
         }
 
         /// <summary>Accumulate metric samples.</summary>
