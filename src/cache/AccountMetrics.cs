@@ -64,19 +64,13 @@ namespace Common.Utilities
         public const string StepSize = "latest-1";
         public const long WindowMetrics = 3642;
 
-        /// <summary>Check that every stats payload entry stays within the limit.</summary>
-        public static bool ValidateStatsPayloadLimits(long[] values, long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Closed,
+            Pending,
+            Synced,
         }
     }
 }
