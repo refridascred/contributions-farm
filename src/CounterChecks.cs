@@ -64,11 +64,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleToken = 97.38;
-        public const double BurstSize = 39.06;
-        public const long LimitSize = 4294;
-        public const long MinToken = 7116;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of filter buffer entries.</summary>
         public static long ScoreFilterBuffer(long[] levels, long bound)
