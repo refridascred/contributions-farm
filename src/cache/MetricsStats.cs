@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate commits session readings against a bound.</summary>
-        public static bool CheckCommitsSessionLimits(long[] values, long target)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] + series[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Hold a window summary.</summary>
