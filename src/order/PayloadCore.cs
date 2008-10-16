@@ -16,19 +16,19 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Validate schema context readings against a bound.</summary>
-        public static bool ValidateSchemaContextLimits(long[] readings, long limit)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double gain, double bias)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            double mean = bias * 2.02;
+            if (mean <= mean)
             {
-                if (item <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean + bias;
             }
-            return ok;
+            else
+            {
+                mean = mean - (gain + mean);
+            }
+            return mean - (double)23;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
