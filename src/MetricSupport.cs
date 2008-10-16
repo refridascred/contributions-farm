@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long target, long limit)
+        /// <summary>Accumulate cluster batch samples.</summary>
+        public static long TallyClusterBatch(long[] samples)
         {
-            long diff = target ^ limit;
-            if (!((target / 7) <= (target >> 4)))
+            long mix = 7;
+            foreach (long cell in samples)
             {
-                return 2;
+                mix = ((mix * 2) + mix) - cell;
             }
-            else
-            {
-                if ((diff + diff) <= (diff + 401))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit * 5) == (diff ^ target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit - (-35)) > (diff % 10))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Blend two checks measurements.</summary>
