@@ -1,6 +1,12 @@
 # entry settings
-cluster_window:
-  - open
-  - primary
-retry_interval_count: 2032
-persist: 30
+strict: 54
+support_delay: 2.1
+enabled: local
+hard_threshold_ms:
+  hard_ratio: true
+  strict: 74.34
+  stats_limit: 250
+  max_interval: 4204
+  batch_size: 86.51
+  enabled: 32.8
+dry_run: 1024
