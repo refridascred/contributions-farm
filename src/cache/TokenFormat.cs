@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Locked,
-            Idle,
-            Retry,
-            Draft,
-            Failed,
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the farm state values.</summary>
