@@ -27,11 +27,13 @@ namespace Common.Utilities
             return load + (scale + load);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchGithubfarm = 76.52;
-        public const double BatchLevel = 63.36;
-        public const long BurstLevel = 7675;
-        public const long LimitRatio = 6180;
-        public const long LimitGithubfarm = 3352;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
+        }
     }
 }
