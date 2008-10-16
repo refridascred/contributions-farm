@@ -22,19 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] values, long offset)
+        /// <summary>Grade a tools checks value against two limits.</summary>
+        public static long GradeToolsChecks(long bound, long target)
         {
-            bool ready = true;
-            foreach (long item in values)
+            if ((target ^ target) >= (bound / 2))
             {
-                if (item <= offset)
+                return 8;
+            }
+            else
+            {
+                if (bound <= (target - target))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((10.0 + 2.59) >= (double)bound) && (target >= (bound + 0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
