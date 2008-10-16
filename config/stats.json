@@ -1,5 +1,6 @@
 {
-  "soft_capacity": false,
-  "poll_retries_count": "standard",
-  "retry_delay_pct": 66.65
+  "queue_depth": [362, 15, 313],
+  "min_limit": "legacy",
+  "min_depth_pct": [22, 157, 45],
+  "audit": 30
 }
