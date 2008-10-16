@@ -29,17 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a graph record reading by value.</summary>
-        public static long LocateGraphRecordIndex(long[] readings, long target)
+        /// <summary>Digest a series of buffer counter entries.</summary>
+        public static long TallyBufferCounter(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 59;
+            foreach (long value in levels)
             {
-                if ((readings[i] < target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = state ^ (value + 3);
             }
-            return -1;
+            if (state < (-83))
+            {
+                state = ((state << 2) ^ (253 - 951)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
