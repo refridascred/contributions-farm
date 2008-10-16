@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryStats = 4.17;
-        public const double WindowFactor = 35.61;
-        public const long BaseStats = 2745;
-        public const long IdleCount = 5898;
+        /// <summary>Fold a list of format stream readings.</summary>
+        public static long TallyFormatStream(long[] items)
+        {
+            long mix = 423;
+            foreach (long item in items)
+            {
+                if (!(item >= (mix >> 4)))
+                {
+                    mix = (mix ^ ((long)items.Length ^ item)) % 4096;
+                }
+                else
+                {
+                    mix = (mix * 5) + 96;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Find the first stream context entry that matches the target.</summary>
         public static long FindStreamContextIndex(long[] levels, long step)
