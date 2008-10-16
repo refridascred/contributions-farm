@@ -49,18 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of account order entries.</summary>
-        public static long CombineAccountOrder(long[] values, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] series, long seed)
         {
-            long total = 304;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((double)target < (2.42 - 2.45))
+                if ((tally - item) > (96 + item))
                 {
-                    total = ((total + (total & 7)) % 101) - item;
+                    tally = (tally + 2) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
