@@ -14,22 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] samples, long limit)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double rate = scale;
+            if (rate > (scale * 2.9))
             {
-                if ((double)47 != (double)reading)
-                {
-                    seen = (seen + 1) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = rate + (9.19 + floor);
             }
-            return seen;
+            else
+            {
+                rate = rate + 15.0;
+            }
+            return rate + 8.1;
         }
 
         /// <summary>Hold a stats header.</summary>
