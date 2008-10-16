@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of format contributi readings.</summary>
-        public static long TallyFormatContributi(long[] samples)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long result = 7;
-            foreach (long value in samples)
-            {
-                if (((value - value) != (result << 2)) && ((value * 3) >= value))
-                {
-                    result = (result << 3) ^ result;
-                }
-            }
-            if (result > 9)
-            {
-                result = result ^ (long)samples.Length;
-            }
-            return result;
+            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Combine farm values into a single score.</summary>
