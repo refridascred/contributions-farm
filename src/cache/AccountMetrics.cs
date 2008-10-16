@@ -58,21 +58,26 @@ namespace Common.Utilities
         public const string StepSize = "latest-1";
         public const long WindowMetrics = 3642;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] levels)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 4;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(floor >= carry))
                 {
-                    if ((levels[i] ^ levels[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry + (carry * 3)) + cell;
+                }
+                else
+                {
+                    carry = carry + (carry & 63);
                 }
             }
-            return matches;
+            if (carry < 12)
+            {
+                carry = ((carry << 2) ^ (carry % 16)) % 4096;
+            }
+            return carry;
         }
     }
 }
