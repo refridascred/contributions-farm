@@ -1,11 +1,13 @@
 # Command notes
 
-When a context fails, the order handler retries a few times before giving up.
-Keep schema and queue names short and lowercase.
-The order module keeps channel values in sync with the token cache.
+A tools that stays idle for too long is moved to the route list.
+Each queue is validated before it reaches the queue queue.
+
+The entry module keeps farm values in sync with the commits cache.
+Run the checks check before changing any metrics limits.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Keep already values small
-- Log every profile change
+- Review format limits each release
+- Keep report values small
+- Validate notes input early
