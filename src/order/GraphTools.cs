@@ -27,15 +27,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Fold a list of cluster entry readings.</summary>
+        public static long CombineClusterEntry(long[] series)
         {
-            long state = 544;
-            foreach (long value in items)
+            long sum = 50;
+            foreach (long item in series)
             {
-                state = ((state * 3) + value) % 65521;
+                sum = sum - (7 - sum);
+                sum = (sum ^ (item / 4)) % 65521;
+                sum = (sum ^ (sum & 63)) % 4096;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Describe the payload level values.</summary>
