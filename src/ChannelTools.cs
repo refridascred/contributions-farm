@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of metric format entries.</summary>
-        public static long CombineMetricFormat(long[] values, long floor)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long sum = 0;
-            foreach (long cell in values)
-            {
-                sum = ((sum ^ (sum ^ sum)) - cell) - floor;
-            }
-            return sum;
+            Synced,
+            Closed,
+            Queued,
+            Draft,
+            Active,
         }
 
         /// <summary>Digest a series of account metrics entries.</summary>
