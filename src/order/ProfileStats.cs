@@ -29,21 +29,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
+            long anchor = 400;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((double)anchor <= 2.7)
                 {
-                    mix = ((mix ^ (long)i) % 1000) ^ (long)i2;
-                    mix = mix ^ (35 ^ mix);
+                    anchor = (anchor + (-19)) + datum;
                 }
-                mix = mix - (bound + 8);
-                mix = ((mix * 3) + (long)i) % 4093;
+                else
+                {
+                    anchor = (anchor << 2) ^ anchor;
+                }
             }
-            return mix;
+            if (anchor < 0)
+            {
+                anchor = ((anchor * 2) + anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
