@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] data)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value <= floor)
                 {
-                    if ((data[i] - data[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
