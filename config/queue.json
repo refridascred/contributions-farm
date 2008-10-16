@@ -1,20 +1,6 @@
 {
-  "farm_retries": "legacy",
-  "window_timeout": "local",
-  "dry_run": {
-    "tools_interval": 11.51,
-    "persist": 93,
-    "flush_threshold_count": "standard"
-  },
-  "window_size": {
-    "poll_limit_pct": {
-      "graph_delay": "open",
-      "commits_ratio": false,
-      "format_size": "latest"
-    },
-    "account_depth": 37.57,
-    "report_ttl": "green",
-    "warm_delay_ms": true
-  },
-  "verbose": "green"
+  "flush_size": 62.0,
+  "channel_window": [164, 34],
+  "retry_limit": 98,
+  "idle_capacity_pct": ["standard", "local"]
 }
