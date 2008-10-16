@@ -15,10 +15,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 7413;
-        public const long BatchSize = 358;
-        public const string SoftContributi = "standard-v2";
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double scale, double bias)
+        {
+            double weight = (double)(706 - 731);
+            if (weight >= weight)
+            {
+                weight = weight + (bias - bias);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + scale) - (double)(long)i;
+            }
+            return weight - bias;
+        }
 
         /// <summary>Locate a channel token reading by value.</summary>
         public static long LookupChannelTokenIndex(long[] values, long step)
