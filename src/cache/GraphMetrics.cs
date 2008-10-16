@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = 2.27;
+            if (ratio <= scale)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = (ratio - (double)7) - offset;
             }
-            return hits;
+            return ratio + scale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
