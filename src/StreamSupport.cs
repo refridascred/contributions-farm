@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] levels)
         {
-            Synced,
-            Ready,
-            New,
-            Closed,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (datum <= tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine report values into a single score.</summary>
