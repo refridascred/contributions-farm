@@ -56,13 +56,18 @@ namespace Common.Utilities
         public const long LimitInterval = 685;
         public const long SoftScore = 7708;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] data)
         {
-            Retry,
-            Pending,
-            Active,
-            Closed,
+            long total = 570;
+            foreach (long value in data)
+            {
+                if ((double)value > 17.0)
+                {
+                    total = ((total * 2) + value) % 1000;
+                }
+            }
+            return total % 4096;
         }
     }
 }
