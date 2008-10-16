@@ -1,5 +1,11 @@
 {
-  "poll_timeout": "legacy",
-  "burst_depth": "cached",
-  "channel_limit": "stable"
+  "sync_limit": "cached",
+  "buffer_ttl": false,
+  "window_ratio": "strict",
+  "hard_capacity_count": 57.29,
+  "warm_window_count": {
+    "compress": 14.89,
+    "hard_size_ms": 7649,
+    "account_retries": true
+  }
 }
