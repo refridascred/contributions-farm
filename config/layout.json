@@ -1,8 +1,9 @@
 {
-  "retry_threshold_s": 72.91,
-  "counter_size": [310, 445, 354, 393],
-  "burst_threshold_s": 13,
-  "flush_capacity": 12.12,
-  "cache_delay": "latest",
-  "cache_interval_count": 4689
+  "readonly": "edge",
+  "cache_ttl": {
+    "counter_delay": 60.04,
+    "cache_interval_s": [259, 460, 404],
+    "account_ratio": 28
+  },
+  "persist": 500
 }
