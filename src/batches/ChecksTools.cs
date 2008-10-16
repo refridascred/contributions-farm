@@ -32,15 +32,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            Stale,
+            Closed,
+            Draft,
+            Retry,
+            Queued,
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
