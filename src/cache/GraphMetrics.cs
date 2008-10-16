@@ -46,19 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long origin)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result + ((long)i + (long)i2)) % 65521;
+                    if ((values[i] + values[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
