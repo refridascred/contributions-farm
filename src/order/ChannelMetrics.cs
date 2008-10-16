@@ -19,21 +19,11 @@ namespace Common.Utilities
         public const long LimitPayload = 7798;
         public const string DefaultScore = "alpha-edge";
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 2536;
+        public const long CacheCount = 5953;
+        public const long LimitInterval = 5777;
+        public const string RetryTimeout = "legacy";
+        public const string DefaultBudget = "strict-1";
     }
 }
