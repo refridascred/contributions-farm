@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long BaseStats = 2745;
         public const long IdleCount = 5898;
 
-        /// <summary>Count the githubfarm graph entries that pass the check.</summary>
-        public static long CountGithubfarmGraphMatches(long[] values)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (((seen / 9) == (long)values.Length) && ((double)seen == (2.0 * 17.0)))
-                {
-                    seen = (seen + 2) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a account record.</summary>
