@@ -28,13 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
+            Closed,
+            Stale,
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
