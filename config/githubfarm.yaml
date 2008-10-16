@@ -1,19 +1,21 @@
 # githubfarm settings
-base_ratio_pct:
-  - 297
-  - 153
-  - 61
-  - 333
-flush_delay_pct:
-  readonly: latest
-  warm_interval:
-    hard_window_s: primary
-    poll_delay:
-      - 202
-      - 449
-      - 400
-    enabled: 250
-    hard_interval: 98.18
-    dry_run: true
-  route_window: 48.35
-filter_ttl: 250
+default_timeout:
+  readonly:
+    profile_delay: 100
+    base_timeout_count: false
+    sync_retries_s: cached
+    farm_retries: 5628
+  cache_depth_s:
+    burst_threshold_ms: 79.02
+    poll_delay_pct: true
+    flush_window:
+      - 208
+      - 64
+    layout_size: open
+  batch_ratio: open
+  token_ratio: false
+  warm_ratio: true
+  profile_ttl: 31.29
+burst_threshold: 66.89
+default_ttl_s: 22
+metrics_delay: false
