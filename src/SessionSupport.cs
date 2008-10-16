@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout notes readings against a rule.</summary>
-        public static long AuditLayoutNotesMatches(long[] items)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (((sample + sample) == (sample - sample)) || !(((-690) / 2) >= (sample * 2)))
+                if (datum > seed)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
