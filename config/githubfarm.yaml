@@ -1,26 +1,31 @@
 # githubfarm settings
-entry_delay:
-  schema_ratio: 79.3
-  min_ratio_pct: true
-  base_window: cached
-  account_window:
-    - staging
-    - eu-west
-    - edge
-  verbose:
-    warm_timeout:
-      - eu-west
-      - green
+editor_capacity: 8158
+warm_window:
+  - 248
+  - 147
+  - 293
+poll_limit: 28.36
+stats_delay:
+  - eu-west
+  - primary
+  - open
+schema_depth:
+  base_capacity_s:
+    verbose: standard
+    soft_window: 75
+    hard_threshold: cached
+    strict: fallback
+  command_capacity: edge
+  persist: true
+  commits_limit:
+    compress: local
+    context_depth: staging
+    min_capacity_ms:
+      - 89
+      - 156
+    retry_ratio_pct:
+      - primary
       - edge
-      - open
-    counter_ratio: 1646
-    burst_capacity_ms: latest
-    flush_interval_count: 53.27
-cache_capacity:
-  - 344
-  - 19
-warm_ratio_count: green
-batch_timeout_s:
-  - 412
-  - 258
-enabled: 3803
+      - eu-west
+    idle_window: green
+enabled: staging
