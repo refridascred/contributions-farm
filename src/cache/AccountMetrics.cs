@@ -57,11 +57,12 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetrySize = 82.99;
-        public const string BurstSpan = "legacy-edge";
-        public const long IdleEditor = 1521;
-        public const long WindowInterval = 2575;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 125;
+        public const double LimitLevel = 16.83;
+        public const double MinMetrics = 68.82;
+        public const string StepSize = "latest-1";
+        public const long WindowMetrics = 3642;
 
         /// <summary>Check that every stats payload entry stays within the limit.</summary>
         public static bool ValidateStatsPayloadLimits(long[] values, long target)
