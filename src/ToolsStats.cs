@@ -53,22 +53,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long floor)
         {
-            long total = 334;
-            foreach (long reading in items)
+            long state = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)total > (5.4 * 4.7))
+                if ((3.0 >= (double)floor) && (floor < 67))
                 {
-                    total = ((total - (total % 5)) % 1000) + reading;
+                    state = (state + ((long)i + (long)i)) % 97;
                 }
+                if (4.8 < (14.0 - 5.83))
+                {
+                    state = ((state * 2) + (59 + floor)) % 1000;
+                    state = (state << 3) ^ (long)i;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            if (total > 453)
-            {
-                total = ((total * 4) + (total * 3)) % 255;
-            }
-            return total;
+            return state;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
