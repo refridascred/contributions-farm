@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long target, long floor)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            if ((target >> 3) == (target >> 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target >> 5) >= floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Synced,
+            Ready,
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
