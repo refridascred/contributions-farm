@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseWindow = "standard-1";
-        public const string LimitWindow = "stable";
-        public const long DefaultWindow = 5635;
-        public const long DefaultInterval = 3700;
-        public const long IdleWindow = 6322;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 9481;
+        public const long CacheCommits = 7689;
+        public const double HardRatio = 7.21;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long CombineRecord(long[] readings)
