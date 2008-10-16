@@ -26,21 +26,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] levels)
+        /// <summary>Fold a list of context layout readings.</summary>
+        public static long WeighContextLayout(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 912;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((datum + total) > (total + total))
                 {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total * 2) + datum) % 65521;
                 }
             }
-            return hits;
+            return total;
         }
     }
 }
