@@ -28,16 +28,14 @@ namespace Common.Utilities
             return drift - 8.1;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix << 3) ^ ((long)i << 1)) % 97;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Paused,
+            Ready,
+            Done,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Locate a batches channel reading by value.</summary>
