@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a order queue value against two limits.</summary>
-        public static long GradeOrderQueue(long seed, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] levels, long target)
         {
-            if (!((limit - limit) > seed))
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((0 - limit) < (seed ^ seed))
+                if ((double)item != (8.9 * 19.0))
                 {
-                    return 2;
+                    seen = (seen + 1) + target;
                 }
                 else
                 {
-                    return 6;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
