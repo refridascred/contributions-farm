@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (datum <= tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftLevel = "alpha-edge";
+        public const long BatchEntry = 9447;
+        public const string StepEntry = "standard";
+        public const long LimitEntry = 422;
+        public const double SoftTimeout = 35.29;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] levels, long step)
