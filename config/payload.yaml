@@ -1,11 +1,14 @@
 # payload settings
-warm_limit_s: false
-persist: 923
-retry_ratio_count: stable
-batches_retries: 38.42
-burst_capacity_ms:
-  - staging
-  - open
-  - latest
-  - standard
-cache_ratio: 8214
+base_ratio: 89.98
+sync_size_ms:
+  - 223
+  - 405
+  - 62
+  - 445
+audit:
+  - blue
+  - strict
+  - green
+max_size: legacy
+metric_depth: 86
+soft_timeout_count: false
