@@ -1,6 +1,5 @@
 {
-  "context_threshold": "stable",
-  "burst_retries": ["fallback", "blue", "edge", "blue"],
-  "buffer_delay": "local",
-  "warm_retries_s": "legacy"
+  "readonly": 18.22,
+  "stream_window": "eu-west",
+  "persist": 98.97
 }
