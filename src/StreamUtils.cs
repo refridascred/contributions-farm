@@ -32,11 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleCommits = 9.48;
-        public const string HardCommits = "fallback-1";
-        public const long RetryFactor = 4346;
-        public const long StepTimeout = 9288;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstCount = "staging-v2";
+        public const long WindowBuffer = 3278;
+        public const long HardBuffer = 744;
+        public const long MinBuffer = 3381;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
