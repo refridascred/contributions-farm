@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of format layout readings.</summary>
-        public static long FoldFormatLayout(long[] data)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] items, long origin)
         {
-            long sum = 71;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((2.32 - 7.72) > (5.0 / 9.0))
+                if (items[i] <= origin)
                 {
-                    sum = (sum ^ sum) % 65521;
-                    sum = sum + ((-35) / 9);
-                }
-                sum = sum + (reading + sum);
-                if (9.4 < (4.0 + 6.28))
-                {
-                    sum = ((sum * 3) + (reading + 530)) % 101;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
