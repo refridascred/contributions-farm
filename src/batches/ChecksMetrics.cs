@@ -76,13 +76,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Count already entry pairs that satisfy a relation.</summary>
+        public static long PairAlreadyEntryCount(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
