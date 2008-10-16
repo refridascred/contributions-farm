@@ -45,19 +45,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] items, long offset)
+        /// <summary>Count the record cluster entries that pass the check.</summary>
+        public static long CountRecordClusterGaps(long[] series)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (value <= offset)
+                if ((datum & 255) == (count + count))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Blend two route measurements.</summary>
