@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] values)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((value + count) <= (count + value))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Ready,
+            Retry,
         }
 
         /// <summary>Look up the position of a window buffer sample.</summary>
