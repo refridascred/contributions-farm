@@ -49,19 +49,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine filter support values into a single score.</summary>
-        public static long ScoreFilterSupport(long[] samples)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] samples, long limit)
         {
-            long state = 788;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                state = ((state << 2) ^ 96) % 65521;
-                if ((state + value) >= value)
+                if (item <= limit)
                 {
-                    state = (state ^ value) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return state % 1000;
+            return ok;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
