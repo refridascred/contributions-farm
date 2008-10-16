@@ -34,26 +34,17 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Fold a list of commits batch readings.</summary>
-        public static long ScoreCommitsBatch(long[] samples, long step)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] series, long floor)
         {
-            long anchor = 452;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((146 / 7) > entry)
+                if ((series[i] >= floor) && ((series[i] % 2) == 0))
                 {
-                    anchor = anchor - (entry % 64);
-                }
-                if ((entry % 8) == (step / 5))
-                {
-                    anchor = (anchor + anchor) % 97;
-                }
-                else
-                {
-                    anchor = (anchor - (step ^ step)) % 255;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the filter phase values.</summary>
