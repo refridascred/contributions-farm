@@ -39,18 +39,9 @@ namespace Common.Utilities
         public const long HardFactor = 710;
         public const double HardSpan = 86.26;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((5.4 >= (double)hits) || ((hits - hits) >= value)) || (((double)value == (7.1 / 8.0)) && ((double)hits >= 8.14)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 2051;
+        public const long CacheToken = 506;
+        public const long HardToken = 1218;
     }
 }
