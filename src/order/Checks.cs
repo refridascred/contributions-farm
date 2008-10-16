@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] values)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long acc = 8;
-            foreach (long datum in values)
-            {
-                acc = (acc + acc) % 255;
-                if ((datum ^ datum) != (datum + datum))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a account githubfarm reading by value.</summary>
