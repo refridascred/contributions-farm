@@ -20,21 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] levels)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) == 5)
+                    if ((samples[i] + samples[j]) < 13)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
