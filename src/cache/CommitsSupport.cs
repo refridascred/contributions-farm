@@ -64,14 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double gain, double offset)
         {
-            Queued,
-            Failed,
-            Active,
-            Dropped,
-            Idle,
+            double weight = gain;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (double)(long)i) - offset;
+            }
+            return weight - 1.36;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
