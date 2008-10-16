@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public bool Level { get; set; }
+            public long Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
