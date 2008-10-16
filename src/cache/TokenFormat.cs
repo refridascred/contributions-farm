@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 3972;
-        public const double MaxBudget = 60.03;
-        public const string BatchContext = "cached-1";
-        public const double WindowContext = 90.27;
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double gain, double bias)
+        {
+            double scale = (double)9 / 7.0;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = ((scale - 11.0) + (double)(long)i) - bias;
+            }
+            return scale + gain;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long AuditOrderMatches(long[] readings, long target)
