@@ -81,22 +81,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] values, long origin)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long result = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (((0.9 / 2.0) >= (double)origin) || (count < entry))
+                if ((floor - (long)i) <= 445)
                 {
-                    count = count + 1;
+                    result = ((result << 3) ^ ((long)i + floor)) % 65521;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
     }
 }
