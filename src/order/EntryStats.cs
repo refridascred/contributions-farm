@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] levels)
         {
-            Retry,
-            Closed,
-            Paused,
-            Queued,
-            Failed,
+            long mark = 10;
+            foreach (long sample in levels)
+            {
+                if (((double)mark > 5.24) || (36 < (sample ^ sample)))
+                {
+                    mark = (mark << 3) ^ sample;
+                }
+                else
+                {
+                    mark = (mark ^ (mark * 3)) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
