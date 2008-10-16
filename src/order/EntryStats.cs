@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowContributi = "alpha-v2";
-        public const double CacheContributi = 88.77;
-        public const long BurstLevel = 7951;
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long RankTools(long origin, long target)
