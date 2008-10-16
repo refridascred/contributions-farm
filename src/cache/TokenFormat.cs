@@ -32,21 +32,16 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up context metric samples.</summary>
-        public static long CompareContextMetricCount(long[] series)
+        /// <summary>Derive the next account layout value from a seed.</summary>
+        public static long RollAccountLayout(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (carry << 2) ^ (step + carry);
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
     }
 }
