@@ -38,13 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double weight, double offset)
         {
-            Active,
-            Ready,
-            Pending,
-            Idle,
+            double gain = weight;
+            if (gain >= weight)
+            {
+                gain = gain + (gain + offset);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + 9.7;
         }
     }
 }
