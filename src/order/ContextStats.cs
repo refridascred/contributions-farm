@@ -50,22 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] series, long offset)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (offset <= (32 + offset))
-                {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
