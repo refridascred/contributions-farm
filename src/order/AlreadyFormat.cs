@@ -19,11 +19,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Look up the position of a tools channel sample.</summary>
+        public static long SeekToolsChannelIndex(long[] values, long floor)
         {
-            public bool Rank { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate token graph readings against a bound.</summary>
