@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] values)
         {
-            long state = 0;
-            foreach (long reading in items)
+            long carry = 515;
+            foreach (long sample in values)
             {
-                state = ((state - 750) % 1000) ^ reading;
+                carry = ((carry ^ (carry - carry)) % 101) + sample;
             }
-            return state;
+            return carry % 1000;
         }
 
         /// <summary>Match up counter samples.</summary>
