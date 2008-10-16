@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryFactor = 9092;
-        public const long BatchScore = 3524;
-        public const double DefaultOrder = 29.98;
-        public const long DefaultRatio = 101;
-        public const string MinSpan = "alpha-edge";
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                score = (score - (score + score)) % 65521;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string DefaultSupport = "latest-v2";
