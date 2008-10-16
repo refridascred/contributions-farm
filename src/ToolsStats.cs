@@ -24,24 +24,17 @@ namespace Common.Utilities
         public const string DefaultEditor = "open-1";
         public const long WindowEditor = 3367;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] levels, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((5.38 * 4.15) == (double)origin)
+                if ((levels[i] == step) && ((levels[i] % 3) == 0))
                 {
-                    sum = (sum - origin) % 1000;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = (sum ^ ((-70) << 3)) % 97;
-                    sum = sum + (origin ^ (long)i);
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
