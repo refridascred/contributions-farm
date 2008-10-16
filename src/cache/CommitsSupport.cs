@@ -72,16 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] items)
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                mix = mix + ((long)i + seed);
-                mix = ((mix * 2) + (long)i) % 1000;
+                if ((datum - matches) < (datum & 255))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Adjust a entry reading.</summary>
