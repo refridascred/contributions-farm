@@ -1,6 +1,4 @@
 # entry settings
-sync_limit: 1004
-cache_ratio_pct: 90.97
-idle_window: 15.63
-flush_depth_count: 18
-cache_ttl: 100
+min_window_count: 8247
+soft_ttl_s: true
+default_window: 64.59
