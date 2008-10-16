@@ -1,6 +1,4 @@
 # entry settings
-cache_ttl: true
-max_window_count:
-  - 355
-  - 489
-base_ttl_pct: strict
+audit: 64.66
+readonly: open
+compress: open
