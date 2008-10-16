@@ -20,16 +20,13 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total << 3) ^ (total + (long)i)) % 255;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate format samples.</summary>
