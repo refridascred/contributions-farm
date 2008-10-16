@@ -37,18 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate notes filter samples.</summary>
-        public static long WeighNotesFilter(long[] data, long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] samples, long offset)
         {
-            long total = -237;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((-4) > (seed >> 2))
+                if (datum != offset)
                 {
-                    total = ((total ^ (total & 7)) % 65521) ^ value;
+                    valid = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return valid;
         }
     }
 }
