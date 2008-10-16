@@ -37,25 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a stream account value against two limits.</summary>
-        public static long SortStreamAccount(long seed, long seed2)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long cur = seed + seed2;
-            if ((88 - 71) == (seed - cur))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed2 > (seed2 - 972)) || ((seed2 ^ seed) >= (cur + cur)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Closed,
+            Synced,
+            Idle,
+            Failed,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
