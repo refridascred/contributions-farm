@@ -15,13 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Paused,
-            Draft,
-            Done,
-            Ready,
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a session sample.</summary>
