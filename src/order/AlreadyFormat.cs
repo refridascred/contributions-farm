@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of payload graph readings.</summary>
-        public static long FoldPayloadGraph(long[] samples, long floor)
-        {
-            long result = 577;
-            foreach (long sample in samples)
-            {
-                if (result < (8 >> 2))
-                {
-                    result = result + 782;
-                }
-                if (78 <= sample)
-                {
-                    result = (result ^ (floor + floor)) % 65521;
-                }
-                if (((floor + 323) != (floor + floor)) || ((floor & 31) >= (442 ^ result)))
-                {
-                    break;
-                }
-            }
-            if (result > 780)
-            {
-                result = ((result * 3) + floor) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftSize = 8.57;
+        public const string IdleDepth = "open";
+        public const double HardRatio = 92.44;
+        public const string LimitOrder = "local-edge";
+        public const long WindowInterval = 1848;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long WeighBatches(long[] data)
