@@ -34,39 +34,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Classify a buffer notes pair into a bucket.</summary>
-        public static long SortBufferNotes(long origin, long floor)
+        /// <summary>Check that every context checks entry stays within the limit.</summary>
+        public static bool VerifyContextChecksRange(long[] items, long target)
         {
-            long delta = origin + floor;
-            if ((double)544 > (double)floor)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor & 31) == (9 % 64)) && ((double)delta < (6.2 * 6.7)))
+                if (sample <= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)delta > (3.49 - 1.21))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor & 1) <= (origin + delta))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
