@@ -23,12 +23,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseCount = 3853;
+        public const long MaxFilter = 7868;
+        public const string IdleFilter = "local-v2";
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiHits(long[] samples)
