@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate batches graph samples.</summary>
-        public static long TallyBatchesGraph(long[] levels)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] items, long seed)
         {
-            long acc = -662;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                acc = ((acc ^ (acc + acc)) % 4096) - value;
-                if ((double)acc <= (1.0 / 8.0))
+                if (entry != seed)
                 {
-                    acc = (acc ^ acc) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Adjust a account cluster reading.</summary>
