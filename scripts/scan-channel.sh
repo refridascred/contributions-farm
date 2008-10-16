@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in fallback local standard primary; do
+for item in blue staging strict; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=146
+log "limit is ${CHANNEL_LIMIT}"
