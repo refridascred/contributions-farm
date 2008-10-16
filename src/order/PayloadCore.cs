@@ -26,17 +26,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] samples, long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
+                if (90 <= (matches + matches))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a already reading by value.</summary>
