@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double ratio, double floor)
+        /// <summary>Iterate the metric support series from a seed.</summary>
+        public static long SeriesMetricSupport(long offset)
         {
-            double bias = ratio;
-            if (bias < (floor / 6.0))
+            long total = offset;
+            for (int i = 0; i < 18; i++)
             {
-                bias = bias - floor;
+                total = ((total << 2) ^ (total + (long)i)) % 65521;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = ((total + (9 >> 4)) % 255) + (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (ratio * 8.32)) + (double)(long)i;
-            }
-            return bias + (double)(-7);
+            return total;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
