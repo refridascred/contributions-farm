@@ -45,31 +45,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a entry session value against two limits.</summary>
-        public static long SortEntrySession(long step, long floor)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            if ((floor * 5) >= (949 % 12))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)step != (1.6 / 8.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((18.0 - 9.6) >= (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
