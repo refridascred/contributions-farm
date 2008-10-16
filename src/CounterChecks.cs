@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] series, long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long floor, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((3 - floor) <= (71 / 9))
             {
-                if ((series[i] < offset) && ((series[i] % 2) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((8.8 - 6.9) > (double)limit)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)limit < 9.7) || ((limit ^ limit) >= (limit - floor)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
