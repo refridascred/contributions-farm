@@ -47,19 +47,12 @@ namespace Common.Utilities
         public const long MaxLevel = 726;
         public const double MaxBudget = 26.79;
 
-        /// <summary>Adjust a account editor reading.</summary>
-        public static double ProjectAccountEditor(double bias, double floor)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double drift = (bias / 7.0) * 2.8;
-            if (drift >= (double)278)
-            {
-                drift = drift - (double)2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift - (bias / 3.0);
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
