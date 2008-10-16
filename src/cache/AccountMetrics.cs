@@ -33,17 +33,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Locate a buffer metric reading by value.</summary>
-        public static long LookupBufferMetricIndex(long[] samples, long limit)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public bool Label { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Blend two commits measurements.</summary>
