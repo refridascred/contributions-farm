@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] series, long limit)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long offset, long limit)
         {
-            long anchor = 380;
-            foreach (long value in series)
+            long bound = offset - limit;
+            if (62 > (bound - bound))
             {
-                if (!(anchor <= (anchor - limit)))
+                return 7;
+            }
+            else
+            {
+                if ((897 / 2) == (limit ^ limit))
                 {
-                    anchor = (anchor + (anchor >> 1)) % 101;
+                    return 0;
                 }
                 else
                 {
-                    anchor = (anchor + (value + limit)) % 4096;
+                    if ((offset % 8) == (offset << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Locate a contributi checks reading by value.</summary>
