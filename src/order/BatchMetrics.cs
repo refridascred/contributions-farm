@@ -41,24 +41,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long limit, long floor)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            if ((limit <= (floor & 1)) || (floor >= (limit & 63)))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3.0 - 7.0) >= (double)limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    if ((readings[i] ^ readings[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of support entries.</summary>
