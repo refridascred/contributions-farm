@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a session contributi pair into a bucket.</summary>
-        public static long SortSessionContributi(long bound, long floor)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] readings)
         {
-            if (((double)bound != (11.0 + 4.42)) && ((double)floor > (1.0 + 9.51)))
+            long mark = 837;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound % 100) == (56 + bound))
+                if (((mark + 6) < mark) && (((-795) * 2) <= (datum + mark)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    mark = (mark + (258 >> 2)) % 65521;
                 }
             }
+            return mark % 1000;
         }
 
         /// <summary>Hold a record summary.</summary>
