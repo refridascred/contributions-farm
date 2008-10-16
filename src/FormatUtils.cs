@@ -59,19 +59,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Match up record already samples.</summary>
+        public static long OverlapRecordAlreadyCount(long[] items)
         {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = ((result - (origin & 63)) % 101) ^ (long)i2;
+                    if ((items[i] - items[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Find the first commits order entry that matches the target.</summary>
