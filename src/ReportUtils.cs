@@ -29,15 +29,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Compare every pair of buffer cache readings.</summary>
+        public static long PairBufferCacheCount(long[] values)
         {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the payload state values.</summary>
