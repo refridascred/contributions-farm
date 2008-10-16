@@ -57,15 +57,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Roll a cache metric counter forward.</summary>
-        public static long DeriveCacheMetric(long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] samples, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
