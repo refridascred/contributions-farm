@@ -45,12 +45,31 @@ namespace Common.Utilities
         public const double LimitSize = 7.17;
         public const long MinRoute = 2788;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Grade a entry session value against two limits.</summary>
+        public static long SortEntrySession(long step, long floor)
         {
-            public double Size { get; set; }
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
+            if ((floor * 5) >= (949 % 12))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)step != (1.6 / 8.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((18.0 - 9.6) >= (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
