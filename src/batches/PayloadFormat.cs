@@ -26,17 +26,13 @@ namespace Common.Utilities
         public const long HardDepth = 9705;
         public const long WindowTimeout = 4256;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] levels, long floor)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of batches entries.</summary>
