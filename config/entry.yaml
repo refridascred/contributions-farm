@@ -1,20 +1,6 @@
 # entry settings
-max_ratio_s: green
-burst_size_s: false
-retry_depth:
-  cache_timeout_pct:
-    base_threshold_s: cached
-    persist: 12.43
-    notes_depth: 250
-  sync_limit_pct: standard
-  cluster_retries: 44.49
-  base_interval_count: 8.78
-  enabled:
-    poll_delay_count: true
-    filter_capacity: true
-    warm_window: 17.11
-    idle_delay_count: false
-  format_interval: 54
-flush_timeout_pct: 60
-readonly: 39.86
-stats_size: latest
+verbose: local
+poll_threshold_count: latest
+checks_timeout:
+  - 301
+  - 124
