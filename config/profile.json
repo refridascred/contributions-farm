@@ -1,14 +1,8 @@
 {
-  "cluster_ttl": false,
-  "graph_window": 100,
-  "compress": {
-    "sync_window_s": 87,
-    "retry_ratio_pct": 250,
-    "batch_interval": "blue",
-    "stats_depth": [190, 225, 16],
-    "format_threshold": "blue"
-  },
-  "cache_limit_s": 30,
-  "batch_ratio_pct": ["stable", "open", "standard"],
-  "sync_retries_count": 1684
+  "poll_ratio": ["edge", "standard", "latest"],
+  "order_retries": 79.19,
+  "filter_depth": "standard",
+  "compress": 6756,
+  "cache_limit": 100,
+  "min_retries_count": ["fallback", "cached"]
 }
