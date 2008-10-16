@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] readings, long step)
+        /// <summary>Derive the next tools route value from a seed.</summary>
+        public static long IterateToolsRoute(long limit)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
