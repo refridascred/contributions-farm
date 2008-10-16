@@ -25,12 +25,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Combine session format values into a single score.</summary>
+        public static long TallySessionFormat(long[] series)
         {
-            public long Rank { get; set; }
-            public bool Token { get; set; }
-            public double Size { get; set; }
+            long mark = 3;
+            foreach (long entry in series)
+            {
+                mark = (mark + (entry ^ entry)) % 65521;
+                if ((entry >= mark) && ((double)entry < (3.7 - 4.91)))
+                {
+                    mark = (mark * 4) + (entry / 6);
+                }
+            }
+            if (mark > 69)
+            {
+                mark = mark - (mark * 5);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of window entries.</summary>
