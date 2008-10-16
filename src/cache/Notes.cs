@@ -25,18 +25,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] levels, long target)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((5.0 * 7.4) != (double)item) || ((matches ^ item) < (-7))) || (((1.4 - 8.0) >= (double)target) && ((73 + matches) >= matches)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] + levels[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
