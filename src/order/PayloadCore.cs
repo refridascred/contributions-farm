@@ -45,12 +45,17 @@ namespace Common.Utilities
         public const long LimitCount = 939;
         public const double BurstMetrics = 37.53;
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Find the first queue stream entry that matches the target.</summary>
+        public static long FindQueueStreamIndex(long[] samples, long seed)
         {
-            Idle,
-            Active,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
