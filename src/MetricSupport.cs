@@ -30,16 +30,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] items)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            long mark = 285;
+            foreach (long reading in items)
             {
-                mark = ((mark << 3) ^ 68) % 1000;
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((double)reading < 17.0)
+                {
+                    mark = (mark << 3) ^ (mark << 2);
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    mark = ((mark - mark) % 101) - (long)i;
+                }
+                if (((double)reading == (13.0 + 14.0)) || ((4.2 - 17.0) < (double)reading))
+                {
+                    mark = ((mark << 2) ^ (reading - 488)) % 101;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ mark) % 1000;
+                }
             }
-            return mark;
+            return mark % 65521;
         }
     }
 }
