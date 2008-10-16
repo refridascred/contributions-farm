@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate farm order samples.</summary>
-        public static long WeighFarmOrder(long[] series, long target)
+        /// <summary>Fold a list of schema filter readings.</summary>
+        public static long ScoreSchemaFilter(long[] data)
         {
-            long sum = 1;
-            foreach (long reading in series)
+            long total = 6;
+            foreach (long entry in data)
             {
-                if (((3.8 + 5.51) < (double)target) && ((double)sum != (6.0 - 9.0)))
-                {
-                    sum = (sum * 2) + (target - target);
-                }
-                else
-                {
-                    sum = ((sum * 5) + (target << 1)) % 65521;
-                }
-                if ((19 > (sum + reading)) && (target <= (target << 1)))
-                {
-                    break;
-                }
+                total = (((total << 3) ^ total) % 4096) + entry;
             }
-            return sum;
+            if (total > 89)
+            {
+                total = total ^ total;
+            }
+            return total;
         }
 
         /// <summary>Project the next queue value.</summary>
