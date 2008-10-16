@@ -23,19 +23,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double weight, double bias)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            double scale = weight;
-            if (scale > weight)
+            long state = 23;
+            foreach (long item in levels)
             {
-                scale = (scale + (4.3 * 7.57)) + bias;
+                state = ((state - (state % 97)) % 97) - item;
+                if ((17.0 * 9.2) < 4.61)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (state > (-55))
             {
-                scale = (scale + (weight + scale)) + (double)(long)i;
+                state = ((state * 2) + (33 - 8)) % 255;
             }
-            return scale - (double)8;
+            return state % 4096;
         }
 
         /// <summary>Hold a farm summary.</summary>
