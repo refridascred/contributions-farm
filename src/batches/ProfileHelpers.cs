@@ -63,31 +63,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a window command pair into a bucket.</summary>
-        public static long BucketWindowCommand(long bound, long bound2)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double bias, double floor)
         {
-            if ((double)bound2 <= (1.96 - 6.1))
+            double weight = (floor / 4.0) - (double)9;
+            if (weight > (double)7)
             {
-                return 2;
+                weight = weight + (floor / 4.0);
             }
             else
             {
-                if (bound >= (bound ^ 553))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound + 9) <= (175 * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                weight = weight - floor;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (bias / 8.0)) + (double)(long)i;
+            }
+            return weight + (9.0 / 9.0);
         }
     }
 }
