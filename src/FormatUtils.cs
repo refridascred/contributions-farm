@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long limit, long target)
+        /// <summary>Classify a batch notes pair into a bucket.</summary>
+        public static long BucketBatchNotes(long limit, long target)
         {
-            if ((target / 6) < (target >> 5))
+            if ((target - limit) != ((-714) << 1))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((target * 3) > (limit << 2))
+                if ((target + 5) > (59 % 64))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    return 5;
+                    if ((target & 1) < limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((limit % 24) < (target % 97)) && ((target + limit) >= target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
