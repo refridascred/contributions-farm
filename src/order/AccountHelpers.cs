@@ -57,22 +57,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] levels)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long seed, long limit)
         {
-            long anchor = -682;
-            foreach (long datum in levels)
+            if ((limit + 219) == (seed - seed))
             {
-                if ((datum + anchor) > (datum % 100))
+                return 6;
+            }
+            else
+            {
+                if (((seed + seed) <= limit) || ((seed ^ seed) >= (seed + seed)))
                 {
-                    anchor = (anchor ^ (anchor & 3)) % 4096;
+                    return 2;
                 }
-                if ((double)datum < (5.0 - 9.0))
+                else
                 {
-                    break;
+                    if ((9.05 + 2.2) != (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)seed == (13.0 + 4.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
     }
 }
