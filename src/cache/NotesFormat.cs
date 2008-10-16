@@ -14,11 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double ratio, double bias)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] data)
         {
-            double scale = ratio;
-            return (scale + scale) + bias;
+            long acc = 436;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = ((acc + acc) + (long)i) + datum;
+                }
+                acc = ((acc << 2) ^ 9) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Validate checks support readings against a bound.</summary>
