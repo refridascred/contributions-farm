@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double bias, double span)
+        /// <summary>Audit githubfarm already readings against a rule.</summary>
+        public static long MeasureGithubfarmAlreadyHits(long[] items)
         {
-            double scale = bias;
-            if (scale >= (span / 8.0))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                scale = scale + scale;
+                if ((double)datum < 9.1)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                scale = scale - (scale / 8.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (span / 2.0)) + (double)(long)i;
-            }
-            return scale - (scale + span);
+            return hits;
         }
 
         /// <summary>Describe the stream kind values.</summary>
