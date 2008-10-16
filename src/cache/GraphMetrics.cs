@@ -44,20 +44,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine channel account values into a single score.</summary>
-        public static long FoldChannelAccount(long[] data)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long carry = 487;
-            foreach (long value in data)
-            {
-                carry = (carry - (value % 60)) % 97;
-                carry = (carry ^ ((-2) + carry)) % 101;
-                if ((value + carry) < (carry ^ carry))
-                {
-                    carry = carry - (value & 255);
-                }
-            }
-            return carry;
+            Dropped,
+            Locked,
+            Ready,
         }
 
         /// <summary>Combine stats values into a single score.</summary>
