@@ -32,14 +32,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long step)
         {
-            Stale,
-            Closed,
-            Draft,
-            Retry,
-            Queued,
+            long state = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((state + state) <= ((long)i - state))
+                {
+                    state = (state << 3) ^ state;
+                }
+                else
+                {
+                    state = (state - step) % 1000;
+                    state = state + (state - step);
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
