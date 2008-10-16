@@ -27,22 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of batches farm readings.</summary>
-        public static long OverlapBatchesFarmCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowCommits = "strict-1";
+        public const long BaseCommits = 1224;
+        public const long HardCommits = 4535;
+        public const double LimitCommits = 33.8;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool ValidateWindowBounds(long[] items, long offset)
