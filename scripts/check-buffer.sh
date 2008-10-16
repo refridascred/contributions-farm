@@ -6,11 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+BUFFER_LIMIT=392
+log "limit is ${BUFFER_LIMIT}"
 
 count=0
 while [ "${count}" -lt 8 ]; do
@@ -18,9 +15,9 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-eu-west}"
+mode="${1:-strict}"
 case "${mode}" in
-    fallback)
+    strict)
         log "fast path"
         ;;
     *)
