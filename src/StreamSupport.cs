@@ -18,18 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] levels, long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (((limit >> 2) == (31 % 97)) && ((3.58 + 6.3) == (double)seen))
+                if ((double)(long)i < (double)244)
                 {
-                    seen = (seen + 2) ^ sample;
+                    carry = carry ^ ((long)i - carry);
                 }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = (((carry << 2) ^ (-239)) % 255) - (long)i2;
+                }
+                if ((bound / 2) == ((long)i % 16))
+                {
+                    carry = ((carry * 3) + 48) % 4096;
+                    break;
+                }
+                else
+                {
+                    carry = (carry * 2) + (long)i;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Find the first format layout entry that matches the target.</summary>
