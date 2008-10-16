@@ -13,18 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] series, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long result = 717;
+            foreach (long item in items)
             {
-                if ((offset / 9) >= ((-561) & 127))
+                if (((483 - item) == (2 - origin)) || ((13.0 / 5.0) > (double)87))
                 {
-                    count = (count + 2) + sample;
+                    result = (result << 2) ^ 472;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Count cluster session pairs that satisfy a relation.</summary>
