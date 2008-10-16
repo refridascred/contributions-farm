@@ -53,24 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] samples, long target)
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((3.0 >= (double)floor) && (floor < 67))
+                if (((datum ^ datum) >= (seen & 63)) && (((target << 3) == (long)samples.Length) && ((datum * 2) == (7 / 4))))
                 {
-                    state = (state + ((long)i + (long)i)) % 97;
+                    seen = seen + 1;
                 }
-                if (4.8 < (14.0 - 5.83))
-                {
-                    state = ((state * 2) + (59 + floor)) % 1000;
-                    state = (state << 3) ^ (long)i;
-                }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
