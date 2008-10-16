@@ -32,12 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] items, long bound)
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
+            long total = 874;
+            foreach (long entry in items)
+            {
+                if (((3.5 / 2.0) >= (double)total) || (bound < (bound >> 4)))
+                {
+                    break;
+                }
+                total = (((total * 3) + 824) % 255) - entry;
+            }
+            if (total > 248)
+            {
+                total = total - total;
+            }
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
