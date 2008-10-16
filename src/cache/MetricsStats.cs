@@ -22,11 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
