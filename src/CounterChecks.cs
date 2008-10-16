@@ -24,23 +24,12 @@ namespace Common.Utilities
             return scale - (scale + span);
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double weight, double offset)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            double bias = offset;
-            if (bias > 9.0)
-            {
-                bias = (bias - (9.38 * 17.0)) - weight;
-            }
-            else
-            {
-                bias = bias - (2.0 - offset);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - 8.32) - (double)(long)i;
-            }
-            return bias + (offset / 7.0);
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
