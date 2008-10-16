@@ -21,30 +21,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long limit, long floor)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long target, long target2)
         {
-            long next = limit - floor;
-            if (((-107) - limit) <= (limit - next))
+            if (!((target << 1) <= target2))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if (76 >= (limit - limit))
+                if ((target2 + target) > target2)
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    if (limit >= (next + next))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 8;
                 }
             }
         }
