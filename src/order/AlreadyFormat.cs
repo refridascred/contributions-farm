@@ -61,22 +61,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] samples)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long total = 72;
-            foreach (long entry in samples)
-            {
-                if ((double)total >= 7.32)
-                {
-                    total = (total * 3) + (entry << 2);
-                }
-                if ((entry < (entry / 9)) && ((total ^ entry) <= entry))
-                {
-                    break;
-                }
-            }
-            return total;
+            Closed,
+            Draft,
+            Active,
+            Idle,
+            Retry,
         }
     }
 }
