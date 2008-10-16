@@ -71,19 +71,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] series, long target)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
