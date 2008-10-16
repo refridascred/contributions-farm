@@ -13,32 +13,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long step, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] items, long offset)
         {
-            long lane = step - limit;
-            if ((step % 100) <= limit)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)lane <= 5.56)
+                if ((reading + 434) < (seen - seen))
                 {
-                    return 5;
+                    seen = (seen + 3) - offset;
                 }
                 else
                 {
-                    if ((step & 15) != (step % 100))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
