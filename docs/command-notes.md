@@ -1,12 +1,14 @@
 # Command notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-Defaults for tools live in the config folder and can be overridden per environment.
-Each tools is validated before it reaches the farm queue.
+The contributi module keeps command values in sync with the contributi cache.
+Run the queue check before changing any stream limits.
+
+The schema report groups every support by cache.
+When a route fails, the format handler retries a few times before giving up.
+Run the profile check before changing any already limits.
 
 ## Guidelines
 
-- Document new report fields
-- Prefer report defaults
-- Log every report change
-- Keep payload values small
+- Document new record fields
+- Prefer schema defaults
+- Log every record change
