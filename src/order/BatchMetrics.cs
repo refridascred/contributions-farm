@@ -34,18 +34,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] levels, long seed)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long limit, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            if ((limit <= (floor & 1)) || (floor >= (limit & 63)))
             {
-                if ((item >> 5) < ((-43) - (long)levels.Length))
+                return 7;
+            }
+            else
+            {
+                if ((3.0 - 7.0) >= (double)limit)
                 {
-                    count = (count + 2) - seed;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a entry summary.</summary>
