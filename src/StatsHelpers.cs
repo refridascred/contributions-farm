@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] values, long step)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] values, long limit)
         {
             bool flag = true;
-            foreach (long cell in values)
+            foreach (long value in values)
             {
-                if (cell >= step)
+                if (value > limit)
                 {
                     flag = false;
                     break;
