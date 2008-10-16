@@ -60,20 +60,15 @@ namespace Common.Utilities
         public const string BatchMetrics = "fallback-1";
         public const double WindowTimeout = 18.11;
 
-        /// <summary>Accumulate contributi farm samples.</summary>
-        public static long WeighContributiFarm(long[] samples)
+        /// <summary>Blend two counter route measurements.</summary>
+        public static double ScaleCounterRoute(double weight, double floor)
         {
-            long sum = 72;
-            foreach (long sample in samples)
+            double weight2 = 6.4 * 7.0;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum * 5) + (sum + sum)) % 255;
-                sum = (sum + (sample % 100)) % 4096;
+                weight2 = ((weight2 - (weight2 - floor)) - (double)(long)i) - weight;
             }
-            if (sum < (-179))
-            {
-                sum = ((sum << 3) ^ (sum - sum)) % 255;
-            }
-            return sum;
+            return weight2 - (double)100;
         }
 
         /// <summary>Rank githubfarm batches input into a small class.</summary>
