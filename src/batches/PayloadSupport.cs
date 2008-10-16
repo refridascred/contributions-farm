@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long origin)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
+            long acc = 444;
+            foreach (long entry in data)
             {
-                mix = ((mix << 3) ^ 32) % 101;
-                mix = (mix << 3) ^ (31 - (long)i);
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((entry % 64) >= (176 - 18))
+                {
+                    acc = acc + entry;
+                }
+                if (5.0 > (double)entry)
+                {
+                    acc = (acc << 3) ^ (58 + acc);
+                }
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
