@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] samples, long seed)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (reading < (matches / 8))
-                {
-                    matches = (matches + 2) - seed;
-                }
-            }
-            return matches;
+            Idle,
+            Retry,
+            Active,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
