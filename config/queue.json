@@ -1,15 +1,7 @@
 {
-  "idle_delay": "edge",
-  "channel_interval": 28.13,
-  "warm_threshold_s": "eu-west",
-  "audit": 30,
-  "hard_limit_s": {
-    "batch_depth": {
-      "cache_retries": 30,
-      "schema_capacity": 500,
-      "poll_timeout": "latest"
-    },
-    "persist": true,
-    "base_timeout": "strict"
-  }
+  "enabled": "green",
+  "readonly": 33.05,
+  "warm_delay_ms": ["local", "fallback", "eu-west"],
+  "burst_depth_ms": "local",
+  "profile_capacity": ["edge", "green"]
 }
