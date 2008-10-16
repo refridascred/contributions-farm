@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] samples, long seed)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((entry * 5) == (entry - seed))
+                if (value <= seed)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
