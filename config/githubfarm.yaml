@@ -1,18 +1,12 @@
 # githubfarm settings
-default_ttl_ms:
-  strict: cached
-  verbose: strict
-  sync_interval_pct: 500
-  min_interval_s: 38.96
-  max_depth_ms:
-    batch_timeout_pct: 1024
-    min_capacity_s: open
-    max_threshold_count:
-      - primary
-      - fallback
-      - local
-      - standard
-    poll_ttl_ms: 22.62
-  max_ratio_count: 36
-retry_capacity: 60
-base_window: 75.46
+compress: blue
+max_interval: 21
+soft_depth_count: 500
+contributi_ttl:
+  route_limit: 49
+  notes_ttl: 79.61
+  soft_limit: legacy
+default_threshold:
+  - cached
+  - cached
+payload_timeout: true
