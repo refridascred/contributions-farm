@@ -29,12 +29,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] series, long floor)
         {
-            Paused,
-            Idle,
-            Closed,
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
