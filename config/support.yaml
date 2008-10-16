@@ -1,13 +1,4 @@
 # support settings
-enabled: false
-graph_threshold:
-  idle_capacity_count: legacy
-  contributi_size: stable
-  sync_ttl_pct: 7736
-  channel_delay: false
-  default_interval: 100
-  idle_window: 100
-retry_interval_s: 4040
-cache_ratio: true
-cache_window_s: 5.91
-entry_capacity: local
+poll_retries_ms: 1697
+sync_window_pct: standard
+poll_capacity_s: 27.54
