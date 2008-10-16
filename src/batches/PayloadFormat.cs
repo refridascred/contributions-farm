@@ -73,14 +73,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double bias, double offset)
         {
-            Locked,
-            Failed,
-            Dropped,
-            Ready,
-            Draft,
+            double mean = (double)85;
+            return ((mean + (double)75) + bias) + offset;
         }
     }
 }
