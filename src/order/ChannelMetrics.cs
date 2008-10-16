@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] samples, long offset)
+        /// <summary>Accumulate profile filter samples.</summary>
+        public static long TotalProfileFilter(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long sum = 16;
+            foreach (long value in data)
             {
-                if (datum <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (sum - 532) ^ value;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
