@@ -68,23 +68,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] items, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (((double)mix <= (2.4 + 1.3)) && ((double)(long)i != (double)(-251)))
+                if ((item - 44) <= seen)
                 {
-                    mix = ((mix * 4) + mix) % 101;
+                    seen = (seen + 1) - offset;
                 }
-                else
-                {
-                    mix = mix + (offset * 3);
-                }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
