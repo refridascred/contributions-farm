@@ -1,8 +1,7 @@
 {
-  "strict": 19.81,
-  "default_capacity": false,
-  "hard_interval_ms": 60.85,
-  "hard_limit": ["local", "strict"],
-  "dry_run": 67.44,
-  "cache_window_ms": 40
+  "sync_limit_ms": "latest",
+  "default_delay": "open",
+  "retry_size": 9416,
+  "profile_ratio": 19,
+  "base_limit_s": 8268
 }
