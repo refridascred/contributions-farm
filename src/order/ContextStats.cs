@@ -37,12 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBudget = 550;
-        public const string IdleInterval = "latest";
-        public const long HardBuffer = 6362;
-        public const long DefaultBuffer = 5652;
-        public const long SoftWidth = 9389;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public string Owner { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string HardOrder = "staging";
