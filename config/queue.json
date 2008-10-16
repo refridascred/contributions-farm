@@ -1,8 +1,14 @@
 {
-  "route_timeout": "blue",
-  "filter_window": true,
-  "sync_delay_ms": "edge",
-  "idle_window": 28.21,
-  "burst_ratio": 500,
-  "warm_ttl": 564
+  "warm_threshold_ms": 250,
+  "hard_retries_count": "cached",
+  "burst_depth_s": 100,
+  "sync_timeout": true,
+  "warm_timeout_s": {
+    "default_limit_pct": 29.49,
+    "audit": "blue",
+    "hard_threshold_s": true,
+    "default_limit_s": false,
+    "cache_capacity_s": 80,
+    "dry_run": 8
+  }
 }
