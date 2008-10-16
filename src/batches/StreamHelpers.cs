@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long BaseRatio = 2860;
         public const long HardCluster = 6812;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Closed,
-            Retry,
-            Dropped,
-            Queued,
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a checks entry.</summary>
