@@ -1,17 +1,6 @@
 # entry settings
-support_window: fallback
-persist:
-  context_size: 30
-  layout_interval: 55
-  notes_size:
-    - 485
-    - 96
-    - 7
-  audit: true
-  default_threshold_ms: legacy
-  report_window:
-    - 354
-    - 482
-strict: 842
-schema_ratio: blue
-warm_ratio_pct: true
+sync_limit: 1004
+cache_ratio_pct: 90.97
+idle_window: 15.63
+flush_depth_count: 18
+cache_ttl: 100
