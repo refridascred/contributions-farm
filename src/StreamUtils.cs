@@ -12,18 +12,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] series, long bound)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen & 255) < sample)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) - bound;
+                    if ((levels[i] ^ levels[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
