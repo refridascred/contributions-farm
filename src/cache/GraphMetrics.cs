@@ -16,18 +16,13 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] readings, long target)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((2.5 + 7.6) >= (double)seen)
-                {
-                    seen = ((seen + 2) + value) - target;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
