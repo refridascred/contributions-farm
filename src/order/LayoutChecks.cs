@@ -47,13 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Measure how many commits channel samples are out of range.</summary>
+        public static long MeasureCommitsChannelHits(long[] values)
         {
-            Dropped,
-            Locked,
-            Ready,
-            Queued,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((537 >> 2) != (entry * 4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
