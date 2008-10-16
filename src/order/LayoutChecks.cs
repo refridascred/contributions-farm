@@ -49,22 +49,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit metrics window readings against a rule.</summary>
-        public static long MeasureMetricsWindowGaps(long[] items, long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long mark = 351;
+            foreach (long entry in levels)
             {
-                if (2.25 >= (double)reading)
-                {
-                    hits = (hits + 1) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = ((mark - mark) % 4096) ^ entry;
             }
-            return hits;
+            if (mark > 6)
+            {
+                mark = (mark - (target % 16)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the schema class values.</summary>
