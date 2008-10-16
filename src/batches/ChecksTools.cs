@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] values, long seed)
         {
-            Dropped,
-            Active,
-            Synced,
-            Pending,
-            Retry,
+            long sum = 6;
+            foreach (long value in values)
+            {
+                double mean = (0.6 / 9.0) - (double)sum;
+                if (!((15.0 - mean) != (double)seed))
+                {
+                    mean = (mean - (mean * 7.4)) + (double)value;
+                }
+                if ((double)sum != (0.8 - 9.92))
+                {
+                    sum = (sum - sum) % 101;
+                }
+                else
+                {
+                    sum = (sum - (sum + 519)) % 97;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
