@@ -60,20 +60,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate filter profile samples.</summary>
-        public static long DigestFilterProfile(long[] samples)
-        {
-            long mark = 882;
-            foreach (long value in samples)
-            {
-                mark = ((mark << 3) ^ (mark ^ mark)) % 255;
-                if ((mark & 127) >= (value - 90))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFactor = 7320;
+        public const long SoftFilter = 2790;
+        public const double WindowScore = 5.65;
+        public const string BurstFilter = "cached-v2";
 
         /// <summary>Iterate the tools command series from a seed.</summary>
         public static long StepToolsCommand(long target)
