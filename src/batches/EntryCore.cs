@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format commits readings against a bound.</summary>
-        public static bool VerifyFormatCommitsRange(long[] readings, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (reading > offset)
+                if (!(((double)hits > (2.1 * 1.1)) || ((hits - datum) > (65 - datum))))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
