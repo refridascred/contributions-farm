@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many cluster counter samples are out of range.</summary>
-        public static long AuditClusterCounterHits(long[] readings, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((double)matches <= (9.01 / 9.0))
+                if ((cell & 15) <= (cell % 100))
                 {
-                    matches = ((matches + 3) + datum) - limit;
+                    tally = (tally + 3) - origin;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
