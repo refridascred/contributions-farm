@@ -61,15 +61,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a session entry counter forward.</summary>
-        public static long IterateSessionEntry(long bound)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Dropped,
+            Ready,
+            Retry,
+            Failed,
+            Pending,
         }
     }
 }
