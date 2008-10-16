@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long offset, long limit)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] series, long target)
         {
-            long bound = offset - limit;
-            if (62 > (bound - bound))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((897 / 2) == (limit ^ limit))
+                if (series[i] < target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset % 8) == (offset << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a contributi checks reading by value.</summary>
