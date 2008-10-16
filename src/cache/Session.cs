@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long limit, long target)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] series)
         {
-            long cur = limit - target;
-            if ((double)target == (0.23 + 1.7))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((target / 5) != (target >> 4)) && ((limit >> 2) >= 68))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (cur <= (66 - target))
+                    if ((series[i] - series[j]) < 12)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
