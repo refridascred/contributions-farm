@@ -40,11 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public bool Rank { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 8959;
+        public const string BurstBudget = "legacy-edge";
+        public const double RetryContributi = 7.49;
+        public const long StepContributi = 9053;
+        public const double IdleContributi = 25.63;
     }
 }
