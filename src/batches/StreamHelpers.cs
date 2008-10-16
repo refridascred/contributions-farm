@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double rate, double floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long offset, long seed)
         {
-            double scale = (double)(2 * 2);
-            if (scale >= floor)
+            if (!((offset ^ seed) >= (offset >> 2)))
             {
-                scale = (scale - (double)99) - rate;
+                return 7;
             }
             else
             {
-                scale = scale + floor;
+                if (((3 - seed) != (seed + seed)) || ((offset << 1) >= (seed ^ seed)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((79 >> 4) != (seed / 8)) || ((offset + seed) <= (seed - offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((39 + seed) >= (offset / 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (double)62;
         }
 
         /// <summary>Hold a commits record.</summary>
