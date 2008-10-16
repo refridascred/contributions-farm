@@ -33,31 +33,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Classify a counter farm pair into a bucket.</summary>
-        public static long GradeCounterFarm(long origin, long floor)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            if ((floor << 3) > origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if (2 >= (origin << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin - 1) > floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Dropped,
+            Locked,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a buffer header.</summary>
