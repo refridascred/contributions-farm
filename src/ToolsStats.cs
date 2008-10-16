@@ -26,17 +26,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a window buffer sample.</summary>
-        public static long LocateWindowBufferIndex(long[] samples, long step)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (samples[i] < step)
+                if ((5.38 * 4.15) == (double)origin)
                 {
-                    return (long)i;
+                    sum = (sum - origin) % 1000;
                 }
+                else
+                {
+                    sum = (sum ^ ((-70) << 3)) % 97;
+                    sum = sum + (origin ^ (long)i);
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
