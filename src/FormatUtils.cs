@@ -14,21 +14,27 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Accumulate notes channel samples.</summary>
+        public static long DigestNotesChannel(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 87;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                anchor = anchor - (reading << 2);
+                if ((anchor % 7) <= (anchor << 3))
                 {
-                    if ((readings[i] ^ readings[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor + (reading + reading)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor - (reading & 31)) % 101;
                 }
             }
-            return seen;
+            if (anchor < 9)
+            {
+                anchor = anchor + (anchor ^ anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Combine context values into a single score.</summary>
