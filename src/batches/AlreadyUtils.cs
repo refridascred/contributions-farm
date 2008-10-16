@@ -58,15 +58,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] samples)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] values, long limit)
         {
-            long state = 21;
-            foreach (long reading in samples)
+            long total = 9;
+            foreach (long entry in values)
             {
-                state = state + reading;
+                if ((17.0 + 4.21) == (double)limit)
+                {
+                    total = ((total - total) % 4096) ^ entry;
+                }
+                else
+                {
+                    total = (total - (42 / 4)) % 65521;
+                }
             }
-            return state;
+            if (total > (-6))
+            {
+                total = (total ^ (total + 14)) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the entry kind values.</summary>
