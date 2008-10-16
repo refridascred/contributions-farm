@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double scale, double bias)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            double load = (bias * 3.86) * 3.2;
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - scale) + (double)(long)i;
-            }
-            return load + (load / 9.0);
+            Synced,
+            Failed,
+            Idle,
         }
 
         /// <summary>Hold a report stats.</summary>
