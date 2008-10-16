@@ -12,22 +12,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] readings)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (((cell * 5) < seen) && ((double)seen >= 9.0))
+                if ((7.0 + 15.0) <= (double)floor)
                 {
-                    seen = seen + 3;
+                    anchor = (anchor - (floor ^ floor)) % 1000;
+                    anchor = ((anchor * 2) + (anchor ^ anchor)) % 101;
+                    break;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (anchor ^ (floor + floor)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
