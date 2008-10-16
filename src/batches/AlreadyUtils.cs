@@ -58,31 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long seed, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] levels)
         {
-            if (1.1 > (double)floor)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor - seed) > floor)
+                if ((61 ^ 740) > (reading % 5))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((3.72 - 0.75) < (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every queue metrics entry stays within the limit.</summary>
