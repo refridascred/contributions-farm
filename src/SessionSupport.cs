@@ -29,12 +29,18 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] items, long limit)
         {
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (((datum << 1) <= datum) && (((limit - limit) > seen) || (seen < (seen + datum))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
