@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Stale,
-            New,
-            Idle,
+            Synced,
+            Locked,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
