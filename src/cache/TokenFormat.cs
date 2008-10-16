@@ -32,21 +32,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long origin)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((long)i + mark) >= mark)
-                {
-                    mark = mark ^ (origin & 3);
-                }
-                mark = ((mark * 5) + (origin + 2)) % 101;
-                mark = (mark + 0) % 97;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            public double Count { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
