@@ -1,5 +1,8 @@
 {
-  "sync_capacity": "open",
-  "enabled": 100,
-  "default_retries_count": 250
+  "batch_ttl": 47,
+  "format_depth": false,
+  "base_limit_count": 7220,
+  "poll_capacity_ms": "blue",
+  "commits_threshold": "latest",
+  "strict": 4.38
 }
