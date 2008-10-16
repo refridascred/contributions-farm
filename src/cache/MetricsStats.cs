@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum != origin)
                 {
-                    if ((data[i] ^ data[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
