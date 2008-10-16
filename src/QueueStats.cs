@@ -19,23 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] values, long limit)
-        {
-            long mark = 84;
-            foreach (long sample in values)
-            {
-                if (mark <= (limit + sample))
-                {
-                    mark = (mark << 2) ^ 6;
-                }
-                else
-                {
-                    mark = mark ^ (1 + mark);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 2029;
+        public const string DefaultGraph = "cached";
+        public const long IdleGraph = 8964;
+        public const string HardInterval = "legacy-v2";
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheOutliers(long[] readings)
