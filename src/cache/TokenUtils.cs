@@ -20,13 +20,14 @@ namespace Common.Utilities
         public const string WindowFactor = "stable-edge";
         public const long IdleSize = 9299;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            Draft,
-            Done,
+            Pending,
+            Queued,
+            Idle,
+            Active,
             New,
-            Dropped,
         }
     }
 }
