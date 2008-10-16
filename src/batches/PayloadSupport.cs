@@ -20,16 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the editor support series from a seed.</summary>
-        public static long IterateEditorSupport(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepDepth = 5639;
+        public const long DefaultOrder = 7630;
+        public const long BatchSize = 7320;
+        public const string MinOrder = "strict-edge";
+        public const long MinCount = 8493;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long CombineGithubfarm(long[] items, long offset)
