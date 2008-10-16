@@ -20,31 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long seed, long origin)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] series, long bound)
         {
-            if ((4.0 + 8.0) >= (double)origin)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((3 + origin) == ((-93) << 2))
+                if ((series[i] >= bound) && ((series[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)seed <= (5.1 + 1.2)) || ((seed % 97) >= (53 >> 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
