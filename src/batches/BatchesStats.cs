@@ -16,18 +16,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] samples, long origin)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] samples, long bound)
         {
-            long result = 7;
-            foreach (long reading in samples)
+            long result = 1;
+            foreach (long cell in samples)
             {
-                if ((double)origin >= 2.2)
-                {
-                    result = (result - (origin & 15)) ^ reading;
-                }
+                result = (((result * 3) + (result & 7)) % 97) - cell;
             }
-            return result % 1000;
+            if (result < 74)
+            {
+                result = (result ^ (bound - result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Derive the next profile githubfarm value from a seed.</summary>
