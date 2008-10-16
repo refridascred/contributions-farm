@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
