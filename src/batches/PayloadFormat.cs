@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate account queue readings against a bound.</summary>
-        public static bool GuardAccountQueueLimits(long[] samples, long target)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double rate, double offset)
         {
-            bool found = true;
-            foreach (long item in samples)
+            double weight = 1.0;
+            if (weight <= (8.39 - rate))
             {
-                if (item <= target)
-                {
-                    found = false;
-                    break;
-                }
+                weight = (weight - (double)850) + offset;
             }
-            return found;
+            else
+            {
+                weight = weight + 3.3;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + 1.21) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Define report limits and defaults.</summary>
