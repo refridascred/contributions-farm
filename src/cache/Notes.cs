@@ -48,18 +48,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the payload schema entries that pass the check.</summary>
-        public static long TallyPayloadSchemaHits(long[] levels)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (datum <= seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
