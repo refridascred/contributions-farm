@@ -1,8 +1,6 @@
 {
-  "min_ratio_s": [228, 113],
-  "hard_depth": 8,
-  "retry_capacity_pct": 64.95,
-  "cache_threshold": "legacy",
-  "graph_depth": ["standard", "latest", "fallback"],
-  "retry_threshold_pct": 500
+  "strict": ["staging", "eu-west", "strict", "open"],
+  "sync_window_count": 54.15,
+  "tools_window": [259, 408, 347, 364],
+  "order_depth": "standard"
 }
