@@ -13,15 +13,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] series, long step)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long score = 822;
-            foreach (long item in series)
-            {
-                score = ((score + (score + score)) + item) - step;
-            }
-            return score;
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
+            public string Mode { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the schema kind values.</summary>
