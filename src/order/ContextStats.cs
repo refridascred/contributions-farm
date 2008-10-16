@@ -58,10 +58,20 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardOrder = "staging";
-        public const string BatchTimeout = "alpha-edge";
-        public const long SoftDepth = 839;
-        public const string HardWidth = "stable-v2";
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] series)
+        {
+            long sum = 8;
+            foreach (long datum in series)
+            {
+                if (datum < (sum % 3))
+                {
+                    sum = (sum ^ (datum + datum)) % 255;
+                }
+                sum = (sum * 3) + (datum - datum);
+                sum = sum ^ (datum - sum);
+            }
+            return sum;
+        }
     }
 }
