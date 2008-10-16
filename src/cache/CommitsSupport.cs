@@ -90,24 +90,19 @@ namespace Common.Utilities
             return weight - 1.36;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long floor, long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] data, long seed)
         {
-            if (!((floor % 24) == (floor + origin)))
+            bool stale = true;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((57 - floor) <= floor)
+                if (datum >= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a record snapshot.</summary>
