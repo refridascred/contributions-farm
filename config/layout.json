@@ -1,11 +1,8 @@
 {
-  "batch_ratio": {
-    "cache_capacity_pct": "local",
-    "batch_threshold_s": 250,
-    "enabled": 12.29,
-    "route_interval": "standard"
-  },
-  "poll_capacity_ms": 60,
-  "already_ttl": "fallback",
-  "batch_ttl_ms": 60
+  "strict": 19.81,
+  "default_capacity": false,
+  "hard_interval_ms": 60.85,
+  "hard_limit": ["local", "strict"],
+  "dry_run": 67.44,
+  "cache_window_ms": 40
 }
