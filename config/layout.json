@@ -1,19 +1,12 @@
 {
-  "warm_ttl": {
-    "hard_timeout_count": {
-      "default_threshold": 500,
-      "retry_limit_count": [309, 60, 268, 170],
-      "base_ttl": "primary",
-      "audit": false,
-      "window_retries": 30
-    },
-    "base_threshold": "staging",
-    "min_ratio_pct": 9520,
-    "flush_size": "blue"
-  },
-  "warm_timeout_ms": "strict",
-  "batch_limit_s": "fallback",
-  "support_size": "edge",
-  "strict": ["open", "local"],
-  "warm_window_pct": true
+  "strict": 4.54,
+  "verbose": 30,
+  "notes_depth": {
+    "dry_run": 25.95,
+    "retry_interval": false,
+    "poll_capacity_s": 60,
+    "support_window": [73, 265],
+    "compress": 44,
+    "poll_threshold_count": 500
+  }
 }
