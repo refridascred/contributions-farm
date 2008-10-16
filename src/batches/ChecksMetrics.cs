@@ -15,21 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item >= floor)
                 {
-                    if ((samples[i] + samples[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
