@@ -74,12 +74,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long seed)
         {
-            Closed,
-            Ready,
-            Draft,
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = mix + ((long)i + seed);
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a entry reading.</summary>
