@@ -1,8 +1,9 @@
-id,score,weight
-1,standard,cached
-2,green,55.09
-3,36.27,952
-4,stable,79
-5,216,cached
-6,54.66,local
-7,latest,192
+id,count,state
+1,46.45,32.74
+2,756,53.03
+3,primary,staging
+4,144,strict
+5,634,legacy
+6,190,109
+7,98.07,753
+8,89.75,cached
