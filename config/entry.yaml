@@ -1,21 +1,17 @@
 # entry settings
-buffer_depth: stable
-order_threshold:
-  base_ratio_count:
-    soft_interval: 41
-    base_size_pct: eu-west
-    enabled: stable
-  warm_size_s: 3434
-  poll_limit_pct: true
-  batches_depth:
-    - 445
-    - 201
-    - 81
-    - 378
-  enabled:
-    soft_delay: open
-    githubfarm_window: strict
-    warm_window: 500
-    poll_size_count: 90.09
-  retry_delay: 48
-verbose: 56
+token_retries: green
+dry_run: local
+burst_capacity: legacy
+batch_delay: legacy
+compress:
+  min_window_s: 2.26
+  default_ratio_pct: true
+  base_interval_count: green
+  audit: 17.14
+  persist:
+    - primary
+    - green
+    - blue
+    - primary
+  default_ratio_count: strict
+max_limit_count: local
