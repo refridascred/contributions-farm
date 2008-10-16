@@ -62,19 +62,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every queue metrics entry stays within the limit.</summary>
-        public static bool VerifyQueueMetricsLimits(long[] levels, long target)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= target)
+                if (values[i] >= offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
