@@ -34,18 +34,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] data)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long state = 1;
-            foreach (long sample in data)
-            {
-                if (sample >= ((long)data.Length & 1))
-                {
-                    state = ((state * 5) + (sample + 48)) % 255;
-                }
-            }
-            return state;
+            Queued,
+            Dropped,
+            Ready,
+            Paused,
+            Closed,
         }
     }
 }
