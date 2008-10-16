@@ -1,5 +1,17 @@
 # entry settings
-compress: eu-west
-flush_timeout: false
-batch_size_pct: blue
-stream_limit: strict
+support_window: fallback
+persist:
+  context_size: 30
+  layout_interval: 55
+  notes_size:
+    - 485
+    - 96
+    - 7
+  audit: true
+  default_threshold_ms: legacy
+  report_window:
+    - 354
+    - 482
+strict: 842
+schema_ratio: blue
+warm_ratio_pct: true
