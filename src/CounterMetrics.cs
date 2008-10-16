@@ -27,21 +27,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Check that every payload command entry stays within the limit.</summary>
+        public static bool VerifyPayloadCommandLimits(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum > bound)
                 {
-                    if ((readings[i] - readings[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define token limits and defaults.</summary>
