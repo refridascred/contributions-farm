@@ -42,16 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route payload entries.</summary>
-        public static long TotalRoutePayload(long[] levels)
-        {
-            long sum = 895;
-            foreach (long item in levels)
-            {
-                sum = (sum + item) % 97;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowBatch = 69.05;
+        public const long SoftBatch = 6534;
+        public const long IdleSpan = 4837;
 
         /// <summary>Project the next profile value.</summary>
         public static double AdjustProfile(double bias, double floor)
