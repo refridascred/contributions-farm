@@ -1,5 +1,5 @@
 {
-  "soft_limit_s": "standard",
-  "min_interval_ms": 100,
-  "poll_timeout_pct": [194, 10]
+  "idle_timeout_ms": 5186,
+  "warm_size_pct": [66, 75, 325, 77],
+  "min_threshold_count": 39.11
 }
