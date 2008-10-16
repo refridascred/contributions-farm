@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const string BatchAlready = "strict-edge";
         public const long BaseCount = 2560;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= target) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 7519;
+        public const long MinMetric = 3263;
+        public const long MaxFactor = 6691;
+        public const long MinFactor = 9060;
+        public const long RetryDepth = 93;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long DigestProfile(long[] levels)
