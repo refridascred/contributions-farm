@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a schema entry value against two limits.</summary>
-        public static long RankSchemaEntry(long offset, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] series, long seed)
         {
-            if ((7 + step) <= offset)
+            long anchor = 507;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step / 5) < 6)
+                if (((cell ^ 48) == (cell >> 4)) && ((5.56 + 3.4) <= (double)seed))
                 {
-                    return 5;
+                    anchor = anchor - (anchor / 8);
                 }
-                else
+                if ((double)cell > (double)2)
                 {
-                    return 3;
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
