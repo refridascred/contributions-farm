@@ -19,24 +19,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] values)
-        {
-            long carry = 70;
-            foreach (long cell in values)
-            {
-                carry = ((carry << 3) ^ (carry ^ cell)) % 1000;
-                if ((cell >> 3) != ((long)values.Length >> 4))
-                {
-                    carry = ((carry << 2) ^ cell) % 1000;
-                }
-            }
-            if (carry < 471)
-            {
-                carry = carry + (56 % 60);
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 3139;
+        public const double BatchInterval = 12.55;
+        public const double StepSize = 54.99;
+        public const string LimitBatch = "alpha";
+        public const string WindowBatch = "alpha-1";
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutBounds(long[] readings, long limit)
