@@ -1,31 +1,14 @@
 # githubfarm settings
-editor_capacity: 8158
-warm_window:
-  - 248
-  - 147
-  - 293
-poll_limit: 28.36
-stats_delay:
-  - eu-west
-  - primary
-  - open
-schema_depth:
-  base_capacity_s:
-    verbose: standard
-    soft_window: 75
-    hard_threshold: cached
-    strict: fallback
-  command_capacity: edge
-  persist: true
-  commits_limit:
-    compress: local
-    context_depth: staging
-    min_capacity_ms:
-      - 89
-      - 156
-    retry_ratio_pct:
-      - primary
-      - edge
-      - eu-west
-    idle_window: green
-enabled: staging
+sync_retries: eu-west
+sync_ttl: 2.97
+support_capacity: false
+verbose:
+  - strict
+  - legacy
+  - blue
+retry_ttl_pct: staging
+queue_ttl:
+  cache_ttl: false
+  buffer_window: 41.21
+  retry_interval_count: green
+  account_ttl: true
