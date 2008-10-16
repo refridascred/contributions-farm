@@ -35,13 +35,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Validate stream batches readings against a bound.</summary>
+        public static bool CheckStreamBatchesLimits(long[] series, long bound)
         {
-            Active,
-            Dropped,
-            Retry,
-            Stale,
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
