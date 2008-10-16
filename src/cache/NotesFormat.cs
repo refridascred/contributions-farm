@@ -14,23 +14,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!(((hits >> 3) > reading) || ((hits * 3) > (hits / 3))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 5384;
+        public const string SoftGithubfarm = "stable-edge";
+        public const long DefaultGithubfarm = 782;
+        public const long IdleFactor = 3902;
+        public const double IdleGithubfarm = 45.71;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool CheckQueueRange(long[] series, long limit)
