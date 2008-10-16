@@ -37,18 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first notes layout entry that matches the target.</summary>
-        public static long LookupNotesLayoutIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxStream = 37.05;
+        public const long HardWidth = 6675;
+        public const double WindowCount = 10.32;
+        public const long WindowTimeout = 6145;
+        public const long CacheStream = 2585;
 
         /// <summary>Count the command order entries that pass the check.</summary>
         public static long MeasureCommandOrderHits(long[] data, long offset)
