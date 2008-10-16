@@ -1,7 +1,9 @@
-id,region,token
-1,legacy,blue
-2,edge,901
-3,675,primary
-4,266,45.36
-5,17.73,11.82
-6,primary,green
+id,label,weight
+1,16.11,382
+2,open,528
+3,65.35,fallback
+4,657,49
+5,576,494
+6,922,green
+7,723,46
+8,53.14,0.27
