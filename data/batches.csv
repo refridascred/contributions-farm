@@ -1,9 +1,8 @@
-id,owner,rank
-1,staging,13.26
-2,746,907
-3,51,202
-4,725,709
-5,509,latest
-6,81.39,6.57
-7,145,439
-8,617,127
+id,label,active
+1,staging,primary
+2,46.32,941
+3,39.27,25.42
+4,432,377
+5,edge,eu-west
+6,edge,15.45
+7,primary,552
