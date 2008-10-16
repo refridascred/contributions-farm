@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] items, long floor)
+        /// <summary>Validate channel cache readings against a bound.</summary>
+        public static bool ValidateChannelCacheRange(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (cell >= floor)
+                if (entry < seed)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Match up payload samples.</summary>
