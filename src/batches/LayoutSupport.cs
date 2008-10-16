@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] series)
         {
-            Draft,
-            Pending,
-            Idle,
-            Retry,
-            Paused,
+            long mark = 518;
+            foreach (long reading in series)
+            {
+                if ((double)reading == (12.0 + 6.6))
+                {
+                    mark = mark - 99;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
