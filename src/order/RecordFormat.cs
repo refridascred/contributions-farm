@@ -36,21 +36,19 @@ namespace Common.Utilities
         public const string BatchMetrics = "fallback-1";
         public const double WindowTimeout = 18.11;
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value < seed)
                 {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Rank githubfarm batches input into a small class.</summary>
