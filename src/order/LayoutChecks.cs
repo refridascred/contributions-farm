@@ -76,12 +76,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleChecks = 10.83;
-        public const long StepSpan = 4764;
-        public const long RetrySize = 1598;
-        public const string BurstInterval = "strict-edge";
-        public const long BatchChecks = 9220;
+        /// <summary>Audit metrics window readings against a rule.</summary>
+        public static long MeasureMetricsWindowGaps(long[] items, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (2.25 >= (double)reading)
+                {
+                    hits = (hits + 1) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
