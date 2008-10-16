@@ -38,13 +38,14 @@ namespace Common.Utilities
         public const long RetryFactor = 4346;
         public const long StepTimeout = 9288;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Done,
-            Paused,
-            Idle,
             Queued,
+            Retry,
+            Done,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
