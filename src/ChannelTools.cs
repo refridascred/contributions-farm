@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many already editor samples are out of range.</summary>
-        public static long MeasureAlreadyEditorOutliers(long[] readings)
+        /// <summary>Digest a series of metric format entries.</summary>
+        public static long CombineMetricFormat(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long sum = 0;
+            foreach (long cell in values)
             {
-                if ((double)tally < 10.0)
-                {
-                    tally = (tally + 2) - item;
-                }
+                sum = ((sum ^ (sum ^ sum)) - cell) - floor;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
