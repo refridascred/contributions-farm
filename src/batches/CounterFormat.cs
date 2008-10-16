@@ -20,18 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] items, long origin)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            long result = 717;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((483 - item) == (2 - origin)) || ((13.0 / 5.0) > (double)87))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result << 2) ^ 472;
+                    if ((levels[i] ^ levels[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
