@@ -20,13 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] levels)
         {
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + cell) < (cell + tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
