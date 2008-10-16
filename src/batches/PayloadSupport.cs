@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] data, long offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((data[i] < offset) && ((data[i] % 5) == 0))
+                if ((value * 5) == (value % 16))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the tools githubfarm entries that pass the check.</summary>
