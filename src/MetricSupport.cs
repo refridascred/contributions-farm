@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxSize = 4574;
-        public const long SoftInterval = 1135;
-        public const long BaseWidth = 6211;
+        /// <summary>Locate a tools report reading by value.</summary>
+        public static long FindToolsReportIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool GuardLayoutBounds(long[] readings, long limit)
