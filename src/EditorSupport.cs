@@ -69,12 +69,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] samples, long step)
         {
-            public bool Limit { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
