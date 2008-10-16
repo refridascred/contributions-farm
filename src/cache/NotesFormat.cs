@@ -19,19 +19,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] series, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (datum >= limit)
+                if ((123 << 1) >= seen)
                 {
-                    ok = false;
-                    break;
+                    seen = ((seen + 1) + value) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
