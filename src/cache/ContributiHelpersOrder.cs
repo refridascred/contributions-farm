@@ -20,26 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] data)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] levels, long offset)
         {
-            long anchor = 4;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((0.19 - 12.0) <= (double)item)
+                if (item <= offset)
                 {
-                    anchor = (anchor + anchor) % 4096;
-                }
-                else
-                {
-                    anchor = anchor - (item + 7);
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor > 116)
-            {
-                anchor = ((anchor * 4) + (anchor ^ 795)) % 4096;
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
