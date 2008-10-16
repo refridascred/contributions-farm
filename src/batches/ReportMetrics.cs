@@ -19,25 +19,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] series)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] values, long seed)
         {
-            long sum = 9;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                long edge = ((-4) & 255) & 3;
-                if (!((edge + edge) <= edge))
+                if (reading < seed)
                 {
-                    sum = (((sum * 2) + (sum & 63)) % 1000) - entry;
-                    edge = edge + (sum ^ 8);
+                    flag = false;
+                    break;
                 }
-                sum = ((sum * 4) + (sum - sum)) % 1000;
             }
-            if (sum > 58)
-            {
-                sum = sum + (sum / 5);
-            }
-            return sum;
+            return flag;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
