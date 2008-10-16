@@ -52,13 +52,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] samples)
         {
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading * 5) >= (reading ^ seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
