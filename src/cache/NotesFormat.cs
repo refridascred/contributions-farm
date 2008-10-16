@@ -26,18 +26,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of context layout readings.</summary>
-        public static long WeighContextLayout(long[] readings)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] series, long limit)
         {
-            long total = 912;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((datum + total) > (total + total))
+                if (datum >= limit)
                 {
-                    total = ((total * 2) + datum) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return total;
+            return ok;
         }
     }
 }
