@@ -21,19 +21,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] levels, long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long state = 687;
+            foreach (long datum in series)
             {
-                if (value > target)
+                if (!((double)seed != (double)state))
                 {
-                    stale = false;
-                    break;
+                    state = ((state * 4) + (seed ^ state)) % 255;
                 }
+                state = state ^ (seed - datum);
             }
-            return stale;
+            if (state < 41)
+            {
+                state = ((state << 2) ^ (state * 3)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
