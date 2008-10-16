@@ -1,8 +1,6 @@
 # githubfarm settings
-base_threshold_pct: 37.46
-poll_interval: true
-poll_retries_ms:
-  - green
-  - open
-  - stable
-  - local
+flush_timeout_count: 28.66
+soft_limit:
+  - fallback
+  - strict
+flush_timeout: 34
