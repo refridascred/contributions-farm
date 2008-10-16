@@ -55,17 +55,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] items, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((items[i] > seed) && ((items[i] % 2) == 0))
+                if (!((1.37 + 0.69) == (double)datum))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
