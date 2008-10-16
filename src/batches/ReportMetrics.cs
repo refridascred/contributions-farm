@@ -15,12 +15,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] series)
         {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
+            long sum = 9;
+            foreach (long entry in series)
+            {
+                long edge = ((-4) & 255) & 3;
+                if (!((edge + edge) <= edge))
+                {
+                    sum = (((sum * 2) + (sum & 63)) % 1000) - entry;
+                    edge = edge + (sum ^ 8);
+                }
+                sum = ((sum * 4) + (sum - sum)) % 1000;
+            }
+            if (sum > 58)
+            {
+                sum = sum + (sum / 5);
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
