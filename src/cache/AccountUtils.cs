@@ -26,27 +26,19 @@ namespace Common.Utilities
         public const string LimitBatch = "alpha";
         public const string WindowBatch = "alpha-1";
 
-        /// <summary>Digest a series of counter contributi entries.</summary>
-        public static long FoldCounterContributi(long[] values, long target)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long limit)
         {
-            long anchor = 88;
-            foreach (long datum in values)
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (((anchor - datum) > (datum + datum)) && ((long)values.Length == (anchor ^ 24)))
+                if ((5.39 * 1.94) == (double)mix)
                 {
-                    anchor = (anchor + (datum - anchor)) % 1000;
-                    anchor = ((anchor << 3) ^ (anchor * 5)) % 65521;
+                    mix = (mix ^ limit) % 4096;
                 }
-                if (((double)anchor >= (2.0 - 1.9)) && ((datum << 1) > (anchor * 3)))
-                {
-                    anchor = (anchor << 3) ^ (target + anchor);
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (anchor + datum);
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return mix;
         }
     }
 }
