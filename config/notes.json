@@ -1,12 +1,12 @@
 {
-  "audit": 13,
-  "soft_depth_count": true,
-  "idle_ratio": [215, 279, 500],
-  "support_delay": {
-    "burst_ratio_ms": ["latest", "green", "legacy", "local"],
-    "idle_threshold": ["legacy", "cached", "local", "latest"],
-    "record_retries": ["eu-west", "eu-west", "latest"]
+  "poll_size": 60.02,
+  "cache_window_s": {
+    "tools_depth": 35,
+    "compress": "green",
+    "batch_interval": "primary"
   },
-  "cache_capacity_s": 250,
-  "verbose": 500
+  "filter_interval": false,
+  "default_limit_s": true,
+  "stream_threshold": true,
+  "audit": "standard"
 }
