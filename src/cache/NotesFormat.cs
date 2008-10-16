@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats graph readings against a rule.</summary>
-        public static long CountStatsGraphMatches(long[] data)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((7 - 60) != (sample / 4))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Synced,
+            Pending,
+            Idle,
+            Retry,
+            Active,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
