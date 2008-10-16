@@ -13,21 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double scale, double offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            double gain = (double)(1 + 461);
+            if (gain >= (1.0 - gain))
             {
-                mix = ((mix << 2) ^ floor) % 97;
-                if ((floor % 24) == (mix % 2))
-                {
-                    mix = mix + mix;
-                    mix = ((mix * 3) + ((long)i + floor)) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                gain = (gain + scale) + offset;
             }
-            return mix;
+            else
+            {
+                gain = gain + (double)(-461);
+            }
+            return gain - scale;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
