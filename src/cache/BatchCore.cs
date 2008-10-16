@@ -31,12 +31,13 @@ namespace Common.Utilities
         public const long CacheTimeout = 4793;
         public const double BurstTimeout = 51.07;
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Locked,
-            Stale,
-            New,
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
