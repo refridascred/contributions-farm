@@ -60,15 +60,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] items, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (value != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
