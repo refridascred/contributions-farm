@@ -25,38 +25,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long floor, long limit)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] readings, long bound)
         {
-            if ((floor * 4) > limit)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit <= (floor * 4))
+                if (reading <= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit / 2) < (floor & 127))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((7.52 / 6.0) != (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
