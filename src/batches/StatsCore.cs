@@ -78,14 +78,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            Ready,
-            Retry,
-            Active,
-            Synced,
-            New,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
