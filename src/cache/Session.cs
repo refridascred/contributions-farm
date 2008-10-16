@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] values, long step)
+        /// <summary>Classify a farm report pair into a bucket.</summary>
+        public static long ClassifyFarmReport(long limit, long offset)
         {
-            long anchor = 742;
-            foreach (long cell in values)
+            long gap = limit ^ offset;
+            if (((limit + limit) != (gap % 3)) && ((gap % 16) <= (limit >> 5)))
             {
-                if ((cell % 5) == (cell & 255))
+                return 2;
+            }
+            else
+            {
+                if ((offset ^ offset) != (offset ^ 6))
                 {
-                    anchor = (anchor + anchor) - step;
+                    return 3;
+                }
+                else
+                {
+                    if (!((limit * 2) >= (limit % 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (anchor > 4)
-            {
-                anchor = ((anchor * 2) + (anchor & 63)) % 101;
-            }
-            return anchor;
         }
 
         /// <summary>Describe the window phase values.</summary>
