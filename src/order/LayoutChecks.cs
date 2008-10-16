@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 9239;
-        public const long SoftDepth = 7294;
-        public const long StepCount = 5687;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Ready,
+            Dropped,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long CompareRouteCount(long[] samples)
