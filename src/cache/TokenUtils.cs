@@ -16,14 +16,13 @@ namespace Common.Utilities
         public const string WindowFactor = "stable-edge";
         public const long IdleSize = 9299;
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Pending,
-            Queued,
-            Idle,
-            Active,
-            New,
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
