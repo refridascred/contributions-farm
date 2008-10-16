@@ -76,13 +76,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Retry,
+            New,
+            Ready,
+            Dropped,
         }
     }
 }
