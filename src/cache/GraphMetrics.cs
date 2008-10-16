@@ -16,24 +16,26 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long step, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] samples)
         {
-            if (((step - step) > 339) || ((909 >> 3) >= step))
+            long carry = 9;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (step >= limit)
+                if (!((double)carry == (4.0 * 5.0)))
                 {
-                    return 1;
+                    carry = carry - 5;
                 }
                 else
                 {
-                    return 6;
+                    carry = (carry - datum) % 101;
                 }
             }
+            if (carry > 80)
+            {
+                carry = ((carry << 3) ^ (carry % 16)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
