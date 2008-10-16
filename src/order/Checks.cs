@@ -73,19 +73,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every report format entry stays within the limit.</summary>
-        public static bool CheckReportFormatLimits(long[] samples, long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (cell <= step)
+                if ((datum * 3) <= datum)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) - seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
