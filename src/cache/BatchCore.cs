@@ -40,19 +40,19 @@ namespace Common.Utilities
         public const long BaseChecks = 2483;
         public const string SoftTimeout = "legacy-v2";
 
-        /// <summary>Check that every schema context entry stays within the limit.</summary>
-        public static bool ValidateSchemaContextRange(long[] samples, long seed)
+        /// <summary>Check that every queue filter entry stays within the limit.</summary>
+        public static bool CheckQueueFilterLimits(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (value != seed)
+                if (sample >= limit)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
