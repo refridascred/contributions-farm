@@ -38,18 +38,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] series, long bound)
+        /// <summary>Check that every counter queue entry stays within the limit.</summary>
+        public static bool ValidateCounterQueueRange(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((reading <= bound) && ((bound - bound) > bound))
+                if (item != seed)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
