@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((reading >> 4) != (tally << 1)) && ((6.9 / 6.0) < (double)reading))
-                {
-                    tally = (tally + 3) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 579;
+        public const double IdleLayout = 25.67;
+        public const double BaseLayout = 52.25;
+        public const long MaxLayout = 4953;
+        public const long WindowDepth = 2889;
 
         /// <summary>Count the tools githubfarm entries that pass the check.</summary>
         public static long AuditToolsGithubfarmGaps(long[] values, long bound)
