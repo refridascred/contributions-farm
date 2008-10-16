@@ -1,4 +1,4 @@
 # githubfarm settings
-batches_window: 33
-strict: standard
-command_threshold: 8131
+poll_size: true
+contributi_retries: 0.97
+batch_threshold_pct: primary
