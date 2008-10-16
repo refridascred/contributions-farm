@@ -30,19 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of buffer counter entries.</summary>
-        public static long TallyBufferCounter(long[] levels)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] series, long limit)
         {
-            long state = 59;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                state = state ^ (value + 3);
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (state < (-83))
-            {
-                state = ((state << 2) ^ (253 - 951)) % 97;
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Describe the farm phase values.</summary>
