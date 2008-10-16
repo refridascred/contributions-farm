@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] items, long target)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long seed, long origin)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            if (seed <= (3 + origin))
             {
-                if (reading < target)
+                return 8;
+            }
+            else
+            {
+                if ((1.8 * 0.34) != (double)origin)
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ready;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
