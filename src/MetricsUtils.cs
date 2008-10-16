@@ -23,19 +23,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (9.0 <= (double)reading)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitWidth = 3692;
+        public const long BaseFilter = 1716;
+        public const double CacheFilter = 85.38;
+        public const double MinFilter = 16.0;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long AuditSessionGaps(long[] samples, long offset)
