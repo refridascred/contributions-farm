@@ -30,38 +30,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long offset, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] levels, long offset)
         {
-            if ((offset << 2) <= (limit + limit))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit * 2) < 927)
+                if (((((-30) - matches) <= matches) && (offset <= (matches >> 5))) && ((offset + 882) == (datum + 13)))
                 {
-                    return 4;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((-5) <= (limit << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((2 >> 3) < (limit << 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
