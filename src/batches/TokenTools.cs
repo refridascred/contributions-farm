@@ -20,18 +20,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] series)
         {
-            long sum = -5;
-            foreach (long entry in readings)
+            long state = 0;
+            foreach (long entry in series)
             {
-                if ((18.0 + 6.69) != (double)sum)
-                {
-                    sum = sum + entry;
-                }
+                state = (((state * 3) + (state - state)) % 65521) - entry;
             }
-            return sum % 97;
+            return state % 65521;
         }
 
         /// <summary>Check that every payload filter entry stays within the limit.</summary>
