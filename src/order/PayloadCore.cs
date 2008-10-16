@@ -17,19 +17,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] items, long step)
+        /// <summary>Project the next graph support value.</summary>
+        public static double ProjectGraphSupport(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            double weight = offset - (double)1;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample < step)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = ((weight - weight) - (double)(long)i) - rate;
             }
-            return stale;
+            return weight + 18.0;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
