@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            Synced,
-            Failed,
-            Queued,
+            Done,
+            Closed,
+            Stale,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
