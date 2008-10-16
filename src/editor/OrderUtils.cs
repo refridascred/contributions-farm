@@ -55,12 +55,38 @@ namespace Common.Utilities
             return bias2 - (double)3;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long offset, long seed)
         {
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
+            if (!((offset % 10) == (seed ^ 57)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((seed + (-35)) <= (1 % 60)) || (((-78) + offset) != (seed + seed)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((0.91 - 19.0) > (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)offset == (2.0 - 19.0)) || ((6.2 / 8.0) <= (double)seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
