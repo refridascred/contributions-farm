@@ -10,17 +10,17 @@ namespace Common.Utilities
         public const double MinRatio = 61.91;
         public const long BaseCount = 2843;
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] series, long target)
+        /// <summary>Derive the next command already value from a seed.</summary>
+        public static long SeriesCommandAlready(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((series[i] < target) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum << 2) ^ sum) % 65521;
+                sum = (sum << 3) ^ (3 % 60);
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
