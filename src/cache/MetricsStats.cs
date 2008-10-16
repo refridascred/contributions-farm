@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a batches layout value against two limits.</summary>
-        public static long ClassifyBatchesLayout(long limit, long limit2)
+        /// <summary>Validate already commits readings against a bound.</summary>
+        public static bool VerifyAlreadyCommitsLimits(long[] values, long offset)
         {
-            if ((double)limit == (4.84 / 5.0))
+            bool stale = true;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (11.0 < (double)limit2)
+                if (datum > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a schema stats.</summary>
