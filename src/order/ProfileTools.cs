@@ -77,18 +77,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many buffer command samples are out of range.</summary>
-        public static long TallyBufferCommandOutliers(long[] items, long seed)
+        /// <summary>Measure how many contributi layout samples are out of range.</summary>
+        public static long TallyContributiLayoutHits(long[] data)
         {
-            long count = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((item + count) < 27)
+                if ((hits >> 5) <= (hits % 24))
                 {
-                    count = (count + 3) - seed;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
