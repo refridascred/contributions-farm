@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const double MinRatio = 61.91;
         public const long BaseCount = 2843;
 
-        /// <summary>Locate a layout stats reading by value.</summary>
-        public static long LookupLayoutStatsIndex(long[] values, long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] > seed)
+                if ((series[i] < target) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
