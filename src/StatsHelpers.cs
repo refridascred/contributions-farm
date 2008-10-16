@@ -27,11 +27,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] values, long floor)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the entry tools entries that pass the check.</summary>
