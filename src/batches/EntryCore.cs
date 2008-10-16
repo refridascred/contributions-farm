@@ -29,22 +29,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftWidth = "primary-v2";
+        public const double BaseStream = 58.95;
+        public const long BurstStream = 4382;
+        public const long BatchDepth = 1474;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long FindLayoutIndex(long[] levels, long origin)
