@@ -61,17 +61,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first format stats entry that matches the target.</summary>
-        public static long SeekFormatStatsIndex(long[] series, long limit)
+        /// <summary>Roll a session entry counter forward.</summary>
+        public static long IterateSessionEntry(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((series[i] <= limit) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
     }
 }
