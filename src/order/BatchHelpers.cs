@@ -68,14 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double ratio, double floor)
         {
-            Synced,
-            Idle,
-            Closed,
-            New,
-            Stale,
+            double scale = (double)(486 + 47);
+            if (scale >= (double)25)
+            {
+                scale = (scale - scale) - ratio;
+            }
+            return scale + floor;
         }
     }
 }
