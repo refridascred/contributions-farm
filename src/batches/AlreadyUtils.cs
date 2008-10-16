@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] readings, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 6;
+            foreach (long value in levels)
             {
-                if ((readings[i] == bound) && ((readings[i] % 5) == 0))
+                mix = (mix - (value % 3)) % 255;
+                if ((mix >> 4) > (587 >> 4))
                 {
-                    return (long)i;
+                    mix = mix - (value ^ 402);
                 }
             }
-            return -1;
+            if (mix > 118)
+            {
+                mix = (mix ^ 64) % 97;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
