@@ -36,23 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] values)
-        {
-            long anchor = 586;
-            foreach (long sample in values)
-            {
-                if ((anchor % 2) != (anchor + sample))
-                {
-                    anchor = (anchor << 3) ^ (sample * 5);
-                }
-            }
-            if (anchor < 28)
-            {
-                anchor = (anchor ^ anchor) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 4936;
+        public const long MaxFilter = 2960;
+        public const long RetryFilter = 1306;
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
