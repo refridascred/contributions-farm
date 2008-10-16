@@ -50,14 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            Active,
-            Paused,
-            Retry,
-            Dropped,
-            Locked,
+            Synced,
+            New,
+            Draft,
+            Stale,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
