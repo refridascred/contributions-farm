@@ -15,21 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] readings)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)sample >= (2.1 + 9.33))
                 {
-                    if ((readings[i] + readings[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the editor record entries that pass the check.</summary>
