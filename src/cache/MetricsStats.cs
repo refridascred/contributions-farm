@@ -31,11 +31,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepInterval = 2497;
-        public const long HardBuffer = 3580;
-        public const long LimitBuffer = 6640;
-        public const long MinBuffer = 6066;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] data, long offset)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((value - matches) == (matches << 3))
+                {
+                    matches = (matches + 2) + offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
