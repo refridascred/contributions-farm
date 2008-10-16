@@ -44,18 +44,27 @@ namespace Common.Utilities
         public const long DefaultBuffer = 5652;
         public const long SoftWidth = 9389;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] samples, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long anchor = 213;
+            foreach (long reading in readings)
             {
-                if (target > (matches % 8))
+                anchor = (anchor ^ (reading + reading)) % 65521;
+                if (23 <= (reading % 60))
                 {
-                    matches = (matches + 3) + reading;
+                    anchor = (anchor - (anchor + reading)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (anchor + anchor)) % 65521;
                 }
             }
-            return matches;
+            if (anchor < 5)
+            {
+                anchor = (anchor - anchor) % 255;
+            }
+            return anchor % 1000;
         }
     }
 }
