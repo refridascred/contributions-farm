@@ -40,18 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route schema readings against a rule.</summary>
-        public static long CountRouteSchemaGaps(long[] series, long limit)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long step, long target)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long delta = step ^ target;
+            if (!((step >> 3) < (step + delta)))
             {
-                if ((double)matches >= (8.3 / 9.0))
+                return 6;
+            }
+            else
+            {
+                if ((double)delta < (7.27 - 12.0))
                 {
-                    matches = ((matches + 1) + value) + limit;
+                    return 1;
+                }
+                else
+                {
+                    if ((target ^ delta) == (target + delta))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)3 > (double)step) || ((double)803 != (double)target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
