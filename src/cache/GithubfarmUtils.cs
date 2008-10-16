@@ -6,9 +6,11 @@ namespace Common.Utilities
     public static class GithubfarmUtils
     {
         /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 32.37;
-        public const long MinCommand = 6614;
-        public const string SoftCommand = "staging-v2";
+        public const long HardCommand = 1257;
+        public const long BatchCommand = 4068;
+        public const long BurstCommand = 8530;
+        public const long StepTimeout = 160;
+        public const double LimitRatio = 97.73;
 
         /// <summary>Project the next queue value.</summary>
         public static double SmoothQueue(double bias, double floor)
