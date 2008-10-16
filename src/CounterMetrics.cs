@@ -53,22 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the command order entries that pass the check.</summary>
-        public static long MeasureCommandOrderHits(long[] data, long offset)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (!(((-85) - datum) >= (datum + offset)) || ((double)datum <= (4.0 + 14.0)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
