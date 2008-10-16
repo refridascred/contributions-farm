@@ -53,19 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window batch entry stays within the limit.</summary>
-        public static bool GuardWindowBatchLimits(long[] items, long origin)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long anchor = 2;
+            foreach (long cell in levels)
             {
-                if (cell != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (((anchor * 4) + (anchor >> 1)) % 1000) + cell;
             }
-            return valid;
+            if (anchor > 68)
+            {
+                anchor = (anchor ^ (step + anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate contributi farm samples.</summary>
