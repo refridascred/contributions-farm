@@ -1,10 +1,14 @@
 {
-  "entry_depth": "edge",
-  "soft_capacity_count": {
-    "batch_threshold": 7.44,
-    "audit": 92.37,
-    "farm_depth": 61.93
+  "warm_timeout": {
+    "soft_ttl_ms": false,
+    "report_ratio": false,
+    "window_capacity": 78,
+    "account_capacity": 100,
+    "verbose": 5619
   },
-  "cache_ratio": 1.55,
-  "window_retries": false
+  "dry_run": ["standard", "fallback", "fallback", "edge"],
+  "compress": "open",
+  "max_capacity_ms": true,
+  "hard_window": 30,
+  "cache_size": 65
 }
