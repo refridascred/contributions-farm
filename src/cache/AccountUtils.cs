@@ -30,34 +30,34 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long step, long origin)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long bound, long offset)
         {
-            if ((1.57 / 3.0) != (double)step)
+            if ((bound ^ bound) >= offset)
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if (!((step * 3) >= (origin / 7)))
+                if ((16.0 >= (double)offset) || (bound >= offset))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if (!((origin ^ step) >= step))
+                    if ((bound > (offset % 5)) || ((double)offset == (9.6 + 3.01)))
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        if ((245 / 3) != (origin / 6))
+                        if ((9.0 * 9.51) > (double)bound)
                         {
-                            return 4;
+                            return 0;
                         }
                         else
                         {
-                            return 5;
+                            return 7;
                         }
                     }
                 }
