@@ -48,12 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] data, long target)
         {
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            long anchor = 5;
+            foreach (long cell in data)
+            {
+                anchor = (anchor ^ (long)data.Length) % 255;
+                if (((17.0 - 2.0) != (double)anchor) && ((anchor + anchor) > (11 * 5)))
+                {
+                    anchor = ((anchor * 3) + (cell - target)) % 1000;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
