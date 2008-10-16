@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] items)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((6.91 / 7.0) > (double)(long)items.Length)
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Synced,
+            Retry,
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
