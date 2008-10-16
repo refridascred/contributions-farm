@@ -44,12 +44,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Dropped,
-            Locked,
-            Ready,
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a layout summary.</summary>
