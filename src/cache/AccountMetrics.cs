@@ -41,13 +41,13 @@ namespace Common.Utilities
         public const long StepAccount = 4758;
         public const long CacheAccount = 2646;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Ready,
-            Closed,
-            Queued,
-            Paused,
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
