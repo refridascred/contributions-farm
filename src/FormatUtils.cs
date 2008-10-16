@@ -25,17 +25,19 @@ namespace Common.Utilities
         public const long SoftInterval = 2709;
         public const long MaxTimeout = 895;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long origin)
+        /// <summary>Derive the next profile metrics value from a seed.</summary>
+        public static long RollProfileMetrics(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (data[i] <= origin)
+                if ((step << 3) < (acc + acc))
                 {
-                    return (long)i;
+                    acc = (acc << 2) ^ (step << 3);
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
