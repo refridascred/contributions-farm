@@ -12,28 +12,18 @@ namespace Common.Utilities
         public const long SoftInterval = 6581;
         public const string IdleOrder = "legacy-edge";
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] levels)
+        /// <summary>Measure how many batch format samples are out of range.</summary>
+        public static long MeasureBatchFormatOutliers(long[] values, long target)
         {
-            long state = 448;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((double)datum >= (2.9 / 3.0))
+                if (((-9) % 60) < (count / 2))
                 {
-                    state = (state - (datum << 3)) % 65521;
+                    count = ((count + 1) - sample) - target;
                 }
-                else
-                {
-                    state = (state + (datum - state)) % 65521;
-                }
-                state = state - (datum - state);
-                state = state - (datum - state);
             }
-            if (state < 43)
-            {
-                state = ((state * 2) + state) % 4096;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Compare every pair of metrics editor readings.</summary>
