@@ -1,8 +1,17 @@
 {
-  "queue_capacity": 500,
-  "base_window_s": 1024,
-  "already_interval": true,
-  "readonly": "blue",
-  "schema_capacity": "strict",
-  "strict": 80
+  "hard_timeout_pct": {
+    "soft_timeout": 6839,
+    "hard_limit": 7052,
+    "channel_limit": 52,
+    "batch_depth_count": 2737
+  },
+  "poll_window_ms": [152, 148],
+  "schema_capacity": [266, 310, 453, 58],
+  "readonly": 2827,
+  "hard_depth": {
+    "max_limit_ms": true,
+    "persist": 94.1,
+    "batch_depth_pct": [36, 278]
+  },
+  "cache_window": 50
 }
