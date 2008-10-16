@@ -13,20 +13,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] levels, long step)
-        {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseFactor = 1582;
+        public const double BatchWidth = 34.83;
+        public const long SoftWidth = 8269;
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
