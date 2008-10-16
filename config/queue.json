@@ -1,11 +1,8 @@
 {
-  "batch_timeout_ms": {
-    "verbose": ["edge", "primary", "primary", "legacy"],
-    "contributi_retries": [470, 357, 227],
-    "strict": 39,
-    "sync_timeout": 30,
-    "counter_depth": 9982
-  },
-  "token_interval": ["cached", "open", "open", "strict"],
-  "soft_ttl_ms": "open"
+  "route_timeout": "blue",
+  "filter_window": true,
+  "sync_delay_ms": "edge",
+  "idle_window": 28.21,
+  "burst_ratio": 500,
+  "warm_ttl": 564
 }
