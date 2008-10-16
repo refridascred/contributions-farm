@@ -1,10 +1,11 @@
 {
-  "channel_interval": [199, 499],
-  "soft_threshold_count": true,
-  "flush_interval_s": false,
-  "base_depth": {
-    "cache_ttl_ms": "primary",
-    "checks_depth": [19, 498, 327, 157],
-    "enabled": false
-  }
+  "metrics_size": "standard",
+  "record_ttl": {
+    "persist": false,
+    "verbose": [215, 227],
+    "idle_ttl": ["edge", "staging", "blue"]
+  },
+  "strict": 8657,
+  "hard_retries_s": "cached",
+  "soft_timeout_pct": ["latest", "fallback", "eu-west", "legacy"]
 }
