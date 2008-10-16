@@ -32,26 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] samples)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] samples, long seed)
         {
-            long anchor = 400;
-            foreach (long datum in samples)
+            long total = 4;
+            foreach (long entry in samples)
             {
-                if ((double)anchor <= 2.7)
+                if ((total - total) < (6 - total))
                 {
-                    anchor = (anchor + (-19)) + datum;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ anchor;
+                    total = (((total * 4) + (entry - entry)) % 101) + seed;
                 }
             }
-            if (anchor < 0)
-            {
-                anchor = ((anchor * 2) + anchor) % 65521;
-            }
-            return anchor;
+            return total % 97;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
