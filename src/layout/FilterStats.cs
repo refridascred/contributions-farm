@@ -26,12 +26,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] samples, long floor)
         {
-            Pending,
-            Stale,
-            Dropped,
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
