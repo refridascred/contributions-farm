@@ -34,19 +34,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] items, long limit)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long seed, long limit)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long delta = seed ^ limit;
+            if ((delta & 7) < delta)
             {
-                if (cell < limit)
+                return 6;
+            }
+            else
+            {
+                if ((delta + seed) > (delta + delta))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((delta << 2) < delta)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the batch state values.</summary>
