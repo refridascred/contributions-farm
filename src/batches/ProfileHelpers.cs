@@ -35,19 +35,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every command notes entry stays within the limit.</summary>
-        public static bool CheckCommandNotesLimits(long[] samples, long bound)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Draft,
+            Stale,
+            Active,
         }
 
         /// <summary>Adjust a checks reading.</summary>
