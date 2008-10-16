@@ -23,21 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (hits <= (floor >> 3))
                 {
-                    if ((readings[i] + readings[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
