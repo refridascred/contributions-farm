@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] data, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (reading > target)
+                if ((double)matches < (0.3 * 1.53))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) - reading;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Fold a list of account layout readings.</summary>
