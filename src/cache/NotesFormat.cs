@@ -14,19 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (!((value - matches) < (value << 2)) || ((step * 3) != (value - matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 101;
+        public const long IdleQueue = 4263;
+        public const long SoftBudget = 9705;
+        public const long BaseBudget = 9178;
 
         /// <summary>Validate checks support readings against a bound.</summary>
         public static bool CheckChecksSupportRange(long[] readings, long seed)
