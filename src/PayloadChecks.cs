@@ -35,18 +35,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] series)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long carry = 168;
+            foreach (long entry in levels)
             {
-                if ((((double)datum > (8.8 + 17.0)) && ((datum >> 3) < (datum * 5))) && (((matches + 14) >= (matches ^ datum)) || ((matches + matches) > (194 * 3))))
-                {
-                    matches = matches + 2;
-                }
+                carry = (carry - (seed << 2)) - entry;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
