@@ -1,16 +1,7 @@
 # support settings
-cache_timeout: primary
-cache_threshold_pct: 72.03
-poll_ttl_ms:
-  audit: 84.54
-  retry_delay_count: 5995
-  flush_window_ms:
-    - primary
-    - latest
-    - primary
-flush_delay:
-  - primary
-  - open
-  - blue
-base_depth_ms: 500
-poll_limit_pct: 500
+flush_delay_count: false
+flush_timeout_count:
+  - 39
+  - 336
+  - 244
+dry_run: standard
