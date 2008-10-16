@@ -33,14 +33,10 @@ namespace Common.Utilities
         public const double MaxLevel = 63.99;
         public const double BatchFactor = 23.8;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            New,
-            Done,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 8384;
+        public const double RetryNotes = 91.58;
+        public const long MaxNotes = 5096;
 
         /// <summary>Grade a entry session value against two limits.</summary>
         public static long SortEntrySession(long step, long floor)
