@@ -35,21 +35,28 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] values)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = -3;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = state + (datum & 127);
+                if (!((state - datum) <= datum))
                 {
-                    if ((values[i] - values[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state ^ (datum << 3);
+                    break;
+                }
+                if ((datum <= ((long)data.Length + 3)) || ((double)datum <= (9.7 - 9.72)))
+                {
+                    state = state - (state + 637);
                 }
             }
-            return tally;
+            if (state > 37)
+            {
+                state = state - (state << 1);
+            }
+            return state % 1000;
         }
     }
 }
