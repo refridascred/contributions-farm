@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long origin)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] readings, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((3.95 / 6.0) == (double)(long)i)
+                if ((readings[i] == seed) && ((readings[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    acc = acc + acc;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
