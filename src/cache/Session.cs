@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] series)
+        /// <summary>Find the first layout session entry that matches the target.</summary>
+        public static long LookupLayoutSessionIndex(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(cell > (tally << 1)))
+                if ((items[i] >= target) && ((items[i] % 2) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
