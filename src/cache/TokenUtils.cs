@@ -13,15 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Stale,
-            Closed,
-            Draft,
-            Failed,
-            New,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxMetrics = 55.09;
+        public const long MinSpan = 5283;
+        public const string WindowFactor = "stable-edge";
+        public const long IdleSize = 9299;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphOutliers(long[] readings, long floor)
