@@ -52,19 +52,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] series, long bound)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
