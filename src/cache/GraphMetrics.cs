@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] data)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] series)
         {
             long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2 - cell) > cell)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] - series[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
