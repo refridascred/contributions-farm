@@ -18,10 +18,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 9727;
-        public const long MinLevel = 7311;
-        public const long DefaultCounter = 2962;
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double BlendMetrics(double ratio, double floor)
