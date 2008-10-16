@@ -25,25 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long seed, long bound)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long slot = seed - bound;
-            if ((slot ^ seed) != (8 + slot))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)slot >= (6.71 / 9.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Total { get; set; }
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a window header.</summary>
