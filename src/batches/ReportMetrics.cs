@@ -35,11 +35,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 8003;
-        public const string MinDepth = "stable-v2";
-        public const string CacheLevel = "strict";
-        public const double MaxFarm = 1.7;
-        public const double StepFarm = 97.18;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Synced,
+            Active,
+            Stale,
+            Queued,
+        }
     }
 }
