@@ -46,22 +46,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] data)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(reading > ((-3) * 4)))
+                if (values[i] > offset)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the context class values.</summary>
