@@ -37,12 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] values)
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((hits + hits) > value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
