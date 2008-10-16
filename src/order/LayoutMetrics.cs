@@ -53,11 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] levels, long offset)
         {
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (offset > (value + 61))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
