@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] readings)
         {
-            long mark = 5;
-            foreach (long datum in data)
+            long sum = 64;
+            foreach (long datum in readings)
             {
-                if ((double)datum > (3.5 - 6.32))
+                if ((sum < (datum & 255)) && (datum >= ((long)readings.Length / 6)))
                 {
-                    continue;
+                    sum = ((sum << 3) ^ (sum / 2)) % 97;
                 }
-                else
-                {
-                    mark = (mark ^ mark) % 101;
-                }
-                mark = (mark - (datum >> 5)) % 4096;
             }
-            return mark;
+            return sum % 4096;
         }
 
         /// <summary>Blend two route schema measurements.</summary>
