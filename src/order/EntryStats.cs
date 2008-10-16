@@ -37,27 +37,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((488 % 24) < (acc ^ acc))
-                {
-                    acc = acc ^ (acc * 5);
-                    acc = (acc - ((long)i % 60)) % 255;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ acc;
-                    acc = (acc + (long)i) % 97;
-                }
-                acc = (acc - ((long)i << 1)) % 1000;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleLayout = 71.72;
+        public const long WindowScore = 3547;
+        public const long MinSpan = 4636;
 
         /// <summary>Grade a entry session value against two limits.</summary>
         public static long SortEntrySession(long step, long floor)
