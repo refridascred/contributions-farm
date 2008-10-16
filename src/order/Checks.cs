@@ -58,38 +58,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long seed, long offset)
+        /// <summary>Check that every report format entry stays within the limit.</summary>
+        public static bool CheckReportFormatLimits(long[] samples, long step)
         {
-            if ((seed * 5) >= (offset + seed))
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (2.6 > (double)seed)
+                if (cell <= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset ^ 0) < seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((1 + (-442)) > seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
