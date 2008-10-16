@@ -12,18 +12,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 5639;
+        public const string MaxReport = "fallback-v2";
+        public const long BatchReport = 9885;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
