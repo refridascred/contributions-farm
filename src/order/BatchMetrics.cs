@@ -31,24 +31,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long bound, long bound2)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            if ((bound + bound) < bound2)
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound > (bound2 / 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Retry,
+            Queued,
+            Idle,
+            Failed,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
