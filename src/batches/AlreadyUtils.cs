@@ -26,19 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] data)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] readings, long floor)
         {
-            long score = 6;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score + score) + item;
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 233)
-            {
-                score = score ^ (score >> 1);
-            }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Hold a route stats.</summary>
