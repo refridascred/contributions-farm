@@ -17,14 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Validate schema context readings against a bound.</summary>
+        public static bool ValidateSchemaContextLimits(long[] readings, long limit)
         {
-            New,
-            Paused,
-            Ready,
-            Retry,
-            Dropped,
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
