@@ -49,18 +49,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit window context readings against a rule.</summary>
-        public static long TallyWindowContextOutliers(long[] items)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((entry & 7) >= hits)
+                if (datum <= offset)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
