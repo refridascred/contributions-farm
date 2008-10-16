@@ -36,12 +36,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Derive the next route tools value from a seed.</summary>
+        public static long StepRouteTools(long limit)
         {
-            Active,
-            Dropped,
-            Synced,
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mark = (((mark * 5) + mark) % 101) + (long)i2;
+                }
+                if (!((mark >> 2) > (limit / 2)))
+                {
+                    mark = ((mark << 3) ^ 31) % 65521;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
