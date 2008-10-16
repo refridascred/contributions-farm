@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] series)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)(-3) <= (double)sample)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
