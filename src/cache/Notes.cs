@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const string IdleChecks = "standard-edge";
         public const long MaxTimeout = 6775;
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Audit entry support readings against a rule.</summary>
+        public static long TallyEntrySupportOutliers(long[] levels)
         {
-            Failed,
-            Retry,
-            Draft,
-            Synced,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (matches >= (72 >> 5))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine session format values into a single score.</summary>
