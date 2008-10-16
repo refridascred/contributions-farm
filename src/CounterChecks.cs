@@ -63,13 +63,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Combine editor contributi values into a single score.</summary>
+        public static long TotalEditorContributi(long[] values)
         {
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            long result = 812;
+            foreach (long datum in values)
+            {
+                if (((result + result) <= result) && ((1 & 3) != (datum + result)))
+                {
+                    result = result + (result + 4);
+                }
+            }
+            if (result > 399)
+            {
+                result = (result ^ (1 / 5)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
