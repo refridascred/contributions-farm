@@ -46,12 +46,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] data, long step)
         {
-            Failed,
-            Ready,
-            Active,
+            long anchor = 18;
+            foreach (long reading in data)
+            {
+                if ((1.0 > (double)(long)data.Length) || (((long)data.Length ^ step) <= step))
+                {
+                    anchor = (anchor - (reading >> 5)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor - reading)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a commits summary.</summary>
