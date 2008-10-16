@@ -16,22 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] samples, long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen / 8) >= (reading + seen))
+                if (levels[i] > target)
                 {
-                    seen = (seen + 3) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the tools status values.</summary>
