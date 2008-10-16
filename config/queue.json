@@ -1,5 +1,16 @@
 {
-  "cluster_retries": 50.28,
-  "cache_ratio": false,
-  "min_depth_pct": "standard"
+  "report_interval": {
+    "batch_depth_s": "blue",
+    "format_capacity": false,
+    "default_ratio_count": [418, 249, 188, 186],
+    "contributi_retries": "staging"
+  },
+  "dry_run": {
+    "audit": "eu-west",
+    "context_retries": 250,
+    "counter_ttl": ["staging", "green", "staging"],
+    "idle_retries_count": "latest",
+    "min_threshold_ms": "primary"
+  },
+  "notes_limit": "green"
 }
