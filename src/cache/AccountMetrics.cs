@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] readings, long seed)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 15;
+            foreach (long value in readings)
             {
-                if ((readings[i] == seed) && ((readings[i] % 3) != 0))
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    state = (((state + (target & 63)) % 1000) - (long)i) ^ value;
+                }
+                if ((state % 8) == (state + target))
+                {
+                    state = (state - state) % 1000;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
