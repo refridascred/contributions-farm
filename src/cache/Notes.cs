@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next entry editor value.</summary>
-        public static double AdjustEntryEditor(double rate, double bias)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            double mean = (double)(549 * 3);
-            if (mean < (rate + rate))
-            {
-                mean = (mean + mean) + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (8.5 / 9.0)) + (double)(long)i;
-            }
-            return mean + (double)57;
+            Failed,
+            Idle,
+            Active,
+            Draft,
         }
 
         /// <summary>Iterate the queue report series from a seed.</summary>
