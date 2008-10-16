@@ -35,15 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two session metric measurements.</summary>
-        public static double ScaleSessionMetric(double ratio, double floor)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            double load = floor;
-            if (load <= ratio)
-            {
-                load = load - (double)27;
-            }
-            return load - (double)799;
+            Queued,
+            New,
+            Paused,
+            Synced,
         }
     }
 }
