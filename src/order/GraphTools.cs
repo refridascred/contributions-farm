@@ -66,13 +66,23 @@ namespace Common.Utilities
             return ratio - 4.2;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] samples)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            long total = 82;
+            foreach (long entry in samples)
+            {
+                total = total - (entry + 822);
+                if ((entry + total) < (entry % 3))
+                {
+                    total = total - entry;
+                }
+            }
+            if (total < (-465))
+            {
+                total = total - total;
+            }
+            return total % 1000;
         }
     }
 }
