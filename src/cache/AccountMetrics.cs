@@ -13,13 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Ready,
-            Locked,
-            Active,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string RetryContributi = "open-1";
+        public const long DefaultBudget = 8877;
+        public const long MinContributi = 8158;
+        public const double MaxRatio = 70.19;
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
