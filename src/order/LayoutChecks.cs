@@ -51,11 +51,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBuffer = "legacy-v2";
-        public const double WindowCount = 61.55;
-        public const string CacheRatio = "standard";
-        public const long RetryFactor = 1648;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Fold a list of layout record readings.</summary>
         public static long DigestLayoutRecord(long[] items)
