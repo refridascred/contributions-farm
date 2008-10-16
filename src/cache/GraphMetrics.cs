@@ -38,20 +38,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double gain, double span)
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
+            double mean = (double)((-572) % 5);
+            if (mean >= (20.0 / 7.0))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = ((mix ^ 313) % 1000) ^ (long)i2;
-                    mix = (mix << 3) ^ 527;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                mean = ((mean - (double)981) - gain) - span;
             }
-            return mix;
+            return mean - mean;
         }
 
         /// <summary>Define already limits and defaults.</summary>
