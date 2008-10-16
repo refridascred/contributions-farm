@@ -30,18 +30,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] levels)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] series, long floor)
         {
-            long mark = 982;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((mark - mark) <= (long)levels.Length)
+                if (entry >= floor)
                 {
-                    mark = (((mark * 5) + 74) % 101) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
     }
 }
