@@ -56,21 +56,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseSize = "stable-1";
+        public const long BatchWidth = 2285;
+        public const long CacheBuffer = 3910;
+        public const long MaxBuffer = 3652;
+        public const long WindowBudget = 1305;
     }
 }
