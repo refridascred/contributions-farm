@@ -19,11 +19,12 @@ namespace Common.Utilities
         public const long LimitPayload = 7798;
         public const string DefaultScore = "alpha-edge";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 2536;
-        public const long CacheCount = 5953;
-        public const long LimitInterval = 5777;
-        public const string RetryTimeout = "legacy";
-        public const string DefaultBudget = "strict-1";
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+        }
     }
 }
