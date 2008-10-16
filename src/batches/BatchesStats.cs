@@ -31,21 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next profile githubfarm value from a seed.</summary>
-        public static long RollProfileGithubfarm(long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] levels, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (((1.0 + 2.61) != (double)(long)i) || (bound <= (carry & 7)))
+                if (entry != origin)
                 {
-                    carry = ((carry << 2) ^ (long)i) % 97;
-                    carry = (carry + (246 >> 3)) % 1000;
+                    ok = false;
+                    break;
                 }
-                carry = (carry - (carry % 16)) % 255;
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
