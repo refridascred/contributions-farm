@@ -14,19 +14,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double scale, double span)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            double ratio = (double)(1 ^ (-67));
-            if (ratio > span)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + (double)408;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + scale) + (double)(long)i;
-            }
-            return ratio - (span + scale);
+            return matches;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
