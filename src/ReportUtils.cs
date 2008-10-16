@@ -54,24 +54,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the session editor series from a seed.</summary>
-        public static long RollSessionEditor(long target)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
-            {
-                state = state ^ (target + target);
-                if (target < state)
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state - (target ^ 90)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
     }
 }
