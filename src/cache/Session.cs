@@ -5,32 +5,27 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a farm report pair into a bucket.</summary>
-        public static long ClassifyFarmReport(long limit, long offset)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long seed)
         {
-            long gap = limit ^ offset;
-            if (((limit + limit) != (gap % 3)) && ((gap % 16) <= (limit >> 5)))
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset ^ offset) != (offset ^ 6))
+                if ((seed * 5) >= (seed >> 3))
                 {
-                    return 3;
+                    break;
                 }
                 else
                 {
-                    if (!((limit * 2) >= (limit % 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mix = mix - (long)i;
                 }
+                if (!((mix << 3) > ((long)i - 0)))
+                {
+                    mix = mix + (seed / 9);
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Describe the window phase values.</summary>
