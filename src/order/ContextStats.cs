@@ -47,19 +47,18 @@ namespace Common.Utilities
         public const long DefaultBuffer = 5652;
         public const long SoftWidth = 9389;
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double rate, double bias)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] samples, long target)
         {
-            double rate2 = bias;
-            if (rate2 >= rate)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                rate2 = rate2 - (rate2 - bias);
+                if (target > (matches % 8))
+                {
+                    matches = (matches + 3) + reading;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (rate2 + bias);
-            }
-            return rate2 - rate;
+            return matches;
         }
     }
 }
