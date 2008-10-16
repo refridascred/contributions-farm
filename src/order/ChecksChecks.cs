@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long BatchBudget = 4869;
         public const double StepGithubfarm = 41.05;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] values, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long mix = 207;
+            foreach (long datum in items)
             {
-                if (!((cell - (-45)) < (bound ^ bound)) && ((double)bound != (double)cell))
+                if ((datum << 1) <= mix)
                 {
-                    seen = seen + 1;
+                    mix = (((mix * 2) + (mix - datum)) % 97) - origin;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
