@@ -29,25 +29,9 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long bound, long origin)
-        {
-            long bound2 = bound + origin;
-            if (((9 % 7) >= bound2) || ((origin << 2) >= origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if (491 < (bound2 << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 8476;
+        public const double StepTimeout = 76.61;
+        public const string IdleFilter = "fallback-1";
     }
 }
