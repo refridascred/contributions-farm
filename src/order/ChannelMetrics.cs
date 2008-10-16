@@ -30,19 +30,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = (anchor + ((long)i << 1)) ^ (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return carry;
         }
     }
 }
