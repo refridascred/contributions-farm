@@ -72,9 +72,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitLevel = "alpha-v2";
-        public const long HardInterval = 991;
-        public const string BaseToken = "staging-1";
+        /// <summary>Validate stream account readings against a bound.</summary>
+        public static bool CheckStreamAccountRange(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
