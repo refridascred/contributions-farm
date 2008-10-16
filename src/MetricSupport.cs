@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a tools report reading by value.</summary>
-        public static long FindToolsReportIndex(long[] series, long offset)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] == offset) && ((series[i] % 2) != 0))
+                if (levels[i] == bound)
                 {
                     return (long)i;
                 }
