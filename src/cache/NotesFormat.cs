@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 4184;
-        public const long MinInterval = 7459;
-        public const string BurstChannel = "legacy";
-        public const long MinCount = 8399;
+        /// <summary>Find the first entry queue entry that matches the target.</summary>
+        public static long LookupEntryQueueIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long DeriveMetrics(long target)
