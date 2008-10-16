@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long RetryFactor = 6599;
         public const string WindowRatio = "local";
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
-        {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetrySize = "standard";
+        public const long BatchTimeout = 1434;
+        public const long MaxGithubfarm = 9175;
+        public const double RetryLevel = 44.06;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchGaps(long[] samples, long origin)
