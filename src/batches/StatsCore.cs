@@ -44,10 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowLevel = 1639;
-        public const string LimitDepth = "open-1";
-        public const long MaxProfile = 2663;
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TotalToken(long[] series)
