@@ -49,18 +49,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] items, long offset)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item - 44) <= seen)
-                {
-                    seen = (seen + 1) - offset;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
