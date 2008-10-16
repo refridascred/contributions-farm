@@ -25,18 +25,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] data)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long bound, long seed)
         {
-            long mark = 8;
-            foreach (long entry in data)
+            if ((bound / 7) != (bound - seed))
             {
-                if (((double)mark > (double)(long)data.Length) && (entry < (2 << 1)))
+                return 8;
+            }
+            else
+            {
+                if ((seed - bound) > (9 + seed))
                 {
-                    mark = ((mark * 5) + (1 - entry)) % 101;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)seed > (double)bound) || ((9.1 + 8.0) == (double)seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return mark;
         }
     }
 }
