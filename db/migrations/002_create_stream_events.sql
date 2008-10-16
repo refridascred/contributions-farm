@@ -1,11 +1,14 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
-    level INTEGER,
-    token TEXT,
-    created_at TIMESTAMP
+    active INTEGER NOT NULL DEFAULT 1,
+    owner TEXT NOT NULL,
+    ratio REAL,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_created_at ON stream_events (created_at);
+CREATE INDEX IF NOT EXISTS idx_stream_events_active ON stream_events (active);
 
-INSERT INTO stream_events (level, token) VALUES (54, 'latest');
+INSERT INTO stream_events (active, owner, ratio, label) VALUES (27, 'edge', 34.56, 'cached');
+INSERT INTO stream_events (active, owner, ratio, label) VALUES (11, 'primary', 81.06, 'cached');
+INSERT INTO stream_events (active, owner, ratio, label) VALUES (41, 'cached', 29.35, 'local');
