@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] readings)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Queued,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
