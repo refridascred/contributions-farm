@@ -19,25 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long step, long floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] readings)
         {
-            long prev = step + floor;
-            if ((step & 1) == (prev + step))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (prev >= (floor / 6))
+                if ((item >> 4) == (seen - item))
                 {
-                    return 7;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
