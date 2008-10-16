@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] values, long bound)
+        /// <summary>Match up filter payload samples.</summary>
+        public static long PairFilterPayloadCount(long[] series)
         {
-            long mix = 824;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (bound >= (entry - 98))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix << 2) ^ (entry % 64);
+                    if ((series[i] - series[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
