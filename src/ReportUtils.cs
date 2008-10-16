@@ -54,12 +54,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Iterate the tools command series from a seed.</summary>
+        public static long StepToolsCommand(long target)
         {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            long mix = target;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mix = ((mix * 3) + 898) ^ (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
