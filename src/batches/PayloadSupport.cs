@@ -25,31 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long bound, long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] items, long offset)
         {
-            if ((bound / 7) != (bound - seed))
+            long state = 114;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed - bound) > (9 + seed))
+                if (27 <= (offset * 3))
                 {
-                    return 0;
+                    state = ((state ^ 0) % 255) + value;
                 }
                 else
                 {
-                    if (((double)seed > (double)bound) || ((9.1 + 8.0) == (double)seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    state = (state << 2) ^ (offset % 100);
                 }
             }
+            return state % 4096;
         }
     }
 }
