@@ -1,5 +1,8 @@
 # support settings
-retry_capacity_ms: true
-default_window_ms: 81.03
-warm_size_count: stable
-warm_ttl: edge
+base_retries_s: 3866
+max_delay_pct: 20.75
+graph_ttl:
+  retry_limit_count: latest
+  default_window_s: strict
+  poll_threshold_pct: latest
+poll_window_s: true
