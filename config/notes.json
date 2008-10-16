@@ -1,19 +1,5 @@
 {
-  "cluster_limit": 2788,
-  "compress": true,
-  "audit": {
-    "max_ratio_pct": [70, 459, 240],
-    "idle_ratio_s": 80,
-    "command_timeout": {
-      "queue_size": 21,
-      "enabled": "edge",
-      "retry_depth_pct": 9.92,
-      "soft_size_pct": "green"
-    },
-    "buffer_threshold": 3682,
-    "sync_interval_count": "primary"
-  },
-  "max_threshold_pct": 4302,
-  "graph_size": 47.77,
-  "cache_delay_pct": "edge"
+  "verbose": 48,
+  "filter_timeout": false,
+  "token_depth": 73.08
 }
