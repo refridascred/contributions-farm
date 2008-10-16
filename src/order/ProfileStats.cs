@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double weight, double span)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] values, long floor)
         {
-            double scale = span;
-            if (scale <= (double)17)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = (scale - scale) - weight;
+                if ((values[i] >= floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + span;
-            }
-            return scale + (double)5;
+            return -1;
         }
 
         /// <summary>Hold a support stats.</summary>
