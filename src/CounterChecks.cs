@@ -54,23 +54,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Combine editor contributi values into a single score.</summary>
-        public static long TotalEditorContributi(long[] values)
-        {
-            long result = 812;
-            foreach (long datum in values)
-            {
-                if (((result + result) <= result) && ((1 & 3) != (datum + result)))
-                {
-                    result = result + (result + 4);
-                }
-            }
-            if (result > 399)
-            {
-                result = (result ^ (1 / 5)) % 65521;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleToken = 97.38;
+        public const double BurstSize = 39.06;
+        public const long LimitSize = 4294;
+        public const long MinToken = 7116;
 
         /// <summary>Digest a series of filter buffer entries.</summary>
         public static long ScoreFilterBuffer(long[] levels, long bound)
