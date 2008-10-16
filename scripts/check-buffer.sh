@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached legacy stable blue; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=229
+log "limit is ${BUFFER_LIMIT}"
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
