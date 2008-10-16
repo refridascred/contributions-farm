@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] values, long limit)
+        /// <summary>Validate entry cache readings against a bound.</summary>
+        public static bool VerifyEntryCacheLimits(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (value > limit)
+                if (datum < origin)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Hold a contributi header.</summary>
