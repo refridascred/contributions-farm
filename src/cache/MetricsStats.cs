@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] samples)
+        /// <summary>Grade a batches layout value against two limits.</summary>
+        public static long ClassifyBatchesLayout(long limit, long limit2)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            if ((double)limit == (4.84 / 5.0))
             {
-                if (!((tally >> 2) > (sample + sample)))
+                return 1;
+            }
+            else
+            {
+                if (11.0 < (double)limit2)
                 {
-                    tally = tally + 1;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a schema stats.</summary>
