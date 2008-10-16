@@ -1,12 +1,11 @@
 # Command notes
 
-Keep account and account names short and lowercase.
-A metric that stays idle for too long is moved to the counter list.
-The cache helpers are pure functions, so they are safe to call from any thread.
+Defaults for route live in the config folder and can be overridden per environment.
+Keep notes and contributi names short and lowercase.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Document new window fields
-- Log every account change
-- Keep editor values small
+- Document new cache fields
+- Review filter limits each release
+- Keep tools values small
+- Prefer notes defaults
