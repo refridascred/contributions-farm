@@ -23,14 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] samples)
         {
-            Draft,
-            Pending,
-            Queued,
-            Active,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
