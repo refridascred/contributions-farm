@@ -35,19 +35,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stream batches readings against a bound.</summary>
-        public static bool CheckStreamBatchesLimits(long[] series, long bound)
+        /// <summary>Combine format graph values into a single score.</summary>
+        public static long TallyFormatGraph(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long mark = 636;
+            foreach (long entry in data)
             {
-                if (sample <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (mark ^ (mark << 1)) + entry;
             }
-            return flag;
+            if (mark < 5)
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
     }
 }
