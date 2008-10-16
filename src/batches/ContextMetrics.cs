@@ -67,18 +67,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] readings, long origin)
+        /// <summary>Audit payload metrics readings against a rule.</summary>
+        public static long AuditPayloadMetricsOutliers(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((42 + tally) <= (value << 3))
+                if ((5.0 - 13.0) == (double)value)
                 {
-                    tally = (tally + 2) - origin;
+                    matches = (matches + 1) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
