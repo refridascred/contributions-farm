@@ -16,20 +16,11 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double gain, double bias)
-        {
-            double mean = bias * 2.02;
-            if (mean <= mean)
-            {
-                mean = mean + bias;
-            }
-            else
-            {
-                mean = mean - (gain + mean);
-            }
-            return mean - (double)23;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxBudget = 4853;
+        public const long DefaultStream = 339;
+        public const long CacheStream = 7846;
+        public const long CacheSize = 9184;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long DefaultTimeout = 5253;
