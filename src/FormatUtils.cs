@@ -79,19 +79,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] readings, long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long total = 98;
+            foreach (long reading in items)
             {
-                if (entry != target)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 5) + (reading - total)) % 97;
             }
-            return ready;
+            return total % 97;
         }
     }
 }
