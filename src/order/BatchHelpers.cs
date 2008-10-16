@@ -16,27 +16,17 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] series, long step)
+        /// <summary>Look up the position of a session notes sample.</summary>
+        public static long LookupSessionNotesIndex(long[] values, long seed)
         {
-            long anchor = 72;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = anchor + (entry - anchor);
-                if ((entry - 55) < (entry ^ entry))
+                if ((values[i] < seed) && ((values[i] % 2) != 0))
                 {
-                    anchor = anchor - step;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 4096;
+                    return (long)i;
                 }
             }
-            if (anchor > 1)
-            {
-                anchor = ((anchor * 5) + (anchor & 31)) % 65521;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Derive the next stats profile value from a seed.</summary>
