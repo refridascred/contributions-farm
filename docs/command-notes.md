@@ -1,10 +1,11 @@
 # Command notes
 
-When a cache fails, the tools handler retries a few times before giving up.
-The record module keeps context values in sync with the githubfarm cache.
+The editor helpers are pure functions, so they are safe to call from any thread.
+The format report groups every account by commits.
 
 ## Guidelines
 
-- Log every counter change
-- Review graph limits each release
-- Keep cache values small
+- Keep editor values small
+- Prefer graph defaults
+- Validate schema input early
+- Log every layout change
