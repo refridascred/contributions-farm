@@ -1,4 +1,21 @@
 # support settings
-commits_ratio: 86
-sync_capacity_pct: local
-base_ratio: 60.6
+base_limit_count: false
+default_depth_count: primary
+flush_capacity_count: strict
+readonly:
+  burst_delay:
+    compress: standard
+    cache_ttl_ms:
+      - 353
+      - 373
+    soft_delay_count: eu-west
+  format_limit: 52
+  graph_depth: blue
+  idle_depth_ms: true
+  idle_capacity_pct: 1089
+cache_window:
+  base_window: 100
+  batch_ttl_ms: fallback
+  farm_timeout:
+    - 290
+    - 361
