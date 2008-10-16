@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every payload record entry stays within the limit.</summary>
-        public static bool CheckPayloadRecordRange(long[] series, long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (reading >= origin)
+                if (hits <= (cell & 15))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
