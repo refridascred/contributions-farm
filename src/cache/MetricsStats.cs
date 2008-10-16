@@ -27,15 +27,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] data, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] series, long floor)
         {
-            long mark = 783;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                mark = (((mark + (mark % 12)) % 101) - item) - offset;
+                if ((hits - sample) <= floor)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the payload mode values.</summary>
