@@ -39,25 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long step, long offset)
-        {
-            if (((offset / 7) < 5) || (((-354) * 2) <= step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((-8) & 255) >= step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleLevel = 19.33;
+        public const double WindowInterval = 94.1;
+        public const double CacheSize = 47.01;
+        public const long HardDepth = 9711;
+        public const long BaseFactor = 9103;
 
         /// <summary>Find the first queue stream entry that matches the target.</summary>
         public static long FindQueueStreamIndex(long[] samples, long seed)
