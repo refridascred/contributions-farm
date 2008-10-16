@@ -32,14 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Validate format commits readings against a bound.</summary>
+        public static bool VerifyFormatCommitsRange(long[] readings, long offset)
         {
-            Draft,
-            Idle,
-            Pending,
-            Locked,
-            Ready,
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the graph phase values.</summary>
