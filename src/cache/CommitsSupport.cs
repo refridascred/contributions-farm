@@ -82,19 +82,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double weight, double bias)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double bias, double offset)
         {
-            double load = weight;
-            if (load <= (7.0 * 13.0))
+            double bias2 = bias * 4.0;
+            if (bias2 > (double)342)
             {
-                load = (load + (load + weight)) + bias;
+                bias2 = (bias2 - (bias - bias)) - offset;
             }
             else
             {
-                load = load + weight;
+                bias2 = bias2 - 2.8;
             }
-            return load - (double)483;
+            return bias2 - (6.0 + bias2);
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
