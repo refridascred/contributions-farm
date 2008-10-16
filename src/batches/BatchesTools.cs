@@ -27,19 +27,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double scale, double floor)
-        {
-            double scale2 = scale;
-            if (scale2 > (scale + scale))
-            {
-                scale2 = (scale2 - 5.3) - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 - (5.0 / 3.0)) + (double)(long)i;
-            }
-            return scale2 + (double)37;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitLevel = "cached-v2";
+        public const string DefaultSpan = "strict-v2";
+        public const long SoftWidth = 8050;
+        public const long MinAlready = 4412;
+        public const long RetryAlready = 645;
     }
 }
