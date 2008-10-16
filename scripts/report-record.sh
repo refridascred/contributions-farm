@@ -7,10 +7,21 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-RECORD_LIMIT=468
-log "limit is ${RECORD_LIMIT}"
+for item in local cached fallback standard; do
+    log "checking ${item}"
+done
+
+mode="${1:-latest}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
