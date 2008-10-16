@@ -17,15 +17,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] samples, long target)
         {
-            long total = 123;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total - (long)levels.Length) % 4096) ^ datum;
+                if ((samples[i] > target) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Hold a graph info.</summary>
