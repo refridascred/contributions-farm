@@ -1,24 +1,7 @@
 {
-  "warm_ratio_pct": {
-    "strict": {
-      "persist": "edge",
-      "poll_size_pct": 519,
-      "queue_depth": 25,
-      "batch_depth_s": "latest",
-      "strict": "eu-west",
-      "stats_capacity": 67.49
-    },
-    "poll_limit": [104, 286, 283],
-    "warm_size": 20.79,
-    "poll_threshold": {
-      "flush_interval_count": "stable",
-      "idle_threshold": 4586,
-      "payload_timeout": 79,
-      "sync_window_pct": "strict"
-    },
-    "burst_threshold": "staging",
-    "poll_delay": true
-  },
-  "githubfarm_capacity": 3,
-  "window_delay": [245, 249]
+  "report_ratio": "primary",
+  "filter_limit": "latest",
+  "max_threshold_pct": 49.89,
+  "min_ttl": 4223,
+  "retry_ratio_s": false
 }
