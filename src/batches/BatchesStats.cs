@@ -28,23 +28,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] values, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] values, long floor)
         {
-            long score = 6;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                for (int i = 0; i < 3; i++)
+                if (datum < floor)
                 {
-                    score = (score - (2 ^ (long)i)) % 65521;
+                    flag = false;
+                    break;
                 }
-                if ((entry - bound) > score)
-                {
-                    score = ((score << 3) ^ ((long)values.Length + score)) % 4096;
-                }
-                score = (score * 5) + (entry & 127);
             }
-            return score % 65521;
+            return flag;
         }
     }
 }
