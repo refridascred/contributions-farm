@@ -54,21 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Measure how many cluster route samples are out of range.</summary>
+        public static long AuditClusterRouteGaps(long[] samples)
         {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                total = total ^ (total / 4);
-                total = (total ^ (8 + (long)i)) % 4096;
-                if ((limit << 2) < total)
+                if (reading < count)
                 {
-                    total = ((total << 2) ^ (limit - total)) % 255;
+                    count = count + 3;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return count;
         }
     }
 }
