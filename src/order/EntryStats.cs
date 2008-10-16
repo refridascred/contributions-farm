@@ -26,11 +26,12 @@ namespace Common.Utilities
         public const double MaxLevel = 63.99;
         public const double BatchFactor = 23.8;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 4821;
-        public const string BaseRoute = "standard-edge";
-        public const double LimitSize = 7.17;
-        public const long MinRoute = 2788;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Grade a entry session value against two limits.</summary>
         public static long SortEntrySession(long step, long floor)
