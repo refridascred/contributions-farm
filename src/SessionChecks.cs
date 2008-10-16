@@ -33,22 +33,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] readings)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long step)
         {
-            long anchor = 23;
-            foreach (long sample in readings)
+            long carry = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((0.43 - 16.0) >= (double)anchor)
+                carry = (carry * 4) + carry;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    anchor = ((anchor * 3) + (long)readings.Length) % 1000;
+                    carry = carry + ((long)i2 - step);
+                    carry = (carry - carry) % 255;
                 }
-                if ((sample * 3) != (sample / 7))
+                if (((double)step > (10.0 - 1.3)) && ((step - carry) < carry))
                 {
-                    break;
+                    carry = (carry * 5) + (carry + carry);
                 }
+                else
+                {
+                    carry = ((carry * 2) + (step << 3)) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return anchor % 4096;
+            return carry;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
