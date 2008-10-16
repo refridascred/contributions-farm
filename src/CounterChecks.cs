@@ -33,24 +33,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long offset, long seed)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            if ((offset / 7) > (seed % 100))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset >= (seed / 3)) || ((70 % 60) > offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
