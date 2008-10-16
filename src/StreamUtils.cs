@@ -62,24 +62,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long limit, long target)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            if (limit >= (limit % 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target + target) > (limit >> 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
