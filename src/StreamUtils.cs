@@ -22,19 +22,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] samples, long step)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= step)
+                if (series[i] >= offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Digest a series of already entries.</summary>
