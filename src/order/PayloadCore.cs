@@ -31,10 +31,21 @@ namespace Common.Utilities
         public const string BurstRatio = "cached-edge";
         public const long BaseRatio = 5906;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultInterval = 7678;
-        public const long StepRatio = 5190;
-        public const long BatchAlready = 308;
-        public const long MinTimeout = 5427;
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
