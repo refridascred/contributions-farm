@@ -27,21 +27,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] items)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = gain;
+            if (drift <= (5.41 / 3.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift - gain;
             }
-            return count;
+            else
+            {
+                drift = drift + (bias - drift);
+            }
+            return drift - (drift / 4.0);
         }
     }
 }
