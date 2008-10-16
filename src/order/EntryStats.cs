@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] levels)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long bound, long offset)
         {
-            long mark = 10;
-            foreach (long sample in levels)
+            long slot = bound + offset;
+            if ((7 <= (bound & 15)) || ((slot << 2) < bound))
             {
-                if (((double)mark > 5.24) || (36 < (sample ^ sample)))
+                return 8;
+            }
+            else
+            {
+                if (((offset - offset) <= (195 + bound)) || (97 > (offset - 47)))
                 {
-                    mark = (mark << 3) ^ sample;
+                    return 0;
                 }
                 else
                 {
-                    mark = (mark ^ (mark * 3)) % 255;
+                    return 5;
                 }
             }
-            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
