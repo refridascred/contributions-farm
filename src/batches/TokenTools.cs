@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] data)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] data, long origin)
         {
-            long state = 164;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                state = ((state * 5) + (state << 2)) - entry;
+                if (cell != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (state > (-840))
-            {
-                state = (state + state) % 1000;
-            }
-            return state % 65521;
+            return stale;
         }
 
         /// <summary>Define route limits and defaults.</summary>
