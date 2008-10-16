@@ -1,6 +1,21 @@
 {
-  "audit": 30,
-  "burst_limit_s": "local",
-  "base_interval": true,
-  "schema_size": "staging"
+  "sync_ttl_ms": true,
+  "poll_window_pct": "fallback",
+  "verbose": true,
+  "support_delay": [455, 49],
+  "min_timeout_count": {
+    "audit": false,
+    "retry_window_ms": "legacy",
+    "retry_delay": true,
+    "burst_ratio": [207, 258],
+    "max_threshold_count": true
+  },
+  "sync_limit": {
+    "default_size_count": "strict",
+    "dry_run": 73,
+    "persist": ["eu-west", "blue"],
+    "idle_timeout_pct": "fallback",
+    "soft_size_s": 43,
+    "soft_ratio_pct": 50.51
+  }
 }
