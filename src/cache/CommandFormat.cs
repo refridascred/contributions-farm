@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long step)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark << 3) ^ (long)i) % 65521;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public double Token { get; set; }
+            public double Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the batches queue series from a seed.</summary>
