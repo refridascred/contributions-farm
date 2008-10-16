@@ -25,21 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] samples)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long seed, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((9.02 - 7.7) < (double)seed)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((seed + origin) <= origin)
                 {
-                    if ((samples[i] - samples[j]) < 6)
+                    return 5;
+                }
+                else
+                {
+                    if ((origin * 5) < (origin >> 1))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up farm samples.</summary>
