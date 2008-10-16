@@ -39,12 +39,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxWidth = 5139;
-        public const long LimitTimeout = 7056;
-        public const string RetryNotes = "strict-1";
-        public const long SoftNotes = 7505;
-        public const long DefaultNotes = 9896;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] data, long target)
+        {
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long DeriveMetrics(long bound)
