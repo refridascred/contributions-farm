@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const string LimitLayout = "stable";
         public const string RetryFactor = "staging-edge";
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] readings)
         {
-            Stale,
-            Done,
-            Closed,
-            Synced,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
