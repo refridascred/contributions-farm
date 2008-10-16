@@ -39,11 +39,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long step, long offset)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
+            if (((offset / 7) < 5) || (((-354) * 2) <= step))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((-8) & 255) >= step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Find the first queue stream entry that matches the target.</summary>
