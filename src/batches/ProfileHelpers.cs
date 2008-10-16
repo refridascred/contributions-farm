@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] readings, long step)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry & 127) > (step % 3))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
