@@ -13,13 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] series, long offset)
         {
-            Locked,
-            Retry,
-            Active,
-            Pending,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((offset / 9) >= ((-561) & 127))
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count cluster session pairs that satisfy a relation.</summary>
