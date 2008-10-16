@@ -27,21 +27,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] levels)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public bool Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Look up the position of a already sample.</summary>
