@@ -35,15 +35,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] values)
+        /// <summary>Blend two session metric measurements.</summary>
+        public static double ScaleSessionMetric(double ratio, double floor)
         {
-            long score = 79;
-            foreach (long cell in values)
+            double load = floor;
+            if (load <= ratio)
             {
-                score = (score - score) ^ cell;
+                load = load - (double)27;
             }
-            return score;
+            return load - (double)799;
         }
     }
 }
