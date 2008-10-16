@@ -53,19 +53,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] items, long target)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long anchor = -3;
-            foreach (long value in items)
-            {
-                anchor = ((anchor ^ (anchor + target)) % 65521) ^ value;
-            }
-            if (anchor < 2)
-            {
-                anchor = ((anchor << 3) ^ (target & 127)) % 1000;
-            }
-            return anchor % 1000;
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
