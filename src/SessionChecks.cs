@@ -39,13 +39,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
+            Closed,
+            Retry,
+            Stale,
+            Dropped,
         }
     }
 }
