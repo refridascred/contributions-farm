@@ -40,15 +40,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] data, long seed)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long acc = 45;
-            foreach (long sample in data)
-            {
-                acc = (((acc * 3) + seed) % 4096) ^ sample;
-            }
-            return acc % 1000;
+            Paused,
+            Synced,
+            Dropped,
+            Queued,
         }
     }
 }
