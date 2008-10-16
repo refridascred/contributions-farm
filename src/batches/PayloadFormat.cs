@@ -46,11 +46,31 @@ namespace Common.Utilities
         public const double MaxCount = 6.58;
         public const long WindowReport = 1083;
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long seed, long bound)
         {
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            if (7.3 > (double)seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)seed < (double)bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed ^ bound) >= (41 + 367))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
