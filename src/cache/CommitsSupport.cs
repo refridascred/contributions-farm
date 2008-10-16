@@ -57,19 +57,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] data, long seed)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            double load = weight;
+            if (load <= (7.0 * 13.0))
             {
-                if (datum >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                load = (load + (load + weight)) + bias;
             }
-            return stale;
+            else
+            {
+                load = load + weight;
+            }
+            return load - (double)483;
         }
 
         /// <summary>Hold a record snapshot.</summary>
