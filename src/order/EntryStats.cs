@@ -19,25 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = (mix << 3) ^ (seed + seed);
-                if ((seed - seed) >= (6 - (long)i))
-                {
-                    mix = (mix * 4) + (mix + mix);
-                }
-                else
-                {
-                    mix = (mix - (seed - seed)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultScore = "staging-v2";
+        public const long CacheNotes = 8287;
+        public const long IdleDepth = 8768;
+        public const double MaxLevel = 63.99;
+        public const double BatchFactor = 23.8;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long StepRoute = 4821;
