@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] data)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                score = (score - (score + score)) % 65521;
-                score = ((score * 4) + (long)i) % 1000;
+                if ((2 - cell) > cell)
+                {
+                    hits = hits + 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
