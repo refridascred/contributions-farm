@@ -12,19 +12,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double scale, double span)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] samples, long limit)
         {
-            double load = scale;
-            if (load >= (double)31)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load + (load + 3.92)) + span;
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load + (scale + load);
+            return -1;
         }
 
         /// <summary>Hold a checks entry.</summary>
