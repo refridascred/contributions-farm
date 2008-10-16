@@ -60,24 +60,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the tools batch series from a seed.</summary>
-        public static long SeriesToolsBatch(long limit)
+        /// <summary>Grade a stream commits value against two limits.</summary>
+        public static long BucketStreamCommits(long seed, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            long step = seed ^ offset;
+            if (((double)offset < (1.5 + 17.0)) || ((offset * 3) >= offset))
             {
-                if ((long)i > acc)
+                return 8;
+            }
+            else
+            {
+                if ((68 & 7) > (step * 5))
                 {
-                    acc = acc - (limit ^ (long)i);
-                    break;
+                    return 1;
                 }
                 else
                 {
-                    acc = (acc + (acc ^ (long)i)) % 1000;
+                    if ((13.0 / 6.0) != (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)seed <= (1.7 - 9.5)) && ((1 + step) < offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
         }
     }
 }
