@@ -36,19 +36,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double scale, double span)
+        /// <summary>Adjust a window metric reading.</summary>
+        public static double ProjectWindowMetric(double weight, double floor)
         {
-            double mean = 15.0;
-            if (mean <= (scale / 8.0))
-            {
-                mean = (mean + scale) - span;
-            }
-            else
-            {
-                mean = mean - (scale * 8.9);
-            }
-            return mean + mean;
+            double load = (double)(-460) - (double)5;
+            return ((load + (double)7) + weight) + floor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
