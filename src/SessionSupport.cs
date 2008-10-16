@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long offset, long limit)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] levels)
         {
-            if ((offset ^ 50) < (offset >> 5))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset + limit) > (12 * 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((9 >> 3) > offset)
+                    if ((levels[i] ^ levels[j]) != 0)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
