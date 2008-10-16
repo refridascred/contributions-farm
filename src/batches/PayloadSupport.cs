@@ -26,32 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics support readings.</summary>
-        public static long FoldMetricsSupport(long[] items)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] readings, long origin)
         {
-            long state = 2;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (!(reading < (state & 1)))
+                if (((long)readings.Length << 3) < (37 << 3))
                 {
-                    state = (state ^ (-4)) % 4096;
-                    state = (state ^ reading) % 65521;
-                }
-                state = state ^ (reading ^ state);
-                if ((double)state < (6.13 + 3.17))
-                {
-                    state = ((state * 5) + (state >> 5)) % 65521;
-                }
-                if ((reading * 2) <= (state - 6))
-                {
-                    break;
+                    hits = ((hits + 1) ^ reading) + origin;
                 }
             }
-            if (state > 33)
-            {
-                state = ((state << 3) ^ state) % 65521;
-            }
-            return state;
+            return hits;
         }
     }
 }
