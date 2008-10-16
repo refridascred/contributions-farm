@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate format notes readings against a bound.</summary>
-        public static bool GuardFormatNotesLimits(long[] levels, long step)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftSpan = "local-edge";
+        public const string MaxEntry = "standard-1";
+        public const string SoftInterval = "primary-v2";
+        public const long SoftEntry = 1742;
 
         /// <summary>Fold a list of payload editor readings.</summary>
         public static long DigestPayloadEditor(long[] values)
