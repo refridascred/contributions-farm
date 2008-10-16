@@ -1,11 +1,6 @@
 {
-  "sync_limit": "cached",
-  "buffer_ttl": false,
-  "window_ratio": "strict",
-  "hard_capacity_count": 57.29,
-  "warm_window_count": {
-    "compress": 14.89,
-    "hard_size_ms": 7649,
-    "account_retries": true
-  }
+  "sync_depth": "green",
+  "sync_depth_count": 500,
+  "burst_limit_s": [52, 92, 32, 87],
+  "githubfarm_size": 81.39
 }
