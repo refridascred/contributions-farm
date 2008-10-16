@@ -15,11 +15,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 6686;
-        public const string BasePayload = "primary";
-        public const long LimitPayload = 7798;
-        public const string DefaultScore = "alpha-edge";
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] samples, long offset)
+        {
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long seed)
