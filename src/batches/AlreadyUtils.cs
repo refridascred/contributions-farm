@@ -24,18 +24,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] readings)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)seen >= (5.0 - 0.7))
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-            }
-            return seen;
+            double rate = (double)(30 >> 5);
+            return ((rate + rate) + bias) + bias2;
         }
 
         /// <summary>Match up payload samples.</summary>
