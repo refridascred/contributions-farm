@@ -20,22 +20,32 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long floor, long limit)
         {
-            long score = 0;
-            foreach (long cell in items)
+            long lane = floor ^ limit;
+            if ((double)floor == (double)lane)
             {
-                if ((cell + 499) <= score)
+                return 8;
+            }
+            else
+            {
+                if ((1 & 127) >= (lane ^ lane))
                 {
-                    score = score ^ (score - score);
+                    return 5;
                 }
                 else
                 {
-                    score = score - cell;
+                    if (floor <= (limit - floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return score % 97;
         }
 
         /// <summary>Describe the profile kind values.</summary>
