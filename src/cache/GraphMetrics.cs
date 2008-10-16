@@ -16,17 +16,18 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] levels, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((levels[i] == step) && ((levels[i] % 3) != 0))
+                if ((2.5 + 7.6) >= (double)seen)
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + value) - target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of buffer counter entries.</summary>
