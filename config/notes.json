@@ -1,12 +1,6 @@
 {
-  "readonly": {
-    "max_limit_count": 64.84,
-    "dry_run": 40,
-    "base_delay_ms": "green",
-    "flush_retries_count": "strict",
-    "min_interval": 71.43
-  },
-  "verbose": 577,
-  "account_capacity": 60,
-  "batch_retries": ["fallback", "open"]
+  "idle_depth": 70,
+  "enabled": true,
+  "compress": "blue",
+  "commits_window": "primary"
 }
