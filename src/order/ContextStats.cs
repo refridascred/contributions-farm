@@ -28,12 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleLevel = "cached";
-        public const long DefaultTimeout = 5305;
-        public const string MaxFilter = "stable-1";
-        public const string StepFilter = "stable";
-        public const long BatchFilter = 949;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBudget = 550;
+        public const string IdleInterval = "latest";
+        public const long HardBuffer = 6362;
+        public const long DefaultBuffer = 5652;
+        public const long SoftWidth = 9389;
 
         /// <summary>Adjust a entry reading.</summary>
         public static double SmoothEntry(double rate, double bias)
