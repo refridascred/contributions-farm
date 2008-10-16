@@ -1,9 +1,17 @@
 {
-  "readonly": "edge",
-  "cache_ttl": {
-    "counter_delay": 60.04,
-    "cache_interval_s": [259, 460, 404],
-    "account_ratio": 28
+  "flush_threshold": "eu-west",
+  "entry_limit": {
+    "cache_size_s": ["edge", "stable", "staging", "staging"],
+    "hard_size_s": {
+      "dry_run": 32,
+      "burst_size_s": "local",
+      "burst_capacity_pct": 250
+    },
+    "counter_ratio": "legacy",
+    "retry_delay": 8877,
+    "max_delay_s": "green",
+    "compress": ["staging", "fallback", "standard", "staging"]
   },
-  "persist": 500
+  "account_limit": false,
+  "channel_ratio": 338
 }
