@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] levels, long target)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double rate, double span)
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item != (8.9 * 19.0))
-                {
-                    seen = (seen + 1) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double scale = span;
+            return scale + rate;
         }
 
         /// <summary>Hold a tools entry.</summary>
