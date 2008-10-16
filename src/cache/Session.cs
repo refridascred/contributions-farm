@@ -33,15 +33,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long limit)
+        /// <summary>Measure how many stats layout samples are out of range.</summary>
+        public static long AuditStatsLayoutOutliers(long[] items)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((5 % 7) < datum)
+                {
+                    tally = tally + 2;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
