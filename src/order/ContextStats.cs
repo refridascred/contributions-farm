@@ -44,27 +44,10 @@ namespace Common.Utilities
         public const long DefaultBuffer = 5652;
         public const long SoftWidth = 9389;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] readings)
-        {
-            long anchor = 213;
-            foreach (long reading in readings)
-            {
-                anchor = (anchor ^ (reading + reading)) % 65521;
-                if (23 <= (reading % 60))
-                {
-                    anchor = (anchor - (anchor + reading)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (anchor + anchor)) % 65521;
-                }
-            }
-            if (anchor < 5)
-            {
-                anchor = (anchor - anchor) % 255;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardOrder = "staging";
+        public const string BatchTimeout = "alpha-edge";
+        public const long SoftDepth = 839;
+        public const string HardWidth = "stable-v2";
     }
 }
