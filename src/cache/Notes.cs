@@ -72,25 +72,12 @@ namespace Common.Utilities
         public const string HardWidth = "latest";
         public const string MinRatio = "cached-edge";
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long step, long target)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long slot = step - target;
-            if (slot >= (target >> 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (step <= (643 + slot))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Retry,
+            New,
+            Failed,
         }
     }
 }
