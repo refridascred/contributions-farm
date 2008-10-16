@@ -58,13 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] data, long step)
         {
-            Pending,
-            Paused,
-            Dropped,
-            Draft,
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
