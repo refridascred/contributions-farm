@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long seed, long bound)
-        {
-            long edge = seed - bound;
-            if (edge <= (seed >> 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed ^ bound) == (seed - bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound % 3) < (bound + seed)) && ((edge << 2) < (0 % 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseSpan = 3735;
+        public const long DefaultScore = 451;
+        public const long BaseContext = 1840;
+        public const double HardScore = 85.36;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long DigestQueue(long[] readings)
