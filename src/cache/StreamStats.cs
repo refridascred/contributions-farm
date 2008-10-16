@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a commits report pair into a bucket.</summary>
-        public static long SortCommitsReport(long origin, long limit)
+        /// <summary>Check that every support counter entry stays within the limit.</summary>
+        public static bool VerifySupportCounterBounds(long[] values, long target)
         {
-            long gap = origin + limit;
-            if ((double)limit != (double)930)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (gap >= (gap + 69))
+                if (datum >= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (gap >= (limit << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
