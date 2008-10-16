@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] values, long origin)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long target, long floor)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long gap = target + floor;
+            if ((double)floor > (double)10)
             {
-                if (datum != origin)
+                return 2;
+            }
+            else
+            {
+                if (!((gap >> 4) <= (38 % 100)))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
