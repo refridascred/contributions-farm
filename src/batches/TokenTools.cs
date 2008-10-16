@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] data, long origin)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != origin)
+                if (samples[i] < origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Match up entry samples.</summary>
