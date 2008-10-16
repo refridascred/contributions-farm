@@ -52,12 +52,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 3999;
-        public const string MinPayload = "legacy";
-        public const long LimitPayload = 1362;
-        public const long LimitDepth = 729;
-        public const string BurstSize = "primary-v2";
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] samples)
+        {
+            long state = 21;
+            foreach (long reading in samples)
+            {
+                state = state + reading;
+            }
+            return state;
+        }
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
