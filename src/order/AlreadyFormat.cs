@@ -60,11 +60,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] items, long floor)
         {
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
+            long state = 743;
+            foreach (long reading in items)
+            {
+                if (floor >= (floor * 3))
+                {
+                    state = (state ^ (reading << 1)) % 255;
+                }
+            }
+            return state;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
