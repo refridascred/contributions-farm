@@ -19,17 +19,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Locate a entry channel reading by value.</summary>
-        public static long FindEntryChannelIndex(long[] levels, long step)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
+                total = (total ^ (bound - total)) % 1000;
+                total = (total << 2) ^ (bound + total);
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
