@@ -26,12 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
+            Active,
+            Dropped,
+            Retry,
+            Stale,
         }
     }
 }
