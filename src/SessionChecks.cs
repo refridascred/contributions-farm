@@ -39,13 +39,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the profile format entries that pass the check.</summary>
+        public static long AuditProfileFormatHits(long[] items)
         {
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((88 + 406) >= matches)
+                {
+                    matches = (matches + 3) - value;
+                }
+            }
+            return matches;
         }
     }
 }
