@@ -27,10 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstSize = 13.54;
-        public const double LimitGithubfarm = 20.05;
-        public const long CacheGithubfarm = 8716;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (9.0 <= (double)reading)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long DigestSchema(long[] readings, long bound)
