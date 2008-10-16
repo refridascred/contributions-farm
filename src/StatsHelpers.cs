@@ -14,20 +14,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] values, long offset)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            long acc = 543;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc ^ (offset - (long)values.Length)) % 65521) - datum;
-                acc = (acc * 3) + (long)values.Length;
-                if ((long)values.Length < acc)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc ^ acc) % 97;
+                    if ((samples[i] ^ samples[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
