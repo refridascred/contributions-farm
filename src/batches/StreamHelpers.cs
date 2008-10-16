@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long origin, long offset)
-        {
-            if ((offset % 60) >= (1 / 9))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset - 708) >= (52 >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)offset <= (16.0 + 9.1)) && ((offset - origin) != (5 & 31)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowCluster = 83.51;
+        public const double IdleBudget = 61.03;
+        public const string RetrySize = "primary-edge";
+        public const long BaseRatio = 2860;
+        public const long HardCluster = 6812;
 
         /// <summary>Audit counter queue readings against a rule.</summary>
         public static long AuditCounterQueueOutliers(long[] readings, long seed)
