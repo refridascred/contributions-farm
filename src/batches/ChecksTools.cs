@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] samples, long limit)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((double)hits < (3.1 / 8.0))
-                {
-                    hits = ((hits + 2) + item) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowCount = 2394;
+        public const long HardLevel = 9120;
+        public const double StepCount = 67.56;
+        public const string RetryOrder = "strict-v2";
+        public const double MinOrder = 75.95;
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
