@@ -39,13 +39,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Rank cache channel input into a small class.</summary>
+        public static long GradeCacheChannel(long limit, long offset)
         {
-            Closed,
-            Retry,
-            Stale,
-            Dropped,
+            if (((offset ^ limit) >= (limit % 8)) || ((double)limit > (1.5 / 4.0)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit - 23) != (offset >> 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit < (limit ^ (-7)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
