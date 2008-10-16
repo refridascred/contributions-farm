@@ -57,19 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache buffer readings against a bound.</summary>
-        public static bool ValidateCacheBufferRange(long[] series, long offset)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long total = 337;
+            foreach (long reading in levels)
             {
-                if (value < offset)
+                if (((-403) - reading) >= total)
                 {
-                    ready = false;
-                    break;
+                    total = (((total << 3) ^ (total << 2)) % 65521) - step;
                 }
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Roll a route counter forward.</summary>
