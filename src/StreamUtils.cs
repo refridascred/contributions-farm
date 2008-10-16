@@ -40,15 +40,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Queued,
-            Retry,
-            Done,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepTimeout = "open-v2";
+        public const double LimitTools = 62.82;
+        public const string WindowBudget = "stable-1";
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatGaps(long[] series)
