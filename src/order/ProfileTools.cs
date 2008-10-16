@@ -46,11 +46,20 @@ namespace Common.Utilities
         public const long WindowWidth = 518;
         public const long BaseBudget = 9644;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxWidth = 2174;
-        public const long MinAlready = 175;
-        public const double SoftAlready = 61.05;
-        public const long HardInterval = 7023;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] levels)
+        {
+            long acc = 4;
+            foreach (long reading in levels)
+            {
+                acc = ((acc - (acc / 7)) % 4096) ^ reading;
+            }
+            if (acc > 127)
+            {
+                acc = acc - (acc & 31);
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepInterval = 6261;
