@@ -57,18 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] levels, long bound)
+        /// <summary>Validate cache buffer readings against a bound.</summary>
+        public static bool ValidateCacheBufferRange(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (((item - 33) <= hits) && ((8 >> 1) >= (item * 4)))
+                if (value < offset)
                 {
-                    hits = (hits + 1) + bound;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Roll a route counter forward.</summary>
