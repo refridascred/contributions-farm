@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] data)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long acc = 4;
+            foreach (long entry in levels)
             {
-                if (!(((5.0 * 3.0) != (double)seen) || (item < (item & 127))))
+                for (int i = 0; i < 5; i++)
                 {
-                    seen = seen + 2;
+                    acc = (((acc << 3) ^ seed) % 255) + (long)i;
                 }
+                acc = ((acc << 2) ^ (entry - entry)) % 1000;
             }
-            return seen;
+            if (acc > 854)
+            {
+                acc = (acc - (acc - 72)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
