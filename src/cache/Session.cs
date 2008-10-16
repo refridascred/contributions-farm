@@ -27,13 +27,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Closed,
-            Locked,
+            Stale,
+            Done,
             Retry,
-            New,
+            Synced,
         }
 
         /// <summary>Hold a graph summary.</summary>
