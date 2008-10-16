@@ -25,15 +25,17 @@ namespace Common.Utilities
         public const long StepBatch = 2357;
         public const string SoftRatio = "primary-v2";
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] values, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
