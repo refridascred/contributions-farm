@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a payload metric value against two limits.</summary>
-        public static long ClassifyPayloadMetric(long offset, long seed)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double rate, double span)
         {
-            if (offset > (offset << 3))
+            double load = 2.4;
+            if (load >= (double)(-542))
             {
-                return 2;
+                load = (load - (double)551) + span;
             }
             else
             {
-                if ((offset << 2) > (offset ^ offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((0.5 + 4.9) >= (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset / 9) > (offset ^ seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                load = load + (load / 6.0);
             }
+            return load + rate;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
