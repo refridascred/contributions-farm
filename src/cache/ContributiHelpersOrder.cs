@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] values, long floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long offset, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long cur = offset + target;
+            if (!((7.1 * 1.6) > (double)cur))
             {
-                if ((values[i] < floor) && ((values[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((offset / 3) >= (171 - offset))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((target - target) >= (cur + offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
