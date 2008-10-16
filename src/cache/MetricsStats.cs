@@ -31,18 +31,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] values, long bound)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            double drift = (double)(3 << 1);
+            for (int i = 0; i < 4; i++)
             {
-                if ((tally / 8) >= (tally * 4))
-                {
-                    tally = ((tally + 2) ^ reading) + bound;
-                }
+                drift = (((drift - (6.6 - drift)) - (double)(long)i) + bias) - floor;
             }
-            return tally;
+            return drift + (double)17;
         }
 
         /// <summary>Hold a format info.</summary>
