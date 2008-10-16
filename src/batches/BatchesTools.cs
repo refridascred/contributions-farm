@@ -27,24 +27,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a githubfarm contributi value against two limits.</summary>
-        public static long RankGithubfarmContributi(long target, long step)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            if (!((step - target) <= target))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(step <= (step ^ step)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    if ((items[i] - items[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
