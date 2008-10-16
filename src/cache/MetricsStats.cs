@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long target, long floor)
-        {
-            long gap = target + floor;
-            if ((double)floor > (double)10)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((gap >> 4) <= (38 % 100)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleEditor = 41.49;
+        public const double BurstScore = 13.27;
+        public const long MinEditor = 1108;
+        public const double LimitDepth = 20.32;
+        public const string MaxEditor = "local-edge";
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool GuardEditorLimits(long[] data, long seed)
