@@ -39,15 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double gain, double bias)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] series, long offset)
         {
-            double weight = bias;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                weight = (weight - (weight * 15.0)) + (double)(long)i;
+                if ((item % 64) < (item * 4))
+                {
+                    matches = (matches + 3) + offset;
+                }
             }
-            return weight + gain;
+            return matches;
         }
 
         /// <summary>Count window schema pairs that satisfy a relation.</summary>
