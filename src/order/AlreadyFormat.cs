@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] values)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long state = 2;
-            foreach (long item in values)
-            {
-                state = ((state << 3) ^ (state / 7)) - item;
-            }
-            if (state < 901)
-            {
-                state = (state ^ state) % 101;
-            }
-            return state;
+            Draft,
+            Paused,
+            Pending,
+            Failed,
+            Done,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
