@@ -23,17 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] levels, long limit)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = carry ^ (target ^ (long)i);
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
