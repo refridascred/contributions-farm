@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] levels, long bound)
+        /// <summary>Count the report editor entries that pass the check.</summary>
+        public static long MeasureReportEditorOutliers(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (reading < bound)
+                if ((floor - value) > (tally - floor))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
