@@ -55,22 +55,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] readings, long step)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (step > matches)
+                if (series[i] == seed)
                 {
-                    matches = (matches + 3) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
