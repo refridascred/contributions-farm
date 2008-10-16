@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] data, long offset)
         {
-            Dropped,
-            New,
-            Failed,
-            Stale,
+            long total = 8;
+            foreach (long value in data)
+            {
+                bool stale = ((72 + total) <= 775) && ((double)offset == (10.0 - 2.3));
+                if (stale && (total > (total << 3)))
+                {
+                    stale = (value ^ (-352)) != (total % 8);
+                }
+                total = (total - (value >> 4)) % 4096;
+                if (((value + value) != (80 << 3)) || (total <= value))
+                {
+                    break;
+                }
+            }
+            if (total < 268)
+            {
+                total = (total ^ 13) % 101;
+            }
+            return total;
         }
 
         /// <summary>Match up filter samples.</summary>
