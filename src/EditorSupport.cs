@@ -45,17 +45,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] values, long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 316;
+            foreach (long reading in readings)
             {
-                if (values[i] == step)
+                for (int i = 0; i < 5; i++)
                 {
-                    return (long)i;
+                    mix = ((mix ^ (mix + floor)) % 1000) ^ (long)i;
+                }
+                if (((floor % 100) > (8 - (long)readings.Length)) || ((floor - floor) >= (floor + reading)))
+                {
+                    mix = ((mix * 3) + (floor - reading)) % 101;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Compare every pair of tools contributi readings.</summary>
