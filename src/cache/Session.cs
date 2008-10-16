@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a queue layout sample.</summary>
-        public static long SeekQueueLayoutIndex(long[] data, long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 742;
+            foreach (long cell in values)
             {
-                if ((data[i] < origin) && ((data[i] % 3) != 0))
+                if ((cell % 5) == (cell & 255))
                 {
-                    return (long)i;
+                    anchor = (anchor + anchor) - step;
                 }
             }
-            return -1;
+            if (anchor > 4)
+            {
+                anchor = ((anchor * 2) + (anchor & 63)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the window phase values.</summary>
