@@ -48,12 +48,19 @@ namespace Common.Utilities
             return drift - (drift + offset);
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] samples, long offset)
         {
-            public bool Region { get; set; }
-            public double Score { get; set; }
-            public bool Stamp { get; set; }
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
