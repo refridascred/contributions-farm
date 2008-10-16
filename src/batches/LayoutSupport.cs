@@ -32,21 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] samples)
+        /// <summary>Blend two window contributi measurements.</summary>
+        public static double ScaleWindowContributi(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = rate;
+            if (load >= (double)(-8))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - (offset - load);
             }
-            return seen;
+            return load - (rate / 7.0);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
