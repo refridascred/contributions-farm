@@ -36,17 +36,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] series, long step)
+        /// <summary>Validate contributi filter readings against a bound.</summary>
+        public static bool ValidateContributiFilterLimits(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (series[i] < step)
+                if (cell < floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
