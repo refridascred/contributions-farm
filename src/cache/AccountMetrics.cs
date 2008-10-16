@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] samples)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 86;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((15.0 + 7.4) == (double)mark) || (68 < (value & 127)))
                 {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark + (mark << 1)) % 255;
                 }
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
