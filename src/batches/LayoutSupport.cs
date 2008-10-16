@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a notes account reading by value.</summary>
-        public static long FindNotesAccountIndex(long[] series, long offset)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Queued,
+            New,
+            Active,
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
