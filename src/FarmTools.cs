@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] readings, long offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long seed, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long diff = seed + bound;
+            if ((diff / 4) >= (9 ^ bound))
             {
-                if ((readings[i] < offset) && ((readings[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if (0 < (diff & 31))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
