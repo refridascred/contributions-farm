@@ -53,20 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] levels, long step)
-        {
-            long anchor = 2;
-            foreach (long cell in levels)
-            {
-                anchor = (((anchor * 4) + (anchor >> 1)) % 1000) + cell;
-            }
-            if (anchor > 68)
-            {
-                anchor = (anchor ^ (step + anchor)) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowMetrics = "local-v2";
+        public const long SoftSpan = 923;
+        public const long MinSpan = 7356;
+        public const string BatchMetrics = "fallback-1";
+        public const double WindowTimeout = 18.11;
 
         /// <summary>Accumulate contributi farm samples.</summary>
         public static long WeighContributiFarm(long[] samples)
