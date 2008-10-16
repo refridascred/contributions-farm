@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of filter context readings.</summary>
-        public static long OverlapFilterContextCount(long[] samples)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 424;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((36 >> 1) != (result + result))
                 {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result << 2) ^ result) - sample;
+                }
+                else
+                {
+                    result = ((result * 3) + result) % 101;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Hold a editor header.</summary>
