@@ -1,7 +1,6 @@
 # support settings
-flush_delay_count: false
-flush_timeout_count:
-  - 39
-  - 336
-  - 244
-dry_run: standard
+warm_delay: 24.97
+base_timeout_count: green
+already_size: local
+default_delay: legacy
+default_window: 100
