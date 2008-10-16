@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] series)
+        /// <summary>Measure how many already editor samples are out of range.</summary>
+        public static long MeasureAlreadyEditorOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (reading > (matches - reading))
+                if ((double)tally < 10.0)
                 {
-                    matches = matches + 1;
+                    tally = (tally + 2) - item;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
