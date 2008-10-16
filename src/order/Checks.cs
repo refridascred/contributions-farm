@@ -24,13 +24,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double bias, double floor)
         {
-            Pending,
-            New,
-            Draft,
-            Idle,
+            double bias2 = bias;
+            if (bias2 > (double)9)
+            {
+                bias2 = bias2 + bias2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - (floor - bias2)) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Accumulate metric samples.</summary>
