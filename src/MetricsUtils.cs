@@ -43,12 +43,13 @@ namespace Common.Utilities
         public const long MaxLevel = 726;
         public const double MaxBudget = 26.79;
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Locked,
-            Dropped,
-            Ready,
+            Paused,
+            Synced,
+            Closed,
+            Idle,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
