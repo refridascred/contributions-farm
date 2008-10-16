@@ -22,12 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            Paused,
+            Synced,
+            Ready,
         }
 
         /// <summary>Accumulate batches samples.</summary>
