@@ -47,19 +47,15 @@ namespace Common.Utilities
         public const long BurstDepth = 4960;
         public const double IdleSpan = 78.0;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] series, long target)
+        /// <summary>Fold a list of layout record readings.</summary>
+        public static long DigestLayoutRecord(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long state = 6;
+            foreach (long item in items)
             {
-                if (sample != target)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state + (8 % 16)) % 4096) + item;
             }
-            return stale;
+            return state;
         }
     }
 }
