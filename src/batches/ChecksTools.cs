@@ -19,10 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitToken = "cached-1";
-        public const long SoftToken = 3147;
-        public const long HardCount = 6562;
+        /// <summary>Look up the position of a session token sample.</summary>
+        public static long SeekSessionTokenIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > step) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LocateWindowIndex(long[] data, long origin)
