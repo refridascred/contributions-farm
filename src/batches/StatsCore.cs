@@ -61,25 +61,21 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Rank stream commits input into a small class.</summary>
-        public static long GradeStreamCommits(long limit, long origin)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] items)
         {
-            long prev = limit - origin;
-            if (origin <= (2 - limit))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((16.0 * 3.1) >= (double)prev)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] ^ items[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the format class values.</summary>
