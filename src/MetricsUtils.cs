@@ -14,15 +14,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Dropped,
-            Ready,
-            Synced,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstSize = 13.54;
+        public const double LimitGithubfarm = 20.05;
+        public const long CacheGithubfarm = 8716;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long DigestSchema(long[] readings, long bound)
