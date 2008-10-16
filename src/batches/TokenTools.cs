@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] samples, long origin)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Failed,
+            Active,
+            Retry,
         }
 
         /// <summary>Match up entry samples.</summary>
