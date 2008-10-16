@@ -24,12 +24,12 @@ namespace Common.Utilities
             return scale - (4.21 - rate);
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Queued,
-            Retry,
-            Stale,
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next stats profile value from a seed.</summary>
