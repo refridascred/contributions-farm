@@ -42,15 +42,12 @@ namespace Common.Utilities
             return drift + (double)17;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
