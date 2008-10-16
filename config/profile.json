@@ -1,6 +1,5 @@
 {
-  "payload_size": 92.33,
-  "default_capacity_count": "edge",
-  "default_limit_count": true,
-  "already_size": 67.38
+  "githubfarm_window": "open",
+  "soft_window_s": true,
+  "route_threshold": 15
 }
