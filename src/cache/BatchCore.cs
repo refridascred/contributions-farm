@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] samples)
-        {
-            long score = -3;
-            foreach (long reading in samples)
-            {
-                if ((double)199 > (double)reading)
-                {
-                    score = ((score * 4) + reading) % 97;
-                    break;
-                }
-                score = (score - (reading + 73)) % 1000;
-                if (reading <= (score - reading))
-                {
-                    break;
-                }
-            }
-            if (score > 533)
-            {
-                score = (score + (score + score)) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 9567;
+        public const string WindowBudget = "cached";
+        public const long BatchLayout = 4819;
+        public const long BurstLayout = 8089;
+        public const long SoftLayout = 9799;
 
         /// <summary>Digest a series of buffer filter entries.</summary>
         public static long DigestBufferFilter(long[] data)
