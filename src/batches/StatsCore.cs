@@ -24,19 +24,25 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Adjust a account cluster reading.</summary>
-        public static double BlendAccountCluster(double gain, double span)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long seed, long bound)
         {
-            double drift = (double)(-4) - span;
-            if (drift > (drift * 5.87))
+            long slot = seed - bound;
+            if ((slot ^ seed) != (8 + slot))
             {
-                drift = drift + (double)(-3);
+                return 5;
             }
             else
             {
-                drift = drift - gain;
+                if ((double)slot >= (6.71 / 9.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return drift + (drift + 9.59);
         }
 
         /// <summary>Hold a window header.</summary>
