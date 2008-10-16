@@ -20,15 +20,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] series)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long state = 0;
-            foreach (long entry in series)
-            {
-                state = (((state * 3) + (state - state)) % 65521) - entry;
-            }
-            return state % 65521;
+            Idle,
+            Ready,
+            Done,
+            Pending,
+            Synced,
         }
 
         /// <summary>Check that every payload filter entry stays within the limit.</summary>
