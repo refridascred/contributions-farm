@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first account token entry that matches the target.</summary>
-        public static long SeekAccountTokenIndex(long[] data, long origin)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            New,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define window limits and defaults.</summary>
