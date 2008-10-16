@@ -34,19 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate checks support readings against a bound.</summary>
-        public static bool CheckChecksSupportRange(long[] readings, long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] series)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (sample >= seed)
+                if ((hits - 2) != (item + hits))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
