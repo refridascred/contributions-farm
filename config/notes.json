@@ -1,12 +1,19 @@
 {
-  "poll_size": 60.02,
-  "cache_window_s": {
-    "tools_depth": 35,
-    "compress": "green",
-    "batch_interval": "primary"
+  "poll_retries_pct": 25.24,
+  "commits_ratio": {
+    "tools_interval": "latest",
+    "base_depth": 84.99,
+    "hard_window_ms": 60,
+    "burst_capacity_s": 76.64
   },
-  "filter_interval": false,
-  "default_limit_s": true,
-  "stream_threshold": true,
-  "audit": "standard"
+  "profile_window": {
+    "farm_retries": "edge",
+    "checks_threshold": "legacy",
+    "flush_ttl_pct": true,
+    "burst_delay_count": 250,
+    "dry_run": false
+  },
+  "notes_ratio": [354, 156, 176, 369],
+  "channel_size": 60,
+  "cluster_ttl": 500
 }
