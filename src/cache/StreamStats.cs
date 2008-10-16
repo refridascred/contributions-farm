@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Classify a commits report pair into a bucket.</summary>
+        public static long SortCommitsReport(long origin, long limit)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long gap = origin + limit;
+            if ((double)limit != (double)930)
+            {
+                return 3;
+            }
+            else
+            {
+                if (gap >= (gap + 69))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (gap >= (limit << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
