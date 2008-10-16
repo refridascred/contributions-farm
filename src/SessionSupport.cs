@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double ratio, double offset)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            double load = (double)(7 + 6);
-            if (load > load)
-            {
-                load = (load + offset) - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (offset / 3.0)) + (double)(long)i;
-            }
-            return load - load;
+            public double Score { get; set; }
+            public bool Weight { get; set; }
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
