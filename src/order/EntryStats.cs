@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many report profile samples are out of range.</summary>
-        public static long AuditReportProfileOutliers(long[] samples)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((matches < item) || (matches >= (matches - item)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Closed,
+            Paused,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
