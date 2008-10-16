@@ -1,11 +1,12 @@
 # Command notes
 
-Keep cache and route names short and lowercase.
-Defaults for payload live in the config folder and can be overridden per environment.
+Defaults for route live in the config folder and can be overridden per environment.
+Run the route check before changing any record limits.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review command limits each release
-- Prefer metric defaults
-- Log every cluster change
-- Validate checks input early
+- Prefer counter defaults
+- Validate buffer input early
+- Log every buffer change
+- Document new schema fields
