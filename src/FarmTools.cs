@@ -13,16 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long target)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] levels, long step)
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                carry = carry ^ (target ^ (long)i);
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (cell >= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
