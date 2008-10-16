@@ -14,11 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 1038;
-        public const double SoftCounter = 29.11;
-        public const long WindowCounter = 9924;
-        public const string DefaultCounter = "fallback-edge";
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum << 3) ^ (62 + floor)) % 1000;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LookupQueueIndex(long[] levels, long limit)
