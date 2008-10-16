@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double rate, double span)
+        /// <summary>Count cluster counter pairs that satisfy a relation.</summary>
+        public static long PairClusterCounterCount(long[] values)
         {
-            double scale = span;
-            return scale + rate;
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a tools entry.</summary>
