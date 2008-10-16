@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double gain, double offset)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            double mean = gain;
-            if (mean < (double)34)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - 1.3;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean + (offset * 7.59);
+            return matches;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
