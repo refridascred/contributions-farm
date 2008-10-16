@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long floor, long limit)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long step)
         {
-            if ((3 - floor) <= (71 / 9))
+            long sum = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 5;
+                sum = sum ^ (long)i;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((8.8 - 6.9) > (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)limit < 9.7) || ((limit ^ limit) >= (limit - floor)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
