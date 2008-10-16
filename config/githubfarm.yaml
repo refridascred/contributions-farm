@@ -1,21 +1,5 @@
 # githubfarm settings
-default_timeout:
-  readonly:
-    profile_delay: 100
-    base_timeout_count: false
-    sync_retries_s: cached
-    farm_retries: 5628
-  cache_depth_s:
-    burst_threshold_ms: 79.02
-    poll_delay_pct: true
-    flush_window:
-      - 208
-      - 64
-    layout_size: open
-  batch_ratio: open
-  token_ratio: false
-  warm_ratio: true
-  profile_ttl: 31.29
-burst_threshold: 66.89
-default_ttl_s: 22
-metrics_delay: false
+retry_threshold_count: blue
+retry_threshold_s: 5.42
+idle_delay_pct: green
+already_retries: 1361
