@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
-        {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxSize = 4574;
+        public const long SoftInterval = 1135;
+        public const long BaseWidth = 6211;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool GuardLayoutBounds(long[] readings, long limit)
