@@ -19,10 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultDepth = "legacy-1";
-        public const long SoftTimeout = 764;
-        public const long StepAlready = 3750;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] series, long limit)
+        {
+            long carry = 394;
+            foreach (long datum in series)
+            {
+                carry = ((carry * 3) + (limit - datum)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Project the next graph value.</summary>
         public static double BlendGraph(double bias, double floor)
