@@ -25,17 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a commits buffer sample.</summary>
-        public static long LookupCommitsBufferIndex(long[] levels, long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((levels[i] > step) && ((levels[i] % 2) == 0))
+                if (seen < (seen + 674))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a metrics record.</summary>
