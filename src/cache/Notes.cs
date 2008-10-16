@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 2170;
-        public const string WindowChecks = "local-1";
-        public const long SoftFactor = 8607;
-        public const string IdleChecks = "standard-edge";
-        public const long MaxTimeout = 6775;
+        /// <summary>Grade a schema farm value against two limits.</summary>
+        public static long RankSchemaFarm(long offset, long seed)
+        {
+            if ((double)offset >= 14.0)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((8.76 * 6.2) < (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((-27) + 359) < (seed + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit entry support readings against a rule.</summary>
         public static long TallyEntrySupportOutliers(long[] levels)
