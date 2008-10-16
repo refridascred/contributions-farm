@@ -12,18 +12,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] values)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((33 < (count ^ cell)) && ((cell % 3) == (cell ^ cell)))
+                if (levels[i] < seed)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
