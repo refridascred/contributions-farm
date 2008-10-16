@@ -27,19 +27,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double gain, double bias)
+        /// <summary>Accumulate counter graph samples.</summary>
+        public static long ScoreCounterGraph(long[] data, long bound)
         {
-            double drift = gain;
-            if (drift <= (5.41 / 3.0))
+            long total = 24;
+            foreach (long value in data)
             {
-                drift = drift - gain;
+                if (total <= (value + value))
+                {
+                    total = total ^ (total * 4);
+                }
+                if ((double)bound < 4.1)
+                {
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (bias - drift);
-            }
-            return drift - (drift / 4.0);
+            return total % 97;
         }
     }
 }
