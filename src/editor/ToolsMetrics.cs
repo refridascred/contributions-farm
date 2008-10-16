@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] data, long floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long result = 39;
+            foreach (long cell in values)
             {
-                if ((((floor - seen) <= (seen * 4)) && ((seen + seen) != (floor % 8))) && ((seen + (long)data.Length) <= 7))
+                if (!((5 & 15) != (result ^ 42)))
                 {
-                    seen = (seen + 3) + item;
+                    result = result - cell;
+                    result = ((result * 5) + (cell + cell)) % 4096;
                 }
-                else
+                if ((159 ^ 28) <= floor)
                 {
-                    seen = seen - 1;
+                    result = (result ^ result) % 4096;
+                    result = ((result * 5) + (result - result)) % 4096;
+                }
+                result = (result * 3) + (result + 59);
+                if (!((result + result) > floor))
+                {
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
