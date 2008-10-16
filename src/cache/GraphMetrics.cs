@@ -49,10 +49,20 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 5485;
-        public const double BurstRatio = 96.45;
-        public const long RetryAlready = 4309;
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    result = (result + ((long)i + (long)i2)) % 65521;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Find the first format stats entry that matches the target.</summary>
         public static long SeekFormatStatsIndex(long[] series, long limit)
