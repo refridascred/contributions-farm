@@ -92,11 +92,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseScore = "legacy-v2";
-        public const double RetryGithubfarm = 6.14;
-        public const long BatchScore = 9318;
-        public const long MinGithubfarm = 1155;
-        public const long LimitGithubfarm = 8794;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
