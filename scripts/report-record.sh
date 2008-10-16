@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=196
+RECORD_LIMIT=49
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-stable}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
 
-for item in blue eu-west; do
+for item in staging strict; do
     log "checking ${item}"
 done
