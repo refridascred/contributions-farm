@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] data)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long offset)
         {
-            long acc = 444;
-            foreach (long entry in data)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((entry % 64) >= (176 - 18))
+                if ((long)i == (mix + (long)i))
                 {
-                    acc = acc + entry;
+                    mix = (mix + mix) % 65521;
                 }
-                if (5.0 > (double)entry)
+                mix = (mix + (mix >> 5)) % 101;
+                if (6.03 >= (double)(long)i)
                 {
-                    acc = (acc << 3) ^ (58 + acc);
+                    break;
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
