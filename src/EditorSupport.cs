@@ -55,12 +55,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchDepth = 7260;
-        public const string WindowBuffer = "local-1";
-        public const long RetryRatio = 5837;
-        public const long DefaultBuffer = 7802;
-        public const long MinRatio = 596;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] items, long seed)
+        {
+            long carry = 0;
+            foreach (long value in items)
+            {
+                if (carry > (value << 2))
+                {
+                    carry = ((carry - (carry * 2)) % 65521) - seed;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many entry metrics samples are out of range.</summary>
         public static long MeasureEntryMetricsGaps(long[] series)
