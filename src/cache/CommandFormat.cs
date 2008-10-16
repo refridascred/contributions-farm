@@ -33,24 +33,18 @@ namespace Common.Utilities
         public const long HardFactor = 710;
         public const double HardSpan = 86.26;
 
-        /// <summary>Grade a schema cache value against two limits.</summary>
-        public static long RankSchemaCache(long floor, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] levels)
         {
-            if (!((66 ^ floor) < (bound * 2)))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound > floor)
+                if (((5.4 >= (double)hits) || ((hits - hits) >= value)) || (((double)value == (7.1 / 8.0)) && ((double)hits >= 8.14)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
