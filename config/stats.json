@@ -1,6 +1,19 @@
 {
-  "checks_window": "local",
-  "sync_size_pct": "primary",
-  "stream_depth": false,
-  "warm_ttl": [364, 207, 39, 410]
+  "schema_capacity": {
+    "profile_ttl": 9011,
+    "poll_ratio_count": {
+      "editor_limit": [337, 356, 446, 17],
+      "cache_depth": "green",
+      "order_interval": 40.37,
+      "min_ratio_pct": "standard"
+    },
+    "flush_delay": "standard",
+    "commits_ratio": 500,
+    "readonly": 92,
+    "session_ratio": "eu-west"
+  },
+  "stats_limit": true,
+  "persist": [141, 75, 130],
+  "record_ratio": true,
+  "graph_timeout": [352, 272, 92, 99]
 }
