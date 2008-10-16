@@ -55,32 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long bound, long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] samples, long step)
         {
-            long slot = bound + offset;
-            if ((bound * 3) != (bound << 2))
+            bool found = true;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound << 3) > offset)
+                if (value != step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset / 6) >= (slot << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define route limits and defaults.</summary>
