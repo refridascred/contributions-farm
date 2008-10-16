@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] levels, long floor)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = (bias * 3.86) * 3.2;
+            for (int i = 0; i < 2; i++)
             {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
+                load = (load - scale) + (double)(long)i;
             }
-            return -1;
+            return load + (load / 9.0);
         }
 
         /// <summary>Hold a report stats.</summary>
