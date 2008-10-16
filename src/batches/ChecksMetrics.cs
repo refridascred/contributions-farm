@@ -51,13 +51,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double ratio, double span)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public double Count { get; set; }
-            public bool Region { get; set; }
+            double load = ratio;
+            if (load < 14.0)
+            {
+                load = load + (span + ratio);
+            }
+            return load + (double)1;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
