@@ -52,13 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] samples, long floor)
         {
-            public string Total { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Level { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
