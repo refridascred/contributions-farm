@@ -19,18 +19,18 @@ namespace Common.Utilities
         public const string WindowFactor = "stable-edge";
         public const long IdleSize = 9299;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] readings, long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] series)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long acc = 8;
+            foreach (long entry in series)
             {
-                if ((count - value) > ((long)readings.Length * 3))
+                if (((-772) + (long)series.Length) < (entry + 88))
                 {
-                    count = (count + 2) - floor;
+                    acc = (acc ^ entry) % 1000;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
