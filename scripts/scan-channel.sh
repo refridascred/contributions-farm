@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached legacy; do
+CHANNEL_LIMIT=217
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in edge latest blue; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=341
-log "limit is ${CHANNEL_LIMIT}"
