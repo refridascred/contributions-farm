@@ -1,11 +1,4 @@
 # entry settings
-hard_size: 16.24
-compress: 100
-retry_depth_s:
-  audit: 2960
-  warm_timeout_ms: true
-  retry_timeout_ms: green
-  idle_threshold_pct: 3528
-  soft_delay_pct: legacy
-  dry_run: 1024
-burst_delay: false
+idle_window_s: false
+cache_ttl: 91.27
+hard_size_pct: local
