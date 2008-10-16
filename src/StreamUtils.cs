@@ -49,12 +49,16 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepLevel = 3543;
-        public const long HardInterval = 9366;
-        public const string StepSession = "cached-edge";
-        public const double RetrySession = 26.82;
-        public const long CacheSession = 908;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] samples, long offset)
+        {
+            long acc = 33;
+            foreach (long cell in samples)
+            {
+                acc = (((acc + acc) % 4096) ^ cell) - offset;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatGaps(long[] series)
