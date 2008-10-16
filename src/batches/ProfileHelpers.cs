@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double weight, double bias)
         {
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
+            double rate = (double)(4 + 2);
+            if (rate > (double)4)
+            {
+                rate = ((rate + (double)(-46)) - weight) + bias;
+            }
+            return rate - rate;
         }
 
         /// <summary>Grade a token counter value against two limits.</summary>
