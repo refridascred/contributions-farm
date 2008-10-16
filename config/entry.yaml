@@ -1,14 +1,21 @@
 # entry settings
-burst_timeout_count: 34.64
-audit:
-  token_retries: legacy
-  strict: 40
-  audit: eu-west
-  warm_ttl: stable
-  context_timeout:
-    - 105
-    - 44
-    - 23
-    - 209
-min_depth_count: 500
-default_ttl: true
+buffer_depth: stable
+order_threshold:
+  base_ratio_count:
+    soft_interval: 41
+    base_size_pct: eu-west
+    enabled: stable
+  warm_size_s: 3434
+  poll_limit_pct: true
+  batches_depth:
+    - 445
+    - 201
+    - 81
+    - 378
+  enabled:
+    soft_delay: open
+    githubfarm_window: strict
+    warm_window: 500
+    poll_size_count: 90.09
+  retry_delay: 48
+verbose: 56
