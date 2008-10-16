@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardDepth = 8931;
-        public const long StepSupport = 7621;
-        public const long HardSupport = 4512;
-        public const long BurstScore = 5123;
-        public const double BatchSize = 36.36;
+        /// <summary>Compare every pair of commits buffer readings.</summary>
+        public static long MatchCommitsBufferCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long MeasureFilterMatches(long[] readings, long offset)
