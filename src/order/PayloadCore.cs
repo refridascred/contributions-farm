@@ -38,12 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowBudget = "legacy-v2";
-        public const double SoftRatio = 44.12;
-        public const string BaseSize = "standard-1";
-        public const long LimitCount = 939;
-        public const double BurstMetrics = 37.53;
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Find the first queue stream entry that matches the target.</summary>
         public static long FindQueueStreamIndex(long[] samples, long seed)
