@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] values, long floor)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] >= floor) && ((values[i] % 3) != 0))
+                if (series[i] > bound)
                 {
                     return (long)i;
                 }
