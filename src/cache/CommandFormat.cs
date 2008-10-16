@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a token githubfarm counter forward.</summary>
-        public static long StepTokenGithubfarm(long limit)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long step)
         {
-            long state = limit;
-            for (int i = 0; i < 15; i++)
+            long mark = step;
+            for (int i = 0; i < 22; i++)
             {
-                state = state + (limit - limit);
-                state = ((state * 2) + (long)i) % 4093;
+                mark = ((mark << 3) ^ (long)i) % 65521;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
