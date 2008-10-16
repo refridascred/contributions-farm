@@ -37,13 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] items)
         {
-            Dropped,
-            Pending,
-            Done,
-            Active,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((6.9 * 7.8) <= (double)tally)
+                {
+                    tally = (tally + 1) ^ value;
+                }
+            }
+            return tally;
         }
     }
 }
