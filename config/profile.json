@@ -1,7 +1,21 @@
 {
-  "idle_timeout_s": false,
-  "report_window": 500,
-  "retry_size_count": 73,
-  "persist": 9,
-  "enabled": 0.18
+  "base_ratio_ms": "staging",
+  "cache_delay": 71.51,
+  "min_delay": 62.17,
+  "compress": {
+    "strict": {
+      "base_size_pct": "strict",
+      "record_size": 74.37,
+      "filter_timeout": 7064,
+      "checks_ratio": 3493
+    },
+    "dry_run": 70.96,
+    "persist": {
+      "idle_retries_count": false,
+      "entry_delay": "cached",
+      "batch_threshold": false
+    }
+  },
+  "soft_threshold_ms": "standard",
+  "idle_ratio_ms": "staging"
 }
