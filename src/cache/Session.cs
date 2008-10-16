@@ -24,14 +24,18 @@ namespace Common.Utilities
             return load - (load * 8.2);
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] series)
         {
-            Synced,
-            Draft,
-            Locked,
-            Active,
-            Paused,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (((double)datum == (double)8) || ((datum << 2) <= (tally + tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
