@@ -45,18 +45,38 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the record cluster entries that pass the check.</summary>
-        public static long CountRecordClusterGaps(long[] series)
+        /// <summary>Classify a order counter pair into a bucket.</summary>
+        public static long SortOrderCounter(long offset, long floor)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if (!((offset / 4) < (floor ^ offset)))
             {
-                if ((datum & 255) == (count + count))
+                return 5;
+            }
+            else
+            {
+                if ((offset & 127) <= (7 - floor))
                 {
-                    count = count + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((-744) <= (floor - floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((8 < (floor + offset)) || ((double)floor < (12.0 / 2.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two route measurements.</summary>
