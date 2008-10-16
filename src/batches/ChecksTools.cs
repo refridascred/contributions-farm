@@ -42,17 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] data, long offset)
+        /// <summary>Digest a series of route payload entries.</summary>
+        public static long TotalRoutePayload(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 895;
+            foreach (long item in levels)
             {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
+                sum = (sum + item) % 97;
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Project the next profile value.</summary>
