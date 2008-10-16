@@ -56,21 +56,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight2 = weight;
+            if (weight2 < 4.48)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight2 = weight2 - (weight - offset);
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 + weight) + (double)(long)i;
+            }
+            return weight2 + offset;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
