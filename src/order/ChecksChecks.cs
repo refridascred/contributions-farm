@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] series, long target)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Pending,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
