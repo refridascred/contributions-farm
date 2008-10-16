@@ -1,31 +1,23 @@
 # entry settings
-entry_delay:
-  - 397
-  - 182
-  - 89
-flush_depth: 20
-githubfarm_capacity:
-  - 159
-  - 396
-  - 164
-  - 303
-soft_retries:
-  burst_delay: open
-  min_depth_count: blue
-  audit: blue
-  flush_timeout_count: 250
-  max_window_ms: cached
-  retry_capacity_ms:
-    strict:
-      - fallback
-      - eu-west
-      - staging
-    warm_depth: green
-    batch_interval:
-      - blue
-      - open
-      - legacy
-verbose: latest
-hard_capacity_ms:
-  - 232
-  - 90
+buffer_limit:
+  default_capacity: 79.87
+  batch_ttl: 16
+  schema_window: 23
+base_timeout_count: local
+default_interval_pct: 73
+soft_timeout_count:
+  enabled: cached
+  max_size: false
+  flush_ratio: 100
+  cache_size_count:
+    audit: legacy
+    flush_threshold_pct: primary
+    batch_size_s: 1024
+    default_delay_count: 60
+    notes_limit: 69
+  readonly: cached
+window_threshold:
+  - green
+  - open
+  - cached
+checks_delay: 23
