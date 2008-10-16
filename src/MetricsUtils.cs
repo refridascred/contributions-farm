@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] values)
         {
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
-            public double Mode { get; set; }
+            long anchor = 481;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    anchor = (((anchor * 5) + (anchor % 60)) % 97) ^ (long)i;
+                }
+                if ((sample > (sample + sample)) || ((-597) <= (sample ^ sample)))
+                {
+                    anchor = anchor ^ (sample - sample);
+                }
+                if (3 < (anchor - sample))
+                {
+                    anchor = (anchor ^ ((long)values.Length % 100)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
