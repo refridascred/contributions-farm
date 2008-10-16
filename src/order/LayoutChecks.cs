@@ -27,21 +27,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((cell + 499) <= score)
                 {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = score ^ (score - score);
+                }
+                else
+                {
+                    score = score - cell;
                 }
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Classify a counter farm pair into a bucket.</summary>
