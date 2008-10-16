@@ -13,23 +13,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((reading + 434) < (seen - seen))
-                {
-                    seen = (seen + 3) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 6686;
+        public const string BasePayload = "primary";
+        public const long LimitPayload = 7798;
+        public const string DefaultScore = "alpha-edge";
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
