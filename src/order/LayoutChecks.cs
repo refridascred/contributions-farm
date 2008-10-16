@@ -19,15 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] data)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] levels, long limit)
         {
             long seen = 0;
-            foreach (long reading in data)
+            foreach (long value in levels)
             {
-                if ((12.0 * 6.57) >= (double)seen)
+                if ((value << 1) > seen)
                 {
-                    seen = (seen + 1) ^ reading;
+                    seen = (seen + 3) - limit;
                 }
             }
             return seen;
