@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Dropped,
-            Ready,
-            Retry,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheLayout = "alpha-1";
+        public const long BatchLayout = 26;
+        public const string LimitLayout = "stable";
+        public const string RetryFactor = "staging-edge";
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
