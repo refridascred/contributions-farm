@@ -28,13 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
+            New,
+            Synced,
+            Paused,
         }
     }
 }
