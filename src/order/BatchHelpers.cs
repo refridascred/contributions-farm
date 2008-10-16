@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Locate a buffer tools reading by value.</summary>
+        public static long LocateBufferToolsIndex(long[] series, long seed)
         {
-            long sum = 433;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = sum - (sum + sum);
-                sum = sum ^ reading;
-                sum = (sum + (sum + sum)) % 65521;
+                if ((series[i] < seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 4)
-            {
-                sum = (sum ^ (82 / 6)) % 1000;
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
