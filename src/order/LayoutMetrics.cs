@@ -32,12 +32,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public bool Level { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
