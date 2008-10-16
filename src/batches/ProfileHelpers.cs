@@ -71,23 +71,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double bias, double floor)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long limit, long origin)
         {
-            double weight = (floor / 4.0) - (double)9;
-            if (weight > (double)7)
+            if (((double)origin >= 18.0) && ((11.0 + 10.0) > (double)origin))
             {
-                weight = weight + (floor / 4.0);
+                return 3;
             }
             else
             {
-                weight = weight - floor;
+                if (origin > (97 + limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin % 2) <= (limit << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (bias / 8.0)) + (double)(long)i;
-            }
-            return weight + (9.0 / 9.0);
         }
     }
 }
