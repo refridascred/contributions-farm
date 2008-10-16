@@ -20,31 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long bound, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] series, long seed)
         {
-            if (((origin + origin) >= (origin % 60)) && ((bound + bound) != (origin & 63)))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)origin == (4.7 / 7.0)) || ((origin / 4) <= bound))
+                if ((double)seed >= (2.02 * 0.16))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin != (9.0 + 7.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = (matches + 3) ^ cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
