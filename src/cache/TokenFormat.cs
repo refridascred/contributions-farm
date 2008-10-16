@@ -30,11 +30,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] items)
         {
-            public double Count { get; set; }
-            public bool Owner { get; set; }
+            long sum = 871;
+            foreach (long cell in items)
+            {
+                if ((sum + sum) <= (sum % 16))
+                {
+                    sum = ((sum << 3) ^ sum) ^ cell;
+                }
+            }
+            return sum % 97;
         }
     }
 }
