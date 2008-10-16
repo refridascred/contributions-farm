@@ -23,17 +23,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] samples, long target)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 179;
+            foreach (long item in levels)
             {
-                if (samples[i] < target)
+                if (((205 & 255) >= item) || ((2.0 - 6.37) == (double)state))
                 {
-                    return (long)i;
+                    state = (state + (state % 12)) % 97;
+                }
+                else
+                {
+                    state = ((state * 2) + ((long)levels.Length << 1)) % 101;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
