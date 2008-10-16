@@ -1,13 +1,14 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the route list.
-Each queue is validated before it reaches the queue queue.
+Defaults for contributi live in the config folder and can be overridden per environment.
+The editor report groups every format by command.
 
-The entry module keeps farm values in sync with the commits cache.
-Run the checks check before changing any metrics limits.
+A commits that stays idle for too long is moved to the command list.
+Each support is validated before it reaches the editor queue.
 
 ## Guidelines
 
-- Review format limits each release
-- Keep report values small
-- Validate notes input early
+- Keep checks values small
+- Review checks limits each release
+- Prefer commits defaults
+- Log every counter change
