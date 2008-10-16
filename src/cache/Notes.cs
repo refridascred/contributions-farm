@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Derive the next metric githubfarm value from a seed.</summary>
+        public static long RollMetricGithubfarm(long step)
         {
-            Failed,
-            Idle,
-            Active,
-            Draft,
+            long carry = step;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = ((carry << 3) ^ ((long)i + step)) % 255;
+                carry = (carry + (step + (long)i)) % 101;
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the queue report series from a seed.</summary>
