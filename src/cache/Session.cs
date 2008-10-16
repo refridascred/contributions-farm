@@ -49,11 +49,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchDepth = 4699;
-        public const string HardChecks = "fallback-v2";
-        public const long IdleBudget = 8704;
-        public const long BurstSpan = 7681;
-        public const long LimitChecks = 1695;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((6.25 + 7.13) >= (double)count)
+                {
+                    count = ((count + 1) + value) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
