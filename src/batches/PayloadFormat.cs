@@ -54,13 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Audit order githubfarm readings against a rule.</summary>
+        public static long AuditOrderGithubfarmHits(long[] readings, long seed)
         {
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)tally <= (double)69)
+                {
+                    tally = ((tally + 1) - sample) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a token summary.</summary>
