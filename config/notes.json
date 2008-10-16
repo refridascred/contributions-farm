@@ -1,5 +1,5 @@
 {
-  "verbose": 48,
-  "filter_timeout": false,
-  "token_depth": 73.08
+  "enabled": "latest",
+  "sync_limit_s": "strict",
+  "min_window_ms": "legacy"
 }
