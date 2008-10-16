@@ -28,11 +28,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] series, long floor)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            long total = 8;
+            foreach (long reading in series)
+            {
+                if (((floor + floor) >= (floor + total)) || ((total >> 3) >= reading))
+                {
+                    total = (total + floor) % 1000;
+                }
+                else
+                {
+                    total = (total * 3) + (total + total);
+                }
+            }
+            return total;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
