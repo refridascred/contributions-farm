@@ -44,13 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Count the entry tools entries that pass the check.</summary>
+        public static long TallyEntryToolsHits(long[] readings)
         {
-            public bool Region { get; set; }
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (((double)tally >= (double)item) && ((tally % 12) == (tally + item)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
