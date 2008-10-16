@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] series, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((double)origin > 7.0)
-                {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 10.2;
+        public const long BatchWindow = 7432;
+        public const long CacheInterval = 4684;
+        public const long BaseTimeout = 7177;
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
