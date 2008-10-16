@@ -1,19 +1,7 @@
 # support settings
-burst_interval:
-  sync_limit_pct: 21
-  base_timeout:
-    - 123
-    - 222
-    - 459
-    - 142
-  poll_delay_s: false
-  retry_limit_pct: false
-  readonly: true
-  compress: 21.47
-base_depth_pct: 100
-max_window_count:
-  sync_retries: cached
-  default_window_count: false
-  batch_interval_ms: standard
-  enabled: fallback
-  cache_timeout_s: edge
+flush_window_s: 1024
+githubfarm_interval: primary
+min_threshold: cached
+hard_interval:
+  - 444
+  - 302
