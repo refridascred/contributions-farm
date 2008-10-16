@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first token route entry that matches the target.</summary>
-        public static long LocateTokenRouteIndex(long[] data, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 1;
+            foreach (long reading in items)
             {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
+                mark = (mark * 4) + (reading + bound);
             }
-            return -1;
+            if (mark > 707)
+            {
+                mark = ((mark * 2) + (301 + bound)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a report summary.</summary>
