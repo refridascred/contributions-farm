@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a channel farm pair into a bucket.</summary>
-        public static long ClassifyChannelFarm(long target, long limit)
-        {
-            if (!((double)target != (6.2 - 4.4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((limit + target) < (target - target)) && ((limit % 64) < (target / 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target > (limit + limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardDepth = 51.41;
+        public const string BaseAlready = "primary-v2";
+        public const string BatchAlready = "strict-edge";
+        public const long BaseCount = 2560;
 
         /// <summary>Blend two window contributi measurements.</summary>
         public static double ScaleWindowContributi(double rate, double offset)
