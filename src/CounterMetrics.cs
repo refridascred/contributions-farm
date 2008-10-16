@@ -20,21 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] == seed)
                 {
-                    if ((series[i] ^ series[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
