@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a counter graph sample.</summary>
-        public static long SeekCounterGraphIndex(long[] levels, long offset)
+        /// <summary>Look up the position of a context tools sample.</summary>
+        public static long FindContextToolsIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 5) == 0))
+                if ((samples[i] > floor) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
