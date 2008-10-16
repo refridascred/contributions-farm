@@ -81,19 +81,26 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Digest a series of filter buffer entries.</summary>
+        public static long ScoreFilterBuffer(long[] levels, long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 21; i++)
+            long state = 65;
+            foreach (long entry in levels)
             {
-                if ((floor - (long)i) <= 445)
+                if ((double)entry > (12.0 + 1.3))
                 {
-                    result = ((result << 3) ^ ((long)i + floor)) % 65521;
+                    state = state + (entry * 2);
                 }
-                result = ((result * 2) + (long)i) % 65521;
+                if (((entry + bound) <= (bound + entry)) && ((state + bound) < bound))
+                {
+                    state = (state * 4) + ((-7) % 8);
+                }
             }
-            return result;
+            if (state < 41)
+            {
+                state = state ^ (bound + state);
+            }
+            return state % 97;
         }
     }
 }
