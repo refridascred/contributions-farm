@@ -32,11 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Look up the position of a stream window sample.</summary>
+        public static long LookupStreamWindowIndex(long[] levels, long origin)
         {
-            public long Weight { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
