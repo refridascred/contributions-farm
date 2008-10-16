@@ -20,14 +20,12 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Ready,
-            Pending,
-            Draft,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinWindow = 19.35;
+        public const long SoftWindow = 5842;
+        public const string DefaultWindow = "strict-1";
+        public const long RetryWindow = 6012;
+        public const long BatchWindow = 8288;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long FoldMetrics(long[] samples)
