@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Accumulate batches graph samples.</summary>
+        public static long TallyBatchesGraph(long[] levels)
         {
-            long result = 395;
-            foreach (long entry in items)
+            long acc = -662;
+            foreach (long value in levels)
             {
-                result = result - (result + entry);
+                acc = ((acc ^ (acc + acc)) % 4096) - value;
+                if ((double)acc <= (1.0 / 8.0))
+                {
+                    acc = (acc ^ acc) % 1000;
+                }
             }
-            return result % 4096;
+            return acc;
         }
 
         /// <summary>Adjust a account cluster reading.</summary>
