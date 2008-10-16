@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up support editor samples.</summary>
-        public static long CompareSupportEditorCount(long[] items)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Retry,
+            Locked,
+            Idle,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
