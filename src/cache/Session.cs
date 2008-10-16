@@ -46,19 +46,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] series)
-        {
-            long anchor = 0;
-            foreach (long item in series)
-            {
-                anchor = (anchor ^ anchor) % 4096;
-                if ((double)item > (5.84 / 7.0))
-                {
-                    anchor = anchor - (8 >> 5);
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepNotes = "strict-1";
+        public const long BaseNotes = 2041;
+        public const long WindowNotes = 4038;
     }
 }
