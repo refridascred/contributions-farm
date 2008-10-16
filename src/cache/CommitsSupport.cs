@@ -101,18 +101,19 @@ namespace Common.Utilities
             return bias2 - (6.0 + bias2);
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] items, long seed)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((matches << 2) != (item - matches))
+                if (item <= target)
                 {
-                    matches = (matches + 2) + seed;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
