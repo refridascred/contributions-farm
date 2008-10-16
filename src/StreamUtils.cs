@@ -68,12 +68,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double rate, double bias)
         {
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
+            double bias2 = bias - (double)850;
+            if (bias2 >= 9.95)
+            {
+                bias2 = bias2 + rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - (rate / 2.0)) + (double)(long)i;
+            }
+            return bias2 - (rate + rate);
         }
     }
 }
