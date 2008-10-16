@@ -29,10 +29,13 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 9081;
-        public const long MinSize = 18;
-        public const string SoftInterval = "legacy";
-        public const double IdleToken = 8.7;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Stale,
+            Closed,
+            Queued,
+            Dropped,
+        }
     }
 }
