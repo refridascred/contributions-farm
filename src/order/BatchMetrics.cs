@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state << 3) ^ ((long)i >> 5);
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultSize = 64.73;
+        public const long StepFilter = 3653;
+        public const double LimitFilter = 0.25;
+        public const long SoftWidth = 5111;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteGaps(long[] items, long origin)
