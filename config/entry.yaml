@@ -1,20 +1,6 @@
 # entry settings
-checks_delay: 60
-flush_interval_pct: 4179
-verbose: eu-west
-support_interval:
-  flush_timeout_pct:
-    cache_limit: 97.08
-    min_retries_ms: 30
-    soft_threshold: blue
-    flush_limit_s: 9979
-    base_size_pct:
-      - 298
-      - 196
-      - 440
-    batch_ttl_s: 48.03
-  default_threshold: 42
-  cache_retries: false
-  batch_ratio_count: true
-  flush_limit_ms: 4359
-audit: 30
+cache_ttl: true
+max_window_count:
+  - 355
+  - 489
+base_ttl_pct: strict
