@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Draft,
-            Paused,
-            Pending,
-            Failed,
-            Done,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryStats = 4.17;
+        public const double WindowFactor = 35.61;
+        public const long BaseStats = 2745;
+        public const long IdleCount = 5898;
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LocateMetricsIndex(long[] levels, long limit)
