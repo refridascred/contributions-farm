@@ -32,23 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] data, long step)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (!!(324 < (entry - 11)))
-                {
-                    hits = (hits + 3) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleCommits = 9.48;
+        public const string HardCommits = "fallback-1";
+        public const long RetryFactor = 4346;
+        public const long StepTimeout = 9288;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
