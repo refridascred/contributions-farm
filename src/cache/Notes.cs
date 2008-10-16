@@ -16,16 +16,13 @@ namespace Common.Utilities
             return mean - (bias + bias);
         }
 
-        /// <summary>Iterate the queue report series from a seed.</summary>
-        public static long SeriesQueueReport(long limit)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                score = (score ^ (score * 4)) % 4096;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Failed,
+            Retry,
+            Draft,
+            Synced,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
