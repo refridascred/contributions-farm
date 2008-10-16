@@ -44,21 +44,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] values)
+        /// <summary>Combine channel account values into a single score.</summary>
+        public static long FoldChannelAccount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 487;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                carry = (carry - (value % 60)) % 97;
+                carry = (carry ^ ((-2) + carry)) % 101;
+                if ((value + carry) < (carry ^ carry))
                 {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry - (value & 255);
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
