@@ -73,15 +73,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double ratio, double span)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            double load = ratio;
-            if (load < 14.0)
-            {
-                load = load + (span + ratio);
-            }
-            return load + (double)1;
+            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
