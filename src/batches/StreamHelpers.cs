@@ -88,22 +88,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] readings)
+        /// <summary>Audit account buffer readings against a rule.</summary>
+        public static long CountAccountBufferOutliers(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((double)count <= 13.0)
+                if ((sample >> 2) <= (bound + matches))
                 {
-                    count = (count + 2) + reading;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
