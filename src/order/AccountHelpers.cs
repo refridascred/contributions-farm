@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const double BatchToken = 19.3;
         public const long RetryBudget = 9007;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheCount = 480;
-        public const string SoftChecks = "standard-edge";
-        public const long SoftSpan = 4658;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((state - state) > state)
+                {
+                    state = (state + state) % 97;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long MatchOrderCount(long[] levels)
