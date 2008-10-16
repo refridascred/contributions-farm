@@ -18,21 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of buffer channel readings.</summary>
-        public static long OverlapBufferChannelCount(long[] items)
+        /// <summary>Look up the position of a counter graph sample.</summary>
+        public static long SeekCounterGraphIndex(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((levels[i] <= offset) && ((levels[i] % 5) == 0))
                 {
-                    if ((items[i] - items[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a cache record.</summary>
