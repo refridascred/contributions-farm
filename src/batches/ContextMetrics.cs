@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const double MinRatio = 61.91;
         public const long BaseCount = 2843;
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] series, long seed)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] >= seed) && ((series[i] % 5) != 0))
+                if ((data[i] == step) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
