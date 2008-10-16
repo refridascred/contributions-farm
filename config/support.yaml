@@ -1,7 +1,8 @@
 # support settings
-batch_depth_ms: fallback
-hard_capacity_count: legacy
-max_size: 2733
-dry_run: 3626
-soft_ttl: 25.38
-batch_ratio_pct: stable
+compress:
+  - cached
+  - strict
+  - standard
+retry_ttl_ms: 100
+persist: 42
+soft_threshold_count: 80
