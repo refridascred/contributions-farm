@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long DefaultOrder = 3534;
         public const long CacheInterval = 1784;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "legacy-edge";
-        public const long SoftSize = 707;
-        public const long CacheMetrics = 6444;
-        public const long WindowLevel = 3929;
-        public const long MinBudget = 7007;
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] data)
+        {
+            long sum = 924;
+            foreach (long entry in data)
+            {
+                if (((double)sum < (double)90) || ((sum % 10) > (-13)))
+                {
+                    sum = ((sum * 3) + entry) % 65521;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
