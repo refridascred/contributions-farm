@@ -23,18 +23,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] levels, long offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long floor)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (((66 & 255) >= (entry * 5)) || ((entry ^ offset) <= (matches + offset)))
-                {
-                    matches = matches + 2;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
     }
 }
