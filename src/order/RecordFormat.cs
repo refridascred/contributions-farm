@@ -44,21 +44,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up session githubfarm samples.</summary>
-        public static long MatchSessionGithubfarmCount(long[] data)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum * 5) + (floor >> 2)) % 1000;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
     }
 }
