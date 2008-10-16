@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] series)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((reading ^ seen) < (-165))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Retry,
+            Active,
+            Idle,
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
