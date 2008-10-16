@@ -1,12 +1,7 @@
 {
-  "persist": true,
-  "poll_interval_ms": 86.41,
-  "base_retries_ms": "latest",
-  "audit": {
-    "enabled": 49.18,
-    "base_size_ms": 73,
-    "account_ttl": 94,
-    "strict": ["local", "staging"],
-    "window_ttl": "blue"
-  }
+  "contributi_timeout": 25,
+  "hard_interval_pct": ["strict", "legacy", "stable"],
+  "enabled": 90.35,
+  "idle_window": "cached",
+  "default_interval_count": 6159
 }
