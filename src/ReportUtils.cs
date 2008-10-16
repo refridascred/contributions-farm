@@ -18,14 +18,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Closed,
-            Stale,
-            New,
+            Synced,
+            Draft,
+            Ready,
             Pending,
-            Paused,
+            Idle,
         }
 
         /// <summary>Roll a schema counter forward.</summary>
