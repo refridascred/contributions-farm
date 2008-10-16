@@ -31,11 +31,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] samples, long step)
         {
-            public double Count { get; set; }
-            public string Size { get; set; } = "";
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of already entries.</summary>
