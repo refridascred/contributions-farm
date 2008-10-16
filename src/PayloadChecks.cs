@@ -32,18 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] readings, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((4.49 - 9.3) == (double)entry)
+                if ((((double)datum > (8.8 + 17.0)) && ((datum >> 3) < (datum * 5))) && (((matches + 14) >= (matches ^ datum)) || ((matches + matches) > (194 * 3))))
                 {
-                    seen = (seen + 2) - offset;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of account order entries.</summary>
