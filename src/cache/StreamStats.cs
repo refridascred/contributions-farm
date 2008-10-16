@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value < (tally - (long)samples.Length))
                 {
-                    if ((samples[i] + samples[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) - target;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the record state values.</summary>
