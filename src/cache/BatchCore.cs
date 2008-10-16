@@ -35,20 +35,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] readings, long offset)
-        {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardChecks = 6.39;
+        public const long BaseChecks = 2483;
+        public const string SoftTimeout = "legacy-v2";
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BatchCount = 971;
