@@ -82,23 +82,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long bound)
+        /// <summary>Iterate the metric cluster series from a seed.</summary>
+        public static long StepMetricCluster(long target)
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
+            long carry = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((8.3 < (double)bound) || ((98 + state) > ((-222) + 4)))
+                carry = ((carry * 2) + carry) % 101;
+                if ((19.0 / 4.0) == (double)target)
                 {
-                    state = ((state << 3) ^ (bound % 7)) % 255;
+                    carry = (carry ^ carry) % 255;
+                    carry = ((carry * 2) + (7 + carry)) % 101;
                 }
-                if (((state / 9) >= (state ^ bound)) || ((double)bound < (6.3 + 5.68)))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    state = (state + ((long)i << 3)) % 4096;
+                    long matches = (target % 3) - carry;
+                    carry = ((carry + (matches + 23)) % 255) + (long)i2;
                 }
-                state = ((state * 2) + (long)i) % 65521;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return state;
+            return carry;
         }
     }
 }
