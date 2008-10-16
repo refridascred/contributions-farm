@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Scale a counter route figure with a bias.</summary>
+        public static double BlendCounterRoute(double scale, double floor)
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            double bias = (double)(30 * 3);
+            if (bias >= scale)
+            {
+                bias = bias - (floor / 5.0);
+            }
+            return bias + (double)(-417);
         }
 
         /// <summary>Look up the position of a report sample.</summary>
