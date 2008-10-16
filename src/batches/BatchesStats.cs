@@ -17,17 +17,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] samples, long target)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = -2;
+            foreach (long datum in items)
             {
-                if ((samples[i] > target) && ((samples[i] % 5) == 0))
+                if (7 <= (datum >> 5))
                 {
-                    return (long)i;
+                    total = ((total * 5) + target) % 4096;
                 }
             }
-            return -1;
+            if (total > 201)
+            {
+                total = (total ^ total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Hold a graph info.</summary>
