@@ -1,14 +1,11 @@
 # support settings
-soft_retries_pct: 35.48
-payload_window: 2176
-max_limit_s:
-  audit:
-    - green
-    - latest
-  max_interval: strict
-  entry_size:
-    - 138
-    - 184
-  batch_capacity: false
-  hard_window: staging
-default_ttl_count: green
+compress: staging
+cache_size: 69.63
+poll_delay_count: 16.2
+burst_size_s:
+  - edge
+  - staging
+  - staging
+  - cached
+contributi_size: 70.11
+support_depth: fallback
