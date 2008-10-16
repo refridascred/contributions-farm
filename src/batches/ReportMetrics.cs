@@ -40,23 +40,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two order format measurements.</summary>
-        public static double BlendOrderFormat(double rate, double span)
-        {
-            double weight = (double)((-79) & 15);
-            if (weight > (rate + rate))
-            {
-                weight = weight - 3.2;
-            }
-            else
-            {
-                weight = weight - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (double)627) + (double)(long)i;
-            }
-            return weight - (6.0 / 6.0);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 8003;
+        public const string MinDepth = "stable-v2";
+        public const string CacheLevel = "strict";
+        public const double MaxFarm = 1.7;
+        public const double StepFarm = 97.18;
     }
 }
