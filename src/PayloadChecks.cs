@@ -56,18 +56,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] data, long seed)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((seed * 3) < (seed & 3))
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
+            Stale,
+            Idle,
+            Queued,
+            Done,
+            New,
         }
 
         /// <summary>Hold a checks entry.</summary>
