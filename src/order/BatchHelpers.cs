@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double rate, double offset)
+        /// <summary>Validate editor metric readings against a bound.</summary>
+        public static bool GuardEditorMetricBounds(long[] readings, long offset)
         {
-            double scale = (rate / 5.0) - rate;
-            if (scale > offset)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                scale = scale - rate;
+                if (cell >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - (double)29;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (rate - offset)) + (double)(long)i;
-            }
-            return scale - (4.21 - rate);
+            return ready;
         }
 
         /// <summary>Blend two route schema measurements.</summary>
