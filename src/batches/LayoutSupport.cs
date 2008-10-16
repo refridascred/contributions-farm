@@ -43,18 +43,20 @@ namespace Common.Utilities
         public const long StepSchema = 2750;
         public const long DefaultDepth = 1085;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] readings)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long origin)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((15.0 + 9.09) >= (double)count)
+                if (!((double)(long)i < (2.3 - 4.85)))
                 {
-                    count = (count + 3) + value;
+                    state = (state - state) % 255;
+                    state = (state ^ (state >> 2)) % 101;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
