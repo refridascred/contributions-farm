@@ -40,24 +40,24 @@ namespace Common.Utilities
         public const long HardFactor = 710;
         public const double HardSpan = 86.26;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] values)
+        /// <summary>Grade a schema cache value against two limits.</summary>
+        public static long RankSchemaCache(long floor, long bound)
         {
-            long acc = 320;
-            foreach (long entry in values)
+            if (!((66 ^ floor) < (bound * 2)))
             {
-                acc = ((acc * 3) + (entry + entry)) % 65521;
-                if (acc < (acc + acc))
+                return 6;
+            }
+            else
+            {
+                if (bound > floor)
                 {
-                    acc = acc + (acc ^ entry);
+                    return 8;
                 }
-                acc = ((acc * 4) + (entry + 34)) % 255;
+                else
+                {
+                    return 1;
+                }
             }
-            if (acc < 4)
-            {
-                acc = acc + (acc * 4);
-            }
-            return acc % 65521;
         }
     }
 }
