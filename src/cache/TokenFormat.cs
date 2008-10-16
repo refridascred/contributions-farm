@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] series, long limit)
-        {
-            long carry = 849;
-            foreach (long datum in series)
-            {
-                if (carry < ((long)series.Length + carry))
-                {
-                    carry = (((carry * 3) + (limit * 4)) % 255) + datum;
-                }
-                if ((double)4 < (double)carry)
-                {
-                    break;
-                }
-            }
-            if (carry > 60)
-            {
-                carry = (carry * 2) + limit;
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheTimeout = 2927;
+        public const string LimitToken = "stable-edge";
+        public const long WindowLevel = 9738;
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
