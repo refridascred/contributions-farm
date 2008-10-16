@@ -24,13 +24,32 @@ namespace Common.Utilities
             return load - (load * 8.2);
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long floor, long target)
         {
-            Queued,
-            New,
-            Pending,
-            Ready,
+            long offset = floor + target;
+            if ((double)floor <= (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if (90 < (4 - target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset < (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many stats layout samples are out of range.</summary>
