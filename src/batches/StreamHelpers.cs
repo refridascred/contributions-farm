@@ -47,22 +47,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] series, long floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long total = 8;
-            foreach (long reading in series)
-            {
-                if (((floor + floor) >= (floor + total)) || ((total >> 3) >= reading))
-                {
-                    total = (total + floor) % 1000;
-                }
-                else
-                {
-                    total = (total * 3) + (total + total);
-                }
-            }
-            return total;
+            Stale,
+            Locked,
+            Paused,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
