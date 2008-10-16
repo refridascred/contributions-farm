@@ -62,12 +62,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 1299;
-        public const long IdleSupport = 11;
-        public const long MaxSupport = 3328;
-        public const double LimitSpan = 60.03;
-        public const long WindowFactor = 6981;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] data, long target)
+        {
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool ValidateAccountLimits(long[] levels, long seed)
