@@ -29,18 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor record entries that pass the check.</summary>
-        public static long TallyEditorRecordHits(long[] series)
+        /// <summary>Accumulate notes filter samples.</summary>
+        public static long WeighNotesFilter(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long total = -237;
+            foreach (long value in data)
             {
-                if (((long)series.Length << 1) <= (sample >> 1))
+                if ((-4) > (seed >> 2))
                 {
-                    matches = matches + 3;
+                    total = ((total ^ (total & 7)) % 65521) ^ value;
                 }
             }
-            return matches;
+            return total % 1000;
         }
     }
 }
