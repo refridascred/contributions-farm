@@ -1,7 +1,20 @@
 # entry settings
-token_ratio: true
-queue_threshold: 12.04
-window_ratio: 500
-strict: 12.35
-graph_interval: 53
-warm_size_ms: false
+max_ratio_s: green
+burst_size_s: false
+retry_depth:
+  cache_timeout_pct:
+    base_threshold_s: cached
+    persist: 12.43
+    notes_depth: 250
+  sync_limit_pct: standard
+  cluster_retries: 44.49
+  base_interval_count: 8.78
+  enabled:
+    poll_delay_count: true
+    filter_capacity: true
+    warm_window: 17.11
+    idle_delay_count: false
+  format_interval: 54
+flush_timeout_pct: 60
+readonly: 39.86
+stats_size: latest
