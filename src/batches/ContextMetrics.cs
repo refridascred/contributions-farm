@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
+        public static long CountSchemaGithubfarmGaps(long[] samples)
         {
-            public double Level { get; set; }
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (((6.11 * 0.42) < (double)sample) && (((tally + sample) == (sample - sample)) || ((sample ^ tally) <= (long)samples.Length)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of report buffer entries.</summary>
