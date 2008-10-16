@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] samples)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long acc = 6;
-            foreach (long datum in samples)
-            {
-                if (!((864 >> 2) <= datum))
-                {
-                    acc = ((acc * 3) + (datum >> 4)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ 820) % 4096;
-                }
-            }
-            return acc;
+            New,
+            Paused,
+            Queued,
         }
 
         /// <summary>Count the graph buffer entries that pass the check.</summary>
