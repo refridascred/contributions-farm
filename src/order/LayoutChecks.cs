@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] items, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (((count / 7) <= (count + count)) || (((count & 63) <= (item & 15)) && (limit < ((-360) * 2))))
+                if ((cell & 255) > (long)samples.Length)
                 {
-                    count = count + 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
