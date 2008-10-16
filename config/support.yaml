@@ -1,4 +1,18 @@
 # support settings
-support_capacity: false
-retry_window: true
-burst_size_ms: 62.73
+githubfarm_limit:
+  idle_delay_s: 22
+  min_limit: latest
+  max_threshold: eu-west
+  default_depth_pct:
+    - edge
+    - local
+    - edge
+    - edge
+  compress: 76
+  support_ttl: edge
+checks_delay: green
+buffer_delay: eu-west
+flush_ttl_s:
+  - edge
+  - blue
+  - primary
