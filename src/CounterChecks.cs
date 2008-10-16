@@ -72,19 +72,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] data, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (entry < offset)
+                if (((0.9 / 2.0) >= (double)origin) || (count < entry))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
