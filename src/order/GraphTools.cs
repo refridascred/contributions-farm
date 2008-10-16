@@ -12,18 +12,32 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit metrics cache readings against a rule.</summary>
-        public static long CountMetricsCacheHits(long[] samples)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long step, long offset)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long bound = step + offset;
+            if ((offset >> 1) < (bound + (-53)))
             {
-                if ((double)value >= (double)tally)
+                return 3;
+            }
+            else
+            {
+                if ((7.4 * 9.17) != (double)step)
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((step - bound) < (4 & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
