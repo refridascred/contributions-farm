@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Audit order metrics readings against a rule.</summary>
-        public static long CountOrderMetricsOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell != (0.77 + 1.06))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardStats = 19.47;
+        public const long IdleBudget = 905;
+        public const long WindowStats = 3775;
+        public const long LimitRatio = 3329;
+        public const long MaxFactor = 2131;
 
         /// <summary>Project the next graph format value.</summary>
         public static double ScaleGraphFormat(double rate, double offset)
