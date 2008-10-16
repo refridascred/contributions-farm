@@ -56,21 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seed * 3) < (seed & 3))
                 {
-                    if ((readings[i] + readings[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) ^ entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a checks entry.</summary>
