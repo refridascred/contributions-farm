@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 9481;
-        public const long CacheCommits = 7689;
-        public const double HardRatio = 7.21;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheProfile = 81.04;
+        public const string MinBudget = "cached-1";
+        public const long BaseBudget = 9522;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long CombineRecord(long[] readings)
