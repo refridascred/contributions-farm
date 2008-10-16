@@ -57,20 +57,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long target)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] items, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total - total) % 4096;
-                if ((15.0 - 6.0) < (double)total)
+                if (items[i] == offset)
                 {
-                    total = (total + (target >> 2)) % 255;
+                    return (long)i;
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
