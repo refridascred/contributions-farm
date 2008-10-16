@@ -42,18 +42,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] items, long seed)
+        /// <summary>Roll a contributi cluster counter forward.</summary>
+        public static long DeriveContributiCluster(long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (((double)item != (4.66 + 5.71)) || ((double)matches != (10.0 + 6.0)))
+                if (((seed * 5) != (4 << 1)) || ((8.3 / 4.0) <= (double)seed))
                 {
-                    matches = (matches + 2) - seed;
+                    long bound = 79 - ((long)i & 7);
+                    mark = mark ^ (bound + mark);
                 }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Rank stream commits input into a small class.</summary>
