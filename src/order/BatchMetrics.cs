@@ -75,20 +75,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] data)
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
+            long result = 840;
+            foreach (long item in data)
             {
-                if (4.46 >= (double)step)
-                {
-                    carry = ((carry * 5) + (long)i) % 1000;
-                    carry = (carry + (carry % 64)) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                result = (result ^ (result + item)) % 255;
             }
-            return carry;
+            if (result > (-491))
+            {
+                result = result + result;
+            }
+            return result % 4096;
         }
     }
 }
