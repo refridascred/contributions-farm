@@ -39,21 +39,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] samples)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 45;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (((acc * 3) + seed) % 4096) ^ sample;
             }
-            return matches;
+            return acc % 1000;
         }
     }
 }
