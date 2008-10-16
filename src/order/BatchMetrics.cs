@@ -23,11 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double gain, double bias)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] items)
         {
-            double rate = gain;
-            return rate - bias;
+            long acc = 46;
+            foreach (long cell in items)
+            {
+                if ((cell + cell) <= (7 & 63))
+                {
+                    acc = acc + (acc % 2);
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
