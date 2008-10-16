@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultFilter = "cached-edge";
-        public const double CacheFilter = 87.73;
-        public const double IdleFilter = 29.8;
-        public const long BurstInterval = 2228;
-        public const double LimitDepth = 51.04;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchWindow = 44.66;
+        public const long WindowInterval = 2131;
+        public const long HardWindow = 3520;
+        public const long IdleWindow = 1002;
+        public const long MaxWindow = 2712;
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long DeriveCache(long bound)
