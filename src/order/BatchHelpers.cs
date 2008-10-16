@@ -41,19 +41,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] data, long step)
+        /// <summary>Derive the next stats profile value from a seed.</summary>
+        public static long DeriveStatsProfile(long bound)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (item >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                state = state ^ 0;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return ok;
+            return state;
         }
     }
 }
