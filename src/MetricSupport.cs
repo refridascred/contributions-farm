@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] readings, long limit)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Active,
+            Stale,
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
