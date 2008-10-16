@@ -22,13 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public bool Count { get; set; }
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
+            Paused,
+            Draft,
+            Done,
+            Ready,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
