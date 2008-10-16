@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long seed, long origin)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            if (seed <= (3 + origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((1.8 * 0.34) != (double)origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Locked,
+            Pending,
+            Draft,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
