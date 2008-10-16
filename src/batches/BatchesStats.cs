@@ -16,12 +16,18 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] samples, long origin)
         {
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            long result = 7;
+            foreach (long reading in samples)
+            {
+                if ((double)origin >= 2.2)
+                {
+                    result = (result - (origin & 15)) ^ reading;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a profile header.</summary>
