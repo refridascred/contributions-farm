@@ -41,18 +41,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] levels)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (tally < (7 / 5))
+                if (item >= step)
                 {
-                    tally = (tally + 3) + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
