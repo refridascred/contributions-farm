@@ -27,19 +27,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] levels, long step)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long offset)
         {
-            long mix = 5;
-            foreach (long value in levels)
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
             {
-                mix = ((mix * 2) + (value / 8)) % 65521;
-                if ((double)step > 16.0)
-                {
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
