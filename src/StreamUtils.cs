@@ -23,17 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a channel batches sample.</summary>
-        public static long LocateChannelBatchesIndex(long[] samples, long floor)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = weight;
+            if (scale > weight)
             {
-                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale + (4.3 * 7.57)) + bias;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (weight + scale)) + (double)(long)i;
+            }
+            return scale - (double)8;
         }
 
         /// <summary>Hold a farm summary.</summary>
