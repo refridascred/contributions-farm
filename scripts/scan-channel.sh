@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=294
-log "limit is ${CHANNEL_LIMIT}"
+for item in latest open edge; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in eu-west staging strict green; do
-    log "checking ${item}"
-done
+mode="${1:-latest}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
