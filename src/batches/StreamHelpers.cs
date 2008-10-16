@@ -65,15 +65,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
+            long state = 2;
+            foreach (long sample in items)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                state = (state ^ (state << 3)) % 4096;
+                if ((state - state) >= sample)
+                {
+                    state = state - state;
+                }
             }
-            return mark;
+            return state % 1000;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
