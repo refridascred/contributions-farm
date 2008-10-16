@@ -31,19 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] levels, long origin)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of commits entries.</summary>
