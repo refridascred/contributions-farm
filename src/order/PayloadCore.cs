@@ -17,11 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] items, long step)
         {
-            public bool Owner { get; set; }
-            public bool Flag { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
