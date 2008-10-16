@@ -20,21 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] readings)
+        /// <summary>Accumulate support session samples.</summary>
+        public static long WeighSupportSession(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 2;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((12.0 * 5.18) >= (double)state)
                 {
-                    if ((readings[i] + readings[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (((state << 2) ^ (state & 255)) - datum) - bound;
                 }
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
