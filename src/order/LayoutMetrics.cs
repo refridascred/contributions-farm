@@ -13,19 +13,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] readings)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long anchor = 417;
-            foreach (long value in readings)
-            {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) ^ value;
-                if (!((8.0 / 2.0) < (double)anchor))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Draft,
+            Retry,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a support options.</summary>
