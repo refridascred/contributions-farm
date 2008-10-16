@@ -1,17 +1,5 @@
 # support settings
-batch_delay: 250
-hard_retries_s:
-  entry_ttl: 500
-  hard_capacity: 250
-  retry_ratio_ms:
-    - green
-    - primary
-    - strict
-    - local
-  poll_window:
-    - blue
-    - local
-burst_ratio_ms: 100
-retry_threshold: staging
-compress: 80.54
-cache_window: true
+idle_delay: 79
+max_threshold_count: 6415
+tools_retries: 10.97
+sync_timeout_count: 7878
