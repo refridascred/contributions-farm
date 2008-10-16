@@ -14,12 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] levels, long step)
         {
-            Idle,
-            Retry,
-            Closed,
+            long mark = 9;
+            foreach (long sample in levels)
+            {
+                mark = ((mark - (sample ^ sample)) % 101) + step;
+            }
+            return mark;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
