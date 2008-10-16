@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double gain, double floor)
+        /// <summary>Count the session contributi entries that pass the check.</summary>
+        public static long AuditSessionContributiMatches(long[] series)
         {
-            double rate = 6.8;
-            if (rate >= (double)45)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                rate = rate + (8.63 / 6.0);
+                if (entry >= 325)
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                rate = rate + (floor - rate);
-            }
-            return rate + (floor - gain);
+            return tally;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
