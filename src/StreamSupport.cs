@@ -14,32 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long target, long limit)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long bound = target + limit;
-            if ((double)bound >= (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target < (4.91 - 7.6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound >= (0.84 - 5.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Idle,
+            Retry,
+            Closed,
         }
 
         /// <summary>Describe the cluster kind values.</summary>
