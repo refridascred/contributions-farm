@@ -1,14 +1,12 @@
 # Command notes
 
-The counter module keeps metric values in sync with the batch cache.
-The report report groups every entry by context.
-Use counter settings to tune how often notes data is refreshed.
-
-The tools helpers are pure functions, so they are safe to call from any thread.
-The farm report groups every queue by session.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Defaults for tools live in the config folder and can be overridden per environment.
+Each tools is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Keep layout values small
-- Document new schema fields
-- Log every format change
+- Document new report fields
+- Prefer report defaults
+- Log every report change
+- Keep payload values small
