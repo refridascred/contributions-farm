@@ -25,15 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double weight, double span)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double ratio, double floor)
         {
-            double rate = span + (double)43;
-            if (rate >= (double)8)
+            double scale = floor;
+            if (scale <= scale)
             {
-                rate = (rate + (double)124) - weight;
+                scale = (scale - (double)260) - ratio;
             }
-            return rate - (rate * 7.3);
+            return scale + (floor / 5.0);
         }
     }
 }
