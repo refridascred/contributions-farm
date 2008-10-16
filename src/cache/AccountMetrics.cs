@@ -43,12 +43,12 @@ namespace Common.Utilities
             return ((load + (double)7) + weight) + floor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 125;
-        public const double LimitLevel = 16.83;
-        public const double MinMetrics = 68.82;
-        public const string StepSize = "latest-1";
-        public const long WindowMetrics = 3642;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public long Rank { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long WeighReport(long[] levels, long floor)
