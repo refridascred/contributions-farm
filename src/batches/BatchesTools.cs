@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Count the farm githubfarm entries that pass the check.</summary>
+        public static long CountFarmGithubfarmHits(long[] series, long origin)
         {
-            Done,
-            Queued,
-            Failed,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (entry > seen)
+                {
+                    seen = (seen + 3) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
