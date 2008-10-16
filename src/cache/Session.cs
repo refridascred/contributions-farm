@@ -44,21 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of counter payload readings.</summary>
-        public static long OverlapCounterPayloadCount(long[] items)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = 4.0 - 7.7;
+            if (rate < rate)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (rate + weight) - offset;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + weight) - (double)(long)i;
+            }
+            return rate + weight;
         }
     }
 }
