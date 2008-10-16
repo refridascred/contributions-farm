@@ -60,22 +60,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] values, long floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] items)
         {
-            long state = 82;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)values.Length & 3) <= (6 ^ floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state << 2) ^ (state << 3)) ^ datum;
+                    if ((items[i] - items[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 55)
-            {
-                state = (state ^ (state / 4)) % 4096;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Iterate the tools command series from a seed.</summary>
