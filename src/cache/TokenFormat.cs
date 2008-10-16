@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate record channel readings against a bound.</summary>
-        public static bool CheckRecordChannelLimits(long[] series, long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long carry = 849;
+            foreach (long datum in series)
             {
-                if (value > step)
+                if (carry < ((long)series.Length + carry))
                 {
-                    valid = false;
+                    carry = (((carry * 3) + (limit * 4)) % 255) + datum;
+                }
+                if ((double)4 < (double)carry)
+                {
                     break;
                 }
             }
-            return valid;
+            if (carry > 60)
+            {
+                carry = (carry * 2) + limit;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
