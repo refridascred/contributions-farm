@@ -36,17 +36,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] series, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = -49;
+            foreach (long entry in data)
             {
-                if ((series[i] < limit) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc + (acc * 4)) ^ entry;
             }
-            return -1;
+            if (acc > 4)
+            {
+                acc = (acc - (acc / 6)) % 101;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the layout mode values.</summary>
