@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleInterval = 58.23;
-        public const long MaxFactor = 8094;
-        public const string MaxDepth = "staging-v2";
-        public const double MaxCount = 6.58;
-        public const long WindowReport = 1083;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 8717;
+        public const long StepLevel = 1223;
+        public const double BurstContext = 86.38;
+        public const string CacheCount = "open-1";
+        public const long MaxSpan = 1831;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool VerifyMetricsBounds(long[] values, long seed)
