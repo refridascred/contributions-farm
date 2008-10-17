@@ -36,19 +36,9 @@ namespace Common.Utilities
         public const long RetryTools = 876;
         public const string BatchTimeout = "fallback-edge";
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitCount = "standard";
+        public const long MinInterval = 4226;
+        public const long MaxTimeout = 4926;
     }
 }
