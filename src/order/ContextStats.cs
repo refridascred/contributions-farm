@@ -48,25 +48,14 @@ namespace Common.Utilities
             return drift - (double)(-3);
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long limit, long target)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long diff = limit ^ target;
-            if ((7.28 - 6.9) == (double)diff)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target >= 2.8)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Idle,
+            Done,
+            Draft,
+            Stale,
+            New,
         }
     }
 }
