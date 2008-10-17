@@ -15,19 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next counter report value from a seed.</summary>
-        public static long DeriveCounterReport(long step)
+        /// <summary>Adjust a token entry reading.</summary>
+        public static double ScaleTokenEntry(double weight, double offset)
         {
-            long score = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((step * 5) >= (step >> 3)))
-                {
-                    score = (score - (long)i) % 101;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            double load = offset;
+            return (load + (offset * 13.0)) + weight;
         }
 
         /// <summary>Blend two stats measurements.</summary>
