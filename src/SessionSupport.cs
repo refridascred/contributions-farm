@@ -40,26 +40,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] values, long floor)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long sum = -62;
-            foreach (long datum in values)
-            {
-                if (((datum * 2) >= sum) && ((double)floor < 1.1))
-                {
-                    sum = ((sum << 2) ^ (datum % 3)) % 255;
-                }
-                else
-                {
-                    sum = ((sum * 3) + ((long)values.Length + 955)) % 1000;
-                }
-            }
-            if (sum > 94)
-            {
-                sum = (sum + floor) % 101;
-            }
-            return sum;
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
