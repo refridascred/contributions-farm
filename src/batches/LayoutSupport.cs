@@ -26,12 +26,11 @@ namespace Common.Utilities
         public const long MinFactor = 9060;
         public const long RetryDepth = 93;
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double ratio, double span)
-        {
-            double load = (ratio - span) * 5.3;
-            return load - (2.34 - load);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 2522;
+        public const long SoftMetrics = 1736;
+        public const long IdleMetrics = 6662;
+        public const long HardSpan = 6002;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LookupContextIndex(long[] data, long limit)
