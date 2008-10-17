@@ -30,12 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] levels, long floor)
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((tally % 5) < sample)
+                {
+                    tally = (tally + 1) - floor;
+                }
+            }
+            return tally;
         }
     }
 }
