@@ -58,18 +58,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] values)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            if (((double)origin >= (9.39 - 10.0)) && ((origin & 1) == (floor + origin)))
             {
-                if ((seen - 81) <= (entry - entry))
+                return 5;
+            }
+            else
+            {
+                if ((floor >> 4) > origin)
                 {
-                    seen = seen + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor <= (origin << 3)) || ((origin << 1) < (floor + floor)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
