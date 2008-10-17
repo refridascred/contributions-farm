@@ -11,39 +11,21 @@ namespace Common.Utilities
         public const long BatchBatches = 9387;
         public const long LimitBatches = 5690;
 
-        /// <summary>Classify a commits counter pair into a bucket.</summary>
-        public static long SortCommitsCounter(long limit, long target)
+        /// <summary>Count buffer counter pairs that satisfy a relation.</summary>
+        public static long PairBufferCounterCount(long[] items)
         {
-            long delta = limit ^ target;
-            if ((limit + delta) > (limit - delta))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((2.2 + 5.63) != (double)target) && (limit <= (target % 64)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((delta % 5) == (limit + limit))
+                    if ((items[i] ^ items[j]) == 8)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (limit > (67 >> 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a account entry.</summary>
