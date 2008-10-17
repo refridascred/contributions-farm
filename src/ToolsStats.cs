@@ -23,17 +23,11 @@ namespace Common.Utilities
             return gain - (gain - span);
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] samples, long seed)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double bias, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < seed) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = 5.7;
+            return ((ratio - (6.6 * 18.0)) + bias) + floor;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
