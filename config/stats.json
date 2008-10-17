@@ -1,6 +1,5 @@
 {
-  "dry_run": 100,
-  "default_capacity_s": 44.74,
-  "commits_ttl": 250,
-  "already_ttl": 500
+  "warm_capacity_ms": "latest",
+  "batch_interval_pct": "open",
+  "farm_interval": ["staging", "eu-west", "eu-west", "staging"]
 }
