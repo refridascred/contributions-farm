@@ -19,18 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the command schema entries that pass the check.</summary>
-        public static long AuditCommandSchemaOutliers(long[] samples, long floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long step)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long total = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (floor >= (floor + (long)samples.Length))
-                {
-                    count = (count + 1) - reading;
-                }
+                total = (total ^ total) % 101;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the entry kind values.</summary>
