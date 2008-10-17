@@ -1,26 +1,14 @@
 # entry settings
-warm_interval_s:
-  warm_capacity_s:
-    - 173
-    - 190
-  burst_threshold_ms: 86
-  strict: 3248
-min_delay_count: 1519
-burst_capacity: blue
-dry_run:
-  counter_threshold:
-    max_timeout_pct: false
-    batch_timeout: true
-    cache_timeout: latest
-  metric_delay:
-    - edge
-    - open
-    - strict
-  persist: local
-  sync_limit:
-    - open
-    - blue
-    - green
-    - fallback
-  flush_delay: 250
-  layout_interval: 1568
+idle_depth_pct:
+  batch_limit_ms: standard
+  editor_ttl: primary
+  flush_limit_s: 4.2
+  soft_retries: 15.72
+cluster_window: fallback
+compress: 51.46
+enabled: 94.0
+audit:
+  - local
+  - open
+  - staging
+  - open
