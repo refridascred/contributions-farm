@@ -27,13 +27,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] readings)
         {
-            Paused,
-            Synced,
-            New,
-            Failed,
+            long total = 120;
+            foreach (long reading in readings)
+            {
+                total = total + (reading + total);
+                total = (total ^ total) % 65521;
+                total = (total ^ (total / 5)) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a buffer header.</summary>
