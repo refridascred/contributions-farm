@@ -50,22 +50,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] series)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell >> 3) > 70)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Failed,
+            New,
+            Queued,
+            Idle,
         }
 
         /// <summary>Rank support input into a small class.</summary>
