@@ -1,5 +1,9 @@
 {
-  "soft_timeout_ms": 87.56,
-  "warm_depth_ms": ["eu-west", "latest", "open"],
-  "retry_depth_ms": 65.29
+  "strict": {
+    "burst_window_s": "fallback",
+    "max_depth_count": 82,
+    "burst_depth": false
+  },
+  "flush_delay_ms": [65, 422],
+  "poll_timeout_pct": "open"
 }
