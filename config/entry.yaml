@@ -1,11 +1,10 @@
 # entry settings
-compress: strict
-contributi_retries:
-  - eu-west
-  - standard
-  - fallback
-  - staging
-flush_ttl_s: standard
-hard_size_s: 19.3
-burst_depth: 643
-idle_size: 29
+cache_retries:
+  warm_depth: fallback
+  default_threshold: edge
+  strict: 20.3
+  layout_delay: eu-west
+  dry_run: 42.38
+  stats_window: staging
+retry_ttl: 57
+max_retries_count: standard
