@@ -60,19 +60,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] readings, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (item <= target)
+                if ((tally + reading) <= (reading % 7))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
