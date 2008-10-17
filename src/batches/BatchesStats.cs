@@ -38,31 +38,17 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Rank format window input into a small class.</summary>
-        public static long SortFormatWindow(long origin, long offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long limit)
         {
-            if (((origin + origin) == (offset + offset)) || ((origin % 10) > (origin + offset)))
+            long score = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 2;
+                score = (score + (22 + 92)) % 1000;
+                score = ((score * 4) + ((long)i + (long)i)) % 101;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((36 / 4) < (origin + origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((7.56 + 5.0) > (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
