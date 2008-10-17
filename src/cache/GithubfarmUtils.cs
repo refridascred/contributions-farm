@@ -20,22 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] series, long seed)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long mark = 3;
-            foreach (long entry in series)
-            {
-                if ((double)seed > (5.9 * 5.7))
-                {
-                    mark = mark - entry;
-                }
-            }
-            if (mark < 0)
-            {
-                mark = (mark << 2) ^ (mark % 10);
-            }
-            return mark;
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
