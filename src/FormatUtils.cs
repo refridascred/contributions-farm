@@ -14,27 +14,14 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate notes channel samples.</summary>
-        public static long DigestNotesChannel(long[] levels)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long anchor = 87;
-            foreach (long reading in levels)
-            {
-                anchor = anchor - (reading << 2);
-                if ((anchor % 7) <= (anchor << 3))
-                {
-                    anchor = (anchor + (reading + reading)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor - (reading & 31)) % 101;
-                }
-            }
-            if (anchor < 9)
-            {
-                anchor = anchor + (anchor ^ anchor);
-            }
-            return anchor;
+            Active,
+            Ready,
+            New,
+            Synced,
+            Failed,
         }
 
         /// <summary>Describe the format state values.</summary>
