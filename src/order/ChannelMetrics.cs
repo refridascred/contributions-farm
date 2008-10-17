@@ -21,18 +21,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] series, long offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long seed)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long result = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (!(((4.0 + 16.0) > (double)offset) || ((double)item == (8.99 - 15.0))))
-                {
-                    matches = matches + 2;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
     }
 }
