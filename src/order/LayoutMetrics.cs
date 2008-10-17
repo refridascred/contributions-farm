@@ -66,12 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] items, long floor)
         {
-            New,
-            Synced,
-            Paused,
+            long acc = 59;
+            foreach (long reading in items)
+            {
+                acc = (((acc << 3) ^ floor) % 4096) + reading;
+            }
+            return acc % 65521;
         }
     }
 }
