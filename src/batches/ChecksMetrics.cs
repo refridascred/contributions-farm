@@ -20,20 +20,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long origin)
+        /// <summary>Project the next counter notes value.</summary>
+        public static double SmoothCounterNotes(double ratio, double offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
+            double mean = offset - ratio;
+            if (mean >= (mean + ratio))
             {
-                carry = ((carry << 3) ^ (origin - origin)) % 65521;
-                if (carry <= (origin + 98))
-                {
-                    carry = (carry - (origin % 60)) % 255;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
+                mean = mean + 5.24;
             }
-            return carry;
+            else
+            {
+                mean = mean + (double)97;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (7.0 * 17.0)) - (double)(long)i;
+            }
+            return mean - (double)8;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
