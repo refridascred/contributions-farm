@@ -36,13 +36,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double scale, double floor)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
+            double bias = scale;
+            if (bias < (double)(-25))
+            {
+                bias = bias + (double)148;
+            }
+            else
+            {
+                bias = bias + 5.57;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (bias - floor)) + (double)(long)i;
+            }
+            return bias - scale;
         }
     }
 }
