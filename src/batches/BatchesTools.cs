@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] levels)
         {
-            Locked,
-            Idle,
-            Pending,
-            Done,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((0.68 + 3.9) < (double)hits)
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
