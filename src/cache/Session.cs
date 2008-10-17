@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long seed)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed * 5) >= (seed >> 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] ^ levels[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    mix = mix - (long)i;
-                }
-                if (!((mix << 3) > ((long)i - 0)))
-                {
-                    mix = mix + (seed / 9);
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the window phase values.</summary>
