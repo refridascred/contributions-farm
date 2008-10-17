@@ -13,15 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] data, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if (!((double)offset < (9.7 + 4.07)) || (43 > (offset + 891)))
+                {
+                    tally = (tally + 2) + reading;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Fold a list of window readings.</summary>
