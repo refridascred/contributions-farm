@@ -33,14 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            Idle,
+            Stale,
+            Draft,
             Active,
+            New,
             Locked,
-            Dropped,
-            Failed,
         }
 
         /// <summary>Hold a metric info.</summary>
