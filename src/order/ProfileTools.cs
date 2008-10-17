@@ -61,12 +61,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
             Dropped,
+            Failed,
+            Draft,
             Locked,
-            Done,
+            Ready,
         }
     }
 }
