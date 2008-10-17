@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long target, long seed)
         {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            if (!(406 < (target - 0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((-64) > (seed & 31))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed + 35) == (target - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
