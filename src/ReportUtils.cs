@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public bool Flag { get; set; }
+            public bool Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
