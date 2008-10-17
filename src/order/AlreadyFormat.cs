@@ -22,31 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long floor, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] readings)
         {
-            if ((origin & 3) != (116 / 6))
+            long mix = -118;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((origin + floor) <= (floor - 4)))
+                if ((63 - mix) == (mix ^ mix))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((4.0 + 8.1) == (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = ((mix ^ ((-9) - 49)) % 65521) - datum;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
