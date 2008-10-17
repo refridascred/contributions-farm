@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const string CacheMetric = "primary-1";
         public const long RetryTimeout = 8901;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowCache = "stable-edge";
-        public const double MaxBudget = 35.11;
-        public const long SoftCache = 8065;
-        public const long MinTimeout = 3822;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double DefaultSession = 11.51;
