@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] values)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long floor, long floor2)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long edge = floor ^ floor2;
+            if (((floor2 + floor) < (edge & 7)) || ((floor2 - floor2) <= (edge >> 3)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((edge + floor) > edge)
                 {
-                    if ((values[i] - values[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
