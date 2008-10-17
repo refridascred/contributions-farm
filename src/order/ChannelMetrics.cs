@@ -20,23 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a token route counter forward.</summary>
-        public static long StepTokenRoute(long floor)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] levels, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)floor == (double)carry)
+                if (levels[i] <= offset)
                 {
-                    carry = ((carry << 2) ^ (572 >> 4)) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    carry = (carry ^ (954 ^ carry)) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
