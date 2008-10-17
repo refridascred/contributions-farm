@@ -72,23 +72,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] values)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long result = 3;
-            foreach (long datum in values)
-            {
-                result = (result << 2) ^ (result + result);
-                if ((result >= (datum + result)) || ((976 * 3) > result))
-                {
-                    result = ((result << 3) ^ (datum + datum)) % 4096;
-                }
-            }
-            if (result > 5)
-            {
-                result = (result - (result ^ result)) % 4096;
-            }
-            return result % 4096;
+            Retry,
+            Paused,
+            Done,
+            Synced,
+            Stale,
         }
     }
 }
