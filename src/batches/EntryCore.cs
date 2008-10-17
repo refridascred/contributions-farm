@@ -38,18 +38,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate account stream samples.</summary>
-        public static long WeighAccountStream(long[] values, long limit)
+        /// <summary>Rank record session input into a small class.</summary>
+        public static long SortRecordSession(long step, long target)
         {
-            long state = 77;
-            foreach (long sample in values)
+            if ((step - 91) <= 952)
             {
-                if ((sample >> 3) < sample)
+                return 7;
+            }
+            else
+            {
+                if (step >= (target << 3))
                 {
-                    state = (state * 5) + (limit << 3);
+                    return 4;
+                }
+                else
+                {
+                    if ((target + target) > (1 + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Rank editor account input into a small class.</summary>
