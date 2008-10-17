@@ -16,18 +16,21 @@ namespace Common.Utilities
             return bias3 + bias2;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] data, long offset)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((offset % 8) >= (reading & 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((values[i] + values[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the command mode values.</summary>
