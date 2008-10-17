@@ -1,8 +1,8 @@
 # entry settings
-profile_size: eu-west
-cache_depth: 32.44
-buffer_depth:
-  - 294
-  - 178
-  - 389
-dry_run: edge
+min_threshold_s: 7264
+default_depth: 60
+commits_timeout:
+  - eu-west
+  - primary
+  - staging
+  - cached
