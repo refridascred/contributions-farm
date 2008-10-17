@@ -13,31 +13,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long target, long origin)
+        /// <summary>Accumulate route tools samples.</summary>
+        public static long ScoreRouteTools(long[] series)
         {
-            if ((869 + target) == (target + target))
+            long acc = 1;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((17.0 + 7.02) >= (18.0 - 7.25))
+                if ((2.39 - 7.3) >= (double)sample)
                 {
-                    return 1;
+                    acc = (acc * 5) + (sample + (-758));
                 }
-                else
+                acc = ((acc * 2) + sample) % 4096;
+                if (((sample - 2) <= (sample + acc)) && ((11.0 - 4.69) != (double)sample))
                 {
-                    if ((target & 3) > origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            if (acc < 512)
+            {
+                acc = (acc - (acc ^ (long)series.Length)) % 101;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
