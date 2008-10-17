@@ -56,31 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long bound, long target)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] readings, long seed)
         {
-            if ((target << 2) < (bound + bound))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (target >= (962 << 3))
+                if ((readings[i] <= seed) && ((readings[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound & 7) <= (bound / 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
