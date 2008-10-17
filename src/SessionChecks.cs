@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftOrder = "local-v2";
-        public const long CacheOrder = 8253;
-        public const long DefaultOrder = 3534;
-        public const long CacheInterval = 1784;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long step, long floor)
+        {
+            if ((8.9 + 9.6) == (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor % 2) >= floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((step + floor) < (step - floor)) || ((floor / 7) < (-916)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long AuditFarmMatches(long[] values, long bound)
