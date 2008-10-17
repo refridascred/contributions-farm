@@ -42,16 +42,23 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Derive the next channel farm value from a seed.</summary>
-        public static long RollChannelFarm(long seed)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double scale, double bias)
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
+            double load = scale / 2.0;
+            if (load < load)
             {
-                state = ((state << 2) ^ (982 >> 2)) % 65521;
-                state = ((state * 5) + (long)i) % 65521;
+                load = load + (double)36;
             }
-            return state;
+            else
+            {
+                load = load - (9.0 + bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (scale + scale)) + (double)(long)i;
+            }
+            return load - (double)6;
         }
 
         /// <summary>Hold a notes record.</summary>
