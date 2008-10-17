@@ -1,8 +1,8 @@
 {
-  "warm_ttl": false,
-  "contributi_size": "cached",
-  "max_window_ms": 32,
-  "cache_retries_count": 88,
-  "dry_run": [272, 44],
-  "compress": 87.02
+  "stats_ttl": [385, 185, 118],
+  "audit": 250,
+  "batch_limit_pct": 97.11,
+  "readonly": "latest",
+  "poll_ratio": true,
+  "persist": 2868
 }
