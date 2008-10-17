@@ -46,13 +46,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public double Level { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
