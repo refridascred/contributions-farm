@@ -32,15 +32,29 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] samples, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
+            long total = -72;
+            foreach (long reading in samples)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (((total / 8) == ((-756) / 8)) && ((reading * 4) == (reading & 15)))
+                {
+                    total = ((total << 2) ^ (total & 15)) - bound;
+                    total = (total * 2) + (total + total);
+                }
+                total = ((total * 5) + (total + total)) % 255;
+                total = total + (total >> 5);
+                if ((reading % 8) >= (total + total))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (total < (-12))
+            {
+                total = (total ^ total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
