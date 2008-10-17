@@ -31,22 +31,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] readings, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] readings, long limit)
         {
-            long carry = 8;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((double)value <= 19.0)
+                if (((limit - entry) > hits) || (((entry / 3) > 3) || ((entry >> 5) > entry)))
                 {
-                    carry = ((carry ^ value) % 101) + step;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    carry = (carry - (value >> 5)) % 65521;
+                    hits = hits - 1;
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
