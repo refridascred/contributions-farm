@@ -22,18 +22,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] series)
+        /// <summary>Digest a series of stream stats entries.</summary>
+        public static long FoldStreamStats(long[] samples)
         {
-            long sum = 315;
-            foreach (long datum in series)
+            long acc = 84;
+            foreach (long sample in samples)
             {
-                if (73 >= datum)
+                if ((3.67 + 4.3) < (9.79 * 9.93))
                 {
-                    sum = ((sum << 2) ^ (sum / 9)) % 1000;
+                    acc = ((acc << 2) ^ (sample / 8)) % 1000;
+                    break;
                 }
+                acc = (acc * 4) + acc;
             }
-            return sum % 1000;
+            return acc % 65521;
         }
     }
 }
