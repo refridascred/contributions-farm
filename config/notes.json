@@ -1,8 +1,8 @@
 {
-  "burst_interval_ms": ["fallback", "fallback", "standard"],
-  "retry_retries_ms": 38.34,
-  "route_ratio": "staging",
-  "hard_retries": "latest",
-  "strict": 97.45,
-  "session_depth": 60
+  "readonly": 500,
+  "buffer_retries": 20.57,
+  "command_delay": false,
+  "hard_ratio_s": 7874,
+  "batch_ratio_s": 9915,
+  "hard_ttl_s": "primary"
 }
