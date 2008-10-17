@@ -1,12 +1,6 @@
 {
-  "sync_retries": true,
-  "compress": ["primary", "open"],
-  "poll_limit_count": 29.91,
-  "order_capacity": [185, 432, 64, 263],
-  "record_timeout": {
-    "default_depth": "open",
-    "window_threshold": false,
-    "strict": 6131
-  },
-  "notes_ratio": 43.77
+  "soft_depth_ms": [186, 484, 307, 350],
+  "soft_interval_count": "latest",
+  "base_depth": true,
+  "retry_window_s": 4
 }
