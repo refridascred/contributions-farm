@@ -1,15 +1,5 @@
 {
-  "order_limit": 2145,
-  "order_ttl": {
-    "hard_depth_ms": 53.87,
-    "editor_interval": {
-      "verbose": "blue",
-      "cache_capacity": "local",
-      "enabled": false,
-      "flush_capacity_pct": 1024
-    },
-    "sync_limit_count": 9239,
-    "retry_retries_pct": 8571
-  },
-  "idle_delay": "strict"
+  "idle_delay": 28.57,
+  "max_timeout": 3244,
+  "format_interval": 60
 }
