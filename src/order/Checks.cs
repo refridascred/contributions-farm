@@ -23,18 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitFactor = 77.68;
+        public const double RetryFilter = 60.09;
+        public const long DefaultInterval = 1680;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsGaps(long[] series, long step)
