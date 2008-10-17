@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 7234;
-        public const long MinEditor = 4444;
-        public const long DefaultEditor = 1185;
-        public const string CacheEditor = "standard-edge";
-        public const double SoftRatio = 69.04;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Locked,
+            Done,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long BucketSession(long seed, long floor)
