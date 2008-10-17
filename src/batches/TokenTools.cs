@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] levels, long step)
         {
-            Failed,
-            Retry,
-            Queued,
-            Locked,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)matches >= 3.0)
+                {
+                    matches = ((matches + 1) - entry) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the route state values.</summary>
