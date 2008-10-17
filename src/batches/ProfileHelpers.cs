@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            New,
-            Synced,
-            Done,
+            public double Ratio { get; set; }
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Accumulate account samples.</summary>
