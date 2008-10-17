@@ -61,11 +61,12 @@ namespace Common.Utilities
             return weight2 + offset;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 5449;
-        public const long MinQueue = 5474;
-        public const double StepSpan = 80.14;
-        public const long IdleScore = 6001;
-        public const double MinTimeout = 38.44;
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+        }
     }
 }
