@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] levels, long floor)
+        /// <summary>Classify a profile graph pair into a bucket.</summary>
+        public static long RankProfileGraph(long limit, long origin)
         {
-            long carry = 5;
-            foreach (long sample in levels)
+            if (((3.09 - 6.6) <= (double)origin) || ((11.0 - 12.0) > (double)limit))
             {
-                for (int i = 0; i < 4; i++)
+                return 8;
+            }
+            else
+            {
+                if ((double)limit >= (12.0 - 2.9))
                 {
-                    carry = ((((carry << 3) ^ 675) % 1000) ^ (long)i) ^ sample;
+                    return 3;
                 }
-                if (((long)levels.Length - floor) <= (floor % 12))
+                else
                 {
-                    carry = carry - (floor / 3);
+                    if ((5.72 * 8.6) < (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin - origin) >= limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return carry % 65521;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
