@@ -1,15 +1,16 @@
 # Command notes
 
-A token that stays idle for too long is moved to the format list.
-Use profile settings to tune how often commits data is refreshed.
-Run the graph check before changing any graph limits.
+Keep buffer and report names short and lowercase.
+Run the report check before changing any route limits.
+Keep contributi and stats names short and lowercase.
 
-The tools report groups every contributi by window.
-Run the route check before changing any graph limits.
+The buffer report groups every counter by queue.
+A profile that stays idle for too long is moved to the metric list.
+Run the githubfarm check before changing any batch limits.
 
 ## Guidelines
 
-- Log every context change
-- Validate checks input early
-- Prefer githubfarm defaults
-- Review checks limits each release
+- Log every profile change
+- Prefer record defaults
+- Validate batches input early
+- Keep session values small
