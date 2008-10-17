@@ -31,17 +31,18 @@ namespace Common.Utilities
         public const string BaseCount = "primary-edge";
         public const string DefaultInterval = "legacy-edge";
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long floor)
+        /// <summary>Audit context window readings against a rule.</summary>
+        public static long CountContextWindowMatches(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (samples[i] > floor)
+                if ((tally >> 3) < tally)
                 {
-                    return (long)i;
+                    tally = (tally + 2) - item;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
