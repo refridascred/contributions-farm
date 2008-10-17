@@ -34,17 +34,13 @@ namespace Common.Utilities
         public const string BatchCluster = "open-v2";
         public const long IdleLevel = 702;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] data, long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Locked,
+            Failed,
+            Draft,
         }
 
         /// <summary>Describe the graph status values.</summary>
