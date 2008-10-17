@@ -1,6 +1,5 @@
 {
-  "batches_threshold": "eu-west",
-  "filter_window": 94.54,
-  "retry_threshold_ms": 1,
-  "max_capacity_pct": 250
+  "verbose": [307, 257],
+  "min_window_s": true,
+  "max_depth": ["open", "open", "local"]
 }
