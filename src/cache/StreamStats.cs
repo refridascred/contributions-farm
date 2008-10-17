@@ -14,22 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] series, long seed)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((84 * 4) <= sample)
-                {
-                    count = (count + 1) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Queued,
+            Retry,
+            New,
         }
 
         /// <summary>Describe the payload level values.</summary>
