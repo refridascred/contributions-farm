@@ -14,18 +14,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] series)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (((reading ^ reading) < reading) && (((16.0 - 18.0) == (double)reading) && ((7.57 + 8.35) <= (double)reading)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a schema record.</summary>
