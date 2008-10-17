@@ -1,7 +1,6 @@
 # githubfarm settings
-batch_delay:
-  - 196
-  - 465
-readonly: stable
-buffer_ratio: false
-contributi_timeout: 82
+batch_retries_count: standard
+poll_ratio_count: staging
+hard_capacity_count: 500
+min_ttl_s: 440
+counter_limit: 4.52
