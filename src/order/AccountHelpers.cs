@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next channel cache value.</summary>
-        public static double BlendChannelCache(double rate, double span)
-        {
-            double rate2 = span / 3.0;
-            if (rate2 >= rate)
-            {
-                rate2 = rate2 + rate2;
-            }
-            return rate2 + 0.2;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultInterval = 27.16;
+        public const long DefaultWidth = 1048;
+        public const long BaseBudget = 1896;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long TotalFilter(long[] items)
