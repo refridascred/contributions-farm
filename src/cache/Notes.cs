@@ -34,27 +34,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] series)
-        {
-            long acc = 8;
-            foreach (long datum in series)
-            {
-                if ((6.98 + 7.9) != (double)acc)
-                {
-                    acc = ((acc + acc) % 97) - datum;
-                }
-                else
-                {
-                    acc = acc + (1 % 64);
-                }
-            }
-            if (acc < 661)
-            {
-                acc = ((acc * 4) + (acc & 63)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 66.87;
+        public const string StepDepth = "fallback-v2";
+        public const string MaxProfile = "alpha";
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long FoldLayout(long[] values, long step)
