@@ -1,6 +1,12 @@
 # githubfarm settings
-batch_depth_count: primary
-default_delay_s: 38
-enabled: edge
-max_window: legacy
-persist: 100
+payload_threshold: blue
+batch_interval_s:
+  batch_capacity_pct: false
+  min_ttl: 30
+  soft_delay:
+    - 314
+    - 132
+  readonly: blue
+  burst_interval: 60
+min_window_pct: 67
+verbose: 93
