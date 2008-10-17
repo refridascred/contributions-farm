@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryLevel = 834;
-        public const long IdlePayload = 8695;
-        public const string HardSpan = "staging-edge";
-        public const long StepSpan = 5371;
+        /// <summary>Audit already order readings against a rule.</summary>
+        public static long AuditAlreadyOrderHits(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((count - count) > (count + 0))
+                {
+                    count = (count + 2) ^ cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
