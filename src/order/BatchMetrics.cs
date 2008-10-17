@@ -62,24 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long floor, long target)
+        /// <summary>Check that every command order entry stays within the limit.</summary>
+        public static bool VerifyCommandOrderRange(long[] values, long origin)
         {
-            if ((9.0 / 6.0) == (double)floor)
+            bool valid = true;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (0 < (floor ^ floor))
+                if (item >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Match up report samples.</summary>
