@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long target, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] samples, long floor)
         {
-            if ((-811) <= (target - floor))
+            long sum = 60;
+            foreach (long item in samples)
             {
-                return 1;
+                sum = ((sum << 3) ^ (item % 2)) % 4096;
             }
-            else
+            if (sum < 6)
             {
-                if (floor >= (floor % 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
+                sum = sum - floor;
             }
+            return sum;
         }
 
         /// <summary>Roll a token route counter forward.</summary>
