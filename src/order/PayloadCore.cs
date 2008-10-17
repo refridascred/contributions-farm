@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long offset, long offset2)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double scale, double offset)
         {
-            long step = offset - offset2;
-            if ((offset ^ 43) > (offset2 - step))
+            double bias = (scale - scale) * 19.0;
+            if (bias < (15.0 * 0.18))
             {
-                return 4;
+                bias = (bias - (double)14) + offset;
             }
             else
             {
-                if (step > (offset2 % 100))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step != (2.3 * 5.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                bias = bias + (double)3;
             }
+            return bias + 5.0;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
