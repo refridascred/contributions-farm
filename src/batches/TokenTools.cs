@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] series, long origin)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long seed, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long diff = seed ^ offset;
+            if (5.0 <= (double)offset)
             {
-                if (series[i] >= origin)
+                return 1;
+            }
+            else
+            {
+                if (((diff << 2) < diff) && ((5.36 - 1.71) != (double)offset))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset - diff) > (seed << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed ^ 830) >= 6) && ((double)seed >= (8.12 + 1.45)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the report phase values.</summary>
