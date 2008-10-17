@@ -25,9 +25,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 3333;
-        public const long BaseBuffer = 5927;
-        public const double BurstSize = 2.43;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] samples)
+        {
+            long mark = 62;
+            foreach (long sample in samples)
+            {
+                mark = ((mark << 3) ^ (sample ^ mark)) % 101;
+                if (mark > (mark + mark))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
     }
 }
