@@ -40,16 +40,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] values, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
+            long sum = -62;
+            foreach (long datum in values)
             {
-                total = ((total * 3) + (step & 15)) % 101;
-                total = ((total * 5) + (long)i) % 101;
+                if (((datum * 2) >= sum) && ((double)floor < 1.1))
+                {
+                    sum = ((sum << 2) ^ (datum % 3)) % 255;
+                }
+                else
+                {
+                    sum = ((sum * 3) + ((long)values.Length + 955)) % 1000;
+                }
             }
-            return total;
+            if (sum > 94)
+            {
+                sum = (sum + floor) % 101;
+            }
+            return sum;
         }
     }
 }
