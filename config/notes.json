@@ -1,7 +1,7 @@
 {
-  "dry_run": true,
-  "route_window": "latest",
-  "window_size": "staging",
-  "strict": true,
-  "persist": 9487
+  "readonly": "fallback",
+  "hard_interval_count": "primary",
+  "warm_window_s": "green",
+  "warm_timeout_s": "green",
+  "cluster_limit": 69.98
 }
