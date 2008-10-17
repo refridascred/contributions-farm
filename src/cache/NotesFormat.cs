@@ -14,19 +14,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] readings, long offset)
+        /// <summary>Derive the next already githubfarm value from a seed.</summary>
+        public static long IterateAlreadyGithubfarm(long target)
         {
-            long score = 39;
-            foreach (long datum in readings)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                score = ((score ^ (datum >> 2)) % 97) + offset;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    carry = ((carry << 2) ^ (carry / 3)) ^ (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            if (score < 5)
-            {
-                score = score + (score & 15);
-            }
-            return score % 1000;
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
