@@ -20,21 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = span;
+            if (ratio < (span - span))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (ratio - (span + 17.0)) + bias;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - 5.2) + (double)(long)i;
+            }
+            return ratio + span;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
