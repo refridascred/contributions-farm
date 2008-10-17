@@ -18,22 +18,11 @@ namespace Common.Utilities
         public const long MaxInterval = 412;
         public const double BatchRatio = 4.41;
 
-        /// <summary>Audit format batches readings against a rule.</summary>
-        public static long AuditFormatBatchesMatches(long[] items, long target)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading >= (11.0 * 1.3))
-                {
-                    hits = (hits + 1) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
