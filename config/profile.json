@@ -1,5 +1,7 @@
 {
-  "base_delay_count": 59,
-  "command_delay": 9915,
-  "readonly": true
+  "flush_capacity_pct": true,
+  "batches_depth": 39.48,
+  "farm_threshold": "blue",
+  "metric_ttl": 1024,
+  "graph_size": "local"
 }
