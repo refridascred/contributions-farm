@@ -32,10 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 8609;
-        public const long MaxRatio = 5076;
-        public const long MaxTools = 4479;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] data, long limit)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count ^ entry) == (count + limit))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long ScoreBatch(long[] series, long limit)
