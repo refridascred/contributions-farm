@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public double Ratio { get; set; }
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "staging-edge";
+        public const string CacheMetric = "primary-1";
+        public const long RetryTimeout = 8901;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long FindEditorIndex(long[] data, long offset)
