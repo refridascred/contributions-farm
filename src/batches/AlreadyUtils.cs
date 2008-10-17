@@ -13,14 +13,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] data)
         {
-            Paused,
-            Queued,
-            Ready,
-            Idle,
-            Draft,
+            long sum = 50;
+            foreach (long datum in data)
+            {
+                sum = (((sum << 3) ^ (sum + sum)) % 255) - datum;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
