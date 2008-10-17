@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] levels, long offset)
+        /// <summary>Accumulate entry profile samples.</summary>
+        public static long TallyEntryProfile(long[] values, long floor)
         {
-            long result = 36;
-            foreach (long reading in levels)
+            long carry = -5;
+            foreach (long value in values)
             {
-                if ((result - offset) < 589)
+                carry = (carry ^ (value & 1)) % 1000;
+                if (!(carry <= (floor + value)))
                 {
-                    result = result - (reading >> 5);
+                    carry = (carry - floor) % 255;
                 }
             }
-            return result % 4096;
+            return carry;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
