@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] samples, long target)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long offset, long offset2)
         {
-            long anchor = -249;
-            foreach (long datum in samples)
+            long step = offset - offset2;
+            if ((offset ^ 43) > (offset2 - step))
             {
-                if (7.6 <= (double)target)
+                return 4;
+            }
+            else
+            {
+                if (step > (offset2 % 100))
                 {
-                    anchor = (anchor - 39) % 255;
-                    anchor = ((anchor * 2) + target) % 101;
+                    return 1;
                 }
-                if (((double)anchor == (double)74) || ((26 ^ target) >= ((long)samples.Length * 5)))
+                else
                 {
-                    anchor = ((anchor * 3) + (datum >> 1)) % 4096;
+                    if ((double)step != (2.3 * 5.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Adjust a token entry reading.</summary>
