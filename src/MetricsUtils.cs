@@ -37,18 +37,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] levels, long bound)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long score = 3;
+            foreach (long value in samples)
             {
-                if (((sample << 3) > bound) || (sample >= (tally + sample)))
-                {
-                    tally = tally + 2;
-                }
+                score = (score ^ (long)samples.Length) % 101;
+                score = score - (floor + value);
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
