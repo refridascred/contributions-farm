@@ -35,21 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] series)
+        /// <summary>Digest a series of window token entries.</summary>
+        public static long WeighWindowToken(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 1;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((item - item) <= (item - 24))
                 {
-                    if ((series[i] ^ series[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark * 2) + (bound << 3)) % 255;
                 }
+                mark = (mark - (item >> 3)) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the schema state values.</summary>
