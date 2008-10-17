@@ -79,12 +79,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 7937;
-        public const long StepBudget = 4306;
-        public const long WindowFactor = 9685;
-        public const long CacheBatches = 2885;
-        public const long DefaultInterval = 5802;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] items, long limit)
