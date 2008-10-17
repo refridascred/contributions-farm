@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] readings, long limit)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long seed, long origin)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            if ((3 % 60) != (origin / 9))
             {
-                if (((long)readings.Length >> 2) >= (809 % 3))
+                return 1;
+            }
+            else
+            {
+                if (!(2 > origin))
                 {
-                    tally = ((tally + 1) + sample) - limit;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
