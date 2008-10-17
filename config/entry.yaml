@@ -1,9 +1,4 @@
 # entry settings
-warm_retries: true
-burst_window:
-  - 1
-  - 270
-layout_timeout: 71
-batch_size_count: 47.24
-max_window_pct: 10.71
-stats_interval: 7412
+strict: 1397
+burst_window: latest
+warm_ttl_count: green
