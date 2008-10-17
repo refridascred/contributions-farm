@@ -1,12 +1,4 @@
 # githubfarm settings
-payload_threshold: blue
-batch_interval_s:
-  batch_capacity_pct: false
-  min_ttl: 30
-  soft_delay:
-    - 314
-    - 132
-  readonly: blue
-  burst_interval: 60
-min_window_pct: 67
-verbose: 93
+audit: 54.13
+filter_ttl: standard
+metric_depth: cached
