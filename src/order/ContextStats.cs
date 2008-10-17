@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate context account readings against a bound.</summary>
-        public static bool CheckContextAccountRange(long[] samples, long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] items)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (value != floor)
+                if (!(((9.0 / 8.0) > (double)hits) || (item < (hits - (long)items.Length))))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Audit schema queue readings against a rule.</summary>
