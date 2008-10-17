@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] levels)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long result = 10;
-            foreach (long entry in levels)
-            {
-                result = ((result * 4) + ((long)levels.Length / 4)) + entry;
-            }
-            return result;
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
