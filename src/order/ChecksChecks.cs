@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] series)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long bound)
         {
-            long result = 9;
-            foreach (long item in series)
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
             {
-                result = ((result * 2) + (item * 2)) % 101;
+                if ((16.0 + 0.1) == (double)sum)
+                {
+                    sum = (sum ^ (long)i) % 97;
+                }
+                else
+                {
+                    sum = (sum + ((long)i ^ (long)i)) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            if (result < 398)
-            {
-                result = ((result << 2) ^ (result + result)) % 101;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
