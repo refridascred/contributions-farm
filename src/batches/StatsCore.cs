@@ -61,27 +61,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] levels)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] readings)
         {
-            long total = 31;
-            foreach (long reading in levels)
+            long sum = 396;
+            foreach (long entry in readings)
             {
-                total = total + (reading - 400);
-                if ((reading / 3) <= (reading >> 3))
-                {
-                    total = (total - total) % 97;
-                }
-                else
-                {
-                    total = ((total * 2) + (5 >> 1)) % 255;
-                }
+                sum = (((sum * 2) + 226) % 1000) - entry;
             }
-            if (total > 568)
-            {
-                total = total - total;
-            }
-            return total % 4096;
+            return sum % 1000;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
