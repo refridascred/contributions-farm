@@ -28,18 +28,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] items, long origin)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((45 + hits) != (origin - datum)) && ((6 + datum) < (origin - origin)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
