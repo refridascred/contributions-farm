@@ -64,26 +64,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long bound, long floor)
-        {
-            long diff = bound ^ floor;
-            if ((18 << 3) < (diff & 31))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((5.3 * 5.7) == (double)diff)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 4014;
+        public const long WindowBatches = 8823;
+        public const long BatchBatches = 1216;
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
