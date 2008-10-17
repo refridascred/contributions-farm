@@ -1,10 +1,6 @@
-id,count,region,weight
-1,71.43,311,16.63
-2,60.04,95.05,478
-3,strict,edge,319
-4,18.91,855,legacy
-5,edge,24.44,primary
-6,73.53,139,376
-7,open,283,legacy
-8,10.49,staging,stable
-9,69.54,local,578
+id,level,active,label
+1,staging,463,24
+2,643,standard,931
+3,431,edge,65.5
+4,143,15.33,79.92
+5,70.85,staging,stable
