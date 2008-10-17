@@ -25,13 +25,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Dropped,
-            Stale,
-            Failed,
-            Done,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftContributi = 55.93;
+        public const string WindowContributi = "open-v2";
+        public const double BurstCount = 44.49;
+        public const double HardInterval = 43.63;
+        public const string BurstContributi = "staging-1";
     }
 }
