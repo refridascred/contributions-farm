@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long LimitBatch = 2962;
         public const string MinDepth = "alpha";
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] series)
-        {
-            long sum = 502;
-            foreach (long cell in series)
-            {
-                sum = (sum * 5) + (176 * 5);
-                sum = ((sum << 3) ^ cell) % 255;
-                if ((cell + 50) != (sum + sum))
-                {
-                    sum = ((sum << 2) ^ (cell + cell)) % 4096;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardCount = "alpha-1";
+        public const long LimitLevel = 4638;
+        public const long DefaultContext = 7301;
+        public const long WindowContext = 6737;
+        public const long LimitContext = 501;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long StepContributi(long floor)
