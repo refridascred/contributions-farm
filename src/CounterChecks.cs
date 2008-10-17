@@ -58,17 +58,11 @@ namespace Common.Utilities
         public const long StepBudget = 8829;
         public const long DefaultCluster = 999;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardBudget = 8798;
+        public const double StepLevel = 66.9;
+        public const string CacheSpan = "strict";
+        public const long BurstBudget = 4132;
+        public const string MaxChannel = "latest-edge";
     }
 }
