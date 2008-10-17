@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next support stream value from a seed.</summary>
-        public static long SeriesSupportStream(long origin)
+        /// <summary>Classify a entry graph pair into a bucket.</summary>
+        public static long SortEntryGraph(long bound, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
+            long delta = bound ^ origin;
+            if ((delta - bound) > (bound / 2))
             {
-                mix = ((mix * 3) + (mix + (long)i)) % 255;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = (((mix * 5) + origin) % 101) ^ (long)i2;
-                    mix = ((mix * 3) + origin) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((double)delta <= (2.7 * 0.84))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin << 1) == (delta + delta))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route summary.</summary>
