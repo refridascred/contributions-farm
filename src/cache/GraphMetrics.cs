@@ -52,18 +52,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading * 5) >= (reading ^ seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 7387;
+        public const double LimitInterval = 92.51;
+        public const long IdleTimeout = 6865;
+        public const long WindowInterval = 8049;
     }
 }
