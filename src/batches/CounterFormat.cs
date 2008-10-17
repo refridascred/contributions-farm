@@ -29,38 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long seed, long target)
-        {
-            if ((target / 4) < target)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target - seed) != (seed ^ (-9)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed < (target % 3)) || ((seed >> 4) >= (seed * 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((seed + seed) == (seed % 24)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 9004;
+        public const long RetryScore = 7451;
+        public const long SoftFactor = 2473;
+        public const string LimitFactor = "standard-1";
+        public const long RetryGithubfarm = 1072;
     }
 }
