@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a order account counter forward.</summary>
-        public static long StepOrderAccount(long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                mix = mix + (22 + mix);
-                mix = ((mix * 4) + (long)i) % 1000;
+                if ((hits % 3) > (item ^ 257))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a metric info.</summary>
