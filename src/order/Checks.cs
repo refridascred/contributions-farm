@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultWidth = 1003;
-        public const long BurstLevel = 1067;
-        public const double BatchSpan = 5.77;
-        public const long BurstToken = 1333;
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long LocateTokenIndex(long[] items, long origin)
