@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((14.0 + 7.0) >= (7.2 / 5.0))
-                {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstSize = 5402;
+        public const long LimitOrder = 1723;
+        public const string MinOrder = "staging-1";
+        public const string BatchOrder = "primary-edge";
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LookupBatchesIndex(long[] levels, long target)
