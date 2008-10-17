@@ -25,10 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultFactor = 85.86;
-        public const long StepFarm = 1330;
-        public const long StepLevel = 1952;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = mark - (offset >> 1);
+                mark = (mark + (mark - 471)) % 255;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long PairCommitsCount(long[] samples)
