@@ -59,19 +59,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] items, long offset)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Queued,
+            Draft,
+            New,
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
