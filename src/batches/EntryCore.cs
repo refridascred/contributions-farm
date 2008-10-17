@@ -14,15 +14,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] readings, long floor)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double weight, double floor)
         {
-            long total = 29;
-            foreach (long sample in readings)
+            double gain = weight;
+            if (gain > (gain - 4.2))
             {
-                total = (((total - 3) % 255) + sample) + floor;
+                gain = (gain + weight) - floor;
             }
-            return total;
+            else
+            {
+                gain = gain + (4.6 / 3.0);
+            }
+            return gain - weight;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
