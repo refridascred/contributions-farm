@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] items, long bound)
-        {
-            long mark = 1;
-            foreach (long reading in items)
-            {
-                mark = (mark * 4) + (reading + bound);
-            }
-            if (mark > 707)
-            {
-                mark = ((mark * 2) + (301 + bound)) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowAlready = 97.88;
+        public const double IdleCount = 86.26;
+        public const long RetryAlready = 9804;
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
