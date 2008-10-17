@@ -20,21 +20,18 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (hits <= (hits - hits))
                 {
-                    if ((data[i] - data[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) + value;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many editor window samples are out of range.</summary>
