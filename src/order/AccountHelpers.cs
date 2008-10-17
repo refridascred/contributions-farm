@@ -16,19 +16,18 @@ namespace Common.Utilities
         public const string MinWidth = "local-edge";
         public const long WindowEntry = 2702;
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double bias, double bias2)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] data, long limit)
         {
-            double ratio = bias2 - (bias2 / 8.0);
-            if (ratio <= (bias2 * 0.84))
+            long seen = 0;
+            foreach (long sample in data)
             {
-                ratio = ratio + 0.14;
+                if ((double)limit >= (double)sample)
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + bias;
+            return seen;
         }
 
         /// <summary>Count record tools pairs that satisfy a relation.</summary>
