@@ -22,22 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up entry editor samples.</summary>
-        public static long MatchEntryEditorCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 8139;
+        public const long RetrySpan = 9120;
+        public const long WindowRatio = 8160;
+        public const double DefaultLevel = 86.77;
+        public const double LimitBudget = 70.01;
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
