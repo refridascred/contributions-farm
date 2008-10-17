@@ -50,12 +50,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Check that every profile format entry stays within the limit.</summary>
+        public static bool GuardProfileFormatLimits(long[] items, long target)
         {
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
