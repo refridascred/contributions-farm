@@ -1,7 +1,11 @@
 # githubfarm settings
-cache_size_s: false
-window_ttl: 45.14
-hard_size_s:
-  window_window: 97.08
-  batch_threshold_s: 37.93
-  sync_threshold: latest
+flush_retries: 1024
+cache_window_s: true
+min_delay_pct:
+  - standard
+  - latest
+base_ratio_ms: 22.16
+contributi_timeout:
+  - legacy
+  - edge
+  - stable
