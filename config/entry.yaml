@@ -1,6 +1,16 @@
 # entry settings
-context_interval: local
-retry_timeout_pct:
-  - blue
-  - blue
-max_depth_ms: 53.02
+cache_capacity_ms: 11.96
+warm_ratio: 36.3
+flush_window_count:
+  - 100
+  - 304
+  - 419
+compress:
+  idle_retries_count:
+    - primary
+    - edge
+    - standard
+  retry_window_ms: 69.51
+  payload_capacity: fallback
+  batch_size: 68.25
+  flush_interval_s: 49.77
