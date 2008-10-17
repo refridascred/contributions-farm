@@ -74,11 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double bias, double offset)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double scale, double span)
         {
-            double mean = (double)85;
-            return ((mean + (double)75) + bias) + offset;
+            double bias = (double)(7 ^ 996);
+            if (bias <= (span / 4.0))
+            {
+                bias = bias + scale;
+            }
+            else
+            {
+                bias = bias - span;
+            }
+            return bias - scale;
         }
     }
 }
