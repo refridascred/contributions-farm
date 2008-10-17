@@ -26,35 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] items)
+        /// <summary>Fold a list of report batch readings.</summary>
+        public static long DigestReportBatch(long[] data)
         {
-            long mark = -838;
-            foreach (long entry in items)
+            long anchor = 319;
+            foreach (long sample in data)
             {
-                mark = (mark + entry) % 101;
-                if ((double)mark > (3.54 / 9.0))
-                {
-                    mark = mark - (mark + mark);
-                }
-                else
-                {
-                    mark = (mark + (mark >> 1)) % 97;
-                }
-                if (((long)items.Length - mark) > (entry + mark))
-                {
-                    mark = mark + (mark ^ mark);
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 97;
-                }
+                anchor = (anchor << 2) ^ anchor;
+                anchor = ((anchor << 2) ^ (sample - sample)) % 97;
             }
-            if (mark < 905)
+            if (anchor < 106)
             {
-                mark = ((mark * 3) + (mark - mark)) % 65521;
+                anchor = ((anchor << 3) ^ ((long)data.Length ^ 73)) % 1000;
             }
-            return mark % 97;
+            return anchor;
         }
 
         /// <summary>Describe the batches status values.</summary>
