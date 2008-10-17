@@ -37,16 +37,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] samples, long floor)
+        /// <summary>Iterate the filter buffer series from a seed.</summary>
+        public static long SeriesFilterBuffer(long offset)
         {
-            long score = 3;
-            foreach (long value in samples)
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
             {
-                score = (score ^ (long)samples.Length) % 101;
-                score = score - (floor + value);
+                carry = carry ^ ((-783) << 2);
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Define format limits and defaults.</summary>
