@@ -1,12 +1,19 @@
 {
-  "queue_interval": "local",
-  "cache_threshold": "standard",
-  "batches_interval": "open",
-  "poll_window_ms": {
-    "batch_capacity_ms": 87,
-    "burst_timeout_ms": false,
-    "cache_window_count": true,
-    "soft_ttl_ms": 20.65,
-    "persist": "green"
+  "editor_interval": false,
+  "enabled": 1024,
+  "default_retries_ms": "blue",
+  "order_interval": "blue",
+  "flush_ratio_count": "open",
+  "audit": {
+    "sync_ttl": 60.57,
+    "soft_retries_ms": "edge",
+    "persist": {
+      "hard_retries": 500,
+      "flush_interval_s": true,
+      "notes_depth": "stable",
+      "cache_depth": 18.91,
+      "readonly": 23,
+      "min_delay_count": "cached"
+    }
   }
 }
