@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long step, long floor)
+        /// <summary>Count the buffer cluster entries that pass the check.</summary>
+        public static long CountBufferClusterMatches(long[] readings, long target)
         {
-            if ((8.9 + 9.6) == (double)step)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor % 2) >= floor)
+                if ((hits / 6) > hits)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((step + floor) < (step - floor)) || ((floor / 7) < (-916)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = ((hits + 1) - value) + target;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
