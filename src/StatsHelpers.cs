@@ -38,10 +38,13 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 12.96;
-        public const string HardChannel = "legacy-1";
-        public const long MinScore = 231;
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
