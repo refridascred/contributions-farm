@@ -25,14 +25,9 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Ready,
-            Synced,
-            Locked,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 3333;
+        public const long BaseBuffer = 5927;
+        public const double BurstSize = 2.43;
     }
 }
