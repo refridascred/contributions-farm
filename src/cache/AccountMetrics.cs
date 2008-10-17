@@ -67,11 +67,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Match up order route samples.</summary>
+        public static long MatchOrderRouteCount(long[] readings)
         {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
