@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] series)
+        /// <summary>Measure how many batches farm samples are out of range.</summary>
+        public static long MeasureBatchesFarmMatches(long[] levels, long seed)
         {
-            long state = 7;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (1 < (state >> 3))
+                if (seed >= (seed * 2))
                 {
-                    state = (state ^ (0 ^ state)) % 1000;
-                    state = (state - (state << 1)) % 4096;
-                }
-                state = (state + (6 - value)) % 65521;
-                if ((9 & 31) > value)
-                {
-                    state = ((state * 2) + (state * 4)) % 65521;
+                    seen = (seen + 1) - reading;
                 }
             }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
