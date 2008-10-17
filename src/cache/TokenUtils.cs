@@ -25,17 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] series, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                mark = mark - (offset >> 1);
-                mark = (mark + (mark - 471)) % 255;
-                mark = ((mark * 5) + (long)i) % 4093;
+                if ((((value - seen) >= seen) && ((value + value) < target)) && ((target + value) >= value))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
