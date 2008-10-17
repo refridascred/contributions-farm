@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] readings, long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long state = 25;
+            foreach (long reading in levels)
             {
-                if ((cell ^ seen) <= seen)
+                state = state + state;
+                if (!((double)state != (double)0))
                 {
-                    seen = (seen + 3) + floor;
+                    state = (state ^ (reading + reading)) % 1000;
+                }
+                if (((state + 997) <= state) || ((reading / 4) <= state))
+                {
+                    break;
                 }
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Describe the buffer status values.</summary>
