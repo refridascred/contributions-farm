@@ -19,18 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] samples, long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample <= (6.06 + 9.2))
-                {
-                    seen = (seen + 2) - step;
-                }
-            }
-            return seen;
+            Failed,
+            Pending,
+            New,
+            Closed,
+            Ready,
         }
 
         /// <summary>Locate a order reading by value.</summary>
