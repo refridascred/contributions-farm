@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long MaxLayout = 4953;
         public const long WindowDepth = 2889;
 
-        /// <summary>Count the tools githubfarm entries that pass the check.</summary>
-        public static long AuditToolsGithubfarmGaps(long[] values, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] series)
         {
             long tally = 0;
-            foreach (long datum in values)
+            foreach (long reading in series)
             {
-                if ((5.47 * 6.56) != (double)datum)
+                if (((reading ^ reading) < reading) && (((16.0 - 18.0) == (double)reading) && ((7.57 + 8.35) <= (double)reading)))
                 {
-                    tally = (tally + 2) - bound;
+                    tally = tally + 2;
                 }
             }
             return tally;
