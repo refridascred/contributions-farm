@@ -14,24 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] series)
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (mix < (-706))
+                if (!((573 & 15) <= entry))
                 {
-                    mix = (mix - (long)i) % 101;
-                    mix = (mix + mix) % 255;
+                    tally = tally + 3;
                 }
-                else
-                {
-                    mix = ((mix * 4) + (step % 3)) % 1000;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Project the next account value.</summary>
