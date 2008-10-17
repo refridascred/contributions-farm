@@ -2,13 +2,10 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     count INTEGER NOT NULL DEFAULT 0,
-    level INTEGER,
-    region TEXT,
-    state TEXT NOT NULL DEFAULT 'new',
-    token TEXT
+    rank INTEGER,
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_token ON layout_items (token);
+CREATE INDEX IF NOT EXISTS idx_layout_items_count ON layout_items (count);
 
-INSERT INTO layout_items (count, level, region, state, token) VALUES (55, 73, 'legacy', 'standard', 'latest');
-INSERT INTO layout_items (count, level, region, state, token) VALUES (59, 28, 'cached', 'legacy', 'fallback');
+INSERT INTO layout_items (count, rank, level) VALUES (54, 1, 47);
