@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 3660;
-        public const long BurstScore = 3596;
-        public const double DefaultTimeout = 62.24;
-        public const double LimitCluster = 88.7;
-        public const long BaseCluster = 8174;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            New,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
