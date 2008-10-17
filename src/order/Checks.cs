@@ -69,38 +69,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long target, long limit)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] items, long bound)
         {
-            if (((double)target <= (double)limit) && ((target / 5) != (target + limit)))
+            bool ok = true;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit <= target)
+                if (reading <= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target ^ target) >= (limit & 127))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target + limit) < target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
