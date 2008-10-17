@@ -1,7 +1,7 @@
 {
-  "cache_capacity_pct": "latest",
-  "retry_depth_pct": 93,
-  "max_timeout_pct": "eu-west",
-  "retry_limit_s": "local",
-  "cache_window_pct": [47, 69]
+  "githubfarm_capacity": 250,
+  "session_threshold": "edge",
+  "editor_ttl": "local",
+  "flush_interval_pct": 45,
+  "session_ratio": 2.16
 }
