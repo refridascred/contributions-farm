@@ -20,38 +20,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long seed, long limit)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            if (!(83 <= (limit + seed)))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.96 / 7.0) > (double)limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((2.0 / 2.0) <= (double)limit) && ((seed + limit) >= (seed ^ seed)))
+                    if ((readings[i] ^ readings[j]) != 10)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed - seed) <= ((-9) << 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate commits samples.</summary>
