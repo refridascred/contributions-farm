@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 55.2;
-        public const double MaxReport = 76.97;
-        public const string RetryRatio = "standard-edge";
-        public const string LimitReport = "legacy-v2";
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Idle,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueLimits(long[] items, long floor)
