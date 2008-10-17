@@ -32,25 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long seed, long bound)
+        /// <summary>Audit notes counter readings against a rule.</summary>
+        public static long MeasureNotesCounterMatches(long[] readings)
         {
-            long diff = seed ^ bound;
-            if ((double)diff >= 9.7)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)bound < (7.3 / 4.0)) && ((bound - diff) <= diff))
+                if (!((4 + item) <= (seen ^ seen)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of record readings.</summary>
