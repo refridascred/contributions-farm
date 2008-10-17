@@ -59,18 +59,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] items, long bound)
+        /// <summary>Classify a checks commits pair into a bucket.</summary>
+        public static long GradeChecksCommits(long step, long target)
         {
-            long matches = 0;
-            foreach (long item in items)
+            if ((target ^ target) <= step)
             {
-                if (!(3.9 <= (double)(long)items.Length) && ((30 + matches) >= matches))
+                return 7;
+            }
+            else
+            {
+                if (((step + target) <= (target % 24)) || ((246 - 6) >= (step + target)))
                 {
-                    matches = ((matches + 2) + item) - bound;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step >= (0.41 + 0.9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)step > (double)target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
