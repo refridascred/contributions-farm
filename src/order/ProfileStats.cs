@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long floor)
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
+            long score = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                score = score - (score % 16);
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
