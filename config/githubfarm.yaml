@@ -1,10 +1,13 @@
 # githubfarm settings
-filter_limit:
-  default_window: 90
-  audit: fallback
-  warm_ttl_pct: 1437
-  retry_ratio_ms: 30
-warm_retries: primary
-readonly: 37.12
-hard_depth_ms: true
-enabled: false
+burst_retries_s:
+  command_ratio: 60
+  hard_threshold_ms: green
+  checks_ratio: 61
+  order_size: true
+  max_ttl_ms: 5.37
+window_window:
+  - fallback
+  - standard
+min_ttl:
+  - cached
+  - green
