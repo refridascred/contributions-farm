@@ -38,32 +38,10 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long seed, long target)
-        {
-            if ((double)seed >= (2.0 - 11.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed < 2.2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((10.0 / 8.0) < (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 12.96;
+        public const string HardChannel = "legacy-1";
+        public const long MinScore = 231;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
