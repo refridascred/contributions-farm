@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a stats command counter forward.</summary>
-        public static long SeriesStatsCommand(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 3799;
+        public const long CacheTimeout = 9851;
+        public const double MinInterval = 61.59;
+        public const long BurstGithubfarm = 7851;
+        public const double CacheInterval = 96.65;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MinFactor = 5426;
