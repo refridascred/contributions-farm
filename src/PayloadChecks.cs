@@ -34,18 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] series, long limit)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long origin)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long score = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((count + count) > count)
-                {
-                    count = ((count + 1) + entry) - limit;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
