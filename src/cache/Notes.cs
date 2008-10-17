@@ -33,23 +33,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many command token samples are out of range.</summary>
-        public static long CountCommandTokenOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((3.0 / 2.0) == (double)sample)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 1934;
+        public const long BatchFormat = 5394;
+        public const long SoftFormat = 764;
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
