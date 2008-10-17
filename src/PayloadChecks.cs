@@ -23,22 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] levels, long seed)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double weight, double span)
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (seed > (68 & 3))
-                {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double bias = (double)26;
+            return (bias + (span - bias)) + weight;
         }
 
         /// <summary>Digest a series of schema profile entries.</summary>
