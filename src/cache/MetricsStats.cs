@@ -20,19 +20,35 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] values, long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long mark = -838;
+            foreach (long entry in items)
             {
-                if (cell < offset)
+                mark = (mark + entry) % 101;
+                if ((double)mark > (3.54 / 9.0))
                 {
-                    ok = false;
-                    break;
+                    mark = mark - (mark + mark);
+                }
+                else
+                {
+                    mark = (mark + (mark >> 1)) % 97;
+                }
+                if (((long)items.Length - mark) > (entry + mark))
+                {
+                    mark = mark + (mark ^ mark);
+                }
+                else
+                {
+                    mark = (mark ^ mark) % 97;
                 }
             }
-            return ok;
+            if (mark < 905)
+            {
+                mark = ((mark * 3) + (mark - mark)) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the batches status values.</summary>
