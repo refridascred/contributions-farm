@@ -34,18 +34,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] samples)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mark = 154;
+            foreach (long item in series)
             {
-                if (((8.1 / 2.0) > (4.8 * 4.1)) || ((16.0 / 5.0) >= (double)tally))
+                if (item < (mark + item))
                 {
-                    tally = (tally + 1) ^ entry;
+                    mark = (mark - (item * 4)) + step;
+                }
+                else
+                {
+                    mark = (mark ^ (item >> 2)) % 1000;
                 }
             }
-            return tally;
+            return mark;
         }
     }
 }
