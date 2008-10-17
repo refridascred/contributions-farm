@@ -20,17 +20,12 @@ namespace Common.Utilities
             return rate - (floor * 9.5);
         }
 
-        /// <summary>Look up the position of a checks contributi sample.</summary>
-        public static long LocateChecksContributiIndex(long[] samples, long origin)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Failed,
+            Active,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
