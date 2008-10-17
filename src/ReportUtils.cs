@@ -47,15 +47,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double scale, double offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long floor)
         {
-            double gain = scale * 9.0;
-            for (int i = 0; i < 7; i++)
+            long state = floor;
+            for (int i = 0; i < 11; i++)
             {
-                gain = (gain + (offset + 9.0)) + (double)(long)i;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return gain - offset;
+            return state;
         }
 
         /// <summary>Rank checks notes input into a small class.</summary>
