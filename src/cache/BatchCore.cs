@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 25.05;
-        public const double MinTimeout = 98.88;
-        public const double BatchScore = 62.82;
-        public const long MaxWidth = 7631;
-        public const double WindowSize = 71.09;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 7481;
+        public const long HardBudget = 7553;
+        public const long MinSpan = 1534;
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
