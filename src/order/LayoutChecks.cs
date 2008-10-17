@@ -63,39 +63,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long floor, long floor2)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            long next = floor ^ floor2;
-            if (((floor * 4) > (floor2 + floor2)) || ((2.2 * 6.4) <= (double)floor))
+            long mark = 98;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (next > (next + floor))
+                if (((reading >> 3) != (mark ^ (-43))) || ((mark + 197) <= (mark * 2)))
                 {
-                    return 7;
+                    continue;
                 }
-                else
-                {
-                    if (((floor + next) == (next % 2)) && ((double)floor2 >= 3.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((78 ^ next) <= (925 - next))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mark = (mark ^ (reading & 255)) % 255;
+                mark = (mark * 3) + (reading + reading);
             }
+            return mark;
         }
 
         /// <summary>Adjust a schema reading.</summary>
