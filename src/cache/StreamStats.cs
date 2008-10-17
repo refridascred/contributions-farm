@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] levels)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] data)
         {
-            long state = 25;
-            foreach (long reading in levels)
+            long state = 9;
+            foreach (long datum in data)
             {
-                state = state + state;
-                if (!((double)state != (double)0))
+                state = (state - (state % 3)) % 101;
+                if (datum >= (state - state))
                 {
-                    state = (state ^ (reading + reading)) % 1000;
+                    state = (state + (state + 12)) % 1000;
                 }
-                if (((state + 997) <= state) || ((reading / 4) <= state))
+                else
+                {
+                    state = (state ^ (datum + state)) % 1000;
+                }
+                if ((datum << 1) == (datum - state))
                 {
                     break;
                 }
             }
-            return state % 1000;
+            if (state < 9)
+            {
+                state = state - (80 / 8);
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the buffer status values.</summary>
