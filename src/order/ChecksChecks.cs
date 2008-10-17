@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Idle,
-            Retry,
-            Locked,
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Look up the position of a command sample.</summary>
