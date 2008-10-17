@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Done,
-            Dropped,
-            Active,
+            Retry,
+            Idle,
+            Draft,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
