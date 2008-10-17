@@ -11,24 +11,13 @@ namespace Common.Utilities
         public const double MaxCache = 8.1;
         public const long SoftSpan = 7845;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long origin, long seed)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            if (57 > (3 + origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)seed >= (1.9 * 5.2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
