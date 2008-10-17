@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double rate, double span)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            double load = rate;
-            if (load < rate)
-            {
-                load = (load - rate) - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (rate / 4.0);
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
