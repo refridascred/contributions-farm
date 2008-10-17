@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long step, long floor)
         {
-            public bool Limit { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            if (floor < (4 - floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)floor > (11.0 * 5.0)) || ((double)floor >= (4.0 - 1.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((floor + 2) < ((-44) + 61)) && (step <= 359))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
