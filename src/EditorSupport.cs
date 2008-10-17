@@ -50,22 +50,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long target, long limit)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long seed, long origin)
         {
-            if ((limit / 4) < (target + target))
+            if (((seed + seed) < (origin - 4)) || ((double)origin != (double)8))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if ((double)limit == (6.9 * 1.4))
+                if ((seed + origin) >= (origin % 2))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    return 8;
+                    if ((double)seed >= (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
