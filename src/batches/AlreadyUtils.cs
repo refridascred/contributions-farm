@@ -13,19 +13,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] items, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] series)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (entry < step)
+                if (((double)datum != (4.0 - 4.0)) && !(datum >= (datum / 8)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
