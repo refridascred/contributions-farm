@@ -33,38 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a payload record pair into a bucket.</summary>
-        public static long BucketPayloadRecord(long seed, long origin)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] readings)
         {
-            if ((origin / 5) <= (seed + origin))
+            long carry = 967;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin << 3) > seed)
+                carry = (carry * 4) + datum;
+                if ((datum + datum) == (datum & 1))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((1.1 - 0.1) <= (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((4.17 + 6.0) > (double)origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    carry = carry - (81 ^ datum);
                 }
             }
+            if (carry > 713)
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry % 65521;
         }
     }
 }
