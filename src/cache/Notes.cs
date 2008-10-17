@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long target, long seed)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] values)
         {
-            long cur = target ^ seed;
-            if (!((seed + target) == (4 + target)))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed - cur) <= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed != (7.8 - 17.0))
+                    if ((values[i] - values[j]) < 10)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((target << 1) > (target % 12)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit entry support readings against a rule.</summary>
