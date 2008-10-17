@@ -39,12 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] series, long seed)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits ^ hits) < (seed + seed))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate token graph readings against a bound.</summary>
