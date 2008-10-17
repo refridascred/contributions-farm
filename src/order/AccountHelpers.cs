@@ -55,11 +55,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] readings, long seed)
         {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((seed << 3) >= matches)
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
