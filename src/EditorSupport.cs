@@ -62,31 +62,19 @@ namespace Common.Utilities
         public const double BurstScore = 70.0;
         public const long WindowStats = 7902;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] levels)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double ratio, double bias)
         {
-            long total = 650;
-            foreach (long datum in levels)
+            double mean = 4.19;
+            if (mean < (double)22)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    total = ((total - (datum >> 2)) % 65521) - (long)i;
-                }
-                if ((double)total == (11.0 * 12.0))
-                {
-                    total = (total + (total ^ total)) % 97;
-                    total = ((total << 2) ^ (total ^ total)) % 255;
-                }
-                if ((datum & 127) != (total - total))
-                {
-                    total = ((total << 3) ^ (datum / 8)) % 4096;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (datum + total)) % 97;
-                }
+                mean = (mean - mean) - bias;
             }
-            return total;
+            else
+            {
+                mean = mean - ratio;
+            }
+            return mean - mean;
         }
 
         /// <summary>Define command limits and defaults.</summary>
