@@ -1,12 +1,7 @@
 # entry settings
-cache_threshold: 93
-soft_threshold: 47
-dry_run: local
-hard_capacity_pct:
-  compress: 96
-  verbose: 250
-  record_interval: true
-  counter_ttl: false
-  enabled: latest
-  default_depth_ms: green
-max_delay_ms: 100
+persist: eu-west
+sync_capacity: 11.64
+hard_delay_count: 795
+flush_interval: 66
+hard_size_pct: true
+dry_run: stable
