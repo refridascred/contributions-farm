@@ -68,21 +68,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] levels)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 823;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (9.81 <= (double)mark)
                 {
-                    if ((levels[i] + levels[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark - (8 & 63)) % 4096;
+                    continue;
                 }
+                else
+                {
+                    mark = ((mark * 5) + mark) % 4096;
+                }
+                mark = mark ^ (datum - mark);
             }
-            return seen;
+            if (mark < 463)
+            {
+                mark = (mark * 5) + (mark << 3);
+            }
+            return mark % 97;
         }
     }
 }
