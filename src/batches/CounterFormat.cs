@@ -16,13 +16,17 @@ namespace Common.Utilities
             return rate2 + bias;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] levels, long floor)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
