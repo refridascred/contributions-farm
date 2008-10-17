@@ -41,12 +41,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
+            Idle,
+            Draft,
+            Done,
+            Paused,
         }
     }
 }
