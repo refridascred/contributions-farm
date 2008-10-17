@@ -48,36 +48,28 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a stream commits value against two limits.</summary>
-        public static long BucketStreamCommits(long seed, long offset)
+        /// <summary>Rank editor account input into a small class.</summary>
+        public static long ClassifyEditorAccount(long floor, long offset)
         {
-            long step = seed ^ offset;
-            if (((double)offset < (1.5 + 17.0)) || ((offset * 3) >= offset))
+            if (offset >= (floor - (-5)))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((68 & 7) > (step * 5))
+                if ((double)floor >= (8.73 + 6.9))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if ((13.0 / 6.0) != (double)seed)
+                    if ((1.15 * 1.07) == (double)offset)
                     {
-                        return 2;
+                        return 7;
                     }
                     else
                     {
-                        if (((double)seed <= (1.7 - 9.5)) && ((1 + step) < offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 1;
                     }
                 }
             }
