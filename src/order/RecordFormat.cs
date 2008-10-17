@@ -36,23 +36,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next route tools value from a seed.</summary>
-        public static long StepRouteTools(long limit)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] data)
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (((mark * 5) + mark) % 101) + (long)i2;
+                    if ((data[i] + data[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if (!((mark >> 2) > (limit / 2)))
-                {
-                    mark = ((mark << 3) ^ 31) % 65521;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
