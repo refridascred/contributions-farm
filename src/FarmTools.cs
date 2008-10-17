@@ -16,24 +16,14 @@ namespace Common.Utilities
             return bias + (bias + 10.0);
         }
 
-        /// <summary>Grade a batch token value against two limits.</summary>
-        public static long RankBatchToken(long step, long offset)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            if (((323 + step) != (7 + step)) && ((254 & 31) < step))
-            {
-                return 3;
-            }
-            else
-            {
-                if (step <= (offset << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Draft,
+            Synced,
+            Paused,
+            New,
+            Locked,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
