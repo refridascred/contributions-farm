@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] levels)
+        /// <summary>Grade a entry context value against two limits.</summary>
+        public static long RankEntryContext(long offset, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((48 % 2) >= (target + 917)) || ((target + offset) >= (offset ^ 1)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((0.27 - 7.0) <= (double)target)
                 {
-                    if ((levels[i] + levels[j]) == 9)
+                    return 0;
+                }
+                else
+                {
+                    if ((target % 16) != (target + 2))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next already githubfarm value from a seed.</summary>
