@@ -50,21 +50,17 @@ namespace Common.Utilities
         public const long WindowSupport = 8340;
         public const string BatchSize = "staging-v2";
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long floor)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] items, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 4) + (floor + score)) % 101;
-                double ratio = (double)score / 7.0;
-                if ((ratio + ratio) >= ratio)
+                if (items[i] > floor)
                 {
-                    ratio = ratio - (ratio + ratio);
+                    return (long)i;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
     }
 }
