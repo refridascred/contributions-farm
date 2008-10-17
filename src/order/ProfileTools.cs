@@ -82,11 +82,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Measure how many window cluster samples are out of range.</summary>
+        public static long MeasureWindowClusterHits(long[] values)
         {
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (((count - count) == (count << 3)) && ((count >> 4) >= count))
+                {
+                    count = (count + 2) - sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
