@@ -23,19 +23,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long limit, long limit2)
         {
-            long acc = 85;
-            foreach (long value in readings)
+            long step = limit + limit2;
+            if ((double)step != (13.0 * 7.0))
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    acc = (acc + (long)i) ^ value;
-                }
-                acc = (acc ^ acc) % 97;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if (91 < (limit - limit2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit * 5) != (limit2 >> 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step & 127) == (step >> 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
