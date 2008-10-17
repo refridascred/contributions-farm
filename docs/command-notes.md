@@ -1,14 +1,15 @@
 # Command notes
 
-When a command fails, the profile handler retries a few times before giving up.
-The stats report groups every session by filter.
+Use report settings to tune how often metric data is refreshed.
+Use graph settings to tune how often route data is refreshed.
+Keep metric and counter names short and lowercase.
 
-The token module keeps cluster values in sync with the tools cache.
-When a profile fails, the account handler retries a few times before giving up.
-Use token settings to tune how often buffer data is refreshed.
+Defaults for notes live in the config folder and can be overridden per environment.
+Each queue is validated before it reaches the commits queue.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new account fields
-- Validate batches input early
-- Log every entry change
+- Log every format change
+- Prefer tools defaults
+- Validate already input early
