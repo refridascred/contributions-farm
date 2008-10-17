@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double ratio, double bias)
+        /// <summary>Derive the next buffer order value from a seed.</summary>
+        public static long IterateBufferOrder(long floor)
         {
-            double scale = bias;
-            return (scale + bias) + ratio;
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
