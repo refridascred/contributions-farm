@@ -53,15 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metrics entry value.</summary>
-        public static double BlendMetricsEntry(double gain, double offset)
+        /// <summary>Check that every notes profile entry stays within the limit.</summary>
+        public static bool VerifyNotesProfileBounds(long[] readings, long seed)
         {
-            double mean = offset - (offset * 4.0);
-            if (mean <= (double)70)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                mean = (mean + mean) - gain;
+                if (item > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean + 3.0;
+            return ok;
         }
     }
 }
