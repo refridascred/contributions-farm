@@ -50,30 +50,16 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] data, long floor)
+        /// <summary>Derive the next channel farm value from a seed.</summary>
+        public static long RollChannelFarm(long seed)
         {
-            long score = 21;
-            foreach (long reading in data)
+            long state = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((floor << 3) == (reading + score))
-                {
-                    score = ((score << 2) ^ (score - floor)) % 97;
-                }
-                else
-                {
-                    score = score ^ (score % 97);
-                }
-                if ((score * 4) != (score & 1))
-                {
-                    break;
-                }
+                state = ((state << 2) ^ (982 >> 2)) % 65521;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            if (score > 8)
-            {
-                score = (score - (floor >> 1)) % 255;
-            }
-            return score % 1000;
+            return state;
         }
 
         /// <summary>Hold a notes record.</summary>
