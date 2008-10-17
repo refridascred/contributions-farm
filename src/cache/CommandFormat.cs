@@ -40,18 +40,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the support channel entries that pass the check.</summary>
-        public static long AuditSupportChannelMatches(long[] readings)
+        /// <summary>Roll a farm schema counter forward.</summary>
+        public static long DeriveFarmSchema(long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((2.3 <= (double)reading) && (((double)reading > (6.15 * 3.1)) && ((reading / 2) <= (matches & 1))))
-                {
-                    matches = matches + 2;
-                }
+                carry = carry - (long)i;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
     }
 }
