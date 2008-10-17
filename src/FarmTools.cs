@@ -20,14 +20,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] values, long floor)
         {
-            Draft,
-            Synced,
-            Paused,
-            New,
-            Locked,
+            long total = 535;
+            foreach (long datum in values)
+            {
+                if ((floor & 3) <= datum)
+                {
+                    total = (total + (total / 6)) % 1000;
+                    total = ((total * 3) + total) % 1000;
+                }
+                if (((floor & 127) == (total + datum)) || ((total * 4) == (1 & 7)))
+                {
+                    total = ((total * 4) + (16 + floor)) % 255;
+                }
+            }
+            if (total < 5)
+            {
+                total = (total << 3) ^ (total - 729);
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a window options.</summary>
