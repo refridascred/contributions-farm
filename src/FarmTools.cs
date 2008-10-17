@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double weight, double offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] samples)
         {
-            double bias = offset;
-            if (bias > (bias - weight))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias - (bias / 5.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias + (bias + 10.0);
+            return hits;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
