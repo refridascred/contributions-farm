@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] data)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] data, long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (count > (3 - count))
+                if (!((hits / 9) >= (534 - target)))
                 {
-                    count = (count + 2) - entry;
+                    hits = (hits + 3) + value;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the queue phase values.</summary>
