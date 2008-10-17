@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long limit, long origin)
         {
-            New,
-            Draft,
-            Locked,
+            long prev = limit ^ origin;
+            if ((24 < (limit / 7)) || ((limit % 24) > limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit ^ origin) > prev)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)limit <= (16.0 + 11.0)) || (origin <= (7 * 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit + prev) < (prev - limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next metrics value.</summary>
