@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double gain, double offset)
         {
-            Locked,
-            Dropped,
-            Stale,
-            Closed,
-            Failed,
+            double gain2 = gain;
+            if (gain2 <= (double)316)
+            {
+                gain2 = gain2 - (gain + offset);
+            }
+            return gain2 + (double)295;
         }
 
         /// <summary>Adjust a token entry reading.</summary>
