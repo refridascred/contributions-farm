@@ -30,18 +30,18 @@ namespace Common.Utilities
             return ((ratio - (6.6 * 18.0)) + bias) + floor;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] samples, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (((datum ^ datum) >= (seen & 63)) && (((target << 3) == (long)samples.Length) && ((datum * 2) == (7 / 4))))
+                if ((19.0 / 6.0) <= (double)sample)
                 {
-                    seen = seen + 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the route status values.</summary>
