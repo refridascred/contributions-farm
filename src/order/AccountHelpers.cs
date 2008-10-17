@@ -16,24 +16,27 @@ namespace Common.Utilities
             return rate2 + 0.2;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long limit, long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] items)
         {
-            if ((step / 7) <= (limit >> 4))
+            long mark = 41;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((limit - 89) <= (limit * 5)))
+                mark = (mark * 2) + (entry + entry);
+                if ((mark >> 2) < entry)
                 {
-                    return 7;
+                    mark = ((mark << 2) ^ 7) % 4096;
                 }
                 else
                 {
-                    return 3;
+                    mark = (mark - (mark - entry)) % 101;
                 }
             }
+            if (mark < (-5))
+            {
+                mark = mark ^ (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
