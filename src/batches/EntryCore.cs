@@ -72,31 +72,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank editor account input into a small class.</summary>
-        public static long ClassifyEditorAccount(long floor, long offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double ratio, double bias)
         {
-            if (offset >= (floor - (-5)))
+            double rate = (double)1 / 7.0;
+            if (rate > (bias + bias))
             {
-                return 2;
+                rate = (rate + (1.6 - rate)) + ratio;
             }
-            else
-            {
-                if ((double)floor >= (8.73 + 6.9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1.15 * 1.07) == (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return rate + (double)21;
         }
     }
 }
