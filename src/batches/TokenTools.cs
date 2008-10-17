@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Done,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryInterval = 2337;
+        public const long BatchEditor = 9220;
+        public const string LimitWidth = "strict-1";
+        public const long StepScore = 330;
+        public const double HardEditor = 85.33;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double BaseScore = 7.11;
