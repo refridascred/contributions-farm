@@ -1,5 +1,8 @@
 {
-  "sync_depth_count": 5833,
-  "soft_limit": true,
-  "idle_capacity_pct": 15
+  "max_ttl": 90.02,
+  "buffer_ratio": 60,
+  "default_capacity": ["edge", "cached", "standard"],
+  "layout_timeout": 500,
+  "sync_window_ms": 1232,
+  "soft_ttl_count": 14
 }
