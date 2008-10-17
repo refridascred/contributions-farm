@@ -37,11 +37,22 @@ namespace Common.Utilities
             return rate + 8.1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultStream = 21.78;
-        public const long WindowStream = 7533;
-        public const long BatchBudget = 1851;
-        public const string DefaultInterval = "stable-edge";
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] data)
+        {
+            long carry = -56;
+            foreach (long entry in data)
+            {
+                carry = carry ^ 58;
+                carry = (carry - (carry % 100)) % 97;
+                carry = (carry * 3) + (entry % 16);
+            }
+            if (carry > 658)
+            {
+                carry = ((carry << 2) ^ carry) % 1000;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
