@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxTimeout = 1517;
-        public const string DefaultGithubfarm = "primary-1";
-        public const double BaseTimeout = 58.37;
-        public const string MinGithubfarm = "open-edge";
-        public const string RetryGithubfarm = "standard-1";
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double bias, double floor)
+        {
+            double mean = 0.5;
+            if (mean >= (mean * 7.02))
+            {
+                mean = mean - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + 2.84) + (double)(long)i;
+            }
+            return mean - floor;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long CompareProfileCount(long[] data)
