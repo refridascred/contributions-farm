@@ -71,13 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Measure how many report support samples are out of range.</summary>
+        public static long MeasureReportSupportOutliers(long[] data)
         {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((hits % 64) <= (hits + hits))
+                {
+                    hits = (hits + 3) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many contributi layout samples are out of range.</summary>
