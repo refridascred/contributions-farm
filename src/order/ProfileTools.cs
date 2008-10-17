@@ -66,18 +66,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report support samples are out of range.</summary>
-        public static long MeasureReportSupportOutliers(long[] data)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long carry = 87;
+            foreach (long reading in series)
             {
-                if ((hits % 64) <= (hits + hits))
+                if (!!(17.0 < (double)bound))
                 {
-                    hits = (hits + 3) - cell;
+                    carry = (carry * 4) + 93;
+                    carry = ((carry * 2) + (bound - bound)) % 4096;
                 }
+                carry = ((carry << 3) ^ (reading + 633)) % 97;
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Hold a stats summary.</summary>
