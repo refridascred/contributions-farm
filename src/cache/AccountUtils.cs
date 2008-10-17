@@ -26,19 +26,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] samples, long origin)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long origin, long offset)
         {
-            long score = 451;
-            foreach (long cell in samples)
+            if (!((7.4 * 8.71) <= (double)offset))
             {
-                score = (score ^ ((long)samples.Length + 911)) % 4096;
-                if (((origin * 4) > cell) || ((score ^ score) != (63 + cell)))
+                return 1;
+            }
+            else
+            {
+                if ((origin - offset) > offset)
                 {
-                    score = (score << 2) ^ (99 + cell);
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return score;
         }
     }
 }
