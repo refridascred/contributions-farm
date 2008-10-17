@@ -36,21 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long floor)
+        /// <summary>Look up the position of a layout cache sample.</summary>
+        public static long LookupLayoutCacheIndex(long[] data, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum << 2) ^ (sum & 63);
-                sum = (sum << 3) ^ (floor + 2);
-                if (!((sum + (long)i) == (floor << 2)))
+                if ((data[i] >= limit) && ((data[i] % 2) == 0))
                 {
-                    sum = (sum * 2) + (sum - 86);
+                    return (long)i;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return -1;
         }
     }
 }
