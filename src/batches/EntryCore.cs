@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] readings)
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + datum) == (datum % 97))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next notes value.</summary>
