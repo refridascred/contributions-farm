@@ -53,19 +53,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] levels)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] samples)
         {
-            long acc = 42;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc << 2) ^ (datum / 4)) % 255;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (acc < 49)
-            {
-                acc = (acc * 2) + (acc - acc);
-            }
-            return acc % 65521;
+            return count;
         }
     }
 }
