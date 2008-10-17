@@ -43,14 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Synced,
-            Active,
-            Retry,
-            New,
-            Idle,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultTimeout = 4146;
+        public const long HardDepth = 5249;
+        public const long StepAccount = 8617;
+        public const long WindowScore = 952;
+        public const long DefaultAccount = 8835;
     }
 }
