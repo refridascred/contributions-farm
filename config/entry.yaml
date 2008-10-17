@@ -1,16 +1,19 @@
 # entry settings
-audit: 250
-session_delay: 20.56
-max_depth: 4513
-dry_run:
-  burst_retries:
-    cache_timeout: 45.86
-    compress: blue
-    stats_depth: standard
-  payload_size: strict
-  base_timeout_pct: true
-  dry_run: 19.3
-idle_threshold_pct: cached
-default_retries_s:
-  - open
-  - strict
+already_retries: eu-west
+record_limit: 36
+max_timeout_count: cached
+warm_retries_count:
+  batches_capacity: green
+  hard_delay_pct: true
+  retry_limit:
+    retry_timeout_ms:
+      - 312
+      - 377
+      - 295
+    cache_size_ms: green
+    verbose: green
+    max_limit_ms: 6556
+    warm_ttl: 31
+audit:
+  - local
+  - staging
