@@ -26,18 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] levels, long origin)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (((hits ^ hits) > origin) && ((86 < (origin + hits)) && ((double)reading > 2.2)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Paused,
+            Closed,
+            Queued,
         }
     }
 }
