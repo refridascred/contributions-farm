@@ -33,18 +33,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((item - tally) > (tally % 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryDepth = "legacy";
+        public const double LimitLevel = 25.45;
+        public const long BurstOrder = 7284;
     }
 }
