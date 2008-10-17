@@ -49,17 +49,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] items, long limit)
+        /// <summary>Derive the next metric already value from a seed.</summary>
+        public static long IterateMetricAlready(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((items[i] < limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state ^ ((long)i << 3)) % 65521;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
