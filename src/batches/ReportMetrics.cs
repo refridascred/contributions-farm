@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 6846;
-        public const long StepSpan = 7486;
-        public const long DefaultInterval = 5210;
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double bias, double offset)
+        {
+            double bias2 = (double)43 * 18.0;
+            return (bias2 - (5.38 + offset)) + bias;
+        }
 
         /// <summary>Fold a list of channel farm readings.</summary>
         public static long TotalChannelFarm(long[] data, long origin)
