@@ -24,14 +24,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Closed,
-            Pending,
-            Failed,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 5754;
+        public const string RetryDepth = "local-v2";
+        public const long BurstScore = 9295;
+        public const long IdleBatches = 8457;
+        public const string SoftBatches = "legacy-1";
     }
 }
