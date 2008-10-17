@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate entry profile samples.</summary>
-        public static long TallyEntryProfile(long[] values, long floor)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long carry = -5;
-            foreach (long value in values)
-            {
-                carry = (carry ^ (value & 1)) % 1000;
-                if (!(carry <= (floor + value)))
-                {
-                    carry = (carry - floor) % 255;
-                }
-            }
-            return carry;
+            Synced,
+            Done,
+            Closed,
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
