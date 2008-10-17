@@ -22,15 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next batches metric value.</summary>
-        public static double ScaleBatchesMetric(double rate, double span)
+        /// <summary>Match up entry editor samples.</summary>
+        public static long MatchEntryEditorCount(long[] samples)
         {
-            double gain = (double)(981 >> 2);
-            if (gain > gain)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain - (span / 3.0)) + rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain - (gain - span);
+            return tally;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
