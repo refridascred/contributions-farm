@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((3.85 + 19.0) != (double)seed) || (seen > (seed % 7)))
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 55.2;
+        public const double MaxReport = 76.97;
+        public const string RetryRatio = "standard-edge";
+        public const string LimitReport = "legacy-v2";
 
         /// <summary>Accumulate token batch samples.</summary>
         public static long TotalTokenBatch(long[] samples, long origin)
