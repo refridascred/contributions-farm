@@ -87,9 +87,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 2433;
-        public const double IdlePayload = 53.87;
-        public const string BurstPayload = "latest-v2";
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark << 2) ^ mark) % 101;
+                mark = mark - (mark << 3);
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
     }
 }
