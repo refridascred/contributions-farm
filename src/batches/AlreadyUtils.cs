@@ -22,21 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] readings, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] items, long bound)
         {
-            long score = 7;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in items)
             {
-                score = score + (reading / 4);
-                score = (score * 5) + (offset ^ reading);
-                score = (score - (reading + offset)) % 65521;
-                if (offset > (reading << 3))
+                if ((3.7 / 8.0) > (double)reading)
                 {
-                    break;
+                    count = (count + 2) - bound;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
