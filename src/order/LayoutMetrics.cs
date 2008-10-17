@@ -42,12 +42,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] data)
         {
-            Closed,
-            Queued,
-            Idle,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (3.19 < (double)matches)
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
         }
     }
 }
