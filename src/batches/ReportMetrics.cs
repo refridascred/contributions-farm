@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double gain, double offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long floor)
         {
-            double mean = (double)((-8) % 5);
-            if (mean >= (mean - mean))
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
             {
-                mean = mean + (gain + 6.4);
+                if (!(((floor + carry) > carry) && ((long)i >= floor)))
+                {
+                    carry = carry ^ (291 % 7);
+                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            else
-            {
-                mean = mean + offset;
-            }
-            return mean - mean;
+            return carry;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
