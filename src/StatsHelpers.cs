@@ -14,23 +14,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double gain, double bias)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] samples)
         {
-            double bias2 = (double)(29 - 11);
-            if (bias2 <= (double)339)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = (bias2 + 5.4) + gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 + (bias - bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (double)6) + (double)(long)i;
-            }
-            return bias2 + bias2;
+            return hits;
         }
 
         /// <summary>Describe the format state values.</summary>
