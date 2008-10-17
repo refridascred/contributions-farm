@@ -20,15 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] levels, long target)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long carry = 557;
-            foreach (long entry in levels)
-            {
-                carry = ((carry - (target ^ carry)) % 255) + entry;
-            }
-            return carry % 4096;
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
