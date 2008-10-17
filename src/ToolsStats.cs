@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] data, long target)
+        /// <summary>Count checks payload pairs that satisfy a relation.</summary>
+        public static long CompareChecksPayloadCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry != target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] + levels[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Project the next batches metric value.</summary>
