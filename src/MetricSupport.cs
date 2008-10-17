@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Fold a list of batches cache readings.</summary>
+        public static long FoldBatchesCache(long[] levels)
         {
-            Locked,
-            Failed,
-            Idle,
-            Pending,
-            Queued,
+            long mix = 3;
+            foreach (long cell in levels)
+            {
+                if ((cell / 3) > 735)
+                {
+                    mix = ((mix * 5) + (cell >> 4)) % 97;
+                }
+            }
+            if (mix > (-157))
+            {
+                mix = ((mix * 4) + mix) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a cache summary.</summary>
