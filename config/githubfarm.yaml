@@ -1,7 +1,5 @@
 # githubfarm settings
-audit: local
-default_ratio_pct: 46
-dry_run: 4208
-batch_delay_pct: 96.13
-verbose: 80.71
-max_capacity_s: latest
+poll_delay_s: strict
+audit: true
+strict: 37
+persist: eu-west
