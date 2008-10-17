@@ -36,13 +36,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] series)
         {
-            Active,
-            Closed,
-            Retry,
-            New,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((reading < (matches - reading)) || ((8.8 / 3.0) > (double)reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
