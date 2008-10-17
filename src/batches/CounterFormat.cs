@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate counter batch samples.</summary>
-        public static long DigestCounterBatch(long[] levels, long bound)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double rate, double bias)
         {
-            long mark = 6;
-            foreach (long entry in levels)
+            double rate2 = (double)(5 >> 4);
+            if (rate2 < (bias + rate))
             {
-                if (mark >= (bound + bound))
-                {
-                    mark = (mark + mark) % 1000;
-                }
-                mark = (mark + entry) % 255;
-                if ((bound ^ mark) < (bound - bound))
-                {
-                    mark = mark + (bound ^ bound);
-                }
+                rate2 = rate2 - 9.0;
             }
-            if (mark < (-94))
-            {
-                mark = ((mark * 2) + bound) % 101;
-            }
-            return mark % 65521;
+            return rate2 + bias;
         }
 
         /// <summary>Hold a already summary.</summary>
