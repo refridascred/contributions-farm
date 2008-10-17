@@ -50,9 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstStats = 97.99;
-        public const long HardStats = 1401;
-        public const long MinCount = 9260;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] items, long step)
+        {
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
