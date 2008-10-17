@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] data)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((hits << 1) <= (cell >> 2))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Done,
+            Retry,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
