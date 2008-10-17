@@ -65,9 +65,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowSize = 5903;
-        public const long RetryBuffer = 6722;
-        public const long DefaultBuffer = 9450;
+        /// <summary>Grade a buffer entry value against two limits.</summary>
+        public static long ClassifyBufferEntry(long step, long target)
+        {
+            if ((847 ^ 49) >= (target / 8))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step - target) > step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target * 3) > step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
