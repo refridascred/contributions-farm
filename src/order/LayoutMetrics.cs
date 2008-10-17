@@ -5,32 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long limit, long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] levels, long step)
         {
-            long prev = limit + origin;
-            if (((52 + origin) < (limit >> 5)) && (330 < (prev + origin)))
+            long sum = 0;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (prev < (prev + limit))
+                if (((sum / 7) == (step ^ (long)levels.Length)) || ((-341) > (value >> 5)))
                 {
-                    return 7;
+                    sum = sum ^ sum;
                 }
                 else
                 {
-                    if ((limit * 5) >= origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    sum = ((sum * 2) + (value >> 2)) % 97;
+                    sum = (sum - step) % 65521;
+                }
+                sum = sum ^ step;
+                if ((value + sum) != (9 / 4))
+                {
+                    break;
                 }
             }
+            return sum % 65521;
         }
 
         /// <summary>Roll a format counter forward.</summary>
