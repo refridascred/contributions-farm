@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] samples, long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Stale,
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the counter level values.</summary>
