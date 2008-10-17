@@ -14,22 +14,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] samples)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            double weight2 = weight;
+            if (weight2 >= (floor * 18.0))
             {
-                if ((item * 5) >= (item / 6))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight2 = weight2 - (floor / 5.0);
             }
-            return seen;
+            else
+            {
+                weight2 = weight2 + (weight + weight2);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 + (double)5) + (double)(long)i;
+            }
+            return weight2 + floor;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
