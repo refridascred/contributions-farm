@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 4508;
+        public const double HardScore = 6.13;
+        public const double BaseFarm = 21.95;
+        public const long SoftFactor = 9896;
+        public const long RetryTimeout = 2186;
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
