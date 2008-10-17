@@ -30,11 +30,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public double Limit { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 2260;
+        public const string BatchStream = "primary-1";
+        public const double CacheLevel = 40.11;
+        public const double HardFactor = 93.41;
+        public const long StepTimeout = 3998;
     }
 }
