@@ -1,20 +1,8 @@
 {
-  "persist": [93, 66],
-  "audit": {
-    "min_depth": 27.31,
-    "hard_threshold_s": "standard",
-    "verbose": false,
-    "report_depth": {
-      "contributi_ttl": true,
-      "format_threshold": true,
-      "persist": 100
-    },
-    "warm_interval": 50.73
-  },
-  "stream_timeout": {
-    "cluster_window": 31,
-    "soft_ratio": ["local", "fallback", "standard"],
-    "flush_timeout": false
-  },
-  "default_window": 56.97
+  "layout_depth": 7869,
+  "cache_ttl_ms": "strict",
+  "retry_delay": 100,
+  "hard_retries": "latest",
+  "default_depth_count": true,
+  "retry_retries": 80.1
 }
