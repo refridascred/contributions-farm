@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] readings, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long total = 544;
+            foreach (long cell in series)
             {
-                if (((long)readings.Length - offset) > entry)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = total ^ (cell + bound);
             }
-            return tally;
+            if (total > 7)
+            {
+                total = (total + (bound >> 4)) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Derive the next notes graph value from a seed.</summary>
