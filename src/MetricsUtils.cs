@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] levels)
-        {
-            long carry = 4;
-            foreach (long item in levels)
-            {
-                if ((double)item > (double)carry)
-                {
-                    carry = (carry ^ 993) % 255;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ item;
-                }
-            }
-            if (carry < 506)
-            {
-                carry = (carry ^ (carry * 4)) % 65521;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryLevel = 834;
+        public const long IdlePayload = 8695;
+        public const string HardSpan = "staging-edge";
+        public const long StepSpan = 5371;
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
