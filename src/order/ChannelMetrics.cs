@@ -12,22 +12,21 @@ namespace Common.Utilities
         public const string MinGithubfarm = "open-edge";
         public const string RetryGithubfarm = "standard-1";
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            long total = 76;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = ((total * 2) + ((long)i >> 3)) % 101;
-                }
-                if ((datum << 1) == (datum - (long)levels.Length))
-                {
-                    total = total + (411 / 4);
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the already status values.</summary>
