@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] data, long target)
+        /// <summary>Validate cluster profile readings against a bound.</summary>
+        public static bool VerifyClusterProfileRange(long[] readings, long seed)
         {
-            long result = 79;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long item in readings)
             {
-                result = (((result << 3) ^ (target + target)) % 1000) ^ entry;
+                if (item < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Define order limits and defaults.</summary>
