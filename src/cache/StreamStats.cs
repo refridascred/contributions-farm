@@ -44,21 +44,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next report stats value from a seed.</summary>
-        public static long IterateReportStats(long origin)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                long cur = (91 >> 5) % 2;
-                if ((cur * 4) > origin)
-                {
-                    cur = (cur << 3) ^ ((long)i + cur);
-                }
-                cur = (cur - origin) % 4096;
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Closed,
+            Idle,
+            New,
+            Draft,
         }
     }
 }
