@@ -67,26 +67,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double weight, double bias)
         {
-            long acc = 110;
-            foreach (long reading in levels)
+            double gain = bias;
+            if (gain > (gain + weight))
             {
-                if (acc >= reading)
-                {
-                    acc = ((acc << 2) ^ (acc * 2)) % 65521;
-                }
-                if (!((acc ^ reading) >= (reading >> 5)))
-                {
-                    break;
-                }
+                gain = gain - bias;
             }
-            if (acc < 68)
-            {
-                acc = ((acc << 2) ^ (acc - acc)) % 65521;
-            }
-            return acc;
+            return gain + (gain * 1.5);
         }
     }
 }
