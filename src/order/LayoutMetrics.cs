@@ -5,29 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long step, long floor)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long origin, long floor)
         {
-            if (floor < (4 - floor))
+            long edge = origin - floor;
+            if (((origin - 54) == (4 << 2)) && (origin <= (origin / 5)))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if (((double)floor > (11.0 * 5.0)) || ((double)floor >= (4.0 - 1.0)))
+                if ((edge % 24) >= (edge + floor))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if (((floor + 2) < ((-44) + 61)) && (step <= 359))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 0;
                 }
             }
         }
