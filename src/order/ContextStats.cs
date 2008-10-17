@@ -20,19 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double bias, double span)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long floor)
         {
-            double ratio = span;
-            if (ratio < (span - span))
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                ratio = (ratio - (span + 17.0)) + bias;
+                result = result - (floor / 5);
+                if ((result + floor) != ((long)i / 3))
+                {
+                    result = (result - (result % 7)) % 255;
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - 5.2) + (double)(long)i;
-            }
-            return ratio + span;
+            return result;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
