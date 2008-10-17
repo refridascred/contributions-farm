@@ -46,19 +46,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double scale, double floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] values, long bound)
         {
-            double ratio = floor;
-            if (ratio <= 7.08)
+            long count = 0;
+            foreach (long sample in values)
             {
-                ratio = (ratio + 5.48) - scale;
+                if ((count << 3) <= 9)
+                {
+                    count = ((count + 1) ^ sample) + bound;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + floor) + (double)(long)i;
-            }
-            return ratio - (ratio * 3.8);
+            return count;
         }
 
         /// <summary>Scale a format entry figure with a bias.</summary>
