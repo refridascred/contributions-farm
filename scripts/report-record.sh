@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open strict green; do
+mode="${1:-cached}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in legacy staging cached; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=376
+log "limit is ${RECORD_LIMIT}"
