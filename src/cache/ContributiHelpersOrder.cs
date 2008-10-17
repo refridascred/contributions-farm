@@ -27,13 +27,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Pending,
-            Failed,
-            Active,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxRatio = 4776;
+        public const string BaseSpan = "open";
+        public const long DefaultSize = 6748;
+        public const long CacheContext = 5439;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferLimits(long[] values, long step)
