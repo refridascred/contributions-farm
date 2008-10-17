@@ -66,21 +66,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] levels)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the account state values.</summary>
