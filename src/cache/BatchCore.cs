@@ -55,13 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((1 & 63) < (tally ^ entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
