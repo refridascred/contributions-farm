@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitSpan = 9695;
-        public const double MinContext = 13.68;
-        public const long DefaultContext = 5525;
-        public const long CacheBudget = 9858;
-        public const string DefaultDepth = "primary-edge";
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = (mark + (44 - origin)) % 255;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double SoftTimeout = 10.69;
