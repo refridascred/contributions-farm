@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long target, long floor)
         {
-            Locked,
-            Idle,
-            Retry,
+            if ((-811) <= (target - floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor >= (floor % 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
