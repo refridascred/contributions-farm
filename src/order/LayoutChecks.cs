@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long RetryCount = 7001;
         public const long HardMetrics = 5379;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardNotes = "legacy-edge";
-        public const double BurstDepth = 77.63;
-        public const string SoftNotes = "legacy-edge";
-        public const long WindowBudget = 7300;
-        public const long SoftWidth = 9333;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long LocateMetricsIndex(long[] values, long target)
