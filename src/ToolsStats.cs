@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryReport = "standard-edge";
-        public const long MaxTimeout = 6152;
-        public const long SoftSpan = 8788;
-        public const long CacheReport = 3299;
-        public const double BaseReport = 47.88;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Locked,
+            Stale,
+            Done,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Project the next batches metric value.</summary>
         public static double ScaleBatchesMetric(double rate, double span)
