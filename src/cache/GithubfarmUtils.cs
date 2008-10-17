@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] values, long target)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long mix = 174;
-            foreach (long datum in values)
-            {
-                if (((60 / 8) == (448 - target)) || ((target + target) <= (6 + 465)))
-                {
-                    mix = ((mix * 2) + (mix + datum)) % 4096;
-                }
-            }
-            if (mix > 0)
-            {
-                mix = ((mix << 3) ^ (mix ^ mix)) % 97;
-            }
-            return mix % 97;
+            Synced,
+            Stale,
+            Paused,
+            Draft,
         }
 
         /// <summary>Grade a command record value against two limits.</summary>
