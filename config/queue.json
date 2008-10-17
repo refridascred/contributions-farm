@@ -1,5 +1,13 @@
 {
-  "default_retries_s": "local",
-  "idle_interval_count": 98,
-  "poll_threshold": 1.4
+  "batch_limit": 20.71,
+  "hard_capacity_pct": "cached",
+  "stats_interval": "blue",
+  "sync_retries": {
+    "batch_retries_pct": "primary",
+    "base_window_ms": [177, 341],
+    "strict": [380, 456, 251],
+    "context_timeout": "eu-west",
+    "readonly": 6972
+  },
+  "batch_timeout": "eu-west"
 }
