@@ -22,11 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public bool Size { get; set; }
-            public long Region { get; set; }
+            Queued,
+            Stale,
+            Synced,
+            Idle,
+            Failed,
         }
 
         /// <summary>Blend two record measurements.</summary>
