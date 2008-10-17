@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = ((total + (total + total)) % 97) ^ (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Iterate the order contributi series from a seed.</summary>
