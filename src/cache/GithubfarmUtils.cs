@@ -42,15 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long score = -4;
-            foreach (long cell in levels)
-            {
-                score = (score - (cell - cell)) % 255;
-            }
-            return score;
+            Draft,
+            Idle,
+            Synced,
+            Dropped,
         }
     }
 }
