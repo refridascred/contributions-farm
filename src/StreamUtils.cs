@@ -39,13 +39,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] data, long offset)
         {
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
+            long mix = 86;
+            foreach (long cell in data)
+            {
+                if (75 > (offset >> 2))
+                {
+                    mix = mix ^ (mix - offset);
+                }
+                else
+                {
+                    mix = mix - (mix + 276);
+                }
+                mix = ((mix * 2) + (cell * 4)) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a cache info.</summary>
