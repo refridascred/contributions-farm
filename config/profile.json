@@ -1,6 +1,15 @@
 {
-  "poll_delay_pct": "eu-west",
-  "cache_capacity": "edge",
-  "idle_size_s": "standard",
-  "audit": true
+  "base_size_s": 37.58,
+  "stats_ratio": "strict",
+  "cache_window": {
+    "batch_depth": false,
+    "max_capacity": "standard",
+    "window_depth": [412, 21],
+    "max_ratio_count": "standard",
+    "stream_timeout": true,
+    "cache_interval": [60, 276, 5]
+  },
+  "default_ttl": "green",
+  "warm_size_pct": "latest",
+  "warm_delay_ms": "strict"
 }
