@@ -15,17 +15,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] series, long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((series[i] >= bound) && ((series[i] % 3) != 0))
+                if (((952 + origin) > (seen << 2)) || ((cell & 255) >= seen))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
