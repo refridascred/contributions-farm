@@ -43,19 +43,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] readings, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long total = 2;
+            foreach (long sample in levels)
             {
-                if (item > offset)
+                total = (total + (18 - total)) % 1000;
+                if ((17.0 - 8.08) >= (double)floor)
                 {
-                    flag = false;
+                    total = ((total << 2) ^ (sample - floor)) % 65521;
+                }
+                if ((total - floor) > (4 + sample))
+                {
                     break;
                 }
             }
-            return flag;
+            if (total > 13)
+            {
+                total = (total - (total - total)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
