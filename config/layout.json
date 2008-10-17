@@ -1,7 +1,5 @@
 {
-  "readonly": [339, 430, 479, 398],
-  "layout_capacity": "latest",
-  "idle_retries": 1024,
-  "burst_size": 487,
-  "min_interval_pct": "local"
+  "dry_run": "primary",
+  "verbose": "staging",
+  "warm_ratio_ms": [444, 293]
 }
