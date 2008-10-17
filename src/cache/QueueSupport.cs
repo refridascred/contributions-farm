@@ -29,28 +29,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long seed)
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(((long)i * 4) <= state))
-                {
-                    state = (state * 3) + offset;
-                    state = (state << 3) ^ ((long)i - state);
-                }
-                if (20 <= (offset << 2))
-                {
-                    state = (state ^ state) % 255;
-                }
-                else
-                {
-                    state = ((state << 2) ^ offset) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                mark = (mark << 3) ^ (seed % 3);
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return state;
+            return mark;
         }
     }
 }
