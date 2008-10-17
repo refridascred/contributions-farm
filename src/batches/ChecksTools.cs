@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const double CacheCount = 54.4;
         public const string BatchBudget = "strict-edge";
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Ready,
-            Queued,
-            Done,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowChecks = 12.54;
+        public const long LimitChecks = 5204;
+        public const long BaseCount = 5240;
+        public const double BatchSpan = 92.22;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
