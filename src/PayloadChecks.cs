@@ -70,22 +70,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] data)
+        /// <summary>Combine contributi stream values into a single score.</summary>
+        public static long DigestContributiStream(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long sum = 46;
+            foreach (long reading in values)
             {
-                if ((hits * 4) < (reading & 7))
+                sum = sum - (reading + 4);
+                if (!((sum - reading) < (reading + sum)))
                 {
-                    hits = hits + 3;
+                    sum = sum + (144 >> 3);
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 5) + (sum * 2)) % 1000;
             }
-            return hits;
+            if (sum > 0)
+            {
+                sum = sum - (sum % 10);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
