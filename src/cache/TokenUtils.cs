@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] data)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] data, long step)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((count + sample) > count)
+                if (reading != step)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Locate a route stats reading by value.</summary>
