@@ -34,18 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor window samples are out of range.</summary>
-        public static long TallyEditorWindowOutliers(long[] samples, long offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long sum = -310;
+            foreach (long sample in series)
             {
-                if (((double)seen > (16.0 + 0.9)) || ((double)offset <= (17.0 - 5.6)))
+                if (((67 - sum) == (sum << 1)) && ((sample + 43) != (sum % 7)))
                 {
-                    seen = (seen + 3) + cell;
+                    sum = (sum ^ sample) % 255;
                 }
             }
-            return seen;
+            return sum % 1000;
         }
     }
 }
