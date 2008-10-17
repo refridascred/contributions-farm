@@ -38,12 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseBudget = "stable";
-        public const long WindowTools = 5802;
-        public const long BurstTools = 3820;
-        public const long RetryTools = 876;
-        public const string BatchTimeout = "fallback-edge";
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long MatchEntryCount(long[] readings)
