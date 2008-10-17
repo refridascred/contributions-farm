@@ -31,22 +31,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long origin, long offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long target, long bound)
         {
-            if (!((7.4 * 8.71) <= (double)offset))
+            if (((bound << 1) <= (target ^ bound)) || ((34 - bound) <= (bound << 2)))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((origin - offset) > offset)
+                if ((9.41 * 3.0) <= (double)bound)
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    return 4;
+                    return 7;
                 }
             }
         }
