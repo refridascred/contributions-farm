@@ -37,16 +37,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the filter buffer series from a seed.</summary>
-        public static long SeriesFilterBuffer(long offset)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] data, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = carry ^ ((-783) << 2);
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
