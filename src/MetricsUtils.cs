@@ -39,11 +39,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 780;
-        public const double BurstFormat = 67.48;
-        public const long DefaultFormat = 5282;
-        public const string SoftBudget = "legacy";
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Stale,
+            Failed,
+            Done,
+            Synced,
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long AuditCounterMatches(long[] levels, long bound)
