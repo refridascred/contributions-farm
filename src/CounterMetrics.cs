@@ -24,28 +24,28 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long seed, long floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long origin, long seed)
         {
-            if ((floor / 5) >= seed)
+            if ((origin + seed) <= (seed - origin))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((14.0 > (double)floor) || ((seed * 4) >= (96 - 851)))
+                if (seed < (seed % 100))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if (floor >= 6)
+                    if ((485 >> 5) <= (seed << 2))
                     {
-                        return 7;
+                        return 2;
                     }
                     else
                     {
-                        return 1;
+                        return 6;
                     }
                 }
             }
