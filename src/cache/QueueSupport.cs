@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long target)
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if ((double)(long)i >= (2.92 + 8.0))
+                {
+                    anchor = (anchor ^ target) % 4096;
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor ^ 57) % 4096;
+                    anchor = (anchor ^ (anchor << 2)) % 1000;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Rank metrics stream input into a small class.</summary>
