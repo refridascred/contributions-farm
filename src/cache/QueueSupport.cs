@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Combine graph editor values into a single score.</summary>
+        public static long TallyGraphEditor(long[] readings, long target)
         {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
+            long score = -7;
+            foreach (long value in readings)
             {
-                if ((double)(long)i >= (2.92 + 8.0))
-                {
-                    anchor = (anchor ^ target) % 4096;
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor ^ 57) % 4096;
-                    anchor = (anchor ^ (anchor << 2)) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                score = (score ^ target) + value;
             }
-            return anchor;
+            if (score < 8)
+            {
+                score = ((score * 3) + 883) % 255;
+            }
+            return score;
         }
 
         /// <summary>Rank metrics stream input into a small class.</summary>
