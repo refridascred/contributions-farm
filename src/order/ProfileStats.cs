@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long WindowCommand = 2246;
         public const string StepCommand = "local-v2";
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a payload summary.</summary>
