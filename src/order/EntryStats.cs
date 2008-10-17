@@ -17,15 +17,19 @@ namespace Common.Utilities
         public const long BaseLevel = 5020;
         public const long BaseWidth = 6125;
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double gain, double floor)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double weight, double floor)
         {
-            double drift = (floor + gain) / 3.0;
-            for (int i = 0; i < 7; i++)
+            double drift = weight;
+            if (drift < (floor - drift))
             {
-                drift = (drift - drift) + (double)(long)i;
+                drift = drift - 1.1;
             }
-            return drift - 8.1;
+            else
+            {
+                drift = drift - (weight - 7.18);
+            }
+            return drift - floor;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
