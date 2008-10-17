@@ -1,8 +1,7 @@
-id,token,region
-1,green,8.1
-2,43,94.78
-3,618,59.48
-4,84.63,929
-5,54.7,606
-6,903,0.12
-7,713,legacy
+id,token,region,ratio,weight
+1,21,0.03,45.18,94.57
+2,641,71.03,stable,28
+3,748,primary,stable,194
+4,737,65.5,standard,47.1
+5,461,green,stable,41.91
+6,4.94,50.79,eu-west,409
