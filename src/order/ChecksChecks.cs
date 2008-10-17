@@ -22,9 +22,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 32;
-        public const long BatchLevel = 21;
-        public const string WindowWidth = "latest";
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((target << 1) <= (state / 6))
+                {
+                    state = (state << 2) ^ state;
+                    state = (state + (long)i) % 97;
+                    continue;
+                }
+                state = (state + ((-3) / 3)) % 101;
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
