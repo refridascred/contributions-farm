@@ -13,19 +13,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] readings, long step)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Pending,
+            Dropped,
+            Active,
+            Paused,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
