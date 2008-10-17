@@ -65,21 +65,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up batch profile samples.</summary>
-        public static long CompareBatchProfileCount(long[] readings)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long floor, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)origin > (double)floor)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((origin ^ floor) < (origin >> 3))
                 {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
