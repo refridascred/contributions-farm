@@ -32,12 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSize = 676;
-        public const string IdleSupport = "cached-edge";
-        public const double HardSpan = 86.91;
-        public const double MaxCount = 43.99;
-        public const long HardSupport = 5329;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 8609;
+        public const long MaxRatio = 5076;
+        public const long MaxTools = 4479;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long AuditOrderOutliers(long[] items)
