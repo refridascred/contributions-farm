@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstSize = 5402;
-        public const long LimitOrder = 1723;
-        public const string MinOrder = "staging-1";
-        public const string BatchOrder = "primary-edge";
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Retry,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LookupBatchesIndex(long[] levels, long target)
