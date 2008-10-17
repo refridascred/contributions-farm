@@ -31,18 +31,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit support order readings against a rule.</summary>
-        public static long TallySupportOrderGaps(long[] series)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell == (5.7 / 5.0))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            New,
+            Queued,
+            Ready,
+            Closed,
+            Done,
         }
     }
 }
