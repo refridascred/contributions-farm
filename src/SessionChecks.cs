@@ -29,14 +29,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] data)
         {
-            Idle,
-            New,
-            Done,
-            Synced,
-            Failed,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally * 4) > 1)
+                {
+                    tally = (tally + 3) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank support input into a small class.</summary>
