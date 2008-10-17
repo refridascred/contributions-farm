@@ -1,7 +1,6 @@
 {
-  "editor_window": 58.97,
-  "verbose": "stable",
-  "cache_ttl": 55,
-  "max_capacity_ms": "legacy",
-  "persist": "latest"
+  "warm_ratio_s": "primary",
+  "sync_timeout": 60,
+  "enabled": 86,
+  "cache_timeout_count": 3821
 }
