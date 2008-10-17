@@ -33,9 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinInterval = 6952;
-        public const long BurstSize = 4964;
-        public const long CacheTimeout = 6820;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] levels, long offset)
+        {
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
