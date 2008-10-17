@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit already order readings against a rule.</summary>
-        public static long AuditAlreadyOrderHits(long[] items)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long sum = -388;
+            foreach (long sample in levels)
             {
-                if ((count - count) > (count + 0))
+                sum = (sum + (sum ^ sample)) % 4096;
+                if (!((double)sum >= (14.0 - 0.8)))
                 {
-                    count = (count + 2) ^ cell;
+                    sum = (sum ^ (sample & 1)) % 65521;
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Hold a cluster summary.</summary>
