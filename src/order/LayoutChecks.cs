@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long RetryCount = 7001;
         public const long HardMetrics = 5379;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] values)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] levels, long bound)
         {
-            long total = 4;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                total = (total - (total + 1)) ^ entry;
+                if (datum >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total > 4)
-            {
-                total = ((total * 5) + total) % 65521;
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
