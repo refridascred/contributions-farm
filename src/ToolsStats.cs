@@ -31,11 +31,18 @@ namespace Common.Utilities
             return gain - (gain - span);
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double bias, double floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] readings, long target)
         {
-            double ratio = 5.7;
-            return ((ratio - (6.6 * 18.0)) + bias) + floor;
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (!((double)94 <= (double)count))
+                {
+                    count = ((count + 2) + entry) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
