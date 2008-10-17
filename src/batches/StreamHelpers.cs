@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of token report entries.</summary>
-        public static long ScoreTokenReport(long[] values)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long target, long floor)
         {
-            long carry = -757;
-            foreach (long value in values)
+            if (floor >= (floor + target))
             {
-                carry = (carry - ((long)values.Length - carry)) + value;
+                return 1;
             }
-            return carry % 97;
+            else
+            {
+                if ((target ^ 29) == (floor + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
