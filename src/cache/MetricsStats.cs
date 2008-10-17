@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] values)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long score = 348;
-            foreach (long item in values)
-            {
-                score = (score - (score << 2)) % 97;
-                score = score + (item >> 2);
-                if ((item + score) < score)
-                {
-                    score = (score - score) % 255;
-                }
-            }
-            return score;
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate metric batches readings against a bound.</summary>
