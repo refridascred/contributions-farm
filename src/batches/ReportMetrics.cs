@@ -42,11 +42,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] items)
         {
-            public long Count { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((53 << 1) <= (matches - sample))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
