@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowBudget = 66.25;
+        public const long MaxRoute = 6735;
+        public const double HardSize = 56.3;
+        public const long BurstTimeout = 5288;
+        public const long HardRoute = 3107;
 
         /// <summary>Compare every pair of tools editor readings.</summary>
         public static long OverlapToolsEditorCount(long[] samples)
