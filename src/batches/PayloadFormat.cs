@@ -34,21 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] samples)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
