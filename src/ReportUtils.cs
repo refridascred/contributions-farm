@@ -35,16 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Measure how many editor tools samples are out of range.</summary>
+        public static long MeasureEditorToolsMatches(long[] data, long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                carry = (carry - (seed + seed)) % 97;
-                carry = ((carry * 3) + (long)i) % 1000;
+                if ((count > (cell >> 2)) && ((count + cell) <= (count + bound)))
+                {
+                    count = count + 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
