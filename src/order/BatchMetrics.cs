@@ -70,20 +70,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue stats series from a seed.</summary>
-        public static long StepQueueStats(long origin)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
+            long score = floor;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = anchor - (anchor * 5);
-                if (origin >= anchor)
+                score = ((score * 4) + (floor + score)) % 101;
+                double ratio = (double)score / 7.0;
+                if ((ratio + ratio) >= ratio)
                 {
-                    anchor = (anchor * 4) + (5 - origin);
+                    ratio = ratio - (ratio + ratio);
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return anchor;
+            return score;
         }
     }
 }
