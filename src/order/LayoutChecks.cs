@@ -63,13 +63,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long floor, long floor2)
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
-            public double Weight { get; set; }
+            long next = floor ^ floor2;
+            if (((floor * 4) > (floor2 + floor2)) || ((2.2 * 6.4) <= (double)floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if (next > (next + floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((floor + next) == (next % 2)) && ((double)floor2 >= 3.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((78 ^ next) <= (925 - next))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of layout record readings.</summary>
