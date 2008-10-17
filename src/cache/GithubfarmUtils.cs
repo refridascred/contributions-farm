@@ -42,17 +42,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] levels, long offset)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public double Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a filter summary.</summary>
