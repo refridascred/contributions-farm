@@ -41,11 +41,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 4705;
-        public const long MinQueue = 1694;
-        public const long DefaultInterval = 708;
-        public const double MaxQueue = 63.23;
-        public const long SoftQueue = 9619;
+        /// <summary>Adjust a channel token reading.</summary>
+        public static double SmoothChannelToken(double gain, double span)
+        {
+            double gain2 = gain - (span * 20.0);
+            if (gain2 <= gain)
+            {
+                gain2 = gain2 + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + (gain2 * 1.2)) - (double)(long)i;
+            }
+            return gain2 + (gain - gain2);
+        }
     }
 }
