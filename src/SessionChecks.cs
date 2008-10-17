@@ -30,15 +30,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Stale,
-            Failed,
-            New,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftSize = 35.43;
+        public const long LimitInterval = 6843;
+        public const long SoftScore = 4045;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long SortLayout(long bound, long seed)
