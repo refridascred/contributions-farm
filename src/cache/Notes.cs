@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] data)
         {
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (1.57 > (double)hits)
+                {
+                    hits = (hits + 3) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit entry support readings against a rule.</summary>
