@@ -73,18 +73,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] readings, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long anchor = 359;
+            foreach (long cell in values)
             {
-                if ((double)datum <= (double)tally)
+                if ((cell << 2) >= (cell + 23))
                 {
-                    tally = (tally + 3) + limit;
+                    anchor = (((anchor << 3) ^ (cell & 31)) % 4096) + origin;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
