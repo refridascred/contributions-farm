@@ -5,28 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of window commits readings.</summary>
-        public static long DigestWindowCommits(long[] levels, long origin)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long target)
         {
-            long anchor = -4;
-            foreach (long sample in levels)
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (3.7 < (double)anchor)
+                if (((long)i <= result) && (412 > (target ^ result)))
                 {
-                    anchor = anchor + (origin ^ 242);
+                    result = (result ^ target) % 4096;
                 }
-                anchor = (anchor - origin) % 97;
-                anchor = anchor ^ (159 - 606);
-                if ((double)sample > 8.58)
-                {
-                    break;
-                }
+                result = (result + ((long)i - result)) % 4096;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            if (anchor > 129)
-            {
-                anchor = (anchor + (origin - anchor)) % 4096;
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
