@@ -22,13 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 2684;
+        public const double LimitCommits = 89.43;
+        public const double CacheCommits = 84.59;
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
