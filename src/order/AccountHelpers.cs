@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long DefaultWidth = 1048;
         public const long BaseBudget = 1896;
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetrySize = "legacy-edge";
+        public const long StepScore = 821;
+        public const string MinWidth = "local-edge";
+        public const long WindowEntry = 2702;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double BlendSession(double bias, double bias2)
