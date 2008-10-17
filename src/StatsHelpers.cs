@@ -40,18 +40,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the entry tools entries that pass the check.</summary>
-        public static long TallyEntryToolsHits(long[] readings)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (((double)tally >= (double)item) && ((tally % 12) == (tally + item)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a report record.</summary>
