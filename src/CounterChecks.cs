@@ -27,19 +27,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine metrics report values into a single score.</summary>
-        public static long DigestMetricsReport(long[] series)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] series, long target)
         {
-            long anchor = 97;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor ^ (anchor >> 4)) % 97) + item;
+                if ((series[i] < target) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 534)
-            {
-                anchor = (anchor + anchor) % 255;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
