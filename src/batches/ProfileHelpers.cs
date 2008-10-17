@@ -46,19 +46,23 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double weight, double offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] levels)
         {
-            double weight2 = weight;
-            if (weight2 < 4.48)
+            long score = 39;
+            foreach (long item in levels)
             {
-                weight2 = weight2 - (weight - offset);
+                score = ((score * 3) + (score << 1)) % 1000;
+                if (!((double)item != (9.0 * 2.18)))
+                {
+                    score = ((score << 3) ^ (35 + (long)levels.Length)) % 101;
+                }
+                else
+                {
+                    score = (score * 2) + (54 << 1);
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 + weight) + (double)(long)i;
-            }
-            return weight2 + offset;
+            return score;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
