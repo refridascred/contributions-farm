@@ -30,38 +30,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long seed, long origin)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] series, long bound)
         {
-            if (3.42 > (double)seed)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin / 4) > (9 + origin))
+                if ((series[i] >= bound) && ((series[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed + 590) > (seed + seed)) || ((15.0 / 6.0) <= (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((402 + seed) >= origin) && ((18 + seed) >= origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
