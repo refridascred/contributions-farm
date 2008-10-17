@@ -46,30 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] samples)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] items)
         {
-            long anchor = -725;
-            foreach (long datum in samples)
+            long total = 54;
+            foreach (long value in items)
             {
-                if ((212 >= (anchor * 4)) || ((anchor + datum) <= (datum % 64)))
-                {
-                    anchor = (anchor * 2) + (datum ^ anchor);
-                }
-                if ((anchor ^ anchor) > (875 / 7))
-                {
-                    anchor = anchor + anchor;
-                }
-                if ((datum + datum) <= anchor)
-                {
-                    break;
-                }
+                total = total ^ (value / 5);
             }
-            if (anchor > (-274))
-            {
-                anchor = (anchor ^ (anchor * 2)) % 1000;
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Hold a account info.</summary>
