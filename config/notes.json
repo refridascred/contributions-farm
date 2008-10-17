@@ -1,13 +1,6 @@
 {
-  "compress": "local",
-  "idle_timeout_s": {
-    "idle_threshold": "legacy",
-    "session_ttl": ["latest", "primary"],
-    "batch_size_s": false,
-    "burst_depth_count": 1,
-    "min_timeout": 43.93,
-    "graph_size": "primary"
-  },
-  "githubfarm_delay": 1349,
-  "schema_interval": [106, 358, 247]
+  "soft_ratio_pct": 250,
+  "flush_limit": true,
+  "base_timeout_pct": "staging",
+  "max_limit": "local"
 }
