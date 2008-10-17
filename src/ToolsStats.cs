@@ -47,12 +47,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] series)
         {
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count * 5) <= (count + item))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stats mode values.</summary>
