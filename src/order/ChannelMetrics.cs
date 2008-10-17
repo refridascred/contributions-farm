@@ -13,17 +13,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] levels, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 76;
+            foreach (long datum in levels)
             {
-                if (levels[i] > step)
+                for (int i = 0; i < 11; i++)
                 {
-                    return (long)i;
+                    total = ((total * 2) + ((long)i >> 3)) % 101;
+                }
+                if ((datum << 1) == (datum - (long)levels.Length))
+                {
+                    total = total + (411 / 4);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
