@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 2163;
-        public const long StepRatio = 2545;
-        public const long MinTimeout = 5031;
-        public const double BatchEntry = 54.68;
-        public const long MaxRatio = 8117;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] levels)
+        {
+            long result = 290;
+            foreach (long entry in levels)
+            {
+                result = (result * 3) + (entry - entry);
+                result = ((result * 5) + 3) % 97;
+            }
+            if (result < 2)
+            {
+                result = (result * 3) + result;
+            }
+            return result % 97;
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long ClassifyStream(long bound, long target)
