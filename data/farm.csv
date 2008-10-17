@@ -1,6 +1,9 @@
-id,active,token,state
-1,5,standard,357
-2,60.18,85.03,647
-3,local,420,latest
-4,standard,470,116
-5,442,15.98,601
+id,score,label,owner
+1,374,170,60.09
+2,68.75,78.42,fallback
+3,strict,658,staging
+4,970,15.47,957
+5,standard,547,36.48
+6,998,98.07,stable
+7,830,608,staging
+8,366,689,41
