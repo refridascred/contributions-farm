@@ -16,19 +16,11 @@ namespace Common.Utilities
             return bias3 + (bias / 8.0);
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] data, long seed)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Roll a route counter forward.</summary>
