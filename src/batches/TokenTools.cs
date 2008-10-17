@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long step)
         {
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
+            long total = step;
+            for (int i = 0; i < 17; i++)
+            {
+                total = total + ((long)i << 3);
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
