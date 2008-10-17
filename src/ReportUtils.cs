@@ -33,12 +33,16 @@ namespace Common.Utilities
         public const double DefaultScore = 76.57;
         public const long WindowChecks = 1745;
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Roll a context farm counter forward.</summary>
+        public static long RollContextFarm(long step)
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public double Region { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = anchor - (step - step);
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a channel token reading.</summary>
