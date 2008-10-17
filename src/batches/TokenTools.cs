@@ -25,10 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitDepth = 7940;
-        public const long MinLevel = 9133;
-        public const long StepRatio = 1998;
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double BaseScore = 7.11;
