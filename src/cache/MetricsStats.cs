@@ -19,11 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] levels, long limit)
         {
-            public double Limit { get; set; }
-            public double Stamp { get; set; }
+            long mix = 48;
+            foreach (long value in levels)
+            {
+                mix = ((mix - limit) % 1000) + value;
+                mix = (mix ^ mix) % 101;
+                mix = (mix * 5) + (717 % 7);
+            }
+            return mix;
         }
 
         /// <summary>Combine account values into a single score.</summary>
