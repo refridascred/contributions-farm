@@ -33,15 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double bias, double span)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long seed)
         {
-            double scale = bias;
-            for (int i = 0; i < 9; i++)
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
             {
-                scale = (scale - span) + (double)(long)i;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return scale + (span + bias);
+            return sum;
         }
     }
 }
