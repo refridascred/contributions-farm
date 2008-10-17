@@ -38,11 +38,31 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long seed, long target)
         {
-            public double Flag { get; set; }
-            public bool Region { get; set; }
+            if ((double)seed >= (2.0 - 11.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed < 2.2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((10.0 / 8.0) < (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a window stats.</summary>
