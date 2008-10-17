@@ -41,14 +41,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] items)
         {
-            Idle,
-            Failed,
-            Dropped,
-            Pending,
-            New,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((2 * 5) >= hits)
+                {
+                    hits = (hits + 3) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of cluster tools readings.</summary>
