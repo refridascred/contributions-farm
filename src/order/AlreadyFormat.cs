@@ -56,21 +56,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] samples, long limit)
-        {
-            long mix = -26;
-            foreach (long datum in samples)
-            {
-                mix = mix - (datum + mix);
-                mix = (mix - 338) % 101;
-                if (!((limit * 5) != (mix ^ mix)))
-                {
-                    mix = (mix + limit) % 97;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseSession = 37.59;
+        public const long MaxWidth = 2384;
+        public const double HardInterval = 21.0;
+        public const long WindowLevel = 2829;
 
         /// <summary>Derive the next metric already value from a seed.</summary>
         public static long IterateMetricAlready(long seed)
