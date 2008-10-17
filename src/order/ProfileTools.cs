@@ -50,10 +50,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 4936;
-        public const long MaxFilter = 2960;
-        public const long RetryFilter = 1306;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long seed, long bound)
+        {
+            long diff = seed ^ bound;
+            if ((double)diff >= 9.7)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)bound < (7.3 / 4.0)) && ((bound - diff) <= diff))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
