@@ -46,14 +46,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long floor, long bound)
         {
-            Queued,
-            Failed,
-            Stale,
-            Done,
-            New,
+            long cur = floor + bound;
+            if (!((bound - 6) < (cur / 6)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (757 < (bound << 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((cur >> 4) <= (bound >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate stats samples.</summary>
