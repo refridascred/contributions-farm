@@ -64,19 +64,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long bound, long floor)
         {
-            long state = 2;
-            foreach (long sample in items)
+            long diff = bound ^ floor;
+            if ((18 << 3) < (diff & 31))
             {
-                state = (state ^ (state << 3)) % 4096;
-                if ((state - state) >= sample)
+                return 8;
+            }
+            else
+            {
+                if ((5.3 * 5.7) == (double)diff)
                 {
-                    state = state - state;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return state % 1000;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
