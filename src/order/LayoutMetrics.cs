@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)(long)i >= (6.0 + 8.0)))
                 {
-                    if ((levels[i] ^ levels[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix ^ (mix % 7)) % 101;
                 }
+                mix = ((mix << 3) ^ mix) % 101;
+                if (mix < (mix % 2))
+                {
+                    mix = ((mix * 4) + (111 - seed)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the counter level values.</summary>
