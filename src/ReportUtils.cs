@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseSpan = 3735;
-        public const long DefaultScore = 451;
-        public const long BaseContext = 1840;
-        public const double HardScore = 85.36;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Synced,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
