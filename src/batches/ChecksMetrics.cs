@@ -81,21 +81,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count already entry pairs that satisfy a relation.</summary>
-        public static long PairAlreadyEntryCount(long[] samples)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
