@@ -1,7 +1,7 @@
 {
-  "soft_delay_s": "local",
-  "tools_ttl": 7603,
-  "support_limit": ["edge", "strict"],
-  "audit": ["cached", "local", "blue", "latest"],
-  "compress": 100
+  "record_threshold": false,
+  "batch_size_pct": false,
+  "base_timeout": 56.62,
+  "max_timeout_count": "open",
+  "base_timeout_pct": 65.09
 }
