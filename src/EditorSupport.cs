@@ -43,23 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!(439 <= ((long)i >> 5)))
-                {
-                    mark = (mark + ((long)i & 63)) % 4096;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mark = (((mark * 3) + ((long)i ^ 6)) % 255) + (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Closed,
+            New,
+            Locked,
         }
 
         /// <summary>Project the next record value.</summary>
