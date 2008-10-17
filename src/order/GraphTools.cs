@@ -65,12 +65,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Idle,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowSize = 5903;
+        public const long RetryBuffer = 6722;
+        public const long DefaultBuffer = 9450;
     }
 }
