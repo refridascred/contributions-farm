@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheProfile = 81.04;
-        public const string MinBudget = "cached-1";
-        public const long BaseBudget = 9522;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] data, long bound)
+        {
+            long mix = 762;
+            foreach (long entry in data)
+            {
+                if ((mix + mix) >= (bound ^ entry))
+                {
+                    mix = (mix << 3) ^ (bound ^ 13);
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long CombineRecord(long[] readings)
