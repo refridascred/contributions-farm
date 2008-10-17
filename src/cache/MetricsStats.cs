@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long floor, long seed)
+        /// <summary>Adjust a checks batches reading.</summary>
+        public static double ProjectChecksBatches(double scale, double offset)
         {
-            long diff = floor - seed;
-            if (!((seed + diff) != (seed ^ 6)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((diff >> 5) < 815))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double rate = scale;
+            return (rate - 3.3) + offset;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
