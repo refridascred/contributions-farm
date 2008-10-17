@@ -62,14 +62,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] readings)
         {
-            Failed,
-            Active,
-            Paused,
-            Pending,
-            Queued,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((matches - item) < (matches + item))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
