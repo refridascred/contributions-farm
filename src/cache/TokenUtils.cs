@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] values, long offset)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double rate, double bias)
         {
-            long total = 951;
-            foreach (long sample in values)
+            double load = rate;
+            if (load <= (3.9 + bias))
             {
-                long gap = (sample % 12) / 8;
-                if (((3 >> 4) > gap) || (total <= (680 + gap)))
-                {
-                    long cur = sample - (76 - 5);
-                    total = total - (cur - offset);
-                }
-                if (!(119 > total))
-                {
-                    total = (total - (6 + sample)) % 1000;
-                }
+                load = load + (double)43;
             }
-            return total;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + 7.9) - (double)(long)i;
+            }
+            return load - (double)3;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
