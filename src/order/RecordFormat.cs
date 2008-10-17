@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] samples)
+        /// <summary>Accumulate queue profile samples.</summary>
+        public static long TotalQueueProfile(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long sum = 1;
+            foreach (long item in samples)
             {
-                if ((double)count < (14.0 - 3.87))
+                if ((sum & 127) <= (origin / 6))
                 {
-                    count = (count + 2) + datum;
+                    sum = ((sum ^ ((long)samples.Length % 7)) % 97) - item;
                 }
             }
-            return count;
+            if (sum > 191)
+            {
+                sum = ((sum * 2) + origin) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the order phase values.</summary>
