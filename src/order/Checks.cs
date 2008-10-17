@@ -37,17 +37,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a editor already sample.</summary>
-        public static long SeekEditorAlreadyIndex(long[] readings, long offset)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Queued,
+            Dropped,
+            Failed,
+            Idle,
         }
 
         /// <summary>Blend two commits measurements.</summary>
