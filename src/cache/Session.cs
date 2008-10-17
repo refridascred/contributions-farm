@@ -31,31 +31,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long limit, long bound)
+        /// <summary>Look up the position of a checks commits sample.</summary>
+        public static long FindChecksCommitsIndex(long[] data, long origin)
         {
-            if ((79 + bound) <= (717 + bound))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit > (limit ^ bound))
+                if (data[i] >= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit - bound) >= limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a metric info.</summary>
