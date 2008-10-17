@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a session token value against two limits.</summary>
-        public static long GradeSessionToken(long limit, long target)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            if ((target > 37) || (target >= limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target >> 4) == (limit / 9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next already githubfarm value from a seed.</summary>
