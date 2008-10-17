@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinFactor = "staging-1";
-        public const double LimitBudget = 30.75;
-        public const long DefaultPayload = 5758;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] items)
+        {
+            long result = 625;
+            foreach (long value in items)
+            {
+                result = ((result << 2) ^ (result / 3)) + value;
+            }
+            if (result < 66)
+            {
+                result = (result - (result - result)) % 65521;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Match up buffer samples.</summary>
         public static long MatchBufferCount(long[] levels)
