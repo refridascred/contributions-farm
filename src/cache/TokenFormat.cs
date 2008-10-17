@@ -20,11 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Iterate the order contributi series from a seed.</summary>
+        public static long SeriesOrderContributi(long seed)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
