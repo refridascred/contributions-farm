@@ -13,17 +13,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a already format reading by value.</summary>
-        public static long FindAlreadyFormatIndex(long[] series, long offset)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = bias;
+            if (rate >= (double)79)
             {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
+                rate = rate - rate;
             }
-            return -1;
+            else
+            {
+                rate = rate + (13.0 * 3.4);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (bias + weight)) + (double)(long)i;
+            }
+            return rate + (bias - rate);
         }
 
         /// <summary>Describe the metric phase values.</summary>
