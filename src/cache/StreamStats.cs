@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long origin, long target)
         {
-            public bool Count { get; set; }
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
-            public double Label { get; set; }
+            long edge = origin + target;
+            if ((origin < edge) && ((9 >> 2) > (target + target)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin + origin) <= target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((edge & 63) <= (edge + edge))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target > (891 * 2)) || ((target << 3) <= (edge + target)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the already class values.</summary>
