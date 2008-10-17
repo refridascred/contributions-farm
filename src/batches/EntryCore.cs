@@ -16,17 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] samples, long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 29;
+            foreach (long sample in readings)
             {
-                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = (((total - 3) % 255) + sample) + floor;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
