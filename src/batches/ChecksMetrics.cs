@@ -84,15 +84,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Ready,
+            Dropped,
+            Draft,
         }
     }
 }
