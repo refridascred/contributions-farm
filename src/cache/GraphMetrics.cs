@@ -29,19 +29,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] series, long limit)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Failed,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a editor stats.</summary>
