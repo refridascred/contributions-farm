@@ -1,8 +1,13 @@
 {
-  "max_ttl": 90.02,
-  "buffer_ratio": 60,
-  "default_capacity": ["edge", "cached", "standard"],
-  "layout_timeout": 500,
-  "sync_window_ms": 1232,
-  "soft_ttl_count": 14
+  "min_ttl_pct": {
+    "profile_capacity": false,
+    "base_timeout_pct": 60.24,
+    "notes_timeout": true,
+    "base_window": 30
+  },
+  "warm_ratio_count": true,
+  "idle_interval_ms": ["edge", "local", "blue", "strict"],
+  "record_interval": ["open", "blue"],
+  "soft_ratio_count": "stable",
+  "flush_ratio_ms": false
 }
