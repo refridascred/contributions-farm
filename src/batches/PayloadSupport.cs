@@ -26,13 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Paused,
-            Done,
-            Failed,
-            Retry,
+            Ready,
+            Locked,
+            Pending,
+            Dropped,
         }
     }
 }
