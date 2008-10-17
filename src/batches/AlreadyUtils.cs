@@ -48,21 +48,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up commits metrics samples.</summary>
-        public static long MatchCommitsMetricsCount(long[] items)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (series[i] <= limit)
                 {
-                    if ((items[i] + items[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the metric phase values.</summary>
