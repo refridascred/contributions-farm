@@ -32,17 +32,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchRatio = "open-1";
+        public const string HardPayload = "stable-1";
+        public const string LimitPayload = "latest-1";
+        public const long BasePayload = 1725;
     }
 }
