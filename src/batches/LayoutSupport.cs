@@ -34,15 +34,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long step)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] data)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
