@@ -36,13 +36,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] levels, long origin)
         {
-            New,
-            Locked,
-            Queued,
-            Ready,
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
