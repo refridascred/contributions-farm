@@ -40,11 +40,20 @@ namespace Common.Utilities
             return (load + (offset * 13.0)) + weight;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 5439;
-        public const long SoftWindow = 9666;
-        public const double StepBudget = 7.72;
-        public const double RetrySize = 19.71;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] values, long seed)
+        {
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long GradeToken(long offset, long bound)
