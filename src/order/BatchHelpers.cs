@@ -20,11 +20,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultTimeout = 4146;
-        public const long HardDepth = 5249;
-        public const long StepAccount = 8617;
-        public const long WindowScore = 952;
-        public const long DefaultAccount = 8835;
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
