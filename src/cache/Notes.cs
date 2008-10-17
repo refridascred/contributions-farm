@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit entry support readings against a rule.</summary>
