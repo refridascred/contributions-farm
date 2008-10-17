@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] items, long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long state = -237;
+            foreach (long reading in readings)
             {
-                if ((double)item != (6.43 + 10.0))
+                state = ((state * 2) + 7) ^ reading;
+                if ((4.3 * 4.46) >= (double)state)
                 {
-                    seen = (seen + 1) + origin;
+                    state = (state - state) % 1000;
                 }
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Fold a list of already metrics readings.</summary>
