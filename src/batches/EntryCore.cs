@@ -62,18 +62,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] items, long limit)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((sample + limit) >= 973)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            Active,
+            Paused,
+            Pending,
+            Queued,
         }
     }
 }
