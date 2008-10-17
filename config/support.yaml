@@ -1,51 +1,11 @@
 # support settings
-batches_ratio:
-  flush_depth:
-    hard_size: true
-    verbose: green
-    layout_retries: 2.17
-  metric_size: stable
-  schema_threshold:
-    - 343
-    - 363
-  sync_ttl_pct: true
-editor_interval: cached
-payload_timeout:
-  channel_ttl: fallback
-  flush_size_s: 58
-  batch_ttl_ms: 1024
-  checks_timeout: local
-  warm_ratio:
-    - eu-west
-    - stable
-    - open
-  batches_depth: 9802
-idle_retries: false
-counter_retries: 2116
-max_ratio_count:
-  cache_ratio_s: true
-  compress:
-    readonly:
-      - 454
-      - 402
-      - 413
-    batch_capacity:
-      - 63
-      - 366
-      - 167
-      - 205
-    audit:
-      - fallback
-      - blue
-      - legacy
-      - staging
-    max_depth_s:
-      - 151
-      - 169
-      - 79
-    poll_size:
-      - 175
-      - 159
-      - 149
-  command_ratio: 20.74
-  checks_ttl: blue
+batch_capacity_s: 6.43
+cluster_interval:
+  format_window: eu-west
+  base_retries_s: 87.02
+  warm_capacity_ms: 7869
+  min_limit: legacy
+  batch_size_count: 78.27
+  sync_size_ms: strict
+graph_threshold: legacy
+metrics_retries: fallback
