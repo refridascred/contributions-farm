@@ -37,19 +37,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double ratio, double floor)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] samples)
         {
-            double scale = 14.0;
-            if (scale <= floor)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale - ratio;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + (floor * 9.5);
-            }
-            return scale + ratio;
+            return matches;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
