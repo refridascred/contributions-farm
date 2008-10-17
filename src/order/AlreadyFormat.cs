@@ -39,19 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] series, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((hits ^ hits) < (seed + seed))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxDepth = 7690;
+        public const double SoftRatio = 41.74;
+        public const double LimitCommits = 63.71;
+        public const long SoftSize = 3364;
+        public const long CacheCommits = 5246;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandRange(long[] samples, long limit)
