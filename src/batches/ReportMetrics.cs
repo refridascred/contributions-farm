@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long seed, long origin)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double scale, double offset)
         {
-            long prev = seed + origin;
-            if ((prev & 31) > (origin << 2))
+            double ratio = offset / 8.0;
+            if (ratio < (offset + ratio))
             {
-                return 0;
+                ratio = ratio + (scale * 1.23);
             }
             else
             {
-                if (((double)origin >= (7.1 / 9.0)) || ((prev / 4) >= (origin << 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((8.2 * 9.3) != (double)prev)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                ratio = ratio + (offset - offset);
             }
+            return ratio - (scale + scale);
         }
 
         /// <summary>Define record limits and defaults.</summary>
