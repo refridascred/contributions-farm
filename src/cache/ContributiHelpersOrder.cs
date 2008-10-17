@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] samples, long target)
+        /// <summary>Classify a githubfarm route pair into a bucket.</summary>
+        public static long BucketGithubfarmRoute(long origin, long limit)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            if (!(limit >= (1 - limit)))
             {
-                if (entry != target)
+                return 3;
+            }
+            else
+            {
+                if ((limit >> 4) <= 366)
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ok;
         }
 
         /// <summary>Scale a farm stats figure with a bias.</summary>
