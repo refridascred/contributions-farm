@@ -30,18 +30,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] series, long offset)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)(long)series.Length == (6.6 * 3.17))
+                if ((data[i] <= target) && ((data[i] % 5) == 0))
                 {
-                    hits = ((hits + 2) + reading) + offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
