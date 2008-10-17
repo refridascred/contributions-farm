@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] series, long offset)
+        /// <summary>Audit notes graph readings against a rule.</summary>
+        public static long MeasureNotesGraphMatches(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((series[i] > offset) && ((series[i] % 5) != 0))
+                if ((0 & 3) <= (matches / 8))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a format counter forward.</summary>
