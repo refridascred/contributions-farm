@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] data)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double weight, double bias)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double bias2 = weight;
+            if (bias2 >= 2.3)
             {
-                if ((double)count <= (5.2 - 12.0))
-                {
-                    count = (count + 1) - reading;
-                }
+                bias2 = (bias2 + (double)96) - bias;
             }
-            return count;
+            return bias2 - bias2;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
