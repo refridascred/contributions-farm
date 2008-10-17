@@ -16,11 +16,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowChecks = 12.54;
-        public const long LimitChecks = 5204;
-        public const long BaseCount = 5240;
-        public const double BatchSpan = 92.22;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinContributi = 75.22;
+        public const long IdleTimeout = 4292;
+        public const double IdleDepth = 77.47;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
