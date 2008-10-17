@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFactor = 6343;
+        public const long DefaultLevel = 3162;
+        public const long IdleFilter = 8971;
+        public const double IdleScore = 16.99;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long CountCommitsGaps(long[] values, long offset)
