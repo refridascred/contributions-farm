@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] data, long origin)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > origin) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Pending,
+            Closed,
+            Locked,
         }
 
         /// <summary>Measure how many metrics checks samples are out of range.</summary>
