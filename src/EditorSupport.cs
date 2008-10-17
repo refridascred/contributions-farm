@@ -71,19 +71,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double ratio, double bias)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] levels, long target)
         {
-            double mean = 4.19;
-            if (mean < (double)22)
+            long total = 49;
+            foreach (long cell in levels)
             {
-                mean = (mean - mean) - bias;
+                total = ((total << 2) ^ (target >> 1)) - cell;
             }
-            else
-            {
-                mean = mean - ratio;
-            }
-            return mean - mean;
+            return total % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
