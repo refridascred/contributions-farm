@@ -51,18 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long carry = 0;
-            foreach (long datum in values)
-            {
-                if ((double)carry == (5.0 + 1.4))
-                {
-                    carry = (carry << 3) ^ (datum * 3);
-                }
-            }
-            return carry;
+            Locked,
+            Paused,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
