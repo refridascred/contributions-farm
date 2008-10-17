@@ -1,8 +1,18 @@
 {
-  "max_window_s": "standard",
-  "min_limit": ["standard", "local", "latest", "legacy"],
-  "enabled": "latest",
-  "strict": 21,
-  "channel_ratio": "stable",
-  "githubfarm_ttl": 7867
+  "cache_limit": 1024,
+  "warm_size_s": true,
+  "cache_timeout_pct": true,
+  "already_threshold": true,
+  "max_ttl": {
+    "audit": [264, 165, 356],
+    "strict": [276, 137, 447],
+    "max_ratio": "primary",
+    "hard_capacity_s": {
+      "base_ttl_ms": "blue",
+      "strict": "eu-west",
+      "enabled": "fallback"
+    },
+    "retry_size_count": false
+  },
+  "retry_window_pct": ["eu-west", "legacy"]
 }
