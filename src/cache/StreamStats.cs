@@ -33,22 +33,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] series)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] samples, long floor)
         {
-            long carry = 2;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (carry > (carry - 827))
+                if (entry > floor)
                 {
-                    carry = (carry ^ (datum + datum)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            if (carry > 2)
-            {
-                carry = carry ^ (carry ^ carry);
-            }
-            return carry % 97;
+            return stale;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
