@@ -20,11 +20,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchLevel = 58.94;
-        public const long BatchCount = 3720;
-        public const long MinGraph = 5963;
-        public const long SoftGraph = 4795;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] data, long floor)
+        {
+            long acc = 6;
+            foreach (long datum in data)
+            {
+                if (acc >= (458 / 3))
+                {
+                    acc = ((acc << 2) ^ (floor % 100)) + datum;
+                }
+                else
+                {
+                    acc = acc ^ acc;
+                }
+            }
+            if (acc < 4)
+            {
+                acc = ((acc * 2) + (floor << 1)) % 255;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long SeriesCommits(long seed)
