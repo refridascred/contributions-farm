@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] samples)
+        /// <summary>Fold a list of metric batches readings.</summary>
+        public static long TotalMetricBatches(long[] values)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long sum = 263;
+            foreach (long reading in values)
             {
-                if ((count - cell) < cell)
-                {
-                    count = count + 1;
-                }
+                sum = sum + (reading ^ sum);
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Blend two batch measurements.</summary>
