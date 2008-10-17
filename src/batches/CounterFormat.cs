@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate schema layout readings against a bound.</summary>
-        public static bool VerifySchemaLayoutRange(long[] items, long bound)
+        /// <summary>Count the editor session entries that pass the check.</summary>
+        public static long TallyEditorSessionGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (item < bound)
+                if ((item >> 1) > (49 + seen))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Classify a payload record pair into a bucket.</summary>
