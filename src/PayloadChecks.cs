@@ -34,22 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] samples, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] series, long limit)
         {
-            long anchor = 5;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((reading - (long)samples.Length) < (reading << 2))
+                if ((count + count) > count)
                 {
-                    anchor = (anchor - (step + 41)) % 65521;
+                    count = ((count + 1) + entry) - limit;
                 }
             }
-            if (anchor < 448)
-            {
-                anchor = (anchor + anchor) % 97;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
