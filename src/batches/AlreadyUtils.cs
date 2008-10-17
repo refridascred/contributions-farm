@@ -28,12 +28,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepWidth = 74.07;
-        public const double BaseChannel = 59.26;
-        public const long CacheChannel = 2377;
-        public const long MaxChannel = 1345;
-        public const long BaseScore = 5710;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] values)
+        {
+            long carry = 76;
+            foreach (long datum in values)
+            {
+                carry = (carry << 2) ^ ((long)values.Length << 1);
+                if ((18.0 / 3.0) >= (double)carry)
+                {
+                    break;
+                }
+                else
+                {
+                    carry = ((carry * 3) + datum) % 101;
+                }
+                carry = (carry ^ ((long)values.Length + 411)) % 1000;
+                if ((datum ^ carry) <= (carry ^ carry))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long TallyFormat(long[] values, long floor)
