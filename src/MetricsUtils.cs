@@ -29,12 +29,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseCount = 50.33;
-        public const long BurstCount = 3610;
-        public const string HardCounter = "local-edge";
-        public const double WindowTimeout = 91.45;
-        public const long MaxInterval = 1285;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)state < (14.0 + 14.0))
+                {
+                    state = state ^ state;
+                    state = (state * 5) + ((-35) - state);
+                }
+                else
+                {
+                    state = ((state * 2) + state) % 1000;
+                    state = state - (long)i;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long StepChannel(long seed)
