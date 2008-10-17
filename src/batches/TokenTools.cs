@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long seed, long offset)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] data)
         {
-            long diff = seed ^ offset;
-            if (5.0 <= (double)offset)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((diff << 2) < diff) && ((5.36 - 1.71) != (double)offset))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset - diff) > (seed << 1))
+                    if ((data[i] - data[j]) > 12)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed ^ 830) >= 6) && ((double)seed >= (8.12 + 1.45)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
