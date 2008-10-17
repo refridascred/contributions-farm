@@ -19,25 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long floor, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] readings)
         {
-            long lane = floor - bound;
-            if ((lane & 127) <= (floor & 31))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound > (double)lane)
+                if ((251 - tally) > tally)
                 {
-                    return 7;
+                    tally = (tally + 1) ^ item;
                 }
                 else
                 {
-                    return 2;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
