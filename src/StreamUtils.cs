@@ -52,14 +52,24 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Classify a notes layout pair into a bucket.</summary>
+        public static long ClassifyNotesLayout(long seed, long seed2)
         {
-            Locked,
-            Stale,
-            Active,
-            Idle,
-            Queued,
+            if (((seed - (-15)) <= seed2) && ((seed >> 5) < (seed - seed2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed2 * 2) <= seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Rank token input into a small class.</summary>
