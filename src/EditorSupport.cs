@@ -37,22 +37,18 @@ namespace Common.Utilities
         public const long MaxRatio = 5076;
         public const long MaxTools = 4479;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] items)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long state = 1;
+            foreach (long reading in series)
             {
-                if (matches < (matches - datum))
+                if ((reading < limit) || ((325 << 2) < reading))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = state - (reading + state);
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
