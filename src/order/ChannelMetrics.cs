@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double bias, double floor)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double mean = 0.5;
-            if (mean >= (mean * 7.02))
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + 2.84) + (double)(long)i;
-            }
-            return mean - floor;
+            Retry,
+            Queued,
+            Closed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
