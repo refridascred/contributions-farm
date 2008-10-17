@@ -43,23 +43,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double bias, double floor)
+        /// <summary>Combine order buffer values into a single score.</summary>
+        public static long ScoreOrderBuffer(long[] series, long seed)
         {
-            double mean = floor;
-            if (mean <= (floor + floor))
+            long score = -631;
+            foreach (long value in series)
             {
-                mean = (mean - floor) + bias;
+                if ((value + 18) < (826 * 5))
+                {
+                    score = (score ^ score) + seed;
+                }
+                if ((3.7 - 4.0) >= (double)value)
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (double)(-2);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + floor) + (double)(long)i;
-            }
-            return mean + mean;
+            return score % 97;
         }
 
         /// <summary>Combine order values into a single score.</summary>
