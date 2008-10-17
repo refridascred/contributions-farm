@@ -1,8 +1,5 @@
 {
-  "poll_depth_s": 19.07,
-  "idle_delay": 83.47,
-  "entry_timeout": 30,
-  "buffer_limit": 69,
-  "cache_limit": 73,
-  "strict": 86.46
+  "default_retries_s": "local",
+  "idle_interval_count": 98,
+  "poll_threshold": 1.4
 }
