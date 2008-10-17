@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] data, long origin)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long offset)
         {
-            long state = -30;
-            foreach (long item in data)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                state = ((state - (701 >> 5)) % 255) + item;
-                if (origin <= (state * 4))
-                {
-                    state = ((state << 2) ^ (origin / 4)) % 255;
-                }
+                acc = (acc + acc) % 97;
+                acc = (acc ^ ((long)i << 3)) % 1000;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
