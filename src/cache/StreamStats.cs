@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long origin, long target)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long edge = origin + target;
-            if ((origin < edge) && ((9 >> 2) > (target + target)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin + origin) <= target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((edge & 63) <= (edge + edge))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target > (891 * 2)) || ((target << 3) <= (edge + target)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Stale,
+            Locked,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
