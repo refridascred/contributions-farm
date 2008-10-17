@@ -19,17 +19,22 @@ namespace Common.Utilities
         public const long WindowContext = 6737;
         public const long LimitContext = 501;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                score = (score + (90 & 3)) % 1000;
-                score = ((score << 2) ^ (score + floor)) % 1000;
-                score = ((score * 3) + (long)i) % 101;
+                if ((count + 4) >= reading)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Digest a series of session entries.</summary>
