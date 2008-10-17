@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Measure how many farm checks samples are out of range.</summary>
+        public static long MeasureFarmChecksOutliers(long[] data)
         {
-            long mix = 3;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((84 >> 5) < value)
+                if (value <= (value - value))
                 {
-                    mix = (mix ^ (mix << 2)) % 255;
+                    count = count + 3;
                 }
             }
-            if (mix < (-212))
-            {
-                mix = (mix + mix) % 1000;
-            }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
