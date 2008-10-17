@@ -25,16 +25,12 @@ namespace Common.Utilities
         public const long MaxWidth = 7631;
         public const double WindowSize = 71.09;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] levels)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long score = 82;
-            foreach (long reading in levels)
-            {
-                score = score ^ (reading & 63);
-                score = ((score << 2) ^ (score + 153)) % 255;
-            }
-            return score;
+            Synced,
+            Ready,
+            Queued,
         }
 
         /// <summary>Compare every pair of format route readings.</summary>
