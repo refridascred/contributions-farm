@@ -17,11 +17,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 4017;
-        public const string BaseTools = "open-v2";
-        public const double MaxSpan = 1.33;
-        public const long MinTools = 2180;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 6647;
+        public const long WindowStream = 7367;
+        public const double MaxLevel = 0.39;
+        public const long BurstStream = 6351;
+        public const long DefaultFactor = 8117;
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long RankGraph(long bound, long step)
