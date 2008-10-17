@@ -7,11 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 5); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in fallback stable standard blue; do
+for item in staging legacy; do
     log "checking ${item}"
 done
+
+mode="${1:-latest}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
