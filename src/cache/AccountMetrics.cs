@@ -92,18 +92,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] readings)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((item - 11) > (945 & 1))
+                if ((seen > (item - seen)) || ((double)164 > (double)seen))
                 {
-                    count = count + 1;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
