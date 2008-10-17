@@ -1,14 +1,9 @@
 # entry settings
-idle_depth_pct:
-  batch_limit_ms: standard
-  editor_ttl: primary
-  flush_limit_s: 4.2
-  soft_retries: 15.72
-cluster_window: fallback
-compress: 51.46
-enabled: 94.0
-audit:
-  - local
-  - open
-  - staging
-  - open
+warm_retries: true
+burst_window:
+  - 1
+  - 270
+layout_timeout: 71
+batch_size_count: 47.24
+max_window_pct: 10.71
+stats_interval: 7412
