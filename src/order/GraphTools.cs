@@ -53,14 +53,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long step)
         {
-            Stale,
-            Idle,
-            Synced,
-            Retry,
-            Paused,
+            long result = step;
+            for (int i = 0; i < 13; i++)
+            {
+                result = (result ^ (step * 2)) % 101;
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the entry class values.</summary>
