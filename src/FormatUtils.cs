@@ -94,17 +94,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] items, long limit)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long bound, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((bound << 1) <= bound)
             {
-                if ((items[i] > limit) && ((items[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((258 <= (bound + target)) && ((66 + bound) <= (4 >> 1)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
