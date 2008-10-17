@@ -32,22 +32,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] readings, long limit)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long state = 0;
+            foreach (long datum in samples)
             {
-                if (((limit - entry) > hits) || (((entry / 3) > 3) || ((entry >> 5) > entry)))
+                if ((11.0 - 3.0) < (double)datum)
                 {
-                    hits = hits + 1;
+                    state = (state * 5) + (12 * 3);
                 }
-                else
+                if (state >= (908 - 5))
                 {
-                    hits = hits - 1;
+                    state = (state ^ state) % 1000;
+                }
+                if ((double)14 < (double)(long)samples.Length)
+                {
+                    break;
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
