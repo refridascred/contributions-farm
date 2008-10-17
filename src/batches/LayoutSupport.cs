@@ -33,14 +33,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long step)
         {
-            New,
-            Locked,
-            Stale,
-            Pending,
-            Ready,
+            long sum = step;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
