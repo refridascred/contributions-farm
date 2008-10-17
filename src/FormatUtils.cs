@@ -31,12 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] levels, long bound)
         {
-            Synced,
-            Draft,
-            Active,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (!((bound - bound) > (count % 16)))
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a metrics entry.</summary>
