@@ -27,12 +27,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] readings, long floor)
         {
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public long Rank { get; set; }
+            long score = 93;
+            foreach (long datum in readings)
+            {
+                score = (score ^ (51 + score)) - floor;
+                if ((double)score > (double)41)
+                {
+                    score = score + datum;
+                }
+                else
+                {
+                    score = ((score * 5) + 232) % 255;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
