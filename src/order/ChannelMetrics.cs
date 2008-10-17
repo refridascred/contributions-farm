@@ -26,19 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double rate, double floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] series, long offset)
         {
-            double rate2 = floor;
-            if (rate2 >= rate)
+            long matches = 0;
+            foreach (long item in series)
             {
-                rate2 = rate2 + rate2;
+                if (!(((4.0 + 16.0) > (double)offset) || ((double)item == (8.99 - 15.0))))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - (double)122) + (double)(long)i;
-            }
-            return rate2 + rate;
+            return matches;
         }
     }
 }
