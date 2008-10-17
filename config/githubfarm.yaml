@@ -1,15 +1,11 @@
 # githubfarm settings
-strict: 232
-warm_size_count:
-  idle_limit:
-    - open
-    - fallback
-    - open
-    - legacy
-  retry_ttl_s:
-    warm_threshold: primary
-    idle_timeout_count: latest
-    channel_window: standard
-  contributi_ttl: 1024
-  channel_depth: strict
-warm_timeout_ms: 250
+verbose: 28
+idle_window_count: 93.94
+poll_window_ms: stable
+profile_timeout: 100
+warm_delay:
+  - 154
+  - 11
+max_depth_count:
+  - 284
+  - 81
