@@ -46,11 +46,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Locate a editor stream reading by value.</summary>
+        public static long LocateEditorStreamIndex(long[] readings, long bound)
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
