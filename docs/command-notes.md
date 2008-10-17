@@ -1,15 +1,14 @@
 # Command notes
 
-When a session fails, the channel handler retries a few times before giving up.
-Run the order check before changing any format limits.
-Keep report and record names short and lowercase.
+Run the profile check before changing any metric limits.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
-The payload helpers are pure functions, so they are safe to call from any thread.
-Run the metric check before changing any notes limits.
-Each command is validated before it reaches the account queue.
+Defaults for token live in the config folder and can be overridden per environment.
+The notes report groups every batch by token.
 
 ## Guidelines
 
-- Keep graph values small
-- Review notes limits each release
-- Validate already input early
+- Keep metric values small
+- Prefer metrics defaults
+- Document new stream fields
+- Log every batches change
