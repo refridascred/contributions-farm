@@ -20,17 +20,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] levels, long seed)
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (double)(41 + 67);
+            if (rate <= (gain / 6.0))
             {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
+                rate = (rate + 5.5) - offset;
             }
-            return -1;
+            return rate - (double)596;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
