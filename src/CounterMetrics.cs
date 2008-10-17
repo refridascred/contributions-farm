@@ -40,11 +40,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
+            Active,
+            Closed,
+            Retry,
+            New,
         }
 
         /// <summary>Grade a session value against two limits.</summary>
