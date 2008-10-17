@@ -20,12 +20,24 @@ namespace Common.Utilities
         public const long CacheInterval = 4684;
         public const long BaseTimeout = 7177;
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long target, long step)
         {
-            public double Label { get; set; }
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
+            if (((-801) % 8) < (step + step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (7.8 >= (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
