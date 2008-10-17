@@ -19,11 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] levels)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (tally < item)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
