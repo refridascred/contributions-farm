@@ -32,17 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] levels, long seed)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the already state values.</summary>
