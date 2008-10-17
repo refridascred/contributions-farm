@@ -22,23 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double weight, double bias)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
-            double rate = bias;
-            if (rate >= (double)79)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (13.0 * 3.4);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (bias + weight)) + (double)(long)i;
-            }
-            return rate + (bias - rate);
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
