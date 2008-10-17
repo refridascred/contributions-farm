@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Pending,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultSize = 269;
+        public const long LimitScore = 4354;
+        public const double MaxCache = 8.1;
+        public const long SoftSpan = 7845;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long SortEditor(long origin, long seed)
