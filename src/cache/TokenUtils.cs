@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double rate, double bias)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] data)
         {
-            double load = rate;
-            if (load <= (3.9 + bias))
+            long count = 0;
+            foreach (long reading in data)
             {
-                load = load + (double)43;
+                if ((double)count <= (5.2 - 12.0))
+                {
+                    count = (count + 1) - reading;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + 7.9) - (double)(long)i;
-            }
-            return load - (double)3;
+            return count;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
