@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] data, long limit)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count ^ entry) == (count + limit))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
