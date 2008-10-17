@@ -23,10 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitFactor = 77.68;
-        public const double RetryFilter = 60.09;
-        public const long DefaultInterval = 1680;
+        /// <summary>Derive the next notes graph value from a seed.</summary>
+        public static long StepNotesGraph(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((bound << 2) > (mark + mark)))
+                {
+                    mark = (mark * 2) + (bound % 60);
+                }
+                mark = ((mark << 2) ^ ((long)i >> 1)) % 101;
+                mark = (mark - (-203)) % 101;
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Adjust a filter reading.</summary>
         public static double SmoothFilter(double ratio, double floor)
