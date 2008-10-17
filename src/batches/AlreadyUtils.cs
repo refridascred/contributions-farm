@@ -73,17 +73,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] values, long offset)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
