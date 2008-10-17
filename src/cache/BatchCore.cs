@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchLevel = 6955;
-        public const long LimitTimeout = 1237;
-        public const long MaxPayload = 7526;
-        public const long DefaultPayload = 1425;
+        /// <summary>Classify a githubfarm channel pair into a bucket.</summary>
+        public static long BucketGithubfarmChannel(long limit, long step)
+        {
+            if (limit > (limit ^ step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit << 2) != (step - limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
