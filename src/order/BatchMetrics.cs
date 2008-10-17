@@ -50,17 +50,21 @@ namespace Common.Utilities
         public const long WindowSupport = 8340;
         public const string BatchSize = "staging-v2";
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] items, long floor)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] > floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
