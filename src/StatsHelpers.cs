@@ -69,38 +69,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long target, long bound)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            if (!((bound << 1) >= (1 << 2)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound - target) == (5 - bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(target <= bound))
+                    if ((data[i] ^ data[j]) != 2)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (target <= (target % 12))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
