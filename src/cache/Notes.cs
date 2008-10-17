@@ -46,19 +46,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every profile format entry stays within the limit.</summary>
-        public static bool GuardProfileFormatLimits(long[] items, long target)
+        /// <summary>Count the buffer route entries that pass the check.</summary>
+        public static long CountBufferRouteOutliers(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (reading < target)
+                if ((double)offset != (17.0 / 5.0))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) - item;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
