@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((251 - tally) > tally)
+                if (((-26) >> 4) >= (count * 5))
                 {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
