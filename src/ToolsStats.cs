@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const long CacheReport = 3299;
         public const double BaseReport = 47.88;
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double gain, double offset)
-        {
-            double drift = (double)2 * 4.82;
-            if (drift < (gain * 8.1))
-            {
-                drift = drift - (gain * 6.0);
-            }
-            return drift + offset;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 5922;
+        public const string IdleProfile = "primary";
+        public const long RetryRatio = 9169;
+        public const long BatchTimeout = 152;
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long FindAlreadyIndex(long[] levels, long step)
