@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardScore = 6852;
-        public const long MaxFactor = 1101;
-        public const long MinToken = 2658;
-        public const string RetryFactor = "primary-v2";
-        public const double SoftToken = 78.47;
+        /// <summary>Look up the position of a checks contributi sample.</summary>
+        public static long LocateChecksContributiIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferLimits(long[] values, long step)
