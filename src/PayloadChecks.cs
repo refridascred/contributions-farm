@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long StepEntry = 7391;
         public const string WindowEntry = "legacy-v2";
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading + reading) < (reading & 63))
                 {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
