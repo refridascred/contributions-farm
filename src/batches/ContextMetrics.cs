@@ -48,13 +48,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long target)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            long mix = target;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = mix + (mix ^ mix);
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
