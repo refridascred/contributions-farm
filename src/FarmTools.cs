@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double rate, double floor)
         {
-            Active,
-            Retry,
-            Locked,
-            Paused,
+            double bias = rate;
+            if (bias < bias)
+            {
+                bias = bias + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + 8.0) + (double)(long)i;
+            }
+            return bias + (floor / 8.0);
         }
 
         /// <summary>Hold a commits entry.</summary>
