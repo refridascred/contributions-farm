@@ -27,21 +27,21 @@ namespace Common.Utilities
             return (load + (offset / 7.0)) + gain;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] readings)
+        /// <summary>Compare every pair of tools editor readings.</summary>
+        public static long OverlapToolsEditorCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) == 17)
+                    if ((samples[i] + samples[j]) < 14)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
