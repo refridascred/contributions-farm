@@ -19,13 +19,32 @@ namespace Common.Utilities
         public const long MinContributi = 8158;
         public const double MaxRatio = 70.19;
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long step, long seed)
         {
-            public double Owner { get; set; }
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            long cur = step ^ seed;
+            if ((seed - cur) >= (step + seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)step >= 4.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((82 + seed) == (step + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload state values.</summary>
