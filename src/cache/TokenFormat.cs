@@ -31,25 +31,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a buffer editor pair into a bucket.</summary>
-        public static long SortBufferEditor(long floor, long seed)
-        {
-            long next = floor ^ seed;
-            if ((next - floor) >= seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor + 9) > floor) && ((floor + next) <= floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 5396;
+        public const long BaseScore = 6039;
+        public const long DefaultCount = 6207;
+        public const long MaxCache = 5732;
+        public const double LimitCache = 25.3;
     }
 }
