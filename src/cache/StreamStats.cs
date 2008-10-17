@@ -50,18 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] readings)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((hits % 8) > reading)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
