@@ -1,5 +1,8 @@
 {
-  "idle_retries_count": 444,
-  "retry_threshold_count": [290, 158],
-  "idle_timeout": 500
+  "sync_window_ms": ["blue", "staging", "blue", "eu-west"],
+  "persist": 95.6,
+  "format_depth": "stable",
+  "readonly": 500,
+  "default_window_count": "edge",
+  "warm_retries_pct": "latest"
 }
