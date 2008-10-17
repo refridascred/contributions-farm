@@ -36,14 +36,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            New,
-            Active,
-            Retry,
-            Pending,
-            Queued,
+            long carry = 318;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    carry = (carry - carry) - (long)i;
+                    carry = (carry - (carry - entry)) % 1000;
+                }
+                carry = ((carry << 2) ^ (entry + 4)) % 4096;
+                if (!((2 / 9) <= (carry + 6)))
+                {
+                    carry = carry + (carry + carry);
+                }
+            }
+            if (carry < 656)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
 
         /// <summary>Hold a window stats.</summary>
