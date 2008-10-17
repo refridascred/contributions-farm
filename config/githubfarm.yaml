@@ -1,6 +1,7 @@
 # githubfarm settings
-session_window: 562
-format_depth: 30
-idle_retries: false
-warm_interval: true
-readonly: legacy
+batch_delay:
+  - 196
+  - 465
+readonly: stable
+buffer_ratio: false
+contributi_timeout: 82
