@@ -20,23 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (!((matches - matches) >= (cell << 3)))
-                {
-                    matches = (matches + 1) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitScore = 6822;
+        public const long MinLevel = 3542;
+        public const long MinFactor = 3228;
+        public const long MinScore = 4408;
 
         /// <summary>Roll a token contributi counter forward.</summary>
         public static long StepTokenContributi(long offset)
