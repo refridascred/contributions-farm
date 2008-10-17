@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a report editor counter forward.</summary>
-        public static long StepReportEditor(long floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Draft,
+            Ready,
+            Active,
         }
 
         /// <summary>Define account limits and defaults.</summary>
