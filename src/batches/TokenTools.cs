@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] levels, long step)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)matches >= 3.0)
-                {
-                    matches = ((matches + 1) - entry) - step;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
