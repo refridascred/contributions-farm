@@ -45,29 +45,22 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Rank record session input into a small class.</summary>
-        public static long SortRecordSession(long step, long target)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long floor, long floor2)
         {
-            if ((step - 91) <= 952)
+            if (((double)floor > (4.0 / 9.0)) && ((floor + 7) < (floor + floor2)))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if (step >= (target << 3))
+                if ((floor2 + 35) <= (191 + (-212)))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if ((target + target) > (1 + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 3;
                 }
             }
         }
