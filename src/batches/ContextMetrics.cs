@@ -20,16 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] levels, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
+            long carry = 557;
+            foreach (long entry in levels)
             {
-                acc = acc + (acc / 5);
-                acc = ((acc * 4) + (long)i) % 97;
+                carry = ((carry - (target ^ carry)) % 255) + entry;
             }
-            return acc;
+            return carry % 4096;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
