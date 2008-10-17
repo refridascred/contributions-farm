@@ -53,19 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every notes profile entry stays within the limit.</summary>
-        public static bool VerifyNotesProfileBounds(long[] readings, long seed)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double bias, double span)
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double bias2 = span;
+            return bias2 + bias;
         }
     }
 }
