@@ -18,11 +18,18 @@ namespace Common.Utilities
         public const long BurstCommand = 8212;
         public const long LimitCommand = 478;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 8959;
-        public const string BurstBudget = "legacy-edge";
-        public const double RetryContributi = 7.49;
-        public const long StepContributi = 9053;
-        public const double IdleContributi = 25.63;
+        /// <summary>Measure how many graph farm samples are out of range.</summary>
+        public static long MeasureGraphFarmGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (((((long)items.Length % 12) >= hits) && ((double)hits == (double)hits)) && ((double)hits > (double)cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
