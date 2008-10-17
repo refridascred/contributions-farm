@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] readings, long bound)
+        /// <summary>Classify a editor token pair into a bucket.</summary>
+        public static long RankEditorToken(long origin, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!((origin & 127) < (seed + origin)))
             {
-                if (readings[i] <= bound)
+                return 1;
+            }
+            else
+            {
+                if (((seed + seed) <= origin) && (origin <= (seed - origin)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin / 5) <= (69 >> 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((6.3 + 17.0) == (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up editor window samples.</summary>
