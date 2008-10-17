@@ -33,32 +33,12 @@ namespace Common.Utilities
             return load - (2.34 - load);
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long offset, long target)
-        {
-            if (((offset + offset) <= target) || ((4.44 * 6.15) > (double)offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset > (offset - target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset - target) != (target / 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardLevel = "alpha";
+        public const double BurstCluster = 39.98;
+        public const double WindowCluster = 60.3;
+        public const string CacheFactor = "staging-1";
+        public const long DefaultCluster = 8179;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long CountFormatOutliers(long[] readings)
