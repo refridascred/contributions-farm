@@ -45,21 +45,15 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 9913;
         public const long BaseBudget = 3692;
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] series)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 1;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc ^ (floor - acc)) % 65521) + entry;
             }
-            return hits;
+            return acc % 97;
         }
 
         /// <summary>Hold a counter info.</summary>
