@@ -1,6 +1,6 @@
 {
-  "burst_ttl": 29.72,
-  "compress": 61.46,
-  "sync_size_pct": 72.14,
-  "min_depth_pct": 44.61
+  "soft_delay_ms": true,
+  "cache_threshold_pct": "green",
+  "max_delay": 52.65,
+  "retry_limit_pct": false
 }
