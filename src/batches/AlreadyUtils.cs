@@ -48,16 +48,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] series)
         {
-            long carry = 9;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = carry - (datum - carry);
-                carry = ((carry << 2) ^ carry) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
