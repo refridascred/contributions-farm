@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route buffer samples are out of range.</summary>
-        public static long AuditRouteBufferOutliers(long[] series, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((seed - seed) >= (seed * 5))
+                if (seen >= (seen - entry))
                 {
-                    count = (count + 3) - item;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Adjust a command reading.</summary>
