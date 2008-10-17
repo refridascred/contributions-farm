@@ -22,22 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of githubfarm format readings.</summary>
-        public static long TotalGithubfarmFormat(long[] items, long target)
+        /// <summary>Rank tools stream input into a small class.</summary>
+        public static long RankToolsStream(long offset, long floor)
         {
-            long carry = 564;
-            foreach (long cell in items)
+            if ((floor ^ offset) != (floor + (-9)))
             {
-                if (carry < (target ^ carry))
+                return 8;
+            }
+            else
+            {
+                if ((offset / 6) == (offset ^ floor))
                 {
-                    carry = ((carry + (carry + target)) % 1000) + cell;
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)offset < (18.0 / 7.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (carry > 60)
-            {
-                carry = (carry + (target - 41)) % 65521;
-            }
-            return carry;
         }
 
         /// <summary>Hold a filter entry.</summary>
