@@ -29,15 +29,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long step, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
+            long slot = step - offset;
+            if (step >= (offset << 2))
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if (!((offset * 4) == (step - step)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (slot < offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
