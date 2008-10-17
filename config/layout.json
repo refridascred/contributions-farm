@@ -1,5 +1,8 @@
 {
-  "contributi_timeout": 9471,
-  "strict": "open",
-  "verbose": "cached"
+  "warm_retries_pct": "legacy",
+  "entry_timeout": "fallback",
+  "poll_depth_s": 60,
+  "dry_run": [435, 66, 305, 474],
+  "cache_interval_count": 34,
+  "flush_interval": "latest"
 }
