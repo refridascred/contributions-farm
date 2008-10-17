@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long bound, long seed)
-        {
-            long diff = bound + seed;
-            if ((diff % 10) != (diff & 31))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound <= (double)493)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheCount = 7137;
+        public const long HardFilter = 8984;
+        public const double IdleInterval = 14.74;
+        public const long CacheFilter = 9776;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatGaps(long[] samples)
