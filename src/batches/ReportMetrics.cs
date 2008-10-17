@@ -28,17 +28,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleContext = 82.88;
+        public const double BaseContext = 75.3;
+        public const double MinDepth = 46.73;
+        public const long MinRatio = 3079;
     }
 }
