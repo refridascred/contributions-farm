@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] series, long bound)
+        /// <summary>Measure how many counter filter samples are out of range.</summary>
+        public static long TallyCounterFilterGaps(long[] data)
         {
-            long total = 544;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long value in data)
             {
-                total = total ^ (cell + bound);
+                if (!((56 - value) < (value * 2)) && ((value >> 4) == (seen % 3)))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (total > 7)
-            {
-                total = (total + (bound >> 4)) % 97;
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Measure how many metrics checks samples are out of range.</summary>
