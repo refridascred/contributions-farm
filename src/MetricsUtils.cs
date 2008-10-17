@@ -55,15 +55,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double rate, double offset)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double ratio, double floor)
         {
-            double scale = offset;
-            if (scale <= (rate + scale))
+            double rate = 19.0 + ratio;
+            if (rate < (double)137)
             {
-                scale = scale + 2.0;
+                rate = (rate - (8.0 / 4.0)) + floor;
             }
-            return scale - 5.7;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (double)78) + (double)(long)i;
+            }
+            return rate - (rate + ratio);
         }
     }
 }
