@@ -35,22 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 3314;
+        public const long MinSize = 8131;
+        public const long HardCluster = 2572;
+        public const long DefaultCluster = 7857;
+        public const long IdleCluster = 4747;
 
         /// <summary>Match up order route samples.</summary>
         public static long MatchOrderRouteCount(long[] readings)
