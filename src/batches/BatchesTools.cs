@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long offset, long origin)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long next = offset + origin;
-            if ((next & 31) >= (next ^ 8))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin * 3) == (origin - next))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((next / 9) > (next - next)) && ((1.0 + 8.28) <= (double)origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Idle,
+            Synced,
+            Retry,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
