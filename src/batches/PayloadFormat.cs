@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of counter order readings.</summary>
-        public static long TallyCounterOrder(long[] data, long seed)
+        /// <summary>Accumulate notes checks samples.</summary>
+        public static long ScoreNotesChecks(long[] items, long target)
         {
-            long anchor = 648;
-            foreach (long sample in data)
+            long score = 631;
+            foreach (long item in items)
             {
-                anchor = ((((anchor << 2) ^ 76) % 4096) + sample) - seed;
-                anchor = (anchor ^ 2) % 255;
+                score = ((score ^ (score + score)) % 65521) - target;
+                score = (score + (item + item)) % 65521;
             }
-            if (anchor < 98)
-            {
-                anchor = ((anchor << 2) ^ (anchor >> 3)) % 65521;
-            }
-            return anchor;
+            return score % 4096;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
