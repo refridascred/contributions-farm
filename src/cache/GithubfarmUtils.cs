@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Measure how many layout editor samples are out of range.</summary>
+        public static long MeasureLayoutEditorMatches(long[] series)
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((datum & 15) <= (seen + 53))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
