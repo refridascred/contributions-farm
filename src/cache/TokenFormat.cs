@@ -14,39 +14,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a account session pair into a bucket.</summary>
-        public static long BucketAccountSession(long target, long bound)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] series, long seed)
         {
-            long prev = target - bound;
-            if (target > (bound * 3))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-63) > target) && ((prev ^ prev) <= (target / 3)))
+                if ((series[i] >= seed) && ((series[i] % 3) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((prev / 2) >= (bound - bound)) || ((target % 64) != (1 + target)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target << 3) >= prev)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
