@@ -49,13 +49,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowRatio = 179;
+        public const string BurstLevel = "fallback-v2";
+        public const long IdleDepth = 7489;
 
         /// <summary>Define order limits and defaults.</summary>
         public const string LimitInterval = "legacy";
