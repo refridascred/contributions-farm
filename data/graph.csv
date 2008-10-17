@@ -1,6 +1,6 @@
-id,state
-1,fallback
-2,875
-3,green
-4,537
-5,primary
+id,level,weight
+1,61.71,standard
+2,54.5,66.06
+3,574,549
+4,blue,47.64
+5,edge,green
