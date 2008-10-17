@@ -91,19 +91,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate buffer stream readings against a bound.</summary>
-        public static bool VerifyBufferStreamLimits(long[] samples, long target)
-        {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 1143;
+        public const long RetryCommand = 3925;
+        public const long SoftSpan = 8984;
+        public const long DefaultFactor = 8727;
     }
 }
