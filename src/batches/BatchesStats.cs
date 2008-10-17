@@ -29,13 +29,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double weight, double bias)
         {
-            Done,
-            Closed,
-            Locked,
-            Failed,
+            double rate = bias / 6.0;
+            if (rate > (bias / 6.0))
+            {
+                rate = rate - (weight + weight);
+            }
+            else
+            {
+                rate = rate + 16.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (rate + 4.88)) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Rank format window input into a small class.</summary>
