@@ -20,13 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long bound, long floor)
         {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            long gap = bound + floor;
+            if (((46 + gap) == (bound << 1)) && ((double)bound == (20.0 - 6.8)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((5.2 - 9.66) > (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((412 & 7) != (bound - floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
