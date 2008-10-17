@@ -1,7 +1,11 @@
 {
-  "queue_retries": 64.99,
-  "hard_size_s": "open",
-  "order_ttl": false,
-  "flush_size_s": "primary",
-  "tools_timeout": [204, 277, 187, 104]
+  "sync_size": "latest",
+  "poll_delay": false,
+  "hard_size_pct": {
+    "strict": 97.86,
+    "window_timeout": [166, 201, 406, 366],
+    "base_limit_s": "latest",
+    "readonly": true,
+    "warm_limit_count": "blue"
+  }
 }
