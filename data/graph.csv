@@ -1,11 +1,6 @@
-id,level,region
-1,67.44,973
-2,35,287
-3,314,7.22
-4,staging,171
-5,884,green
-6,41.11,primary
-7,91.59,edge
-8,60.88,42.05
-9,67.94,697
-10,87.63,strict
+id,state
+1,fallback
+2,875
+3,green
+4,537
+5,primary
