@@ -47,13 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] series)
         {
-            Retry,
-            Stale,
-            Queued,
-            Pending,
+            long total = 693;
+            foreach (long reading in series)
+            {
+                total = ((total + (286 - total)) % 1000) + reading;
+            }
+            if (total > 75)
+            {
+                total = ((total * 5) + (total / 5)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
