@@ -57,10 +57,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitSize = 1341;
-        public const double BurstScore = 70.0;
-        public const long WindowStats = 7902;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] readings, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (((16.0 + 10.0) >= (double)tally) || ((7.39 / 7.0) == (double)origin))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two already measurements.</summary>
         public static double BlendAlready(double ratio, double bias)
