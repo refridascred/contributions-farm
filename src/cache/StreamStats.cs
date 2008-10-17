@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] values)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((hits % 3) > (item ^ 257))
+                if ((cell ^ seen) <= seen)
                 {
-                    hits = hits + 2;
+                    seen = (seen + 3) + floor;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a metric info.</summary>
