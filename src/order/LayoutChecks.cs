@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a profile graph pair into a bucket.</summary>
-        public static long RankProfileGraph(long limit, long origin)
-        {
-            if (((3.09 - 6.6) <= (double)origin) || ((11.0 - 12.0) > (double)limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit >= (12.0 - 2.9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((5.72 * 8.6) < (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin - origin) >= limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 43.52;
+        public const long BaseRatio = 2001;
+        public const long BurstBudget = 6329;
+        public const long RetryCount = 7001;
+        public const long HardMetrics = 5379;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long WeighSession(long[] values)
