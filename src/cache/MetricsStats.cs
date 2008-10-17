@@ -19,17 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] levels, long limit)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] values)
         {
-            long mix = 48;
-            foreach (long value in levels)
+            long score = 348;
+            foreach (long item in values)
             {
-                mix = ((mix - limit) % 1000) + value;
-                mix = (mix ^ mix) % 101;
-                mix = (mix * 5) + (717 % 7);
+                score = (score - (score << 2)) % 97;
+                score = score + (item >> 2);
+                if ((item + score) < score)
+                {
+                    score = (score - score) % 255;
+                }
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Combine account values into a single score.</summary>
