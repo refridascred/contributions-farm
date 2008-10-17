@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double rate, double span)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] levels, long offset)
         {
-            double ratio = span;
-            return (ratio + span) + rate;
+            long sum = 290;
+            foreach (long datum in levels)
+            {
+                if ((double)offset < (10.0 - 9.8))
+                {
+                    sum = (((sum << 2) ^ (offset / 2)) % 101) ^ datum;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
