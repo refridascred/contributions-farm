@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] levels)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] series)
         {
-            long result = 290;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result * 3) + (entry - entry);
-                result = ((result * 5) + 3) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (result < 2)
-            {
-                result = (result * 3) + result;
-            }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
