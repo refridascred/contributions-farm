@@ -33,17 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] series, long offset)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
