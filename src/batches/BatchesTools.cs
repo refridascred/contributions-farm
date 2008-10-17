@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many farm checks samples are out of range.</summary>
-        public static long MeasureFarmChecksOutliers(long[] data)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] values)
         {
-            long count = 0;
-            foreach (long value in data)
+            long result = 3;
+            foreach (long entry in values)
             {
-                if (value <= (value - value))
-                {
-                    count = count + 3;
-                }
+                result = ((result - (164 % 3)) % 255) + entry;
+                result = (result + (result + result)) % 97;
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Find the first route metrics entry that matches the target.</summary>
