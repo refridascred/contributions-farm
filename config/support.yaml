@@ -1,11 +1,16 @@
 # support settings
-flush_size_pct: local
-compress: false
-default_ratio_s:
-  - 243
-  - 56
-  - 429
-  - 175
-flush_ratio_s: true
-token_ttl: 16.72
-payload_depth: latest
+sync_capacity_s:
+  - latest
+  - staging
+  - eu-west
+  - latest
+warm_timeout:
+  burst_ratio_pct: stable
+  warm_interval: eu-west
+  persist: 500
+base_interval_ms: 2112
+burst_window_pct:
+  - strict
+  - cached
+warm_ratio_count: 2147
+audit: latest
