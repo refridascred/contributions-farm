@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback stable eu-west; do
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-standard}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in cached stable eu-west; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=498
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
