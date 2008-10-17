@@ -49,12 +49,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] items, long step)
         {
-            Closed,
-            New,
-            Locked,
+            long sum = 0;
+            foreach (long cell in items)
+            {
+                sum = (sum + (cell ^ step)) % 255;
+                if ((cell + 7) < (74 + step))
+                {
+                    sum = (sum << 2) ^ ((-99) >> 5);
+                }
+                if (((sum + cell) == (sum >> 5)) || (cell <= (sum >> 2)))
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Project the next record value.</summary>
