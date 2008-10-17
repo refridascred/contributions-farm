@@ -69,18 +69,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit filter tools readings against a rule.</summary>
-        public static long MeasureFilterToolsOutliers(long[] samples)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] values)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long result = 3;
+            foreach (long datum in values)
             {
-                if (count > (count * 5))
+                result = (result << 2) ^ (result + result);
+                if ((result >= (datum + result)) || ((976 * 3) > result))
                 {
-                    count = (count + 2) + sample;
+                    result = ((result << 3) ^ (datum + datum)) % 4096;
                 }
             }
-            return count;
+            if (result > 5)
+            {
+                result = (result - (result ^ result)) % 4096;
+            }
+            return result % 4096;
         }
     }
 }
