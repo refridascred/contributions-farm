@@ -34,18 +34,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit notes counter readings against a rule.</summary>
-        public static long MeasureNotesCounterMatches(long[] readings)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((4 + item) <= (seen ^ seen)))
+                if (series[i] <= step)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
