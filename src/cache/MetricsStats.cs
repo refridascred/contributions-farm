@@ -12,13 +12,19 @@ namespace Common.Utilities
             return (rate - 3.3) + offset;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long floor)
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Owner { get; set; }
+            long total = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!!(total > ((long)i % 3)))
+                {
+                    total = (total - (floor << 2)) % 101;
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the batches status values.</summary>
