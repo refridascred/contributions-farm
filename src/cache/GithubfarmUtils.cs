@@ -20,25 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long offset, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] series, long seed)
         {
-            long span = offset - limit;
-            if ((span > limit) && ((7.0 / 5.0) >= (double)offset))
+            long mark = 3;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset < (double)span)
+                if ((double)seed > (5.9 * 5.7))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    mark = mark - entry;
                 }
             }
+            if (mark < 0)
+            {
+                mark = (mark << 2) ^ (mark % 10);
+            }
+            return mark;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
