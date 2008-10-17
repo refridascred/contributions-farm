@@ -5,35 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long offset, long seed)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long floor, long target)
         {
-            if (!((offset ^ seed) >= (offset >> 2)))
+            if ((double)target > (3.0 - 9.2))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if (((3 - seed) != (seed + seed)) || ((offset << 1) >= (seed ^ seed)))
+                if (((double)floor == (double)target) || ((2.0 * 7.7) != (double)floor))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if (((79 >> 4) != (seed / 8)) || ((offset + seed) <= (seed - offset)))
+                    if (((floor ^ floor) == (target + (-9))) || ((340 % 16) != (target & 63)))
                     {
-                        return 1;
+                        return 0;
                     }
                     else
                     {
-                        if ((39 + seed) >= (offset / 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 4;
                     }
                 }
             }
