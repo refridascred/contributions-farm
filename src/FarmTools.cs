@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftCount = 3719;
+        public const double BaseEntry = 25.27;
+        public const long HardEntry = 7160;
+        public const string WindowBudget = "local-v2";
+        public const double StepEntry = 57.73;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
