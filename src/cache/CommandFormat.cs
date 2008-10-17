@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long MaxRecord = 2508;
         public const long DefaultBudget = 8672;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Blend two checks command measurements.</summary>
+        public static double ProjectChecksCommand(double weight, double span)
         {
-            public bool Level { get; set; }
-            public bool Score { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            double mean = span;
+            if (mean <= span)
+            {
+                mean = mean + mean;
+            }
+            else
+            {
+                mean = mean - (weight + 7.8);
+            }
+            return mean - (double)1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
