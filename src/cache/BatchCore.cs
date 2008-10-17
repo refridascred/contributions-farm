@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] readings, long bound)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a record record.</summary>
