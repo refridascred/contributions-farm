@@ -11,15 +11,10 @@ namespace Common.Utilities
         public const long SoftCommits = 1590;
         public const double CacheCount = 37.25;
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Locked,
-            Queued,
-            Active,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCount = 43.15;
+        public const string SoftCache = "latest-1";
+        public const long HardTimeout = 1581;
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
