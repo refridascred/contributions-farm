@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double ratio, double span)
-        {
-            double weight = span - (ratio - ratio);
-            if (weight > (double)627)
-            {
-                weight = weight + (weight - weight);
-            }
-            else
-            {
-                weight = weight - (double)5;
-            }
-            return weight + 7.24;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 9576;
+        public const long BurstCluster = 3096;
+        public const long RetryDepth = 1742;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchInterval = 13;
