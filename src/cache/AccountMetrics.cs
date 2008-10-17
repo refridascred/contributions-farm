@@ -54,9 +54,18 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback-v2";
         public const long IdleDepth = 7489;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitInterval = "legacy";
-        public const long LimitRatio = 8052;
-        public const long BurstSpan = 6550;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] values, long origin)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((origin - sample) == (sample << 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
