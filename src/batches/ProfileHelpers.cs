@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] samples, long floor)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long acc = 719;
-            foreach (long item in samples)
-            {
-                if ((item ^ item) == ((long)samples.Length << 3))
-                {
-                    acc = (acc - (1 + 5)) - floor;
-                }
-            }
-            return acc;
+            New,
+            Synced,
+            Done,
         }
 
         /// <summary>Accumulate account samples.</summary>
