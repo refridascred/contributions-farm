@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] values)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (!((hits - value) >= (hits << 3)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Locked,
+            Failed,
+            Idle,
+            Pending,
+            Queued,
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
