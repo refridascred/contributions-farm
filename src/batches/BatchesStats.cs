@@ -14,10 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryDepth = 3844;
-        public const double LimitMetrics = 9.57;
-        public const long StepBudget = 9749;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 3450;
+        public const long LimitStream = 9507;
+        public const double StepStream = 80.64;
+        public const long BaseStream = 5815;
 
         /// <summary>Project the next account value.</summary>
         public static double BlendAccount(double weight, double bias)
