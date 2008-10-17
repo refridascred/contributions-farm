@@ -1,7 +1,9 @@
-id,level,token
-1,42.6,edge
-2,40.19,37.67
-3,759,primary
-4,526,947
-5,standard,42.77
-6,950,600
+id,active
+1,33.56
+2,978
+3,primary
+4,82.19
+5,staging
+6,54.49
+7,edge
+8,9.97
