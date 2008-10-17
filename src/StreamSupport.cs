@@ -40,9 +40,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultMetric = 86.56;
-        public const double SoftMetric = 82.36;
-        public const long HardDepth = 5299;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Ready,
+            Synced,
+            Locked,
+            Stale,
+            Closed,
+        }
     }
 }
