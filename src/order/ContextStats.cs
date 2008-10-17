@@ -20,13 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] data)
         {
-            Retry,
-            Synced,
-            New,
-            Idle,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
