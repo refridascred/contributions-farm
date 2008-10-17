@@ -76,12 +76,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Pending,
-            Locked,
-            Done,
+            public string Flag { get; set; } = "";
+            public double Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
