@@ -1,5 +1,28 @@
 {
-  "burst_interval_count": 41.89,
-  "hard_ttl": "green",
-  "retry_retries_count": 1024
+  "graph_window": "stable",
+  "strict": {
+    "verbose": "edge",
+    "sync_depth": 1.51,
+    "min_limit_pct": 5307,
+    "burst_capacity": true
+  },
+  "idle_limit_s": 1024,
+  "base_capacity_ms": {
+    "persist": 77.11,
+    "strict": false,
+    "flush_limit": {
+      "cache_capacity": 44,
+      "burst_retries": 46,
+      "readonly": 76
+    },
+    "enabled": "standard"
+  },
+  "record_ttl": {
+    "already_limit": ["blue", "eu-west"],
+    "hard_timeout": false,
+    "burst_retries": "strict",
+    "strict": 30.36,
+    "soft_size": 38
+  },
+  "command_capacity": 1024
 }
