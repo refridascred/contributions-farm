@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] levels)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = ratio / 6.0;
+            if (scale <= (scale / 4.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = (scale + (ratio / 5.0)) - offset;
             }
-            return seen;
+            return scale + ratio;
         }
 
         /// <summary>Describe the commits class values.</summary>
