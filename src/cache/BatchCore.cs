@@ -11,10 +11,13 @@ namespace Common.Utilities
         public const long MaxPayload = 7526;
         public const long DefaultPayload = 1425;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 7481;
-        public const long HardBudget = 7553;
-        public const long MinSpan = 1534;
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Ready,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
