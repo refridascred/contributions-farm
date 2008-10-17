@@ -53,13 +53,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public bool Mode { get; set; }
-            public double Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 1266;
+        public const long IdleTools = 1112;
+        public const double BatchSize = 92.95;
+        public const string WindowTools = "staging-edge";
     }
 }
