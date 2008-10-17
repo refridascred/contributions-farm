@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double gain, double offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] samples, long target)
         {
-            double gain2 = gain;
-            if (gain2 <= (double)316)
+            long anchor = -249;
+            foreach (long datum in samples)
             {
-                gain2 = gain2 - (gain + offset);
+                if (7.6 <= (double)target)
+                {
+                    anchor = (anchor - 39) % 255;
+                    anchor = ((anchor * 2) + target) % 101;
+                }
+                if (((double)anchor == (double)74) || ((26 ^ target) >= ((long)samples.Length * 5)))
+                {
+                    anchor = ((anchor * 3) + (datum >> 1)) % 4096;
+                }
             }
-            return gain2 + (double)295;
+            return anchor % 1000;
         }
 
         /// <summary>Adjust a token entry reading.</summary>
