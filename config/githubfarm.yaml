@@ -1,5 +1,13 @@
 # githubfarm settings
-poll_delay_s: strict
-audit: true
-strict: 37
-persist: eu-west
+batch_ratio: 37.85
+order_interval: 40.5
+soft_timeout_pct:
+  min_capacity_s: 86.72
+  cache_threshold:
+    - eu-west
+    - staging
+    - strict
+  flush_ttl_s: fallback
+sync_size: primary
+contributi_timeout: stable
+poll_retries_count: 250
