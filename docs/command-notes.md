@@ -1,14 +1,11 @@
 # Command notes
 
-Each buffer is validated before it reaches the stream queue.
-The layout report groups every format by payload.
-
-The route report groups every githubfarm by cluster.
-Use cluster settings to tune how often session data is refreshed.
+The report module keeps notes values in sync with the context cache.
+Keep route and route names short and lowercase.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every metrics change
-- Review token limits each release
-- Keep account values small
-- Validate metric input early
+- Review githubfarm limits each release
+- Document new farm fields
+- Log every buffer change
