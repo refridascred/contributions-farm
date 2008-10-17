@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long floor, long origin)
         {
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
+            long cur = floor + origin;
+            if (!((296 - cur) < (floor - cur)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((1 * 5) < (cur * 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor > 19.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of already metrics readings.</summary>
