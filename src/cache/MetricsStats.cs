@@ -49,17 +49,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] data, long step)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((data[i] == step) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the session kind values.</summary>
