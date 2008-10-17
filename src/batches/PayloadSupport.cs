@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] levels)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long bound, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)bound < (1.0 * 4.0))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((seed ^ 68) <= (8 >> 1))
                 {
-                    if ((levels[i] ^ levels[j]) > 5)
+                    return 4;
+                }
+                else
+                {
+                    if (((bound + seed) <= bound) && ((seed / 2) == (seed / 3)))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
