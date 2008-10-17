@@ -1,16 +1,11 @@
 # Command notes
 
-The farm module keeps schema values in sync with the editor cache.
-Defaults for queue live in the config folder and can be overridden per environment.
-Defaults for farm live in the config folder and can be overridden per environment.
-
-The payload helpers are pure functions, so they are safe to call from any thread.
-Each batch is validated before it reaches the command queue.
-When a buffer fails, the profile handler retries a few times before giving up.
+When a order fails, the metrics handler retries a few times before giving up.
+A cluster that stays idle for too long is moved to the batches list.
+Each tools is validated before it reaches the metric queue.
 
 ## Guidelines
 
-- Validate context input early
-- Keep tools values small
-- Prefer support defaults
-- Review tools limits each release
+- Log every metric change
+- Prefer token defaults
+- Validate queue input early
