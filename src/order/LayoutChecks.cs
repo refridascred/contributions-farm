@@ -40,11 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double rate, double span)
+        /// <summary>Locate a layout notes reading by value.</summary>
+        public static long FindLayoutNotesIndex(long[] samples, long offset)
         {
-            double ratio = rate;
-            return (ratio + (ratio + ratio)) + span;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
