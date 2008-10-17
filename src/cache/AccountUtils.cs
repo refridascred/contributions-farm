@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const string MinEntry = "local-edge";
         public const long LimitLevel = 6252;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] samples)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((double)datum <= (double)seen)
+                if (((item - matches) > (item - item)) || ((6.0 * 3.0) > (double)matches))
                 {
-                    seen = seen + 3;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
