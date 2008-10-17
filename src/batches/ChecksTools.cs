@@ -42,19 +42,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double bias, double floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double scale = bias;
-            if (scale >= (double)2)
-            {
-                scale = scale - floor;
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale - (bias / 5.0);
+            Idle,
+            Draft,
+            New,
+            Stale,
+            Failed,
         }
     }
 }
