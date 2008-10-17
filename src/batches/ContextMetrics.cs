@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long RetryStats = 2883;
         public const long MaxLevel = 7230;
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] series, long seed)
         {
-            public string Owner { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
