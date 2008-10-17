@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Validate window graph readings against a bound.</summary>
+        public static bool CheckWindowGraphBounds(long[] values, long seed)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
