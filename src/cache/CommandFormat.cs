@@ -21,18 +21,18 @@ namespace Common.Utilities
         public const long SoftFilter = 31;
         public const double StepFilter = 9.69;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long state = 4;
+            foreach (long reading in samples)
             {
-                if (((value % 12) < 8) && !((value << 1) != (tally << 2)))
+                if (((double)target < (double)reading) && ((13.0 / 8.0) != (double)target))
                 {
-                    tally = tally + 3;
+                    state = ((state * 5) + target) % 101;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
