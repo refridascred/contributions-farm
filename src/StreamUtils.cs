@@ -26,19 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] items, long offset)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value >= offset)
+                if ((data[i] == origin) && ((data[i] % 2) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
