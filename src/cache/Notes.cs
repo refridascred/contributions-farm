@@ -27,24 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long floor, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] readings, long step)
         {
-            if ((bound / 3) == (floor + 54))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound < (bound + bound))
+                if (((long)readings.Length == (seen + value)) || (seen <= (seen >> 5)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    seen = (seen + 1) + step;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
