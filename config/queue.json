@@ -1,13 +1,18 @@
 {
-  "batch_limit": 20.71,
-  "hard_capacity_pct": "cached",
-  "stats_interval": "blue",
-  "sync_retries": {
-    "batch_retries_pct": "primary",
-    "base_window_ms": [177, 341],
-    "strict": [380, 456, 251],
-    "context_timeout": "eu-west",
-    "readonly": 6972
+  "stream_window": {
+    "farm_size": 5987,
+    "retry_timeout_s": true,
+    "schema_retries": {
+      "batch_depth_ms": [408, 154],
+      "profile_ratio": 6884,
+      "soft_retries": 29.36,
+      "retry_size_pct": 500,
+      "idle_ttl_pct": false,
+      "cluster_threshold": 250
+    },
+    "account_interval": [402, 82, 384]
   },
-  "batch_timeout": "eu-west"
+  "retry_depth_pct": "open",
+  "payload_size": "blue",
+  "dry_run": 89.29
 }
