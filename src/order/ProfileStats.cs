@@ -43,12 +43,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] levels)
         {
-            Stale,
-            Pending,
-            Active,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
