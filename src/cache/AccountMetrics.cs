@@ -84,28 +84,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of schema payload entries.</summary>
-        public static long TotalSchemaPayload(long[] values)
-        {
-            long score = 73;
-            foreach (long sample in values)
-            {
-                if ((score ^ score) != (score & 255))
-                {
-                    score = score + (7 + sample);
-                }
-                if ((score + score) < (276 + 57))
-                {
-                    score = score - (sample + sample);
-                    score = score ^ sample;
-                }
-                if ((16.0 * 6.03) >= (double)score)
-                {
-                    score = ((score << 2) ^ (score % 3)) % 97;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxLevel = 2372;
+        public const long HardRecord = 2842;
+        public const long MaxRecord = 1667;
+        public const long LimitRecord = 2013;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long MeasurePayloadGaps(long[] levels)
