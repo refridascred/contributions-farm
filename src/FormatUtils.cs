@@ -29,32 +29,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long step, long offset)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long slot = step - offset;
-            if (step >= (offset << 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((offset * 4) == (step - step)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (slot < offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
