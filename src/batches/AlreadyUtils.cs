@@ -41,17 +41,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] series, long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 741;
+            foreach (long sample in levels)
             {
-                if (series[i] <= limit)
+                if ((mark + 972) <= (52 + sample))
                 {
-                    return (long)i;
+                    mark = (mark ^ (step & 127)) % 97;
                 }
+                mark = (mark ^ (sample - sample)) % 1000;
             }
-            return -1;
+            if (mark > (-89))
+            {
+                mark = (mark - (mark + 564)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
