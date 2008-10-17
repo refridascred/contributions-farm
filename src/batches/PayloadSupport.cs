@@ -28,13 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            Ready,
-            Locked,
-            Pending,
-            Dropped,
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
