@@ -21,11 +21,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] levels)
         {
-            public long Rank { get; set; }
-            public double Mode { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
