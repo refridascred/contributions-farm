@@ -58,22 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric githubfarm readings against a rule.</summary>
-        public static long MeasureMetricGithubfarmMatches(long[] series, long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long mix = 3;
+            foreach (long cell in levels)
             {
-                if ((seen & 3) >= reading)
-                {
-                    seen = (seen + 2) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = (((mix + mix) % 65521) + cell) + floor;
             }
-            return seen;
+            return mix % 97;
         }
     }
 }
