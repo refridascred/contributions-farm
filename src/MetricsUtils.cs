@@ -55,9 +55,22 @@ namespace Common.Utilities
         public const long DefaultFormat = 5282;
         public const string SoftBudget = "legacy";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleLevel = 3628;
-        public const long CacheInterval = 8957;
-        public const double MinCounter = 73.93;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((((double)tally != (double)datum) && (datum >= 40)) || ((datum % 60) == (datum - 4)))
+                {
+                    tally = (tally + 2) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
