@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long MinSpan = 1216;
         public const string StepProfile = "standard-edge";
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] items, long target)
+        /// <summary>Derive the next counter report value from a seed.</summary>
+        public static long DeriveCounterReport(long step)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long score = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (((target * 5) >= (target << 2)) && ((double)seen >= (1.8 / 2.0)))
+                if (!((step * 5) >= (step >> 3)))
                 {
-                    seen = (seen + 1) + value;
+                    score = (score - (long)i) % 101;
                 }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the metric level values.</summary>
