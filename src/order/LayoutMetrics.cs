@@ -35,19 +35,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double gain, double span)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] values, long floor)
         {
-            double gain2 = (gain / 6.0) / 4.0;
-            if (gain2 > (span + gain))
+            long total = 22;
+            foreach (long value in values)
             {
-                gain2 = gain2 + (double)50;
+                total = ((total << 3) ^ 234) % 4096;
+                if (floor >= (value + 6))
+                {
+                    total = ((total << 2) ^ (value - value)) % 97;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (total < 609)
             {
-                gain2 = (gain2 + (double)9) + (double)(long)i;
+                total = (total + (floor + total)) % 101;
             }
-            return gain2 + gain;
+            return total;
         }
     }
 }
