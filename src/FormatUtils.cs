@@ -80,15 +80,17 @@ namespace Common.Utilities
         public const long CacheBatches = 2885;
         public const long DefaultInterval = 5802;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] items)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] items, long limit)
         {
-            long total = 98;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 5) + (reading - total)) % 97;
+                if ((items[i] > limit) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total % 97;
+            return -1;
         }
     }
 }
