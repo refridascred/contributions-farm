@@ -68,12 +68,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long origin, long floor)
         {
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
+            if ((floor >= (floor + origin)) || (origin <= (origin + floor)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((8.14 / 6.0) != (double)floor) || ((origin + origin) != (floor - floor)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor % 5) == (302 ^ 612))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (double)567)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
