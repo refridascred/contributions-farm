@@ -26,18 +26,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] series, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (seen < (datum & 3))
+                if (((value % 12) < 8) && !((value << 1) != (tally << 2)))
                 {
-                    seen = (seen + 1) - bound;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a record options.</summary>
