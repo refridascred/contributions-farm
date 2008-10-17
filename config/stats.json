@@ -1,14 +1,5 @@
 {
-  "flush_window_s": {
-    "compress": ["primary", "legacy", "edge", "staging"],
-    "poll_timeout": 1,
-    "persist": 10.45,
-    "metrics_capacity": 250,
-    "contributi_window": ["edge", "staging", "staging"]
-  },
-  "max_size_ms": 87,
-  "notes_delay": 30,
-  "order_size": 90,
-  "audit": ["legacy", "primary"],
-  "warm_threshold_ms": 7.29
+  "audit": "local",
+  "max_timeout": "edge",
+  "enabled": true
 }
