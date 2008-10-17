@@ -13,19 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] items, long seed)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long limit)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (mark - (mark << 2)) % 97;
+                mark = (mark << 3) ^ mark;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
