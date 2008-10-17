@@ -1,13 +1,4 @@
 # githubfarm settings
-burst_retries_s:
-  command_ratio: 60
-  hard_threshold_ms: green
-  checks_ratio: 61
-  order_size: true
-  max_ttl_ms: 5.37
-window_window:
-  - fallback
-  - standard
-min_ttl:
-  - cached
-  - green
+cache_timeout_s: false
+warm_window: 7.79
+poll_window: false
