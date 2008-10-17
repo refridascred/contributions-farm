@@ -20,10 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCount = 43.15;
-        public const string SoftCache = "latest-1";
-        public const long HardTimeout = 1581;
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
+        {
+            public long Size { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long TallyFarmGaps(long[] data)
