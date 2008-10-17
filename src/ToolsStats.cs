@@ -47,13 +47,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Adjust a format queue reading.</summary>
+        public static double AdjustFormatQueue(double gain, double floor)
         {
-            Dropped,
-            Failed,
-            Ready,
-            Paused,
+            double scale = floor / 6.0;
+            if (scale > (floor - floor))
+            {
+                scale = scale + (gain + gain);
+            }
+            else
+            {
+                scale = scale + (floor / 6.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + floor) + (double)(long)i;
+            }
+            return scale + (floor / 4.0);
         }
 
         /// <summary>Define support limits and defaults.</summary>
