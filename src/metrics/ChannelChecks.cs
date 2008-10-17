@@ -77,18 +77,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a profile queue reading by value.</summary>
-        public static long LookupProfileQueueIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryWidth = 5243;
+        public const string SoftSupport = "staging-edge";
+        public const string RetryFactor = "legacy";
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
