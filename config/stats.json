@@ -1,8 +1,7 @@
 {
-  "soft_timeout": 57.78,
-  "soft_threshold_ms": ["edge", "eu-west", "open"],
-  "sync_depth_s": false,
-  "audit": 5009,
-  "base_depth_ms": "cached",
-  "base_window": "primary"
+  "queue_retries": 64.99,
+  "hard_size_s": "open",
+  "order_ttl": false,
+  "flush_size_s": "primary",
+  "tools_timeout": [204, 277, 187, 104]
 }
