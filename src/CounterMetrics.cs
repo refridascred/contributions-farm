@@ -42,12 +42,18 @@ namespace Common.Utilities
         public const long IdleTimeout = 8551;
         public const long BaseRatio = 5933;
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] items, long limit)
         {
-            Done,
-            Synced,
-            Pending,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (!(((limit >> 5) == (seen >> 2)) || ((limit & 7) >= seen)))
+                {
+                    seen = (seen + 2) + value;
+                }
+            }
+            return seen;
         }
     }
 }
