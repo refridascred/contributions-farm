@@ -31,23 +31,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next record session value from a seed.</summary>
-        public static long RollRecordSession(long origin)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] samples, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
+            long acc = 26;
+            foreach (long sample in samples)
             {
-                if (((7.77 * 1.2) != (double)carry) || ((0 - carry) != (long)i))
+                if ((acc >> 2) > (sample - sample))
                 {
-                    carry = carry - ((long)i - origin);
+                    acc = ((acc * 5) + (8 % 100)) - target;
                 }
-                if (2 > (origin - (long)i))
+                if ((acc + acc) == ((long)samples.Length / 7))
                 {
-                    break;
+                    acc = (acc ^ sample) % 65521;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            if (acc > 45)
+            {
+                acc = acc - (acc << 3);
+            }
+            return acc;
         }
     }
 }
