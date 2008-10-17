@@ -36,22 +36,30 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long seed, long bound)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long bound, long seed)
         {
-            if ((bound % 10) <= (bound % 16))
+            long next = bound - seed;
+            if (((double)seed <= (11.0 - 6.15)) && ((0.3 + 11.0) < (double)bound))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((double)bound > (9.37 / 4.0))
+                if (((next + 833) == (188 % 7)) && ((90 / 5) < bound))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    return 5;
+                    if ((bound - bound) >= (bound / 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
