@@ -35,32 +35,14 @@ namespace Common.Utilities
         public const long LimitInterval = 6843;
         public const long SoftScore = 4045;
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long bound, long seed)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long next = bound - seed;
-            if (((double)seed <= (11.0 - 6.15)) && ((0.3 + 11.0) < (double)bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((next + 833) == (188 % 7)) && ((90 / 5) < bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound - bound) >= (bound / 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Dropped,
+            Idle,
+            Paused,
+            Queued,
+            Locked,
         }
     }
 }
