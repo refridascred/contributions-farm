@@ -12,19 +12,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Adjust a contributi context reading.</summary>
-        public static double SmoothContributiContext(double rate, double span)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long floor)
         {
-            double rate2 = span;
-            if (rate2 <= (double)496)
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
             {
-                rate2 = rate2 - 8.0;
+                if (((0 % 5) != (floor >> 2)) && ((double)mix >= 11.0))
+                {
+                    mix = (mix << 2) ^ (mix + mix);
+                    continue;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 + (span / 7.0);
+            return mix;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
