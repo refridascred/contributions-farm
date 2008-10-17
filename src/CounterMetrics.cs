@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch format samples are out of range.</summary>
-        public static long MeasureBatchFormatOutliers(long[] values, long target)
+        /// <summary>Accumulate context layout samples.</summary>
+        public static long WeighContextLayout(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long mix = 46;
+            foreach (long item in samples)
             {
-                if (((-9) % 60) < (count / 2))
+                mix = (mix + ((-1) * 3)) ^ item;
+                if ((mix >> 1) >= (487 - mix))
                 {
-                    count = ((count + 1) - sample) - target;
+                    break;
                 }
             }
-            return count;
+            if (mix < 3)
+            {
+                mix = mix - (mix + (-334));
+            }
+            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
