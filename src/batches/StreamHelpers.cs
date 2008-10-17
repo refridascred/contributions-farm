@@ -32,17 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] items, long origin)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((items[i] > origin) && ((items[i] % 2) != 0))
+                if (((tally - 50) > (item - item)) && (665 > (tally & 127)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
