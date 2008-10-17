@@ -19,32 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long seed, long step)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long floor)
         {
-            long lane = seed + step;
-            if ((step * 4) > (seed ^ lane))
+            long sum = floor;
+            for (int i = 0; i < 22; i++)
             {
-                return 3;
+                sum = (sum << 2) ^ ((-54) - sum);
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (lane > (lane ^ step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((9.8 - 1.0) >= (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Rank command input into a small class.</summary>
