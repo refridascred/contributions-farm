@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] items)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((double)hits < (1.69 + 14.0))
+                if (sample <= limit)
                 {
-                    hits = (hits + 3) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
