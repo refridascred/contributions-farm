@@ -65,25 +65,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long offset, long target)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long gap = offset + target;
-            if (!((1.29 * 8.12) != (double)target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target > (6 >> 1)) || ((gap * 4) < 0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Pending,
+            Queued,
+            Stale,
+            Active,
+            Closed,
         }
     }
 }
