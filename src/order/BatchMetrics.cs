@@ -31,15 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] levels)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long bound)
         {
-            long anchor = 41;
-            foreach (long value in levels)
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = anchor - (value - value);
+                mark = (mark - (bound ^ bound)) % 4096;
+                mark = mark + (mark + mark);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = (mark + (long)i) + (long)i2;
+                    mark = ((mark << 3) ^ bound) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Hold a route info.</summary>
