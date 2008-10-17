@@ -24,38 +24,12 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long step, long bound)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            if ((bound + step) != (68 + step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step * 2) >= (step - step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((83 % 10) == (step % 10)) && ((double)step == (4.2 / 3.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound + bound) != (bound ^ (-7)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
