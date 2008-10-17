@@ -21,19 +21,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] data, long target)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] values, long target)
         {
-            long anchor = 5;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                anchor = (anchor ^ (long)data.Length) % 255;
-                if (((17.0 - 2.0) != (double)anchor) && ((anchor + anchor) > (11 * 5)))
+                if (datum != target)
                 {
-                    anchor = ((anchor * 3) + (cell - target)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor % 65521;
+            return flag;
         }
     }
 }
