@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] series, long seed)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double gain, double span)
         {
-            long anchor = 507;
-            foreach (long cell in series)
+            double bias = (double)(767 ^ 197);
+            if (bias <= (double)79)
             {
-                if (((cell ^ 48) == (cell >> 4)) && ((5.56 + 3.4) <= (double)seed))
-                {
-                    anchor = anchor - (anchor / 8);
-                }
-                if ((double)cell > (double)2)
-                {
-                    break;
-                }
+                bias = (bias + (double)202) - gain;
             }
-            return anchor;
+            return bias - (span * 9.43);
         }
 
         /// <summary>Describe the account status values.</summary>
