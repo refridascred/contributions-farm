@@ -13,11 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
+            Ready,
+            Locked,
+            Queued,
         }
 
         /// <summary>Describe the order phase values.</summary>
