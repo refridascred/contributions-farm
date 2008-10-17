@@ -13,10 +13,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 1693;
-        public const long BurstSession = 5939;
-        public const string CacheInterval = "cached-1";
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextGaps(long[] series)
