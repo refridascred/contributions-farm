@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary local; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=425
+COMMAND_LIMIT=67
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-standard}"
+mode="${1:-staging}"
 case "${mode}" in
-    green)
+    strict)
         log "fast path"
         ;;
     *)
