@@ -51,23 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a format queue reading.</summary>
-        public static double AdjustFormatQueue(double gain, double floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] samples)
         {
-            double scale = floor / 6.0;
-            if (scale > (floor - floor))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                scale = scale + (gain + gain);
+                if (((hits <= (entry & 3)) && ((hits << 1) < entry)) && ((2.2 / 4.0) >= (double)hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                scale = scale + (floor / 6.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + floor) + (double)(long)i;
-            }
-            return scale + (floor / 4.0);
+            return hits;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
