@@ -1,6 +1,6 @@
 # githubfarm settings
-compress: 30
-idle_limit_ms: false
-max_limit_s: true
-min_threshold_count: green
-retry_threshold_count: open
+batch_depth_count: primary
+default_delay_s: 38
+enabled: edge
+max_window: legacy
+persist: 100
