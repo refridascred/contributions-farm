@@ -34,18 +34,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long bound)
+        /// <summary>Accumulate account stream samples.</summary>
+        public static long WeighAccountStream(long[] values, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
+            long state = 77;
+            foreach (long sample in values)
             {
-                mix = ((mix << 3) ^ (mix - 378)) % 101;
-                mix = (mix ^ (bound * 4)) % 255;
-                mix = (mix << 3) ^ mix;
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((sample >> 3) < sample)
+                {
+                    state = (state * 5) + (limit << 3);
+                }
             }
-            return mix;
+            return state % 97;
         }
 
         /// <summary>Rank editor account input into a small class.</summary>
