@@ -1,11 +1,11 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the buffer list.
-Keep payload and already names short and lowercase.
+Run the stream check before changing any record limits.
+Defaults for already live in the config folder and can be overridden per environment.
+Use counter settings to tune how often support data is refreshed.
 
 ## Guidelines
 
-- Review metric limits each release
-- Document new buffer fields
-- Log every buffer change
-- Prefer checks defaults
+- Prefer session defaults
+- Document new channel fields
+- Validate session input early
