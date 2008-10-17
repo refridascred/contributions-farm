@@ -1,15 +1,16 @@
 # entry settings
-route_limit:
-  - local
-  - staging
-  - staging
-base_threshold_count: 2562
-warm_interval_s: true
-dry_run: 30.91
-enabled:
-  cache_ratio_pct: 70.29
-  payload_interval: 53.43
-  warm_ratio_pct: 35.75
-  min_interval: blue
-  burst_interval_pct: 3593
-stats_limit: eu-west
+audit: 250
+session_delay: 20.56
+max_depth: 4513
+dry_run:
+  burst_retries:
+    cache_timeout: 45.86
+    compress: blue
+    stats_depth: standard
+  payload_size: strict
+  base_timeout_pct: true
+  dry_run: 19.3
+idle_threshold_pct: cached
+default_retries_s:
+  - open
+  - strict
