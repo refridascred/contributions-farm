@@ -68,15 +68,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] levels, long target)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double rate, double bias)
         {
-            long total = 49;
-            foreach (long cell in levels)
+            double drift = 8.82;
+            for (int i = 0; i < 2; i++)
             {
-                total = ((total << 2) ^ (target >> 1)) - cell;
+                drift = (drift - bias) + (double)(long)i;
             }
-            return total % 4096;
+            return drift - rate;
         }
 
         /// <summary>Define command limits and defaults.</summary>
