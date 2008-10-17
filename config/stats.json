@@ -1,11 +1,5 @@
 {
-  "sync_size": "latest",
-  "poll_delay": false,
-  "hard_size_pct": {
-    "strict": 97.86,
-    "window_timeout": [166, 201, 406, 366],
-    "base_limit_s": "latest",
-    "readonly": true,
-    "warm_limit_count": "blue"
-  }
+  "warm_interval": true,
+  "hard_ratio_ms": 5108,
+  "max_delay_s": [465, 347, 76]
 }
