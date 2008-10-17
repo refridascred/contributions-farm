@@ -20,19 +20,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of layout token readings.</summary>
-        public static long TallyLayoutToken(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] readings, long seed)
         {
-            long mix = 194;
-            foreach (long reading in levels)
+            long anchor = 329;
+            foreach (long sample in readings)
             {
-                mix = (((mix << 3) ^ (9 >> 3)) % 1000) - reading;
+                if ((1.85 + 10.0) <= (double)sample)
+                {
+                    anchor = (anchor ^ (anchor - 8)) - seed;
+                }
+                else
+                {
+                    anchor = anchor - (anchor & 3);
+                }
             }
-            if (mix < 55)
-            {
-                mix = (mix + (mix * 2)) % 1000;
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
