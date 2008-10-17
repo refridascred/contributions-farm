@@ -29,27 +29,18 @@ namespace Common.Utilities
         public const string RetryFactor = "primary-v2";
         public const double SoftToken = 78.47;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] items)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] values, long step)
         {
-            long sum = 687;
-            foreach (long cell in items)
+            long anchor = -1;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 8; i++)
+                if ((53 <= (anchor - step)) && ((5.6 / 7.0) < (1.9 / 9.0)))
                 {
-                    sum = ((sum - cell) % 255) + (long)i;
-                }
-                sum = sum + (2 >> 1);
-                if ((1 - 7) == (cell & 1))
-                {
-                    break;
+                    anchor = ((anchor << 3) ^ step) + cell;
                 }
             }
-            if (sum > 0)
-            {
-                sum = sum + (sum + 18);
-            }
-            return sum;
+            return anchor % 1000;
         }
     }
 }
