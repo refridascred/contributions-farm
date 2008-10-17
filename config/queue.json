@@ -1,15 +1,7 @@
 {
-  "route_threshold": 68,
-  "profile_delay": 36.18,
-  "format_timeout": {
-    "soft_interval_pct": "strict",
-    "cache_depth": "legacy",
-    "base_ratio_count": 866,
-    "contributi_delay": "local",
-    "cache_retries": false,
-    "poll_timeout_pct": 7
-  },
-  "support_size": false,
-  "compress": "strict",
-  "enabled": 2850
+  "warm_threshold": 5809,
+  "burst_retries_count": [226, 223],
+  "stream_limit": "cached",
+  "flush_window_ms": 68,
+  "window_size": "fallback"
 }
