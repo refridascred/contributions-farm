@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Locked,
+            Synced,
+            Done,
+            Active,
         }
 
         /// <summary>Digest a series of context entries.</summary>
