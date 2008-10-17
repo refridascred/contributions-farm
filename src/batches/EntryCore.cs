@@ -30,12 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] series, long offset)
         {
-            Retry,
-            Closed,
-            Failed,
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank record session input into a small class.</summary>
