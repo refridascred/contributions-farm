@@ -39,21 +39,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Compare every pair of route session readings.</summary>
-        public static long MatchRouteSessionCount(long[] samples)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 2;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)step == (8.9 + 4.9))
                 {
-                    if ((samples[i] + samples[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state + (state << 3)) % 255) + cell;
                 }
             }
-            return hits;
+            if (state < 996)
+            {
+                state = ((state << 3) ^ step) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
