@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next batch window value from a seed.</summary>
-        public static long DeriveBatchWindow(long origin)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] values)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (score <= (origin * 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score * 5) + ((long)i << 3)) % 4096;
+                    if ((values[i] - values[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
