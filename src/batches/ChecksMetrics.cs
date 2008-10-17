@@ -79,18 +79,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] levels)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((857 / 7) <= (6 - count))
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
+            Done,
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
