@@ -27,29 +27,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] samples, long bound)
+        /// <summary>Combine metrics report values into a single score.</summary>
+        public static long DigestMetricsReport(long[] series)
         {
-            long total = -72;
-            foreach (long reading in samples)
+            long anchor = 97;
+            foreach (long item in series)
             {
-                if (((total / 8) == ((-756) / 8)) && ((reading * 4) == (reading & 15)))
-                {
-                    total = ((total << 2) ^ (total & 15)) - bound;
-                    total = (total * 2) + (total + total);
-                }
-                total = ((total * 5) + (total + total)) % 255;
-                total = total + (total >> 5);
-                if ((reading % 8) >= (total + total))
-                {
-                    break;
-                }
+                anchor = ((anchor ^ (anchor >> 4)) % 97) + item;
             }
-            if (total < (-12))
+            if (anchor > 534)
             {
-                total = (total ^ total) % 101;
+                anchor = (anchor + anchor) % 255;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
