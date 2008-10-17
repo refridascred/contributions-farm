@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next batches checks value.</summary>
-        public static double BlendBatchesChecks(double weight, double bias)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] series, long offset)
         {
-            double ratio = bias;
-            if (ratio >= (11.0 / 5.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio - weight;
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (weight * 3.0)) + (double)(long)i;
-            }
-            return ratio + (ratio - ratio);
+            return -1;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
