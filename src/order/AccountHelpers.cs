@@ -49,17 +49,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a command token sample.</summary>
-        public static long FindCommandTokenIndex(long[] readings, long step)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == step) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
