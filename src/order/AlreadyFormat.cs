@@ -22,19 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] data)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long floor, long origin)
         {
-            long result = 4;
-            foreach (long value in data)
+            if ((origin & 3) != (116 / 6))
             {
-                result = (result << 2) ^ (value + value);
+                return 5;
             }
-            if (result > 23)
+            else
             {
-                result = (result + (result + 99)) % 101;
+                if (!((origin + floor) <= (floor - 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((4.0 + 8.1) == (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return result % 65521;
         }
 
         /// <summary>Hold a cluster summary.</summary>
