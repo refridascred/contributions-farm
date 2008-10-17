@@ -20,18 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of route commits entries.</summary>
-        public static long ScoreRouteCommits(long[] values)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long state = 164;
-            foreach (long value in values)
-            {
-                if (((state * 2) >= (state >> 5)) || ((7 >> 4) <= (9 ^ state)))
-                {
-                    state = ((state ^ (44 - state)) % 97) - value;
-                }
-            }
-            return state;
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a layout info.</summary>
