@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinSpan = 8403;
-        public const long IdleFactor = 3098;
-        public const long StepProfile = 1269;
-        public const long WindowProfile = 6602;
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count tools farm pairs that satisfy a relation.</summary>
         public static long CompareToolsFarmCount(long[] readings)
