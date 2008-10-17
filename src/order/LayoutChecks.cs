@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheLevel = 5738;
-        public const string IdleMetrics = "staging";
-        public const long RetryRatio = 6100;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (step > (tally >> 2))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long GradeFilter(long step, long offset)
