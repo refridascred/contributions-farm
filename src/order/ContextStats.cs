@@ -37,19 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double bias, double offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            double drift = bias;
-            if (drift >= bias)
+            long state = 4;
+            foreach (long entry in readings)
             {
-                drift = (drift - 5.2) - offset;
+                if (entry > state)
+                {
+                    state = (state << 2) ^ state;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - 9.0) - (double)(long)i;
-            }
-            return drift - (double)(-3);
+            return state;
         }
 
         /// <summary>Describe the counter kind values.</summary>
