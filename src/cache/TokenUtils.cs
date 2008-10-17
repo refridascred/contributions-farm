@@ -28,18 +28,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] levels)
+        /// <summary>Combine record command values into a single score.</summary>
+        public static long CombineRecordCommand(long[] series)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long mix = 943;
+            foreach (long sample in series)
             {
-                if ((count % 7) >= (cell + count))
+                if ((double)sample > 5.92)
                 {
-                    count = count + 2;
+                    mix = (mix - 9) % 255;
+                }
+                else
+                {
+                    mix = (mix ^ (mix >> 5)) % 255;
                 }
             }
-            return count;
+            if (mix > (-4))
+            {
+                mix = ((mix * 3) + (mix ^ mix)) % 101;
+            }
+            return mix;
         }
     }
 }
