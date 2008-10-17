@@ -31,13 +31,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Derive the next record session value from a seed.</summary>
+        public static long RollRecordSession(long origin)
         {
-            Paused,
-            Active,
-            Synced,
-            Done,
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((7.77 * 1.2) != (double)carry) || ((0 - carry) != (long)i))
+                {
+                    carry = carry - ((long)i - origin);
+                }
+                if (2 > (origin - (long)i))
+                {
+                    break;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
