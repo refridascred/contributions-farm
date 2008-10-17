@@ -16,22 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] items)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((double)item == (7.03 / 3.0))
+                if (seed > (68 & 3))
                 {
-                    tally = tally + 3;
+                    count = (count + 2) + datum;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate commits samples.</summary>
