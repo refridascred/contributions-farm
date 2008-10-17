@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Done,
-            Ready,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 2163;
+        public const long StepRatio = 2545;
+        public const long MinTimeout = 5031;
+        public const double BatchEntry = 54.68;
+        public const long MaxRatio = 8117;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long ClassifyStream(long bound, long target)
