@@ -36,23 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] samples)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] items, long seed)
         {
-            long result = 1;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                result = (result + (result + result)) - sample;
-                if ((result & 15) < (21 / 5))
+                if ((seed % 12) < cell)
                 {
-                    result = result ^ ((long)samples.Length & 3);
+                    seen = seen + 2;
                 }
             }
-            if (result > 5)
-            {
-                result = ((result * 4) + (result * 2)) % 255;
-            }
-            return result % 4096;
+            return seen;
         }
     }
 }
