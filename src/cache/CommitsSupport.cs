@@ -22,21 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count command metric pairs that satisfy a relation.</summary>
-        public static long CompareCommandMetricCount(long[] series)
+        /// <summary>Classify a already format pair into a bucket.</summary>
+        public static long RankAlreadyFormat(long step, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((step + target) == (target % 97))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((1.16 / 7.0) < (double)target)
                 {
-                    if ((series[i] + series[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
