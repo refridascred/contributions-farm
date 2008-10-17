@@ -66,14 +66,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] levels)
         {
-            Retry,
-            Failed,
-            Locked,
-            Queued,
-            Pending,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (!!((double)count >= 9.1))
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
