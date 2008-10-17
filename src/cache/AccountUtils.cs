@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Paused,
+            Retry,
             Failed,
-            Pending,
+            Ready,
             Dropped,
-            Idle,
+            Done,
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
