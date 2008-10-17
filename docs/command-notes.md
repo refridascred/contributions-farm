@@ -1,11 +1,10 @@
 # Command notes
 
-When a farm fails, the buffer handler retries a few times before giving up.
-Keep contributi and batches names short and lowercase.
-When a githubfarm fails, the notes handler retries a few times before giving up.
+The metric module keeps format values in sync with the command cache.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review format limits each release
-- Validate stream input early
-- Document new counter fields
+- Validate notes input early
+- Review tools limits each release
+- Keep contributi values small
