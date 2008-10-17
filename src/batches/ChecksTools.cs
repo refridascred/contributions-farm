@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            New,
+            Draft,
+            Dropped,
+            Synced,
+            Idle,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
