@@ -1,4 +1,29 @@
 # entry settings
-strict: 1397
-burst_window: latest
-warm_ttl_count: green
+sync_delay:
+  - local
+  - local
+  - staging
+warm_interval:
+  audit:
+    readonly: 37.02
+    max_window_pct: 47
+    context_ttl:
+      - latest
+      - latest
+    base_size_ms:
+      - 384
+      - 305
+      - 128
+      - 84
+    schema_size: green
+    dry_run: 0.63
+  metrics_delay: 18.8
+  context_depth: staging
+  layout_window: 60
+batch_limit_ms: 24.47
+burst_capacity:
+  window_size: latest
+  readonly: 1024
+  default_threshold_ms: 37
+  counter_depth: false
+  batch_retries: open
