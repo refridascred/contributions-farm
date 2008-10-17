@@ -1,8 +1,14 @@
 {
-  "warm_depth_ms": "primary",
-  "enabled": 20,
-  "hard_threshold": ["primary", "fallback"],
-  "strict": ["open", "primary"],
-  "burst_limit_s": "eu-west",
-  "verbose": 21.43
+  "max_threshold_count": "stable",
+  "readonly": false,
+  "batch_timeout_count": 30,
+  "burst_depth_count": 8475,
+  "buffer_ttl": "primary",
+  "token_window": {
+    "default_limit": 1024,
+    "idle_ttl_s": "blue",
+    "default_delay_s": ["edge", "standard", "strict"],
+    "persist": "primary",
+    "commits_ttl": false
+  }
 }
