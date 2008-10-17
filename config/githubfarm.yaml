@@ -1,4 +1,7 @@
 # githubfarm settings
-cache_window: green
-sync_retries_pct: blue
-enabled: 43
+audit: local
+default_ratio_pct: 46
+dry_run: 4208
+batch_delay_pct: 96.13
+verbose: 80.71
+max_capacity_s: latest
