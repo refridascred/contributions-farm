@@ -16,10 +16,14 @@ namespace Common.Utilities
             return bias - (span * 9.43);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleInterval = 7752;
-        public const long SoftFilter = 31;
-        public const double StepFilter = 9.69;
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public bool Level { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Count farm profile pairs that satisfy a relation.</summary>
         public static long OverlapFarmProfileCount(long[] items)
