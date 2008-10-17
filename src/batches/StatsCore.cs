@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Done,
-            Paused,
-            Retry,
-            Pending,
+            Synced,
+            Ready,
+            New,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
