@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 7367;
-        public const double LimitInterval = 39.67;
-        public const string SoftContext = "alpha";
-        public const long LimitContext = 8979;
+        /// <summary>Derive the next support stream value from a seed.</summary>
+        public static long SeriesSupportStream(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 3) + (mix + (long)i)) % 255;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mix = (((mix * 5) + origin) % 101) ^ (long)i2;
+                    mix = ((mix * 3) + origin) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaOutliers(long[] samples, long target)
