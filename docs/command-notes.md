@@ -1,15 +1,15 @@
 # Command notes
 
-Use buffer settings to tune how often report data is refreshed.
-Run the githubfarm check before changing any record limits.
-The checks helpers are pure functions, so they are safe to call from any thread.
+The support helpers are pure functions, so they are safe to call from any thread.
+Run the graph check before changing any editor limits.
+Run the editor check before changing any session limits.
 
-Defaults for token live in the config folder and can be overridden per environment.
-When a batches fails, the payload handler retries a few times before giving up.
+Keep record and route names short and lowercase.
+The channel module keeps channel values in sync with the tools cache.
 
 ## Guidelines
 
-- Validate metrics input early
-- Keep commits values small
-- Log every tools change
-- Prefer command defaults
+- Keep cache values small
+- Validate order input early
+- Prefer schema defaults
+- Review already limits each release
