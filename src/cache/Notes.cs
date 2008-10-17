@@ -46,12 +46,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double ratio, double span)
         {
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-            public double Owner { get; set; }
+            double weight = ratio;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (double)(long)i) + span;
+            }
+            return weight - weight;
         }
     }
 }
