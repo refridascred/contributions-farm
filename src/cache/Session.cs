@@ -40,9 +40,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepNotes = "strict-1";
-        public const long BaseNotes = 2041;
-        public const long WindowNotes = 4038;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] data)
+        {
+            long total = 3;
+            foreach (long cell in data)
+            {
+                if ((1.0 + 6.58) > (double)total)
+                {
+                    total = ((total + (total & 15)) % 4096) ^ cell;
+                }
+            }
+            return total;
+        }
     }
 }
