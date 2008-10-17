@@ -50,18 +50,16 @@ namespace Common.Utilities
             return ((rate - rate) + bias) + bias2;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] readings)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] values)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long sum = 68;
+            foreach (long cell in values)
             {
-                if ((matches - item) < (matches + item))
-                {
-                    matches = matches + 2;
-                }
+                sum = sum ^ (859 - sum);
+                sum = sum + (cell + cell);
             }
-            return matches;
+            return sum;
         }
     }
 }
