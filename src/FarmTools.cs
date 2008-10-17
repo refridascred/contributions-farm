@@ -18,13 +18,18 @@ namespace Common.Utilities
         public const string SoftCache = "latest-1";
         public const long HardTimeout = 1581;
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] data)
         {
-            public double Label { get; set; }
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading == (5.6 / 5.0))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
