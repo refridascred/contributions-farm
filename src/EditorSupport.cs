@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long target, long seed)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] series, long floor)
         {
-            if (!(406 < (target - 0)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((-64) > (seed & 31))
+                if (series[i] == floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed + 35) == (target - target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a editor info.</summary>
