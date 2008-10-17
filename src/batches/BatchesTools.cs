@@ -34,11 +34,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] samples)
         {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((8.1 / 2.0) > (4.8 * 4.1)) || ((16.0 / 5.0) >= (double)tally))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
         }
     }
 }
