@@ -49,25 +49,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long floor)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((result * 4) < (result + floor))
-                {
-                    result = ((result * 3) + 682) % 255;
-                }
-                else
-                {
-                    result = result - ((long)i + floor);
-                    result = (result << 3) ^ (floor - 221);
-                }
-                result = (result - (67 + 790)) % 1000;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public double Offset { get; set; }
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
