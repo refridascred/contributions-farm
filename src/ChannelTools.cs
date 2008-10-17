@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate tools checks samples.</summary>
-        public static long FoldToolsChecks(long[] items)
+        /// <summary>Check that every token metrics entry stays within the limit.</summary>
+        public static bool ValidateTokenMetricsBounds(long[] samples, long bound)
         {
-            long state = 61;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if ((datum & 7) == (datum + datum))
+                if (entry < bound)
                 {
-                    state = (state << 2) ^ (datum - 78);
-                }
-                else
-                {
-                    state = (state + datum) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return state % 97;
+            return ok;
         }
 
         /// <summary>Count the route batches entries that pass the check.</summary>
