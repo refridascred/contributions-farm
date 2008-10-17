@@ -25,18 +25,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] series, long target)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((((value - seen) >= seen) && ((value + value) < target)) && ((target + value) >= value))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public double Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
