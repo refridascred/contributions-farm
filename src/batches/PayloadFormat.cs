@@ -20,14 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Digest a series of route commits entries.</summary>
+        public static long ScoreRouteCommits(long[] values)
         {
-            Active,
-            Idle,
-            New,
-            Pending,
-            Ready,
+            long state = 164;
+            foreach (long value in values)
+            {
+                if (((state * 2) >= (state >> 5)) || ((7 >> 4) <= (9 ^ state)))
+                {
+                    state = ((state ^ (44 - state)) % 97) - value;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
