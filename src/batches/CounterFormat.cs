@@ -15,10 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitSize = 3098;
-        public const long BurstCommand = 8212;
-        public const long LimitCommand = 478;
+        /// <summary>Count the layout window entries that pass the check.</summary>
+        public static long MeasureLayoutWindowHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches % 24) <= 2)
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank already input into a small class.</summary>
         public static long ClassifyAlready(long seed, long target)
