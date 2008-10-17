@@ -20,39 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long origin, long target)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long next = origin ^ target;
-            if ((next * 3) >= (next / 9))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((6.0 * 6.22) == (double)next)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (next >= (target - 907))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)origin == (2.8 - 4.5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the stats level values.</summary>
