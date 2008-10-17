@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Locked,
-            Done,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleSession = 14.4;
+        public const double WindowInterval = 5.4;
+        public const double BaseSession = 98.55;
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long BucketSession(long seed, long floor)
