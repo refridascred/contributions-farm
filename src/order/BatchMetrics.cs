@@ -25,26 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter metrics entries.</summary>
-        public static long ScoreFilterMetrics(long[] items)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long limit)
         {
-            long anchor = 41;
-            foreach (long value in items)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((2 ^ 32) < (anchor + anchor))
-                {
-                    anchor = ((anchor << 3) ^ (986 & 1)) + value;
-                }
-                else
-                {
-                    anchor = anchor + anchor;
-                }
+                total = (total - (limit << 1)) % 97;
+                total = total + limit;
+                total = total - (total ^ limit);
+                total = ((total * 5) + (long)i) % 97;
             }
-            if (anchor > 7)
-            {
-                anchor = (anchor + ((-963) % 60)) % 65521;
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Hold a route info.</summary>
