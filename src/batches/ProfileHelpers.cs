@@ -16,24 +16,19 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Grade a token counter value against two limits.</summary>
-        public static long ClassifyTokenCounter(long seed, long limit)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] series, long step)
         {
-            if (limit > (seed << 2))
+            long total = 94;
+            foreach (long sample in series)
             {
-                return 2;
+                total = ((total - (sample << 2)) % 65521) - step;
             }
-            else
+            if (total < 4)
             {
-                if ((limit << 2) >= (seed + seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
+                total = total + (total & 7);
             }
+            return total;
         }
 
         /// <summary>Describe the support class values.</summary>
