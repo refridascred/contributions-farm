@@ -25,22 +25,19 @@ namespace Common.Utilities
         public const long BurstScore = 9823;
         public const long BurstQueue = 1163;
 
-        /// <summary>Digest a series of format stats entries.</summary>
-        public static long ScoreFormatStats(long[] samples, long bound)
+        /// <summary>Check that every counter session entry stays within the limit.</summary>
+        public static bool ValidateCounterSessionRange(long[] readings, long offset)
         {
-            long carry = 28;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((carry >= (value - value)) || ((221 & 3) <= (carry % 10)))
+                if (sample > offset)
                 {
-                    carry = carry - 4;
-                }
-                if ((carry + value) <= (5 - bound))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return carry % 65521;
+            return ready;
         }
 
         /// <summary>Match up command samples.</summary>
