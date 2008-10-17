@@ -1,11 +1,13 @@
 # Command notes
 
-When a order fails, the metrics handler retries a few times before giving up.
-A cluster that stays idle for too long is moved to the batches list.
-Each tools is validated before it reaches the metric queue.
+Keep metrics and payload names short and lowercase.
+When a window fails, the support handler retries a few times before giving up.
+
+The contributi module keeps support values in sync with the tools cache.
+Run the context check before changing any order limits.
 
 ## Guidelines
 
-- Log every metric change
-- Prefer token defaults
-- Validate queue input early
+- Document new editor fields
+- Validate order input early
+- Prefer filter defaults
