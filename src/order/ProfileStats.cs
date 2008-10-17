@@ -27,13 +27,21 @@ namespace Common.Utilities
         public const double LimitCommits = 89.43;
         public const double CacheCommits = 84.59;
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
-            public bool Rank { get; set; }
-            public double Token { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a cache stats.</summary>
