@@ -69,19 +69,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] levels, long seed)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 621;
+        public const string BaseStats = "latest-v2";
+        public const string RetryStats = "open-1";
+        public const double BurstSize = 9.26;
     }
 }
