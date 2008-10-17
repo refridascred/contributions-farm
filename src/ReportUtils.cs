@@ -47,16 +47,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a context farm counter forward.</summary>
-        public static long RollContextFarm(long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] data)
         {
-            long anchor = step;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                anchor = anchor - (step - step);
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (!(((5.5 * 7.0) == (double)tally) || ((double)74 != (double)tally)))
+                {
+                    tally = (tally + 2) ^ value;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Rank checks notes input into a small class.</summary>
