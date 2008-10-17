@@ -1,13 +1,7 @@
 {
-  "min_ttl_pct": {
-    "profile_capacity": false,
-    "base_timeout_pct": 60.24,
-    "notes_timeout": true,
-    "base_window": 30
-  },
-  "warm_ratio_count": true,
-  "idle_interval_ms": ["edge", "local", "blue", "strict"],
-  "record_interval": ["open", "blue"],
-  "soft_ratio_count": "stable",
-  "flush_ratio_ms": false
+  "route_retries": 69.65,
+  "burst_capacity": 65.05,
+  "batch_size_s": "green",
+  "base_depth_pct": 15.44,
+  "account_size": "legacy"
 }
