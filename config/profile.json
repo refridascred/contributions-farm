@@ -1,7 +1,10 @@
 {
-  "burst_limit": "staging",
-  "max_delay_count": [353, 148, 359, 363],
-  "soft_delay": 23.76,
-  "dry_run": false,
-  "cluster_threshold": ["eu-west", "local"]
+  "burst_limit_ms": ["blue", "eu-west"],
+  "min_threshold_pct": {
+    "hard_window": 66.06,
+    "audit": 8358,
+    "warm_capacity": 9658,
+    "batches_ratio": "legacy"
+  },
+  "enabled": 100
 }
