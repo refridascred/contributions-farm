@@ -19,11 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] readings, long step)
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
+            long mix = 791;
+            foreach (long datum in readings)
+            {
+                mix = ((mix + step) % 1000) ^ datum;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the queue level values.</summary>
