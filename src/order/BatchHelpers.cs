@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const double LimitCluster = 88.7;
         public const long BaseCluster = 8174;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
+            Locked,
+            Paused,
+            Idle,
+            Pending,
+            New,
         }
 
         /// <summary>Roll a route counter forward.</summary>
