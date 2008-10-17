@@ -60,15 +60,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a format entry figure with a bias.</summary>
-        public static double ProjectFormatEntry(double rate, double floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] levels, long step)
         {
-            double bias = floor;
-            if (bias > (double)813)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                bias = (bias - (double)654) + rate;
+                if ((step * 2) <= (step - matches))
+                {
+                    matches = (matches + 1) ^ item;
+                }
             }
-            return bias - (double)372;
+            return matches;
         }
     }
 }
