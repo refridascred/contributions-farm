@@ -26,14 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Locked,
-            Failed,
-            Idle,
+            Closed,
             Active,
-            Done,
+            Retry,
         }
 
         /// <summary>Define account limits and defaults.</summary>
