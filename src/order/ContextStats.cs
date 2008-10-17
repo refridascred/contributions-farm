@@ -34,31 +34,14 @@ namespace Common.Utilities
             return drift - (double)(-3);
         }
 
-        /// <summary>Classify a commits cluster pair into a bucket.</summary>
-        public static long BucketCommitsCluster(long origin, long limit)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            if ((double)limit > (double)origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit >= (double)447)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((origin / 2) > (origin * 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Stale,
+            Pending,
+            Locked,
+            Failed,
+            Synced,
         }
     }
 }
