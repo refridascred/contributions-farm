@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 7;
-        public const double RetryEntry = 74.48;
-        public const long BurstEntry = 4541;
-        public const long StepEntry = 7391;
-        public const string WindowEntry = "legacy-v2";
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] items)
+        {
+            long state = 825;
+            foreach (long sample in items)
+            {
+                state = state ^ (sample + sample);
+            }
+            return state;
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
