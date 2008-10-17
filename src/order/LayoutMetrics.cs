@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] series)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] series, long offset)
         {
-            long count = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((series[i] > offset) && ((series[i] % 5) != 0))
                 {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a format counter forward.</summary>
