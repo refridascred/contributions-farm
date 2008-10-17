@@ -30,12 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] items)
         {
-            Paused,
-            Pending,
-            Done,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((item - tally) > (tally % 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
