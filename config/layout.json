@@ -1,5 +1,6 @@
 {
-  "idle_interval_count": 250,
-  "batch_capacity": 500,
-  "base_delay": true
+  "burst_limit_count": false,
+  "strict": false,
+  "base_size_ms": "blue",
+  "soft_retries": 70
 }
