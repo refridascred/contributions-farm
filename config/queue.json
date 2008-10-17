@@ -1,8 +1,8 @@
 {
-  "batch_ttl": 47,
-  "format_depth": false,
-  "base_limit_count": 7220,
-  "poll_capacity_ms": "blue",
-  "commits_threshold": "latest",
-  "strict": 4.38
+  "strict": "blue",
+  "metric_retries": 844,
+  "verbose": true,
+  "min_interval": "open",
+  "hard_retries_count": false,
+  "hard_size_ms": "staging"
 }
