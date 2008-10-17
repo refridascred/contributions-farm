@@ -53,17 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] samples, long seed)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Locked,
+            Queued,
+            Ready,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
