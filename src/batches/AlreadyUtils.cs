@@ -64,13 +64,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] series, long step)
         {
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
