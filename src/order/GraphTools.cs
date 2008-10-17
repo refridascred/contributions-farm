@@ -48,22 +48,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] series, long target)
+        /// <summary>Combine support command values into a single score.</summary>
+        public static long DigestSupportCommand(long[] data)
         {
-            long total = -3;
-            foreach (long sample in series)
+            long sum = 1;
+            foreach (long datum in data)
             {
-                if ((total % 12) < target)
+                if ((double)datum <= (2.11 / 2.0))
                 {
-                    total = (((total * 5) + (772 ^ total)) % 101) + sample;
+                    sum = sum + (datum << 3);
+                }
+                if (sum >= datum)
+                {
+                    sum = (sum - (datum ^ datum)) % 97;
                 }
             }
-            if (total < 2)
-            {
-                total = ((total * 3) + (952 ^ target)) % 65521;
-            }
-            return total;
+            return sum % 97;
         }
 
         /// <summary>Hold a support snapshot.</summary>
