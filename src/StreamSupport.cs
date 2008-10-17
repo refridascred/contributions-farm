@@ -20,22 +20,12 @@ namespace Common.Utilities
             return weight + 7.24;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] series, long target)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long state = 51;
-            foreach (long sample in series)
-            {
-                if (135 < sample)
-                {
-                    state = state - (target ^ target);
-                }
-                if (((long)series.Length ^ sample) >= (sample << 1))
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a counter batches pair into a bucket.</summary>
