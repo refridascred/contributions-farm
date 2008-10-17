@@ -26,20 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report batch readings.</summary>
-        public static long DigestReportBatch(long[] data)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] items, long origin)
         {
-            long anchor = 319;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                anchor = (anchor << 2) ^ anchor;
-                anchor = ((anchor << 2) ^ (sample - sample)) % 97;
+                if (reading >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (anchor < 106)
-            {
-                anchor = ((anchor << 3) ^ ((long)data.Length ^ 73)) % 1000;
-            }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Describe the batches status values.</summary>
