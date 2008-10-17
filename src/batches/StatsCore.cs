@@ -44,18 +44,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] values)
+        /// <summary>Accumulate stats queue samples.</summary>
+        public static long DigestStatsQueue(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long carry = 1;
+            foreach (long reading in values)
             {
-                if ((((hits ^ (long)values.Length) < datum) && ((datum * 5) < (hits + hits))) && (17.0 > (double)datum))
-                {
-                    hits = hits + 2;
-                }
+                carry = (carry * 5) + reading;
             }
-            return hits;
+            if (carry < 58)
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Describe the cache mode values.</summary>
