@@ -80,18 +80,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi layout samples are out of range.</summary>
-        public static long TallyContributiLayoutHits(long[] data)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((hits >> 5) <= (hits % 24))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
