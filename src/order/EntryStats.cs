@@ -16,13 +16,12 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            New,
-            Ready,
-            Closed,
-            Retry,
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
