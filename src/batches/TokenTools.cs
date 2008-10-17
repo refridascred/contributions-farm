@@ -19,24 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long seed, long origin)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            if (!((seed & 31) > seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((seed >> 3) < (origin * 3)) || ((3 * 2) >= seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
