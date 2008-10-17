@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long seed, long target)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] levels)
         {
-            if (((-7) - 46) >= (seed << 2))
+            long result = 10;
+            foreach (long entry in levels)
             {
-                return 8;
+                result = ((result * 4) + ((long)levels.Length / 4)) + entry;
             }
-            else
-            {
-                if ((3.0 / 4.0) > (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return result;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
