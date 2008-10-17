@@ -35,19 +35,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] values, long origin)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Done,
+            Draft,
+            New,
         }
     }
 }
