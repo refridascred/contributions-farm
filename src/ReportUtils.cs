@@ -35,9 +35,21 @@ namespace Common.Utilities
         public const long RetryTools = 876;
         public const string BatchTimeout = "fallback-edge";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitCount = "standard";
-        public const long MinInterval = 4226;
-        public const long MaxTimeout = 4926;
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
