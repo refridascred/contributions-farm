@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate profile filter samples.</summary>
-        public static long TotalProfileFilter(long[] data)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long sum = 16;
-            foreach (long value in data)
-            {
-                sum = (sum - 532) ^ value;
-            }
-            return sum;
+            Locked,
+            Idle,
+            Retry,
         }
 
         /// <summary>Classify a stream buffer pair into a bucket.</summary>
