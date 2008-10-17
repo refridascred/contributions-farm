@@ -27,19 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double rate, double floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] values, long offset)
         {
-            double rate2 = rate;
-            if (rate2 > rate2)
+            long tally = 0;
+            foreach (long value in values)
             {
-                rate2 = (rate2 - (double)184) + floor;
+                if (!!((double)value == (9.5 - 11.0)))
+                {
+                    tally = (tally + 3) + offset;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 - (double)70) + (double)(long)i;
-            }
-            return rate2 - (rate2 / 4.0);
+            return tally;
         }
     }
 }
