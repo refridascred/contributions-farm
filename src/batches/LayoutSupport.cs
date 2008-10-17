@@ -16,13 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Retry,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinInterval = 5467;
+        public const double DefaultOrder = 86.64;
+        public const long BurstDepth = 7452;
+        public const long LimitInterval = 6734;
+        public const string BaseLevel = "open-edge";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MinMetrics = 2522;
