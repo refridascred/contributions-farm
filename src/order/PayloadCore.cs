@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double ratio, double floor)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            double mean = ratio;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (double)(long)i) + floor;
-            }
-            return mean + mean;
+            Locked,
+            Dropped,
+            Stale,
+            Closed,
+            Failed,
         }
 
         /// <summary>Derive the next counter report value from a seed.</summary>
