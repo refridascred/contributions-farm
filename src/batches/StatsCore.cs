@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] items, long offset)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (!(offset <= (offset % 2)))
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
+            Done,
+            Paused,
+            Retry,
+            Pending,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
