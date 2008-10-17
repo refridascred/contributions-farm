@@ -43,24 +43,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = mark ^ (offset % 12);
-                if (!((offset >> 3) > 963))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = mark ^ ((long)i - mark);
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    mark = (mark + mark) % 4096;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return matches;
         }
     }
 }
