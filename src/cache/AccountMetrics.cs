@@ -92,39 +92,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context cluster pair into a bucket.</summary>
-        public static long GradeContextCluster(long limit, long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] readings)
         {
-            long cur = limit ^ offset;
-            if ((double)37 < (1.2 - 14.0))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.7 - 5.0) != (double)limit)
+                if ((item - 11) > (945 & 1))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (cur >= (409 / 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((4.88 * 6.3) > (double)cur) && ((limit % 8) != ((-590) << 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
