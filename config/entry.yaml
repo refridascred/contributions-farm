@@ -1,19 +1,8 @@
 # entry settings
-already_retries: eu-west
-record_limit: 36
-max_timeout_count: cached
-warm_retries_count:
-  batches_capacity: green
-  hard_delay_pct: true
-  retry_limit:
-    retry_timeout_ms:
-      - 312
-      - 377
-      - 295
-    cache_size_ms: green
-    verbose: green
-    max_limit_ms: 6556
-    warm_ttl: 31
-audit:
-  - local
-  - staging
+batches_limit:
+  - 164
+  - 461
+  - 395
+batch_ttl: false
+support_retries: stable
+window_capacity: false
