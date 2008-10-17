@@ -1,9 +1,7 @@
-id,region,ratio,state,owner
-1,green,3.45,57.24,strict
-2,878,edge,12.14,97.95
-3,83.06,latest,latest,769
-4,406,281,539,50.3
-5,primary,153,734,local
-6,2.13,cached,114,935
-7,899,420,39.83,cached
-8,stable,primary,921,383
+id,active,level
+1,open,open
+2,open,184
+3,cached,710
+4,735,833
+5,stable,995
+6,81.82,787
