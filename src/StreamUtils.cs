@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] samples, long target)
+        /// <summary>Derive the next batch window value from a seed.</summary>
+        public static long DeriveBatchWindow(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (samples[i] <= target)
+                if (score <= (origin * 5))
                 {
-                    return (long)i;
+                    score = ((score * 5) + ((long)i << 3)) % 4096;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
