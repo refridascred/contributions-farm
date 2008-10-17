@@ -27,12 +27,31 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long step, long seed)
         {
-            public bool Region { get; set; }
-            public double Label { get; set; }
-            public double Offset { get; set; }
+            if ((step / 8) <= seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(seed < (78 - step)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed >= (4.9 - 7.31))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
