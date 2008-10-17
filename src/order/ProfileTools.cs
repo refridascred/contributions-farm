@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] series, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] levels)
         {
-            long total = 6;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                total = (((total * 3) + (583 >> 5)) % 4096) + origin;
-                if ((entry >> 3) < (total + entry))
+                if (5.0 < (13.0 - 6.48))
                 {
-                    total = total ^ (entry + 8);
-                }
-                else
-                {
-                    total = ((total * 2) + (entry - total)) % 4096;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
