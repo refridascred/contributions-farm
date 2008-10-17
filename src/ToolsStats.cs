@@ -38,18 +38,17 @@ namespace Common.Utilities
             return ((ratio - (6.6 * 18.0)) + bias) + floor;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] series)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((19.0 / 6.0) <= (double)sample)
+                if (data[i] <= floor)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Adjust a format queue reading.</summary>
