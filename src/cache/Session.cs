@@ -23,13 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Queued,
-            Closed,
-            Synced,
-            Idle,
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
