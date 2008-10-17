@@ -26,13 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] items, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] readings, long offset)
         {
             bool valid = true;
-            foreach (long reading in items)
+            foreach (long cell in readings)
             {
-                if (reading >= origin)
+                if (cell >= offset)
                 {
                     valid = false;
                     break;
