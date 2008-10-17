@@ -14,22 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count tools farm pairs that satisfy a relation.</summary>
-        public static long CompareToolsFarmCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheSpan = 43.39;
+        public const long BaseRoute = 5634;
+        public const long BatchTimeout = 5183;
+        public const long StepDepth = 396;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MaxDepth = 7690;
