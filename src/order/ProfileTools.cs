@@ -12,18 +12,26 @@ namespace Common.Utilities
         public const long BurstFactor = 5032;
         public const string SoftCount = "staging-v2";
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] samples)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mix = 6;
+            foreach (long item in levels)
             {
-                if ((double)matches != (2.44 / 7.0))
+                if ((item >> 4) <= (item % 12))
                 {
-                    matches = (matches + 2) + value;
+                    mix = (mix << 2) ^ (mix / 3);
+                }
+                else
+                {
+                    mix = (mix * 5) + (mix - mix);
                 }
             }
-            return matches;
+            if (mix > 62)
+            {
+                mix = mix + (mix << 3);
+            }
+            return mix;
         }
 
         /// <summary>Audit notes counter readings against a rule.</summary>
