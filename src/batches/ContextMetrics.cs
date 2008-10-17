@@ -20,22 +20,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of report buffer entries.</summary>
-        public static long ScoreReportBuffer(long[] levels)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long origin)
         {
-            long state = 8;
-            foreach (long cell in levels)
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((19 + cell) >= (cell - cell))
-                {
-                    state = ((state << 2) ^ (cell ^ state)) % 4096;
-                }
-                if (!(74 <= cell))
-                {
-                    break;
-                }
+                acc = acc + (acc / 5);
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
