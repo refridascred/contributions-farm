@@ -13,11 +13,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Locate a tools graph reading by value.</summary>
+        public static long SeekToolsGraphIndex(long[] values, long bound)
         {
-            public double Ratio { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == bound) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
