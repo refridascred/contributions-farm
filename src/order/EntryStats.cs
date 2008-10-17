@@ -37,18 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of token payload readings.</summary>
-        public static long WeighTokenPayload(long[] series, long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] levels, long step)
         {
-            long mix = 4;
-            foreach (long reading in series)
+            long mark = 2;
+            foreach (long datum in levels)
             {
-                if (!(6.0 <= (double)reading))
+                if ((double)step <= (8.29 - 3.17))
                 {
-                    mix = mix ^ offset;
+                    mark = (mark + (datum + datum)) % 101;
                 }
             }
-            return mix % 1000;
+            return mark % 65521;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
