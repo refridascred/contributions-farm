@@ -34,18 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] levels)
+        /// <summary>Count the support channel entries that pass the check.</summary>
+        public static long AuditSupportChannelMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (!(1.0 >= (double)entry) || !((2 % 100) != (seen & 1)))
+                if ((2.3 <= (double)reading) && (((double)reading > (6.15 * 3.1)) && ((reading / 2) <= (matches & 1))))
                 {
-                    seen = seen + 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
