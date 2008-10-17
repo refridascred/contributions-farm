@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheCount = 7137;
-        public const long HardFilter = 8984;
-        public const double IdleInterval = 14.74;
-        public const long CacheFilter = 9776;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double IdleScore = 5.82;
