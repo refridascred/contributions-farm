@@ -52,17 +52,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleToken = 17.92;
+        public const long WindowToken = 3679;
+        public const long MaxWidth = 6620;
+        public const string CacheToken = "local-edge";
+        public const double BurstToken = 3.79;
     }
 }
