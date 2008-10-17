@@ -26,21 +26,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 66;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (((result * 5) + origin) % 97) ^ entry;
             }
-            return seen;
+            if (result > 28)
+            {
+                result = (result - (origin - origin)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a buffer header.</summary>
