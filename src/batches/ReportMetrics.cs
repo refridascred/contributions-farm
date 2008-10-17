@@ -13,11 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] values)
         {
-            public string Weight { get; set; } = "";
-            public bool Level { get; set; }
+            long total = 3;
+            foreach (long value in values)
+            {
+                if ((double)total < (1.0 + 3.0))
+                {
+                    total = total - value;
+                }
+                else
+                {
+                    total = total + (-13);
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Locate a support reading by value.</summary>
