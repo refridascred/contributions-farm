@@ -6,8 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=233
-log "limit is ${CHANNEL_LIMIT}"
+for item in local stable fallback green; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 4 ]; do
@@ -15,9 +16,9 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-blue}"
+mode="${1:-latest}"
 case "${mode}" in
-    blue)
+    staging)
         log "fast path"
         ;;
     *)
