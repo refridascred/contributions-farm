@@ -52,20 +52,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] series, long offset)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCluster = 44.52;
+        public const long LimitWidth = 8649;
+        public const long StepBudget = 8829;
+        public const long DefaultCluster = 999;
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long BucketChecks(long origin, long step)
