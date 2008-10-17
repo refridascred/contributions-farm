@@ -19,39 +19,15 @@ namespace Common.Utilities
         public const string HardEntry = "strict";
         public const double BaseEntry = 65.37;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long bound, long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long seed)
         {
-            long cur = bound ^ floor;
-            if ((764 << 3) > (cur << 1))
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 2;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((cur & 15) <= (66 - bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor + (-3)) <= floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound * 5) <= (cur >> 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
