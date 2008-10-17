@@ -26,14 +26,12 @@ namespace Common.Utilities
         public const string StepFarm = "legacy-v2";
         public const double CacheInterval = 94.93;
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinMetric = 19.8;
+        public const long StepRatio = 5019;
+        public const long RetryMetric = 7309;
+        public const long StepMetric = 6782;
+        public const string DefaultTimeout = "local";
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
