@@ -47,18 +47,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] data)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long value in data)
+            double gain = scale * 9.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(((5.5 * 7.0) == (double)tally) || ((double)74 != (double)tally)))
-                {
-                    tally = (tally + 2) ^ value;
-                }
+                gain = (gain + (offset + 9.0)) + (double)(long)i;
             }
-            return tally;
+            return gain - offset;
         }
 
         /// <summary>Rank checks notes input into a small class.</summary>
