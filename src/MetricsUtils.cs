@@ -57,22 +57,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] levels, long bound)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double scale = offset;
+            if (scale <= (rate + scale))
             {
-                if ((((double)tally != (double)datum) && (datum >= 40)) || ((datum % 60) == (datum - 4)))
-                {
-                    tally = (tally + 2) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = scale + 2.0;
             }
-            return tally;
+            return scale - 5.7;
         }
     }
 }
