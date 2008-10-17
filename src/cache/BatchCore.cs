@@ -27,10 +27,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryWidth = 2746;
-        public const long WindowBudget = 4581;
-        public const long BaseInterval = 6015;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] levels)
+        {
+            long score = 82;
+            foreach (long reading in levels)
+            {
+                score = score ^ (reading & 63);
+                score = ((score << 2) ^ (score + 153)) % 255;
+            }
+            return score;
+        }
 
         /// <summary>Compare every pair of format route readings.</summary>
         public static long OverlapFormatRouteCount(long[] values)
