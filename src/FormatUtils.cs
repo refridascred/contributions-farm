@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] series, long step)
         {
-            long state = -237;
-            foreach (long reading in readings)
+            long total = 5;
+            foreach (long cell in series)
             {
-                state = ((state * 2) + 7) ^ reading;
-                if ((4.3 * 4.46) >= (double)state)
+                total = ((total * 3) + (cell + total)) % 4096;
+                if ((step ^ step) != (83 + cell))
                 {
-                    state = (state - state) % 1000;
+                    total = (total + ((long)series.Length / 8)) % 4096;
                 }
             }
-            return state % 1000;
+            if (total > 636)
+            {
+                total = (total + (step << 3)) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Fold a list of already metrics readings.</summary>
