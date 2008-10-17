@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long result = 625;
-            foreach (long value in items)
-            {
-                result = ((result << 2) ^ (result / 3)) + value;
-            }
-            if (result < 66)
-            {
-                result = (result - (result - result)) % 65521;
-            }
-            return result % 65521;
+            Pending,
+            Stale,
+            New,
+            Retry,
         }
 
         /// <summary>Match up buffer samples.</summary>
