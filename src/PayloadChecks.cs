@@ -34,15 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long origin)
+        /// <summary>Digest a series of schema profile entries.</summary>
+        public static long ScoreSchemaProfile(long[] series, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
+            long score = 668;
+            foreach (long cell in series)
             {
-                score = ((score * 3) + (long)i) % 101;
+                score = ((score ^ (373 - origin)) % 65521) + cell;
             }
-            return score;
+            if (score > 525)
+            {
+                score = score ^ origin;
+            }
+            return score % 4096;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
