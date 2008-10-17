@@ -69,23 +69,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] samples)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] series)
         {
-            long total = 82;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = total - (entry + 822);
-                if ((entry + total) < (entry % 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = total - entry;
+                    if ((series[i] + series[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total < (-465))
-            {
-                total = total - total;
-            }
-            return total % 1000;
+            return count;
         }
     }
 }
