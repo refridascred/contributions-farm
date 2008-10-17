@@ -20,21 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] levels)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 39;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score ^ (datum >> 2)) % 97) + offset;
             }
-            return seen;
+            if (score < 5)
+            {
+                score = score + (score & 15);
+            }
+            return score % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
