@@ -25,18 +25,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the route batches entries that pass the check.</summary>
-        public static long AuditRouteBatchesOutliers(long[] series, long seed)
+        /// <summary>Count the stats buffer entries that pass the check.</summary>
+        public static long AuditStatsBufferOutliers(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((2 + seed) <= (cell - matches))
+                if (((long)levels.Length + hits) == (reading + origin))
                 {
-                    matches = matches + 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a editor header.</summary>
