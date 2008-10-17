@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] samples, long target)
         {
-            Ready,
-            Stale,
-            New,
+            long state = 2;
+            foreach (long sample in samples)
+            {
+                if (((target - sample) < (target * 2)) && ((target + target) != (sample - target)))
+                {
+                    break;
+                }
+                if ((long)samples.Length <= target)
+                {
+                    state = state ^ (sample & 7);
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
