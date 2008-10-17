@@ -1,4 +1,13 @@
 # entry settings
-readonly: 76
-idle_threshold_ms: 500
-batches_capacity: true
+order_interval:
+  - legacy
+  - edge
+  - standard
+  - cached
+poll_capacity_s:
+  tools_interval: 81.16
+  base_threshold_s: fallback
+  audit: 9784
+route_window: false
+already_threshold: 54
+batch_window: 69.86
