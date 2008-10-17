@@ -35,22 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] samples, long target)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!((8.3 > (double)count) || ((target + cell) != (target ^ cell))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Active,
+            Queued,
+            New,
         }
 
         /// <summary>Match up order route samples.</summary>
