@@ -40,19 +40,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double scale, double offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            double scale2 = (double)22;
-            if (scale2 > offset)
-            {
-                scale2 = scale2 - scale2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 + (scale2 * 6.1)) + (double)(long)i;
-            }
-            return scale2 + scale;
+            New,
+            Ready,
+            Failed,
+            Synced,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
