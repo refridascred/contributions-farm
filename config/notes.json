@@ -1,10 +1,6 @@
 {
-  "warm_depth_pct": {
-    "channel_size": "blue",
-    "warm_capacity_s": [225, 321],
-    "default_depth_s": 8800,
-    "default_window_count": true
-  },
-  "burst_ttl": "local",
-  "sync_size": [285, 341]
+  "cache_threshold": "edge",
+  "record_depth": [78, 33, 35],
+  "retry_size": false,
+  "poll_capacity_ms": [235, 490]
 }
