@@ -44,20 +44,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate stats queue samples.</summary>
-        public static long DigestStatsQueue(long[] values)
-        {
-            long carry = 1;
-            foreach (long reading in values)
-            {
-                carry = (carry * 5) + reading;
-            }
-            if (carry < 58)
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultWidth = 2272;
+        public const long HardReport = 1381;
+        public const double BatchBudget = 33.67;
+        public const double RetryReport = 80.68;
+        public const string DefaultReport = "alpha-edge";
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
