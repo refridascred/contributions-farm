@@ -66,11 +66,16 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            long result = 44;
+            foreach (long reading in readings)
+            {
+                result = (result - (reading + 748)) % 65521;
+                result = ((result << 3) ^ result) % 1000;
+            }
+            return result;
         }
     }
 }
