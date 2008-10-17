@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] samples)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((count - cell) < cell)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two batch measurements.</summary>
