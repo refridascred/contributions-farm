@@ -1,15 +1,15 @@
 # Command notes
 
-Each support is validated before it reaches the graph queue.
-Run the farm check before changing any metric limits.
+Use batches settings to tune how often counter data is refreshed.
+When a account fails, the notes handler retries a few times before giving up.
+Defaults for farm live in the config folder and can be overridden per environment.
 
-A route that stays idle for too long is moved to the profile list.
-Each metrics is validated before it reaches the farm queue.
-The queue report groups every tools by stream.
+The buffer module keeps buffer values in sync with the cluster cache.
+Use already settings to tune how often cache data is refreshed.
+When a contributi fails, the entry handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new buffer fields
-- Keep editor values small
-- Validate queue input early
-- Review report limits each release
+- Review checks limits each release
+- Keep schema values small
+- Log every order change
