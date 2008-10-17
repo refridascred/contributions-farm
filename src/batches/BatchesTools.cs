@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] values)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] values)
         {
-            long sum = 815;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((reading & 63) < (sum + sum))
+                if ((16.0 * 8.66) > (double)seen)
                 {
-                    sum = (sum - (sum + 1)) % 97;
+                    seen = (seen + 3) + value;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Digest a series of window entries.</summary>
