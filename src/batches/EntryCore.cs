@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long HardDepth = 1765;
         public const long DefaultScore = 5242;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            Active,
+            Pending,
+            Draft,
+            Paused,
+            Synced,
         }
 
         /// <summary>Locate a schema reading by value.</summary>
