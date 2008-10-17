@@ -26,19 +26,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every cache metric entry stays within the limit.</summary>
-        public static bool GuardCacheMetricRange(long[] levels, long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (entry > seed)
+                if (datum <= offset)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
