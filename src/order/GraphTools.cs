@@ -62,30 +62,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] values)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long anchor = -901;
-            foreach (long item in values)
-            {
-                if ((385 + item) == (anchor - item))
-                {
-                    anchor = (anchor - (464 * 4)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor + (item / 2)) % 101;
-                }
-                if (((anchor / 7) < item) && ((anchor % 100) < (anchor / 6)))
-                {
-                    break;
-                }
-            }
-            if (anchor < 3)
-            {
-                anchor = (anchor * 4) + (anchor + anchor);
-            }
-            return anchor;
+            Idle,
+            Locked,
+            Pending,
         }
     }
 }
