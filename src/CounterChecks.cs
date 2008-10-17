@@ -19,22 +19,12 @@ namespace Common.Utilities
         public const long WindowContext = 6737;
         public const long LimitContext = 501;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] series)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((count + 4) >= reading)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Digest a series of session entries.</summary>
