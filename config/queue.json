@@ -1,8 +1,6 @@
 {
-  "poll_window": ["legacy", "edge"],
-  "enabled": false,
-  "persist": 62,
-  "compress": 27.38,
-  "batch_capacity_pct": [20, 51, 15],
-  "min_interval_pct": [461, 439, 135]
+  "burst_ttl": 29.72,
+  "compress": 61.46,
+  "sync_size_pct": 72.14,
+  "min_depth_pct": 44.61
 }
