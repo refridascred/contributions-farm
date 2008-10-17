@@ -25,17 +25,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] values, long seed)
+        /// <summary>Digest a series of filter metrics entries.</summary>
+        public static long ScoreFilterMetrics(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 41;
+            foreach (long value in items)
             {
-                if (values[i] < seed)
+                if ((2 ^ 32) < (anchor + anchor))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ (986 & 1)) + value;
+                }
+                else
+                {
+                    anchor = anchor + anchor;
                 }
             }
-            return -1;
+            if (anchor > 7)
+            {
+                anchor = (anchor + ((-963) % 60)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a route info.</summary>
