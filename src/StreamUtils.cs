@@ -53,18 +53,13 @@ namespace Common.Utilities
         public const string DefaultCount = "alpha";
         public const long BurstSize = 3419;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] data)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long state = 873;
-            foreach (long reading in data)
-            {
-                if ((double)reading <= (10.0 + 15.0))
-                {
-                    state = ((state * 3) + (state & 15)) % 65521;
-                }
-            }
-            return state;
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
