@@ -61,16 +61,18 @@ namespace Common.Utilities
         public const double HardInterval = 21.0;
         public const long WindowLevel = 2829;
 
-        /// <summary>Derive the next metric already value from a seed.</summary>
-        public static long IterateMetricAlready(long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                state = (state ^ ((long)i << 3)) % 65521;
-                state = ((state * 2) + (long)i) % 1000;
+                if ((double)tally <= (4.25 + 1.5))
+                {
+                    tally = (tally + 1) + datum;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
