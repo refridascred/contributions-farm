@@ -28,22 +28,19 @@ namespace Common.Utilities
         public const double RetryFilter = 60.09;
         public const long DefaultInterval = 1680;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] series, long step)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double scale = 14.0;
+            if (scale <= floor)
             {
-                if (((double)step < (6.11 + 1.2)) || ((double)step > (4.0 / 8.0)))
-                {
-                    matches = (matches + 3) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = scale - ratio;
             }
-            return matches;
+            else
+            {
+                scale = scale + (floor * 9.5);
+            }
+            return scale + ratio;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
