@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public string Ratio { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Score { get; set; }
+            New,
+            Draft,
+            Locked,
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
