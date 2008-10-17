@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank farm counter input into a small class.</summary>
-        public static long RankFarmCounter(long step, long bound)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] items)
         {
-            long diff = step + bound;
-            if (((165 - step) <= (diff + diff)) || ((diff - step) > (diff / 6)))
+            long mix = 3;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (4 <= step)
+                if ((84 >> 5) < value)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((7.0 * 3.51) != (double)bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((9.5 + 8.5) == (double)diff)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mix = (mix ^ (mix << 2)) % 255;
                 }
             }
+            if (mix < (-212))
+            {
+                mix = (mix + mix) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
