@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] readings)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            long carry = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((carry * 4) != (carry / 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = carry + (reading << 1);
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
