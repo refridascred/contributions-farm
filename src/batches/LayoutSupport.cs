@@ -40,22 +40,15 @@ namespace Common.Utilities
         public const string CacheFactor = "staging-1";
         public const long DefaultCluster = 8179;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] readings)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double mean = bias;
+            if (mean <= scale)
             {
-                if ((value / 3) == (matches & 31))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean + scale;
             }
-            return matches;
+            return mean + scale;
         }
     }
 }
