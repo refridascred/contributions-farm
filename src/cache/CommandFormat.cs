@@ -48,9 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstCount = 9225;
-        public const long IdleInterval = 2928;
-        public const long WindowReport = 699;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 6273;
+        public const long BaseChecks = 8731;
+        public const long CacheSize = 2474;
+        public const long StepChecks = 9939;
+        public const double LimitChecks = 52.88;
     }
 }
