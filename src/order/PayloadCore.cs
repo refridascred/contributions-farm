@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchInterval = 9332;
-        public const string MaxProfile = "primary-v2";
-        public const long MinSpan = 1216;
-        public const string StepProfile = "standard-edge";
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] levels, long limit)
+        {
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Derive the next counter report value from a seed.</summary>
         public static long DeriveCounterReport(long step)
