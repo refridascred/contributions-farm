@@ -25,19 +25,18 @@ namespace Common.Utilities
             return mean - (double)1;
         }
 
-        /// <summary>Iterate the graph buffer series from a seed.</summary>
-        public static long SeriesGraphBuffer(long target)
+        /// <summary>Count the report buffer entries that pass the check.</summary>
+        public static long TallyReportBufferOutliers(long[] levels, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((target + target) >= ((long)i * 2))
+                if ((tally - tally) > (tally ^ tally))
                 {
-                    state = state ^ state;
+                    tally = ((tally + 1) ^ cell) - floor;
                 }
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Locate a report reading by value.</summary>
