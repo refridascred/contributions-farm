@@ -16,22 +16,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] values, long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long seed, long floor)
         {
-            long acc = 645;
-            foreach (long item in values)
+            if (((16.0 + 2.0) > (double)floor) && ((seed ^ seed) != (seed << 3)))
             {
-                if (2.41 < (double)item)
+                return 4;
+            }
+            else
+            {
+                if ((double)floor > (7.0 + 9.8))
                 {
-                    acc = ((acc << 3) ^ 886) - seed;
+                    return 5;
+                }
+                else
+                {
+                    if ((666 % 7) == (seed & 255))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((61 - seed) <= (floor << 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (acc < 0)
-            {
-                acc = ((acc * 3) + (acc / 3)) % 101;
-            }
-            return acc;
         }
 
         /// <summary>Describe the buffer class values.</summary>
