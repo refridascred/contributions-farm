@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a githubfarm route pair into a bucket.</summary>
-        public static long BucketGithubfarmRoute(long origin, long limit)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            if (!(limit >= (1 - limit)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit >> 4) <= 366)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
