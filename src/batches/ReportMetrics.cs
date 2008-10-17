@@ -28,18 +28,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] series, long bound)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((bound - 66) == (hits >> 4))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
