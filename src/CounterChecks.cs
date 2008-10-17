@@ -62,19 +62,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] items, long floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (reading > floor)
+                if (value != offset)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
