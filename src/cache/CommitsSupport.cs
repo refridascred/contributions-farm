@@ -42,24 +42,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a format editor pair into a bucket.</summary>
-        public static long GradeFormatEditor(long seed, long seed2)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] values, long step)
         {
-            if ((seed + seed) < seed2)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed2 >> 4) >= seed2)
+                if (values[i] >= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a editor stream reading by value.</summary>
