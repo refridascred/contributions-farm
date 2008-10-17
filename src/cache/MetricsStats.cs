@@ -12,19 +12,13 @@ namespace Common.Utilities
             return (rate - 3.3) + offset;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] readings, long offset)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the batches status values.</summary>
