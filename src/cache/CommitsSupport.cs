@@ -49,18 +49,19 @@ namespace Common.Utilities
         public const long RetryContributi = 6000;
         public const long SoftContributi = 6351;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] items)
+        /// <summary>Iterate the counter layout series from a seed.</summary>
+        public static long StepCounterLayout(long target)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((datum - matches) < (datum & 255))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    matches = matches + 1;
+                    score = ((score ^ (989 * 5)) % 255) + (long)i2;
                 }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Adjust a entry reading.</summary>
