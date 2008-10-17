@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long target, long offset)
-        {
-            long span = target ^ offset;
-            if (((offset << 3) >= span) || ((double)span <= (0.92 - 9.43)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset ^ target) <= offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitMetrics = 47.82;
+        public const string CacheWidth = "latest";
+        public const long BatchMetrics = 9472;
+        public const long MinTimeout = 5516;
+        public const string MaxMetrics = "fallback";
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
