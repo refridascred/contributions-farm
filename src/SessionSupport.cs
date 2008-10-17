@@ -37,19 +37,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] series, long limit)
+        /// <summary>Roll a token contributi counter forward.</summary>
+        public static long StepTokenContributi(long offset)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor << 2) ^ (offset * 2)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return flag;
+            return anchor;
         }
     }
 }
