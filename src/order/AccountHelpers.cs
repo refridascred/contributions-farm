@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const long DefaultWidth = 1048;
         public const long BaseBudget = 1896;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetrySize = "legacy-edge";
-        public const long StepScore = 821;
-        public const string MinWidth = "local-edge";
-        public const long WindowEntry = 2702;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public long Flag { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterHits(long[] data, long limit)
