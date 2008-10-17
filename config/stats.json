@@ -1,5 +1,14 @@
 {
-  "warm_capacity_ms": "latest",
-  "batch_interval_pct": "open",
-  "farm_interval": ["staging", "eu-west", "eu-west", "staging"]
+  "idle_window_count": 22.45,
+  "burst_threshold": false,
+  "idle_timeout_count": 30,
+  "strict": 12.28,
+  "compress": {
+    "tools_size": "eu-west",
+    "context_delay": "strict",
+    "buffer_ttl": true,
+    "retry_capacity_ms": "primary",
+    "readonly": ["strict", "staging"],
+    "batch_interval_ms": 33.75
+  }
 }
