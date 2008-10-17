@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public bool Rank { get; set; }
-            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the layout level values.</summary>
