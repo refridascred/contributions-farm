@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Idle,
-            Synced,
-            Retry,
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
