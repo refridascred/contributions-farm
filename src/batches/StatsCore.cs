@@ -24,14 +24,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] series, long bound)
         {
-            Active,
-            Closed,
-            Retry,
-            Queued,
-            Done,
+            long carry = -32;
+            foreach (long value in series)
+            {
+                if (bound <= (value * 5))
+                {
+                    carry = (carry * 3) + (709 >> 2);
+                    carry = (carry + (value << 1)) % 101;
+                }
+                if ((double)value < (9.0 * 1.1))
+                {
+                    carry = (carry << 3) ^ (value / 4);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Blend two cache measurements.</summary>
