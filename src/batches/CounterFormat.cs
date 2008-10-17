@@ -19,17 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] levels, long floor)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long origin, long origin2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin2 * 2) == (origin & 3))
             {
-                if (levels[i] > floor)
+                return 1;
+            }
+            else
+            {
+                if ((origin2 <= (origin2 << 2)) && ((origin % 12) >= 8))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((-7) + origin) <= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin2 - 271) == (origin % 100))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
