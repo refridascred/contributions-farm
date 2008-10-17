@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank stats channel input into a small class.</summary>
-        public static long SortStatsChannel(long step, long target)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long diff = step - target;
-            if (diff > step)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((-306) & 63) == (step & 127))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step != (4.0 / 2.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Blend two checks command measurements.</summary>
