@@ -49,12 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 9494;
+        public const long CacheGraph = 608;
+        public const string IdleGraph = "strict-1";
+        public const double BurstTimeout = 84.33;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double BaseSession = 37.59;
