@@ -59,22 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] data, long bound)
+        /// <summary>Project the next route window value.</summary>
+        public static double ScaleRouteWindow(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            double ratio = (double)(8 << 3);
+            if (ratio < (1.6 + 2.2))
             {
-                if (((double)datum > (double)hits) || ((bound & 3) >= (hits * 3)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = ratio - (bias - 7.0);
             }
-            return hits;
+            else
+            {
+                ratio = ratio - (scale * 4.8);
+            }
+            return ratio + (ratio * 6.0);
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
