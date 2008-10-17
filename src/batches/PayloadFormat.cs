@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] samples, long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] series)
         {
-            long total = 5;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in series)
             {
-                total = ((total * 2) + cell) % 101;
-                if ((8.0 / 9.0) == (double)step)
+                if ((datum + datum) < (datum % 100))
                 {
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
