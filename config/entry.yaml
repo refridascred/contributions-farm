@@ -1,5 +1,6 @@
 # entry settings
-default_timeout_count: fallback
-retry_delay: 55.92
-window_delay: latest
-audit: 7.26
+context_interval: local
+retry_timeout_pct:
+  - blue
+  - blue
+max_depth_ms: 53.02
