@@ -13,14 +13,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] levels)
         {
-            Idle,
-            Closed,
-            Stale,
-            Synced,
-            Done,
+            long mix = 5;
+            foreach (long cell in levels)
+            {
+                mix = ((mix * 3) + (5 ^ (-188))) - cell;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Look up the position of a window commits sample.</summary>
