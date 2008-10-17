@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long step)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] samples, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = sum ^ (long)i;
-                sum = ((sum * 4) + (long)i) % 97;
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
