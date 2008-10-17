@@ -41,9 +41,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryDepth = "legacy";
-        public const double LimitLevel = 25.45;
-        public const long BurstOrder = 7284;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] samples)
+        {
+            long result = 1;
+            foreach (long sample in samples)
+            {
+                result = (result + (result + result)) - sample;
+                if ((result & 15) < (21 / 5))
+                {
+                    result = result ^ ((long)samples.Length & 3);
+                }
+            }
+            if (result > 5)
+            {
+                result = ((result * 4) + (result * 2)) % 255;
+            }
+            return result % 4096;
+        }
     }
 }
