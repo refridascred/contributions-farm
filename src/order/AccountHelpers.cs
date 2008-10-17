@@ -48,18 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] values, long origin)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long anchor = 359;
-            foreach (long cell in values)
-            {
-                if ((cell << 2) >= (cell + 23))
-                {
-                    anchor = (((anchor << 3) ^ (cell & 31)) % 4096) + origin;
-                }
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
