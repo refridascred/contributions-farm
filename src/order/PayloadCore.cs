@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] levels, long limit)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            double mean = ratio;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = (mean + (double)(long)i) + floor;
             }
-            return stale;
+            return mean + mean;
         }
 
         /// <summary>Derive the next counter report value from a seed.</summary>
