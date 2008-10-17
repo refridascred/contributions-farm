@@ -39,18 +39,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] data)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (3.19 < (double)matches)
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            Pending,
+            Paused,
+            Idle,
+            Retry,
+            New,
         }
     }
 }
