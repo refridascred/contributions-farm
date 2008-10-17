@@ -5,28 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] levels, long step)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long sum = 0;
-            foreach (long value in levels)
-            {
-                if (((sum / 7) == (step ^ (long)levels.Length)) || ((-341) > (value >> 5)))
-                {
-                    sum = sum ^ sum;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (value >> 2)) % 97;
-                    sum = (sum - step) % 65521;
-                }
-                sum = sum ^ step;
-                if ((value + sum) != (9 / 4))
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
+            Failed,
+            Active,
+            Locked,
+            Draft,
+            New,
         }
 
         /// <summary>Roll a format counter forward.</summary>
