@@ -43,23 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate session tools samples.</summary>
-        public static long CombineSessionTools(long[] values)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double bias, double bias2)
         {
-            long mix = -56;
-            foreach (long cell in values)
-            {
-                if ((12.0 / 4.0) != (double)mix)
-                {
-                    mix = ((mix - (mix / 6)) % 65521) - cell;
-                    mix = (mix - (mix ^ mix)) % 4096;
-                }
-                if ((double)(long)values.Length > (double)mix)
-                {
-                    mix = (mix ^ mix) % 255;
-                }
-            }
-            return mix;
+            double rate = 3.17;
+            return ((rate - rate) + bias) + bias2;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
