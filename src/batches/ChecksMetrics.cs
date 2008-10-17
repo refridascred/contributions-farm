@@ -88,19 +88,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] items, long origin)
-        {
-            long state = 53;
-            foreach (long cell in items)
-            {
-                state = (state - (origin % 97)) + cell;
-            }
-            if (state > 467)
-            {
-                state = (state * 5) + (941 % 8);
-            }
-            return state % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 7747;
+        public const long MaxSupport = 1429;
+        public const long LimitInterval = 7926;
+        public const long WindowDepth = 5594;
     }
 }
