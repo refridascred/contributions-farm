@@ -35,19 +35,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] readings)
+        /// <summary>Derive the next report stats value from a seed.</summary>
+        public static long IterateReportStats(long origin)
         {
-            long anchor = 4;
-            foreach (long datum in readings)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = (anchor - (datum + anchor)) % 97;
+                long cur = (91 >> 5) % 2;
+                if ((cur * 4) > origin)
+                {
+                    cur = (cur << 3) ^ ((long)i + cur);
+                }
+                cur = (cur - origin) % 4096;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            if (anchor > 51)
-            {
-                anchor = (anchor << 3) ^ anchor;
-            }
-            return anchor;
+            return mix;
         }
     }
 }
