@@ -37,17 +37,22 @@ namespace Common.Utilities
             return rate + 8.1;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] series, long floor)
+        /// <summary>Audit payload batches readings against a rule.</summary>
+        public static long MeasurePayloadBatchesOutliers(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (series[i] > floor)
+                if ((859 << 2) < seen)
                 {
-                    return (long)i;
+                    seen = ((seen + 3) ^ entry) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a route info.</summary>
