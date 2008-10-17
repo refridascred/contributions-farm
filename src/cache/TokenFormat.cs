@@ -31,19 +31,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every cluster already entry stays within the limit.</summary>
-        public static bool GuardClusterAlreadyLimits(long[] values, long floor)
+        /// <summary>Classify a buffer editor pair into a bucket.</summary>
+        public static long SortBufferEditor(long floor, long seed)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long next = floor ^ seed;
+            if ((next - floor) >= seed)
             {
-                if (sample > floor)
+                return 2;
+            }
+            else
+            {
+                if (((floor + 9) > floor) && ((floor + next) <= floor))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ok;
         }
     }
 }
