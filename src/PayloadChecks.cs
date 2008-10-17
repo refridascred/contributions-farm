@@ -25,31 +25,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long bound, long limit)
+        /// <summary>Validate support report readings against a bound.</summary>
+        public static bool ValidateSupportReportBounds(long[] items, long target)
         {
-            if ((bound * 4) > (54 + bound))
+            bool flag = true;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound <= (limit - bound)) && ((62 & 15) <= (bound - limit)))
+                if (sample > target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound + bound) > limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
