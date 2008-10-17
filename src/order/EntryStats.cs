@@ -42,19 +42,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every command metrics entry stays within the limit.</summary>
-        public static bool VerifyCommandMetricsBounds(long[] series, long offset)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading >= offset)
+                if (readings[i] >= floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
