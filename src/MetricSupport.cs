@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] series, long limit)
         {
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public bool Offset { get; set; }
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a cache summary.</summary>
