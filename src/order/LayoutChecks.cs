@@ -92,19 +92,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] levels, long offset)
+        /// <summary>Audit filter tools readings against a rule.</summary>
+        public static long MeasureFilterToolsOutliers(long[] samples)
         {
-            long state = 5;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                state = (state << 2) ^ (offset + state);
-                if (((value + state) < (state + offset)) && ((state - offset) < 685))
+                if (count > (count * 5))
                 {
-                    break;
+                    count = (count + 2) + sample;
                 }
             }
-            return state % 97;
+            return count;
         }
     }
 }
