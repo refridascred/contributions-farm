@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const double SoftSupport = 56.6;
         public const long MinSupport = 2464;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowBudget = 66.25;
-        public const long MaxRoute = 6735;
-        public const double HardSize = 56.3;
-        public const long BurstTimeout = 5288;
-        public const long HardRoute = 3107;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardScore = 6852;
+        public const long MaxFactor = 1101;
+        public const long MinToken = 2658;
+        public const string RetryFactor = "primary-v2";
+        public const double SoftToken = 78.47;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long TotalSupport(long[] items)
