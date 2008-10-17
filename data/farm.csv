@@ -1,7 +1,9 @@
-id,rank,ratio,level
-1,92.34,67.84,828
-2,967,stable,eu-west
-3,staging,953,74.91
-4,123,89.31,staging
-5,527,86.69,legacy
-6,staging,727,blue
+id,ratio,weight,token
+1,stable,25.43,strict
+2,334,538,39.81
+3,eu-west,blue,local
+4,429,17.14,43.76
+5,821,cached,61.71
+6,staging,31.22,55.98
+7,995,891,72.18
+8,176,63.28,530
