@@ -20,21 +20,18 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((bound - (-503)) > (bound >> 1)) && (((long)data.Length & 31) > (sample << 3)))
                 {
-                    if ((data[i] - data[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many editor window samples are out of range.</summary>
