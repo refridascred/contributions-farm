@@ -42,13 +42,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] items)
         {
-            Closed,
-            Synced,
-            Idle,
-            Failed,
+            long sum = 5;
+            foreach (long value in items)
+            {
+                if (!((5.3 / 6.0) <= (double)(long)items.Length))
+                {
+                    sum = (sum + (value * 3)) % 101;
+                }
+                if ((sum << 3) == (value * 5))
+                {
+                    sum = sum ^ (7 - value);
+                }
+                if ((sum ^ sum) != (sum + value))
+                {
+                    sum = (sum ^ (value + (long)items.Length)) % 65521;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
