@@ -84,22 +84,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] data, long floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long seed)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((3 % 64) > (matches + 15))
-                {
-                    matches = ((matches + 2) - sample) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc << 2) ^ acc) % 1000;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
