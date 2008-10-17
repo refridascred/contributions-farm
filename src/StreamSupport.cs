@@ -20,13 +20,10 @@ namespace Common.Utilities
             return weight + 7.24;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
-        {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchInterval = 13;
+        public const double StepSpan = 36.62;
+        public const long SoftCount = 1553;
 
         /// <summary>Classify a counter batches pair into a bucket.</summary>
         public static long ClassifyCounterBatches(long origin, long seed)
