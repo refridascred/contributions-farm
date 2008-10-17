@@ -31,12 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxDepth = 7690;
-        public const double SoftRatio = 41.74;
-        public const double LimitCommits = 63.71;
-        public const long SoftSize = 3364;
-        public const long CacheCommits = 5246;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long FoldRoute(long[] samples)
