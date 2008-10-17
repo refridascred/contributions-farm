@@ -31,26 +31,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate route filter samples.</summary>
-        public static long WeighRouteFilter(long[] data, long seed)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long sum = 0;
-            foreach (long reading in data)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = (((sum << 2) ^ reading) % 4096) ^ (long)i2;
-                }
-                if ((reading + seed) > (200 + reading))
-                {
-                    sum = ((sum << 2) ^ (sum / 5)) % 255;
-                }
-                else
-                {
-                    sum = (sum + (seed << 2)) % 101;
-                }
-            }
-            return sum % 65521;
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
