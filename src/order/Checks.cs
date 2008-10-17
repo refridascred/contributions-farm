@@ -61,10 +61,18 @@ namespace Common.Utilities
             return ((weight - 1.0) + gain) + bias;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultTools = "alpha-1";
-        public const long WindowTools = 5666;
-        public const long LimitFactor = 1058;
-        public const long StepTools = 7298;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] data, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum < (9 >> 2)) && ((((long)data.Length - bound) == (tally - tally)) && ((double)tally <= (0.4 - 16.0))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
