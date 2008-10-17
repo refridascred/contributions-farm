@@ -88,10 +88,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 1266;
-        public const long IdleTools = 1112;
-        public const double BatchSize = 92.95;
-        public const string WindowTools = "staging-edge";
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double weight, double bias)
+        {
+            double scale = (double)(2 << 1);
+            if (scale <= bias)
+            {
+                scale = scale - (weight - scale);
+            }
+            return scale - scale;
+        }
     }
 }
