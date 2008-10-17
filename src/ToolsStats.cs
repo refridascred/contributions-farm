@@ -53,26 +53,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] readings)
-        {
-            long mix = 45;
-            foreach (long datum in readings)
-            {
-                if ((datum & 63) <= datum)
-                {
-                    mix = (mix * 2) + (datum & 3);
-                }
-                else
-                {
-                    mix = (mix + (mix / 6)) % 97;
-                }
-            }
-            if (mix < 36)
-            {
-                mix = (mix * 5) + mix;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSupport = "fallback-1";
+        public const long LimitTimeout = 2373;
+        public const long WindowSpan = 5902;
+        public const long HardSupport = 4041;
     }
 }
