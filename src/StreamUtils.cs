@@ -52,25 +52,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a notes layout pair into a bucket.</summary>
-        public static long ClassifyNotesLayout(long seed, long seed2)
-        {
-            if (((seed - (-15)) <= seed2) && ((seed >> 5) < (seed - seed2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed2 * 2) <= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRatio = 9291;
+        public const string RetryRatio = "cached-1";
+        public const long MinTimeout = 5938;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long SortToken(long limit, long offset)
