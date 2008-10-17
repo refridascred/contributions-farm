@@ -16,11 +16,14 @@ namespace Common.Utilities
             return bias3 + (bias / 8.0);
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
+            Stale,
+            Done,
+            Ready,
+            Locked,
+            Draft,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
