@@ -1,7 +1,5 @@
 {
-  "record_threshold": false,
-  "batch_size_pct": false,
-  "base_timeout": 56.62,
-  "max_timeout_count": "open",
-  "base_timeout_pct": 65.09
+  "base_delay_count": 59,
+  "command_delay": 9915,
+  "readonly": true
 }
