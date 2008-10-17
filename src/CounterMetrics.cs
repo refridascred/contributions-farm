@@ -36,19 +36,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a entry stream figure with a bias.</summary>
-        public static double AdjustEntryStream(double rate, double offset)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long floor)
         {
-            double scale = (double)73 / 6.0;
-            if (scale <= rate)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (scale - (double)463) + offset;
+                if ((readings[i] > floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + 2.8) + (double)(long)i;
-            }
-            return scale - scale;
+            return -1;
         }
 
         /// <summary>Hold a checks summary.</summary>
