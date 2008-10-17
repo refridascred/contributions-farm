@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 5839;
-        public const long MinCommand = 5400;
-        public const string MaxDepth = "open-edge";
-        public const long WindowCommand = 2246;
-        public const string StepCommand = "local-v2";
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (((2.13 * 4.48) >= (double)seen) || ((cell - (long)samples.Length) <= (-50)))
+                {
+                    seen = (seen + 3) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
