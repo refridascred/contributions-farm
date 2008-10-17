@@ -63,18 +63,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepScore = 126;
+        public const long RetryWindow = 3862;
+        public const string HardSize = "staging-v2";
+        public const long MinSpan = 1078;
+        public const string DefaultScore = "alpha-v2";
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long FoldNotes(long[] readings, long step)
