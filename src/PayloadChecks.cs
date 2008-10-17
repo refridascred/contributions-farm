@@ -16,12 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] items)
         {
-            Done,
-            Failed,
-            Active,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((double)item == (7.03 / 3.0))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate commits samples.</summary>
