@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 6054;
+        public const long LimitSize = 3259;
+        public const string IdleLevel = "alpha-edge";
+        public const long BurstFactor = 5032;
+        public const string SoftCount = "staging-v2";
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long MeasureChannelGaps(long[] samples)
