@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double scale, double floor)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] series, long origin)
         {
-            double rate = scale;
-            if (rate > (scale * 2.9))
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + (9.19 + floor);
+                if ((series[i] >= origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + 15.0;
-            }
-            return rate + 8.1;
+            return -1;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
