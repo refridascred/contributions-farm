@@ -32,19 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double bias, double offset)
+        /// <summary>Rank session route input into a small class.</summary>
+        public static long SortSessionRoute(long target, long origin)
         {
-            double gain = bias;
-            if (gain < (double)207)
+            if (((origin + origin) > target) || (origin > (origin & 31)))
             {
-                gain = gain - (1.1 + bias);
+                return 0;
             }
             else
             {
-                gain = gain - offset;
+                if ((origin - target) != (9 / 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(105 > (target % 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((7.0 - 19.0) != (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return gain - (double)90;
         }
 
         /// <summary>Describe the schema kind values.</summary>
