@@ -1,6 +1,10 @@
-id,level,ratio,active
-1,183,39.86,open
-2,928,14.77,standard
-3,224,555,74
-4,72.07,21.17,green
-5,80,129,cached
+id,region
+1,primary
+2,blue
+3,legacy
+4,318
+5,880
+6,36.07
+7,593
+8,223
+9,57.59
