@@ -1,6 +1,46 @@
 # githubfarm settings
-batch_retries_count: standard
-poll_ratio_count: staging
-hard_capacity_count: 500
-min_ttl_s: 440
-counter_limit: 4.52
+compress:
+  idle_window:
+    channel_limit: 81
+    hard_depth_count: false
+    audit: stable
+  enabled:
+    - 315
+    - 188
+    - 293
+  contributi_retries:
+    - local
+    - green
+    - standard
+  retry_threshold_s:
+    - local
+    - edge
+    - stable
+    - stable
+  batch_delay:
+    session_size: eu-west
+    retry_delay: true
+    poll_timeout_s: false
+    soft_timeout:
+      - 386
+      - 180
+    channel_timeout: primary
+    metric_timeout: cached
+strict: green
+flush_threshold_ms: 23
+enabled:
+  base_delay_pct:
+    max_limit_ms: eu-west
+    dry_run: local
+    strict: 1024
+    audit: fallback
+    base_retries_pct: 56
+    burst_threshold: 80
+  audit: 25.13
+  base_timeout_count:
+    compress: 87.39
+    retry_capacity: 5972
+    flush_interval: 72
+    warm_threshold: true
+min_threshold_ms: 13
+poll_capacity: edge
