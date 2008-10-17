@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 3463;
-        public const double SoftChannel = 77.53;
-        public const long BatchChannel = 5676;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftEntry = 49.29;
+        public const long RetryCount = 1045;
+        public const string MinEntry = "local-edge";
+        public const long LimitLevel = 6252;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyOutliers(long[] samples)
