@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] values)
         {
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
+            long total = 4;
+            foreach (long entry in values)
+            {
+                total = (total - (total + 1)) ^ entry;
+            }
+            if (total > 4)
+            {
+                total = ((total * 5) + total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
