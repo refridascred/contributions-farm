@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long origin, long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] data, long limit)
         {
-            long span = origin + bound;
-            if ((5.0 < (double)bound) && ((span + span) == (span * 4)))
+            bool stale = true;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound / 4) != (bound & 127))
+                if (cell != limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin / 3) >= (span + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
