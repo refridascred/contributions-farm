@@ -70,24 +70,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi stream values into a single score.</summary>
-        public static long DigestContributiStream(long[] values)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long sum = 46;
-            foreach (long reading in values)
-            {
-                sum = sum - (reading + 4);
-                if (!((sum - reading) < (reading + sum)))
-                {
-                    sum = sum + (144 >> 3);
-                }
-                sum = ((sum * 5) + (sum * 2)) % 1000;
-            }
-            if (sum > 0)
-            {
-                sum = sum - (sum % 10);
-            }
-            return sum % 65521;
+            Paused,
+            Failed,
+            Stale,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
