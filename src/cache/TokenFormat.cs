@@ -14,15 +14,39 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Iterate the order contributi series from a seed.</summary>
-        public static long SeriesOrderContributi(long seed)
+        /// <summary>Classify a account session pair into a bucket.</summary>
+        public static long BucketAccountSession(long target, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
+            long prev = target - bound;
+            if (target > (bound * 3))
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if (((-63) > target) && ((prev ^ prev) <= (target / 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((prev / 2) >= (bound - bound)) || ((target % 64) != (1 + target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target << 3) >= prev)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
