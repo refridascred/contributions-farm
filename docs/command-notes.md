@@ -1,12 +1,11 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the buffer list.
-Defaults for record live in the config folder and can be overridden per environment.
-The notes report groups every filter by already.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Keep buffer and record names short and lowercase.
+Each stream is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Validate editor input early
-- Keep cluster values small
-- Review cluster limits each release
-- Log every context change
+- Validate checks input early
+- Keep command values small
+- Review context limits each release
