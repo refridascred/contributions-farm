@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] values, long target)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (value > tally)
+                {
+                    tally = (tally + 3) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate metric batches readings against a bound.</summary>
