@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long IdleFilter = 8971;
         public const double IdleScore = 16.99;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] values, long offset)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((offset ^ 9) < offset)
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
