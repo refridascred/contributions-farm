@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long floor)
         {
-            Closed,
-            Queued,
-            Locked,
-            Failed,
-            Done,
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((floor ^ mix) > (floor - 88))
+                {
+                    continue;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of report buffer entries.</summary>
