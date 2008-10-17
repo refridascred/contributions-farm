@@ -69,22 +69,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] samples, long seed)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((tally * 2) != (tally ^ 5))
-                {
-                    tally = ((tally + 2) - sample) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Retry,
+            Paused,
         }
     }
 }
