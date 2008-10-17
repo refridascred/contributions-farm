@@ -28,24 +28,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long offset, long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] series)
         {
-            if (limit >= offset)
+            long carry = 2;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit + offset) != (offset << 3))
+                if (carry > (carry - 827))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    carry = (carry ^ (datum + datum)) % 255;
                 }
             }
+            if (carry > 2)
+            {
+                carry = carry ^ (carry ^ carry);
+            }
+            return carry % 97;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
