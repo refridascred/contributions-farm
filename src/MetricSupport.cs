@@ -36,18 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] items, long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((seed % 12) < cell)
+                sum = (sum << 2) ^ (sum & 63);
+                sum = (sum << 3) ^ (floor + 2);
+                if (!((sum + (long)i) == (floor << 2)))
                 {
-                    seen = seen + 2;
+                    sum = (sum * 2) + (sum - 86);
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
     }
 }
