@@ -1,11 +1,6 @@
 # githubfarm settings
-flush_retries: 1024
-cache_window_s: true
-min_delay_pct:
-  - standard
-  - latest
-base_ratio_ms: 22.16
-contributi_timeout:
-  - legacy
-  - edge
-  - stable
+profile_interval: 30
+report_window: 80.85
+commits_delay: strict
+enabled: 40.62
+verbose: false
