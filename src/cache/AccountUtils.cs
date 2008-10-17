@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the report editor entries that pass the check.</summary>
-        public static long MeasureReportEditorOutliers(long[] samples, long floor)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((floor - value) > (tally - floor))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Paused,
+            Failed,
+            Pending,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
