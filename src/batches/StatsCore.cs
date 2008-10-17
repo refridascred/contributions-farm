@@ -32,22 +32,13 @@ namespace Common.Utilities
         public const long IdleToken = 5576;
         public const double WindowToken = 56.69;
 
-        /// <summary>Combine order buffer values into a single score.</summary>
-        public static long ScoreOrderBuffer(long[] series, long seed)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long score = -631;
-            foreach (long value in series)
-            {
-                if ((value + 18) < (826 * 5))
-                {
-                    score = (score ^ score) + seed;
-                }
-                if ((3.7 - 4.0) >= (double)value)
-                {
-                    break;
-                }
-            }
-            return score % 97;
+            Draft,
+            Stale,
+            New,
+            Locked,
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
