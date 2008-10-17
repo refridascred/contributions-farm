@@ -13,12 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] data)
         {
-            public double Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
