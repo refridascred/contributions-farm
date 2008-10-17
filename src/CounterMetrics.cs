@@ -58,10 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 4549;
-        public const long WindowCluster = 6045;
-        public const string CacheFactor = "fallback-edge";
-        public const long MinCluster = 8305;
+        /// <summary>Project the next notes githubfarm value.</summary>
+        public static double AdjustNotesGithubfarm(double bias, double span)
+        {
+            double drift = span * 10.0;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = ((drift - 4.47) + (double)(long)i) + bias;
+            }
+            return drift - (span / 9.0);
+        }
     }
 }
