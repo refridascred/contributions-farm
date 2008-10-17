@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit support queue readings against a rule.</summary>
-        public static long CountSupportQueueMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((seen & 7) <= (seen % 5))
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double RetryFactor = 77.41;
+        public const long MinWidth = 6191;
+        public const double CacheCount = 54.4;
+        public const string BatchBudget = "strict-edge";
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
