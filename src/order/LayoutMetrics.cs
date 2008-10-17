@@ -23,39 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long seed, long target)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] data, long origin)
         {
-            long lane = seed - target;
-            if ((target & 127) < (target % 97))
+            long state = -30;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((lane % 60) > (seed ^ lane)))
+                state = ((state - (701 >> 5)) % 255) + item;
+                if (origin <= (state * 4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((9.0 / 4.0) > (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target ^ seed) <= (seed / 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    state = ((state << 2) ^ (origin / 4)) % 255;
                 }
             }
+            return state;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
