@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "cached-v2";
+        public const double BurstRatio = 25.2;
+        public const string IdleStream = "alpha-edge";
+        public const long BatchCount = 4858;
+        public const long MaxFactor = 9923;
 
         /// <summary>Blend two cache measurements.</summary>
         public static double BlendCache(double weight, double floor)
