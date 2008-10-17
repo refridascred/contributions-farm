@@ -32,14 +32,17 @@ namespace Common.Utilities
         public const long MaxInterval = 9251;
         public const long BatchTimeout = 1235;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] items, long seed)
         {
-            Synced,
-            New,
-            Failed,
-            Idle,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine layout metrics values into a single score.</summary>
