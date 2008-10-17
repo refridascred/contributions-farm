@@ -1,10 +1,7 @@
-id,label,ratio,level
-1,755,941,46
-2,staging,eu-west,530
-3,primary,799,66.09
-4,48.37,94.38,32.19
-5,open,local,61.19
-6,138,primary,369
-7,203,937,legacy
-8,711,fallback,green
-9,14.78,cached,728
+id,state,level,region
+1,staging,707,648
+2,51.73,57.43,84.94
+3,34.81,217,318
+4,953,77.58,21.52
+5,primary,eu-west,cached
+6,41.07,primary,latest
