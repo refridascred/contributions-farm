@@ -13,15 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double bias, double floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] readings, long bound)
         {
-            double gain = bias;
-            if (gain >= gain)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                gain = (gain - (2.2 + bias)) - floor;
+                if (item > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain - (gain + bias);
+            return valid;
         }
 
         /// <summary>Locate a record context reading by value.</summary>
