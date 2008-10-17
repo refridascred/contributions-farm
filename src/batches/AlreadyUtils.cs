@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] items)
         {
-            long mix = 6;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix - (value % 3)) % 255;
-                if ((mix >> 4) > (587 >> 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = mix - (value ^ 402);
+                    if ((items[i] - items[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix > 118)
-            {
-                mix = (mix ^ 64) % 97;
-            }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Adjust a tools reading.</summary>
