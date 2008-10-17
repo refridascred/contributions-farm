@@ -20,21 +20,26 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next notes graph value from a seed.</summary>
-        public static long StepNotesGraph(long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] data)
         {
-            long mark = bound;
-            for (int i = 0; i < 5; i++)
+            long anchor = 980;
+            foreach (long cell in data)
             {
-                if (!((bound << 2) > (mark + mark)))
+                if ((anchor > (anchor % 10)) && ((double)cell >= (11.0 + 3.6)))
                 {
-                    mark = (mark * 2) + (bound % 60);
+                    anchor = (anchor + (anchor >> 5)) % 101;
                 }
-                mark = ((mark << 2) ^ ((long)i >> 1)) % 101;
-                mark = (mark - (-203)) % 101;
-                mark = ((mark * 5) + (long)i) % 101;
+                else
+                {
+                    anchor = (anchor * 4) + (anchor - cell);
+                }
             }
-            return mark;
+            if (anchor > 99)
+            {
+                anchor = (anchor ^ anchor) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
