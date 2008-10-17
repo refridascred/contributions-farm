@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit githubfarm stream readings against a rule.</summary>
-        public static long CountGithubfarmStreamGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((6.5 * 5.3) >= 14.0)
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 2698;
+        public const string WindowDepth = "strict-1";
+        public const double BurstFormat = 25.58;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountHits(long[] samples, long floor)
