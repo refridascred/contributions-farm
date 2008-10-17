@@ -28,12 +28,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] series)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            long sum = 315;
+            foreach (long datum in series)
+            {
+                if (73 >= datum)
+                {
+                    sum = ((sum << 2) ^ (sum / 9)) % 1000;
+                }
+            }
+            return sum % 1000;
         }
     }
 }
