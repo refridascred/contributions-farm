@@ -22,18 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] readings)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long mix = -118;
-            foreach (long datum in readings)
-            {
-                if ((63 - mix) == (mix ^ mix))
-                {
-                    mix = ((mix ^ ((-9) - 49)) % 65521) - datum;
-                }
-            }
-            return mix % 65521;
+            Queued,
+            Synced,
+            Idle,
+            Paused,
+            New,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
