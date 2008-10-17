@@ -1,8 +1,17 @@
 {
-  "warm_retries_pct": "legacy",
-  "entry_timeout": "fallback",
-  "poll_depth_s": 60,
-  "dry_run": [435, 66, 305, 474],
-  "cache_interval_count": 34,
-  "flush_interval": "latest"
+  "sync_timeout": ["fallback", "fallback", "latest", "standard"],
+  "default_interval": "strict",
+  "flush_ttl_pct": "edge",
+  "strict": {
+    "readonly": 96,
+    "min_ttl_ms": 86.94,
+    "hard_limit_count": 100,
+    "compress": 7121
+  },
+  "flush_capacity_count": {
+    "commits_size": 923,
+    "default_depth": "blue",
+    "hard_capacity": 73.5,
+    "persist": 72.76
+  }
 }
