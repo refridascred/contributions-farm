@@ -33,19 +33,12 @@ namespace Common.Utilities
         public const long DefaultSize = 6748;
         public const long CacheContext = 5439;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] values, long step)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Idle,
+            Pending,
         }
     }
 }
