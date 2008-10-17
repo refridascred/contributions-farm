@@ -26,11 +26,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] levels, long step)
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
