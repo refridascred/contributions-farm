@@ -87,9 +87,17 @@ namespace Common.Utilities
             return mean - (3.0 / 9.0);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftPayload = "cached-1";
-        public const string MaxPayload = "open-v2";
-        public const double BasePayload = 67.58;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == bound) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
