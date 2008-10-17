@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 579;
-        public const double IdleLayout = 25.67;
-        public const double BaseLayout = 52.25;
-        public const long MaxLayout = 4953;
-        public const long WindowDepth = 2889;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordOutliers(long[] series)
