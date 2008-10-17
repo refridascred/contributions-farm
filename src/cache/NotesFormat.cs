@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate window graph readings against a bound.</summary>
-        public static bool CheckWindowGraphBounds(long[] values, long seed)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine record values into a single score.</summary>
