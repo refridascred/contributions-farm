@@ -1,16 +1,14 @@
 # support settings
-sync_capacity_s:
-  - latest
-  - staging
-  - eu-west
-  - latest
-warm_timeout:
-  burst_ratio_pct: stable
-  warm_interval: eu-west
-  persist: 500
-base_interval_ms: 2112
-burst_window_pct:
+cache_delay_s:
   - strict
-  - cached
-warm_ratio_count: 2147
-audit: latest
+  - latest
+  - stable
+  - edge
+stream_depth:
+  - 310
+  - 341
+compress: open
+verbose:
+  commits_timeout: local
+  warm_depth_count: 3007
+  idle_capacity: open
