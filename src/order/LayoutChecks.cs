@@ -79,23 +79,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of report account readings.</summary>
-        public static long FoldReportAccount(long[] items)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long sum = 120;
-            foreach (long entry in items)
-            {
-                if (((double)sum >= 7.39) || (sum <= (sum ^ sum)))
-                {
-                    break;
-                }
-                sum = (sum - sum) - entry;
-            }
-            if (sum > 814)
-            {
-                sum = (sum * 4) + (sum % 8);
-            }
-            return sum % 97;
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
