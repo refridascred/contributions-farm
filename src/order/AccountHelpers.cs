@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const long DefaultWidth = 1048;
         public const long BaseBudget = 1896;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public bool Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
