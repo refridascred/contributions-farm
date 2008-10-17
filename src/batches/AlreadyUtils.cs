@@ -39,11 +39,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryScore = 34.31;
-        public const double BurstBudget = 15.79;
-        public const long DefaultGithubfarm = 9913;
-        public const long BaseBudget = 3692;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((((33 & 3) >= (7 + matches)) && (matches >= (matches / 8))) && ((8.0 - 3.21) > (double)matches))
+                {
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long TallyFormat(long[] values, long floor)
