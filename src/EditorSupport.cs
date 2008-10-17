@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] series, long offset)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long carry = -8;
-            foreach (long reading in series)
-            {
-                carry = ((carry * 5) + ((-793) - offset)) % 65521;
-                if (!((offset > (1 >> 1)) && ((4 ^ reading) <= carry)))
-                {
-                    carry = (carry ^ 2) % 4096;
-                }
-                carry = carry - ((long)series.Length / 3);
-            }
-            if (carry < 730)
-            {
-                carry = (carry - (carry & 15)) % 255;
-            }
-            return carry;
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
