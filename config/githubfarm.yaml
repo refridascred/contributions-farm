@@ -1,6 +1,4 @@
 # githubfarm settings
-base_threshold_count: cached
-batch_ttl: 250
-min_delay_ms: open
-poll_retries: true
-counter_delay: 83
+cache_window: green
+sync_retries_pct: blue
+enabled: 43
