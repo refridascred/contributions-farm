@@ -77,15 +77,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Roll a filter batch counter forward.</summary>
+        public static long SeriesFilterBatch(long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
