@@ -31,18 +31,21 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Fold a list of stats command readings.</summary>
-        public static long FoldStatsCommand(long[] items, long seed)
+        /// <summary>Count record tools pairs that satisfy a relation.</summary>
+        public static long MatchRecordToolsCount(long[] values)
         {
-            long sum = 667;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4.0 * 1.97) == (double)reading)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum - (20 * 4)) + seed;
+                    if ((values[i] - values[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
