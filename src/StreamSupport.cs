@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 9576;
-        public const long BurstCluster = 3096;
-        public const long RetryDepth = 1742;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 7367;
+        public const double LimitInterval = 39.67;
+        public const string SoftContext = "alpha";
+        public const long LimitContext = 8979;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchInterval = 13;
