@@ -31,13 +31,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Draft,
+            Retry,
+            Synced,
+            Done,
             Failed,
-            Ready,
-            Idle,
+            Paused,
         }
 
         /// <summary>Hold a editor stats.</summary>
