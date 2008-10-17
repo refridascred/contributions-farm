@@ -23,13 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] samples, long bound)
         {
-            public double Flag { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
