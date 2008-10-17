@@ -1,4 +1,6 @@
 # entry settings
-max_size: blue
-hard_size_s: 9944
-buffer_ttl: 3427
+warm_delay: 8.87
+notes_interval: false
+soft_limit_s: false
+default_window_s: 37
+strict: 5037
