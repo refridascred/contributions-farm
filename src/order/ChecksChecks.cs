@@ -19,11 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultWidth = 6796;
-        public const long SoftRatio = 7366;
-        public const long IdleSession = 2019;
-        public const long CacheLevel = 1821;
+        /// <summary>Accumulate token batch samples.</summary>
+        public static long TotalTokenBatch(long[] samples, long origin)
+        {
+            long state = 4;
+            foreach (long reading in samples)
+            {
+                state = ((state - (origin + origin)) % 65521) - reading;
+            }
+            return state;
+        }
 
         /// <summary>Check that every cache metric entry stays within the limit.</summary>
         public static bool GuardCacheMetricRange(long[] levels, long seed)
