@@ -28,21 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] samples)
         {
-            long result = seed;
-            for (int i = 0; i < 8; i++)
+            long anchor = 5;
+            foreach (long value in samples)
             {
-                result = (result + (seed / 9)) % 65521;
-                if (((double)(long)i == (5.94 + 9.85)) || (((long)i - result) <= (long)i))
+                if (value < (anchor << 2))
                 {
-                    long count = ((long)i & 63) + ((long)i ^ 3);
-                    result = (result << 3) ^ (count + count);
+                    anchor = (anchor << 3) ^ (38 - anchor);
                 }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return anchor;
         }
     }
 }
