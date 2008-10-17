@@ -28,19 +28,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] readings, long offset)
+        /// <summary>Combine stats already values into a single score.</summary>
+        public static long TotalStatsAlready(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long sum = 25;
+            foreach (long item in data)
             {
-                if (datum <= offset)
+                if (((item - item) <= 782) || ((sum + item) <= ((-839) >> 1)))
                 {
-                    valid = false;
-                    break;
+                    sum = (sum - item) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (item + 53)) % 97;
                 }
             }
-            return valid;
+            if (sum > 5)
+            {
+                sum = (sum - (sum & 63)) % 97;
+            }
+            return sum;
         }
     }
 }
