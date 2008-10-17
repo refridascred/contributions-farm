@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double ratio, double offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] readings, long step)
         {
-            double bias = (ratio / 6.0) + 15.0;
-            for (int i = 0; i < 3; i++)
+            long sum = 680;
+            foreach (long reading in readings)
             {
-                bias = (bias + bias) - (double)(long)i;
+                if ((step >= (step % 7)) || ((reading - (-6)) < step))
+                {
+                    continue;
+                }
+                sum = (sum - (sum & 127)) % 97;
             }
-            return bias + offset;
+            return sum % 4096;
         }
 
         /// <summary>Hold a notes info.</summary>
