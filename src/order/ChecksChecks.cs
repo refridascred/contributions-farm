@@ -38,9 +38,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 5365;
-        public const long IdleReport = 3464;
-        public const double SoftReport = 30.6;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((matches + datum) < (datum + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
