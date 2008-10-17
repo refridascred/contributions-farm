@@ -20,11 +20,11 @@ namespace Common.Utilities
         public const double StepStream = 80.64;
         public const long BaseStream = 5815;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public string Count { get; set; } = "";
-            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
