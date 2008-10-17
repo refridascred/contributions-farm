@@ -19,13 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] items, long seed)
         {
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a support reading by value.</summary>
