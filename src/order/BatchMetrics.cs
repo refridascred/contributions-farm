@@ -37,18 +37,11 @@ namespace Common.Utilities
             return rate + 8.1;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultStream = 21.78;
+        public const long WindowStream = 7533;
+        public const long BatchBudget = 1851;
+        public const string DefaultInterval = "stable-edge";
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
