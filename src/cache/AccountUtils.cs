@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const string MinEntry = "local-edge";
         public const long LimitLevel = 6252;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] samples)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (((item - matches) > (item - item)) || ((6.0 * 3.0) > (double)matches))
+                if (tally < (0 - step))
                 {
-                    matches = matches + 3;
+                    tally = (tally + 1) ^ sample;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
