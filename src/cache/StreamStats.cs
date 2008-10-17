@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultSize = 269;
-        public const long LimitScore = 4354;
-        public const double MaxCache = 8.1;
-        public const long SoftSpan = 7845;
+        /// <summary>Roll a order account counter forward.</summary>
+        public static long StepOrderAccount(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = mix + (22 + mix);
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
