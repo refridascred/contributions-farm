@@ -13,13 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Synced,
-            Queued,
-            Failed,
-            Paused,
+            public double Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
