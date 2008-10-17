@@ -18,12 +18,13 @@ namespace Common.Utilities
         public const string SoftCache = "latest-1";
         public const long HardTimeout = 1581;
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public double Limit { get; set; }
+            public double Label { get; set; }
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
