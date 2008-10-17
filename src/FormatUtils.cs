@@ -82,13 +82,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Failed,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 7937;
+        public const long StepBudget = 4306;
+        public const long WindowFactor = 9685;
+        public const long CacheBatches = 2885;
+        public const long DefaultInterval = 5802;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] items)
