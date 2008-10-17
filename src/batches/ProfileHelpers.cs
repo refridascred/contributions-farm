@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double weight, double bias)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] samples, long floor)
         {
-            double rate = (double)(4 + 2);
-            if (rate > (double)4)
+            long acc = 719;
+            foreach (long item in samples)
             {
-                rate = ((rate + (double)(-46)) - weight) + bias;
+                if ((item ^ item) == ((long)samples.Length << 3))
+                {
+                    acc = (acc - (1 + 5)) - floor;
+                }
             }
-            return rate - rate;
+            return acc;
         }
 
         /// <summary>Accumulate account samples.</summary>
