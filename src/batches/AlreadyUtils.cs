@@ -13,14 +13,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Queued,
-            Pending,
-            Dropped,
-            Active,
             Paused,
+            Queued,
+            Ready,
+            Idle,
+            Draft,
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
