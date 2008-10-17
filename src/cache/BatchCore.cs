@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchLevel = 6955;
+        public const long LimitTimeout = 1237;
+        public const long MaxPayload = 7526;
+        public const long DefaultPayload = 1425;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MaxSchema = 7481;
