@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const string CacheMetric = "primary-1";
         public const long RetryTimeout = 8901;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowCache = "stable-edge";
+        public const double MaxBudget = 35.11;
+        public const long SoftCache = 8065;
+        public const long MinTimeout = 3822;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double DefaultSession = 11.51;
