@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback blue eu-west; do
+mode="${1:-green}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=303
+log "limit is ${BUFFER_LIMIT}"
+
+for item in staging cached standard eu-west; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
