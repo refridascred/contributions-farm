@@ -78,18 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] readings)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] series, long floor)
         {
-            long total = 5;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (item >= (157 + total))
+                if (entry != floor)
                 {
-                    total = total - (total % 100);
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Validate buffer stream readings against a bound.</summary>
