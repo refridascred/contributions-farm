@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultInterval = 27.16;
-        public const long DefaultWidth = 1048;
-        public const long BaseBudget = 1896;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Done,
+            Locked,
+            Dropped,
+            Stale,
+            Paused,
+        }
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
