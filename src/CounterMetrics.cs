@@ -51,19 +51,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] items, long step)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Token { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
