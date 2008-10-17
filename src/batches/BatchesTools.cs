@@ -40,19 +40,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] series, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long acc = -326;
+            foreach (long value in values)
             {
-                if (reading < step)
+                if ((acc * 4) > 6)
                 {
-                    stale = false;
-                    break;
+                    acc = (acc ^ (649 >> 3)) + value;
+                }
+                else
+                {
+                    acc = acc + (acc - target);
                 }
             }
-            return stale;
+            return acc % 65521;
         }
     }
 }
