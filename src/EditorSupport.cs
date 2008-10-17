@@ -66,11 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
+            Paused,
+            Ready,
+            New,
+            Failed,
         }
 
         /// <summary>Validate buffer stream readings against a bound.</summary>
