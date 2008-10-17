@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a githubfarm channel pair into a bucket.</summary>
-        public static long BucketGithubfarmChannel(long limit, long step)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            if (limit > (limit ^ step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit << 2) != (step - limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Closed,
+            New,
+            Draft,
         }
 
         /// <summary>Count context metrics pairs that satisfy a relation.</summary>
