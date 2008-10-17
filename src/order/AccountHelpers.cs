@@ -56,17 +56,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark << 2) ^ mark) % 101;
-                mark = mark - (mark << 3);
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
