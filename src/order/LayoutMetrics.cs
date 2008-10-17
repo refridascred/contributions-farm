@@ -31,18 +31,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] series)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long carry = 8;
+            foreach (long value in readings)
             {
-                if ((reading / 5) == ((-44) - 534))
+                if ((double)value <= 19.0)
                 {
-                    tally = tally + 3;
+                    carry = ((carry ^ value) % 101) + step;
+                }
+                else
+                {
+                    carry = (carry - (value >> 5)) % 65521;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
