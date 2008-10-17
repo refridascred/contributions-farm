@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] samples)
-        {
-            long mix = 272;
-            foreach (long cell in samples)
-            {
-                mix = (((mix << 3) ^ (mix - (long)samples.Length)) % 255) + cell;
-            }
-            if (mix < (-53))
-            {
-                mix = (mix - (1 ^ mix)) % 1000;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinTimeout = 2573;
+        public const double SoftSupport = 56.6;
+        public const long MinSupport = 2464;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double WindowBudget = 66.25;
