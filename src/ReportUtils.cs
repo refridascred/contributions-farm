@@ -13,12 +13,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] data, long floor)
         {
-            Ready,
-            Locked,
-            Queued,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((long)data.Length >= (floor * 5))
+                {
+                    count = (count + 2) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
