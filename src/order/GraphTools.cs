@@ -28,22 +28,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] samples, long step)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] series)
         {
-            long state = 2;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)step == (8.9 + 4.9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state + (state << 3)) % 255) + cell;
+                    if ((series[i] ^ series[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state < 996)
-            {
-                state = ((state << 3) ^ step) % 1000;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the schema state values.</summary>
