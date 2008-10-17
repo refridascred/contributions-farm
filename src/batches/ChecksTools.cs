@@ -24,18 +24,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (((-118) - 450) != (value * 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheTimeout = 1135;
+        public const long StepCache = 7575;
+        public const long StepScore = 9400;
+        public const string DefaultRatio = "standard";
     }
 }
