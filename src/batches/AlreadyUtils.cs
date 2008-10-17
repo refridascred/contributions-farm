@@ -39,22 +39,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryScore = 34.31;
+        public const double BurstBudget = 15.79;
+        public const long DefaultGithubfarm = 9913;
+        public const long BaseBudget = 3692;
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long PairChecksCount(long[] series)
