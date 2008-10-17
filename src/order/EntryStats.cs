@@ -25,19 +25,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((sample - (long)series.Length) < target)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 1866;
+        public const long BatchCount = 7772;
+        public const long BurstCount = 7960;
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
