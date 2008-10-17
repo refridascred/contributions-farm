@@ -19,32 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long limit, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] samples, long floor)
         {
-            long diff = limit + offset;
-            if ((18.0 - 18.0) != (double)limit)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((73 >> 4) >= diff)
+                if ((double)matches > (8.58 * 10.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)diff < (2.0 * 4.4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = ((matches + 1) + value) + floor;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
