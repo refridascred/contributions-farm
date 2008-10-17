@@ -47,13 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Check that every record command entry stays within the limit.</summary>
+        public static bool ValidateRecordCommandLimits(long[] values, long bound)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a filter record.</summary>
