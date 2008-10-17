@@ -35,12 +35,14 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
+            Paused,
+            Locked,
+            Ready,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a window stats.</summary>
