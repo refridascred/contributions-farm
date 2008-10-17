@@ -25,19 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric channel readings against a bound.</summary>
-        public static bool ValidateMetricChannelBounds(long[] samples, long target)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (entry <= target)
+                if (!(((long)levels.Length >> 4) < (matches % 16)))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
