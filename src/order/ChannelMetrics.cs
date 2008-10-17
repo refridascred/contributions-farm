@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] samples, long floor)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long sum = 60;
-            foreach (long item in samples)
-            {
-                sum = ((sum << 3) ^ (item % 2)) % 4096;
-            }
-            if (sum < 6)
-            {
-                sum = sum - floor;
-            }
-            return sum;
+            public double Total { get; set; }
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a token sample.</summary>
