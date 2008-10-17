@@ -30,18 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] samples)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + 25) <= (entry + (-347)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Paused,
+            Pending,
+            Done,
         }
     }
 }
