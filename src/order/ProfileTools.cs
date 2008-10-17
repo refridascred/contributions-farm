@@ -61,14 +61,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] values, long origin)
         {
-            Dropped,
-            Failed,
-            Draft,
-            Locked,
-            Ready,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (((long)values.Length >> 1) >= reading)
+                {
+                    seen = (seen + 3) + origin;
+                }
+            }
+            return seen;
         }
     }
 }
