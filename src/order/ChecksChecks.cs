@@ -22,20 +22,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of stream stats entries.</summary>
-        public static long FoldStreamStats(long[] samples)
-        {
-            long acc = 84;
-            foreach (long sample in samples)
-            {
-                if ((3.67 + 4.3) < (9.79 * 9.93))
-                {
-                    acc = ((acc << 2) ^ (sample / 8)) % 1000;
-                    break;
-                }
-                acc = (acc * 4) + acc;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 32;
+        public const long BatchLevel = 21;
+        public const string WindowWidth = "latest";
     }
 }
