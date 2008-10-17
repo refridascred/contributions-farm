@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double BaseSupport = 66.59;
         public const long SoftTimeout = 6318;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] values, long step)
+        /// <summary>Combine batches filter values into a single score.</summary>
+        public static long ScoreBatchesFilter(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long result = 9;
+            foreach (long cell in items)
             {
-                if (cell != step)
+                if ((1.3 + 1.4) == (double)cell)
                 {
-                    stale = false;
-                    break;
+                    result = (((result << 3) ^ cell) % 1000) + step;
                 }
             }
-            return stale;
+            return result % 97;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
