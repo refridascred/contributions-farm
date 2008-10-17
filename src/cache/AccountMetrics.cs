@@ -28,12 +28,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a window metric reading.</summary>
-        public static double ProjectWindowMetric(double weight, double floor)
-        {
-            double load = (double)(-460) - (double)5;
-            return ((load + (double)7) + weight) + floor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftLevel = 95.3;
+        public const string BurstScore = "fallback-edge";
+        public const long BaseMetrics = 3571;
+        public const long RetryLevel = 6268;
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long DeriveMetric(long seed)
