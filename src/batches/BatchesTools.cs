@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] data, long bound)
-        {
-            long mix = 762;
-            foreach (long entry in data)
-            {
-                if ((mix + mix) >= (bound ^ entry))
-                {
-                    mix = (mix << 3) ^ (bound ^ 13);
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 5031;
+        public const double HardChannel = 40.95;
+        public const long StepSpan = 4613;
+        public const string BatchScore = "alpha-v2";
+        public const long SoftChannel = 5645;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long CombineRecord(long[] readings)
