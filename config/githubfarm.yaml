@@ -1,6 +1,24 @@
 # githubfarm settings
-poll_limit: 60
-enabled: 5.38
-compress: standard
-persist: 9328
-dry_run: 149
+persist: 4720
+batch_timeout:
+  - 375
+  - 52
+  - 215
+route_ttl:
+  stream_depth:
+    - 50
+    - 469
+  audit: 100
+  cache_ttl_pct: standard
+  payload_threshold:
+    - stable
+    - blue
+    - open
+    - latest
+  flush_retries_count:
+    min_ttl_ms: primary
+    batch_ttl_pct: false
+    flush_delay_count: strict
+soft_interval: legacy
+batch_threshold: 81.63
+batches_threshold: 14.97
