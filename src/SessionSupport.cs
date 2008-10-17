@@ -34,16 +34,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a token contributi counter forward.</summary>
-        public static long StepTokenContributi(long offset)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long total = step;
+            for (int i = 0; i < 15; i++)
             {
-                anchor = ((anchor << 2) ^ (offset * 2)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                total = ((total * 3) + (step & 15)) % 101;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return anchor;
+            return total;
         }
     }
 }
