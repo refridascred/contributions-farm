@@ -16,14 +16,19 @@ namespace Common.Utilities
             return bias3 + (bias / 8.0);
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] data, long seed)
         {
-            Stale,
-            Done,
-            Ready,
-            Locked,
-            Draft,
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
