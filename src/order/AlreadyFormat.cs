@@ -49,19 +49,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate payload commits readings against a bound.</summary>
-        public static bool CheckPayloadCommitsLimits(long[] items, long step)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long value in items)
+            double scale = (double)(7 ^ 998);
+            for (int i = 0; i < 7; i++)
             {
-                if (value >= step)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = ((scale - (rate * 0.7)) + (double)(long)i) - bias;
             }
-            return stale;
+            return scale - rate;
         }
     }
 }
