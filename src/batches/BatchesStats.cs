@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Queued,
-            Draft,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 6398;
+        public const double MinRatio = 10.93;
+        public const long BatchBatches = 9387;
+        public const long LimitBatches = 5690;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long WindowStream = 3450;
