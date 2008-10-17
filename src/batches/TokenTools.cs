@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long seed, long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] samples, long bound)
         {
-            if ((3 % 60) != (origin / 9))
+            bool valid = true;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(2 > origin))
+                if (value <= bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the route state values.</summary>
