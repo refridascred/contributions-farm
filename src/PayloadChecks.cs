@@ -18,24 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long step, long target)
+        /// <summary>Compare every pair of route metrics readings.</summary>
+        public static long CompareRouteMetricsCount(long[] values)
         {
-            if (((target + target) == ((-39) % 24)) && ((target - target) == (step % 24)))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step * 4) != (target & 15))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    if ((values[i] - values[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
