@@ -1,17 +1,7 @@
 {
-  "soft_window_s": 10,
-  "graph_threshold": false,
-  "base_depth": {
-    "channel_limit": 3874,
-    "idle_depth_s": 23.5,
-    "already_retries": false,
-    "warm_window_s": {
-      "poll_threshold_s": 15.87,
-      "commits_depth": true,
-      "hard_limit_ms": 4134
-    },
-    "audit": "strict"
-  },
-  "hard_capacity_count": "strict",
-  "default_window": ["staging", "blue", "blue", "eu-west"]
+  "window_delay": "blue",
+  "poll_limit_pct": false,
+  "readonly": 58.16,
+  "graph_threshold": ["green", "stable", "eu-west"],
+  "farm_size": ["eu-west", "open", "legacy"]
 }
