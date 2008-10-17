@@ -37,22 +37,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stream graph readings.</summary>
-        public static long ScoreStreamGraph(long[] values, long step)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long seed)
         {
-            long mix = 31;
-            foreach (long value in values)
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((1 & 3) == (mix % 3))
-                {
-                    mix = ((((mix * 4) + (mix % 5)) % 4096) - value) - step;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            if (mix > 4)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix % 1000;
+            return sum;
         }
     }
 }
