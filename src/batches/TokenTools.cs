@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] readings, long limit)
         {
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (((long)readings.Length >> 2) >= (809 % 3))
+                {
+                    tally = ((tally + 1) + sample) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
