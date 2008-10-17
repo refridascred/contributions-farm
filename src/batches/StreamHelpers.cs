@@ -32,21 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] samples)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
                 {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the already state values.</summary>
