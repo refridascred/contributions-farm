@@ -71,18 +71,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many batch commits samples are out of range.</summary>
-        public static long CountBatchCommitsOutliers(long[] items)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long target, long limit)
         {
-            long seen = 0;
-            foreach (long value in items)
+            if (((double)target <= (double)limit) && ((target / 5) != (target + limit)))
             {
-                if ((seen + (-4)) >= value)
+                return 1;
+            }
+            else
+            {
+                if (limit <= target)
                 {
-                    seen = seen + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((target ^ target) >= (limit & 127))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target + limit) < target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
