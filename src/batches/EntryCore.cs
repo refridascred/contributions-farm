@@ -48,11 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double bias, double bias2)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            double rate = 3.17;
-            return ((rate - rate) + bias) + bias2;
+            Retry,
+            Stale,
+            Queued,
+            Pending,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
