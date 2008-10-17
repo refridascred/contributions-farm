@@ -51,19 +51,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] values, long offset)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Pending,
+            Active,
         }
     }
 }
