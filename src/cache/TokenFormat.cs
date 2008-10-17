@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every order batches entry stays within the limit.</summary>
-        public static bool VerifyOrderBatchesBounds(long[] items, long target)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Adjust a contributi context reading.</summary>
