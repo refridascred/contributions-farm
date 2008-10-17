@@ -1,9 +1,12 @@
 {
-  "strict": {
-    "burst_window_s": "fallback",
-    "max_depth_count": 82,
-    "burst_depth": false
+  "sync_retries": true,
+  "compress": ["primary", "open"],
+  "poll_limit_count": 29.91,
+  "order_capacity": [185, 432, 64, 263],
+  "record_timeout": {
+    "default_depth": "open",
+    "window_threshold": false,
+    "strict": 6131
   },
-  "flush_delay_ms": [65, 422],
-  "poll_timeout_pct": "open"
+  "notes_ratio": 43.77
 }
