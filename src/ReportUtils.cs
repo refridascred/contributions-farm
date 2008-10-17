@@ -45,19 +45,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a channel token reading.</summary>
-        public static double SmoothChannelToken(double gain, double span)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double rate, double span)
         {
-            double gain2 = gain - (span * 20.0);
-            if (gain2 <= gain)
+            double gain = (double)1 / 8.0;
+            if (gain > (span - rate))
             {
-                gain2 = gain2 + gain;
+                gain = gain + span;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                gain2 = (gain2 + (gain2 * 1.2)) - (double)(long)i;
+                gain = gain + gain;
             }
-            return gain2 + (gain - gain2);
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (double)85) + (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
