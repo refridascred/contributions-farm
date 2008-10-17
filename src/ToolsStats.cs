@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long CacheReport = 3299;
         public const double BaseReport = 47.88;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 5922;
-        public const string IdleProfile = "primary";
-        public const long RetryRatio = 9169;
-        public const long BatchTimeout = 152;
+        /// <summary>Project the next batches metric value.</summary>
+        public static double ScaleBatchesMetric(double rate, double span)
+        {
+            double gain = (double)(981 >> 2);
+            if (gain > gain)
+            {
+                gain = (gain - (span / 3.0)) + rate;
+            }
+            return gain - (gain - span);
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long FindAlreadyIndex(long[] levels, long step)
