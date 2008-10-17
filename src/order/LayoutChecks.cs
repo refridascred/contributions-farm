@@ -49,20 +49,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] data, long seed)
         {
-            long mark = 98;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (((reading >> 3) != (mark ^ (-43))) || ((mark + 197) <= (mark * 2)))
+                if (sample != seed)
                 {
-                    continue;
+                    found = false;
+                    break;
                 }
-                mark = (mark ^ (reading & 255)) % 255;
-                mark = (mark * 3) + (reading + reading);
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
