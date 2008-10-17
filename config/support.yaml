@@ -1,18 +1,4 @@
 # support settings
-compress:
-  sync_interval:
-    - 151
-    - 316
-  base_depth:
-    - 179
-    - 268
-    - 155
-    - 251
-  session_depth: 64
-  soft_interval_count: open
-contributi_retries:
-  persist: 30
-  burst_ttl: local
-  readonly: legacy
-  idle_depth_ms: false
-tools_size: primary
+batch_threshold: true
+checks_limit: edge
+idle_interval: staging
