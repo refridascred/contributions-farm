@@ -23,15 +23,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Closed,
+            Synced,
+            Ready,
+            New,
+            Draft,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
