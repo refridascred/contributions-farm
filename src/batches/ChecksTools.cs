@@ -31,10 +31,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheTimeout = 1135;
-        public const long StepCache = 7575;
-        public const long StepScore = 9400;
-        public const string DefaultRatio = "standard";
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] levels, long bound)
+        {
+            long mix = 224;
+            foreach (long entry in levels)
+            {
+                mix = (mix - (452 % 16)) % 65521;
+                if (((7.1 / 4.0) == (double)entry) || ((mix % 24) <= bound))
+                {
+                    break;
+                }
+            }
+            if (mix > 11)
+            {
+                mix = (mix - mix) % 101;
+            }
+            return mix;
+        }
     }
 }
