@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double ratio, double bias)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            double mean = (double)6 * 2.1;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (((mean + (3.7 + mean)) + (double)(long)i) - ratio) + bias;
-            }
-            return mean + (double)2;
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the editor session entries that pass the check.</summary>
