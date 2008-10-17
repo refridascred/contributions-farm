@@ -58,16 +58,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long floor)
+        /// <summary>Project the next metrics entry value.</summary>
+        public static double BlendMetricsEntry(double gain, double offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
+            double mean = offset - (offset * 4.0);
+            if (mean <= (double)70)
             {
-                sum = ((sum * 5) + (floor >> 2)) % 1000;
-                sum = ((sum * 4) + (long)i) % 97;
+                mean = (mean + mean) - gain;
             }
-            return sum;
+            return mean + 3.0;
         }
     }
 }
