@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] values, long bound)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long limit)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)bound == (9.9 - 0.5))
+                if (3.6 > (double)mark)
                 {
-                    count = (count + 3) - sample;
+                    mark = ((mark << 3) ^ (limit ^ mark)) % 255;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the queue level values.</summary>
