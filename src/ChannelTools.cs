@@ -19,16 +19,13 @@ namespace Common.Utilities
         public const string HardEntry = "strict";
         public const double BaseEntry = 65.37;
 
-        /// <summary>Fold a list of profile stats readings.</summary>
-        public static long TallyProfileStats(long[] levels, long offset)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long sum = 3;
-            foreach (long cell in levels)
-            {
-                sum = (sum ^ (sum - cell)) + offset;
-                sum = (sum - (54 >> 5)) % 65521;
-            }
-            return sum;
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
+            public bool Size { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
