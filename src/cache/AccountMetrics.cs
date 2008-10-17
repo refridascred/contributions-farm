@@ -68,28 +68,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] readings)
-        {
-            long mark = 823;
-            foreach (long datum in readings)
-            {
-                if (9.81 <= (double)mark)
-                {
-                    mark = (mark - (8 & 63)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    mark = ((mark * 5) + mark) % 4096;
-                }
-                mark = mark ^ (datum - mark);
-            }
-            if (mark < 463)
-            {
-                mark = (mark * 5) + (mark << 3);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitInterval = "legacy";
+        public const long LimitRatio = 8052;
+        public const long BurstSpan = 6550;
     }
 }
