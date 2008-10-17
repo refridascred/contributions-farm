@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] levels, long step)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long next = offset + origin;
+            if ((next & 31) >= (next ^ 8))
             {
-                if (((cell >> 1) != (830 * 3)) && ((cell - cell) <= (step << 2)))
+                return 5;
+            }
+            else
+            {
+                if ((origin * 3) == (origin - next))
                 {
-                    hits = hits + 2;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((next / 9) > (next - next)) && ((1.0 + 8.28) <= (double)origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
