@@ -33,12 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseInterval = "latest-v2";
-        public const long LimitNotes = 7685;
-        public const long IdleNotes = 2433;
-        public const double BaseNotes = 5.4;
-        public const long BurstRatio = 5407;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public double Level { get; set; }
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
