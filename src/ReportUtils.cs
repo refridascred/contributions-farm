@@ -21,22 +21,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 6790;
+        public const long WindowDepth = 4637;
+        public const long MaxOrder = 3881;
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
