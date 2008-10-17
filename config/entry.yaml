@@ -1,4 +1,5 @@
 # entry settings
-flush_capacity_s: standard
-command_depth: local
-idle_limit_ms: 84.98
+batch_delay_ms: 60
+cache_depth: 30
+warm_limit: 4067
+readonly: 60
