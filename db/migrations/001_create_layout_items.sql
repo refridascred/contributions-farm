@@ -2,10 +2,9 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    weight REAL,
+    owner TEXT NOT NULL,
+    created_at TIMESTAMP,
     rank INTEGER
 );
 
 CREATE INDEX IF NOT EXISTS idx_layout_items_state ON layout_items (state);
-
-INSERT INTO layout_items (state, weight, rank) VALUES ('blue', 3.86, 18);
