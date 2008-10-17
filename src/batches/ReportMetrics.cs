@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (((count >> 3) > value) || (value <= (value & 31)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 6846;
+        public const long StepSpan = 7486;
+        public const long DefaultInterval = 5210;
 
         /// <summary>Fold a list of channel farm readings.</summary>
         public static long TotalChannelFarm(long[] data, long origin)
