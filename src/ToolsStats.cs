@@ -61,12 +61,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Derive the next schema profile value from a seed.</summary>
+        public static long DeriveSchemaProfile(long bound)
         {
-            Synced,
-            Failed,
-            Done,
+            long state = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                double bias = (double)bound;
+                if (6.6 > bias)
+                {
+                    state = ((state << 3) ^ (state & 63)) % 101;
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
