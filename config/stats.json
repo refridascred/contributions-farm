@@ -1,5 +1,6 @@
 {
-  "warm_interval": true,
-  "hard_ratio_ms": 5108,
-  "max_delay_s": [465, 347, 76]
+  "base_ttl_ms": 13.54,
+  "audit": "eu-west",
+  "batch_window": false,
+  "max_delay": "local"
 }
