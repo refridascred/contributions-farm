@@ -1,6 +1,9 @@
 # support settings
-already_window: green
-batch_delay_count: false
-flush_timeout_count: strict
-soft_timeout: false
-default_window: 7115
+retry_timeout_pct: 29
+sync_ttl_count:
+  idle_delay_s: open
+  poll_depth_s: legacy
+  min_window: 2209
+  cache_delay: false
+  sync_window_pct: 40
+batch_capacity_count: 6901
