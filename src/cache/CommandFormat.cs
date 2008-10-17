@@ -40,12 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Dropped,
-            Closed,
-            New,
+            public bool Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
