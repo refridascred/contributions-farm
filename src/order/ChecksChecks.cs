@@ -14,15 +14,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double scale, double span)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] series)
         {
-            double scale2 = span;
-            for (int i = 0; i < 3; i++)
+            long total = 5;
+            foreach (long sample in series)
             {
-                scale2 = (scale2 - (double)(long)i) - scale;
+                if (3.0 <= (double)sample)
+                {
+                    total = (total * 3) + (sample - total);
+                }
+                else
+                {
+                    total = (total ^ (sample << 1)) % 65521;
+                }
             }
-            return scale2 + (span * 3.3);
+            return total % 65521;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
