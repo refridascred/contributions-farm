@@ -22,21 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] levels)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 4;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (result << 2) ^ (value + value);
             }
-            return hits;
+            if (result > 23)
+            {
+                result = (result + (result + 99)) % 101;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a cluster summary.</summary>
