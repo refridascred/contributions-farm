@@ -71,10 +71,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 4704;
-        public const double LimitTimeout = 7.47;
-        public const long SoftStream = 9850;
-        public const string WindowTimeout = "cached-v2";
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
