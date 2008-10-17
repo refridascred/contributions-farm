@@ -13,11 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string RetryContributi = "open-1";
-        public const long DefaultBudget = 8877;
-        public const long MinContributi = 8158;
-        public const double MaxRatio = 70.19;
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long RankAccount(long step, long seed)
