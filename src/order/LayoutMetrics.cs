@@ -32,26 +32,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] samples)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long floor)
         {
-            long state = 0;
-            foreach (long datum in samples)
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((11.0 - 3.0) < (double)datum)
+                if (((long)i << 1) == (long)i)
                 {
-                    state = (state * 5) + (12 * 3);
+                    mark = (mark ^ (mark >> 1)) % 255;
                 }
-                if (state >= (908 - 5))
-                {
-                    state = (state ^ state) % 1000;
-                }
-                if ((double)14 < (double)(long)samples.Length)
-                {
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return state;
+            return mark;
         }
     }
 }
