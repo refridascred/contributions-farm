@@ -24,23 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double rate, double offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] series, long step)
         {
-            double load = 4.25;
-            if (load <= rate)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                load = load - load;
+                if (((double)step < (6.11 + 1.2)) || ((double)step > (4.0 / 8.0)))
+                {
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                load = load - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (offset + offset)) + (double)(long)i;
-            }
-            return load - 4.1;
+            return matches;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
