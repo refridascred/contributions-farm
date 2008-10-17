@@ -48,18 +48,21 @@ namespace Common.Utilities
         public const double HardInterval = 21.0;
         public const long WindowLevel = 2829;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] data)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)tally <= (4.25 + 1.5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) + datum;
+                    if ((samples[i] + samples[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
