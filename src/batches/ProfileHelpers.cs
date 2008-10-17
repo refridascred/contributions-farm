@@ -13,19 +13,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] series, long step)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] data, long offset)
         {
-            long total = 94;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total - (sample << 2)) % 65521) - step;
+                if ((data[i] == offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < 4)
-            {
-                total = total + (total & 7);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the support class values.</summary>
