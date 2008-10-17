@@ -25,11 +25,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 5754;
-        public const string RetryDepth = "local-v2";
-        public const long BurstScore = 9295;
-        public const long IdleBatches = 8457;
-        public const string SoftBatches = "legacy-1";
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
