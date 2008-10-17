@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Retry,
-            Queued,
-            Closed,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 9660;
+        public const long HardSize = 9626;
+        public const long SoftLevel = 6950;
+        public const long MaxPayload = 9705;
+        public const long WindowBudget = 7177;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long AuditQueueHits(long[] readings)
