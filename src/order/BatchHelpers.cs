@@ -47,17 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] levels, long limit)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Active,
+            Retry,
+            New,
+            Idle,
         }
     }
 }
