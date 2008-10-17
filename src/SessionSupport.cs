@@ -14,11 +14,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public double Stamp { get; set; }
-            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
