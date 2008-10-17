@@ -59,19 +59,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] data, long seed)
+        /// <summary>Find the first notes commits entry that matches the target.</summary>
+        public static long FindNotesCommitsIndex(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != seed)
+                if ((series[i] > offset) && ((series[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
