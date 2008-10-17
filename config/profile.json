@@ -1,24 +1,5 @@
 {
-  "compress": 1166,
-  "min_depth_s": {
-    "route_retries": 46.48,
-    "poll_retries": {
-      "default_ttl": [360, 278],
-      "poll_depth_ms": 60,
-      "readonly": false,
-      "warm_capacity_count": 100
-    },
-    "support_window": [496, 483, 425],
-    "max_retries_pct": 61.45,
-    "sync_ttl": "staging",
-    "batch_ttl_s": {
-      "audit": 4.12,
-      "cluster_interval": "primary",
-      "cluster_size": true
-    }
-  },
-  "flush_depth_ms": 250,
-  "profile_window": 20,
-  "flush_ratio_ms": 4009,
-  "batch_depth": 5503
+  "entry_depth": "strict",
+  "base_limit": 5760,
+  "verbose": 96
 }
