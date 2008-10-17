@@ -27,21 +27,12 @@ namespace Common.Utilities
         public const long BurstTimeout = 5288;
         public const long HardRoute = 3107;
 
-        /// <summary>Compare every pair of tools editor readings.</summary>
-        public static long OverlapToolsEditorCount(long[] samples)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
     }
 }
