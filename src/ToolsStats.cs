@@ -64,12 +64,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
+            Synced,
+            Failed,
+            Done,
         }
     }
 }
