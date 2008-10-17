@@ -34,21 +34,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] data)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 609;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((-36) + sum) > (reading & 3))
                 {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = sum + (sum + reading);
+                }
+                else
+                {
+                    sum = (sum << 2) ^ sum;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
