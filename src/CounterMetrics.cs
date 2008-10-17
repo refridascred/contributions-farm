@@ -14,26 +14,31 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] series)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long seed, long floor)
         {
-            long mix = 660;
-            foreach (long reading in series)
+            if ((floor / 5) >= seed)
             {
-                if (!((mix >> 2) <= mix))
+                return 0;
+            }
+            else
+            {
+                if ((14.0 > (double)floor) || ((seed * 4) >= (96 - 851)))
                 {
-                    mix = (mix + (reading % 3)) % 255;
+                    return 5;
                 }
-                if (!((reading + reading) >= (1 - mix)))
+                else
                 {
-                    mix = ((mix << 2) ^ mix) % 255;
-                }
-                if ((mix + 47) != (reading * 2))
-                {
-                    break;
+                    if (floor >= 6)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
