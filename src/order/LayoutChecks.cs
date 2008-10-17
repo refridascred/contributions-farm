@@ -37,31 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] series, long step)
+        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
+        public static long MeasureFarmGithubfarmMatches(long[] samples)
         {
-            long score = 76;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (!((double)cell > (double)score))
+                if (cell > (cell & 15))
                 {
-                    score = ((score << 2) ^ (24 % 10)) % 1000;
-                    score = (score + (step << 3)) % 65521;
-                }
-                if ((score >= (score - cell)) && ((step + step) >= (cell + step)))
-                {
-                    score = score + cell;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    score = ((score * 3) + step) % 65521;
+                    hits = hits - 1;
                 }
             }
-            if (score > 532)
-            {
-                score = (score + (step + step)) % 4096;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a order options.</summary>
