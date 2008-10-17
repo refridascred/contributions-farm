@@ -62,10 +62,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSupport = "legacy-v2";
-        public const long WindowSupport = 8340;
-        public const string BatchSize = "staging-v2";
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long floor, long target)
+        {
+            if ((9.0 / 6.0) == (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if (0 < (floor ^ floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long MatchReportCount(long[] samples)
