@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate notes checks samples.</summary>
-        public static long ScoreNotesChecks(long[] items, long target)
+        /// <summary>Check that every cache report entry stays within the limit.</summary>
+        public static bool ValidateCacheReportLimits(long[] samples, long origin)
         {
-            long score = 631;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                score = ((score ^ (score + score)) % 65521) - target;
-                score = (score + (item + item)) % 65521;
+                if (value <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score % 4096;
+            return valid;
         }
 
         /// <summary>Describe the graph class values.</summary>
