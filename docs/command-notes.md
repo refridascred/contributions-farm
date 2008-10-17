@@ -1,15 +1,15 @@
 # Command notes
 
-Use report settings to tune how often metric data is refreshed.
-Use graph settings to tune how often route data is refreshed.
-Keep metric and counter names short and lowercase.
+The checks module keeps record values in sync with the buffer cache.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
 
-Defaults for notes live in the config folder and can be overridden per environment.
-Each queue is validated before it reaches the commits queue.
-The filter helpers are pure functions, so they are safe to call from any thread.
+The batches module keeps route values in sync with the order cache.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every format change
-- Prefer tools defaults
-- Validate already input early
+- Prefer channel defaults
+- Keep account values small
+- Document new checks fields
+- Validate notes input early
