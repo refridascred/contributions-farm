@@ -19,13 +19,39 @@ namespace Common.Utilities
         public const string HardEntry = "strict";
         public const double BaseEntry = 65.37;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long bound, long floor)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            long cur = bound ^ floor;
+            if ((764 << 3) > (cur << 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((cur & 15) <= (66 - bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + (-3)) <= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound * 5) <= (cur >> 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
