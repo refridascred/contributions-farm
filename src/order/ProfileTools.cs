@@ -53,13 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] values, long step)
         {
-            Locked,
-            Paused,
-            Dropped,
-            Idle,
+            long mix = 651;
+            foreach (long value in values)
+            {
+                mix = (((mix + 70) % 101) ^ value) - step;
+                if ((mix * 5) < mix)
+                {
+                    mix = (mix << 3) ^ ((long)values.Length >> 4);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
