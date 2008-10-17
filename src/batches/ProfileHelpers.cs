@@ -37,13 +37,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            New,
-            Draft,
-            Stale,
-            Active,
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Adjust a checks reading.</summary>
