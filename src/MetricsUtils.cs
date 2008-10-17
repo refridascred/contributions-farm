@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double weight, double floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] levels)
         {
-            double scale = weight;
-            for (int i = 0; i < 3; i++)
+            long carry = 4;
+            foreach (long item in levels)
             {
-                scale = (scale + (floor / 6.0)) + (double)(long)i;
+                if ((double)item > (double)carry)
+                {
+                    carry = (carry ^ 993) % 255;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ item;
+                }
             }
-            return scale + floor;
+            if (carry < 506)
+            {
+                carry = (carry ^ (carry * 4)) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Fold a list of command readings.</summary>
