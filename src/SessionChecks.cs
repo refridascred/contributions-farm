@@ -14,15 +14,38 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] readings, long step)
+        /// <summary>Rank route filter input into a small class.</summary>
+        public static long RankRouteFilter(long offset, long step)
         {
-            long mix = 791;
-            foreach (long datum in readings)
+            if ((step + offset) <= (offset & 3))
             {
-                mix = ((mix + step) % 1000) ^ datum;
+                return 5;
             }
-            return mix % 97;
+            else
+            {
+                if ((step ^ step) > (step >> 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset >= 9.7)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (9.0 >= (double)offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
