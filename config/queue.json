@@ -1,15 +1,12 @@
 {
-  "order_size": {
-    "sync_interval_s": [20, 393, 389, 155],
-    "audit": {
-      "audit": 34.26,
-      "checks_delay": 30,
-      "command_limit": true,
-      "min_timeout_s": true
-    },
-    "hard_window_s": "latest",
-    "base_threshold_ms": false
+  "tools_ttl": "primary",
+  "record_retries": {
+    "stream_retries": 3050,
+    "flush_ttl_ms": 98.77,
+    "max_ratio_s": false,
+    "profile_window": "staging"
   },
-  "batch_size": [266, 380],
-  "batch_timeout_count": "strict"
+  "sync_ttl_count": "latest",
+  "retry_limit_count": "strict",
+  "idle_limit_count": "staging"
 }
