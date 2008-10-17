@@ -53,19 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate token graph readings against a bound.</summary>
-        public static bool CheckTokenGraphBounds(long[] values, long offset)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (entry >= offset)
+                if (datum > limit)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Describe the queue kind values.</summary>
