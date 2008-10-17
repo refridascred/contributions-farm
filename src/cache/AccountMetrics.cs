@@ -84,16 +84,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc << 2) ^ acc) % 1000;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Failed,
+            Done,
+            Pending,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
