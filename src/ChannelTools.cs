@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] levels, long floor)
+        /// <summary>Accumulate tools checks samples.</summary>
+        public static long FoldToolsChecks(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long state = 61;
+            foreach (long datum in items)
             {
-                if (reading >= floor)
+                if ((datum & 7) == (datum + datum))
                 {
-                    valid = false;
-                    break;
+                    state = (state << 2) ^ (datum - 78);
+                }
+                else
+                {
+                    state = (state + datum) % 255;
                 }
             }
-            return valid;
+            return state % 97;
         }
 
         /// <summary>Count the route batches entries that pass the check.</summary>
