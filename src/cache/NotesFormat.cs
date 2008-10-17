@@ -26,13 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] series)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] levels, long origin)
         {
             long hits = 0;
-            foreach (long item in series)
+            foreach (long reading in levels)
             {
-                if ((hits - 2) != (item + hits))
+                if (((hits ^ hits) > origin) && ((86 < (origin + hits)) && ((double)reading > 2.2)))
                 {
                     hits = hits + 2;
                 }
