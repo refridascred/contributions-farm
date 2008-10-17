@@ -55,22 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order githubfarm readings against a rule.</summary>
-        public static long AuditOrderGithubfarmHits(long[] readings, long seed)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)tally <= (double)69)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = ((tally + 1) - sample) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] ^ samples[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
