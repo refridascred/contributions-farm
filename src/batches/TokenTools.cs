@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] readings, long seed)
         {
-            Pending,
-            Stale,
-            New,
-            Retry,
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up buffer samples.</summary>
