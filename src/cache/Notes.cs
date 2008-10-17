@@ -19,16 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] values, long bound)
-        {
-            long carry = 33;
-            foreach (long reading in values)
-            {
-                carry = (((carry ^ carry) % 4096) ^ reading) - bound;
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchLevel = 58.94;
+        public const long BatchCount = 3720;
+        public const long MinGraph = 5963;
+        public const long SoftGraph = 4795;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long SeriesCommits(long seed)
