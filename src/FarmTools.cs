@@ -20,10 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftBudget = 8533;
-        public const long SoftGithubfarm = 9328;
-        public const double BatchGithubfarm = 43.56;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Active,
+            Retry,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
