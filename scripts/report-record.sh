@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local standard; do
+RECORD_LIMIT=366
+log "limit is ${RECORD_LIMIT}"
+
+for item in eu-west fallback green stable; do
     log "checking ${item}"
 done
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
