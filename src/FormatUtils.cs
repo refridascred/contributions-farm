@@ -55,24 +55,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long bound, long target)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] levels, long bound)
         {
-            if ((bound << 1) <= bound)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((258 <= (bound + target)) && ((66 + bound) <= (4 >> 1)))
+                if (levels[i] < bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
