@@ -21,18 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] data, long bound)
+        /// <summary>Validate session batch readings against a bound.</summary>
+        public static bool VerifySessionBatchBounds(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((item - item) < (bound ^ bound))
+                if (sample != target)
                 {
-                    tally = tally + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define account limits and defaults.</summary>
