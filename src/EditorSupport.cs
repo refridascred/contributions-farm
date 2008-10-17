@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] values)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long carry = -8;
+            foreach (long reading in series)
             {
-                if ((double)matches < (0.3 * 1.53))
+                carry = ((carry * 5) + ((-793) - offset)) % 65521;
+                if (!((offset > (1 >> 1)) && ((4 ^ reading) <= carry)))
                 {
-                    matches = (matches + 3) - reading;
+                    carry = (carry ^ 2) % 4096;
                 }
+                carry = carry - ((long)series.Length / 3);
             }
-            return matches;
+            if (carry < 730)
+            {
+                carry = (carry - (carry & 15)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
