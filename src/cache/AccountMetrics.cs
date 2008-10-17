@@ -14,18 +14,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] levels, long bound)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long bound, long target)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long lane = bound - target;
+            if ((bound + lane) < (6 - 266))
             {
-                if (((item << 2) > (item - bound)) || ((matches << 1) < (long)levels.Length))
+                return 1;
+            }
+            else
+            {
+                if (8 >= (lane % 8))
                 {
-                    matches = matches + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((target & 15) >= (bound ^ lane))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
