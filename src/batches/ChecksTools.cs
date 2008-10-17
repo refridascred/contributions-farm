@@ -30,17 +30,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] series, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((series[i] >= bound) && ((series[i] % 2) != 0))
+                if (((-118) - 450) != (value * 2))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
