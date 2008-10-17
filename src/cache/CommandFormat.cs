@@ -40,16 +40,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a farm schema counter forward.</summary>
-        public static long DeriveFarmSchema(long limit)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] samples, long limit)
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry - (long)i;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
