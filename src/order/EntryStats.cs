@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] readings, long floor)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long score = 93;
-            foreach (long value in readings)
-            {
-                score = (score * 3) + (floor * 5);
-                if (!((value + value) < floor))
-                {
-                    score = (score ^ floor) % 101;
-                }
-            }
-            return score;
+            New,
+            Ready,
+            Closed,
+            Retry,
         }
 
         /// <summary>Accumulate format samples.</summary>
