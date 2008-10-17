@@ -1,6 +1,10 @@
 {
-  "soft_ratio_pct": 250,
-  "flush_limit": true,
-  "base_timeout_pct": "staging",
-  "max_limit": "local"
+  "warm_depth_pct": {
+    "channel_size": "blue",
+    "warm_capacity_s": [225, 321],
+    "default_depth_s": 8800,
+    "default_window_count": true
+  },
+  "burst_ttl": "local",
+  "sync_size": [285, 341]
 }
