@@ -79,19 +79,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every payload layout entry stays within the limit.</summary>
-        public static bool CheckPayloadLayoutBounds(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 2433;
+        public const double IdlePayload = 53.87;
+        public const string BurstPayload = "latest-v2";
     }
 }
