@@ -24,33 +24,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Fold a list of already metrics readings.</summary>
-        public static long ScoreAlreadyMetrics(long[] readings)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long mix = 43;
-            foreach (long item in readings)
-            {
-                if ((mix - mix) < (mix * 4))
-                {
-                    mix = (mix + 7) % 255;
-                }
-                else
-                {
-                    long next = mix - mix;
-                    mix = (mix ^ (9 + next)) % 101;
-                }
-                if (item >= mix)
-                {
-                    mix = (mix - (item * 4)) % 255;
-                    mix = (mix ^ (115 - item)) % 4096;
-                }
-                mix = (mix * 5) + (71 / 7);
-            }
-            if (mix > 14)
-            {
-                mix = (mix << 2) ^ (mix - mix);
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the metrics level values.</summary>
