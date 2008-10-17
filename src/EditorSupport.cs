@@ -39,15 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long seed)
         {
-            long state = offset;
+            long result = seed;
             for (int i = 0; i < 7; i++)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Accumulate payload samples.</summary>
