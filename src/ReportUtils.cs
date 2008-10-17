@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a editor token pair into a bucket.</summary>
-        public static long RankEditorToken(long origin, long seed)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            if (!((origin & 127) < (seed + origin)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((seed + seed) <= origin) && (origin <= (seed - origin)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin / 5) <= (69 >> 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((6.3 + 17.0) == (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Match up editor window samples.</summary>
