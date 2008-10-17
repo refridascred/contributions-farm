@@ -58,10 +58,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRatio = 9291;
-        public const string RetryRatio = "cached-1";
-        public const long MinTimeout = 5938;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Retry,
+            Failed,
+            Locked,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double HardStats = 67.05;
