@@ -30,17 +30,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the notes stream series from a seed.</summary>
-        public static long DeriveNotesStream(long seed)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = (acc + (acc + acc)) % 255;
-                acc = (acc - (acc % 16)) % 65521;
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Closed,
+            Pending,
+            Failed,
+            Ready,
+            Synced,
         }
     }
 }
