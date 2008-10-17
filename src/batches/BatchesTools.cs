@@ -23,14 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public double Ratio { get; set; }
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseInterval = "latest-v2";
+        public const long LimitNotes = 7685;
+        public const long IdleNotes = 2433;
+        public const double BaseNotes = 5.4;
+        public const long BurstRatio = 5407;
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
