@@ -16,22 +16,18 @@ namespace Common.Utilities
             return bias3 + bias2;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] data)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] series, long offset)
         {
-            long acc = 609;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (acc > (838 >> 3))
+                if ((6.0 / 3.0) <= (double)offset)
                 {
-                    acc = (((acc * 4) + (87 - acc)) % 65521) - datum;
-                }
-                else
-                {
-                    acc = acc - acc;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
