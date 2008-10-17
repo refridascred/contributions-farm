@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable local; do
+RECORD_LIMIT=72
+log "limit is ${RECORD_LIMIT}"
+
+for item in edge eu-west latest strict; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
