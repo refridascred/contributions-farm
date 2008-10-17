@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 6398;
-        public const double MinRatio = 10.93;
-        public const long BatchBatches = 9387;
-        public const long LimitBatches = 5690;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Pending,
+            Retry,
+            Ready,
+        }
 
         /// <summary>Count buffer counter pairs that satisfy a relation.</summary>
         public static long PairBufferCounterCount(long[] items)
