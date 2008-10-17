@@ -66,10 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheBatch = 66.26;
-        public const double IdleRatio = 82.17;
-        public const long SoftBatch = 9734;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Validate buffer stream readings against a bound.</summary>
         public static bool VerifyBufferStreamLimits(long[] samples, long target)
