@@ -47,14 +47,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] values, long target)
         {
-            Active,
-            Failed,
-            Draft,
-            Dropped,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
