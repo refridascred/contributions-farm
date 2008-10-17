@@ -12,22 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] levels, long floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (item >= floor)
+                if (count <= (sample - sample))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine token values into a single score.</summary>
