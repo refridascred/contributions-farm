@@ -30,11 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Iterate the notes stream series from a seed.</summary>
+        public static long DeriveNotesStream(long seed)
         {
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = (acc + (acc + acc)) % 255;
+                acc = (acc - (acc % 16)) % 65521;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
