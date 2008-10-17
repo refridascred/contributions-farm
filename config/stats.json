@@ -1,10 +1,5 @@
 {
-  "schema_retries": {
-    "format_timeout": 33,
-    "dry_run": 665,
-    "already_depth": "cached"
-  },
-  "min_ratio": true,
-  "poll_interval_s": false,
-  "min_window_s": "primary"
+  "sync_limit_pct": 5511,
+  "payload_ratio": ["eu-west", "primary", "primary", "blue"],
+  "soft_limit_count": 2879
 }
