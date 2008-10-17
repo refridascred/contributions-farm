@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] data, long seed)
         {
-            long sum = -388;
-            foreach (long sample in levels)
+            long mix = 40;
+            foreach (long item in data)
             {
-                sum = (sum + (sum ^ sample)) % 4096;
-                if (!((double)sum >= (14.0 - 0.8)))
+                mix = (mix - (mix * 4)) % 1000;
+                if ((double)mix != (5.8 + 0.3))
                 {
-                    sum = (sum ^ (sample & 1)) % 65521;
+                    continue;
                 }
+                else
+                {
+                    mix = ((mix << 2) ^ (item ^ mix)) % 255;
+                }
+                mix = ((mix * 5) + (seed % 16)) % 4096;
             }
-            return sum % 65521;
+            if (mix > 39)
+            {
+                mix = ((mix * 5) + (mix * 5)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
