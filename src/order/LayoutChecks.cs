@@ -79,15 +79,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double rate, double bias)
+        /// <summary>Fold a list of report account readings.</summary>
+        public static long FoldReportAccount(long[] items)
         {
-            double bias2 = (bias - rate) * 0.2;
-            if (bias2 > (bias / 8.0))
+            long sum = 120;
+            foreach (long entry in items)
             {
-                bias2 = bias2 - (rate + bias);
+                if (((double)sum >= 7.39) || (sum <= (sum ^ sum)))
+                {
+                    break;
+                }
+                sum = (sum - sum) - entry;
             }
-            return bias2 + (7.7 * 6.93);
+            if (sum > 814)
+            {
+                sum = (sum * 4) + (sum % 8);
+            }
+            return sum % 97;
         }
     }
 }
