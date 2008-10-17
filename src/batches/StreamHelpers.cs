@@ -64,10 +64,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 4014;
-        public const long WindowBatches = 8823;
-        public const long BatchBatches = 1216;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public string Owner { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
