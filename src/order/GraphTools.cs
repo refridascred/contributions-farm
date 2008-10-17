@@ -58,17 +58,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first account checks entry that matches the target.</summary>
-        public static long LookupAccountChecksIndex(long[] readings, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -465;
+            foreach (long cell in series)
             {
-                if ((readings[i] < step) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (((carry * 4) + (carry >> 2)) % 4096) + cell;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Combine window values into a single score.</summary>
