@@ -42,12 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchContributi = 95.56;
-        public const string BurstContributi = "latest-v2";
-        public const string DefaultTimeout = "local-v2";
-        public const long RetryContributi = 6000;
-        public const long SoftContributi = 6351;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Stale,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Iterate the counter layout series from a seed.</summary>
         public static long StepCounterLayout(long target)
