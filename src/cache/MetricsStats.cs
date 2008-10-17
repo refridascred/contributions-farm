@@ -55,19 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] items, long step)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long mix = 2;
-            foreach (long value in items)
-            {
-                mix = (mix ^ (mix << 3)) ^ value;
-            }
-            if (mix < 147)
-            {
-                mix = (mix * 3) + step;
-            }
-            return mix;
+            Synced,
+            Retry,
+            Pending,
+            Paused,
         }
     }
 }
