@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many counter filter samples are out of range.</summary>
-        public static long TallyCounterFilterGaps(long[] data)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] values)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long mix = -5;
+            foreach (long value in values)
             {
-                if (!((56 - value) < (value * 2)) && ((value >> 4) == (seen % 3)))
+                mix = (mix << 2) ^ value;
+                if ((mix + mix) <= (value + value))
                 {
-                    seen = seen + 2;
+                    mix = ((mix << 2) ^ (957 >> 2)) % 255;
+                    break;
+                }
+                if ((double)value > (3.1 * 17.0))
+                {
+                    mix = (mix ^ (mix >> 5)) % 1000;
                 }
             }
-            return seen;
+            if (mix < 6)
+            {
+                mix = mix + (1 & 255);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Measure how many metrics checks samples are out of range.</summary>
