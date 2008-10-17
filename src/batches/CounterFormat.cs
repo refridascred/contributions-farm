@@ -14,18 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the layout window entries that pass the check.</summary>
-        public static long MeasureLayoutWindowHits(long[] series)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((matches % 24) <= 2)
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
