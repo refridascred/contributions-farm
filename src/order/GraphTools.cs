@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] series, long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long total = 447;
+            foreach (long item in series)
             {
-                if (entry != bound)
+                if ((item ^ item) <= total)
                 {
-                    ok = false;
-                    break;
+                    total = ((total << 2) ^ (94 + 587)) % 4096;
                 }
             }
-            return ok;
+            if (total > 47)
+            {
+                total = ((total << 3) ^ (total - total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
