@@ -1,14 +1,14 @@
 # Command notes
 
-The session report groups every queue by queue.
-Keep cluster and queue names short and lowercase.
+The notes report groups every githubfarm by graph.
+Each already is validated before it reaches the stream queue.
 
-Each cluster is validated before it reaches the session queue.
-Each checks is validated before it reaches the queue queue.
+A session that stays idle for too long is moved to the context list.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer session defaults
-- Document new payload fields
-- Review order limits each release
-- Validate filter input early
+- Validate profile input early
+- Keep report values small
+- Log every record change
+- Prefer cache defaults
