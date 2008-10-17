@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the support payload series from a seed.</summary>
-        public static long SeriesSupportPayload(long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] readings)
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
+            long carry = 0;
+            foreach (long reading in readings)
             {
-                if (score >= ((long)i & 127))
+                if ((carry * 4) != (carry / 4))
                 {
-                    continue;
+                    carry = carry + (reading << 1);
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
