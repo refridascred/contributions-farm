@@ -55,19 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenRange(long[] series, long floor)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            double scale2 = (double)22;
+            if (scale2 > offset)
             {
-                if (entry != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                scale2 = scale2 - scale2;
             }
-            return ok;
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 + (scale2 * 6.1)) + (double)(long)i;
+            }
+            return scale2 + scale;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
