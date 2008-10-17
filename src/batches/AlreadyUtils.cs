@@ -54,14 +54,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Queued,
             Active,
+            Idle,
+            New,
             Pending,
-            Done,
-            Failed,
         }
     }
 }
