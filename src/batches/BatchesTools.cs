@@ -58,29 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long floor, long origin)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long seed, long bound)
         {
-            if (((double)origin >= (9.39 - 10.0)) && ((origin & 1) == (floor + origin)))
+            if (!((double)bound >= 5.7))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((floor >> 4) > origin)
+                if (6.2 >= (double)seed)
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((floor <= (origin << 3)) || ((origin << 1) < (floor + floor)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 6;
                 }
             }
         }
