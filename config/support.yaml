@@ -1,4 +1,10 @@
 # support settings
-idle_delay: false
-max_retries_ms: 70
-sync_delay: 58.58
+poll_threshold_ms:
+  strict: 3203
+  enabled: legacy
+  max_size_count: cached
+  stats_retries: blue
+  stream_depth: fallback
+  default_ratio_count: 83
+compress: 7665
+record_capacity: 77.67
