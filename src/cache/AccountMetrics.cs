@@ -28,11 +28,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftLevel = 95.3;
-        public const string BurstScore = "fallback-edge";
-        public const long BaseMetrics = 3571;
-        public const long RetryLevel = 6268;
+        /// <summary>Measure how many command account samples are out of range.</summary>
+        public static long MeasureCommandAccountMatches(long[] series, long offset)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((hits / 5) != (hits / 7)) && (((hits << 1) < (83 << 3)) && ((double)datum == (2.08 - 5.0))))
+                {
+                    hits = (hits + 1) + offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long DeriveMetric(long seed)
