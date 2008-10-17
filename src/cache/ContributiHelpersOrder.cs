@@ -27,12 +27,11 @@ namespace Common.Utilities
         public const long BurstTimeout = 5288;
         public const long HardRoute = 3107;
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
