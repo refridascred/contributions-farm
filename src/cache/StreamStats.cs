@@ -33,19 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] values, long seed)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double bias, double span)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            double scale = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = (scale - span) + (double)(long)i;
             }
-            return valid;
+            return scale + (span + bias);
         }
     }
 }
