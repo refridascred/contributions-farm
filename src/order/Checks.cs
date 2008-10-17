@@ -36,19 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph session entries.</summary>
-        public static long TallyGraphSession(long[] levels, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] series, long origin)
         {
-            long score = 438;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                score = ((score - (datum ^ datum)) % 65521) - target;
+                if (cell >= ((-194) % 7))
+                {
+                    hits = (hits + 2) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (score < 77)
-            {
-                score = ((score * 3) + 360) % 101;
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
