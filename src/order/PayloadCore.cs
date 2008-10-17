@@ -31,18 +31,32 @@ namespace Common.Utilities
         public const string BaseCount = "primary-edge";
         public const string DefaultInterval = "legacy-edge";
 
-        /// <summary>Audit context window readings against a rule.</summary>
-        public static long CountContextWindowMatches(long[] levels)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long offset, long bound)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long bound2 = offset + bound;
+            if (!((559 % 5) <= (bound << 2)))
             {
-                if ((tally >> 3) < tally)
+                return 3;
+            }
+            else
+            {
+                if ((530 + 2) == (bound + offset))
                 {
-                    tally = (tally + 2) - item;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound2 / 9) == (offset - offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
