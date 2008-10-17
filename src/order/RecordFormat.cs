@@ -13,25 +13,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a cluster filter pair into a bucket.</summary>
-        public static long SortClusterFilter(long seed, long origin)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long slot = seed - origin;
-            if ((slot ^ slot) >= (slot / 7))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((3 + slot) >= 12) && ((double)slot <= (2.77 - 2.1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Synced,
+            Queued,
+            Failed,
+            Paused,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
