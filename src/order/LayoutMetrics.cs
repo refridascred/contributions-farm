@@ -35,23 +35,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] values, long floor)
+        /// <summary>Grade a stats editor value against two limits.</summary>
+        public static long RankStatsEditor(long bound, long limit)
         {
-            long total = 22;
-            foreach (long value in values)
+            if (5 >= (limit + bound))
             {
-                total = ((total << 3) ^ 234) % 4096;
-                if (floor >= (value + 6))
+                return 7;
+            }
+            else
+            {
+                if ((bound * 5) <= (35 >> 1))
                 {
-                    total = ((total << 2) ^ (value - value)) % 97;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (total < 609)
-            {
-                total = (total + (floor + total)) % 101;
-            }
-            return total;
         }
     }
 }
