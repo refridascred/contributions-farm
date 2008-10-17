@@ -25,18 +25,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] levels)
+        /// <summary>Classify a report format pair into a bucket.</summary>
+        public static long SortReportFormat(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long next = origin + offset;
+            if ((offset >= origin) && (origin > next))
             {
-                if (!(((long)levels.Length >> 4) < (matches % 16)))
+                return 7;
+            }
+            else
+            {
+                if ((next - offset) < offset)
                 {
-                    matches = (matches + 3) ^ reading;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
