@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxInterval = 8226;
+        public const string DefaultCount = "staging";
+        public const long MaxRatio = 6733;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long TallyStats(long[] series)
