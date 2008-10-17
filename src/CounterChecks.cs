@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Closed,
-            Stale,
-            Active,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleTimeout = 1775;
+        public const string DefaultTimeout = "standard";
+        public const long BaseBatch = 5623;
+        public const long LimitBatch = 2962;
+        public const string MinDepth = "alpha";
 
         /// <summary>Digest a series of route entries.</summary>
         public static long FoldRoute(long[] series)
