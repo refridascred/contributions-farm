@@ -19,22 +19,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] values)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long total = 3;
-            foreach (long value in values)
-            {
-                if ((double)total < (1.0 + 3.0))
-                {
-                    total = total - value;
-                }
-                else
-                {
-                    total = total + (-13);
-                }
-            }
-            return total % 97;
+            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a support reading by value.</summary>
