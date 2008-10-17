@@ -11,10 +11,18 @@ namespace Common.Utilities
         public const long IdleBudget = 9424;
         public const double StepInterval = 84.17;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinContributi = 75.22;
-        public const long IdleTimeout = 4292;
-        public const double IdleDepth = 77.47;
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate metric channel readings against a bound.</summary>
         public static bool ValidateMetricChannelBounds(long[] samples, long target)
