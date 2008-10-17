@@ -26,21 +26,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 451;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                score = (score ^ ((long)samples.Length + 911)) % 4096;
+                if (((origin * 4) > cell) || ((score ^ score) != (63 + cell)))
                 {
-                    if ((series[i] + series[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score << 2) ^ (99 + cell);
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
