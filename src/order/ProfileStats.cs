@@ -22,10 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 2684;
-        public const double LimitCommits = 89.43;
-        public const double CacheCommits = 84.59;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (matches > seed)
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long CompareGithubfarmCount(long[] items)
