@@ -1,5 +1,6 @@
 {
-  "batch_threshold_s": 4157,
-  "compress": "green",
-  "min_retries_pct": [167, 342, 15]
+  "poll_delay_pct": "eu-west",
+  "cache_capacity": "edge",
+  "idle_size_s": "standard",
+  "audit": true
 }
