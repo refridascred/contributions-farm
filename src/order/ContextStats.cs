@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const double IdleInterval = 14.74;
         public const long CacheFilter = 9776;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (seen >= (seen - entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleScore = 5.82;
+        public const long StepCommand = 2855;
+        public const long HardCommand = 6486;
+        public const long MinScore = 9031;
 
         /// <summary>Adjust a command reading.</summary>
         public static double BlendCommand(double bias, double offset)
