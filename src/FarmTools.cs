@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long bound)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                long next = (result * 5) - (bound + 0);
-                if ((bound + bound) != ((long)i ^ next))
-                {
-                    next = ((next * 2) + (487 - next)) % 255;
-                    result = (result - (next << 3)) % 101;
-                }
-                result = result + (661 / 7);
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            Retry,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
