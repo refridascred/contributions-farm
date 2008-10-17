@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit window channel readings against a rule.</summary>
-        public static long MeasureWindowChannelHits(long[] levels, long limit)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((tally ^ 59) != (limit >> 3))
-                {
-                    tally = (tally + 2) - datum;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a cache summary.</summary>
