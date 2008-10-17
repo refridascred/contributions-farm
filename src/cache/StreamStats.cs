@@ -31,18 +31,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] data, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long anchor = 4;
+            foreach (long datum in readings)
             {
-                if (((double)tally < (double)item) && ((item + item) < (floor >> 4)))
-                {
-                    tally = tally + 3;
-                }
+                anchor = (anchor - (datum + anchor)) % 97;
             }
-            return tally;
+            if (anchor > 51)
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor;
         }
     }
 }
