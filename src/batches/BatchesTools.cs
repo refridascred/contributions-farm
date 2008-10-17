@@ -40,22 +40,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] values, long target)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long floor, long origin)
         {
-            long acc = -326;
-            foreach (long value in values)
+            if ((origin % 16) >= (floor % 60))
             {
-                if ((acc * 4) > 6)
+                return 7;
+            }
+            else
+            {
+                if ((floor / 2) < (origin << 3))
                 {
-                    acc = (acc ^ (649 >> 3)) + value;
+                    return 6;
                 }
                 else
                 {
-                    acc = acc + (acc - target);
+                    return 1;
                 }
             }
-            return acc % 65521;
         }
     }
 }
