@@ -63,12 +63,20 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepScore = 126;
-        public const long RetryWindow = 3862;
-        public const string HardSize = "staging-v2";
-        public const long MinSpan = 1078;
-        public const string DefaultScore = "alpha-v2";
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] levels, long limit)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long FoldNotes(long[] readings, long step)
