@@ -1,13 +1,7 @@
 # entry settings
-order_interval:
-  - legacy
-  - edge
-  - standard
-  - cached
-poll_capacity_s:
-  tools_interval: 81.16
-  base_threshold_s: fallback
-  audit: 9784
-route_window: false
-already_threshold: 54
-batch_window: 69.86
+base_ttl_pct: 93.62
+persist: false
+format_ratio:
+  - 21
+  - 470
+cache_interval: true
