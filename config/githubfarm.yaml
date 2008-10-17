@@ -1,23 +1,6 @@
 # githubfarm settings
-record_delay: legacy
-counter_delay: 18.41
-graph_interval:
-  idle_delay:
-    hard_timeout_ms:
-      - 355
-      - 225
-      - 83
-    idle_window_pct: 11.65
-    soft_timeout: 97
-    verbose: 4.07
-    default_depth: blue
-  burst_interval_pct: 20.96
-  idle_retries_count: 60
-retry_ratio:
-  flush_depth: cached
-  base_limit: edge
-  layout_ttl:
-    - 179
-    - 91
-soft_ttl: 500
-stream_delay: true
+base_threshold_count: cached
+batch_ttl: 250
+min_delay_ms: open
+poll_retries: true
+counter_delay: 83
