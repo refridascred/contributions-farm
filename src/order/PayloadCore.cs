@@ -40,24 +40,11 @@ namespace Common.Utilities
             return (load + (offset * 13.0)) + weight;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double rate, double floor)
-        {
-            double mean = (double)((-17) + 862);
-            if (mean >= (rate - mean))
-            {
-                mean = (mean - (double)1) + floor;
-            }
-            else
-            {
-                mean = mean - (double)(-9);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (double)683) + (double)(long)i;
-            }
-            return mean - (double)39;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 5439;
+        public const long SoftWindow = 9666;
+        public const double StepBudget = 7.72;
+        public const double RetrySize = 19.71;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long GradeToken(long offset, long bound)
