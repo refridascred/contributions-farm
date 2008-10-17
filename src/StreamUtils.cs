@@ -68,11 +68,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardStats = 67.05;
-        public const long DefaultInterval = 9635;
-        public const long BaseStats = 3775;
-        public const double RetryTimeout = 66.29;
-        public const long CacheStats = 3539;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public long Count { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
