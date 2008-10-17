@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long StepEntry = 7391;
         public const string WindowEntry = "legacy-v2";
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] data)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((reading + reading) < (reading & 63))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Done,
+            Failed,
+            Active,
         }
 
         /// <summary>Accumulate commits samples.</summary>
