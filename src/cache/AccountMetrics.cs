@@ -57,21 +57,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of cluster tools readings.</summary>
-        public static long CompareClusterToolsCount(long[] values)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((result * 4) < (result + floor))
                 {
-                    if ((values[i] ^ values[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result * 3) + 682) % 255;
                 }
+                else
+                {
+                    result = result - ((long)i + floor);
+                    result = (result << 3) ^ (floor - 221);
+                }
+                result = (result - (67 + 790)) % 1000;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
