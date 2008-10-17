@@ -37,10 +37,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardProfile = 34.6;
-        public const long SoftProfile = 4488;
-        public const string MinCount = "primary-edge";
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long target, long limit)
+        {
+            long bound = target - limit;
+            if (((bound ^ target) < (bound * 3)) && ((target - bound) <= (bound / 2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (target < (limit + bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long StepCluster = 4549;
