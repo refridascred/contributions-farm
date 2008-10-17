@@ -15,18 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] data)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-26) >> 4) >= (count * 5))
+                if ((series[i] >= bound) && ((series[i] % 3) != 0))
                 {
-                    count = (count + 2) ^ cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
