@@ -54,13 +54,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Active,
-            Idle,
-            New,
-            Pending,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheInterval = 9.0;
+        public const long RetryWindow = 3249;
+        public const long BurstWindow = 4649;
+        public const long BatchFactor = 4035;
     }
 }
