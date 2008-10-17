@@ -50,15 +50,31 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] readings)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long target, long origin)
         {
-            long sum = 396;
-            foreach (long entry in readings)
+            if ((15.0 - 3.39) >= (double)origin)
             {
-                sum = (((sum * 2) + 226) % 1000) - entry;
+                return 6;
             }
-            return sum % 1000;
+            else
+            {
+                if ((target - 489) <= (target + target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((origin + 6) == (target & 3)) && ((origin >> 4) != (origin + origin)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
