@@ -35,19 +35,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] data, long origin)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long result = 66;
-            foreach (long entry in data)
-            {
-                result = (((result * 5) + origin) % 97) ^ entry;
-            }
-            if (result > 28)
-            {
-                result = (result - (origin - origin)) % 97;
-            }
-            return result;
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a buffer header.</summary>
