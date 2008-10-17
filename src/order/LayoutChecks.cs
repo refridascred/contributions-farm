@@ -64,17 +64,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first notes commits entry that matches the target.</summary>
-        public static long FindNotesCommitsIndex(long[] series, long offset)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > offset) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the batches kind values.</summary>
