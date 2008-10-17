@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double weight, double floor)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double gain = weight;
-            if (gain > (gain - 4.2))
-            {
-                gain = (gain + weight) - floor;
-            }
-            else
-            {
-                gain = gain + (4.6 / 3.0);
-            }
-            return gain - weight;
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
