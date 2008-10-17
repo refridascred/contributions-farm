@@ -40,15 +40,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] items)
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (matches < (matches - datum))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Rank record input into a small class.</summary>
