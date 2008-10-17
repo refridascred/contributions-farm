@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 2698;
-        public const string WindowDepth = "strict-1";
-        public const double BurstFormat = 25.58;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] values, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (((bound + matches) > entry) && (((long)values.Length % 2) < bound))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountHits(long[] samples, long floor)
