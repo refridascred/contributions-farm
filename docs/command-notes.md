@@ -1,10 +1,14 @@
 # Command notes
 
-Run the buffer check before changing any record limits.
-Each order is validated before it reaches the schema queue.
+The session report groups every queue by queue.
+Keep cluster and queue names short and lowercase.
+
+Each cluster is validated before it reaches the session queue.
+Each checks is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Keep stream values small
-- Document new context fields
-- Review token limits each release
+- Prefer session defaults
+- Document new payload fields
+- Review order limits each release
+- Validate filter input early
