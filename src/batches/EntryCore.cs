@@ -34,18 +34,17 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] series, long limit)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit + matches) < limit)
+                if (series[i] >= limit)
                 {
-                    matches = (matches + 1) + entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the window mode values.</summary>
