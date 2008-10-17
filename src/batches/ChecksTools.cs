@@ -39,23 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] levels, long bound)
-        {
-            long mix = 224;
-            foreach (long entry in levels)
-            {
-                mix = (mix - (452 % 16)) % 65521;
-                if (((7.1 / 4.0) == (double)entry) || ((mix % 24) <= bound))
-                {
-                    break;
-                }
-            }
-            if (mix > 11)
-            {
-                mix = (mix - mix) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 724;
+        public const string BurstMetric = "legacy";
+        public const long MinMetric = 5889;
+        public const long StepInterval = 6572;
+        public const double StepMetric = 50.36;
     }
 }
