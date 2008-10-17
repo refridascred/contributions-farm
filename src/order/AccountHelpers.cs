@@ -17,26 +17,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] readings, long offset)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double bias, double bias2)
         {
-            long state = 97;
-            foreach (long item in readings)
+            double ratio = bias2 - (bias2 / 8.0);
+            if (ratio <= (bias2 * 0.84))
             {
-                if ((state + item) >= (state % 8))
-                {
-                    state = (state << 3) ^ (offset + item);
-                }
-                else
-                {
-                    state = (state * 5) + (65 + state);
-                }
+                ratio = ratio + 0.14;
             }
-            if (state < 4)
+            else
             {
-                state = ((state << 3) ^ state) % 97;
+                ratio = ratio - ratio;
             }
-            return state % 4096;
+            return ratio + bias;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
