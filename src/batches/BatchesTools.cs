@@ -14,18 +14,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] data, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] values)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long sum = 815;
+            foreach (long reading in values)
             {
-                if ((item & 15) < (offset - item))
+                if ((reading & 63) < (sum + sum))
                 {
-                    matches = matches + 3;
+                    sum = (sum - (sum + 1)) % 97;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
