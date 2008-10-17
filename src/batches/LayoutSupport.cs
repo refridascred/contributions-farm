@@ -52,25 +52,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a profile buffer value against two limits.</summary>
-        public static long BucketProfileBuffer(long offset, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] readings)
         {
-            long edge = offset - origin;
-            if (origin <= (offset >> 4))
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((edge - offset) < (origin * 3)) || ((860 + origin) < 26))
+                if ((value / 3) == (matches & 31))
                 {
-                    return 2;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 0;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
