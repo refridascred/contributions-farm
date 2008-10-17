@@ -14,11 +14,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 10.2;
-        public const long BatchWindow = 7432;
-        public const long CacheInterval = 4684;
-        public const long BaseTimeout = 7177;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Retry,
+            Synced,
+            New,
+            Idle,
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long RankEditor(long target, long step)
