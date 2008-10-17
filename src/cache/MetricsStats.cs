@@ -60,12 +60,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long origin)
         {
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
