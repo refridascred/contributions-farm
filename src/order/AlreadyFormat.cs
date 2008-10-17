@@ -38,11 +38,21 @@ namespace Common.Utilities
         public const string IdleGraph = "strict-1";
         public const double BurstTimeout = 84.33;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseSession = 37.59;
-        public const long MaxWidth = 2384;
-        public const double HardInterval = 21.0;
-        public const long WindowLevel = 2829;
+        /// <summary>Roll a githubfarm queue counter forward.</summary>
+        public static long SeriesGithubfarmQueue(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    acc = (acc + (7 - offset)) + (long)i2;
+                    acc = (acc << 3) ^ (offset - acc);
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long PairWindowCount(long[] samples)
