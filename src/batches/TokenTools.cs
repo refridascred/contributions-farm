@@ -20,16 +20,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] levels, long floor)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long anchor = 45;
-            foreach (long item in levels)
-            {
-                anchor = (((anchor * 5) + item) % 1000) - floor;
-                anchor = ((anchor * 5) + (item << 1)) % 1000;
-            }
-            return anchor;
+            public bool Region { get; set; }
+            public double Offset { get; set; }
+            public double Total { get; set; }
         }
     }
 }
