@@ -25,11 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a farm stats figure with a bias.</summary>
-        public static double SmoothFarmStats(double gain, double offset)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            double load = offset;
-            return (load + (offset / 7.0)) + gain;
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Compare every pair of tools editor readings.</summary>
