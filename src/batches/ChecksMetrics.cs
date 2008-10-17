@@ -76,12 +76,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long offset)
         {
-            public string Flag { get; set; } = "";
-            public double Level { get; set; }
-            public double Token { get; set; }
+            long state = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Match up schema samples.</summary>
