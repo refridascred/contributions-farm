@@ -20,13 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long origin, long step)
         {
-            Done,
-            Pending,
-            Draft,
-            Queued,
+            long cur = origin ^ step;
+            if ((cur - 528) != (755 / 9))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((0.9 / 3.0) > (double)origin) && (cur < (6 + cur)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step > (step - cur)) || ((double)step >= (9.0 / 3.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine record command values into a single score.</summary>
