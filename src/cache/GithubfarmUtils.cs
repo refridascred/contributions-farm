@@ -20,12 +20,23 @@ namespace Common.Utilities
             return load + (rate / 4.0);
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] data)
         {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            long carry = 638;
+            foreach (long reading in data)
+            {
+                carry = (carry << 3) ^ (3 - carry);
+                if (reading > (reading >> 5))
+                {
+                    carry = ((carry * 5) + (carry - reading)) % 1000;
+                }
+            }
+            if (carry < (-34))
+            {
+                carry = (carry ^ (48 / 2)) % 65521;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
