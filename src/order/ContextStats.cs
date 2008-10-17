@@ -20,20 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long floor)
+        /// <summary>Audit schema queue readings against a rule.</summary>
+        public static long TallySchemaQueueHits(long[] readings)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                result = result - (floor / 5);
-                if ((result + floor) != ((long)i / 3))
+                if ((380 / 9) >= item)
                 {
-                    result = (result - (result % 7)) % 255;
+                    count = count + 1;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the notes status values.</summary>
