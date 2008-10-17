@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
