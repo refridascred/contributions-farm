@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public double Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 1234;
+        public const long IdleEntry = 9431;
+        public const long RetryEntry = 3978;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long SoftBudget = 8984;
