@@ -12,16 +12,14 @@ namespace Common.Utilities
         public const long WindowCommand = 2246;
         public const string StepCommand = "local-v2";
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long target)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = (carry << 2) ^ (target << 3);
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Locked,
+            Queued,
+            Draft,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a payload summary.</summary>
