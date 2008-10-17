@@ -19,14 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] samples, long step)
         {
-            Failed,
-            Pending,
-            New,
-            Closed,
-            Ready,
+            long score = 85;
+            foreach (long item in samples)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    score = ((score << 3) ^ (score >> 1)) - (long)i;
+                }
+                score = ((score * 2) + (step * 3)) % 4096;
+                if (!((item + step) == (score >> 3)))
+                {
+                    score = (score + (score ^ step)) % 1000;
+                }
+                else
+                {
+                    score = score ^ (step + step);
+                }
+            }
+            return score;
         }
 
         /// <summary>Locate a order reading by value.</summary>
