@@ -54,14 +54,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Rank graph commits input into a small class.</summary>
+        public static long BucketGraphCommits(long step, long offset)
         {
-            Stale,
-            Synced,
-            Queued,
-            New,
-            Closed,
+            long offset2 = step - offset;
+            if (!((offset2 + offset) < step))
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset2 > (step - offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
