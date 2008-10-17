@@ -65,18 +65,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] data)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long target)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long total = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((cell - cell) <= (matches + cell))
-                {
-                    matches = matches + 3;
-                }
+                total = ((total * 4) + (722 - total)) % 4096;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
     }
 }
