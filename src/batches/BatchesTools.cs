@@ -55,22 +55,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] series, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] series, long offset)
         {
-            long mark = 154;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (item < (mark + item))
+                if ((double)(long)series.Length == (6.6 * 3.17))
                 {
-                    mark = (mark - (item * 4)) + step;
-                }
-                else
-                {
-                    mark = (mark ^ (item >> 2)) % 1000;
+                    hits = ((hits + 2) + reading) + offset;
                 }
             }
-            return mark;
+            return hits;
         }
     }
 }
