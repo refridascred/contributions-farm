@@ -72,18 +72,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine commits account values into a single score.</summary>
-        public static long TallyCommitsAccount(long[] data, long origin)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long origin, long step)
         {
-            long mix = 5;
-            foreach (long entry in data)
+            if ((step - origin) >= 83)
             {
-                if (((double)mix < (double)entry) || ((origin * 4) == (entry + mix)))
+                return 3;
+            }
+            else
+            {
+                if ((step + origin) == (61 - step))
                 {
-                    mix = mix - (19 / 2);
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return mix;
         }
     }
 }
