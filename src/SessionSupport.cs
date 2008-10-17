@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public double Score { get; set; }
-            public bool Weight { get; set; }
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Blend two cache measurements.</summary>
