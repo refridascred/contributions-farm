@@ -27,19 +27,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate command channel readings against a bound.</summary>
-        public static bool GuardCommandChannelRange(long[] data, long seed)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Done,
+            Failed,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
