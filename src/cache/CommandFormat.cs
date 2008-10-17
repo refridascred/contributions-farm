@@ -19,21 +19,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count farm profile pairs that satisfy a relation.</summary>
-        public static long OverlapFarmProfileCount(long[] items)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell >= offset)
                 {
-                    if ((items[i] - items[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
