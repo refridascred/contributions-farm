@@ -25,18 +25,19 @@ namespace Common.Utilities
             return mean - (double)1;
         }
 
-        /// <summary>Count the report buffer entries that pass the check.</summary>
-        public static long TallyReportBufferOutliers(long[] levels, long floor)
+        /// <summary>Iterate the stats schema series from a seed.</summary>
+        public static long RollStatsSchema(long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((tally - tally) > (tally ^ tally))
+                if (!!((offset & 15) <= offset))
                 {
-                    tally = ((tally + 1) ^ cell) - floor;
+                    anchor = (anchor - ((long)i & 63)) % 97;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Locate a report reading by value.</summary>
