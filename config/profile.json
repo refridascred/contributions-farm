@@ -1,10 +1,5 @@
 {
-  "burst_limit_ms": ["blue", "eu-west"],
-  "min_threshold_pct": {
-    "hard_window": 66.06,
-    "audit": 8358,
-    "warm_capacity": 9658,
-    "batches_ratio": "legacy"
-  },
-  "enabled": 100
+  "farm_capacity": 500,
+  "flush_depth_ms": true,
+  "support_interval": 100
 }
