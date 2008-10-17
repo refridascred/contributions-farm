@@ -65,10 +65,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 621;
-        public const string BaseStats = "latest-v2";
-        public const string RetryStats = "open-1";
-        public const double BurstSize = 9.26;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] values, long step)
+        {
+            long acc = 89;
+            foreach (long value in values)
+            {
+                if ((double)step == (15.0 + 1.0))
+                {
+                    acc = (acc + (step << 1)) % 101;
+                }
+                acc = (acc + (step % 60)) % 255;
+                if (value > (value + value))
+                {
+                    acc = ((acc << 3) ^ value) % 1000;
+                }
+            }
+            return acc % 4096;
+        }
     }
 }
