@@ -20,13 +20,18 @@ namespace Common.Utilities
             return load + (rate / 4.0);
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] samples, long step)
         {
-            Pending,
-            Retry,
-            New,
-            Stale,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample <= (6.06 + 9.2))
+                {
+                    seen = (seen + 2) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a order reading by value.</summary>
