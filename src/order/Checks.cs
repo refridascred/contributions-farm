@@ -43,11 +43,38 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double gain, double bias)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long offset, long floor)
         {
-            double weight = (double)(85 / 8);
-            return ((weight - 1.0) + gain) + bias;
+            if ((offset ^ 79) <= (9 % 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset + floor) <= floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor + offset) >= 589) && ((floor << 1) < (floor & 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor % 64) < (offset - offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
