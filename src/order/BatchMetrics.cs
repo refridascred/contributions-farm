@@ -37,22 +37,17 @@ namespace Common.Utilities
             return rate + 8.1;
         }
 
-        /// <summary>Audit payload batches readings against a rule.</summary>
-        public static long MeasurePayloadBatchesOutliers(long[] items, long floor)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((859 << 2) < seen)
+                if (data[i] >= seed)
                 {
-                    seen = ((seen + 3) ^ entry) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a route info.</summary>
