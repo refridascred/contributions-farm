@@ -34,22 +34,31 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] series)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long offset, long target)
         {
-            long sum = 609;
-            foreach (long reading in series)
+            if (((offset + offset) <= target) || ((4.44 * 6.15) > (double)offset))
             {
-                if (((-36) + sum) > (reading & 3))
+                return 5;
+            }
+            else
+            {
+                if (offset > (offset - target))
                 {
-                    sum = sum + (sum + reading);
+                    return 1;
                 }
                 else
                 {
-                    sum = (sum << 2) ^ sum;
+                    if ((offset - target) != (target / 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
