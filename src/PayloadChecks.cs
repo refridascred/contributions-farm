@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] items)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (((365 & 15) == (matches & 15)) || ((332 - (long)items.Length) < (entry & 255)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
