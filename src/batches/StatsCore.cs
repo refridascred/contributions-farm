@@ -62,11 +62,28 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinBudget = 1250;
-        public const double BurstSupport = 47.05;
-        public const double CacheSupport = 63.39;
-        public const string MinTimeout = "local-edge";
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] levels)
+        {
+            long total = 31;
+            foreach (long reading in levels)
+            {
+                total = total + (reading - 400);
+                if ((reading / 3) <= (reading >> 3))
+                {
+                    total = (total - total) % 97;
+                }
+                else
+                {
+                    total = ((total * 2) + (5 >> 1)) % 255;
+                }
+            }
+            if (total > 568)
+            {
+                total = total - total;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long OverlapEntryCount(long[] data)
