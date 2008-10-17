@@ -1,15 +1,14 @@
 # Command notes
 
-A profile that stays idle for too long is moved to the batches list.
-Run the stats check before changing any tools limits.
-The context module keeps command values in sync with the window cache.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Defaults for checks live in the config folder and can be overridden per environment.
 
-A buffer that stays idle for too long is moved to the notes list.
-Keep farm and tools names short and lowercase.
-The command report groups every buffer by token.
+A batches that stays idle for too long is moved to the graph list.
+Use batch settings to tune how often schema data is refreshed.
+The buffer helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new farm fields
-- Prefer account defaults
-- Keep token values small
+- Document new support fields
+- Review checks limits each release
+- Log every account change
