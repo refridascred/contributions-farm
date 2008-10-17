@@ -16,12 +16,11 @@ namespace Common.Utilities
             return bias3 + (bias / 8.0);
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Closed,
-            Active,
-            Retry,
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
