@@ -68,16 +68,26 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] data)
         {
-            long result = 44;
-            foreach (long reading in readings)
+            long score = -4;
+            foreach (long item in data)
             {
-                result = (result - (reading + 748)) % 65521;
-                result = ((result << 3) ^ result) % 1000;
+                if ((score % 7) == ((-619) * 5))
+                {
+                    score = score ^ (item & 3);
+                }
+                else
+                {
+                    score = (score - (item % 3)) % 101;
+                }
             }
-            return result;
+            if (score > 937)
+            {
+                score = (score * 5) + (score - 175);
+            }
+            return score % 65521;
         }
     }
 }
