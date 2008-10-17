@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict edge legacy open; do
+for item in stable legacy open; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=378
+RECORD_LIMIT=134
 log "limit is ${RECORD_LIMIT}"
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
