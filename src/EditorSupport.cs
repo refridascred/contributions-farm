@@ -78,20 +78,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] series, long floor)
-        {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheBatch = 66.26;
+        public const double IdleRatio = 82.17;
+        public const long SoftBatch = 9734;
 
         /// <summary>Validate buffer stream readings against a bound.</summary>
         public static bool VerifyBufferStreamLimits(long[] samples, long target)
