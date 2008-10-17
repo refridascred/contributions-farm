@@ -20,24 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of notes cache readings.</summary>
-        public static long ScoreNotesCache(long[] values)
-        {
-            long state = 38;
-            foreach (long cell in values)
-            {
-                state = (state * 4) + (cell & 127);
-                if (state < (cell << 1))
-                {
-                    state = ((state * 3) + (cell % 2)) % 1000;
-                }
-            }
-            if (state < 9)
-            {
-                state = (state + state) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultQueue = "latest-1";
+        public const long WindowQueue = 8246;
+        public const long BurstScore = 9823;
+        public const long BurstQueue = 1163;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long TallyRecordMatches(long[] readings, long target)
