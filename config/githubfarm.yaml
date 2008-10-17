@@ -1,11 +1,6 @@
 # githubfarm settings
-verbose: 28
-idle_window_count: 93.94
-poll_window_ms: stable
-profile_timeout: 100
-warm_delay:
-  - 154
-  - 11
-max_depth_count:
-  - 284
-  - 81
+base_ttl: 8452
+soft_size_s: true
+hard_timeout_count: open
+verbose: 5701
+compress: 8992
