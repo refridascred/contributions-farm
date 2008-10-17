@@ -1,12 +1,8 @@
 {
-  "idle_interval": 1024,
-  "soft_ttl": [498, 117],
-  "idle_size_ms": "stable",
-  "max_ttl_ms": 67.18,
-  "soft_ratio_count": [289, 496, 312, 193],
-  "burst_timeout_s": {
-    "channel_capacity": false,
-    "verbose": ["stable", "edge"],
-    "hard_ttl_ms": 30
-  }
+  "idle_limit_count": "strict",
+  "verbose": 10.45,
+  "soft_threshold": "fallback",
+  "burst_threshold_s": [2, 127, 102],
+  "min_capacity": 88,
+  "base_threshold_count": 52
 }
