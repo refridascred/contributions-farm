@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] values, long bound)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (((bound + matches) > entry) && (((long)values.Length % 2) < bound))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
