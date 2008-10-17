@@ -29,11 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepRatio = 7054;
-        public const double HardEditor = 84.15;
-        public const double LimitEditor = 31.23;
-        public const long BatchEditor = 935;
-        public const string BaseLevel = "strict";
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
