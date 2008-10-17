@@ -27,10 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 6518;
-        public const string CacheDepth = "fallback-v2";
-        public const long BatchCount = 2480;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryRatio = "fallback-v2";
+        public const double CacheBudget = 78.59;
+        public const string WindowDepth = "fallback";
+        public const long HardChecks = 9340;
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
