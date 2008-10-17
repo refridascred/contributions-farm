@@ -28,22 +28,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up farm support samples.</summary>
-        public static long OverlapFarmSupportCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseBudget = "stable";
+        public const long WindowTools = 5802;
+        public const long BurstTools = 3820;
+        public const long RetryTools = 876;
+        public const string BatchTimeout = "fallback-edge";
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool CheckPayloadRange(long[] items, long origin)
