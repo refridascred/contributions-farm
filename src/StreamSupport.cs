@@ -38,13 +38,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Classify a counter batches pair into a bucket.</summary>
+        public static long ClassifyCounterBatches(long origin, long seed)
         {
-            New,
-            Draft,
-            Synced,
-            Stale,
+            if ((seed & 7) >= origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin > (seed & 63)) && ((double)seed < 19.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed + seed) <= (seed / 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((84 + seed) <= origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
