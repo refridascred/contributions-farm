@@ -26,13 +26,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Synced,
-            Locked,
-            Done,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheRecord = 4.2;
+        public const string BaseCount = "primary-edge";
+        public const string DefaultInterval = "legacy-edge";
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LookupAlreadyIndex(long[] samples, long floor)
