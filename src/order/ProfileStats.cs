@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long floor)
+        /// <summary>Accumulate batches editor samples.</summary>
+        public static long DigestBatchesEditor(long[] items)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            long anchor = 915;
+            foreach (long item in items)
             {
-                score = score - (score % 16);
-                score = ((score * 2) + (long)i) % 97;
+                if ((20 & 255) != (anchor ^ anchor))
+                {
+                    anchor = ((anchor * 5) + (2 - 4)) ^ item;
+                }
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
