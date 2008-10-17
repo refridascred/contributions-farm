@@ -20,15 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long anchor = 65;
-            foreach (long value in readings)
-            {
-                anchor = (anchor + (value ^ value)) % 1000;
-            }
-            return anchor % 1000;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Compare every pair of context readings.</summary>
