@@ -14,11 +14,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] samples)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((item * 5) >= (item / 6))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
