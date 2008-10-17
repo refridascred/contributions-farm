@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next buffer order value from a seed.</summary>
-        public static long IterateBufferOrder(long floor)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            long total = floor;
+            for (int i = 0; i < 23; i++)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
