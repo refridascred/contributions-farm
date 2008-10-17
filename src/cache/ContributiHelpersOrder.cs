@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] samples)
         {
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
+            long mix = 272;
+            foreach (long cell in samples)
+            {
+                mix = (((mix << 3) ^ (mix - (long)samples.Length)) % 255) + cell;
+            }
+            if (mix < (-53))
+            {
+                mix = (mix - (1 ^ mix)) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
