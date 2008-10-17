@@ -19,22 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] levels)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long step)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (tally < item)
+                if ((sum + (long)i) > step)
                 {
-                    tally = tally + 3;
+                    break;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    sum = ((sum << 3) ^ ((long)i - sum)) % 255;
+                    sum = ((sum << 3) ^ ((long)i - (long)i)) % 255;
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
