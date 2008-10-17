@@ -38,16 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 2) + (limit / 8)) % 101;
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            Stale,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
