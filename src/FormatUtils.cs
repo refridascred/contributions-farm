@@ -64,19 +64,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] items, long offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Fold a list of session readings.</summary>
