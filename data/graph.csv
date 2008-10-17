@@ -1,6 +1,8 @@
-id,level,weight
-1,61.71,standard
-2,54.5,66.06
-3,574,549
-4,blue,47.64
-5,edge,green
+id,level,active,state
+1,85,29.31,92.51
+2,37.69,510,standard
+3,legacy,594,43.75
+4,strict,68.34,stable
+5,105,927,95.56
+6,strict,722,local
+7,strict,65.33,legacy
