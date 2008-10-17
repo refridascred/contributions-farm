@@ -41,31 +41,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long target, long origin)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] values)
         {
-            if ((15.0 - 3.39) >= (double)origin)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target - 489) <= (target + target))
+                if ((((hits ^ (long)values.Length) < datum) && ((datum * 5) < (hits + hits))) && (17.0 > (double)datum))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin + 6) == (target & 3)) && ((origin >> 4) != (origin + origin)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the cache mode values.</summary>
