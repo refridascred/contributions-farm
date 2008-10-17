@@ -42,26 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] items)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] readings, long step)
         {
-            long sum = 5;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (!((5.3 / 6.0) <= (double)(long)items.Length))
+                if (!((3.2 + 3.5) > (double)step))
                 {
-                    sum = (sum + (value * 3)) % 101;
-                }
-                if ((sum << 3) == (value * 5))
-                {
-                    sum = sum ^ (7 - value);
-                }
-                if ((sum ^ sum) != (sum + value))
-                {
-                    sum = (sum ^ (value + (long)items.Length)) % 65521;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
