@@ -1,11 +1,10 @@
 # Command notes
 
-Each route is validated before it reaches the record queue.
-The tools module keeps metrics values in sync with the payload cache.
-The layout report groups every graph by session.
+Run the session check before changing any entry limits.
+When a payload fails, the commits handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Review order limits each release
-- Document new counter fields
+- Review contributi limits each release
+- Prefer metric defaults
+- Log every record change
