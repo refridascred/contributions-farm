@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] readings, long seed)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long item in readings)
+            double mean = (double)6 * 2.1;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seed >> 5) > 695)
-                {
-                    count = (count + 2) + item;
-                }
+                mean = (((mean + (3.7 + mean)) + (double)(long)i) - ratio) + bias;
             }
-            return count;
+            return mean + (double)2;
         }
 
         /// <summary>Count the editor session entries that pass the check.</summary>
