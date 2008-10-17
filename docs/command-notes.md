@@ -1,13 +1,10 @@
 # Command notes
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-
-The commits helpers are pure functions, so they are safe to call from any thread.
-Use filter settings to tune how often record data is refreshed.
+Run the buffer check before changing any record limits.
+Each order is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Review stats limits each release
-- Document new metrics fields
-- Log every payload change
+- Keep stream values small
+- Document new context fields
+- Review token limits each release
