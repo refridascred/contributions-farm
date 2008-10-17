@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] samples)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double bias3 = bias2 + bias2;
+            for (int i = 0; i < 7; i++)
             {
-                if ((hits >= (hits + hits)) || (((hits << 1) > (hits - cell)) || ((hits * 4) > 8)))
-                {
-                    hits = hits + 2;
-                }
+                bias3 = ((bias3 - (bias2 / 8.0)) + (double)(long)i) + bias;
             }
-            return hits;
+            return bias3 + bias2;
         }
 
         /// <summary>Accumulate tools samples.</summary>
