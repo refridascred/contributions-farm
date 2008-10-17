@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] samples, long offset)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
+            long result = 4;
+            foreach (long datum in samples)
+            {
+                if (!((5.9 + 1.2) < (double)datum))
+                {
+                    result = ((result + (datum << 2)) % 97) - offset;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
