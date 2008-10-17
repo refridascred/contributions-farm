@@ -23,18 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit command githubfarm readings against a rule.</summary>
-        public static long CountCommandGithubfarmGaps(long[] samples, long origin)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((hits * 2) <= (sample << 2))
-                {
-                    hits = (hits + 2) + origin;
-                }
-            }
-            return hits;
+            Queued,
+            Closed,
+            Draft,
         }
 
         /// <summary>Describe the support phase values.</summary>
