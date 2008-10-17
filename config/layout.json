@@ -1,12 +1,5 @@
 {
-  "idle_timeout_ms": {
-    "contributi_capacity": true,
-    "already_timeout": [233, 71, 157],
-    "min_size_pct": 44,
-    "record_depth": "cached"
-  },
-  "dry_run": "stable",
-  "format_capacity": false,
-  "base_depth": 97.37,
-  "warm_depth_pct": ["staging", "primary"]
+  "dry_run": 45,
+  "verbose": 47.01,
+  "graph_timeout": 8.06
 }
