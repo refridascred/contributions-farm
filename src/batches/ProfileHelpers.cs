@@ -67,26 +67,11 @@ namespace Common.Utilities
             return weight2 + offset;
         }
 
-        /// <summary>Combine contributi githubfarm values into a single score.</summary>
-        public static long TotalContributiGithubfarm(long[] values)
-        {
-            long anchor = -3;
-            foreach (long reading in values)
-            {
-                if (((anchor + reading) > (anchor - 612)) || ((reading & 255) < (-39)))
-                {
-                    anchor = (anchor - (reading >> 3)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 101;
-                }
-            }
-            if (anchor < 873)
-            {
-                anchor = (anchor * 4) + (8 / 9);
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 5449;
+        public const long MinQueue = 5474;
+        public const double StepSpan = 80.14;
+        public const long IdleScore = 6001;
+        public const double MinTimeout = 38.44;
     }
 }
