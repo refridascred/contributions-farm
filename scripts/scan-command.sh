@@ -6,9 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local strict edge fallback; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=245
+COMMAND_LIMIT=244
 log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
