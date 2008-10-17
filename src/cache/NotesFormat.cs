@@ -32,12 +32,9 @@ namespace Common.Utilities
             return rate + (bias - rate);
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Paused,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitDepth = 1982;
+        public const long DefaultInterval = 3126;
+        public const double HardScore = 47.11;
     }
 }
