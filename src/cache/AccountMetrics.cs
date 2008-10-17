@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Queued,
-            Locked,
             Synced,
+            Stale,
+            Failed,
+            Draft,
         }
 
         /// <summary>Look up the position of a format sample.</summary>
