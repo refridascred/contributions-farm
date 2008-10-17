@@ -42,17 +42,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] readings, long seed)
+        /// <summary>Audit metric filter readings against a rule.</summary>
+        public static long MeasureMetricFilterHits(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 2) != 0))
+                if (!((origin + (long)samples.Length) >= (long)samples.Length))
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
