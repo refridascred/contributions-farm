@@ -55,18 +55,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSupport = "legacy-v2";
+        public const long WindowSupport = 8340;
+        public const string BatchSize = "staging-v2";
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long SeriesCache(long floor)
