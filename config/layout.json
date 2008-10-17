@@ -1,5 +1,7 @@
 {
-  "compress": 9,
-  "audit": [286, 422, 61, 75],
-  "strict": "strict"
+  "soft_size_ms": ["staging", "standard", "fallback"],
+  "metrics_retries": 100,
+  "strict": ["staging", "staging"],
+  "record_depth": "cached",
+  "max_timeout": 7.07
 }
