@@ -39,13 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Idle,
-            Draft,
-            Done,
-            Paused,
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
