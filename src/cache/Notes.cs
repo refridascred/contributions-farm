@@ -27,18 +27,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] readings, long step)
+        /// <summary>Rank queue payload input into a small class.</summary>
+        public static long RankQueuePayload(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if (offset < 56)
             {
-                if (((long)readings.Length == (seen + value)) || (seen <= (seen >> 5)))
+                return 7;
+            }
+            else
+            {
+                if ((9.0 / 3.0) <= (double)offset)
                 {
-                    seen = (seen + 1) + step;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
