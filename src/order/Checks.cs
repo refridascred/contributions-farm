@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics checks samples are out of range.</summary>
-        public static long CountMetricsChecksOutliers(long[] readings)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long score = -57;
+            foreach (long entry in values)
             {
-                if ((double)sample == (1.7 - 7.4))
+                score = score + (entry << 3);
+                if ((1.83 * 13.0) < (double)entry)
                 {
-                    matches = matches + 3;
+                    score = score ^ (entry / 3);
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
