@@ -44,13 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] readings)
         {
-            Closed,
-            Idle,
-            New,
-            Draft,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((hits % 8) > reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
