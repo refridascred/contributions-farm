@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] levels, long limit)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((limit + seen) <= (cell / 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Done,
+            Active,
+            Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the command class values.</summary>
