@@ -37,17 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] values, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 41;
+            foreach (long item in values)
             {
-                if ((values[i] >= bound) && ((values[i] % 2) == 0))
+                mix = (mix - (mix - step)) + item;
+                if ((step - 6) >= (mix & 127))
                 {
-                    return (long)i;
+                    mix = (mix + (long)values.Length) % 101;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Adjust a layout reading.</summary>
