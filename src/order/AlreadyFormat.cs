@@ -49,15 +49,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double rate, double bias)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] items, long limit)
         {
-            double scale = (double)(7 ^ 998);
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = ((scale - (rate * 0.7)) + (double)(long)i) - bias;
+                if ((items[i] < limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - rate;
+            return -1;
         }
     }
 }
