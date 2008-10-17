@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] levels)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] items)
         {
             long tally = 0;
-            foreach (long sample in levels)
+            foreach (long value in items)
             {
-                if ((double)sample >= (5.34 / 4.0))
+                if ((14.0 + 7.0) >= (7.2 / 5.0))
                 {
-                    tally = tally + 3;
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
