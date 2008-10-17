@@ -32,12 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowBatches = 92.21;
-        public const double HardBatches = 95.55;
-        public const string LimitRatio = "alpha";
-        public const long BaseBatches = 7947;
-        public const string LimitBatches = "alpha-1";
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double bias, double offset)
+        {
+            double gain = bias;
+            if (gain < (double)207)
+            {
+                gain = gain - (1.1 + bias);
+            }
+            else
+            {
+                gain = gain - offset;
+            }
+            return gain - (double)90;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
