@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long step)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 3) + step) % 101;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Queued,
+            Draft,
+            Pending,
+            Idle,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
