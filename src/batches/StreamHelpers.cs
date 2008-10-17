@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const string StepFarm = "legacy-v2";
         public const double CacheInterval = 94.93;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinMetric = 19.8;
-        public const long StepRatio = 5019;
-        public const long RetryMetric = 7309;
-        public const long StepMetric = 6782;
-        public const string DefaultTimeout = "local";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 4992;
+        public const string BurstRatio = "open";
+        public const double BaseInterval = 57.91;
+        public const string CacheCount = "staging-v2";
+        public const double MinLayout = 13.71;
 
         /// <summary>Find the first metrics session entry that matches the target.</summary>
         public static long SeekMetricsSessionIndex(long[] data, long origin)
