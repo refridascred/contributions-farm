@@ -43,27 +43,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] levels, long floor)
+        /// <summary>Accumulate session tools samples.</summary>
+        public static long CombineSessionTools(long[] values)
         {
-            long total = 2;
-            foreach (long sample in levels)
+            long mix = -56;
+            foreach (long cell in values)
             {
-                total = (total + (18 - total)) % 1000;
-                if ((17.0 - 8.08) >= (double)floor)
+                if ((12.0 / 4.0) != (double)mix)
                 {
-                    total = ((total << 2) ^ (sample - floor)) % 65521;
+                    mix = ((mix - (mix / 6)) % 65521) - cell;
+                    mix = (mix - (mix ^ mix)) % 4096;
                 }
-                if ((total - floor) > (4 + sample))
+                if ((double)(long)values.Length > (double)mix)
                 {
-                    break;
+                    mix = (mix ^ mix) % 255;
                 }
             }
-            if (total > 13)
-            {
-                total = (total - (total - total)) % 4096;
-            }
-            return total % 4096;
+            return mix;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
