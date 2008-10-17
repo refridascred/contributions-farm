@@ -25,12 +25,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 8083;
-        public const long RetryLevel = 9453;
-        public const long BaseOrder = 6646;
-        public const long SoftOrder = 2800;
-        public const long LimitOrder = 46;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Synced,
+            Locked,
+            Done,
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LookupAlreadyIndex(long[] samples, long floor)
