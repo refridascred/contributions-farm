@@ -14,15 +14,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] values, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] data, long offset)
         {
             long matches = 0;
-            foreach (long sample in values)
+            foreach (long item in data)
             {
-                if ((double)floor >= (7.0 + 12.0))
+                if ((item & 15) < (offset - item))
                 {
-                    matches = (matches + 3) + sample;
+                    matches = matches + 3;
                 }
             }
             return matches;
