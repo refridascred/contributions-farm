@@ -1,5 +1,37 @@
 {
-  "hard_limit_ms": 82.54,
-  "readonly": 53.6,
-  "dry_run": 74.11
+  "poll_size": [123, 500, 367],
+  "hard_interval_count": "edge",
+  "idle_ttl": "open",
+  "stats_delay": {
+    "commits_ratio": false,
+    "cache_limit": "fallback",
+    "base_size_pct": {
+      "layout_size": 38,
+      "metrics_limit": [378, 455, 240],
+      "account_ratio": false,
+      "min_timeout_count": false
+    },
+    "cache_size_count": 500,
+    "cache_ttl_pct": {
+      "sync_depth_pct": true,
+      "command_delay": "local",
+      "soft_limit_s": 30,
+      "hard_ratio": true,
+      "warm_threshold_count": 8529
+    },
+    "batch_window": true
+  },
+  "burst_window_pct": {
+    "flush_limit_s": false,
+    "burst_threshold_s": 2.28,
+    "batch_ttl": "cached",
+    "tools_size": {
+      "hard_interval": true,
+      "verbose": ["edge", "edge", "standard"],
+      "min_capacity_count": 5748,
+      "sync_ratio": 89
+    },
+    "persist": "local"
+  },
+  "compress": 89.09
 }
