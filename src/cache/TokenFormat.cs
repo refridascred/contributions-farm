@@ -35,18 +35,18 @@ namespace Common.Utilities
             return rate2 + (span / 7.0);
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] samples, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((offset - count) > (count & 3))
+                if (6.6 > (double)target)
                 {
-                    count = (count + 2) + value;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
