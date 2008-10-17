@@ -1,6 +1,14 @@
 {
-  "stats_ratio": 44,
-  "base_window_count": "green",
-  "retry_depth": 100,
-  "warm_limit_count": ["local", "open", "fallback"]
+  "strict": {
+    "retry_limit": 612,
+    "warm_ttl": 53,
+    "account_ratio": true,
+    "hard_capacity_ms": false,
+    "account_limit": 50.61
+  },
+  "enabled": "strict",
+  "default_ttl_pct": false,
+  "retry_delay_count": 11,
+  "verbose": 16,
+  "flush_capacity_ms": ["legacy", "legacy", "stable", "primary"]
 }
