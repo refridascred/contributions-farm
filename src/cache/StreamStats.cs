@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            Active,
+            Pending,
+            Retry,
+            Synced,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
