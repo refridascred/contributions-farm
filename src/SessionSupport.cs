@@ -33,19 +33,12 @@ namespace Common.Utilities
             return weight2 + floor;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] values, long target)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
