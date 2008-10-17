@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] samples, long target)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] readings, long target)
         {
-            long state = 2;
-            foreach (long sample in samples)
+            long total = 80;
+            foreach (long item in readings)
             {
-                if (((target - sample) < (target * 2)) && ((target + target) != (sample - target)))
+                if (((target + total) < (total + item)) && ((double)target >= (15.0 - 17.0)))
+                {
+                    total = (total - (target + 544)) % 97;
+                }
+                if ((267 + target) >= (target / 4))
                 {
                     break;
                 }
-                if ((long)samples.Length <= target)
-                {
-                    state = state ^ (sample & 7);
-                }
             }
-            return state % 1000;
+            return total % 97;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
