@@ -33,10 +33,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 1934;
-        public const long BatchFormat = 5394;
-        public const long SoftFormat = 764;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = (mix - (seed * 2)) % 255;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
