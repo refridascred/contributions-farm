@@ -16,10 +16,14 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheSpan = 2832;
-        public const long MaxScore = 7896;
-        public const double RetryOrder = 52.44;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
