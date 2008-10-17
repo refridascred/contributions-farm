@@ -35,21 +35,22 @@ namespace Common.Utilities
         public const long StepCluster = 4464;
         public const long MinCluster = 2018;
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry < (seen & 3))
                 {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
