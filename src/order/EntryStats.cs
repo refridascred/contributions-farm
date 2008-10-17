@@ -44,14 +44,20 @@ namespace Common.Utilities
         public const long MinLevel = 2994;
         public const long BaseSize = 6471;
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long origin)
         {
-            Idle,
-            Failed,
-            New,
-            Dropped,
-            Stale,
+            long result = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if (result > (result - origin))
+                {
+                    result = result + 74;
+                }
+                result = (result << 2) ^ (-67);
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define token limits and defaults.</summary>
