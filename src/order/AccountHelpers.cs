@@ -31,22 +31,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] levels, long bound)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] readings, long offset)
         {
-            long sum = 614;
-            foreach (long sample in levels)
+            long state = 97;
+            foreach (long item in readings)
             {
-                if (bound <= (bound << 1))
+                if ((state + item) >= (state % 8))
                 {
-                    sum = (sum ^ sum) ^ sample;
+                    state = (state << 3) ^ (offset + item);
+                }
+                else
+                {
+                    state = (state * 5) + (65 + state);
                 }
             }
-            if (sum < 3)
+            if (state < 4)
             {
-                sum = ((sum * 4) + sum) % 65521;
+                state = ((state << 3) ^ state) % 97;
             }
-            return sum;
+            return state % 4096;
         }
 
         /// <summary>Hold a cache summary.</summary>
