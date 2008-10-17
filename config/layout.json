@@ -1,5 +1,5 @@
 {
-  "dry_run": "primary",
-  "verbose": "staging",
-  "warm_ratio_ms": [444, 293]
+  "retry_timeout_ms": 1024,
+  "soft_ttl": "fallback",
+  "filter_ttl": false
 }
