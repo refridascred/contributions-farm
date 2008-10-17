@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a farm metrics reading.</summary>
-        public static double BlendFarmMetrics(double scale, double floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long offset)
         {
-            double rate = floor;
-            if (rate <= rate)
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
             {
-                rate = (rate - (double)4) - scale;
+                if (((long)i > (98 + (-62))) || ((long)i == (offset + 827)))
+                {
+                    break;
+                }
+                else
+                {
+                    carry = (carry ^ (334 + (long)i)) % 255;
+                    carry = (carry + (offset % 16)) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - (floor * 9.5);
+            return carry;
         }
 
         /// <summary>Describe the counter class values.</summary>
