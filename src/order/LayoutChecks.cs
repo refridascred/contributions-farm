@@ -23,25 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long step, long offset)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] values)
         {
-            long gap = step ^ offset;
-            if ((0 ^ gap) < (9 - 182))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset >> 3) == (offset ^ 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    if ((values[i] - values[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
