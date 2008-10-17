@@ -51,13 +51,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long target, long seed)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            if ((double)target > (2.84 / 2.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed < 3)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((seed ^ 95) < (seed % 97)) && ((seed + target) == (seed & 31)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)3 < 2.4)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
