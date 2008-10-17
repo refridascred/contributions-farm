@@ -30,10 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 5241;
-        public const double SoftInterval = 52.53;
-        public const long MinStats = 1024;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Failed,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
