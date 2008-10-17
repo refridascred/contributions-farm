@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] readings)
+        /// <summary>Iterate the token cluster series from a seed.</summary>
+        public static long IterateTokenCluster(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
