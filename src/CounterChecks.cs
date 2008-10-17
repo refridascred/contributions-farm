@@ -40,11 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchCluster = 44.52;
-        public const long LimitWidth = 8649;
-        public const long StepBudget = 8829;
-        public const long DefaultCluster = 999;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryLevel = "standard-1";
+        public const string WindowWidth = "cached-1";
+        public const long RetryScore = 6911;
+        public const string MaxDepth = "strict-edge";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long HardBudget = 8798;
