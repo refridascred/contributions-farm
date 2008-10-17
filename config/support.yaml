@@ -1,14 +1,5 @@
 # support settings
-cache_delay_s:
-  - strict
-  - latest
-  - stable
-  - edge
-stream_depth:
-  - 310
-  - 341
-compress: open
-verbose:
-  commits_timeout: local
-  warm_depth_count: 3007
-  idle_capacity: open
+token_window: 30
+hard_ttl: true
+hard_ttl_s: latest
+min_delay: false
