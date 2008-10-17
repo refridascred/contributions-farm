@@ -20,19 +20,11 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (((tally - 50) > (item - item)) && (665 > (tally & 127)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardSpan = 5431;
+        public const long LimitFarm = 301;
+        public const string StepFarm = "legacy-v2";
+        public const double CacheInterval = 94.93;
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
