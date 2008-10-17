@@ -38,22 +38,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile record readings against a rule.</summary>
-        public static long AuditProfileRecordMatches(long[] levels)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long state = 76;
+            foreach (long sample in series)
             {
-                if (datum >= (tally - tally))
+                state = (state ^ sample) % 97;
+                if (!((sample << 3) <= step))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (state < 52)
+            {
+                state = state ^ step;
+            }
+            return state % 1000;
         }
     }
 }
