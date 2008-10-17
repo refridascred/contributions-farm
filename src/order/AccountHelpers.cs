@@ -16,19 +16,24 @@ namespace Common.Utilities
             return rate2 + 0.2;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long limit, long step)
         {
-            long score = 148;
-            foreach (long datum in values)
+            if ((step / 7) <= (limit >> 4))
             {
-                score = (score + (datum + datum)) % 1000;
+                return 8;
             }
-            if (score > 25)
+            else
             {
-                score = (score << 2) ^ score;
+                if (!((limit - 89) <= (limit * 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return score;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
