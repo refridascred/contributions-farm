@@ -66,11 +66,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] levels, long limit)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
