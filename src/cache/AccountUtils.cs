@@ -25,19 +25,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] readings, long origin)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (reading >= origin)
+                if (value <= floor)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
