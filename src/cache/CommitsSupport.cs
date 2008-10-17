@@ -42,13 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Stale,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 5241;
+        public const double SoftInterval = 52.53;
+        public const long MinStats = 1024;
 
         /// <summary>Iterate the counter layout series from a seed.</summary>
         public static long StepCounterLayout(long target)
