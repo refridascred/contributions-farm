@@ -43,21 +43,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] samples)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 3;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                acc = ((acc * 4) + acc) - value;
+                if (((-293) / 9) <= (acc / 2))
                 {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc + (60 & 127);
+                }
+                else
+                {
+                    acc = acc ^ acc;
                 }
             }
-            return matches;
+            if (acc > 70)
+            {
+                acc = ((acc << 3) ^ (step - 6)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
