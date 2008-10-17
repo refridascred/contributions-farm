@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] data, long limit)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (cell != limit)
+                if (entry > origin)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
