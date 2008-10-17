@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Defaults for checks live in the config folder and can be overridden per environment.
+Use buffer settings to tune how often report data is refreshed.
+Run the githubfarm check before changing any record limits.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
-A batches that stays idle for too long is moved to the graph list.
-Use batch settings to tune how often schema data is refreshed.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+Defaults for token live in the config folder and can be overridden per environment.
+When a batches fails, the payload handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new support fields
-- Review checks limits each release
-- Log every account change
+- Validate metrics input early
+- Keep commits values small
+- Log every tools change
+- Prefer command defaults
