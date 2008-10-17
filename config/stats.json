@@ -1,7 +1,6 @@
 {
-  "cache_window_pct": [367, 295],
-  "window_ratio": "local",
-  "support_size": 2994,
-  "soft_timeout": "fallback",
-  "sync_interval": true
+  "dry_run": 100,
+  "default_capacity_s": 44.74,
+  "commits_ttl": 250,
+  "already_ttl": 500
 }
