@@ -48,11 +48,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 6273;
-        public const long BaseChecks = 8731;
-        public const long CacheSize = 2474;
-        public const long StepChecks = 9939;
-        public const double LimitChecks = 52.88;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
