@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 2232;
-        public const long HardCount = 3402;
-        public const string WindowAlready = "latest";
-        public const long RetryRatio = 6297;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Ready,
+            Queued,
+            Done,
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] readings)
