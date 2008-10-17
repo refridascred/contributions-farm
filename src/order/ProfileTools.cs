@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] levels)
+        /// <summary>Project the next batches checks value.</summary>
+        public static double BlendBatchesChecks(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            double ratio = bias;
+            if (ratio >= (11.0 / 5.0))
             {
-                if (5.0 < (13.0 - 6.48))
-                {
-                    hits = (hits + 2) + sample;
-                }
+                ratio = ratio - weight;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (weight * 3.0)) + (double)(long)i;
+            }
+            return ratio + (ratio - ratio);
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
