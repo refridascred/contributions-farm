@@ -37,20 +37,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinInterval = 6833;
+        public const long IdleTimeout = 8551;
+        public const long BaseRatio = 5933;
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
