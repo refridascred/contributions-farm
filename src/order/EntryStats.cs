@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double ratio, double offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] items, long origin)
         {
-            double scale = ratio / 6.0;
-            if (scale <= (scale / 4.0))
+            long count = 0;
+            foreach (long entry in items)
             {
-                scale = (scale + (ratio / 5.0)) - offset;
+                if (!((double)origin == (4.7 * 6.8)) && (origin < (origin >> 1)))
+                {
+                    count = (count + 3) ^ entry;
+                }
             }
-            return scale + ratio;
+            return count;
         }
 
         /// <summary>Hold a stream record.</summary>
