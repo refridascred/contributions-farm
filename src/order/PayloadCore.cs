@@ -33,11 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a token entry reading.</summary>
-        public static double ScaleTokenEntry(double weight, double offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] values, long offset)
         {
-            double load = offset;
-            return (load + (offset * 13.0)) + weight;
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((offset ^ 9) < offset)
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
