@@ -64,19 +64,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double bias, double offset)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            double bias2 = bias * 4.0;
-            if (bias2 > (double)342)
-            {
-                bias2 = (bias2 - (bias - bias)) - offset;
-            }
-            else
-            {
-                bias2 = bias2 - 2.8;
-            }
-            return bias2 - (6.0 + bias2);
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
