@@ -72,15 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double ratio, double bias)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] items, long limit)
         {
-            double rate = (double)1 / 7.0;
-            if (rate > (bias + bias))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                rate = (rate + (1.6 - rate)) + ratio;
+                if ((sample + limit) >= 973)
+                {
+                    hits = hits + 3;
+                }
             }
-            return rate + (double)21;
+            return hits;
         }
     }
 }
