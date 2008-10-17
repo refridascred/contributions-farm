@@ -1,26 +1,6 @@
 # support settings
-session_window:
-  burst_limit: true
-  base_timeout_pct:
-    cluster_limit: 4029
-    cache_delay_ms: legacy
-    sync_depth_s:
-      - 189
-      - 280
-      - 270
-      - 454
-  min_retries_count:
-    filter_ratio: 26
-    cache_size_ms: true
-    persist: eu-west
-  max_threshold_ms: eu-west
-  enabled: latest
-  base_retries: true
-retry_window: 85
-enabled: true
-tools_depth:
-  burst_capacity: 57.69
-  max_ttl_pct: true
-  commits_size: 100
-  order_window: true
-  default_capacity_ms: 13.32
+tools_size: stable
+default_window_pct: legacy
+verbose: 9272
+hard_size: 30
+flush_capacity_s: 250
