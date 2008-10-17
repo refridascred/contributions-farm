@@ -35,12 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Validate metric batches readings against a bound.</summary>
+        public static bool ValidateMetricBatchesLimits(long[] samples, long seed)
         {
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a buffer header.</summary>
