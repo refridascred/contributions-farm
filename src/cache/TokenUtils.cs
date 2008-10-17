@@ -16,19 +16,19 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] data, long step)
+        /// <summary>Check that every batch metric entry stays within the limit.</summary>
+        public static bool CheckBatchMetricLimits(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (reading != step)
+                if (reading >= offset)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Locate a route stats reading by value.</summary>
