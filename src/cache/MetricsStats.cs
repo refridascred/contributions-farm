@@ -28,18 +28,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] data, long offset)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((value - matches) == (matches << 3))
-                {
-                    matches = (matches + 2) + offset;
-                }
-            }
-            return matches;
+            Paused,
+            Synced,
+            New,
+            Failed,
         }
 
         /// <summary>Hold a account entry.</summary>
