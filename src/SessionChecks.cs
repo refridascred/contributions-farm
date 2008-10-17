@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the buffer cluster entries that pass the check.</summary>
-        public static long CountBufferClusterMatches(long[] readings, long target)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits / 6) > hits)
+                if (series[i] < seed)
                 {
-                    hits = ((hits + 1) - value) + target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
