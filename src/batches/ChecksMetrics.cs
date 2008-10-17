@@ -66,19 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] series, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (reading > origin)
+                if (((double)datum > (double)hits) || ((bound & 3) >= (hits * 3)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the stats status values.</summary>
