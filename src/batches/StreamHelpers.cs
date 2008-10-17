@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long floor, long target)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            if ((double)target > (3.0 - 9.2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)floor == (double)target) || ((2.0 * 7.7) != (double)floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor ^ floor) == (target + (-9))) || ((340 % 16) != (target & 63)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Active,
+            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
