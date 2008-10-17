@@ -13,22 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] levels, long step)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (((step - step) <= (sample - step)) && ((hits + 5) < (hits + hits)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a entry snapshot.</summary>
