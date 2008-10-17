@@ -1,6 +1,4 @@
 # githubfarm settings
-base_ttl: 8452
-soft_size_s: true
-hard_timeout_count: open
-verbose: 5701
-compress: 8992
+default_size_ms: 100
+idle_timeout: false
+compress: 12
