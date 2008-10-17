@@ -49,12 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Compare every pair of buffer notes readings.</summary>
+        public static long CompareBufferNotesCount(long[] readings)
         {
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
