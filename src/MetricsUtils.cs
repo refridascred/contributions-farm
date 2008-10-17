@@ -37,17 +37,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] data, long offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
+                result = ((result << 2) ^ ((long)i + seed)) % 1000;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
