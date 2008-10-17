@@ -33,19 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double gain, double span)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            double gain2 = (gain / 6.0) / 4.0;
+            if (gain2 > (span + gain))
             {
-                if (((long)i << 1) == (long)i)
-                {
-                    mark = (mark ^ (mark >> 1)) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
+                gain2 = gain2 + (double)50;
             }
-            return mark;
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 + (double)9) + (double)(long)i;
+            }
+            return gain2 + gain;
         }
     }
 }
