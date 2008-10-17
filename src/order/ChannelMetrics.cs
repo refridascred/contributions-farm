@@ -31,14 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Done,
-            Synced,
-            Dropped,
-            Pending,
             Failed,
+            Locked,
+            Queued,
         }
     }
 }
