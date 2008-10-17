@@ -1,7 +1,4 @@
 # support settings
-default_ttl: false
-cache_threshold: 1024
-contributi_timeout: open
-queue_limit: eu-west
-profile_threshold: 74.89
-metrics_ratio: 2098
+idle_delay: false
+max_retries_ms: 70
+sync_delay: 58.58
