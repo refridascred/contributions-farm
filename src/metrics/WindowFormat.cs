@@ -19,27 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] values, long offset)
+        /// <summary>Measure how many tools schema samples are out of range.</summary>
+        public static long CountToolsSchemaGaps(long[] readings)
         {
-            long mark = -504;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((826 + offset) <= (value - value))
+                if ((entry >= (entry << 1)) || ((double)858 <= (double)(long)readings.Length))
                 {
-                    mark = (mark - (32 + (long)values.Length)) % 255;
-                }
-                mark = (mark * 3) + (offset + offset);
-                if ((6.25 / 8.0) != (double)offset)
-                {
-                    mark = (mark ^ 7) % 255;
-                }
-                else
-                {
-                    mark = (mark ^ (mark - 61)) % 101;
+                    hits = hits + 3;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
