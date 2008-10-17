@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long bound, long seed)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double scale, double floor)
         {
-            if ((double)bound < (1.0 * 4.0))
+            double scale2 = (scale - floor) * 4.8;
+            if (scale2 >= scale2)
             {
-                return 8;
+                scale2 = scale2 - (double)45;
             }
             else
             {
-                if ((seed ^ 68) <= (8 >> 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound + seed) <= bound) && ((seed / 2) == (seed / 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                scale2 = scale2 - (floor / 4.0);
             }
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 - (scale2 - 17.0)) + (double)(long)i;
+            }
+            return scale2 - scale2;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
