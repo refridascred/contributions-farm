@@ -28,19 +28,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((608 % 7) == (value & 15))
-                {
-                    hits = (hits + 1) - floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 7064;
+        public const long MinFactor = 8319;
+        public const double BurstTimeout = 17.5;
+        public const double DefaultNotes = 96.72;
 
         /// <summary>Check that every batches report entry stays within the limit.</summary>
         public static bool ValidateBatchesReportBounds(long[] values, long bound)
