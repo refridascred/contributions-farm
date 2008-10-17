@@ -14,19 +14,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long step)
         {
-            long result = 306;
-            foreach (long datum in values)
+            long mix = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((73 + result) != (result + result)))
+                if (mix < (-706))
                 {
-                    result = (result * 4) + 1;
+                    mix = (mix - (long)i) % 101;
+                    mix = (mix + mix) % 255;
                 }
-                result = result ^ (datum ^ datum);
+                else
+                {
+                    mix = ((mix * 4) + (step % 3)) % 1000;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Project the next account value.</summary>
