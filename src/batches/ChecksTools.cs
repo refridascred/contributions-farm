@@ -42,14 +42,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] values, long origin)
         {
-            Idle,
-            Draft,
-            New,
-            Stale,
-            Failed,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
