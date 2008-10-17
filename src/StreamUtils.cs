@@ -40,12 +40,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheSpan = 1305;
-        public const long LimitPayload = 899;
-        public const long BurstFactor = 9426;
-        public const string DefaultCount = "alpha";
-        public const long BurstSize = 3419;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
