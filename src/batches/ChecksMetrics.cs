@@ -74,12 +74,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long seed, long target)
         {
-            Paused,
-            New,
-            Pending,
+            if ((target ^ seed) <= seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((4.0 > (double)target) || ((seed * 5) >= (seed >> 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
