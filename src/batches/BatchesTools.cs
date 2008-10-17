@@ -33,24 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long floor, long origin)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double gain, double span)
         {
-            if ((origin % 16) >= (floor % 60))
+            double mean = (span + span) - gain;
+            if (mean >= (double)67)
             {
-                return 7;
+                mean = mean - 9.5;
             }
             else
             {
-                if ((floor / 2) < (origin << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
+                mean = mean + mean;
             }
+            return mean - (span - mean);
         }
     }
 }
