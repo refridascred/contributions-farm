@@ -1,7 +1,6 @@
 {
-  "window_delay": "blue",
-  "poll_limit_pct": false,
-  "readonly": 58.16,
-  "graph_threshold": ["green", "stable", "eu-west"],
-  "farm_size": ["eu-west", "open", "legacy"]
+  "batches_threshold": "eu-west",
+  "filter_window": 94.54,
+  "retry_threshold_ms": 1,
+  "max_capacity_pct": 250
 }
