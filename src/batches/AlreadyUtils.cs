@@ -58,15 +58,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] values, long floor)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            long acc = 1;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc ^ (floor - acc)) % 65521) + entry;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
