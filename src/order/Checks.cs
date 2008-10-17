@@ -37,22 +37,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] series, long origin)
+        /// <summary>Look up the position of a editor already sample.</summary>
+        public static long SeekEditorAlreadyIndex(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= ((-194) % 7))
+                if (readings[i] <= offset)
                 {
-                    hits = (hits + 2) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Blend two commits measurements.</summary>
