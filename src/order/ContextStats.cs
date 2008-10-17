@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] levels, long origin)
         {
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((9.1 / 4.0) <= (9.2 + 7.8))
+                {
+                    seen = ((seen + 3) - item) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
