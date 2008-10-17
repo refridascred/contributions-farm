@@ -14,11 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheSpan = 43.39;
-        public const long BaseRoute = 5634;
-        public const long BatchTimeout = 5183;
-        public const long StepDepth = 396;
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MaxDepth = 7690;
