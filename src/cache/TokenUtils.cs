@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] items, long floor)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstContributi = 52.51;
+        public const double CacheFactor = 69.33;
+        public const long StepContributi = 1133;
+        public const string MaxContributi = "cached-1";
+        public const long LimitWidth = 7422;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long RankStream(long origin, long step)
