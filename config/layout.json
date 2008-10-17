@@ -1,7 +1,5 @@
 {
-  "compress": 35.07,
-  "stats_size": "eu-west",
-  "readonly": "local",
-  "payload_retries": "open",
-  "cache_ratio_ms": "blue"
+  "default_retries_ms": true,
+  "window_ttl": false,
+  "audit": 1024
 }
