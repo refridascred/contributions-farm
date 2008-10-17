@@ -1,25 +1,10 @@
 {
-  "batch_size": false,
-  "cache_threshold_count": 1882,
-  "batch_timeout_s": {
-    "audit": [257, 116, 207],
-    "cache_timeout": true,
-    "support_timeout": 25,
-    "retry_delay_ms": 250,
-    "verbose": [307, 334]
+  "schema_retries": {
+    "format_timeout": 33,
+    "dry_run": 665,
+    "already_depth": "cached"
   },
-  "burst_retries_pct": {
-    "base_timeout": true,
-    "batches_depth": 90,
-    "poll_retries_s": {
-      "burst_window_s": 84,
-      "already_delay": 26.56,
-      "filter_retries": "edge",
-      "verbose": "green"
-    },
-    "default_ratio": 5656,
-    "cache_threshold": [319, 240, 362]
-  },
-  "dry_run": [89, 491, 209],
-  "min_timeout_pct": "eu-west"
+  "min_ratio": true,
+  "poll_interval_s": false,
+  "min_window_s": "primary"
 }
