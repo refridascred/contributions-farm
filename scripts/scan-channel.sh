@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict stable staging; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-CHANNEL_LIMIT=417
+CHANNEL_LIMIT=265
 log "limit is ${CHANNEL_LIMIT}"
