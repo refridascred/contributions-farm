@@ -28,10 +28,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryRatio = "fallback-v2";
-        public const double CacheBudget = 78.59;
-        public const string WindowDepth = "fallback";
-        public const long HardChecks = 9340;
+        public const long SoftChecks = 5126;
+        public const long IdleChecks = 5123;
+        public const long MaxFactor = 7797;
+        public const double DefaultScore = 76.57;
+        public const long WindowChecks = 1745;
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
