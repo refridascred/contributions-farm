@@ -25,21 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] levels)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define session limits and defaults.</summary>
