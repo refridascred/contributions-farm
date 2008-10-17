@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a checks batches reading.</summary>
-        public static double ProjectChecksBatches(double scale, double offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] data)
         {
-            double rate = scale;
-            return (rate - 3.3) + offset;
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (count > (3 - count))
+                {
+                    count = (count + 2) - entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
