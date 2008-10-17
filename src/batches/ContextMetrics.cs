@@ -31,12 +31,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstRatio = 4108;
-        public const double BurstEditor = 49.05;
-        public const long BurstLevel = 354;
-        public const long CacheEditor = 875;
-        public const long WindowTimeout = 7708;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 1059;
+        public const long LimitSchema = 3533;
+        public const double DefaultSchema = 37.89;
+        public const long BatchSchema = 1227;
+        public const long StepSchema = 4830;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long WeighContributi(long[] data, long step)
