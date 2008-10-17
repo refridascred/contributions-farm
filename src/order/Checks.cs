@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxSize = 8296;
-        public const double CacheScore = 57.16;
-        public const string BaseScore = "staging-1";
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (!((19.0 - 0.86) != (double)hits))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many metrics checks samples are out of range.</summary>
         public static long CountMetricsChecksOutliers(long[] readings)
