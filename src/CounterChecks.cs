@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] samples)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (!(item > (item >> 4)) || ((matches - item) > (item - matches)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            Paused,
+            Failed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
