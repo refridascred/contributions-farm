@@ -23,20 +23,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] series, long limit)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long seed, long target)
         {
-            long anchor = 329;
-            foreach (long item in series)
+            long lane = seed - target;
+            if ((target & 127) < (target % 97))
             {
-                anchor = ((anchor * 2) + ((-432) ^ item)) % 255;
-                anchor = (anchor << 2) ^ (2 - limit);
+                return 5;
             }
-            if (anchor > 254)
+            else
             {
-                anchor = (anchor - anchor) % 97;
+                if (!((lane % 60) > (seed ^ lane)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((9.0 / 4.0) > (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target ^ seed) <= (seed / 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
