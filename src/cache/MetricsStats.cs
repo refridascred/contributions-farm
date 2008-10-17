@@ -36,17 +36,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] readings, long bound)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public bool Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
