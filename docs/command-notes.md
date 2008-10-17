@@ -1,14 +1,15 @@
 # Command notes
 
-Run the profile check before changing any metric limits.
-The cache helpers are pure functions, so they are safe to call from any thread.
+A token that stays idle for too long is moved to the format list.
+Use profile settings to tune how often commits data is refreshed.
+Run the graph check before changing any graph limits.
 
-Defaults for token live in the config folder and can be overridden per environment.
-The notes report groups every batch by token.
+The tools report groups every contributi by window.
+Run the route check before changing any graph limits.
 
 ## Guidelines
 
-- Keep metric values small
-- Prefer metrics defaults
-- Document new stream fields
-- Log every batches change
+- Log every context change
+- Validate checks input early
+- Prefer githubfarm defaults
+- Review checks limits each release
