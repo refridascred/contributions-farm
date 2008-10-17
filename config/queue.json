@@ -1,5 +1,7 @@
 {
-  "base_timeout_pct": 53,
-  "base_size_count": true,
-  "audit": true
+  "enabled": 72.0,
+  "hard_retries_s": 500,
+  "max_retries_ms": "stable",
+  "poll_limit_pct": "primary",
+  "window_ratio": 6730
 }
