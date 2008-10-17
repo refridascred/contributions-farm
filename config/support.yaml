@@ -1,19 +1,26 @@
 # support settings
-tools_timeout: 75.45
-default_delay_pct:
-  - 216
-  - 397
-  - 211
-  - 133
-counter_retries:
-  - 293
-  - 72
-  - 428
-  - 1
-hard_retries_ms: 28.67
-warm_delay_s:
-  - eu-west
-  - strict
-  - edge
-  - blue
-warm_ratio: true
+channel_threshold: 500
+poll_capacity_pct: green
+sync_limit: blue
+persist:
+  queue_delay:
+    poll_size_s: 95.96
+    cache_capacity_count: 80.45
+    persist: true
+    verbose: 3
+    poll_depth: true
+  editor_ttl:
+    retry_delay: staging
+    warm_retries_s: false
+    max_window_count: 90.21
+    burst_ttl_pct: true
+  base_interval_count: 2609
+  warm_capacity_pct: false
+  cache_limit: 48
+  batch_size: 8631
+default_limit_ms:
+  - 409
+  - 11
+  - 487
+  - 491
+base_ttl: 4064
