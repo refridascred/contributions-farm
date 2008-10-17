@@ -20,12 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] values, long offset)
         {
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the batches status values.</summary>
