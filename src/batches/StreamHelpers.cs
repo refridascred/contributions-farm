@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double weight, double span)
+        /// <summary>Digest a series of token report entries.</summary>
+        public static long ScoreTokenReport(long[] values)
         {
-            double gain = (double)(5 + 11);
-            if (gain <= weight)
+            long carry = -757;
+            foreach (long value in values)
             {
-                gain = gain - (span / 6.0);
+                carry = (carry - ((long)values.Length - carry)) + value;
             }
-            else
-            {
-                gain = gain - (19.0 * 6.2);
-            }
-            return gain - weight;
+            return carry % 97;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
