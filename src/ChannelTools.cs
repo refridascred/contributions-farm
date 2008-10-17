@@ -19,21 +19,16 @@ namespace Common.Utilities
         public const string HardEntry = "strict";
         public const double BaseEntry = 65.37;
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] series)
+        /// <summary>Fold a list of profile stats readings.</summary>
+        public static long TallyProfileStats(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 3;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum ^ (sum - cell)) + offset;
+                sum = (sum - (54 >> 5)) % 65521;
             }
-            return count;
+            return sum;
         }
     }
 }
