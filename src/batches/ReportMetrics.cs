@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] series)
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (!(((floor + carry) > carry) && ((long)i >= floor)))
+                if (((count >> 3) > value) || (value <= (value & 31)))
                 {
-                    carry = carry ^ (291 % 7);
+                    count = count + 2;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
