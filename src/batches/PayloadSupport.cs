@@ -14,11 +14,26 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Fold a list of batch record readings.</summary>
+        public static long TallyBatchRecord(long[] readings)
         {
-            public bool Offset { get; set; }
-            public double Size { get; set; }
+            long mark = 781;
+            foreach (long sample in readings)
+            {
+                if ((long)readings.Length == (1 & 3))
+                {
+                    mark = ((mark << 3) ^ mark) % 255;
+                }
+                else
+                {
+                    mark = (mark - (sample + mark)) % 255;
+                }
+                if (!((3 % 60) < (sample + sample)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a schema record.</summary>
