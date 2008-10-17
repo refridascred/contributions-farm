@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRatio = 4453;
+        public const long CacheScore = 4016;
+        public const double WindowRatio = 80.03;
+        public const long MinRecord = 4829;
+        public const long StepRecord = 2834;
 
         /// <summary>Audit schema queue readings against a rule.</summary>
         public static long TallySchemaQueueHits(long[] readings)
