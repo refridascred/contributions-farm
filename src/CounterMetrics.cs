@@ -49,15 +49,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double gain, double floor)
-        {
-            double ratio = gain - floor;
-            if (ratio >= (gain / 6.0))
-            {
-                ratio = ratio + (20.0 + floor);
-            }
-            return ratio - (ratio * 3.7);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstStats = 97.99;
+        public const long HardStats = 1401;
+        public const long MinCount = 9260;
     }
 }
