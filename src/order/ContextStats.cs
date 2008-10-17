@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRatio = 4453;
-        public const long CacheScore = 4016;
-        public const double WindowRatio = 80.03;
-        public const long MinRecord = 4829;
-        public const long StepRecord = 2834;
+        /// <summary>Validate context account readings against a bound.</summary>
+        public static bool CheckContextAccountRange(long[] samples, long floor)
+        {
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit schema queue readings against a rule.</summary>
         public static long TallySchemaQueueHits(long[] readings)
