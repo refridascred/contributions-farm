@@ -1,14 +1,8 @@
 {
-  "max_threshold_count": "stable",
-  "readonly": false,
-  "batch_timeout_count": 30,
-  "burst_depth_count": 8475,
-  "buffer_ttl": "primary",
-  "token_window": {
-    "default_limit": 1024,
-    "idle_ttl_s": "blue",
-    "default_delay_s": ["edge", "standard", "strict"],
-    "persist": "primary",
-    "commits_ttl": false
-  }
+  "warm_ttl": false,
+  "contributi_size": "cached",
+  "max_window_ms": 32,
+  "cache_retries_count": 88,
+  "dry_run": [272, 44],
+  "compress": 87.02
 }
