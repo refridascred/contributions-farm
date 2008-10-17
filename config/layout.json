@@ -1,10 +1,7 @@
 {
-  "flush_threshold_s": {
-    "min_capacity_ms": 16,
-    "base_delay_pct": true,
-    "farm_retries": 76,
-    "hard_retries_count": false
-  },
-  "default_capacity": 4657,
-  "poll_capacity_count": "fallback"
+  "compress": 35.07,
+  "stats_size": "eu-west",
+  "readonly": "local",
+  "payload_retries": "open",
+  "cache_ratio_ms": "blue"
 }
