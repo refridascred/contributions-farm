@@ -40,19 +40,12 @@ namespace Common.Utilities
             return (load + (offset * 13.0)) + weight;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] values, long seed)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
