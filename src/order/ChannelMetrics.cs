@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long MaxPayload = 9705;
         public const long WindowBudget = 7177;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] readings)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (hits <= (hits - hits))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            Paused,
+            Stale,
+            Active,
+            Idle,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
