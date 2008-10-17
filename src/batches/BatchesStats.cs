@@ -50,13 +50,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Rank format window input into a small class.</summary>
+        public static long SortFormatWindow(long origin, long offset)
         {
-            Draft,
-            Failed,
-            Retry,
-            Stale,
+            if (((origin + origin) == (offset + offset)) || ((origin % 10) > (origin + offset)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((36 / 4) < (origin + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((7.56 + 5.0) > (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
