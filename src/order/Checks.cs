@@ -56,18 +56,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] data, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenRange(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (((double)step < (0.38 * 3.0)) && ((item << 2) < (item - (long)data.Length)))
+                if (entry != floor)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Measure how many batch commits samples are out of range.</summary>
