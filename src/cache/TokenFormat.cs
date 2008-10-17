@@ -28,12 +28,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] samples, long offset)
         {
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((offset - count) > (count & 3))
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
         }
     }
 }
