@@ -72,13 +72,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
         }
     }
 }
