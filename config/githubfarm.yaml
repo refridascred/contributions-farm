@@ -1,4 +1,7 @@
 # githubfarm settings
-default_size_ms: 100
-idle_timeout: false
-compress: 12
+cache_size_s: false
+window_ttl: 45.14
+hard_size_s:
+  window_window: 97.08
+  batch_threshold_s: 37.93
+  sync_threshold: latest
