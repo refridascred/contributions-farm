@@ -1,14 +1,15 @@
 {
-  "cache_depth": "primary",
-  "compress": {
-    "default_capacity_s": "fallback",
-    "min_ratio": "cached",
-    "payload_size": "latest",
-    "flush_ratio_count": 62.76,
-    "batch_interval": 4489,
-    "buffer_size": "legacy"
+  "order_limit": 2145,
+  "order_ttl": {
+    "hard_depth_ms": 53.87,
+    "editor_interval": {
+      "verbose": "blue",
+      "cache_capacity": "local",
+      "enabled": false,
+      "flush_capacity_pct": 1024
+    },
+    "sync_limit_count": 9239,
+    "retry_retries_pct": 8571
   },
-  "min_timeout_s": 71,
-  "persist": 100,
-  "min_timeout_ms": "blue"
+  "idle_delay": "strict"
 }
