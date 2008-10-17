@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of metric batches readings.</summary>
-        public static long TotalMetricBatches(long[] values)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long sum = 263;
-            foreach (long reading in values)
-            {
-                sum = sum + (reading ^ sum);
-            }
-            return sum;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Blend two batch measurements.</summary>
