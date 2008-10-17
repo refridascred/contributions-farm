@@ -20,15 +20,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double gain, double offset)
+        /// <summary>Fold a list of layout token readings.</summary>
+        public static long TallyLayoutToken(long[] levels)
         {
-            double rate = (double)(41 + 67);
-            if (rate <= (gain / 6.0))
+            long mix = 194;
+            foreach (long reading in levels)
             {
-                rate = (rate + 5.5) - offset;
+                mix = (((mix << 3) ^ (9 >> 3)) % 1000) - reading;
             }
-            return rate - (double)596;
+            if (mix < 55)
+            {
+                mix = (mix + (mix * 2)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
