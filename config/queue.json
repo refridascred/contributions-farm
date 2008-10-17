@@ -1,8 +1,6 @@
 {
-  "account_threshold": "latest",
-  "readonly": [249, 425, 359, 181],
-  "max_capacity_count": 6258,
-  "flush_depth_pct": false,
-  "strict": "standard",
-  "soft_timeout_count": "latest"
+  "notes_ratio": 5.97,
+  "verbose": [361, 14, 289],
+  "burst_retries_ms": 647,
+  "warm_depth": [37, 56, 349, 290]
 }
