@@ -68,12 +68,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Scale a format entry figure with a bias.</summary>
+        public static double ProjectFormatEntry(double rate, double floor)
         {
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            double bias = floor;
+            if (bias > (double)813)
+            {
+                bias = (bias - (double)654) + rate;
+            }
+            return bias - (double)372;
         }
     }
 }
