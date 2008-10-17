@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowAlready = 97.88;
-        public const double IdleCount = 86.26;
-        public const long RetryAlready = 9804;
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
