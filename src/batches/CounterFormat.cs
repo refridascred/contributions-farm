@@ -40,11 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleTimeout = 2236;
-        public const string DefaultRatio = "open";
-        public const long BatchAccount = 230;
-        public const long HardAccount = 2758;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchCount = 8502;
+        public const double HardSchema = 77.78;
+        public const double MaxFactor = 54.81;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long RetryScore = 2677;
