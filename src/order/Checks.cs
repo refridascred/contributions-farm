@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((long)readings.Length - offset) > entry)
                 {
-                    if ((samples[i] - samples[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a token header.</summary>
