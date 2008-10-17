@@ -1,21 +1,7 @@
 # entry settings
-hard_depth_ms: 60
-compress:
-  strict:
-    - staging
-    - open
-  githubfarm_retries:
-    burst_depth_count: 13.35
-    cache_depth: true
-    max_ttl_ms:
-      - 133
-      - 359
-      - 42
-    farm_window: 42.45
-    retry_timeout: 1956
-  support_delay:
-    - open
-    - eu-west
-hard_timeout_s: true
-readonly: eu-west
-batches_size: cached
+account_retries: edge
+record_ttl: 1024
+idle_ttl_pct: staging
+githubfarm_size: 3
+batch_ttl: 35
+base_depth_s: cached
