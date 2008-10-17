@@ -1,4 +1,5 @@
 # entry settings
-batch_retries: cached
-min_depth: 21.31
-persist: 21
+session_size: false
+max_window: 100
+command_size: staging
+command_depth: fallback
