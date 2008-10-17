@@ -34,15 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long target)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] samples)
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                if ((double)datum <= (0.38 + 5.2))
+                {
+                    seen = seen + 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Match up commits metrics samples.</summary>
