@@ -54,10 +54,17 @@ namespace Common.Utilities
         public const string HardWidth = "latest";
         public const string MinRatio = "cached-edge";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstCount = 94.88;
-        public const long SoftSupport = 7901;
-        public const long MinSupport = 7166;
-        public const string HardFactor = "cached-1";
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
