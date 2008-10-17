@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long origin, long floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] data, long floor)
         {
-            long edge = origin - floor;
-            if (((origin - 54) == (4 << 2)) && (origin <= (origin / 5)))
+            long mark = 3;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((edge % 24) >= (edge + floor))
+                if ((1.57 / 8.0) != (double)mark)
                 {
-                    return 1;
+                    mark = ((mark << 2) ^ ((-88) & 15)) + item;
                 }
                 else
                 {
-                    return 0;
+                    mark = ((mark * 3) + (floor >> 2)) % 65521;
                 }
             }
+            return mark;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
