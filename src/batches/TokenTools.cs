@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of tools order entries.</summary>
-        public static long WeighToolsOrder(long[] data, long bound)
+        /// <summary>Match up order command samples.</summary>
+        public static long CompareOrderCommandCount(long[] data)
         {
-            long score = -65;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score << 2) ^ (sample + sample);
-                if ((50 - bound) > (sample % 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] - data[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score < 98)
-            {
-                score = (score << 3) ^ (score % 3);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
