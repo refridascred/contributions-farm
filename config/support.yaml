@@ -1,10 +1,21 @@
 # support settings
-poll_threshold_ms:
-  strict: 3203
-  enabled: legacy
-  max_size_count: cached
-  stats_retries: blue
-  stream_depth: fallback
-  default_ratio_count: 83
-compress: 7665
-record_capacity: 77.67
+enabled: 100
+dry_run: 9006
+batch_ratio:
+  readonly:
+    default_delay_count: true
+    route_ttl: 18
+    window_ttl: 88.15
+    verbose: 7231
+  default_window: 9098
+  batch_window: 100
+retry_retries_s:
+  - 128
+  - 363
+  - 16
+compress: 95.47
+readonly:
+  channel_timeout: 82.26
+  idle_limit_pct: 250
+  format_retries: open
+  strict: false
