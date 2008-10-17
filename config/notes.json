@@ -1,24 +1,7 @@
 {
-  "metric_size": [499, 337, 165, 218],
-  "batch_size_ms": {
-    "batch_depth": {
-      "channel_ratio": 7150,
-      "enabled": 100,
-      "hard_interval_ms": "latest",
-      "verbose": "legacy"
-    },
-    "cache_interval_s": true,
-    "order_window": "green",
-    "compress": 1624,
-    "min_interval_count": 42,
-    "session_capacity": "cached"
-  },
-  "commits_capacity": {
-    "sync_interval_ms": "legacy",
-    "sync_ratio": 49.57,
-    "enabled": 71.2,
-    "cache_depth_count": "green"
-  },
-  "session_limit": "open",
-  "entry_ttl": 30
+  "token_delay": "latest",
+  "cache_limit_s": 6653,
+  "warm_ratio": ["primary", "local", "strict"],
+  "order_ratio": "strict",
+  "queue_delay": "local"
 }
