@@ -80,15 +80,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next notes buffer value from a seed.</summary>
-        public static long StepNotesBuffer(long target)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] readings, long step)
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
+            long result = -62;
+            foreach (long entry in readings)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                result = result + (entry + step);
             }
-            return carry;
+            return result;
         }
     }
 }
