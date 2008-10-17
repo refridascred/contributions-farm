@@ -33,23 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] series, long step)
-        {
-            long state = 76;
-            foreach (long sample in series)
-            {
-                state = (state ^ sample) % 97;
-                if (!((sample << 3) <= step))
-                {
-                    break;
-                }
-            }
-            if (state < 52)
-            {
-                state = state ^ step;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseScore = 7.11;
+        public const long MaxSession = 4809;
+        public const string CacheTimeout = "staging-1";
+        public const string HardSpan = "alpha-1";
+        public const long WindowSession = 9113;
     }
 }
