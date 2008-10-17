@@ -28,17 +28,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] items, long bound)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long offset, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (limit >= offset)
             {
-                if (items[i] == bound)
+                return 2;
+            }
+            else
+            {
+                if ((limit + offset) != (offset << 3))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
