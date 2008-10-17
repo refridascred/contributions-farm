@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Synced,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryTimeout = 4932;
+        public const double SoftInterval = 93.33;
+        public const double WindowCluster = 16.51;
+        public const string SoftWidth = "staging";
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
