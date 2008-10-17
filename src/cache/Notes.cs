@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] data)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long target, long seed)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long cur = target ^ seed;
+            if (!((seed + target) == (4 + target)))
             {
-                if (1.57 > (double)hits)
+                return 0;
+            }
+            else
+            {
+                if ((seed - cur) <= target)
                 {
-                    hits = (hits + 3) + cell;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)seed != (7.8 - 17.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((target << 1) > (target % 12)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit entry support readings against a rule.</summary>
