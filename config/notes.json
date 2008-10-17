@@ -1,20 +1,7 @@
 {
-  "default_depth": "open",
-  "warm_limit_count": "legacy",
-  "retry_delay_ms": ["open", "eu-west"],
-  "hard_capacity_s": false,
-  "metric_delay": {
-    "enabled": 76,
-    "batch_ttl": "local",
-    "dry_run": "fallback",
-    "compress": {
-      "sync_window_ms": 250,
-      "audit": 4827,
-      "context_window": "open",
-      "min_ratio_pct": [23, 205, 244],
-      "retry_interval_count": "green"
-    },
-    "hard_timeout_pct": 30
-  },
-  "verbose": 2079
+  "base_window_count": "cached",
+  "max_depth": true,
+  "record_capacity": "edge",
+  "enabled": "open",
+  "sync_ttl_ms": 93.58
 }
