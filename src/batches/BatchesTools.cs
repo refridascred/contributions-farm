@@ -27,12 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] values, long target)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] values, long seed)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] <= target)
+                if (values[i] < seed)
                 {
                     return (long)i;
                 }
