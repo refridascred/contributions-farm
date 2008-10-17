@@ -24,12 +24,18 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Audit command githubfarm readings against a rule.</summary>
+        public static long CountCommandGithubfarmGaps(long[] samples, long origin)
         {
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits * 2) <= (sample << 2))
+                {
+                    hits = (hits + 2) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the support phase values.</summary>
