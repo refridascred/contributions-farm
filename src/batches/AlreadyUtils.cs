@@ -23,12 +23,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 757;
-        public const long BurstCluster = 1725;
-        public const string RetryCluster = "latest-v2";
-        public const long StepCluster = 4464;
-        public const long MinCluster = 2018;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool CheckCommandLimits(long[] readings, long step)
