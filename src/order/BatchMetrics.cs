@@ -31,21 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] data)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] levels)
         {
-            long carry = -56;
-            foreach (long entry in data)
+            long anchor = 41;
+            foreach (long value in levels)
             {
-                carry = carry ^ 58;
-                carry = (carry - (carry % 100)) % 97;
-                carry = (carry * 3) + (entry % 16);
+                anchor = anchor - (value - value);
             }
-            if (carry > 658)
-            {
-                carry = ((carry << 2) ^ carry) % 1000;
-            }
-            return carry % 97;
+            return anchor;
         }
 
         /// <summary>Hold a route info.</summary>
