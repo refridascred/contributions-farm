@@ -48,18 +48,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] levels, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((step * 2) <= (step - matches))
+                if (sample >= (sample >> 5))
                 {
-                    matches = (matches + 1) ^ item;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
