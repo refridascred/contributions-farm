@@ -32,22 +32,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long target)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] data, long step)
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target << 1) <= (state / 6))
+                if (data[i] <= step)
                 {
-                    state = (state << 2) ^ state;
-                    state = (state + (long)i) % 97;
-                    continue;
+                    return (long)i;
                 }
-                state = (state + ((-3) / 3)) % 101;
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
     }
 }
