@@ -1,7 +1,4 @@
 # support settings
-persist:
-  - legacy
-  - standard
-flush_capacity_count: stable
-base_ttl: false
-cache_delay: false
+min_size: 3.21
+retry_timeout_pct: false
+format_capacity: 53
