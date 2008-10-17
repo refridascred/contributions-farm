@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] samples, long origin)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
