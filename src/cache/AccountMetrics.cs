@@ -74,10 +74,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowRatio = 179;
-        public const string BurstLevel = "fallback-v2";
-        public const long IdleDepth = 7489;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] data, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((3 % 64) > (matches + 15))
+                {
+                    matches = ((matches + 2) - sample) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a context cluster pair into a bucket.</summary>
         public static long GradeContextCluster(long limit, long offset)
