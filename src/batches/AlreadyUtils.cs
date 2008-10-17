@@ -22,11 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double bias, double bias2)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] readings, long offset)
         {
-            double rate = (double)(30 >> 5);
-            return ((rate + rate) + bias) + bias2;
+            long score = 7;
+            foreach (long reading in readings)
+            {
+                score = score + (reading / 4);
+                score = (score * 5) + (offset ^ reading);
+                score = (score - (reading + offset)) % 65521;
+                if (offset > (reading << 3))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Match up payload samples.</summary>
