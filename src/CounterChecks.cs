@@ -41,12 +41,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long offset)
         {
-            Stale,
-            Dropped,
-            Queued,
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
