@@ -47,18 +47,31 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] items, long limit)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long value in items)
+            if (((seed - seed) <= (bound ^ bound)) && (seed > (bound << 2)))
             {
-                if (!(((limit >> 5) == (seen >> 2)) || ((limit & 7) >= seen)))
+                return 1;
+            }
+            else
+            {
+                if (15 > (bound >> 4))
                 {
-                    seen = (seen + 2) + value;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound >= 5.8)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
