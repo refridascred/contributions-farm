@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryMetric = "staging-edge";
-        public const long LimitSpan = 1099;
-        public const long CacheScore = 7336;
-        public const double BaseMetric = 12.29;
-        public const double RetryWidth = 80.38;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 3463;
+        public const double SoftChannel = 77.53;
+        public const long BatchChannel = 5676;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportOutliers(long[] samples, long origin)
