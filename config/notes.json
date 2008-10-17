@@ -1,8 +1,6 @@
 {
-  "readonly": 500,
-  "buffer_retries": 20.57,
-  "command_delay": false,
-  "hard_ratio_s": 7874,
-  "batch_ratio_s": 9915,
-  "hard_ttl_s": "primary"
+  "filter_delay": ["staging", "standard", "eu-west", "local"],
+  "min_timeout_count": 5539,
+  "editor_threshold": [385, 91, 58],
+  "format_ratio": "staging"
 }
