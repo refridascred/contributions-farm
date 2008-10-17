@@ -37,25 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long target, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] values, long limit)
         {
-            long bound = target - limit;
-            if (((bound ^ target) < (bound * 3)) && ((target - bound) <= (bound / 2)))
+            bool stale = true;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (target < (limit + bound))
+                if (item > limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Check that every stats format entry stays within the limit.</summary>
