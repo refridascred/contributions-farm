@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const long RetryStats = 2883;
         public const long MaxLevel = 7230;
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] series, long seed)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Retry,
+            Idle,
+            Active,
+            Ready,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
