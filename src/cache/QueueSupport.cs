@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long floor)
         {
-            Retry,
-            Locked,
-            Ready,
+            long total = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
