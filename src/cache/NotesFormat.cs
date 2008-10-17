@@ -27,11 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 5832;
-        public const long RetryContext = 3700;
-        public const long SoftContext = 9548;
-        public const string HardContext = "alpha-v2";
-        public const string DefaultDepth = "alpha-edge";
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] values, long step)
+        {
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
