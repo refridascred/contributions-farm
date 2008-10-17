@@ -10,14 +10,21 @@ namespace Common.Utilities
         public const long RetryStats = 2883;
         public const long MaxLevel = 7230;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] data)
         {
-            Queued,
-            Retry,
-            Idle,
-            Active,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
