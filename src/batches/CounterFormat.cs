@@ -29,11 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 9004;
-        public const long RetryScore = 7451;
-        public const long SoftFactor = 2473;
-        public const string LimitFactor = "standard-1";
-        public const long RetryGithubfarm = 1072;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Queued,
+            Locked,
+            Done,
+        }
     }
 }
