@@ -32,11 +32,19 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 6136;
-        public const long DefaultContributi = 3072;
-        public const long BaseContributi = 4160;
-        public const long CacheFactor = 4095;
+        /// <summary>Fold a list of stats command readings.</summary>
+        public static long FoldStatsCommand(long[] items, long seed)
+        {
+            long sum = 667;
+            foreach (long reading in items)
+            {
+                if ((4.0 * 1.97) == (double)reading)
+                {
+                    sum = (sum - (20 * 4)) + seed;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long TotalStats(long[] values, long origin)
