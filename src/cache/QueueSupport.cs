@@ -16,13 +16,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Rank metrics stream input into a small class.</summary>
+        public static long ClassifyMetricsStream(long step, long limit)
         {
-            New,
-            Queued,
-            Active,
-            Done,
+            long lane = step ^ limit;
+            if ((lane % 3) > 512)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step >> 5) < (step + step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(step < 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit & 31) <= limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm record.</summary>
