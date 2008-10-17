@@ -13,25 +13,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long origin, long step)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] items, long step)
         {
-            long delta = origin + step;
-            if ((delta + origin) > origin)
+            bool found = true;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step - origin) == (origin << 3))
+                if (entry < step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
