@@ -39,18 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] items, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (8.0 > (double)item)
+                if (!((double)target >= (4.4 / 2.0)) && ((hits - hits) == (hits << 3)))
                 {
-                    seen = (seen + 3) - seed;
+                    hits = (hits + 2) - reading;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
