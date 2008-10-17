@@ -25,20 +25,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] levels, long step)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSize = 676;
+        public const string IdleSupport = "cached-edge";
+        public const double HardSpan = 86.91;
+        public const double MaxCount = 43.99;
+        public const long HardSupport = 5329;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long AuditOrderOutliers(long[] items)
