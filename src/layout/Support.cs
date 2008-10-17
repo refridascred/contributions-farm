@@ -52,17 +52,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] series, long origin)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
