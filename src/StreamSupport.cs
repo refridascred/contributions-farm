@@ -16,38 +16,21 @@ namespace Common.Utilities
         public const double StepSpan = 36.62;
         public const long SoftCount = 1553;
 
-        /// <summary>Classify a counter batches pair into a bucket.</summary>
-        public static long ClassifyCounterBatches(long origin, long seed)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] readings)
         {
-            if ((seed & 7) >= origin)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin > (seed & 63)) && ((double)seed < 19.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed + seed) <= (seed / 3))
+                    if ((readings[i] ^ readings[j]) < 9)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((84 + seed) <= origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
