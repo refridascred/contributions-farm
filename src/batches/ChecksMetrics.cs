@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] data, long step)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] values, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] < step) && ((data[i] % 5) == 0))
+                if ((values[i] >= floor) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
