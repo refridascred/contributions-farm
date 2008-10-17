@@ -72,9 +72,12 @@ namespace Common.Utilities
         public const long BurstCount = 3293;
         public const long WindowCache = 2147;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSession = "stable";
-        public const string BurstSession = "standard-edge";
-        public const long IdleDepth = 8975;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
