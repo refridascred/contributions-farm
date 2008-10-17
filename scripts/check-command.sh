@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy edge latest eu-west; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=455
+log "limit is ${COMMAND_LIMIT}"
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-mode="${1:-blue}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
