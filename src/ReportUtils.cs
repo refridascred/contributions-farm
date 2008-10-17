@@ -21,12 +21,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Draft,
-            Ready,
-            Dropped,
+            public long Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
