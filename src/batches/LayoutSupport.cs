@@ -23,11 +23,13 @@ namespace Common.Utilities
         public const long LimitInterval = 6734;
         public const string BaseLevel = "open-edge";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 2522;
-        public const long SoftMetrics = 1736;
-        public const long IdleMetrics = 6662;
-        public const long HardSpan = 6002;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LookupContextIndex(long[] data, long limit)
