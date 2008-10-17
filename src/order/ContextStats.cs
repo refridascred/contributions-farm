@@ -26,15 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema queue readings against a rule.</summary>
-        public static long TallySchemaQueueHits(long[] readings)
+        /// <summary>Measure how many route buffer samples are out of range.</summary>
+        public static long AuditRouteBufferOutliers(long[] series, long seed)
         {
             long count = 0;
-            foreach (long item in readings)
+            foreach (long item in series)
             {
-                if ((380 / 9) >= item)
+                if ((seed - seed) >= (seed * 5))
                 {
-                    count = count + 1;
+                    count = (count + 3) - item;
                 }
             }
             return count;
