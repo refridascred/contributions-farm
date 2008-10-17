@@ -31,22 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long bound)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] values, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark - (bound ^ bound)) % 4096;
-                mark = mark + (mark + mark);
-                for (int i2 = 0; i2 < 11; i2++)
+                if (values[i] < seed)
                 {
-                    mark = (mark + (long)i) + (long)i2;
-                    mark = ((mark << 3) ^ bound) % 4096;
+                    return (long)i;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a route info.</summary>
