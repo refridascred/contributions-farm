@@ -34,19 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double gain, double span)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double mean = (span + span) - gain;
-            if (mean >= (double)67)
-            {
-                mean = mean - 9.5;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - (span - mean);
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
