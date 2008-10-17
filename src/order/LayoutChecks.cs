@@ -32,13 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] series, long step)
         {
-            Dropped,
-            Ready,
-            Draft,
-            Failed,
+            long score = 76;
+            foreach (long cell in series)
+            {
+                if (!((double)cell > (double)score))
+                {
+                    score = ((score << 2) ^ (24 % 10)) % 1000;
+                    score = (score + (step << 3)) % 65521;
+                }
+                if ((score >= (score - cell)) && ((step + step) >= (cell + step)))
+                {
+                    score = score + cell;
+                }
+                else
+                {
+                    score = ((score * 3) + step) % 65521;
+                }
+            }
+            if (score > 532)
+            {
+                score = (score + (step + step)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
