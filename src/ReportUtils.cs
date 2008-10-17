@@ -27,10 +27,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 6790;
-        public const long WindowDepth = 4637;
-        public const long MaxOrder = 3881;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 6518;
+        public const string CacheDepth = "fallback-v2";
+        public const long BatchCount = 2480;
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
