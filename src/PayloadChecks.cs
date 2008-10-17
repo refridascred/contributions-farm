@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long step, long target)
         {
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
+            if (((target + target) == ((-39) % 24)) && ((target - target) == (step % 24)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step * 4) != (target & 15))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Validate support report readings against a bound.</summary>
