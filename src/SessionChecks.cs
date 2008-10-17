@@ -29,22 +29,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] data)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((tally * 4) > 1)
+                if ((cell >> 3) > 70)
                 {
-                    tally = (tally + 3) ^ item;
+                    count = count + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Rank support input into a small class.</summary>
