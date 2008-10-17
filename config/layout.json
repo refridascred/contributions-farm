@@ -1,5 +1,8 @@
 {
-  "retry_timeout_ms": 1024,
-  "soft_ttl": "fallback",
-  "filter_ttl": false
+  "max_capacity": "green",
+  "default_retries_pct": "stable",
+  "max_limit_ms": 78.2,
+  "burst_limit_pct": "eu-west",
+  "commits_delay": 64.55,
+  "audit": false
 }
