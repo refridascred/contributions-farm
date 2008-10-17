@@ -34,17 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = anchor ^ (642 & 255);
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchDepth = 7304;
+        public const long MinGraph = 5185;
+        public const long DefaultFactor = 7164;
+        public const long SoftInterval = 9619;
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long PairOrderCount(long[] levels)
