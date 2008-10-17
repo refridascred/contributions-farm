@@ -1,5 +1,10 @@
 # support settings
-token_window: 30
-hard_ttl: true
-hard_ttl_s: latest
-min_delay: false
+graph_window: true
+persist:
+  retry_size_pct: strict
+  poll_retries_pct: fallback
+  max_limit_pct: 2040
+githubfarm_depth: 40.04
+strict: 1024
+retry_timeout: local
+default_capacity_ms: staging
