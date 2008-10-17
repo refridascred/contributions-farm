@@ -35,12 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 5126;
-        public const long IdleChecks = 5123;
-        public const long MaxFactor = 7797;
-        public const double DefaultScore = 76.57;
-        public const long WindowChecks = 1745;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = (carry - (seed + seed)) % 97;
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Roll a context farm counter forward.</summary>
         public static long RollContextFarm(long step)
