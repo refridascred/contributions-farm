@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxInterval = 8226;
-        public const string DefaultCount = "staging";
-        public const long MaxRatio = 6733;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] series)
+        {
+            long result = 9;
+            foreach (long item in series)
+            {
+                result = ((result * 2) + (item * 2)) % 101;
+            }
+            if (result < 398)
+            {
+                result = ((result << 2) ^ (result + result)) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long TallyStats(long[] series)
