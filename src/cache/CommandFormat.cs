@@ -48,19 +48,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] levels, long seed)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstCount = 9225;
+        public const long IdleInterval = 2928;
+        public const long WindowReport = 699;
     }
 }
