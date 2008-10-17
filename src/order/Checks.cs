@@ -20,26 +20,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] data)
+        /// <summary>Measure how many metrics checks samples are out of range.</summary>
+        public static long CountMetricsChecksOutliers(long[] readings)
         {
-            long anchor = 980;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((anchor > (anchor % 10)) && ((double)cell >= (11.0 + 3.6)))
+                if ((double)sample == (1.7 - 7.4))
                 {
-                    anchor = (anchor + (anchor >> 5)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (anchor - cell);
+                    matches = matches + 3;
                 }
             }
-            if (anchor > 99)
-            {
-                anchor = (anchor ^ anchor) % 1000;
-            }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
