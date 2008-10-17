@@ -27,32 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long step, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] items)
         {
-            long cur = step ^ seed;
-            if ((seed - cur) >= (step + seed))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step >= 4.0)
+                if ((matches - matches) == (matches + value))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((82 + seed) == (step + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the payload state values.</summary>
