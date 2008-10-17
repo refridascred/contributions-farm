@@ -68,19 +68,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] series, long step)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Locked,
+            Done,
         }
     }
 }
