@@ -22,13 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Fold a list of githubfarm format readings.</summary>
+        public static long TotalGithubfarmFormat(long[] items, long target)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
+            long carry = 564;
+            foreach (long cell in items)
+            {
+                if (carry < (target ^ carry))
+                {
+                    carry = ((carry + (carry + target)) % 1000) + cell;
+                }
+            }
+            if (carry > 60)
+            {
+                carry = (carry + (target - 41)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
