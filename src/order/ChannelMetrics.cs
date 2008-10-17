@@ -12,13 +12,32 @@ namespace Common.Utilities
         public const long MaxPayload = 9705;
         public const long WindowBudget = 7177;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long bound, long seed)
         {
-            Paused,
-            Stale,
-            Active,
-            Idle,
+            long edge = bound + seed;
+            if (bound >= seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((edge % 12) <= edge) && (bound < ((-7) ^ seed)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + bound) >= (edge >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
