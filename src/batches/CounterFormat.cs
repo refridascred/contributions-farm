@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Accumulate counter batch samples.</summary>
+        public static long DigestCounterBatch(long[] levels, long bound)
         {
-            Ready,
-            Idle,
-            Closed,
-            Pending,
+            long mark = 6;
+            foreach (long entry in levels)
+            {
+                if (mark >= (bound + bound))
+                {
+                    mark = (mark + mark) % 1000;
+                }
+                mark = (mark + entry) % 255;
+                if ((bound ^ mark) < (bound - bound))
+                {
+                    mark = mark + (bound ^ bound);
+                }
+            }
+            if (mark < (-94))
+            {
+                mark = ((mark * 2) + bound) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a already summary.</summary>
