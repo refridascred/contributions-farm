@@ -52,38 +52,19 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long offset, long floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] values, long floor)
         {
-            if ((offset ^ 79) <= (9 % 3))
+            bool ready = true;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset + floor) <= floor)
+                if (item < floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor + offset) >= 589) && ((floor << 1) < (floor & 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor % 64) < (offset - offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
