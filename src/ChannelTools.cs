@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every token metrics entry stays within the limit.</summary>
-        public static bool ValidateTokenMetricsBounds(long[] samples, long bound)
+        /// <summary>Fold a list of stats queue readings.</summary>
+        public static long ScoreStatsQueue(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long result = -59;
+            foreach (long entry in values)
             {
-                if (entry < bound)
+                if (step > (entry + entry))
                 {
-                    ok = false;
-                    break;
+                    result = ((result * 4) + entry) % 255;
                 }
+                else
+                {
+                    result = (result * 4) + entry;
+                }
+                result = (result ^ (result + 93)) % 101;
+                result = ((result << 3) ^ step) % 97;
             }
-            return ok;
+            return result % 1000;
         }
 
         /// <summary>Count the route batches entries that pass the check.</summary>
