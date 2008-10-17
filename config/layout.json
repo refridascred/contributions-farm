@@ -1,9 +1,5 @@
 {
-  "sync_ttl_count": "fallback",
-  "sync_depth_pct": 57.58,
-  "warm_ratio": {
-    "strict": false,
-    "profile_limit": 33.39,
-    "cache_retries_s": "staging"
-  }
+  "contributi_timeout": 9471,
+  "strict": "open",
+  "verbose": "cached"
 }
