@@ -27,10 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitToken = "legacy-1";
-        public const long IdleToken = 5576;
-        public const double WindowToken = 56.69;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
