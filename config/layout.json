@@ -1,6 +1,8 @@
 {
-  "burst_limit_pct": ["strict", "green", "strict"],
-  "token_window": 47.36,
-  "contributi_size": 96.32,
-  "audit": "local"
+  "retry_retries": "cached",
+  "max_ratio_s": "standard",
+  "cache_limit": "cached",
+  "flush_delay_s": "staging",
+  "batch_capacity_ms": "primary",
+  "verbose": 59.95
 }
