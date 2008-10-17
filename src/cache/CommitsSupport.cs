@@ -41,12 +41,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Classify a format editor pair into a bucket.</summary>
+        public static long GradeFormatEditor(long seed, long seed2)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            if ((seed + seed) < seed2)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed2 >> 4) >= seed2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Locate a editor stream reading by value.</summary>
