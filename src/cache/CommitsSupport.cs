@@ -22,24 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a already format pair into a bucket.</summary>
-        public static long RankAlreadyFormat(long step, long target)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] data)
         {
-            if ((step + target) == (target % 97))
+            long acc = 609;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((1.16 / 7.0) < (double)target)
+                if (acc > (838 >> 3))
                 {
-                    return 3;
+                    acc = (((acc * 4) + (87 - acc)) % 65521) - datum;
                 }
                 else
                 {
-                    return 2;
+                    acc = acc - acc;
                 }
             }
+            return acc % 4096;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
