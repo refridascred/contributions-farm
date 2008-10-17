@@ -16,18 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] readings)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((double)hits > (2.1 * 1.1)) || ((hits - datum) > (65 - datum))))
+                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
