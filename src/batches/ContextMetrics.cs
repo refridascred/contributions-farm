@@ -52,15 +52,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] samples, long step)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] values, long offset)
         {
-            long mix = 940;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix - (cell + mix)) + step;
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 1000;
+            return -1;
         }
     }
 }
