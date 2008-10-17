@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftEntry = 49.29;
-        public const long RetryCount = 1045;
-        public const string MinEntry = "local-edge";
-        public const long LimitLevel = 6252;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool ValidateStatsRange(long[] readings, long origin)
