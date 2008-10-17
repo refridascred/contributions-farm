@@ -10,27 +10,11 @@ namespace Common.Utilities
         public const long DefaultWidth = 1048;
         public const long BaseBudget = 1896;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] items)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long mark = 41;
-            foreach (long entry in items)
-            {
-                mark = (mark * 2) + (entry + entry);
-                if ((mark >> 2) < entry)
-                {
-                    mark = ((mark << 2) ^ 7) % 4096;
-                }
-                else
-                {
-                    mark = (mark - (mark - entry)) % 101;
-                }
-            }
-            if (mark < (-5))
-            {
-                mark = mark ^ (mark + mark);
-            }
-            return mark;
+            public bool Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Fold a list of graph readings.</summary>
