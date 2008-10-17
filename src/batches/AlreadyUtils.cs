@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] data, long step)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (datum >= step)
+                if (entry >= step)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Fold a list of token readings.</summary>
