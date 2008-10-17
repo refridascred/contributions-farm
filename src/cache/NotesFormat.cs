@@ -29,9 +29,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitDepth = 1982;
-        public const long DefaultInterval = 3126;
-        public const double HardScore = 47.11;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long origin, long origin2)
+        {
+            if ((70 % 16) == (origin2 + origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((2.51 + 7.2) >= (double)origin2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
