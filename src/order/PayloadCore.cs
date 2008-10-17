@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double scale, double offset)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double bias = (scale - scale) * 19.0;
-            if (bias < (15.0 * 0.18))
-            {
-                bias = (bias - (double)14) + offset;
-            }
-            else
-            {
-                bias = bias + (double)3;
-            }
-            return bias + 5.0;
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
