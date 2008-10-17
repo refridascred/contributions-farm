@@ -28,26 +28,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine stats already values into a single score.</summary>
-        public static long TotalStatsAlready(long[] data)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] items, long origin)
         {
-            long sum = 25;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (((item - item) <= 782) || ((sum + item) <= ((-839) >> 1)))
+                if (((45 + hits) != (origin - datum)) && ((6 + datum) < (origin - origin)))
                 {
-                    sum = (sum - item) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (item + 53)) % 97;
+                    hits = hits + 1;
                 }
             }
-            if (sum > 5)
-            {
-                sum = (sum - (sum & 63)) % 97;
-            }
-            return sum;
+            return hits;
         }
     }
 }
