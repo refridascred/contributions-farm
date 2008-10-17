@@ -58,15 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next notes githubfarm value.</summary>
-        public static double AdjustNotesGithubfarm(double bias, double span)
+        /// <summary>Check that every stats format entry stays within the limit.</summary>
+        public static bool CheckStatsFormatBounds(long[] items, long bound)
         {
-            double drift = span * 10.0;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                drift = ((drift - 4.47) + (double)(long)i) + bias;
+                if (cell != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift - (span / 9.0);
+            return ready;
         }
     }
 }
