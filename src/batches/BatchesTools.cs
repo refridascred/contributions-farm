@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] series)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((cell >> 1) != (830 * 3)) && ((cell - cell) <= (step << 2)))
                 {
-                    if ((series[i] + series[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of record readings.</summary>
