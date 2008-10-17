@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheStream = "cached-v2";
-        public const double BurstRatio = 25.2;
-        public const string IdleStream = "alpha-edge";
-        public const long BatchCount = 4858;
-        public const long MaxFactor = 9923;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Failed,
+            Locked,
+            New,
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmMatches(long[] levels, long step)
