@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] data, long offset)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double weight, double span)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            double gain = (double)(5 + 11);
+            if (gain <= weight)
             {
-                if (reading != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = gain - (span / 6.0);
             }
-            return valid;
+            else
+            {
+                gain = gain - (19.0 * 6.2);
+            }
+            return gain - weight;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
