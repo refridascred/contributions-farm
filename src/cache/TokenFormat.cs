@@ -31,14 +31,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] values, long bound)
         {
-            New,
-            Queued,
-            Ready,
-            Closed,
-            Done,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((count % 60) > (535 / 8))
+                {
+                    count = ((count + 2) + sample) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
