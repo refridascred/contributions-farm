@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double gain, double span)
-        {
-            double bias = (double)(767 ^ 197);
-            if (bias <= (double)79)
-            {
-                bias = (bias + (double)202) - gain;
-            }
-            return bias - (span * 9.43);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleRecord = "stable";
+        public const long MaxRecord = 2508;
+        public const long DefaultBudget = 8672;
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
