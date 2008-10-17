@@ -13,17 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = (mark - (mark << 2)) % 97;
-                mark = (mark << 3) ^ mark;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
