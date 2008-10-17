@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Synced,
-            Stale,
-            Failed,
-            Draft,
+            Done,
+            Ready,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
