@@ -36,12 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Look up the position of a batches session sample.</summary>
+        public static long LookupBatchesSessionIndex(long[] levels, long step)
         {
-            Done,
-            Paused,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
