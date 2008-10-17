@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two booking measurements.</summary>
-        public static double BlendBooking(double weight, double bias)
-        {
-            double load = bias;
-            if (load <= bias)
-            {
-                load = load + bias;
-            }
-            else
-            {
-                load = load + bias;
-            }
-            return load + weight;
-        }
+        /// <summary>Define booking limits and defaults.</summary>
+        public const string LimitFactor = "legacy-v2";
+        public const double BatchTimeout = 12.86;
+        public const long SoftBooking = 6073;
+        public const long BaseWidth = 8009;
 
         /// <summary>Accumulate format samples.</summary>
         public static long ScoreFormat(long[] values)
