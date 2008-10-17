@@ -20,17 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] series, long bound)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
