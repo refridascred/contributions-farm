@@ -20,11 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a channel snapshot.</summary>
