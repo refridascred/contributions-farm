@@ -39,19 +39,19 @@ namespace Common.Utilities
         public const long WindowSpan = 3714;
         public const long BaseRatio = 9907;
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double scale, double span)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] levels)
         {
-            double bias = (double)(7 ^ 996);
-            if (bias <= (span / 4.0))
+            long acc = 42;
+            foreach (long datum in levels)
             {
-                bias = bias + scale;
+                acc = ((acc << 2) ^ (datum / 4)) % 255;
             }
-            else
+            if (acc < 49)
             {
-                bias = bias - span;
+                acc = (acc * 2) + (acc - acc);
             }
-            return bias - scale;
+            return acc % 65521;
         }
     }
 }
