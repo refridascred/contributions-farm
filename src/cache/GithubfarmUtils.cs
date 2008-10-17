@@ -23,21 +23,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Match up contributi record samples.</summary>
-        public static long MatchContributiRecordCount(long[] samples)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 62;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((reading + anchor) != (reading * 3)))
                 {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor ^ (anchor ^ 3);
+                }
+                else
+                {
+                    anchor = anchor + (5 >> 2);
                 }
             }
-            return seen;
+            return anchor % 97;
         }
 
         /// <summary>Hold a route info.</summary>
