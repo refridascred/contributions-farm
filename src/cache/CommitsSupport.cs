@@ -46,19 +46,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every schema window entry stays within the limit.</summary>
-        public static bool GuardSchemaWindowBounds(long[] values, long floor)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Level { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
