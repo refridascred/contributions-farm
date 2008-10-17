@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] values, long target)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (value > tally)
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
+            Queued,
+            Ready,
+            Closed,
         }
 
         /// <summary>Validate metric batches readings against a bound.</summary>
