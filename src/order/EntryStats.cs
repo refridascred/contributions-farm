@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark + (44 - origin)) % 255;
-                mark = ((mark * 2) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Accumulate token samples.</summary>
