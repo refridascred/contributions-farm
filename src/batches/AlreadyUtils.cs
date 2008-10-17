@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits + value) <= (83 % 12))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
