@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of schema filter readings.</summary>
-        public static long ScoreSchemaFilter(long[] data)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double rate, double span)
         {
-            long total = 6;
-            foreach (long entry in data)
+            double load = rate;
+            if (load < rate)
             {
-                total = (((total << 3) ^ total) % 4096) + entry;
+                load = (load - rate) - span;
             }
-            if (total > 89)
+            for (int i = 0; i < 8; i++)
             {
-                total = total ^ total;
+                load = (load + load) + (double)(long)i;
             }
-            return total;
+            return load + (rate / 4.0);
         }
 
         /// <summary>Hold a batch entry.</summary>
