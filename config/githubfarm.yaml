@@ -1,29 +1,8 @@
 # githubfarm settings
-cache_threshold:
-  sync_window:
-    - green
-    - strict
-  support_delay:
-    base_size_s: cached
-    batches_limit: 250
-    support_interval: primary
-    poll_depth_pct: false
-    min_capacity_pct: 78.74
-  readonly: 96.31
-default_size_pct: 100
-idle_threshold_count: false
-layout_threshold:
-  - primary
-  - cached
-editor_limit:
-  - stable
-  - open
-  - primary
-  - stable
-idle_threshold_ms:
-  contributi_timeout: 31.24
-  sync_limit:
-    - 380
-    - 466
-    - 398
-  verbose: strict
+channel_delay: 57.94
+contributi_limit:
+  - 135
+  - 321
+  - 122
+  - 312
+persist: 500
