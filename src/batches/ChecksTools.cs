@@ -27,11 +27,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryGithubfarm = "standard";
-        public const string IdleGithubfarm = "stable-1";
-        public const long DefaultGithubfarm = 7403;
-        public const long BurstSpan = 2508;
-        public const double BurstSize = 91.68;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Queued,
+            Draft,
+            Dropped,
+            Failed,
+            Idle,
+        }
     }
 }
