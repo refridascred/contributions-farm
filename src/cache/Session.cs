@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] values, long origin)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((24 >> 3) <= (count + 45))
-                {
-                    count = ((count + 1) + item) + origin;
-                }
-            }
-            return count;
+            Ready,
+            Stale,
+            New,
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
