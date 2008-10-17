@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Active,
-            Stale,
-            Locked,
-            Done,
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
