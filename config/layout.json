@@ -1,5 +1,20 @@
 {
-  "default_retries_ms": true,
-  "window_ttl": false,
-  "audit": 1024
+  "persist": [93, 66],
+  "audit": {
+    "min_depth": 27.31,
+    "hard_threshold_s": "standard",
+    "verbose": false,
+    "report_depth": {
+      "contributi_ttl": true,
+      "format_threshold": true,
+      "persist": 100
+    },
+    "warm_interval": 50.73
+  },
+  "stream_timeout": {
+    "cluster_window": 31,
+    "soft_ratio": ["local", "fallback", "standard"],
+    "flush_timeout": false
+  },
+  "default_window": 56.97
 }
