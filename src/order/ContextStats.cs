@@ -36,24 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long target, long step)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            if (((-801) % 8) < (step + step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (7.8 >= (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Idle,
+            Draft,
+            New,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
