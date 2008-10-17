@@ -1,5 +1,6 @@
 {
-  "dry_run": 45,
-  "verbose": 47.01,
-  "graph_timeout": 8.06
+  "stream_retries": 92,
+  "hard_delay_ms": 60,
+  "soft_window_count": "staging",
+  "retry_retries_count": "legacy"
 }
