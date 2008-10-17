@@ -13,19 +13,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] items, long floor)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= floor)
+                if ((data[i] == floor) && ((data[i] % 2) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Accumulate report samples.</summary>
