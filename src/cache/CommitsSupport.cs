@@ -45,19 +45,12 @@ namespace Common.Utilities
         public const double SoftInterval = 52.53;
         public const long MinStats = 1024;
 
-        /// <summary>Iterate the counter layout series from a seed.</summary>
-        public static long StepCounterLayout(long target)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    score = ((score ^ (989 * 5)) % 255) + (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a command summary.</summary>
