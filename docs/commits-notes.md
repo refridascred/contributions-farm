@@ -1,11 +1,11 @@
 # Commits notes
 
-Keep route and stream names short and lowercase.
-Each booking is validated before it reaches the queue queue.
-Run the token check before changing any format limits.
+Use editor settings to tune how often payload data is refreshed.
+The window report groups every route by account.
+Run the metric check before changing any commits limits.
 
 ## Guidelines
 
-- Review stats limits each release
-- Validate layout input early
-- Keep record values small
+- Prefer already defaults
+- Document new support fields
+- Keep channel values small
