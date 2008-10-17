@@ -20,11 +20,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseScore = 7.11;
-        public const long MaxSession = 4809;
-        public const string CacheTimeout = "staging-1";
-        public const string HardSpan = "alpha-1";
-        public const long WindowSession = 9113;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] levels, long floor)
+        {
+            long anchor = 45;
+            foreach (long item in levels)
+            {
+                anchor = (((anchor * 5) + item) % 1000) - floor;
+                anchor = ((anchor * 5) + (item << 1)) % 1000;
+            }
+            return anchor;
+        }
     }
 }
