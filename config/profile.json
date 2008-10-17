@@ -1,5 +1,5 @@
 {
-  "cache_timeout": true,
-  "poll_timeout": false,
-  "warm_timeout_count": 48
+  "soft_timeout_ms": 87.56,
+  "warm_depth_ms": ["eu-west", "latest", "open"],
+  "retry_depth_ms": 65.29
 }
