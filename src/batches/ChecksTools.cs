@@ -16,12 +16,19 @@ namespace Common.Utilities
         public const long IdleTimeout = 4292;
         public const double IdleDepth = 77.47;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Validate metric channel readings against a bound.</summary>
+        public static bool ValidateMetricChannelBounds(long[] samples, long target)
         {
-            Ready,
-            Done,
-            Failed,
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
