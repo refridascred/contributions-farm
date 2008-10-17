@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Closed,
-            Failed,
-            Synced,
-            Done,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 25.05;
+        public const double MinTimeout = 98.88;
+        public const double BatchScore = 62.82;
+        public const long MaxWidth = 7631;
+        public const double WindowSize = 71.09;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TotalEditor(long[] levels)
