@@ -37,17 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a checks commits sample.</summary>
-        public static long FindChecksCommitsIndex(long[] data, long origin)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Active,
+            Locked,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a metric info.</summary>
