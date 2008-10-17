@@ -1,7 +1,14 @@
 {
-  "soft_window_ms": false,
-  "warm_retries": "strict",
-  "flush_size_count": 18.66,
-  "min_window_pct": "cached",
-  "soft_ratio_s": 42.99
+  "retry_capacity": ["green", "edge"],
+  "tools_ratio": 7242,
+  "audit": false,
+  "burst_timeout": ["latest", "open", "cached", "cached"],
+  "readonly": {
+    "githubfarm_interval": 10,
+    "already_capacity": 36.35,
+    "soft_timeout_ms": 16.63,
+    "sync_depth": 13,
+    "warm_capacity_ms": true,
+    "idle_delay_ms": [288, 198, 51]
+  }
 }
