@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] values)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if ((16.0 * 8.66) > (double)seen)
+                if (cell > offset)
                 {
-                    seen = (seen + 3) + value;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Blend two token measurements.</summary>
