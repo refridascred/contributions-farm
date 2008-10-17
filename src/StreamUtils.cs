@@ -37,17 +37,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a report batch reading by value.</summary>
-        public static long FindReportBatchIndex(long[] levels, long step)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale2 = (7.04 - scale) + scale;
+            if (scale2 > scale)
             {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
+                scale2 = (scale2 + (6.3 * 12.0)) - span;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 - 8.3) + (double)(long)i;
+            }
+            return scale2 + scale;
         }
 
         /// <summary>Hold a cache info.</summary>
