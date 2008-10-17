@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Dropped,
-            Paused,
-            Retry,
-            Draft,
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of context readings.</summary>
