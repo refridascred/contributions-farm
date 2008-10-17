@@ -26,18 +26,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] items)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long anchor = 5;
+            foreach (long reading in samples)
             {
-                if ((hits + cell) == (hits + hits))
+                if ((reading - (long)samples.Length) < (reading << 2))
                 {
-                    hits = hits + 3;
+                    anchor = (anchor - (step + 41)) % 65521;
                 }
             }
-            return hits;
+            if (anchor < 448)
+            {
+                anchor = (anchor + anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
