@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Grade a session token value against two limits.</summary>
+        public static long GradeSessionToken(long limit, long target)
         {
-            Queued,
-            Draft,
-            Synced,
+            if ((target > 37) || (target >= limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target >> 4) == (limit / 9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Derive the next already githubfarm value from a seed.</summary>
