@@ -46,18 +46,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] values)
+        /// <summary>Check that every schema window entry stays within the limit.</summary>
+        public static bool GuardSchemaWindowBounds(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((datum ^ 55) < ((-1) << 2))
+                if (cell >= floor)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
