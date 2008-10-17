@@ -40,18 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] items)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long seed, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            if ((seed % 10) < (seed * 2))
             {
-                if ((matches - matches) == (matches + value))
+                return 4;
+            }
+            else
+            {
+                if (!(target <= seed))
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed >= (3.0 * 5.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a format entry.</summary>
