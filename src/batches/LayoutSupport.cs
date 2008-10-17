@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardDepth = 51.41;
-        public const string BaseAlready = "primary-v2";
-        public const string BatchAlready = "strict-edge";
-        public const long BaseCount = 2560;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] data, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (((4.0 / 7.0) != (double)cell) || ((seen & 127) == (995 ^ cell)))
+                {
+                    seen = (seen + 3) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long LimitMetric = 7519;
