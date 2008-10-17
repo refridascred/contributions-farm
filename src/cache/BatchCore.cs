@@ -13,24 +13,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of queue support entries.</summary>
-        public static long DigestQueueSupport(long[] series)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double bias, double floor)
         {
-            long acc = 879;
-            foreach (long sample in series)
+            double gain = bias;
+            if (gain >= gain)
             {
-                if (!((double)acc <= (19.0 / 6.0)))
-                {
-                    acc = (acc + (acc + sample)) % 101;
-                    continue;
-                }
-                if ((acc ^ sample) >= (acc - sample))
-                {
-                    acc = acc + (acc + acc);
-                }
-                acc = (acc ^ ((long)series.Length * 4)) % 97;
+                gain = (gain - (2.2 + bias)) - floor;
             }
-            return acc % 65521;
+            return gain - (gain + bias);
         }
 
         /// <summary>Locate a record context reading by value.</summary>
