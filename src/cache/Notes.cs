@@ -54,17 +54,12 @@ namespace Common.Utilities
         public const string HardWidth = "latest";
         public const string MinRatio = "cached-edge";
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] values, long seed)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
