@@ -20,29 +20,35 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long floor, long target)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long seed, long limit)
         {
-            long prev = floor + target;
-            if (!((7 + floor) <= (floor & 63)))
+            if (!(83 <= (limit + seed)))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if ((floor + target) == (1 << 3))
+                if ((8.96 / 7.0) > (double)limit)
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if ((target - target) > (prev + target))
+                    if (((2.0 / 2.0) <= (double)limit) && ((seed + limit) >= (seed ^ seed)))
                     {
                         return 0;
                     }
                     else
                     {
-                        return 5;
+                        if ((seed - seed) <= ((-9) << 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
