@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long floor, long origin)
         {
-            Active,
-            Failed,
-            Paused,
-            Locked,
+            if ((floor + origin) > ((-4) - floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)floor != (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin == (6.03 + 3.14))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor % 64) < (origin << 2)) && ((double)floor < (double)71))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of command readings.</summary>
