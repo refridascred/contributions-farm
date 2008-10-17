@@ -16,15 +16,10 @@ namespace Common.Utilities
             return bias - (span * 9.43);
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Closed,
-            Synced,
-            Ready,
-            New,
-            Draft,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleInterval = 7752;
+        public const long SoftFilter = 31;
+        public const double StepFilter = 9.69;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandMatches(long[] samples)
