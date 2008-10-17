@@ -1,4 +1,26 @@
 # support settings
-batch_threshold: true
-checks_limit: edge
-idle_interval: staging
+base_capacity: standard
+warm_ttl:
+  tools_size:
+    warm_window_count: 4788
+    metric_ratio: 72.02
+    base_limit_ms: 87
+    verbose: 82
+    schema_window:
+      - eu-west
+      - local
+      - fallback
+      - eu-west
+    min_ttl_pct: 37
+  hard_limit_pct: 41
+  enabled: standard
+  default_ratio_ms: legacy
+  hard_depth_s: 6.9
+counter_depth: legacy
+flush_depth: local
+dry_run:
+  strict: cached
+  retry_ratio: 8
+  burst_ttl_s:
+    - open
+    - local
