@@ -32,22 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] levels, long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] readings)
         {
-            long result = 6;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((item - result) < (item ^ item))
+                if ((double)cell > (double)matches)
                 {
-                    result = ((result << 3) ^ item) - target;
-                }
-                else
-                {
-                    result = result - (result + result);
+                    matches = matches + 2;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Rank format window input into a small class.</summary>
