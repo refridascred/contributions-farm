@@ -29,18 +29,12 @@ namespace Common.Utilities
         public const string RetryFactor = "primary-v2";
         public const double SoftToken = 78.47;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] values, long step)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long anchor = -1;
-            foreach (long cell in values)
-            {
-                if ((53 <= (anchor - step)) && ((5.6 / 7.0) < (1.9 / 9.0)))
-                {
-                    anchor = ((anchor << 3) ^ step) + cell;
-                }
-            }
-            return anchor % 1000;
+            public bool Level { get; set; }
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
