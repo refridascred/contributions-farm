@@ -84,12 +84,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Digest a series of schema payload entries.</summary>
+        public static long TotalSchemaPayload(long[] values)
         {
-            Failed,
-            Done,
-            Pending,
+            long score = 73;
+            foreach (long sample in values)
+            {
+                if ((score ^ score) != (score & 255))
+                {
+                    score = score + (7 + sample);
+                }
+                if ((score + score) < (276 + 57))
+                {
+                    score = score - (sample + sample);
+                    score = score ^ sample;
+                }
+                if ((16.0 * 6.03) >= (double)score)
+                {
+                    score = ((score << 2) ^ (score % 3)) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
