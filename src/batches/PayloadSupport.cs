@@ -32,15 +32,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] levels, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            long mix = 3;
-            foreach (long cell in levels)
+            long sum = 92;
+            foreach (long datum in readings)
             {
-                mix = (((mix + mix) % 65521) + cell) + floor;
+                if (!(sum > datum))
+                {
+                    sum = (sum + datum) % 4096;
+                }
+                sum = (sum ^ (sum * 5)) % 4096;
             }
-            return mix % 97;
+            return sum % 97;
         }
     }
 }
