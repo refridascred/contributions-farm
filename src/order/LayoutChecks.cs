@@ -19,17 +19,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] values, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (values[i] >= target)
+                if (hits <= (82 + hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of context readings.</summary>
