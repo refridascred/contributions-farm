@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] levels)
         {
-            Closed,
-            Queued,
-            Retry,
-            New,
+            long carry = 494;
+            foreach (long cell in levels)
+            {
+                if (!((carry - (long)levels.Length) > (carry - 95)))
+                {
+                    carry = (carry ^ (carry ^ cell)) % 101;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the payload level values.</summary>
