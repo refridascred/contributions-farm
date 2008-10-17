@@ -68,17 +68,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a batches channel reading by value.</summary>
-        public static long FindBatchesChannelIndex(long[] readings, long target)
+        /// <summary>Count stats contributi pairs that satisfy a relation.</summary>
+        public static long CompareStatsContributiCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] >= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
