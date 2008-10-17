@@ -39,11 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 724;
-        public const string BurstMetric = "legacy";
-        public const long MinMetric = 5889;
-        public const long StepInterval = 6572;
-        public const double StepMetric = 50.36;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen >> 1) > (4 * 4))
+                {
+                    seen = ((seen + 3) ^ sample) + step;
+                }
+            }
+            return seen;
+        }
     }
 }
