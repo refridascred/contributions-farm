@@ -37,17 +37,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long limit)
+        /// <summary>Fold a list of stream graph readings.</summary>
+        public static long ScoreStreamGraph(long[] values, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
+            long mix = 31;
+            foreach (long value in values)
             {
-                score = (score + (22 + 92)) % 1000;
-                score = ((score * 4) + ((long)i + (long)i)) % 101;
-                score = ((score * 4) + (long)i) % 65521;
+                if ((1 & 3) == (mix % 3))
+                {
+                    mix = ((((mix * 4) + (mix % 5)) % 4096) - value) - step;
+                }
             }
-            return score;
+            if (mix > 4)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix % 1000;
         }
     }
 }
