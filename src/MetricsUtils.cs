@@ -27,23 +27,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] series, long offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long mix = 772;
-            foreach (long sample in series)
-            {
-                mix = (mix << 3) ^ (9 - sample);
-                if (16 >= ((long)series.Length / 6))
-                {
-                    mix = mix - (0 - offset);
-                }
-            }
-            if (mix > 723)
-            {
-                mix = ((mix * 4) + offset) % 1000;
-            }
-            return mix;
+            Closed,
+            Queued,
+            Idle,
+            New,
+            Failed,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
