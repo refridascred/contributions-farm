@@ -40,39 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long step, long target)
-        {
-            long delta = step ^ target;
-            if (!((step >> 3) < (step + delta)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)delta < (7.27 - 12.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target ^ delta) == (target + delta))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)3 > (double)step) || ((double)803 != (double)target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepRatio = 7054;
+        public const double HardEditor = 84.15;
+        public const double LimitEditor = 31.23;
+        public const long BatchEditor = 935;
+        public const string BaseLevel = "strict";
     }
 }
