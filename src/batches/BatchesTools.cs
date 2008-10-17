@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] values, long floor)
         {
-            public double Level { get; set; }
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((double)floor >= (7.0 + 12.0))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a support stats.</summary>
