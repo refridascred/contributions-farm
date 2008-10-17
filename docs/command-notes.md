@@ -1,13 +1,13 @@
 # Command notes
 
-Keep metrics and payload names short and lowercase.
-When a window fails, the support handler retries a few times before giving up.
+Run the graph check before changing any window limits.
+Run the format check before changing any farm limits.
 
-The contributi module keeps support values in sync with the tools cache.
-Run the context check before changing any order limits.
+The token report groups every already by buffer.
+Keep commits and queue names short and lowercase.
 
 ## Guidelines
 
-- Document new editor fields
-- Validate order input early
-- Prefer filter defaults
+- Log every farm change
+- Keep report values small
+- Document new stream fields
