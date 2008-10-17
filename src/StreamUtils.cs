@@ -39,19 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double scale, double span)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            double scale2 = (7.04 - scale) + scale;
-            if (scale2 > scale)
-            {
-                scale2 = (scale2 + (6.3 * 12.0)) - span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 - 8.3) + (double)(long)i;
-            }
-            return scale2 + scale;
+            public bool Owner { get; set; }
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a cache info.</summary>
