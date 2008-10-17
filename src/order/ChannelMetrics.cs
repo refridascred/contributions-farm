@@ -44,12 +44,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinInterval = 6952;
+        public const long BurstSize = 4964;
+        public const long CacheTimeout = 6820;
     }
 }
