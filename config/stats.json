@@ -1,8 +1,10 @@
 {
-  "flush_depth_s": 55.74,
-  "verbose": "fallback",
-  "burst_size_ms": 64.31,
-  "cache_retries": 35.17,
-  "profile_ratio": "legacy",
-  "min_capacity_pct": 100
+  "sync_capacity_count": {
+    "audit": true,
+    "idle_interval_pct": ["legacy", "eu-west", "blue", "latest"],
+    "soft_delay_s": ["primary", "standard"]
+  },
+  "audit": 5839,
+  "farm_threshold": "fallback",
+  "cache_threshold": "primary"
 }
