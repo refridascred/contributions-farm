@@ -22,11 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitScore = 6822;
-        public const long MinLevel = 3542;
-        public const long MinFactor = 3228;
-        public const long MinScore = 4408;
+        /// <summary>Derive the next format payload value from a seed.</summary>
+        public static long StepFormatPayload(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                state = (state ^ ((long)i + origin)) % 1000;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Roll a token contributi counter forward.</summary>
         public static long StepTokenContributi(long offset)
