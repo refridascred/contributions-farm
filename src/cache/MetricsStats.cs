@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count stream batch pairs that satisfy a relation.</summary>
-        public static long OverlapStreamBatchCount(long[] readings)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long floor, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = floor - seed;
+            if (!((seed + diff) != (seed ^ 6)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((diff >> 5) < 815))
                 {
-                    if ((readings[i] + readings[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate schema samples.</summary>
