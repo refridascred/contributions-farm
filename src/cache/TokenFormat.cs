@@ -31,18 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] samples, long target)
+        /// <summary>Check that every cluster already entry stays within the limit.</summary>
+        public static bool GuardClusterAlreadyLimits(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (6.6 > (double)target)
+                if (sample > floor)
                 {
-                    tally = (tally + 1) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
