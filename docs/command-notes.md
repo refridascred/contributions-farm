@@ -1,10 +1,12 @@
 # Command notes
 
-The metric module keeps format values in sync with the command cache.
-Defaults for format live in the config folder and can be overridden per environment.
+A batch that stays idle for too long is moved to the buffer list.
+Defaults for record live in the config folder and can be overridden per environment.
+The notes report groups every filter by already.
 
 ## Guidelines
 
-- Validate notes input early
-- Review tools limits each release
-- Keep contributi values small
+- Validate editor input early
+- Keep cluster values small
+- Review cluster limits each release
+- Log every context change
