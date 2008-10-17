@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long offset, long bound)
         {
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
+            long edge = offset ^ bound;
+            if ((offset - bound) == (34 >> 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((offset - 440) != (edge + 427)) && ((double)edge <= (7.3 - 1.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((809 + 187) == (bound & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((edge - offset) <= (edge - bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
