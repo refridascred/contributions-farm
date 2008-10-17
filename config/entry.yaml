@@ -1,7 +1,11 @@
 # entry settings
-persist: eu-west
-sync_capacity: 11.64
-hard_delay_count: 795
-flush_interval: 66
-hard_size_pct: true
-dry_run: stable
+compress: strict
+contributi_retries:
+  - eu-west
+  - standard
+  - fallback
+  - staging
+flush_ttl_s: standard
+hard_size_s: 19.3
+burst_depth: 643
+idle_size: 29
