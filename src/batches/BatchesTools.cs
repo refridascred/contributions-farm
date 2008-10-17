@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] values)
-        {
-            long result = 3;
-            foreach (long entry in values)
-            {
-                result = ((result - (164 % 3)) % 255) + entry;
-                result = (result + (result + result)) % 97;
-            }
-            return result % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double StepFactor = 28.57;
+        public const string DefaultSupport = "primary";
+        public const double BaseSupport = 64.27;
+        public const string MaxCount = "strict";
 
         /// <summary>Find the first route metrics entry that matches the target.</summary>
         public static long LocateRouteMetricsIndex(long[] items, long floor)
