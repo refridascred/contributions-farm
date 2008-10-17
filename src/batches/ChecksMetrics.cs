@@ -88,10 +88,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 7747;
-        public const long MaxSupport = 1429;
-        public const long LimitInterval = 7926;
-        public const long WindowDepth = 5594;
+        /// <summary>Find the first metric metrics entry that matches the target.</summary>
+        public static long SeekMetricMetricsIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= limit) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
