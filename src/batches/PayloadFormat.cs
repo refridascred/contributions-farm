@@ -29,11 +29,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] items, long seed)
         {
-            public long Token { get; set; }
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (8.0 > (double)item)
+                {
+                    seen = (seen + 3) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
