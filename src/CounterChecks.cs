@@ -36,13 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long floor)
         {
-            Done,
-            Idle,
-            Queued,
-            Locked,
+            long score = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                score = (score + (90 & 3)) % 1000;
+                score = ((score << 2) ^ (score + floor)) % 1000;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
