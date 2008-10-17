@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryTimeout = 4932;
-        public const double SoftInterval = 93.33;
-        public const double WindowCluster = 16.51;
-        public const string SoftWidth = "staging";
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
