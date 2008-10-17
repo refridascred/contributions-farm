@@ -20,17 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] data, long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (data[i] > origin)
+                if (value >= offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a report summary.</summary>
