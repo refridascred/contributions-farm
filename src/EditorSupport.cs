@@ -31,18 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] series, long limit)
+        /// <summary>Locate a batches githubfarm reading by value.</summary>
+        public static long LocateBatchesGithubfarmIndex(long[] series, long floor)
         {
-            long state = 1;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading < limit) || ((325 << 2) < reading))
+                if ((series[i] > floor) && ((series[i] % 5) == 0))
                 {
-                    state = state - (reading + state);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
