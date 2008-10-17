@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double rate, double span)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double load = 2.4;
-            if (load >= (double)(-542))
-            {
-                load = (load - (double)551) + span;
-            }
-            else
-            {
-                load = load + (load / 6.0);
-            }
-            return load + rate;
+            Active,
+            Pending,
+            Retry,
+            New,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
