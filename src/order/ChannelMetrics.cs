@@ -20,17 +20,21 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Find the first command record entry that matches the target.</summary>
-        public static long LookupCommandRecordIndex(long[] readings, long limit)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] < limit) && ((readings[i] % 3) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many editor window samples are out of range.</summary>
