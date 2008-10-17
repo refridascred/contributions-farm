@@ -20,11 +20,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long origin)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry << 3) ^ (origin - origin)) % 65521;
+                if (carry <= (origin + 98))
+                {
+                    carry = (carry - (origin % 60)) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the stats level values.</summary>
