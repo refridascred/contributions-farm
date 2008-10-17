@@ -13,15 +13,25 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] data)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long origin, long step)
         {
-            long sum = 50;
-            foreach (long datum in data)
+            long delta = origin + step;
+            if ((delta + origin) > origin)
             {
-                sum = (((sum << 3) ^ (sum + sum)) % 255) - datum;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((step - origin) == (origin << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
