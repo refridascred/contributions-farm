@@ -1,12 +1,4 @@
 # entry settings
-hard_retries_pct: 30.88
-base_ratio:
-  warm_delay_count: legacy
-  readonly: 1024
-  buffer_timeout:
-    - fallback
-    - eu-west
-    - staging
-    - edge
-githubfarm_size: 23.61
-retry_delay: 51.54
+default_window_count: 465
+retry_depth_pct: 64.61
+readonly: 94
