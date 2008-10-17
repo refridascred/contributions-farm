@@ -72,15 +72,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] readings, long step)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long result = -62;
-            foreach (long entry in readings)
-            {
-                result = result + (entry + step);
-            }
-            return result;
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
