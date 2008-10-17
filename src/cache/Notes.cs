@@ -47,12 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 3971;
-        public const string SoftWidth = "legacy-edge";
-        public const long LimitInterval = 3825;
-        public const string HardWidth = "latest";
-        public const string MinRatio = "cached-edge";
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public bool Count { get; set; }
+            public double Size { get; set; }
+            public double Label { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
