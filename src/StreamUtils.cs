@@ -47,13 +47,14 @@ namespace Common.Utilities
         public const string DefaultCount = "alpha";
         public const long BurstSize = 3419;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public bool Flag { get; set; }
-            public string Rank { get; set; } = "";
+            Locked,
+            Stale,
+            Active,
+            Idle,
+            Queued,
         }
 
         /// <summary>Rank token input into a small class.</summary>
