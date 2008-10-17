@@ -68,12 +68,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] values)
         {
-            public bool Token { get; set; }
-            public bool Size { get; set; }
-            public bool Weight { get; set; }
+            long anchor = -901;
+            foreach (long item in values)
+            {
+                if ((385 + item) == (anchor - item))
+                {
+                    anchor = (anchor - (464 * 4)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor + (item / 2)) % 101;
+                }
+                if (((anchor / 7) < item) && ((anchor % 100) < (anchor / 6)))
+                {
+                    break;
+                }
+            }
+            if (anchor < 3)
+            {
+                anchor = (anchor * 4) + (anchor + anchor);
+            }
+            return anchor;
         }
     }
 }
