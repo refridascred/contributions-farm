@@ -59,18 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] levels)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long bound)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((tally + reading) <= (reading % 7))
-                {
-                    tally = tally + 2;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
     }
 }
