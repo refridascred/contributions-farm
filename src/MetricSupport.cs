@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a already counter sample.</summary>
-        public static long SeekAlreadyCounterIndex(long[] samples, long bound)
+        /// <summary>Audit window channel readings against a rule.</summary>
+        public static long MeasureWindowChannelHits(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (samples[i] <= bound)
+                if ((tally ^ 59) != (limit >> 3))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a cache summary.</summary>
