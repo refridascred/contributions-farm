@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] series)
+        /// <summary>Roll a stats command counter forward.</summary>
+        public static long SeriesStatsCommand(long origin)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (tally >= (reading & 255))
-                {
-                    tally = tally + 3;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
