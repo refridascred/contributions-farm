@@ -37,24 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long origin, long origin2)
-        {
-            if ((70 % 16) == (origin2 + origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((2.51 + 7.2) >= (double)origin2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 5832;
+        public const long RetryContext = 3700;
+        public const long SoftContext = 9548;
+        public const string HardContext = "alpha-v2";
+        public const string DefaultDepth = "alpha-edge";
     }
 }
