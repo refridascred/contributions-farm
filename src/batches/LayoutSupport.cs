@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 7519;
-        public const long MinMetric = 3263;
-        public const long MaxFactor = 6691;
-        public const long MinFactor = 9060;
-        public const long RetryDepth = 93;
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double scale, double offset)
+        {
+            double load = scale / 3.0;
+            if (load > scale)
+            {
+                load = (load + load) - offset;
+            }
+            else
+            {
+                load = load - (load / 5.0);
+            }
+            return load + (double)276;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MinMetrics = 2522;
