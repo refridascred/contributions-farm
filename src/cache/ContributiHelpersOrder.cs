@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftRatio = 96.35;
-        public const long CacheGraph = 7472;
-        public const long WindowLevel = 4253;
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Closed,
+            Locked,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
