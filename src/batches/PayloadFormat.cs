@@ -40,21 +40,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = mark ^ (offset % 12);
+                if (!((offset >> 3) > 963))
                 {
-                    if ((samples[i] - samples[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark ^ ((long)i - mark);
                 }
+                else
+                {
+                    mark = (mark + mark) % 4096;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
     }
 }
