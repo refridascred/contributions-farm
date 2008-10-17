@@ -40,16 +40,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] readings)
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
+            long sum = 80;
+            foreach (long item in readings)
             {
-                result = ((result << 2) ^ ((long)i + seed)) % 1000;
-                result = ((result * 4) + (long)i) % 101;
+                sum = sum - (item + item);
             }
-            return result;
+            if (sum > 554)
+            {
+                sum = (sum ^ (162 + sum)) % 255;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
