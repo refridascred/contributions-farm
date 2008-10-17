@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] samples, long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long carry = 5;
+            foreach (long sample in levels)
             {
-                if (step > (tally >> 2))
+                for (int i = 0; i < 4; i++)
                 {
-                    tally = (tally + 3) ^ cell;
+                    carry = ((((carry << 3) ^ 675) % 1000) ^ (long)i) ^ sample;
                 }
-                else
+                if (((long)levels.Length - floor) <= (floor % 12))
                 {
-                    tally = tally - 1;
+                    carry = carry - (floor / 3);
                 }
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Match up support samples.</summary>
