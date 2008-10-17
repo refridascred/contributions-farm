@@ -23,39 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long limit, long limit2)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long step = limit + limit2;
-            if ((double)step != (13.0 * 7.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (91 < (limit - limit2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit * 5) != (limit2 >> 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step & 127) == (step >> 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a support stats.</summary>
