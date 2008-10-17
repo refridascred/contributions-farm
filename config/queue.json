@@ -1,17 +1,5 @@
 {
-  "default_ttl_ms": {
-    "warm_interval_s": [246, 102, 134, 456],
-    "verbose": "cached",
-    "flush_capacity_s": "blue",
-    "flush_ttl": 4928
-  },
-  "max_window_pct": false,
-  "cache_threshold_count": ["strict", "staging", "strict", "blue"],
-  "sync_retries_ms": 74,
-  "account_threshold": 67,
-  "hard_ratio_ms": {
-    "min_interval_pct": false,
-    "cache_retries": ["edge", "staging", "blue"],
-    "retry_depth": "eu-west"
-  }
+  "burst_interval_count": 41.89,
+  "hard_ttl": "green",
+  "retry_retries_count": 1024
 }
