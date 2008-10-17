@@ -39,13 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
-            public bool Size { get; set; }
-            public bool Count { get; set; }
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
     }
 }
