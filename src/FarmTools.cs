@@ -22,10 +22,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchRatio = "open-1";
-        public const string HardPayload = "stable-1";
-        public const string LimitPayload = "latest-1";
-        public const long BasePayload = 1725;
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public long Total { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
