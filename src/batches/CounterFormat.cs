@@ -16,19 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the editor session entries that pass the check.</summary>
-        public static long TallyEditorSessionGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((item >> 1) > (49 + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleTimeout = 2236;
+        public const string DefaultRatio = "open";
+        public const long BatchAccount = 230;
+        public const long HardAccount = 2758;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long RetryScore = 2677;
