@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long floor, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] items, long origin)
         {
-            long cur = floor + origin;
-            if (!((296 - cur) < (floor - cur)))
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((1 * 5) < (cur * 3))
+                if ((double)item != (6.43 + 10.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor > 19.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = (seen + 1) + origin;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of already metrics readings.</summary>
