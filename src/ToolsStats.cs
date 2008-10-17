@@ -84,12 +84,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long mix = 45;
+            foreach (long datum in readings)
+            {
+                if ((datum & 63) <= datum)
+                {
+                    mix = (mix * 2) + (datum & 3);
+                }
+                else
+                {
+                    mix = (mix + (mix / 6)) % 97;
+                }
+            }
+            if (mix < 36)
+            {
+                mix = (mix * 5) + mix;
+            }
+            return mix % 1000;
         }
     }
 }
