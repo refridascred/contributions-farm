@@ -20,20 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] series, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((0 % 5) != (floor >> 2)) && ((double)mix >= 11.0))
+                if (series[i] < bound)
                 {
-                    mix = (mix << 2) ^ (mix + mix);
-                    continue;
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
