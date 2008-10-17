@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double ratio, double offset)
         {
-            Active,
-            Paused,
-            Locked,
-            Synced,
-            Idle,
+            double bias = (ratio / 6.0) + 15.0;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias + offset;
         }
 
         /// <summary>Hold a route summary.</summary>
