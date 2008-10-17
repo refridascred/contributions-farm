@@ -19,23 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double weight, double bias)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long seed, long step)
         {
-            double rate = bias;
-            if (rate < weight)
+            long lane = seed + step;
+            if ((step * 4) > (seed ^ lane))
             {
-                rate = rate + rate;
+                return 3;
             }
             else
             {
-                rate = rate - (double)900;
+                if (lane > (lane ^ step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((9.8 - 1.0) >= (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (weight - weight)) + (double)(long)i;
-            }
-            return rate + (5.0 * 1.0);
         }
 
         /// <summary>Rank command input into a small class.</summary>
