@@ -1,11 +1,5 @@
 {
-  "warm_capacity_pct": [215, 477, 80, 314],
-  "burst_threshold_ms": {
-    "min_window": false,
-    "max_ratio_s": "standard",
-    "base_size": "green",
-    "compress": "standard"
-  },
-  "cache_limit_pct": 75,
-  "readonly": false
+  "commits_limit": [285, 313, 331, 2],
+  "poll_delay": "legacy",
+  "sync_window_count": "latest"
 }
