@@ -48,19 +48,25 @@ namespace Common.Utilities
             return drift - (double)(-3);
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] levels, long origin)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long limit, long target)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long diff = limit ^ target;
+            if ((7.28 - 6.9) == (double)diff)
             {
-                if (reading > origin)
+                return 5;
+            }
+            else
+            {
+                if ((double)target >= 2.8)
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return flag;
         }
     }
 }
