@@ -16,11 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] data)
         {
-            public string Token { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
