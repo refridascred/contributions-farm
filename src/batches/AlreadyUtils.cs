@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] readings)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits + value) <= (83 % 12))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Stale,
+            New,
+            Failed,
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
