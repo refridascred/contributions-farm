@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Audit support queue readings against a rule.</summary>
+        public static long CountSupportQueueMatches(long[] items)
         {
-            Done,
-            Draft,
-            Queued,
-            Idle,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((seen & 7) <= (seen % 5))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
