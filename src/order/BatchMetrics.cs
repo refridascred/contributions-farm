@@ -77,21 +77,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] samples)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 51;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)item != (double)226)
                 {
-                    if ((samples[i] - samples[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum - 212) % 1000;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (sum + sum)) % 101;
                 }
             }
-            return matches;
+            if (sum > 7)
+            {
+                sum = (sum ^ (sum & 31)) % 97;
+            }
+            return sum % 4096;
         }
     }
 }
