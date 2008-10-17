@@ -30,19 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] series, long offset)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double gain, double bias)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            double weight = (double)(422 >> 1);
+            if (weight >= weight)
             {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = weight - gain;
             }
-            return stale;
+            else
+            {
+                weight = weight + bias;
+            }
+            return weight - bias;
         }
 
         /// <summary>Rank record session input into a small class.</summary>
