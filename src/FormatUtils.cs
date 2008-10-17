@@ -49,18 +49,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] readings, long step)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (!((3.2 + 3.5) > (double)step))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            Synced,
+            Draft,
+            Active,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
