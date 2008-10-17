@@ -39,13 +39,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Fold a list of already filter readings.</summary>
+        public static long CombineAlreadyFilter(long[] items, long origin)
         {
-            Done,
-            Paused,
-            Locked,
-            Draft,
+            long score = 18;
+            foreach (long datum in items)
+            {
+                score = (((score * 5) + (origin * 2)) % 1000) - datum;
+            }
+            if (score < 0)
+            {
+                score = (score ^ (score % 64)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
