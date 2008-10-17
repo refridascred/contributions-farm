@@ -1,11 +1,6 @@
-id,weight,level,state
-1,79.66,49,26.04
-2,25.94,946,920
-3,52.3,eu-west,390
-4,latest,490,green
-5,staging,352,760
-6,2.93,552,legacy
-7,911,latest,13.29
-8,eu-west,fallback,366
-9,stable,436,edge
-10,857,38,95
+id,active,token,state
+1,5,standard,357
+2,60.18,85.03,647
+3,local,420,latest
+4,standard,470,116
+5,442,15.98,601
