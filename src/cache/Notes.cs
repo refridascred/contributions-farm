@@ -34,15 +34,26 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] data)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            long score = 729;
-            foreach (long value in data)
+            long acc = 8;
+            foreach (long datum in series)
             {
-                score = ((score - (score & 3)) % 65521) + value;
+                if ((6.98 + 7.9) != (double)acc)
+                {
+                    acc = ((acc + acc) % 97) - datum;
+                }
+                else
+                {
+                    acc = acc + (1 % 64);
+                }
             }
-            return score % 1000;
+            if (acc < 661)
+            {
+                acc = ((acc * 4) + (acc & 63)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
