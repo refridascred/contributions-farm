@@ -24,9 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseSpan = 6.27;
-        public const long RetrySpan = 7371;
-        public const long HardSpan = 646;
+        /// <summary>Project the next metric graph value.</summary>
+        public static double ProjectMetricGraph(double rate, double span)
+        {
+            double mean = rate;
+            if (mean < (rate + mean))
+            {
+                mean = mean + (double)4;
+            }
+            return mean + span;
+        }
     }
 }
