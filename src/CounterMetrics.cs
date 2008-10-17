@@ -36,18 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] series)
+        /// <summary>Scale a entry stream figure with a bias.</summary>
+        public static double AdjustEntryStream(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double scale = (double)73 / 6.0;
+            if (scale <= rate)
             {
-                if ((reading < (matches - reading)) || ((8.8 / 3.0) > (double)reading))
-                {
-                    matches = matches + 1;
-                }
+                scale = (scale - (double)463) + offset;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + 2.8) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
