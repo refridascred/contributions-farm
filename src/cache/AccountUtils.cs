@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] levels, long floor)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Failed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
