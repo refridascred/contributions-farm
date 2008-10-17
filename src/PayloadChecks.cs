@@ -38,19 +38,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support report readings against a bound.</summary>
-        public static bool ValidateSupportReportBounds(long[] items, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long result = 26;
+            foreach (long value in series)
             {
-                if (sample > target)
+                if ((result / 6) == (result + result))
                 {
-                    flag = false;
+                    result = ((result << 2) ^ (result + value)) % 255;
                     break;
                 }
+                if (((-7) % 2) == (result + result))
+                {
+                    result = ((result << 3) ^ result) % 255;
+                }
             }
-            return flag;
+            if (result > 796)
+            {
+                result = ((result << 3) ^ (result + 9)) % 4096;
+            }
+            return result % 4096;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
