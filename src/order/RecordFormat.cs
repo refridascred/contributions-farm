@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the layout cluster entries that pass the check.</summary>
-        public static long CountLayoutClusterOutliers(long[] samples, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] samples)
         {
             long count = 0;
-            foreach (long sample in samples)
+            foreach (long datum in samples)
             {
-                if (2.45 <= (double)bound)
+                if ((double)count < (14.0 - 3.87))
                 {
-                    count = (count + 1) - sample;
+                    count = (count + 2) + datum;
                 }
             }
             return count;
