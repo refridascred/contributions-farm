@@ -46,33 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long floor, long bound)
-        {
-            long cur = floor + bound;
-            if (!((bound - 6) < (cur / 6)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (757 < (bound << 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((cur >> 4) <= (bound >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheSpan = 1305;
+        public const long LimitPayload = 899;
+        public const long BurstFactor = 9426;
+        public const string DefaultCount = "alpha";
+        public const long BurstSize = 3419;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long ScoreStats(long[] data)
