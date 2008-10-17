@@ -55,18 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a editor stream reading by value.</summary>
-        public static long LocateEditorStreamIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardSize = 3098;
+        public const long MaxRatio = 1720;
+        public const long HardFactor = 3453;
+        public const long BurstRecord = 1771;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long IterateCluster(long bound)
