@@ -14,21 +14,23 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] samples)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = (double)(29 - 11);
+            if (bias2 <= (double)339)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = (bias2 + 5.4) + gain;
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 + (bias - bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (double)6) + (double)(long)i;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Hold a stream options.</summary>
