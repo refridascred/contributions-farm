@@ -14,17 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] levels, long origin)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double gain, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = 15.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
+                bias = ((bias - (5.0 + floor)) + (double)(long)i) - gain;
             }
-            return -1;
+            return bias + (1.0 + floor);
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
