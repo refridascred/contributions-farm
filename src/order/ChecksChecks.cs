@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const string RetryRatio = "standard-edge";
         public const string LimitReport = "legacy-v2";
 
-        /// <summary>Accumulate token batch samples.</summary>
-        public static long TotalTokenBatch(long[] samples, long origin)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] readings)
         {
-            long state = 4;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state - (origin + origin)) % 65521) - reading;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Check that every cache metric entry stays within the limit.</summary>
