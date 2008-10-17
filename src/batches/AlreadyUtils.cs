@@ -14,18 +14,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] items, long bound)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] data, long step)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((3.7 / 8.0) > (double)reading)
+                if (datum >= step)
                 {
-                    count = (count + 2) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Fold a list of token readings.</summary>
