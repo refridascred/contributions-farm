@@ -35,18 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] series)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((double)tally >= (7.68 - 2.4))
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
+            Ready,
+            Dropped,
+            Active,
+            Done,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
