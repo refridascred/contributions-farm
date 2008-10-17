@@ -33,19 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] items, long step)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long acc = 46;
-            foreach (long value in items)
-            {
-                acc = ((acc * 3) + acc) - value;
-                if (!((step & 63) < (acc ^ step)))
-                {
-                    acc = acc - (step - acc);
-                }
-            }
-            return acc;
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
