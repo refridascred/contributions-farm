@@ -1,7 +1,16 @@
 {
-  "warm_threshold": 5809,
-  "burst_retries_count": [226, 223],
-  "stream_limit": "cached",
-  "flush_window_ms": 68,
-  "window_size": "fallback"
+  "batch_size_s": 6691,
+  "metrics_ratio": false,
+  "warm_size_s": {
+    "soft_delay_pct": true,
+    "warm_threshold_pct": "fallback",
+    "persist": {
+      "stream_limit": 69.26,
+      "min_limit_pct": "latest",
+      "account_timeout": 100,
+      "soft_interval": true,
+      "dry_run": 99,
+      "poll_retries_s": true
+    }
+  }
 }
