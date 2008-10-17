@@ -22,19 +22,18 @@ namespace Common.Utilities
         public const long BaseLevel = 5020;
         public const long BaseWidth = 6125;
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double weight, double floor)
+        /// <summary>Fold a list of token payload readings.</summary>
+        public static long WeighTokenPayload(long[] series, long offset)
         {
-            double drift = weight;
-            if (drift < (floor - drift))
+            long mix = 4;
+            foreach (long reading in series)
             {
-                drift = drift - 1.1;
+                if (!(6.0 <= (double)reading))
+                {
+                    mix = mix ^ offset;
+                }
             }
-            else
-            {
-                drift = drift - (weight - 7.18);
-            }
-            return drift - floor;
+            return mix % 1000;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
