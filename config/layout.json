@@ -1,20 +1,7 @@
 {
-  "queue_depth": true,
-  "verbose": true,
-  "token_limit": false,
-  "poll_size_count": {
-    "hard_depth_pct": 500,
-    "payload_timeout": "fallback",
-    "filter_ratio": 1024,
-    "idle_timeout_s": {
-      "persist": [367, 125],
-      "cache_size_ms": 63,
-      "sync_delay_ms": 60,
-      "burst_timeout_s": ["latest", "strict", "staging"],
-      "readonly": "legacy",
-      "min_ttl_pct": 79.19
-    }
-  },
-  "sync_ttl_count": true,
-  "idle_depth_s": "local"
+  "persist": "fallback",
+  "support_timeout": false,
+  "enabled": 38.26,
+  "idle_timeout": "standard",
+  "poll_retries": [447, 55, 161, 16]
 }
