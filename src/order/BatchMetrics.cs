@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] values, long floor)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double bias, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)(58 + 25);
+            return (weight - bias) + span;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
