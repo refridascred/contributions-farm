@@ -1,6 +1,5 @@
 {
-  "soft_delay_ms": true,
-  "cache_threshold_pct": "green",
-  "max_delay": 52.65,
-  "retry_limit_pct": false
+  "idle_retries_count": 444,
+  "retry_threshold_count": [290, 158],
+  "idle_timeout": 500
 }
