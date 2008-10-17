@@ -13,21 +13,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count context metrics pairs that satisfy a relation.</summary>
-        public static long MatchContextMetricsCount(long[] samples)
+        /// <summary>Digest a series of queue support entries.</summary>
+        public static long DigestQueueSupport(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 879;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)acc <= (19.0 / 6.0)))
                 {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc + (acc + sample)) % 101;
+                    continue;
                 }
+                if ((acc ^ sample) >= (acc - sample))
+                {
+                    acc = acc + (acc + acc);
+                }
+                acc = (acc ^ ((long)series.Length * 4)) % 97;
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Locate a record context reading by value.</summary>
