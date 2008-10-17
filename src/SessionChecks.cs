@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if (3.6 > (double)mark)
-                {
-                    mark = ((mark << 3) ^ (limit ^ mark)) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public long Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the queue level values.</summary>
