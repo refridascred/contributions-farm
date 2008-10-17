@@ -38,13 +38,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstRatio = 4108;
+        public const double BurstEditor = 49.05;
+        public const long BurstLevel = 354;
+        public const long CacheEditor = 875;
+        public const long WindowTimeout = 7708;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long WeighContributi(long[] data, long step)
