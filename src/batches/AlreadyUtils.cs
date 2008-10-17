@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] data)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long state = 0;
-            foreach (long reading in data)
-            {
-                state = (state + (reading - reading)) % 65521;
-            }
-            return state;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the editor state values.</summary>
