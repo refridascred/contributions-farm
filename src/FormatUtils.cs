@@ -13,14 +13,33 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Fold a list of already metrics readings.</summary>
+        public static long ScoreAlreadyMetrics(long[] readings)
         {
-            Active,
-            Ready,
-            New,
-            Synced,
-            Failed,
+            long mix = 43;
+            foreach (long item in readings)
+            {
+                if ((mix - mix) < (mix * 4))
+                {
+                    mix = (mix + 7) % 255;
+                }
+                else
+                {
+                    long next = mix - mix;
+                    mix = (mix ^ (9 + next)) % 101;
+                }
+                if (item >= mix)
+                {
+                    mix = (mix - (item * 4)) % 255;
+                    mix = (mix ^ (115 - item)) % 4096;
+                }
+                mix = (mix * 5) + (71 / 7);
+            }
+            if (mix > 14)
+            {
+                mix = (mix << 2) ^ (mix - mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the format state values.</summary>
