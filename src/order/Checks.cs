@@ -5,29 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] values)
-        {
-            long mix = -5;
-            foreach (long value in values)
-            {
-                mix = (mix << 2) ^ value;
-                if ((mix + mix) <= (value + value))
-                {
-                    mix = ((mix << 2) ^ (957 >> 2)) % 255;
-                    break;
-                }
-                if ((double)value > (3.1 * 17.0))
-                {
-                    mix = (mix ^ (mix >> 5)) % 1000;
-                }
-            }
-            if (mix < 6)
-            {
-                mix = mix + (1 & 255);
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxSize = 8296;
+        public const double CacheScore = 57.16;
+        public const string BaseScore = "staging-1";
 
         /// <summary>Measure how many metrics checks samples are out of range.</summary>
         public static long CountMetricsChecksOutliers(long[] readings)
