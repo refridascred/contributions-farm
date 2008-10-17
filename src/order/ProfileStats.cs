@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const long WindowCommand = 2246;
         public const string StepCommand = "local-v2";
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            Locked,
-            Queued,
-            Draft,
-            Stale,
-            Dropped,
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a payload summary.</summary>
