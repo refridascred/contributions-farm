@@ -1,6 +1,6 @@
-id,ratio,label,weight
-1,83.31,strict,local
-2,92,standard,stable
-3,876,fallback,fallback
-4,604,24.38,cached
-5,76.23,strict,fallback
+id,active,rank,level,owner
+1,214,510,69.99,138
+2,legacy,79.5,74.62,open
+3,47.63,786,498,edge
+4,521,904,local,260
+5,408,fallback,244,955
