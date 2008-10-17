@@ -19,13 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitDepth = 7940;
+        public const long MinLevel = 9133;
+        public const long StepRatio = 1998;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double BaseScore = 7.11;
