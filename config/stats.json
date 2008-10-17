@@ -1,6 +1,8 @@
 {
-  "warm_ratio_s": "primary",
-  "sync_timeout": 60,
-  "enabled": 86,
-  "cache_timeout_count": 3821
+  "soft_timeout": 57.78,
+  "soft_threshold_ms": ["edge", "eu-west", "open"],
+  "sync_depth_s": false,
+  "audit": 5009,
+  "base_depth_ms": "cached",
+  "base_window": "primary"
 }
