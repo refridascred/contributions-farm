@@ -23,13 +23,12 @@ namespace Common.Utilities
         public const long LimitInterval = 6734;
         public const string BaseLevel = "open-edge";
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 587;
+        public const string SoftWidth = "standard-v2";
+        public const long WindowCluster = 5800;
+        public const string BatchCluster = "open-v2";
+        public const long IdleLevel = 702;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LookupContextIndex(long[] data, long limit)
