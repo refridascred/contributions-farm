@@ -1,11 +1,6 @@
-id,ratio,region
-1,fallback,8
-2,466,66
-3,480,fallback
-4,primary,447
-5,927,5.56
-6,735,local
-7,745,2.94
-8,fallback,stable
-9,blue,56.81
-10,166,latest
+id,level,weight,active
+1,5.31,primary,982
+2,579,eu-west,green
+3,fallback,fallback,eu-west
+4,85.71,89.0,92.42
+5,1.95,local,63
