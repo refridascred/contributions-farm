@@ -58,14 +58,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next account layout value from a seed.</summary>
-        public static long DeriveAccountLayout(long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long limit)
         {
             long mark = limit;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 20; i++)
             {
-                mark = ((mark * 5) + (limit + 517)) % 4096;
-                mark = ((mark * 4) + (long)i) % 4093;
+                mark = mark + (mark + limit);
+                mark = (mark + (1 + limit)) % 65521;
+                mark = ((mark * 2) + (long)i) % 101;
             }
             return mark;
         }
