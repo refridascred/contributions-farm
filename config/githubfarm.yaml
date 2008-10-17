@@ -1,6 +1,6 @@
 # githubfarm settings
-profile_interval: 30
-report_window: 80.85
-commits_delay: strict
-enabled: 40.62
-verbose: false
+poll_limit: 60
+enabled: 5.38
+compress: standard
+persist: 9328
+dry_run: 149
