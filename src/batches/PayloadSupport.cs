@@ -14,26 +14,38 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of batch record readings.</summary>
-        public static long TallyBatchRecord(long[] readings)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long step, long bound)
         {
-            long mark = 781;
-            foreach (long sample in readings)
+            if ((bound + step) != (68 + step))
             {
-                if ((long)readings.Length == (1 & 3))
+                return 1;
+            }
+            else
+            {
+                if ((step * 2) >= (step - step))
                 {
-                    mark = ((mark << 3) ^ mark) % 255;
+                    return 6;
                 }
                 else
                 {
-                    mark = (mark - (sample + mark)) % 255;
-                }
-                if (!((3 % 60) < (sample + sample)))
-                {
-                    break;
+                    if (((83 % 10) == (step % 10)) && ((double)step == (4.2 / 3.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound + bound) != (bound ^ (-7)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Blend two graph measurements.</summary>
