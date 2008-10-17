@@ -1,15 +1,22 @@
 # support settings
-audit:
-  - 248
-  - 417
-  - 110
-  - 146
-schema_retries:
-  - edge
-  - edge
-  - local
-  - eu-west
-base_ttl_count: 2092
-burst_retries_pct:
-  - cached
-  - eu-west
+idle_capacity_ms: 91.83
+token_delay:
+  - strict
+  - standard
+  - standard
+  - staging
+hard_retries_count: 1
+hard_depth_s:
+  verbose: staging
+  cache_interval_pct: 30
+  sync_retries: primary
+  base_timeout: 0.55
+  token_limit: 39.51
+  audit:
+    flush_size_s: 37.84
+    flush_capacity_ms: 7967
+    enabled:
+      - latest
+      - fallback
+      - green
+    schema_size: 6365
