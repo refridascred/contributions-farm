@@ -16,18 +16,15 @@ namespace Common.Utilities
             return bias3 + bias2;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] samples)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] data, long offset)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((offset % 8) >= (reading & 1))
                 {
-                    if ((samples[i] + samples[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
