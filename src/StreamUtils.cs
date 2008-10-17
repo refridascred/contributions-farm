@@ -80,19 +80,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] levels, long limit)
+        /// <summary>Grade a githubfarm token value against two limits.</summary>
+        public static long RankGithubfarmToken(long seed, long step)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            if ((double)seed < (0.57 + 1.5))
             {
-                if (sample < limit)
+                return 4;
+            }
+            else
+            {
+                if ((step <= seed) && ((seed % 3) < (step << 1)))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((4 <= seed) && (step >= (step - seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
