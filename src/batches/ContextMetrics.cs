@@ -52,16 +52,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] samples, long step)
         {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
+            long mix = 940;
+            foreach (long cell in samples)
             {
-                mix = mix + (mix ^ mix);
-                mix = ((mix * 3) + (long)i) % 4093;
+                mix = (mix - (cell + mix)) + step;
             }
-            return mix;
+            return mix % 1000;
         }
     }
 }
