@@ -13,18 +13,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] levels)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long origin, long seed)
         {
-            long carry = 494;
-            foreach (long cell in levels)
+            if (57 > (3 + origin))
             {
-                if (!((carry - (long)levels.Length) > (carry - 95)))
+                return 2;
+            }
+            else
+            {
+                if (!((double)seed >= (1.9 * 5.2)))
                 {
-                    carry = (carry ^ (carry ^ cell)) % 101;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return carry % 65521;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
