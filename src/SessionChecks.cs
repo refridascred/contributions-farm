@@ -12,38 +12,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Rank route filter input into a small class.</summary>
-        public static long RankRouteFilter(long offset, long step)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            if ((step + offset) <= (offset & 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step ^ step) > (step >> 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset >= 9.7)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (9.0 >= (double)offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Active,
+            Closed,
+            Queued,
         }
 
         /// <summary>Combine report values into a single score.</summary>
