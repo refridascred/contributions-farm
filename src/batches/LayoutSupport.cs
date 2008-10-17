@@ -33,12 +33,22 @@ namespace Common.Utilities
             return load - (2.34 - load);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardLevel = "alpha";
-        public const double BurstCluster = 39.98;
-        public const double WindowCluster = 60.3;
-        public const string CacheFactor = "staging-1";
-        public const long DefaultCluster = 8179;
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double ScaleTools(double scale, double bias)
