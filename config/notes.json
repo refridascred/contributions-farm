@@ -1,8 +1,14 @@
 {
-  "min_interval": "legacy",
-  "filter_size": 50,
-  "profile_capacity": 27,
-  "flush_threshold": [282, 377, 157, 241],
-  "sync_capacity_count": 100,
-  "entry_capacity": true
+  "cache_depth": "primary",
+  "compress": {
+    "default_capacity_s": "fallback",
+    "min_ratio": "cached",
+    "payload_size": "latest",
+    "flush_ratio_count": 62.76,
+    "batch_interval": 4489,
+    "buffer_size": "legacy"
+  },
+  "min_timeout_s": 71,
+  "persist": 100,
+  "min_timeout_ms": "blue"
 }
