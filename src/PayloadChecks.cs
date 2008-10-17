@@ -58,15 +58,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a record cache counter forward.</summary>
-        public static long IterateRecordCache(long origin)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double rate, double floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            double mean = rate;
+            for (int i = 0; i < 2; i++)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                mean = ((mean - (3.0 * 14.0)) + (double)(long)i) - floor;
             }
-            return mark;
+            return mean - (3.0 / 9.0);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
