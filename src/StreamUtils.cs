@@ -67,19 +67,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            long score = 51;
-            foreach (long datum in series)
+            long acc = 110;
+            foreach (long reading in levels)
             {
-                score = (((score << 2) ^ (score / 3)) % 1000) - datum;
+                if (acc >= reading)
+                {
+                    acc = ((acc << 2) ^ (acc * 2)) % 65521;
+                }
+                if (!((acc ^ reading) >= (reading >> 5)))
+                {
+                    break;
+                }
             }
-            if (score < 1)
+            if (acc < 68)
             {
-                score = score ^ (score / 5);
+                acc = ((acc << 2) ^ (acc - acc)) % 65521;
             }
-            return score % 97;
+            return acc;
         }
     }
 }
