@@ -1,10 +1,15 @@
 # Command notes
 
-Run the session check before changing any entry limits.
-When a payload fails, the commits handler retries a few times before giving up.
+Use schema settings to tune how often githubfarm data is refreshed.
+Use metrics settings to tune how often layout data is refreshed.
+Defaults for window live in the config folder and can be overridden per environment.
+
+Keep entry and buffer names short and lowercase.
+Keep editor and session names short and lowercase.
+The profile module keeps payload values in sync with the token cache.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Prefer metric defaults
-- Log every record change
+- Keep route values small
+- Document new layout fields
+- Review cache limits each release
