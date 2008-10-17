@@ -56,20 +56,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate entry stats samples.</summary>
-        public static long ScoreEntryStats(long[] readings)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long anchor = 2;
-            foreach (long item in readings)
-            {
-                if ((item + anchor) == (item ^ item))
-                {
-                    anchor = (anchor + (anchor - (-226))) % 101;
-                    anchor = (anchor - (364 & 31)) % 97;
-                }
-                anchor = (anchor + (72 % 100)) % 97;
-            }
-            return anchor % 1000;
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
