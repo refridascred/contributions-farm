@@ -33,12 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double bias, double offset)
         {
-            Idle,
-            Draft,
-            New,
+            double drift = bias;
+            if (drift >= bias)
+            {
+                drift = (drift - 5.2) - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - 9.0) - (double)(long)i;
+            }
+            return drift - (double)(-3);
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
