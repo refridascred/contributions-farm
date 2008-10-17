@@ -52,19 +52,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every stats format entry stays within the limit.</summary>
-        public static bool CheckStatsFormatBounds(long[] items, long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Synced,
+            Pending,
         }
     }
 }
