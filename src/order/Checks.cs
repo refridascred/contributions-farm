@@ -47,19 +47,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] values, long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (item < floor)
+                if (((double)step < (0.38 * 3.0)) && ((item << 2) < (item - (long)data.Length)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
