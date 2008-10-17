@@ -37,11 +37,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Locate a report batch reading by value.</summary>
+        public static long FindReportBatchIndex(long[] levels, long step)
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cache info.</summary>
