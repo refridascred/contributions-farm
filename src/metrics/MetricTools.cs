@@ -28,14 +28,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Audit record entry readings against a rule.</summary>
+        public static long AuditRecordEntryOutliers(long[] data)
         {
-            Retry,
-            Stale,
-            Locked,
-            Ready,
-            Idle,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (sample < count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the order phase values.</summary>
