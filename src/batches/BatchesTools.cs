@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long floor, long origin)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
+            long step = floor - origin;
+            if ((step <= floor) || ((origin + origin) >= origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step >= 7.0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Accumulate already samples.</summary>
