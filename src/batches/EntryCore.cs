@@ -48,38 +48,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a window already pair into a bucket.</summary>
-        public static long GradeWindowAlready(long bound, long step)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] samples, long seed)
         {
-            if (bound <= (bound << 3))
+            long result = 7;
+            foreach (long sample in samples)
             {
-                return 8;
+                result = ((result << 3) ^ (sample ^ seed)) % 101;
             }
-            else
-            {
-                if (step >= (step * 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step * 4) == (step - step)) && ((9.22 * 8.3) <= (double)step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound - step) >= (step + 638))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
