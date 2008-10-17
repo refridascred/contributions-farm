@@ -1,14 +1,12 @@
 {
-  "strict": {
-    "retry_limit": 612,
-    "warm_ttl": 53,
-    "account_ratio": true,
-    "hard_capacity_ms": false,
-    "account_limit": 50.61
+  "command_delay": {
+    "soft_timeout_pct": ["fallback", "staging", "green"],
+    "checks_delay": 10,
+    "poll_threshold": true
   },
-  "enabled": "strict",
-  "default_ttl_pct": false,
-  "retry_delay_count": 11,
-  "verbose": 16,
-  "flush_capacity_ms": ["legacy", "legacy", "stable", "primary"]
+  "cache_limit_ms": ["open", "blue"],
+  "soft_delay_pct": 3944,
+  "compress": "strict",
+  "poll_ratio_count": "standard",
+  "sync_depth_pct": 83.35
 }
