@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long RetryCount = 7001;
         public const long HardMetrics = 5379;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] levels, long bound)
+        /// <summary>Compare every pair of entry window readings.</summary>
+        public static long CompareEntryWindowCount(long[] items)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum >= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
