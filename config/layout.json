@@ -1,19 +1,7 @@
 {
-  "editor_interval": false,
-  "enabled": 1024,
-  "default_retries_ms": "blue",
-  "order_interval": "blue",
-  "flush_ratio_count": "open",
-  "audit": {
-    "sync_ttl": 60.57,
-    "soft_retries_ms": "edge",
-    "persist": {
-      "hard_retries": 500,
-      "flush_interval_s": true,
-      "notes_depth": "stable",
-      "cache_depth": 18.91,
-      "readonly": 23,
-      "min_delay_count": "cached"
-    }
-  }
+  "readonly": [339, 430, 479, 398],
+  "layout_capacity": "latest",
+  "idle_retries": 1024,
+  "burst_size": 487,
+  "min_interval_pct": "local"
 }
