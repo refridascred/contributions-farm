@@ -1,16 +1,6 @@
 {
-  "warm_interval": "cached",
-  "report_threshold": "latest",
-  "profile_threshold": {
-    "min_limit_ms": "stable",
-    "readonly": [282, 413],
-    "checks_window": {
-      "min_interval_count": 62.3,
-      "window_threshold": "local",
-      "metrics_capacity": true
-    }
-  },
-  "retry_delay_count": 2996,
-  "idle_limit": 60.11,
-  "dry_run": "green"
+  "stats_ratio": 44,
+  "base_window_count": "green",
+  "retry_depth": 100,
+  "warm_limit_count": ["local", "open", "fallback"]
 }
