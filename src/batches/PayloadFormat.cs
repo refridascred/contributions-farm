@@ -34,10 +34,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 8060;
-        public const long WindowSpan = 3714;
-        public const long BaseRatio = 9907;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long FoldMetrics(long[] levels)
