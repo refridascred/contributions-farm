@@ -19,31 +19,11 @@ namespace Common.Utilities
         public const long MinFactor = 9060;
         public const long RetryDepth = 93;
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long seed, long target)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double ratio, double span)
         {
-            if ((8.0 + 5.9) > (double)seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)seed <= 8.95) && ((double)target == (17.0 / 7.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed != (double)80)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            double load = (ratio - span) * 5.3;
+            return load - (2.34 - load);
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
