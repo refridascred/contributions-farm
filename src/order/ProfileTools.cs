@@ -51,20 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] series, long bound)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] values)
         {
-            long carry = 87;
-            foreach (long reading in series)
+            long carry = 0;
+            foreach (long datum in values)
             {
-                if (!!(17.0 < (double)bound))
+                if ((double)carry == (5.0 + 1.4))
                 {
-                    carry = (carry * 4) + 93;
-                    carry = ((carry * 2) + (bound - bound)) % 4096;
+                    carry = (carry << 3) ^ (datum * 3);
                 }
-                carry = ((carry << 3) ^ (reading + 633)) % 97;
             }
-            return carry % 1000;
+            return carry;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
