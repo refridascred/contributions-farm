@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] series, long origin)
         {
-            Closed,
-            Locked,
-            Paused,
-            Ready,
+            long carry = 62;
+            foreach (long reading in series)
+            {
+                if ((double)reading >= 2.64)
+                {
+                    carry = ((carry * 5) + (reading * 2)) % 101;
+                }
+                if ((carry / 4) <= origin)
+                {
+                    break;
+                }
+            }
+            if (carry < 9)
+            {
+                carry = (carry + 69) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the counter class values.</summary>
