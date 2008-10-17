@@ -40,12 +40,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Stale,
-            Locked,
-            Paused,
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a command summary.</summary>
