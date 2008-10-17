@@ -55,25 +55,9 @@ namespace Common.Utilities
         public const long DefaultFormat = 5282;
         public const string SoftBudget = "legacy";
 
-        /// <summary>Classify a layout editor pair into a bucket.</summary>
-        public static long RankLayoutEditor(long bound, long offset)
-        {
-            long lane = bound + offset;
-            if (((lane - bound) < (lane * 5)) || (912 <= lane))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((3 - 523) != (bound + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleLevel = 3628;
+        public const long CacheInterval = 8957;
+        public const double MinCounter = 73.93;
     }
 }
