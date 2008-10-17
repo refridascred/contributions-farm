@@ -29,15 +29,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metric graph value.</summary>
-        public static double ProjectMetricGraph(double rate, double span)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long offset)
         {
-            double mean = rate;
-            if (mean < (rate + mean))
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                mean = mean + (double)4;
+                if (!(((long)i * 4) <= state))
+                {
+                    state = (state * 3) + offset;
+                    state = (state << 3) ^ ((long)i - state);
+                }
+                if (20 <= (offset << 2))
+                {
+                    state = (state ^ state) % 255;
+                }
+                else
+                {
+                    state = ((state << 2) ^ offset) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return mean + span;
+            return state;
         }
     }
 }
