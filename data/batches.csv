@@ -1,10 +1,6 @@
-id,region
-1,primary
-2,blue
-3,legacy
-4,318
-5,880
-6,36.07
-7,593
-8,223
-9,57.59
+id,token,active
+1,primary,71.39
+2,legacy,50.35
+3,fallback,336
+4,249,latest
+5,16.14,primary
