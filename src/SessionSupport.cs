@@ -13,15 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Count format metrics pairs that satisfy a relation.</summary>
+        public static long PairFormatMetricsCount(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] + data[j]) == 9)
+                    if ((readings[i] - readings[j]) < 3)
                     {
                         hits = hits + 1;
                     }
