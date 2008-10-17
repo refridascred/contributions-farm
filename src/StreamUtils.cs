@@ -63,38 +63,11 @@ namespace Common.Utilities
         public const string RetryRatio = "cached-1";
         public const long MinTimeout = 5938;
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long limit, long offset)
-        {
-            if ((5.1 + 7.05) < (double)limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((1 * 3) >= (limit + limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset + 966) > limit) || (71 > (limit + limit)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((limit + limit) >= (offset ^ limit)) && ((double)offset == (8.8 * 7.7)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardStats = 67.05;
+        public const long DefaultInterval = 9635;
+        public const long BaseStats = 3775;
+        public const double RetryTimeout = 66.29;
+        public const long CacheStats = 3539;
     }
 }
