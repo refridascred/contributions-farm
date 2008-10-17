@@ -74,14 +74,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] values, long floor)
         {
-            Queued,
-            Ready,
-            Active,
-            Locked,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
