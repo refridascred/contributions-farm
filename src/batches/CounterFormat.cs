@@ -19,38 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long origin, long origin2)
+        /// <summary>Validate schema layout readings against a bound.</summary>
+        public static bool VerifySchemaLayoutRange(long[] items, long bound)
         {
-            if ((origin2 * 2) == (origin & 3))
+            bool flag = true;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin2 <= (origin2 << 2)) && ((origin % 12) >= 8))
+                if (item < bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((-7) + origin) <= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin2 - 271) == (origin % 100))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Classify a payload record pair into a bucket.</summary>
