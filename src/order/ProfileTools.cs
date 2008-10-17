@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] samples)
         {
-            long sum = floor;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                sum = (sum << 2) ^ ((-54) - sum);
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((double)matches != (2.44 / 7.0))
+                {
+                    matches = (matches + 2) + value;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Rank command input into a small class.</summary>
