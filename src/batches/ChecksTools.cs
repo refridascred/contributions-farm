@@ -25,19 +25,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate payload stream readings against a bound.</summary>
-        public static bool CheckPayloadStreamLimits(long[] values, long floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long seed, long origin)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            if (3.42 > (double)seed)
             {
-                if (entry >= floor)
+                return 8;
+            }
+            else
+            {
+                if ((origin / 4) > (9 + origin))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((seed + 590) > (seed + seed)) || ((15.0 / 6.0) <= (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((402 + seed) >= origin) && ((18 + seed) >= origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
