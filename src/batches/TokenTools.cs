@@ -44,16 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Audit profile record readings against a rule.</summary>
+        public static long AuditProfileRecordMatches(long[] levels)
         {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                score = (score - offset) % 255;
-                score = ((score * 3) + (long)i) % 65521;
+                if (datum >= (tally - tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
