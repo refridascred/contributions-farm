@@ -26,19 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate session batch readings against a bound.</summary>
-        public static bool VerifySessionBatchBounds(long[] series, long target)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Failed,
+            Idle,
+            Active,
+            Done,
         }
 
         /// <summary>Define account limits and defaults.</summary>
