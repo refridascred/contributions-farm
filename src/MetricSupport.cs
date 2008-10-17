@@ -16,21 +16,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long floor, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long prev = floor + target;
+            if (!((7 + floor) <= (floor & 63)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((floor + target) == (1 << 3))
                 {
-                    if ((data[i] ^ data[j]) == 10)
+                    return 7;
+                }
+                else
+                {
+                    if ((target - target) > (prev + target))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
