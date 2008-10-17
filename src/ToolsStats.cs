@@ -50,38 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long target, long origin)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            if ((double)target > (7.52 / 5.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target / 9) >= (7 - target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((origin % 97) != (target - 25)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target ^ target) == (463 - origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Failed,
+            Ready,
+            Paused,
         }
 
         /// <summary>Accumulate account samples.</summary>
