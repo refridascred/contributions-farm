@@ -65,11 +65,18 @@ namespace Common.Utilities
             return load - (double)6;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] items, long bound)
         {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (!(3.9 <= (double)(long)items.Length) && ((30 + matches) >= matches))
+                {
+                    matches = ((matches + 2) + item) - bound;
+                }
+            }
+            return matches;
         }
     }
 }
