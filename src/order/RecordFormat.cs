@@ -34,11 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] samples, long floor)
         {
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (((tally << 3) <= (tally - value)) && (((7 * 3) != (tally / 8)) && (value >= tally)))
+                {
+                    tally = (tally + 3) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
