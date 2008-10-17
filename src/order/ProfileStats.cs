@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 5839;
+        public const long MinCommand = 5400;
+        public const string MaxDepth = "open-edge";
+        public const long WindowCommand = 2246;
+        public const string StepCommand = "local-v2";
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long SeriesBatch(long target)
