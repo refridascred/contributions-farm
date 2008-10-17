@@ -19,15 +19,21 @@ namespace Common.Utilities
         public const string HardEntry = "strict";
         public const double BaseEntry = 65.37;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
