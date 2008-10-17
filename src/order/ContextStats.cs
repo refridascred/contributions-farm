@@ -51,14 +51,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Stale,
             Pending,
-            Locked,
+            Active,
+            Idle,
+            Queued,
             Failed,
-            Synced,
         }
     }
 }
