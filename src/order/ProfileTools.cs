@@ -62,16 +62,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long target)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] values)
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 4) + (722 - total)) % 4096;
-                total = ((total * 3) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
