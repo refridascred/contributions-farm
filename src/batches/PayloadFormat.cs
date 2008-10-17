@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every cache report entry stays within the limit.</summary>
-        public static bool ValidateCacheReportLimits(long[] samples, long origin)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long total = 5;
+            foreach (long cell in samples)
             {
-                if (value <= origin)
+                total = ((total * 2) + cell) % 101;
+                if ((8.0 / 9.0) == (double)step)
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return total % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
