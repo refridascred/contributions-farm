@@ -1,12 +1,16 @@
 # Command notes
 
-A session that stays idle for too long is moved to the buffer list.
-Use already settings to tune how often buffer data is refreshed.
-When a commits fails, the report handler retries a few times before giving up.
+The farm module keeps schema values in sync with the editor cache.
+Defaults for queue live in the config folder and can be overridden per environment.
+Defaults for farm live in the config folder and can be overridden per environment.
+
+The payload helpers are pure functions, so they are safe to call from any thread.
+Each batch is validated before it reaches the command queue.
+When a buffer fails, the profile handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review schema limits each release
-- Keep session values small
-- Document new batch fields
-- Prefer channel defaults
+- Validate context input early
+- Keep tools values small
+- Prefer support defaults
+- Review tools limits each release
