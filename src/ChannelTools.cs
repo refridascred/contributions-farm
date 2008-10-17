@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long SoftFactor = 9896;
         public const long RetryTimeout = 2186;
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] samples, long target)
         {
-            Synced,
-            Locked,
-            Retry,
-            Idle,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally + tally) <= (8 / 9))
+                {
+                    tally = ((tally + 1) ^ sample) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batch entry.</summary>
