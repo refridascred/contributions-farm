@@ -19,27 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] samples, long step)
+        /// <summary>Match up contributi record samples.</summary>
+        public static long MatchContributiRecordCount(long[] samples)
         {
-            long score = 85;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score << 3) ^ (score >> 1)) - (long)i;
-                }
-                score = ((score * 2) + (step * 3)) % 4096;
-                if (!((item + step) == (score >> 3)))
-                {
-                    score = (score + (score ^ step)) % 1000;
-                }
-                else
-                {
-                    score = score ^ (step + step);
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a route info.</summary>
