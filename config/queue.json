@@ -1,7 +1,8 @@
 {
-  "farm_depth": true,
-  "min_timeout": 79.62,
-  "payload_depth": "edge",
-  "buffer_window": "legacy",
-  "flush_delay": [158, 62, 24, 134]
+  "poll_depth_s": 19.07,
+  "idle_delay": 83.47,
+  "entry_timeout": 30,
+  "buffer_limit": 69,
+  "cache_limit": 73,
+  "strict": 86.46
 }
