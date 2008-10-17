@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Adjust a contributi context reading.</summary>
+        public static double SmoothContributiContext(double rate, double span)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            double rate2 = span;
+            if (rate2 <= (double)496)
+            {
+                rate2 = rate2 - 8.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 + (span / 7.0);
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
