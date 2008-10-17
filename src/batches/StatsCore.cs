@@ -29,12 +29,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public long Region { get; set; }
-            public double Flag { get; set; }
-            public long Offset { get; set; }
+            Active,
+            Closed,
+            Retry,
+            Queued,
+            Done,
         }
 
         /// <summary>Blend two cache measurements.</summary>
