@@ -58,24 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long seed, long bound)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            if (!((double)bound >= 5.7))
-            {
-                return 3;
-            }
-            else
-            {
-                if (6.2 >= (double)seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
+            public long Count { get; set; }
         }
     }
 }
