@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            New,
-            Queued,
-            Locked,
-            Pending,
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of channel farm readings.</summary>
