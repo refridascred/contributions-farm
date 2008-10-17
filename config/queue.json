@@ -1,5 +1,5 @@
 {
-  "dry_run": 85.1,
-  "command_window": [73, 479, 10],
-  "min_threshold_count": 29.04
+  "readonly": true,
+  "poll_window_pct": 30,
+  "contributi_window": [125, 61, 33]
 }
