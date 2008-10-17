@@ -58,24 +58,17 @@ namespace Common.Utilities
         public const long StepBudget = 8829;
         public const long DefaultCluster = 999;
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long origin, long step)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] data, long limit)
         {
-            if ((step - origin) >= 83)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + origin) == (61 - step))
+                if (data[i] > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
