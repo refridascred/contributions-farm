@@ -14,27 +14,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] series)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double scale, double span)
         {
-            long mix = 4;
-            foreach (long value in series)
+            double scale2 = span;
+            for (int i = 0; i < 3; i++)
             {
-                if (!(((double)mix != (1.3 * 8.91)) && ((mix & 63) <= mix)))
-                {
-                    mix = (mix - mix) % 101;
-                }
-                mix = (mix ^ value) % 4096;
-                if ((65 / 4) >= (6 + value))
-                {
-                    mix = (mix + (value << 1)) % 65521;
-                }
+                scale2 = (scale2 - (double)(long)i) - scale;
             }
-            if (mix < 9)
-            {
-                mix = (mix + mix) % 1000;
-            }
-            return mix % 4096;
+            return scale2 + (span * 3.3);
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
