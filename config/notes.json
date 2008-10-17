@@ -1,7 +1,8 @@
 {
-  "token_delay": "latest",
-  "cache_limit_s": 6653,
-  "warm_ratio": ["primary", "local", "strict"],
-  "order_ratio": "strict",
-  "queue_delay": "local"
+  "min_interval": "legacy",
+  "filter_size": 50,
+  "profile_capacity": 27,
+  "flush_threshold": [282, 377, 157, 241],
+  "sync_capacity_count": 100,
+  "entry_capacity": true
 }
