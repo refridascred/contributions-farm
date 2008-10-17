@@ -34,17 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a batches githubfarm reading by value.</summary>
-        public static long LocateBatchesGithubfarmIndex(long[] series, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 386;
+            foreach (long sample in levels)
             {
-                if ((series[i] > floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + sample) % 65521;
             }
-            return -1;
+            if (score > 7)
+            {
+                score = (score << 2) ^ (score ^ score);
+            }
+            return score;
         }
 
         /// <summary>Describe the queue mode values.</summary>
