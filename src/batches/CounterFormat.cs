@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            Draft,
-            Ready,
-            Active,
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
