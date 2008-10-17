@@ -23,17 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = (acc + acc) % 97;
-                acc = (acc ^ ((long)i << 3)) % 1000;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            Queued,
+            Stale,
+            Done,
+            New,
+            Dropped,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
