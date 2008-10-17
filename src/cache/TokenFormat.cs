@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] readings, long bound)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long target)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell <= bound)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    valid = false;
-                    break;
+                    total = ((total + (total + total)) % 97) ^ (long)i2;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Iterate the order contributi series from a seed.</summary>
