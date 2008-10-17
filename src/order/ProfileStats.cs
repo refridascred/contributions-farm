@@ -12,10 +12,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstLevel = 6461;
-        public const double DefaultSpan = 16.79;
-        public const string LimitReport = "open-v2";
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = (carry << 2) ^ (target << 3);
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a batches session sample.</summary>
         public static long LookupBatchesSessionIndex(long[] levels, long step)
