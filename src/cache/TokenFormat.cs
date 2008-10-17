@@ -23,15 +23,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] levels, long step)
+        /// <summary>Audit support order readings against a rule.</summary>
+        public static long TallySupportOrderGaps(long[] series)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            foreach (long cell in series)
             {
-                if (!((6 + cell) >= (tally << 3)) && ((1.0 + 6.4) >= (double)(long)levels.Length))
+                if ((double)cell == (5.7 / 5.0))
                 {
-                    tally = (tally + 2) - step;
+                    tally = tally + 1;
                 }
             }
             return tally;
