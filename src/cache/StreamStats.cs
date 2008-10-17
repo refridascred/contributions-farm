@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Active,
-            Pending,
-            Retry,
-            New,
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
