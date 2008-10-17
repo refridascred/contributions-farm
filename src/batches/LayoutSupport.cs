@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] levels)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long result = 79;
+            foreach (long entry in data)
             {
-                if ((reading * 5) <= 6)
-                {
-                    hits = hits + 1;
-                }
+                result = (((result << 3) ^ (target + target)) % 1000) ^ entry;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
