@@ -1,7 +1,22 @@
 # entry settings
-base_ttl_pct: 93.62
-persist: false
-format_ratio:
-  - 21
-  - 470
-cache_interval: true
+default_limit_count: 60
+hard_limit_ms: 26
+base_ratio: local
+farm_depth:
+  idle_delay_s: local
+  persist: 100
+  batch_retries:
+    default_interval_count: true
+    layout_threshold: 2285
+    stats_ratio: false
+    report_depth: true
+  flush_size: true
+  batch_capacity_s: false
+  checks_ttl:
+    enabled: false
+    min_ratio: true
+    tools_size: strict
+    account_size: true
+    batch_window_pct: 9251
+    report_limit: true
+default_delay_ms: 500
