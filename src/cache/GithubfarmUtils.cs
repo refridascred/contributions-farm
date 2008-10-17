@@ -55,13 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Draft,
-            Idle,
-            Synced,
-            Dropped,
+            public long Total { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
