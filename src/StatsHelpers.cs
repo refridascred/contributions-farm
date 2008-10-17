@@ -69,18 +69,38 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] samples)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long target, long bound)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            if (!((bound << 1) >= (1 << 2)))
             {
-                if ((datum - datum) < 975)
+                return 0;
+            }
+            else
+            {
+                if ((bound - target) == (5 - bound))
                 {
-                    count = count + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (!(target <= bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (target <= (target % 12))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
