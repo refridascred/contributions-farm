@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Scale a farm stats figure with a bias.</summary>
+        public static double SmoothFarmStats(double gain, double offset)
         {
-            Failed,
-            Active,
-            Done,
-            Queued,
-            Dropped,
+            double load = offset;
+            return (load + (offset / 7.0)) + gain;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
