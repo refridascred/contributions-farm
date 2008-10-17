@@ -44,9 +44,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 7024;
-        public const double BaseSpan = 61.2;
-        public const long MinSession = 1196;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            New,
+            Paused,
+            Stale,
+            Done,
+        }
     }
 }
