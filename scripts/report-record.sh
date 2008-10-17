@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=366
-log "limit is ${RECORD_LIMIT}"
-
-for item in eu-west fallback green stable; do
+for item in eu-west primary blue strict; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+RECORD_LIMIT=51
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-latest}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
