@@ -1,10 +1,21 @@
 # entry settings
-max_window: eu-west
-idle_ratio_count: 46.71
-session_size: 9
-session_ratio:
-  - 356
-  - 36
-  - 53
-  - 26
-dry_run: 19.54
+hard_depth_ms: 60
+compress:
+  strict:
+    - staging
+    - open
+  githubfarm_retries:
+    burst_depth_count: 13.35
+    cache_depth: true
+    max_ttl_ms:
+      - 133
+      - 359
+      - 42
+    farm_window: 42.45
+    retry_timeout: 1956
+  support_delay:
+    - open
+    - eu-west
+hard_timeout_s: true
+readonly: eu-west
+batches_size: cached
