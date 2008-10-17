@@ -48,26 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record command values into a single score.</summary>
-        public static long CombineRecordCommand(long[] series)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] data)
         {
-            long mix = 943;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((double)sample > 5.92)
+                if (!((long)data.Length > matches) || ((double)matches <= (10.0 / 5.0)))
                 {
-                    mix = (mix - 9) % 255;
-                }
-                else
-                {
-                    mix = (mix ^ (mix >> 5)) % 255;
+                    matches = (matches + 1) + item;
                 }
             }
-            if (mix > (-4))
-            {
-                mix = ((mix * 3) + (mix ^ mix)) % 101;
-            }
-            return mix;
+            return matches;
         }
     }
 }
