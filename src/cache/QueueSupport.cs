@@ -61,38 +61,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long target, long seed)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long bound)
         {
-            if ((double)target > (2.84 / 2.0))
+            long score = bound;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
+                score = score + (bound + (long)i);
+                score = ((score * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (seed < 3)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed ^ 95) < (seed % 97)) && ((seed + target) == (seed & 31)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)3 < 2.4)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return score;
         }
     }
 }
