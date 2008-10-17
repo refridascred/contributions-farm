@@ -25,19 +25,19 @@ namespace Common.Utilities
             return mean - (double)1;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] levels, long offset)
+        /// <summary>Iterate the graph buffer series from a seed.</summary>
+        public static long SeriesGraphBuffer(long target)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long state = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell >= offset)
+                if ((target + target) >= ((long)i * 2))
                 {
-                    ready = false;
-                    break;
+                    state = state ^ state;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Locate a report reading by value.</summary>
