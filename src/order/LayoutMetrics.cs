@@ -66,18 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] samples, long offset)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((item / 8) > (354 & 63))
-                {
-                    seen = (seen + 3) - offset;
-                }
-            }
-            return seen;
+            Closed,
+            Queued,
+            Idle,
         }
     }
 }
