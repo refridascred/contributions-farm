@@ -34,11 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchDepth = 7304;
-        public const long MinGraph = 5185;
-        public const long DefaultFactor = 7164;
-        public const long SoftInterval = 9619;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Done,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long PairOrderCount(long[] levels)
