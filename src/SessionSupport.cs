@@ -31,13 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public double Rank { get; set; }
-            public double Flag { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
