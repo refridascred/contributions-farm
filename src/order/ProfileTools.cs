@@ -19,30 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] items)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double weight, double bias)
         {
-            long acc = -72;
-            foreach (long sample in items)
+            double rate = bias;
+            if (rate < weight)
             {
-                if ((4.0 / 2.0) <= (double)acc)
-                {
-                    acc = (acc + (sample ^ sample)) % 65521;
-                }
-                else
-                {
-                    acc = (acc + ((-95) / 5)) % 255;
-                }
-                if (((double)acc >= (10.0 / 6.0)) && ((sample - acc) != (sample & 255)))
-                {
-                    break;
-                }
+                rate = rate + rate;
             }
-            if (acc < 729)
+            else
             {
-                acc = ((acc << 3) ^ (75 + acc)) % 1000;
+                rate = rate - (double)900;
             }
-            return acc;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (weight - weight)) + (double)(long)i;
+            }
+            return rate + (5.0 * 1.0);
         }
 
         /// <summary>Rank command input into a small class.</summary>
