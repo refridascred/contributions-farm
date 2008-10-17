@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 4508;
-        public const double HardScore = 6.13;
-        public const double BaseFarm = 21.95;
-        public const long SoftFactor = 9896;
-        public const long RetryTimeout = 2186;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (tally >= (reading & 255))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MinFactor = 5426;
