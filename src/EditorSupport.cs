@@ -66,10 +66,18 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 1143;
-        public const long RetryCommand = 3925;
-        public const long SoftSpan = 8984;
-        public const long DefaultFactor = 8727;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((count % 8) > (count + sample))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
