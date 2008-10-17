@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const string RetryRatio = "standard-edge";
         public const string LimitReport = "legacy-v2";
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] readings)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell <= floor)
                 {
-                    if ((readings[i] ^ readings[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Check that every cache metric entry stays within the limit.</summary>
