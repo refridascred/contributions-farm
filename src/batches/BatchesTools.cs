@@ -38,11 +38,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftContributi = 55.93;
-        public const string WindowContributi = "open-v2";
-        public const double BurstCount = 44.49;
-        public const double HardInterval = 43.63;
-        public const string BurstContributi = "staging-1";
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen - 81) <= (entry - entry))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
