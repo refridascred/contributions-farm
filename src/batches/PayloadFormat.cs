@@ -20,18 +20,22 @@ namespace Common.Utilities
         public const long BurstScore = 9823;
         public const long BurstQueue = 1163;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] readings, long target)
+        /// <summary>Digest a series of format stats entries.</summary>
+        public static long ScoreFormatStats(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long carry = 28;
+            foreach (long value in samples)
             {
-                if (!((double)target >= (4.4 / 2.0)) && ((hits - hits) == (hits << 3)))
+                if ((carry >= (value - value)) || ((221 & 3) <= (carry % 10)))
                 {
-                    hits = (hits + 2) - reading;
+                    carry = carry - 4;
+                }
+                if ((carry + value) <= (5 - bound))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
