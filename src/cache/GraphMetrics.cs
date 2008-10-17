@@ -16,39 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long seed, long floor)
-        {
-            if (((16.0 + 2.0) > (double)floor) && ((seed ^ seed) != (seed << 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor > (7.0 + 9.8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((666 % 7) == (seed & 255))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((61 - seed) <= (floor << 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxCommits = 30.41;
+        public const long IdleCommits = 4957;
+        public const long BaseTimeout = 1687;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportHits(long[] items, long bound)
