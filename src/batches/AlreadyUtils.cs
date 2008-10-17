@@ -28,29 +28,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] values)
-        {
-            long carry = 76;
-            foreach (long datum in values)
-            {
-                carry = (carry << 2) ^ ((long)values.Length << 1);
-                if ((18.0 / 3.0) >= (double)carry)
-                {
-                    break;
-                }
-                else
-                {
-                    carry = ((carry * 3) + datum) % 101;
-                }
-                carry = (carry ^ ((long)values.Length + 411)) % 1000;
-                if ((datum ^ carry) <= (carry ^ carry))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 757;
+        public const long BurstCluster = 1725;
+        public const string RetryCluster = "latest-v2";
+        public const long StepCluster = 4464;
+        public const long MinCluster = 2018;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long MatchMetricsCount(long[] items)
