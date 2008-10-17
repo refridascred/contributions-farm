@@ -55,15 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Check that every batches report entry stays within the limit.</summary>
+        public static bool ValidateBatchesReportBounds(long[] values, long bound)
         {
-            long anchor = 45;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                anchor = (anchor + (value % 97)) % 97;
+                if (cell != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
     }
 }
