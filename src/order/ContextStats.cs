@@ -19,11 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleScore = 5.82;
-        public const long StepCommand = 2855;
-        public const long HardCommand = 6486;
-        public const long MinScore = 9031;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample <= (9.0 / 8.0))
+                {
+                    hits = (hits + 2) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double BlendCommand(double bias, double offset)
