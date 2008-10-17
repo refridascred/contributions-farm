@@ -14,14 +14,25 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Classify a cluster filter pair into a bucket.</summary>
+        public static long SortClusterFilter(long seed, long origin)
         {
-            Pending,
-            Dropped,
-            Synced,
-            Done,
-            Queued,
+            long slot = seed - origin;
+            if ((slot ^ slot) >= (slot / 7))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((3 + slot) >= 12) && ((double)slot <= (2.77 - 2.1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a filter header.</summary>
