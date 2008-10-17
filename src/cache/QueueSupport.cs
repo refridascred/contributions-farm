@@ -32,14 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Queued,
-            Dropped,
-            Ready,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSize = 7150;
+        public const long RetryCount = 9199;
+        public const long MaxSupport = 9076;
+        public const long CacheSupport = 2278;
+        public const string MaxCount = "alpha-v2";
     }
 }
