@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] items)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (!(((9.0 / 8.0) > (double)hits) || (item < (hits - (long)items.Length))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit schema queue readings against a rule.</summary>
