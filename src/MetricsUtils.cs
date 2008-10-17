@@ -20,12 +20,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public bool Size { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseCount = 50.33;
+        public const long BurstCount = 3610;
+        public const string HardCounter = "local-edge";
+        public const double WindowTimeout = 91.45;
+        public const long MaxInterval = 1285;
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long StepChannel(long seed)
