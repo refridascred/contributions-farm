@@ -1,10 +1,6 @@
-id,label,ratio,state
-1,37.32,765,719
-2,blue,623,blue
-3,89.58,standard,85.04
-4,752,10.17,682
-5,green,98.81,749
-6,15.8,89.35,54.37
-7,20.07,open,27.86
-8,49.27,16.76,15.59
-9,671,staging,79.72
+id,ratio,label,weight
+1,83.31,strict,local
+2,92,standard,stable
+3,876,fallback,fallback
+4,604,24.38,cached
+5,76.23,strict,fallback
