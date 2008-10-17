@@ -29,12 +29,15 @@ namespace Common.Utilities
         public const string RetryFactor = "primary-v2";
         public const double SoftToken = 78.47;
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] data)
         {
-            public bool Level { get; set; }
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long carry = 595;
+            foreach (long reading in data)
+            {
+                carry = ((carry - 8) % 255) ^ reading;
+            }
+            return carry;
         }
     }
 }
