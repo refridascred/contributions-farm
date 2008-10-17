@@ -1,16 +1,12 @@
 # entry settings
-cache_capacity_ms: 11.96
-warm_ratio: 36.3
-flush_window_count:
-  - 100
-  - 304
-  - 419
-compress:
-  idle_retries_count:
-    - primary
-    - edge
-    - standard
-  retry_window_ms: 69.51
-  payload_capacity: fallback
-  batch_size: 68.25
-  flush_interval_s: 49.77
+cache_threshold: 93
+soft_threshold: 47
+dry_run: local
+hard_capacity_pct:
+  compress: 96
+  verbose: 250
+  record_interval: true
+  counter_ttl: false
+  enabled: latest
+  default_depth_ms: green
+max_delay_ms: 100
