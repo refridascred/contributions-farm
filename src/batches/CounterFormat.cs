@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Roll a report editor counter forward.</summary>
+        public static long StepReportEditor(long floor)
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
+            long result = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Count the editor session entries that pass the check.</summary>
