@@ -1,10 +1,7 @@
-id,rank,owner,active
-1,568,77.1,222
-2,68,386,406
-3,22.65,primary,blue
-4,178,689,legacy
-5,944,178,blue
-6,203,67.6,green
-7,340,primary,69.65
-8,868,legacy,open
-9,green,10.29,latest
+id,count,ratio
+1,593,791
+2,315,legacy
+3,865,249
+4,41.81,blue
+5,37.95,70
+6,183,321
