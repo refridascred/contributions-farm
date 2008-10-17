@@ -33,12 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Failed,
-            Dropped,
+            Synced,
+            Active,
             Done,
+            Failed,
         }
 
         /// <summary>Classify a format editor pair into a bucket.</summary>
