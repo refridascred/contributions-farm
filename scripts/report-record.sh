@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west primary blue strict; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=51
+RECORD_LIMIT=370
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-latest}"
+mode="${1:-standard}"
 case "${mode}" in
-    primary)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in standard eu-west; do
+    log "checking ${item}"
+done
