@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] items)
+        /// <summary>Audit entry record readings against a rule.</summary>
+        public static long AuditEntryRecordHits(long[] series, long step)
         {
-            long state = 825;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                state = state ^ (sample + sample);
+                if (8.0 >= (double)hits)
+                {
+                    hits = ((hits + 3) + reading) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
