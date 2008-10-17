@@ -61,14 +61,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Validate payload commits readings against a bound.</summary>
+        public static bool CheckPayloadCommitsLimits(long[] items, long step)
         {
-            Closed,
-            Draft,
-            Active,
-            Idle,
-            Retry,
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
