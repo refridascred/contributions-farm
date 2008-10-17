@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 5031;
-        public const double HardChannel = 40.95;
-        public const long StepSpan = 4613;
-        public const string BatchScore = "alpha-v2";
-        public const long SoftChannel = 5645;
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long CombineRecord(long[] readings)
