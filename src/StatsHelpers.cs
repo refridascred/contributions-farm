@@ -35,21 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] items)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Active,
+            Retry,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a window stats.</summary>
