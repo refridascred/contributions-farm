@@ -40,21 +40,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
