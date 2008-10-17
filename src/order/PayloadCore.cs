@@ -39,32 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long offset, long bound)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long bound2 = offset + bound;
-            if (!((559 % 5) <= (bound << 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((530 + 2) == (bound + offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound2 / 9) == (offset - offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
