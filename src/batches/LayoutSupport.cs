@@ -16,19 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double scale, double offset)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            double load = scale / 3.0;
-            if (load > scale)
-            {
-                load = (load + load) - offset;
-            }
-            else
-            {
-                load = load - (load / 5.0);
-            }
-            return load + (double)276;
+            Retry,
+            Queued,
+            Stale,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
