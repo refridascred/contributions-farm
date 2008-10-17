@@ -67,22 +67,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many window cluster samples are out of range.</summary>
-        public static long MeasureWindowClusterHits(long[] values)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] data)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (((count - count) == (count << 3)) && ((count >> 4) >= count))
+                if ((cell - cell) <= (matches + cell))
                 {
-                    count = (count + 2) - sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
