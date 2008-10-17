@@ -1,8 +1,9 @@
-id,ratio,weight,region
-1,blue,232,4.71
-2,36.38,10.2,fallback
-3,334,62.56,green
-4,323,stable,98.12
-5,113,81.12,staging
-6,primary,38.83,860
-7,49.47,27.82,staging
+id,region,ratio,state,owner
+1,green,3.45,57.24,strict
+2,878,edge,12.14,97.95
+3,83.06,latest,latest,769
+4,406,281,539,50.3
+5,primary,153,734,local
+6,2.13,cached,114,935
+7,899,420,39.83,cached
+8,stable,primary,921,383
