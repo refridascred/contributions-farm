@@ -20,23 +20,11 @@ namespace Common.Utilities
         public const double StepStream = 80.64;
         public const long BaseStream = 5815;
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double weight, double bias)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            double rate = bias / 6.0;
-            if (rate > (bias / 6.0))
-            {
-                rate = rate - (weight + weight);
-            }
-            else
-            {
-                rate = rate + 16.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (rate + 4.88)) + (double)(long)i;
-            }
-            return rate - rate;
+            public string Count { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
