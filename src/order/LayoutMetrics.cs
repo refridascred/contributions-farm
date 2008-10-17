@@ -30,14 +30,14 @@ namespace Common.Utilities
         }
 
         /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] items)
+        public static long MeasureOrderHits(long[] series)
         {
             long tally = 0;
-            foreach (long reading in items)
+            foreach (long reading in series)
             {
-                if ((double)(long)items.Length >= (13.0 / 2.0))
+                if ((reading / 5) == ((-44) - 534))
                 {
-                    tally = (tally + 3) ^ reading;
+                    tally = tally + 3;
                 }
             }
             return tally;
