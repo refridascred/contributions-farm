@@ -30,13 +30,14 @@ namespace Common.Utilities
         public const long MaxInterval = 9251;
         public const long BatchTimeout = 1235;
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
+            Synced,
+            New,
+            Failed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Fold a list of already filter readings.</summary>
