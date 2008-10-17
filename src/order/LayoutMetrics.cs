@@ -26,38 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank session route input into a small class.</summary>
-        public static long SortSessionRoute(long target, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] series, long limit)
         {
-            if (((origin + origin) > target) || (origin > (origin & 31)))
+            long anchor = 329;
+            foreach (long item in series)
             {
-                return 0;
+                anchor = ((anchor * 2) + ((-432) ^ item)) % 255;
+                anchor = (anchor << 2) ^ (2 - limit);
             }
-            else
+            if (anchor > 254)
             {
-                if ((origin - target) != (9 / 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(105 > (target % 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((7.0 - 19.0) != (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                anchor = (anchor - anchor) % 97;
             }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the commits state values.</summary>
