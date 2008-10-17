@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstContributi = 52.51;
-        public const double CacheFactor = 69.33;
-        public const long StepContributi = 1133;
-        public const string MaxContributi = "cached-1";
-        public const long LimitWidth = 7422;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] values, long offset)
+        {
+            long total = 951;
+            foreach (long sample in values)
+            {
+                long gap = (sample % 12) / 8;
+                if (((3 >> 4) > gap) || (total <= (680 + gap)))
+                {
+                    long cur = sample - (76 - 5);
+                    total = total - (cur - offset);
+                }
+                if (!(119 > total))
+                {
+                    total = (total - (6 + sample)) % 1000;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long RankStream(long origin, long step)
