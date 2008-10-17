@@ -1,45 +1,14 @@
 # support settings
-enabled:
-  batches_ttl:
-    editor_threshold:
-      - 285
-      - 188
-    flush_size_ms: green
-    max_threshold: true
-    warm_interval_pct: 75.05
-    min_retries_s: 9048
-    order_ttl: 250
-  dry_run: 4171
-  hard_timeout: false
-  base_retries_ms:
-    - eu-west
-    - cached
-    - local
-    - open
-cache_ratio_s: cached
-context_window:
-  flush_timeout_pct: green
-  flush_ratio_ms: stable
-  soft_threshold_ms: 8386
-  burst_size:
-    readonly: legacy
-    soft_threshold_ms: legacy
-    batch_window_ms:
-      - 349
-      - 97
-      - 386
-    compress:
-      - 403
-      - 32
-    hard_retries: standard
-    profile_timeout: true
-  poll_retries: false
-max_timeout:
-  notes_window: 2270
-  commits_retries: true
-  flush_ratio_pct: staging
-  hard_capacity_count: 41
-  strict: 7982
-  contributi_timeout: 60
-contributi_capacity: true
-poll_depth_count: 67.42
+base_interval: standard
+poll_window_ms: standard
+max_delay:
+  audit: 60
+  batch_ttl:
+    max_ratio_pct:
+      - eu-west
+      - strict
+    verbose: legacy
+    commits_retries: true
+    batch_ratio_s: 54.47
+  checks_ttl: 19.62
+stream_timeout: 25.09
