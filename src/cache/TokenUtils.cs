@@ -25,12 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] data)
         {
-            public bool Ratio { get; set; }
-            public double Score { get; set; }
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((count + sample) > count)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
