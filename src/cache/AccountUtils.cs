@@ -29,15 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] items, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
+            long acc = 46;
+            foreach (long value in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                acc = ((acc * 3) + acc) - value;
+                if (!((step & 63) < (acc ^ step)))
+                {
+                    acc = acc - (step - acc);
+                }
             }
-            return anchor;
+            return acc;
         }
     }
 }
