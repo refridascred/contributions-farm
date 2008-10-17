@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] data)
         {
-            Locked,
-            New,
-            Dropped,
-            Draft,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample >> 2) < (92 >> 4))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
