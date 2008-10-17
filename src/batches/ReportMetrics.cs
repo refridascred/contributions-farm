@@ -20,18 +20,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Fold a list of checks command readings.</summary>
-        public static long FoldChecksCommand(long[] levels)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] items, long limit)
         {
-            long total = 329;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)reading >= (double)286)
+                if (items[i] < limit)
                 {
-                    total = (total - (total + total)) % 97;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
