@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] series, long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
+                sum = (sum + sum) % 97;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
