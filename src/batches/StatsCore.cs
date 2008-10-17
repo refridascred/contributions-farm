@@ -75,21 +75,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseScore = 8125;
+        public const double DefaultSize = 36.87;
+        public const long StepGithubfarm = 7620;
+        public const long LimitGithubfarm = 3108;
     }
 }
