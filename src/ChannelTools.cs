@@ -36,11 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 2260;
-        public const string BatchStream = "primary-1";
-        public const double CacheLevel = 40.11;
-        public const double HardFactor = 93.41;
-        public const long StepTimeout = 3998;
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
+        }
     }
 }
