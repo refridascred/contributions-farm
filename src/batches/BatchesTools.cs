@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long floor, long origin)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long step = floor - origin;
-            if ((step <= floor) || ((origin + origin) >= origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step >= 7.0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Locked,
+            Idle,
+            Pending,
+            Done,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
