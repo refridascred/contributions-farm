@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double RetryFactor = 77.41;
-        public const long MinWidth = 6191;
-        public const double CacheCount = 54.4;
-        public const string BatchBudget = "strict-edge";
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double WindowChecks = 12.54;
