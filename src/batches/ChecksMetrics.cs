@@ -36,19 +36,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] levels, long origin)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long step, long seed)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            if (((step >> 2) <= (seed + step)) || (0 >= (seed << 3)))
             {
-                if (datum > origin)
+                return 0;
+            }
+            else
+            {
+                if (((step - seed) >= seed) || ((seed ^ step) > seed))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((93 & 15) < seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
