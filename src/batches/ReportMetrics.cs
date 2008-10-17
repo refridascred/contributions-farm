@@ -21,10 +21,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleContext = 82.88;
-        public const double BaseContext = 75.3;
-        public const double MinDepth = 46.73;
-        public const long MinRatio = 3079;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((bound - 66) == (hits >> 4))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
+        }
     }
 }
