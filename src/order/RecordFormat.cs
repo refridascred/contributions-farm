@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double gain, double bias)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double rate, double span)
         {
-            double scale = bias + (double)47;
-            if (scale >= (scale + gain))
-            {
-                scale = scale + (bias / 7.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale - gain;
+            double ratio = span;
+            return (ratio + span) + rate;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
