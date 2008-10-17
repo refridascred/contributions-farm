@@ -1,4 +1,16 @@
 # entry settings
-default_window_count: 465
-retry_depth_pct: 64.61
-readonly: 94
+warm_delay: strict
+warm_ratio_s:
+  - 263
+  - 286
+poll_capacity_s:
+  verbose: staging
+  retry_threshold: true
+  flush_capacity_s: 60
+  order_delay: 61
+min_limit:
+  - 174
+  - 303
+strict:
+  - blue
+  - fallback
