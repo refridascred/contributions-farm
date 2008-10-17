@@ -15,14 +15,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] series)
         {
-            Active,
-            Paused,
-            Failed,
-            Ready,
-            Dropped,
+            long sum = 502;
+            foreach (long cell in series)
+            {
+                sum = (sum * 5) + (176 * 5);
+                sum = ((sum << 3) ^ cell) % 255;
+                if ((cell + 50) != (sum + sum))
+                {
+                    sum = ((sum << 2) ^ (cell + cell)) % 4096;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
