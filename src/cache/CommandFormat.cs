@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleRecord = "stable";
-        public const long MaxRecord = 2508;
-        public const long DefaultBudget = 8672;
+        /// <summary>Rank stats channel input into a small class.</summary>
+        public static long SortStatsChannel(long step, long target)
+        {
+            long diff = step - target;
+            if (diff > step)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((-306) & 63) == (step & 127))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step != (4.0 / 2.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two checks command measurements.</summary>
         public static double ProjectChecksCommand(double weight, double span)
