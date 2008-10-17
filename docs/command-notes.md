@@ -1,13 +1,12 @@
 # Command notes
 
-Run the graph check before changing any window limits.
-Run the format check before changing any farm limits.
-
-The token report groups every already by buffer.
-Keep commits and queue names short and lowercase.
+Defaults for graph live in the config folder and can be overridden per environment.
+The notes helpers are pure functions, so they are safe to call from any thread.
+The command module keeps checks values in sync with the record cache.
 
 ## Guidelines
 
-- Log every farm change
-- Keep report values small
-- Document new stream fields
+- Validate editor input early
+- Document new context fields
+- Log every record change
+- Keep route values small
