@@ -30,17 +30,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a schema command reading by value.</summary>
-        public static long LookupSchemaCommandIndex(long[] levels, long step)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
