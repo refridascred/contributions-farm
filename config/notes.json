@@ -1,7 +1,13 @@
 {
-  "readonly": "fallback",
-  "hard_interval_count": "primary",
-  "warm_window_s": "green",
-  "warm_timeout_s": "green",
-  "cluster_limit": 69.98
+  "compress": "local",
+  "idle_timeout_s": {
+    "idle_threshold": "legacy",
+    "session_ttl": ["latest", "primary"],
+    "batch_size_s": false,
+    "burst_depth_count": 1,
+    "min_timeout": 43.93,
+    "graph_size": "primary"
+  },
+  "githubfarm_delay": 1349,
+  "schema_interval": [106, 358, 247]
 }
