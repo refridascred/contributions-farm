@@ -47,13 +47,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
-            public long Count { get; set; }
+            Active,
+            Failed,
+            Draft,
+            Dropped,
+            Idle,
         }
     }
 }
