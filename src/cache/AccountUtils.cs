@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const double SoftChannel = 77.53;
         public const long BatchChannel = 5676;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] samples, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] samples)
         {
             long seen = 0;
-            foreach (long cell in samples)
+            foreach (long datum in samples)
             {
-                if (((952 + origin) > (seen << 2)) || ((cell & 255) >= seen))
+                if ((double)datum <= (double)seen)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
