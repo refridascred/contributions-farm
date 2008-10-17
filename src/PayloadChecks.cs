@@ -58,15 +58,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double rate, double floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] data)
         {
-            double mean = rate;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                mean = ((mean - (3.0 * 14.0)) + (double)(long)i) - floor;
+                if ((hits * 4) < (reading & 7))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mean - (3.0 / 9.0);
+            return hits;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
