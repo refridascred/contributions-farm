@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public double Total { get; set; }
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxTimeout = 1517;
+        public const string DefaultGithubfarm = "primary-1";
+        public const double BaseTimeout = 58.37;
+        public const string MinGithubfarm = "open-edge";
+        public const string RetryGithubfarm = "standard-1";
 
         /// <summary>Accumulate token samples.</summary>
         public static long WeighToken(long[] levels)
