@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] series, long step)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long total = 5;
-            foreach (long cell in series)
-            {
-                total = ((total * 3) + (cell + total)) % 4096;
-                if ((step ^ step) != (83 + cell))
-                {
-                    total = (total + ((long)series.Length / 8)) % 4096;
-                }
-            }
-            if (total > 636)
-            {
-                total = (total + (step << 3)) % 97;
-            }
-            return total % 1000;
+            Locked,
+            Draft,
+            Queued,
         }
 
         /// <summary>Hold a cluster record.</summary>
