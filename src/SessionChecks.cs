@@ -39,18 +39,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the profile format entries that pass the check.</summary>
-        public static long AuditProfileFormatHits(long[] items)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long seed, long bound)
         {
-            long matches = 0;
-            foreach (long value in items)
+            if ((bound % 10) <= (bound % 16))
             {
-                if ((88 + 406) >= matches)
+                return 2;
+            }
+            else
+            {
+                if ((double)bound > (9.37 / 4.0))
                 {
-                    matches = (matches + 3) - value;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
