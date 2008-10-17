@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] data, long offset)
         {
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
-            public long Label { get; set; }
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
