@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 8943;
-        public const string SoftWidth = "standard-1";
-        public const double MinScore = 31.79;
-        public const string SoftTimeout = "stable-edge";
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long LookupLayoutIndex(long[] data, long seed)
