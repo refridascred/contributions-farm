@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] series, long limit)
+        /// <summary>Look up the position of a already counter sample.</summary>
+        public static long SeekAlreadyCounterIndex(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= limit)
+                if (samples[i] <= bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a cache summary.</summary>
