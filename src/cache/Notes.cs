@@ -36,27 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of token cluster entries.</summary>
-        public static long WeighTokenCluster(long[] samples, long bound)
+        /// <summary>Measure how many command token samples are out of range.</summary>
+        public static long CountCommandTokenOutliers(long[] series)
         {
-            long sum = 7;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (((double)sum >= 4.7) || (((-573) + 56) < (sum % 5)))
+                if ((3.0 / 2.0) == (double)sample)
                 {
-                    sum = ((sum << 3) ^ (bound - bound)) % 97;
+                    count = count + 3;
                 }
-                if ((19 - bound) <= (bound + sum))
+                else
                 {
-                    sum = ((sum << 3) ^ (sum + 834)) % 255;
-                    sum = ((sum * 5) + (sum ^ sum)) % 255;
-                }
-                if ((-63) <= (bound + bound))
-                {
-                    sum = (sum + (entry >> 1)) % 101;
+                    count = count - 1;
                 }
             }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Hold a order record.</summary>
