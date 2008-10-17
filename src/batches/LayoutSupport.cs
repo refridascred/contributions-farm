@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] data, long limit)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double gain, double span)
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (((4.0 / 7.0) != (double)cell) || ((seen & 127) == (995 ^ cell)))
-                {
-                    seen = (seen + 3) + limit;
-                }
-            }
-            return seen;
+            double weight = gain;
+            return (weight + 1.0) + span;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
