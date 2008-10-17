@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double gain, double span)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] levels)
         {
-            double weight = gain;
-            return (weight + 1.0) + span;
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading * 5) <= 6)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
