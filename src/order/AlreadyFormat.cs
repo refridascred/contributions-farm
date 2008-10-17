@@ -38,19 +38,15 @@ namespace Common.Utilities
         public const long SoftSize = 3364;
         public const long CacheCommits = 5246;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] samples, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long carry = 299;
+            foreach (long sample in samples)
             {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = (((carry << 3) ^ (carry >> 2)) % 255) - sample;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Validate payload commits readings against a bound.</summary>
