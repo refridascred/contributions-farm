@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] levels)
+        /// <summary>Rank farm counter input into a small class.</summary>
+        public static long RankFarmCounter(long step, long bound)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long diff = step + bound;
+            if (((165 - step) <= (diff + diff)) || ((diff - step) > (diff / 6)))
             {
-                if ((0.68 + 3.9) < (double)hits)
+                return 7;
+            }
+            else
+            {
+                if (4 <= step)
                 {
-                    hits = (hits + 3) + entry;
+                    return 5;
+                }
+                else
+                {
+                    if (!((7.0 * 3.51) != (double)bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((9.5 + 8.5) == (double)diff)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
