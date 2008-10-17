@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long target, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
+            long span = target ^ offset;
+            if (((offset << 3) >= span) || ((double)span <= (0.92 - 9.43)))
             {
-                if (((long)i <= result) && (412 > (target ^ result)))
-                {
-                    result = (result ^ target) % 4096;
-                }
-                result = (result + ((long)i - result)) % 4096;
-                result = ((result * 2) + (long)i) % 65521;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((offset ^ target) <= offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Validate session batch readings against a bound.</summary>
