@@ -56,23 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double scale, double floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] data)
         {
-            double bias = scale;
-            if (bias < (double)(-25))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                bias = bias + (double)148;
+                if ((double)seen >= (6.0 * 1.99))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
             }
-            else
-            {
-                bias = bias + 5.57;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (bias - floor)) + (double)(long)i;
-            }
-            return bias - scale;
+            return seen;
         }
     }
 }
