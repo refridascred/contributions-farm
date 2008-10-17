@@ -46,9 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 6023;
-        public const string BaseSupport = "local-v2";
-        public const string WindowSupport = "staging-edge";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstProfile = 49.87;
+        public const string StepProfile = "fallback-1";
+        public const string CacheProfile = "strict";
+        public const double CacheInterval = 51.85;
+        public const string IdleProfile = "primary";
     }
 }
