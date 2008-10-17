@@ -70,23 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] values, long step)
+        /// <summary>Combine commits account values into a single score.</summary>
+        public static long TallyCommitsAccount(long[] data, long origin)
         {
-            long acc = 89;
-            foreach (long value in values)
+            long mix = 5;
+            foreach (long entry in data)
             {
-                if ((double)step == (15.0 + 1.0))
+                if (((double)mix < (double)entry) || ((origin * 4) == (entry + mix)))
                 {
-                    acc = (acc + (step << 1)) % 101;
-                }
-                acc = (acc + (step % 60)) % 255;
-                if (value > (value + value))
-                {
-                    acc = ((acc << 3) ^ value) % 1000;
+                    mix = mix - (19 / 2);
                 }
             }
-            return acc % 4096;
+            return mix;
         }
     }
 }
