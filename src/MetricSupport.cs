@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Derive the next record report value from a seed.</summary>
+        public static long DeriveRecordReport(long seed)
         {
-            public string Limit { get; set; } = "";
-            public bool Size { get; set; }
+            long score = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a cache summary.</summary>
