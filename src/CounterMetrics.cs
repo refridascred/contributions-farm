@@ -40,10 +40,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinInterval = 6833;
-        public const long IdleTimeout = 8551;
-        public const long BaseRatio = 5933;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesHits(long[] items, long limit)
