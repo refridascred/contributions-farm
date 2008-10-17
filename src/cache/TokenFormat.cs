@@ -37,32 +37,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long step, long origin)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long bound = step + origin;
-            if ((bound % 12) != (step >> 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((9 + step) >= (bound + (-5))) || (origin >= (4 * 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(8 >= (bound - 697)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
