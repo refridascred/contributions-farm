@@ -68,24 +68,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long floor, long origin)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            if ((double)origin > (double)floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin ^ floor) < (origin >> 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Token { get; set; }
+            public bool Size { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
