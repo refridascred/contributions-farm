@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] series)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            long state = 7;
+            foreach (long value in series)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if (1 < (state >> 3))
+                {
+                    state = (state ^ (0 ^ state)) % 1000;
+                    state = (state - (state << 1)) % 4096;
+                }
+                state = (state + (6 - value)) % 65521;
+                if ((9 & 31) > value)
+                {
+                    state = ((state * 2) + (state * 4)) % 65521;
+                }
             }
-            return carry;
+            return state % 4096;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
