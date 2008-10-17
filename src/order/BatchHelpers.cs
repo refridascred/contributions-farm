@@ -22,21 +22,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if (seed > ((long)i >> 5))
-                {
-                    total = (total << 2) ^ total;
-                    total = (total + (long)i) % 101;
-                }
-                total = ((total << 2) ^ (8 ^ total)) % 255;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinScore = "local";
+        public const string MinOrder = "cached";
+        public const string StepOrder = "stable-1";
+        public const double BurstOrder = 10.16;
+        public const long IdleOrder = 2155;
     }
 }
