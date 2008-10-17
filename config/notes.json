@@ -1,6 +1,8 @@
 {
-  "filter_delay": ["staging", "standard", "eu-west", "local"],
-  "min_timeout_count": 5539,
-  "editor_threshold": [385, 91, 58],
-  "format_ratio": "staging"
+  "warm_size_ms": [340, 5, 74],
+  "strict": true,
+  "graph_retries": 30,
+  "metrics_delay": false,
+  "poll_retries": 1297,
+  "graph_window": 30
 }
