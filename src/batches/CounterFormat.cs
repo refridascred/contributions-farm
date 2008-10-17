@@ -29,12 +29,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long seed)
         {
-            Queued,
-            Locked,
-            Done,
+            long result = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                result = (result + (seed / 9)) % 65521;
+                if (((double)(long)i == (5.94 + 9.85)) || (((long)i - result) <= (long)i))
+                {
+                    long count = ((long)i & 63) + ((long)i ^ 3);
+                    result = (result << 3) ^ (count + count);
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
