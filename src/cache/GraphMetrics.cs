@@ -50,14 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] items, long bound)
         {
-            Retry,
-            Synced,
-            Done,
-            Failed,
-            Paused,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((bound / 4) < (sample >> 1)) || ((double)bound < (6.02 / 2.0)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a editor stats.</summary>
