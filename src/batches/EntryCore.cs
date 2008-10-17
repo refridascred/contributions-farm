@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum + datum) == (datum % 97))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchWindow = "open-1";
+        public const long StepWindow = 1651;
+        public const long MaxSpan = 541;
+        public const long HardDepth = 1765;
+        public const long DefaultScore = 5242;
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
