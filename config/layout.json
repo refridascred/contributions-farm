@@ -1,8 +1,12 @@
 {
-  "max_capacity": "green",
-  "default_retries_pct": "stable",
-  "max_limit_ms": 78.2,
-  "burst_limit_pct": "eu-west",
-  "commits_delay": 64.55,
-  "audit": false
+  "idle_timeout_ms": {
+    "contributi_capacity": true,
+    "already_timeout": [233, 71, 157],
+    "min_size_pct": 44,
+    "record_depth": "cached"
+  },
+  "dry_run": "stable",
+  "format_capacity": false,
+  "base_depth": 97.37,
+  "warm_depth_pct": ["staging", "primary"]
 }
