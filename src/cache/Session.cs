@@ -31,13 +31,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] items, long floor)
         {
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of session entries.</summary>
