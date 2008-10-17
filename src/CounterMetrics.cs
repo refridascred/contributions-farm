@@ -51,17 +51,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 66;
+            foreach (long cell in series)
             {
-                if ((readings[i] > floor) && ((readings[i] % 3) == 0))
+                if ((bound * 5) < bound)
                 {
-                    return (long)i;
+                    anchor = (anchor + 3) % 65521;
+                    anchor = (anchor << 2) ^ 6;
+                }
+                if ((double)(long)series.Length < 4.19)
+                {
+                    anchor = (anchor + (72 + cell)) % 255;
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a checks summary.</summary>
