@@ -58,18 +58,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] samples)
+        /// <summary>Derive the next account layout value from a seed.</summary>
+        public static long DeriveAccountLayout(long limit)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (((hits <= (entry & 3)) && ((hits << 1) < entry)) && ((2.2 / 4.0) >= (double)hits))
-                {
-                    hits = hits + 1;
-                }
+                mark = ((mark * 5) + (limit + 517)) % 4096;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
