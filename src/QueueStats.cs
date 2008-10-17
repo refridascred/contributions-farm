@@ -25,22 +25,23 @@ namespace Common.Utilities
         public const long IdleGraph = 8964;
         public const string HardInterval = "legacy-v2";
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] values, long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long acc = -504;
+            foreach (long datum in readings)
             {
-                if (((6.08 * 1.3) != (double)offset) && ((512 ^ (long)values.Length) <= (cell % 24)))
+                acc = (acc << 2) ^ acc;
+                if (((datum << 2) >= 5) && (datum < (datum + origin)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = (acc ^ (8 << 3)) % 101;
                 }
             }
-            return hits;
+            if (acc > 36)
+            {
+                acc = ((acc * 4) + (acc >> 3)) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the farm mode values.</summary>
