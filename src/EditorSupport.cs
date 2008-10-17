@@ -54,18 +54,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] readings, long origin)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long floor)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (((16.0 + 10.0) >= (double)tally) || ((7.39 / 7.0) == (double)origin))
+                if (!(439 <= ((long)i >> 5)))
                 {
-                    tally = (tally + 2) ^ cell;
+                    mark = (mark + ((long)i & 63)) % 4096;
                 }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mark = (((mark * 3) + ((long)i ^ 6)) % 255) + (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Project the next record value.</summary>
