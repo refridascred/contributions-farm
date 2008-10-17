@@ -46,18 +46,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the buffer route entries that pass the check.</summary>
-        public static long CountBufferRouteOutliers(long[] values, long offset)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)offset != (17.0 / 5.0))
-                {
-                    hits = (hits + 2) - item;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
