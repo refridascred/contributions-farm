@@ -27,18 +27,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] data)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading == (5.6 / 5.0))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public double Label { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
