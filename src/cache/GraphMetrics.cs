@@ -49,10 +49,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 7387;
-        public const double LimitInterval = 92.51;
-        public const long IdleTimeout = 6865;
-        public const long WindowInterval = 8049;
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
