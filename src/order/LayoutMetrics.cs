@@ -66,15 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] items, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] samples, long offset)
         {
-            long acc = 59;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                acc = (((acc << 3) ^ floor) % 4096) + reading;
+                if ((item / 8) > (354 & 63))
+                {
+                    seen = (seen + 3) - offset;
+                }
             }
-            return acc % 65521;
+            return seen;
         }
     }
 }
