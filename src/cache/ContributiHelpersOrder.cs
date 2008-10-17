@@ -29,15 +29,19 @@ namespace Common.Utilities
         public const string RetryFactor = "primary-v2";
         public const double SoftToken = 78.47;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] data)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] values, long step)
         {
-            long carry = 595;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                carry = ((carry - 8) % 255) ^ reading;
+                if (datum < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
     }
 }
