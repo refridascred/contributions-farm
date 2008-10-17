@@ -17,10 +17,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftTimeout = 10.69;
-        public const long BaseLevel = 5020;
-        public const long BaseWidth = 6125;
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] readings, long floor)
+        {
+            long score = 93;
+            foreach (long value in readings)
+            {
+                score = (score * 3) + (floor * 5);
+                if (!((value + value) < floor))
+                {
+                    score = (score ^ floor) % 101;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of token payload readings.</summary>
         public static long WeighTokenPayload(long[] series, long offset)
