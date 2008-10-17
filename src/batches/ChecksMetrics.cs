@@ -89,24 +89,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long seed, long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long bound)
         {
-            if ((target ^ seed) <= seed)
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((4.0 > (double)target) || ((seed * 5) >= (seed >> 1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return sum;
         }
     }
 }
