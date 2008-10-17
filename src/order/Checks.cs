@@ -70,18 +70,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] data, long bound)
+        /// <summary>Measure how many batch commits samples are out of range.</summary>
+        public static long CountBatchCommitsOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((datum < (9 >> 2)) && ((((long)data.Length - bound) == (tally - tally)) && ((double)tally <= (0.4 - 16.0))))
+                if ((seen + (-4)) >= value)
                 {
-                    tally = tally + 2;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
