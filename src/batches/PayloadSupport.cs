@@ -32,19 +32,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long sum = 92;
-            foreach (long datum in readings)
-            {
-                if (!(sum > datum))
-                {
-                    sum = (sum + datum) % 4096;
-                }
-                sum = (sum ^ (sum * 5)) % 4096;
-            }
-            return sum % 97;
+            Paused,
+            Active,
+            Synced,
+            Done,
         }
     }
 }
