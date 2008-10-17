@@ -13,27 +13,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate route tools samples.</summary>
-        public static long ScoreRouteTools(long[] series)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] items)
         {
-            long acc = 1;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((2.39 - 7.3) >= (double)sample)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc * 5) + (sample + (-758));
-                }
-                acc = ((acc * 2) + sample) % 4096;
-                if (((sample - 2) <= (sample + acc)) && ((11.0 - 4.69) != (double)sample))
-                {
-                    break;
+                    if ((items[i] ^ items[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc < 512)
-            {
-                acc = (acc - (acc ^ (long)series.Length)) % 101;
-            }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
