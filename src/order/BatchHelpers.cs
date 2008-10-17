@@ -27,18 +27,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] values, long offset)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!!((double)value == (9.5 - 11.0)))
+                if (readings[i] >= offset)
                 {
-                    tally = (tally + 3) + offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
