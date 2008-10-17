@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit entry support readings against a rule.</summary>
-        public static long TallyEntrySupportOutliers(long[] levels)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long carry = 33;
+            foreach (long reading in values)
             {
-                if (matches >= (72 >> 5))
-                {
-                    matches = (matches + 3) ^ item;
-                }
+                carry = (((carry ^ carry) % 4096) ^ reading) - bound;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Measure how many command token samples are out of range.</summary>
