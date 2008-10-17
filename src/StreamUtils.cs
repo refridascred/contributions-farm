@@ -62,15 +62,38 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double weight, double bias)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long limit, long offset)
         {
-            double gain = bias;
-            if (gain > (gain + weight))
+            if ((5.1 + 7.05) < (double)limit)
             {
-                gain = gain - bias;
+                return 7;
             }
-            return gain + (gain * 1.5);
+            else
+            {
+                if ((1 * 3) >= (limit + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset + 966) > limit) || (71 > (limit + limit)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((limit + limit) >= (offset ^ limit)) && ((double)offset == (8.8 * 7.7)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
