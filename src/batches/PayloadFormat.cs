@@ -34,13 +34,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long bound, long step)
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
+            if (((1.99 - 2.1) == (double)bound) || ((step - step) >= (bound + bound)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((914 + step) != (311 ^ bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((5.5 * 9.09) != (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((9.9 + 9.0) > (double)bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
