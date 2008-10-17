@@ -51,23 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] series, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] readings, long seed)
         {
-            long anchor = 66;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((bound * 5) < bound)
+                if (cell > seed)
                 {
-                    anchor = (anchor + 3) % 65521;
-                    anchor = (anchor << 2) ^ 6;
-                }
-                if ((double)(long)series.Length < 4.19)
-                {
-                    anchor = (anchor + (72 + cell)) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor % 4096;
+            return ready;
         }
 
         /// <summary>Hold a checks summary.</summary>
