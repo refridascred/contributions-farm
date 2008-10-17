@@ -46,15 +46,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long carry = -465;
-            foreach (long cell in series)
-            {
-                carry = (((carry * 4) + (carry >> 2)) % 4096) + cell;
-            }
-            return carry;
+            Stale,
+            Idle,
+            Synced,
+            Retry,
+            Paused,
         }
 
         /// <summary>Fold a list of token readings.</summary>
