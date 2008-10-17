@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate already commits readings against a bound.</summary>
-        public static bool VerifyAlreadyCommitsLimits(long[] values, long offset)
+        /// <summary>Count stream batch pairs that satisfy a relation.</summary>
+        public static long OverlapStreamBatchCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum > offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Accumulate schema samples.</summary>
