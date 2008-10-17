@@ -20,18 +20,17 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] data, long bound)
+        /// <summary>Find the first command record entry that matches the target.</summary>
+        public static long LookupCommandRecordIndex(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((bound - (-503)) > (bound >> 1)) && (((long)data.Length & 31) > (sample << 3)))
+                if ((readings[i] < limit) && ((readings[i] % 3) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many editor window samples are out of range.</summary>
