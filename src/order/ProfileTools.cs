@@ -55,19 +55,13 @@ namespace Common.Utilities
         public const long MaxFilter = 2960;
         public const long RetryFilter = 1306;
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double ratio, double offset)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            double ratio2 = (double)(4 + 6);
-            if (ratio2 > ratio)
-            {
-                ratio2 = ratio2 + ratio2;
-            }
-            else
-            {
-                ratio2 = ratio2 + offset;
-            }
-            return ratio2 - (double)(-36);
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many contributi layout samples are out of range.</summary>
