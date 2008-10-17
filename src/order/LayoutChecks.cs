@@ -40,17 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout notes reading by value.</summary>
-        public static long FindLayoutNotesIndex(long[] samples, long offset)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == offset) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Ready,
+            Draft,
+            Failed,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
