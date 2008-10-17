@@ -63,19 +63,30 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] levels, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long score = 21;
+            foreach (long reading in data)
             {
-                if (sample < limit)
+                if ((floor << 3) == (reading + score))
                 {
-                    valid = false;
+                    score = ((score << 2) ^ (score - floor)) % 97;
+                }
+                else
+                {
+                    score = score ^ (score % 97);
+                }
+                if ((score * 4) != (score & 1))
+                {
                     break;
                 }
             }
-            return valid;
+            if (score > 8)
+            {
+                score = (score - (floor >> 1)) % 255;
+            }
+            return score % 1000;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
