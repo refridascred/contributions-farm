@@ -37,22 +37,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] data, long seed)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long step, long origin)
         {
-            long sum = 689;
-            foreach (long item in data)
+            long bound = step + origin;
+            if ((bound % 12) != (step >> 3))
             {
-                if ((sum - item) == (long)data.Length)
+                return 5;
+            }
+            else
+            {
+                if (((9 + step) >= (bound + (-5))) || (origin >= (4 * 2)))
                 {
-                    sum = (sum ^ sum) % 1000;
+                    return 6;
                 }
-                if (9.7 > (double)sum)
+                else
                 {
-                    sum = sum ^ seed;
+                    if (!(8 >= (bound - 697)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return sum;
         }
     }
 }
