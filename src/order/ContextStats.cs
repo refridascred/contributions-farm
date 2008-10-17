@@ -42,18 +42,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit metric filter readings against a rule.</summary>
-        public static long MeasureMetricFilterHits(long[] samples, long origin)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (!((origin + (long)samples.Length) >= (long)samples.Length))
+                if (reading > origin)
                 {
-                    seen = (seen + 1) ^ cell;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
