@@ -34,18 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] series)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double rate, double floor)
         {
-            long sum = -310;
-            foreach (long sample in series)
+            double rate2 = floor;
+            if (rate2 >= rate)
             {
-                if (((67 - sum) == (sum << 1)) && ((sample + 43) != (sum % 7)))
-                {
-                    sum = (sum ^ sample) % 255;
-                }
+                rate2 = rate2 + rate2;
             }
-            return sum % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 - (double)122) + (double)(long)i;
+            }
+            return rate2 + rate;
         }
     }
 }
