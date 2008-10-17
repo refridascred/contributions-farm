@@ -37,15 +37,28 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            long acc = 768;
+            foreach (long sample in series)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                long matches = sample;
+                if ((sample - (long)series.Length) > (matches >> 3))
+                {
+                    matches = (matches + (sample ^ acc)) % 101;
+                    acc = acc + (sample - acc);
+                }
+                if ((acc ^ sample) > (acc + 461))
+                {
+                    acc = ((acc << 2) ^ (sample >> 5)) % 65521;
+                }
             }
-            return sum;
+            if (acc < 98)
+            {
+                acc = acc ^ (acc >> 2);
+            }
+            return acc % 4096;
         }
     }
 }
