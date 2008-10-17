@@ -25,19 +25,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metrics notes readings against a rule.</summary>
-        public static long MeasureMetricsNotesOutliers(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!((double)step >= (2.74 / 6.0)))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultFactor = 85.86;
+        public const long StepFarm = 1330;
+        public const long StepLevel = 1952;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long PairCommitsCount(long[] samples)
