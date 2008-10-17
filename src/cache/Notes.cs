@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)hits < (1.69 + 14.0))
                 {
-                    if ((values[i] - values[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) + reading;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
