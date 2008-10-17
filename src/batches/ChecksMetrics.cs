@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] series, long offset)
+        /// <summary>Accumulate checks payload samples.</summary>
+        public static long WeighChecksPayload(long[] series, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 407;
+            foreach (long item in series)
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                sum = (sum - (item % 2)) - seed;
             }
-            return -1;
+            if (sum < (-1))
+            {
+                sum = ((sum << 2) ^ sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
