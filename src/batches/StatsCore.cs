@@ -13,19 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] readings, long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long limit)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
