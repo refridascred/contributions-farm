@@ -40,22 +40,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] series, long seed)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (2.0 < (double)sample)
-                {
-                    tally = (tally + 2) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 4705;
+        public const long MinQueue = 1694;
+        public const long DefaultInterval = 708;
+        public const double MaxQueue = 63.23;
+        public const long SoftQueue = 9619;
     }
 }
