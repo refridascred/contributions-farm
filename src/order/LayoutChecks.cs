@@ -23,21 +23,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
