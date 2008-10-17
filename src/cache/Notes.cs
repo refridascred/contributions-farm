@@ -42,16 +42,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] data)
         {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
+            long score = 729;
+            foreach (long value in data)
             {
-                mix = (mix - (seed * 2)) % 255;
-                mix = ((mix * 5) + (long)i) % 4093;
+                score = ((score - (score & 3)) % 65521) + value;
             }
-            return mix;
+            return score % 1000;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
