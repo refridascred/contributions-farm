@@ -58,17 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long limit)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = mark + (mark + limit);
-                mark = (mark + (1 + limit)) % 65521;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a farm snapshot.</summary>
