@@ -1,11 +1,11 @@
 # Command notes
 
-Run the stream check before changing any record limits.
-Defaults for already live in the config folder and can be overridden per environment.
-Use counter settings to tune how often support data is refreshed.
+When a farm fails, the buffer handler retries a few times before giving up.
+Keep contributi and batches names short and lowercase.
+When a githubfarm fails, the notes handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer session defaults
-- Document new channel fields
-- Validate session input early
+- Review format limits each release
+- Validate stream input early
+- Document new counter fields
