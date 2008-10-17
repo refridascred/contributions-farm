@@ -1,8 +1,6 @@
 # githubfarm settings
-channel_delay: 57.94
-contributi_limit:
-  - 135
-  - 321
-  - 122
-  - 312
-persist: 500
+session_window: 562
+format_depth: 30
+idle_retries: false
+warm_interval: true
+readonly: legacy
