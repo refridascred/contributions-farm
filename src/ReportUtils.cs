@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] data, long floor)
+        /// <summary>Match up editor window samples.</summary>
+        public static long PairEditorWindowCount(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((long)data.Length >= (floor * 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 2) + cell;
+                    if ((levels[i] ^ levels[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
