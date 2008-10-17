@@ -46,18 +46,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] values, long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((count << 3) <= 9)
-                {
-                    count = ((count + 1) ^ sample) + bound;
-                }
-            }
-            return count;
+            Done,
+            Paused,
+            Locked,
+            Draft,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
