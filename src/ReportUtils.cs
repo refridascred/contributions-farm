@@ -45,23 +45,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double rate, double span)
+        /// <summary>Rank checks notes input into a small class.</summary>
+        public static long SortChecksNotes(long floor, long seed)
         {
-            double gain = (double)1 / 8.0;
-            if (gain > (span - rate))
+            long cur = floor ^ seed;
+            if (((cur % 8) < (floor + cur)) && (floor <= (354 + 9)))
             {
-                gain = gain + span;
+                return 0;
             }
             else
             {
-                gain = gain + gain;
+                if ((double)(-3) > (double)cur)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (double)85) + (double)(long)i;
-            }
-            return gain + gain;
         }
     }
 }
