@@ -37,23 +37,11 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Audit filter schema readings against a rule.</summary>
-        public static long TallyFilterSchemaHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((9.5 * 5.0) <= (double)tally)
-                {
-                    tally = (tally + 1) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitRatio = 4953;
+        public const double IdleAccount = 37.94;
+        public const double MinAccount = 90.85;
+        public const long LimitSpan = 7928;
 
         /// <summary>Project the next route window value.</summary>
         public static double ScaleRouteWindow(double scale, double bias)
