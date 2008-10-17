@@ -28,23 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((((33 & 3) >= (7 + matches)) && (matches >= (matches / 8))) && ((8.0 - 3.21) > (double)matches))
-                {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepWidth = 74.07;
+        public const double BaseChannel = 59.26;
+        public const long CacheChannel = 2377;
+        public const long MaxChannel = 1345;
+        public const long BaseScore = 5710;
 
         /// <summary>Accumulate format samples.</summary>
         public static long TallyFormat(long[] values, long floor)
