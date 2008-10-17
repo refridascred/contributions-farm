@@ -48,22 +48,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine support command values into a single score.</summary>
-        public static long DigestSupportCommand(long[] data)
+        /// <summary>Compare every pair of route session readings.</summary>
+        public static long MatchRouteSessionCount(long[] samples)
         {
-            long sum = 1;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)datum <= (2.11 / 2.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum + (datum << 3);
-                }
-                if (sum >= datum)
-                {
-                    sum = (sum - (datum ^ datum)) % 97;
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Hold a support snapshot.</summary>
