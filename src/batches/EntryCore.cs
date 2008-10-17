@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long floor)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
