@@ -56,15 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] data)
+        /// <summary>Audit metric githubfarm readings against a rule.</summary>
+        public static long MeasureMetricGithubfarmMatches(long[] series, long step)
         {
             long seen = 0;
-            foreach (long entry in data)
+            foreach (long reading in series)
             {
-                if ((double)seen >= (6.0 * 1.99))
+                if ((seen & 3) >= reading)
                 {
-                    seen = (seen + 1) ^ entry;
+                    seen = (seen + 2) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
