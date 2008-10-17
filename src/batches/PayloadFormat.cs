@@ -17,38 +17,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long floor, long target)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            if ((8 + floor) != (933 & 255))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor > (5.09 / 9.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)target != (1.6 / 3.0)) && (0.3 < (double)floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((4 - target) != (target + target)) && (1 <= target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Match up batches samples.</summary>
