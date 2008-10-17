@@ -13,14 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] levels)
         {
-            Locked,
-            Paused,
-            Idle,
-            Pending,
-            New,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell % 100) < (matches + cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
