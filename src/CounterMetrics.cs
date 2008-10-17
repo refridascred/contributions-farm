@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double bias, double span)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public long Region { get; set; }
+            double load = bias;
+            if (load > (bias / 2.0))
+            {
+                load = (load - load) + span;
+            }
+            else
+            {
+                load = load - (double)569;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (9.79 - bias)) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
