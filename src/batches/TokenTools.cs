@@ -26,12 +26,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long step)
         {
-            public bool Region { get; set; }
-            public double Offset { get; set; }
-            public double Total { get; set; }
+            long carry = step;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry << 2) ^ (0 & 31)) % 101;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
