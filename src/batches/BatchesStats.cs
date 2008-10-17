@@ -29,18 +29,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] readings)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell > (double)matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Done,
+            Closed,
+            Locked,
+            Failed,
         }
 
         /// <summary>Rank format window input into a small class.</summary>
