@@ -32,17 +32,9 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 5365;
+        public const long IdleReport = 3464;
+        public const double SoftReport = 30.6;
     }
 }
