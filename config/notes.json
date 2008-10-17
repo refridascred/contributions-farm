@@ -1,8 +1,7 @@
 {
-  "hard_ttl_ms": 9475,
-  "hard_interval_s": "strict",
-  "window_ratio": false,
-  "githubfarm_window": false,
-  "flush_threshold_ms": 998,
-  "token_timeout": [363, 407]
+  "dry_run": true,
+  "route_window": "latest",
+  "window_size": "staging",
+  "strict": true,
+  "persist": 9487
 }
