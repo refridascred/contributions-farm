@@ -66,18 +66,39 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback-v2";
         public const long IdleDepth = 7489;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] values, long origin)
+        /// <summary>Classify a context cluster pair into a bucket.</summary>
+        public static long GradeContextCluster(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long cur = limit ^ offset;
+            if ((double)37 < (1.2 - 14.0))
             {
-                if ((origin - sample) == (sample << 2))
+                return 2;
+            }
+            else
+            {
+                if ((2.7 - 5.0) != (double)limit)
                 {
-                    seen = seen + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (cur >= (409 / 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((4.88 * 6.3) > (double)cur) && ((limit % 8) != ((-590) << 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
