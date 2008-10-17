@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
+            Ready,
             Idle,
+            Closed,
             Pending,
-            Done,
-            Dropped,
-            Retry,
         }
 
         /// <summary>Count the layout window entries that pass the check.</summary>
