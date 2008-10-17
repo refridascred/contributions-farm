@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] data, long offset)
+        /// <summary>Find the first route metrics entry that matches the target.</summary>
+        public static long LocateRouteMetricsIndex(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell > offset)
+                if (items[i] < floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
