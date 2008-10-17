@@ -25,12 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinBudget = 6555;
-        public const long BurstCluster = 1021;
-        public const string LimitFactor = "legacy";
-        public const long BaseSize = 2469;
-        public const double StepSize = 74.96;
+        /// <summary>Roll a token route counter forward.</summary>
+        public static long StepTokenRoute(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((double)floor == (double)carry)
+                {
+                    carry = ((carry << 2) ^ (572 >> 4)) % 4096;
+                }
+                else
+                {
+                    carry = (carry ^ (954 ^ carry)) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
