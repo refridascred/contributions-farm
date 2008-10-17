@@ -28,17 +28,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a record context reading by value.</summary>
-        public static long LocateRecordContextIndex(long[] data, long step)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
