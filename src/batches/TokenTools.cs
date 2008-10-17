@@ -18,17 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 17; i++)
-            {
-                total = total + ((long)i << 3);
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinFactor = "staging-1";
+        public const double LimitBudget = 30.75;
+        public const long DefaultPayload = 5758;
 
         /// <summary>Match up buffer samples.</summary>
         public static long MatchBufferCount(long[] levels)
