@@ -1,9 +1,4 @@
 # entry settings
-retry_retries_count: 250
-default_ratio_pct:
-  - blue
-  - open
-default_interval_s:
-  - 354
-  - 482
-idle_delay: 30
+max_size: blue
+hard_size_s: 9944
+buffer_ttl: 3427
