@@ -20,32 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long bound, long floor)
+        /// <summary>Fold a list of notes cache readings.</summary>
+        public static long ScoreNotesCache(long[] values)
         {
-            long gap = bound + floor;
-            if (((46 + gap) == (bound << 1)) && ((double)bound == (20.0 - 6.8)))
+            long state = 38;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((5.2 - 9.66) > (double)floor)
+                state = (state * 4) + (cell & 127);
+                if (state < (cell << 1))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((412 & 7) != (bound - floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    state = ((state * 3) + (cell % 2)) % 1000;
                 }
             }
+            if (state < 9)
+            {
+                state = (state + state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
