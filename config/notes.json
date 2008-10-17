@@ -1,6 +1,6 @@
 {
-  "warm_size_count": 3831,
-  "format_limit": "latest",
-  "burst_capacity": 30,
-  "batches_interval": ["green", "legacy"]
+  "compress": "primary",
+  "readonly": "primary",
+  "poll_ttl_s": "primary",
+  "farm_window": 25.53
 }
