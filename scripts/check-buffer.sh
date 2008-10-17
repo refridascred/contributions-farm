@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=129
+log "limit is ${BUFFER_LIMIT}"
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
+for item in legacy local; do
+    log "checking ${item}"
 done
-log "total ${total}"
