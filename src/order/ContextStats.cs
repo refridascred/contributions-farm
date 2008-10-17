@@ -43,14 +43,9 @@ namespace Common.Utilities
             return drift - (double)(-3);
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Idle,
-            Done,
-            Draft,
-            Stale,
-            New,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 9609;
+        public const long BurstCluster = 9616;
+        public const long DefaultCluster = 790;
     }
 }
