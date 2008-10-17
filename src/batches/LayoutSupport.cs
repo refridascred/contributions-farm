@@ -30,17 +30,39 @@ namespace Common.Utilities
         public const string BatchCluster = "open-v2";
         public const long IdleLevel = 702;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] data, long limit)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long seed, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long step = seed - bound;
+            if (((seed >> 1) < (206 >> 5)) || ((double)step == (6.7 * 15.0)))
             {
-                if (data[i] > limit)
+                return 8;
+            }
+            else
+            {
+                if ((seed + bound) > bound)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound ^ bound) > (7 + 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)step >= (double)bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
