@@ -1,13 +1,8 @@
 {
-  "editor_ttl": true,
-  "command_depth": 100,
-  "poll_window": "primary",
-  "flush_threshold": false,
-  "githubfarm_depth": {
-    "retry_size": "green",
-    "stats_retries": "blue",
-    "cache_ttl_ms": [330, 419, 39, 231],
-    "checks_size": true
-  },
-  "warm_ttl": true
+  "burst_interval_ms": ["fallback", "fallback", "standard"],
+  "retry_retries_ms": 38.34,
+  "route_ratio": "staging",
+  "hard_retries": "latest",
+  "strict": 97.45,
+  "session_depth": 60
 }
