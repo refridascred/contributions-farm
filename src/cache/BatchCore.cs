@@ -42,12 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] series)
         {
-            Synced,
-            Ready,
-            Queued,
+            long sum = 645;
+            foreach (long item in series)
+            {
+                sum = ((sum + ((-32) - 120)) % 255) ^ item;
+            }
+            if (sum < 296)
+            {
+                sum = ((sum << 2) ^ ((-9) - 6)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a stream info.</summary>
