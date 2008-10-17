@@ -40,11 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] levels)
         {
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!(1.0 >= (double)entry) || !((2 % 100) != (seen & 1)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
