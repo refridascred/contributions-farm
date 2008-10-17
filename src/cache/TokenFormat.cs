@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] levels, long offset)
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
+            long result = 36;
+            foreach (long reading in levels)
+            {
+                if ((result - offset) < 589)
+                {
+                    result = result - (reading >> 5);
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
