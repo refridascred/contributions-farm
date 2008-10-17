@@ -27,17 +27,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] readings)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            long total = 120;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total + (reading + total);
-                total = (total ^ total) % 65521;
-                total = (total ^ (total / 5)) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Hold a buffer header.</summary>
