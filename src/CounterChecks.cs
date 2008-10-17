@@ -59,38 +59,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long step, long bound)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] series, long bound)
         {
-            if ((bound - bound) < (step / 9))
+            bool stale = true;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound / 8) >= bound)
+                if (reading <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((step & 255) >= 4) && ((double)bound != (8.38 * 14.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((4.87 / 9.0) >= (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
