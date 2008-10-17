@@ -25,32 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long origin, long step)
+        /// <summary>Audit metrics notes readings against a rule.</summary>
+        public static long MeasureMetricsNotesOutliers(long[] items, long step)
         {
-            long cur = origin ^ step;
-            if ((cur - 528) != (755 / 9))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((0.9 / 3.0) > (double)origin) && (cur < (6 + cur)))
+                if (!((double)step >= (2.74 / 6.0)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step > (step - cur)) || ((double)step >= (9.0 / 3.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = (tally + 1) ^ reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
