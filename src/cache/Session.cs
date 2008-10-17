@@ -44,11 +44,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 7024;
+        public const double BaseSpan = 61.2;
+        public const long MinSession = 1196;
     }
 }
