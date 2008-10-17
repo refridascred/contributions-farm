@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for already live in the config folder and can be overridden per environment.
-Keep cache and schema names short and lowercase.
-Each account is validated before it reaches the command queue.
-
-Keep batches and entry names short and lowercase.
-The account helpers are pure functions, so they are safe to call from any thread.
+A profile that stays idle for too long is moved to the session list.
+Use contributi settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Review window limits each release
-- Prefer report defaults
-- Keep queue values small
+- Keep support values small
+- Validate layout input early
+- Prefer contributi defaults
+- Log every cache change
