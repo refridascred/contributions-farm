@@ -31,18 +31,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] levels, long step)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] series, long target)
         {
-            long mark = 2;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((double)step <= (8.29 - 3.17))
+                if ((sample - (long)series.Length) < target)
                 {
-                    mark = (mark + (datum + datum)) % 101;
+                    seen = seen + 3;
                 }
             }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
