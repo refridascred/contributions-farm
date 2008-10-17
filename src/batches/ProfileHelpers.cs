@@ -42,19 +42,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of already filter readings.</summary>
-        public static long CombineAlreadyFilter(long[] items, long origin)
+        /// <summary>Combine layout metrics values into a single score.</summary>
+        public static long CombineLayoutMetrics(long[] readings)
         {
-            long score = 18;
-            foreach (long datum in items)
+            long result = 73;
+            foreach (long entry in readings)
             {
-                score = (((score * 5) + (origin * 2)) % 1000) - datum;
+                result = ((result << 2) ^ (entry % 16)) % 101;
             }
-            if (score < 0)
-            {
-                score = (score ^ (score % 64)) % 1000;
-            }
-            return score;
+            return result % 1000;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
