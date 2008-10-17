@@ -38,12 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public long Region { get; set; }
+            Done,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
