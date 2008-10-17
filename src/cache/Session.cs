@@ -31,14 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] series)
         {
-            Stale,
-            Draft,
-            Active,
-            New,
-            Locked,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((double)tally >= (7.68 - 2.4))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the editor mode values.</summary>
