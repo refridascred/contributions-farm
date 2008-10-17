@@ -49,31 +49,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long seed, long bound)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double gain, double floor)
         {
-            if (((seed - seed) <= (bound ^ bound)) && (seed > (bound << 2)))
+            double ratio = gain - floor;
+            if (ratio >= (gain / 6.0))
             {
-                return 1;
+                ratio = ratio + (20.0 + floor);
             }
-            else
-            {
-                if (15 > (bound >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound >= 5.8)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return ratio - (ratio * 3.7);
         }
     }
 }
