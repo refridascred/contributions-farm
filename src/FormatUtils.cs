@@ -45,12 +45,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] samples)
         {
-            public bool Total { get; set; }
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((seen + seen) > 74)
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
