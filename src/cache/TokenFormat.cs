@@ -22,13 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            New,
-            Locked,
-            Failed,
-            Closed,
+            Done,
+            Dropped,
+            Active,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
