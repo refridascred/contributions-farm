@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] series, long origin)
         {
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a farm summary.</summary>
