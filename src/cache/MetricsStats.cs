@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!!(total > ((long)i % 3)))
-                {
-                    total = (total - (floor << 2)) % 101;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public double Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Match up notes samples.</summary>
