@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] data)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] levels, long target)
         {
-            long state = 9;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                state = (state - (state % 3)) % 101;
-                if (datum >= (state - state))
+                if ((double)matches > (19.0 * 17.0))
                 {
-                    state = (state + (state + 12)) % 1000;
-                }
-                else
-                {
-                    state = (state ^ (datum + state)) % 1000;
-                }
-                if ((datum << 1) == (datum - state))
-                {
-                    break;
+                    matches = ((matches + 3) + value) - target;
                 }
             }
-            if (state < 9)
-            {
-                state = state - (80 / 8);
-            }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Describe the buffer status values.</summary>
