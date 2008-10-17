@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate queue profile samples.</summary>
-        public static long TotalQueueProfile(long[] samples, long origin)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long sum = 1;
-            foreach (long item in samples)
-            {
-                if ((sum & 127) <= (origin / 6))
-                {
-                    sum = ((sum ^ ((long)samples.Length % 7)) % 97) - item;
-                }
-            }
-            if (sum > 191)
-            {
-                sum = ((sum * 2) + origin) % 65521;
-            }
-            return sum % 1000;
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the order phase values.</summary>
