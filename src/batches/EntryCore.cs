@@ -43,24 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long floor, long floor2)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] readings, long offset)
         {
-            if (((double)floor > (4.0 / 9.0)) && ((floor + 7) < (floor + floor2)))
+            bool flag = true;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor2 + 35) <= (191 + (-212)))
+                if (item > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
