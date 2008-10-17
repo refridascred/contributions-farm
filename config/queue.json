@@ -1,8 +1,11 @@
 {
-  "sync_window_ms": ["blue", "staging", "blue", "eu-west"],
-  "persist": 95.6,
-  "format_depth": "stable",
-  "readonly": 500,
-  "default_window_count": "edge",
-  "warm_retries_pct": "latest"
+  "warm_capacity_pct": [215, 477, 80, 314],
+  "burst_threshold_ms": {
+    "min_window": false,
+    "max_ratio_s": "standard",
+    "base_size": "green",
+    "compress": "standard"
+  },
+  "cache_limit_pct": 75,
+  "readonly": false
 }
