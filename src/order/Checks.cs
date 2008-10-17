@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Retry,
+            Closed,
+            Pending,
+            Locked,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
