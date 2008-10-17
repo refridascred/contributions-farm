@@ -46,23 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double scale, double bias)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] items, long limit)
         {
-            double load = scale / 2.0;
-            if (load < load)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load + (double)36;
+                if ((items[i] > limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (9.0 + bias);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (scale + scale)) + (double)(long)i;
-            }
-            return load - (double)6;
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
