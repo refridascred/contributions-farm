@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] data, long floor)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long mark = 3;
-            foreach (long item in data)
-            {
-                if ((1.57 / 8.0) != (double)mark)
-                {
-                    mark = ((mark << 2) ^ ((-88) & 15)) + item;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (floor >> 2)) % 65521;
-                }
-            }
-            return mark;
+            Active,
+            Failed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Fold a list of command readings.</summary>
