@@ -39,11 +39,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 7064;
-        public const long MinFactor = 8319;
-        public const double BurstTimeout = 17.5;
-        public const double DefaultNotes = 96.72;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up metric support samples.</summary>
         public static long OverlapMetricSupportCount(long[] samples)
