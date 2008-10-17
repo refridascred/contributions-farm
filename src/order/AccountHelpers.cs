@@ -30,21 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count record tools pairs that satisfy a relation.</summary>
-        public static long MatchRecordToolsCount(long[] values)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Check that every record command entry stays within the limit.</summary>
