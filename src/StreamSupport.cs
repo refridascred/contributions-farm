@@ -22,18 +22,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] samples, long target)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (((count + count) > (target >> 4)) || ((count * 5) <= (item + target)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
