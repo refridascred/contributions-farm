@@ -14,16 +14,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the tools batch series from a seed.</summary>
-        public static long StepToolsBatch(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryDepth = 3844;
+        public const double LimitMetrics = 9.57;
+        public const long StepBudget = 9749;
 
         /// <summary>Project the next account value.</summary>
         public static double BlendAccount(double weight, double bias)
