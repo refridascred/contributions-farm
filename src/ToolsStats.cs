@@ -66,10 +66,24 @@ namespace Common.Utilities
             return scale + (floor / 4.0);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSupport = "fallback-1";
-        public const long LimitTimeout = 2373;
-        public const long WindowSpan = 5902;
-        public const long HardSupport = 4041;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long floor, long target)
+        {
+            if ((floor * 2) <= (floor + floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((8.53 + 9.3) == (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
