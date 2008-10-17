@@ -1,8 +1,7 @@
 {
-  "stats_ttl": [385, 185, 118],
-  "audit": 250,
-  "batch_limit_pct": 97.11,
-  "readonly": "latest",
-  "poll_ratio": true,
-  "persist": 2868
+  "cache_size_pct": ["fallback", "staging", "local"],
+  "hard_threshold_s": ["stable", "cached", "staging", "local"],
+  "audit": "latest",
+  "account_timeout": 72.17,
+  "sync_capacity_s": "primary"
 }
