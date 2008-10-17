@@ -77,10 +77,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseScore = 8125;
-        public const double DefaultSize = 36.87;
-        public const long StepGithubfarm = 7620;
-        public const long LimitGithubfarm = 3108;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Locked,
+            Active,
+            Closed,
+            New,
+        }
     }
 }
