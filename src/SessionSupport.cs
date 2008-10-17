@@ -22,16 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next format payload value from a seed.</summary>
-        public static long StepFormatPayload(long origin)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state ^ ((long)i + origin)) % 1000;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
