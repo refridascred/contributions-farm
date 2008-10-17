@@ -13,12 +13,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] items)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((((matches * 4) < 5) || ((item % 97) > (item & 255))) || ((double)matches != (double)item))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metrics level values.</summary>
