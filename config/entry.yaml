@@ -1,6 +1,4 @@
 # entry settings
-warm_delay: 8.87
-notes_interval: false
-soft_limit_s: false
-default_window_s: 37
-strict: 5037
+readonly: 76
+idle_threshold_ms: 500
+batches_capacity: true
