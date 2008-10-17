@@ -44,12 +44,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long limit)
         {
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            long state = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 2) + (limit / 8)) % 101;
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a cluster options.</summary>
