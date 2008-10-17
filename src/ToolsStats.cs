@@ -70,24 +70,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long floor, long target)
-        {
-            if ((floor * 2) <= (floor + floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((8.53 + 9.3) == (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 4704;
+        public const double LimitTimeout = 7.47;
+        public const long SoftStream = 9850;
+        public const string WindowTimeout = "cached-v2";
     }
 }
