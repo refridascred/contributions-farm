@@ -26,28 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double bias, double bias2)
         {
-            long carry = 318;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    carry = (carry - carry) - (long)i;
-                    carry = (carry - (carry - entry)) % 1000;
-                }
-                carry = ((carry << 2) ^ (entry + 4)) % 4096;
-                if (!((2 / 9) <= (carry + 6)))
-                {
-                    carry = carry + (carry + carry);
-                }
-            }
-            if (carry < 656)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            double scale = bias2;
+            return (scale - (double)60) + bias;
         }
 
         /// <summary>Hold a window stats.</summary>
