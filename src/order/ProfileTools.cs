@@ -40,19 +40,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] values, long step)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] levels, long bound)
         {
-            long mix = 651;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (((mix + 70) % 101) ^ value) - step;
-                if ((mix * 5) < mix)
+                if ((levels[i] > bound) && ((levels[i] % 5) == 0))
                 {
-                    mix = (mix << 3) ^ ((long)values.Length >> 4);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
