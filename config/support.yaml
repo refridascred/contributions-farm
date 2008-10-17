@@ -1,11 +1,19 @@
 # support settings
-batch_capacity_s: 6.43
-cluster_interval:
-  format_window: eu-west
-  base_retries_s: 87.02
-  warm_capacity_ms: 7869
-  min_limit: legacy
-  batch_size_count: 78.27
-  sync_size_ms: strict
-graph_threshold: legacy
-metrics_retries: fallback
+tools_timeout: 75.45
+default_delay_pct:
+  - 216
+  - 397
+  - 211
+  - 133
+counter_retries:
+  - 293
+  - 72
+  - 428
+  - 1
+hard_retries_ms: 28.67
+warm_delay_s:
+  - eu-west
+  - strict
+  - edge
+  - blue
+warm_ratio: true
