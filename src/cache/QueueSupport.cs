@@ -16,21 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] readings)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Project the next metric graph value.</summary>
