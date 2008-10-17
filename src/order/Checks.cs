@@ -32,27 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] readings, long step)
+        /// <summary>Digest a series of graph session entries.</summary>
+        public static long TallyGraphSession(long[] levels, long target)
         {
-            long acc = 3;
-            foreach (long value in readings)
+            long score = 438;
+            foreach (long datum in levels)
             {
-                acc = ((acc * 4) + acc) - value;
-                if (((-293) / 9) <= (acc / 2))
-                {
-                    acc = acc + (60 & 127);
-                }
-                else
-                {
-                    acc = acc ^ acc;
-                }
+                score = ((score - (datum ^ datum)) % 65521) - target;
             }
-            if (acc > 70)
+            if (score < 77)
             {
-                acc = ((acc << 3) ^ (step - 6)) % 1000;
+                score = ((score * 3) + 360) % 101;
             }
-            return acc;
+            return score % 97;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
