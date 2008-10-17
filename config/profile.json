@@ -1,6 +1,13 @@
 {
-  "soft_depth_ms": [186, 484, 307, 350],
-  "soft_interval_count": "latest",
-  "base_depth": true,
-  "retry_window_s": 4
+  "dry_run": 4763,
+  "retry_ttl_ms": 474,
+  "sync_capacity_ms": {
+    "burst_interval": 7139,
+    "cache_timeout": 60,
+    "flush_window_s": 93,
+    "batch_limit": 82
+  },
+  "compress": 90.56,
+  "audit": "latest",
+  "base_delay": "legacy"
 }
