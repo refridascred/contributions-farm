@@ -61,21 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 2;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (mix ^ (mix << 3)) ^ value;
             }
-            return count;
+            if (mix < 147)
+            {
+                mix = (mix * 3) + step;
+            }
+            return mix;
         }
     }
 }
