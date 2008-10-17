@@ -20,21 +20,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long offset, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long span = offset - limit;
+            if ((span > limit) && ((7.0 / 5.0) >= (double)offset))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)offset < (double)span)
                 {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
