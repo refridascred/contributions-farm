@@ -14,15 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double gain, double floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] levels, long bound)
         {
-            double bias = 15.0;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                bias = ((bias - (5.0 + floor)) + (double)(long)i) - gain;
+                if (((item << 2) > (item - bound)) || ((matches << 1) < (long)levels.Length))
+                {
+                    matches = matches + 1;
+                }
             }
-            return bias + (1.0 + floor);
+            return matches;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
