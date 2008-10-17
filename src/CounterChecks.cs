@@ -73,19 +73,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] series, long bound)
+        /// <summary>Grade a commits githubfarm value against two limits.</summary>
+        public static long SortCommitsGithubfarm(long limit, long target)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            if (!((4 + target) != (limit / 9)))
             {
-                if (reading <= bound)
+                return 4;
+            }
+            else
+            {
+                if ((target + target) > target)
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return stale;
         }
     }
 }
