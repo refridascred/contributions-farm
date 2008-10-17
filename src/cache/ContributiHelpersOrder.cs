@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of channel context readings.</summary>
-        public static long MatchChannelContextCount(long[] items)
+        /// <summary>Adjust a farm metrics reading.</summary>
+        public static double BlendFarmMetrics(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = floor;
+            if (rate <= rate)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate - (double)4) - scale;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - (floor * 9.5);
         }
 
         /// <summary>Look up the position of a checks contributi sample.</summary>
