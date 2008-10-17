@@ -12,23 +12,22 @@ namespace Common.Utilities
         public const long BatchCount = 4858;
         public const long MaxFactor = 9923;
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double weight, double floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] levels, long step)
         {
-            double weight2 = weight;
-            if (weight2 >= (floor * 18.0))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                weight2 = weight2 - (floor / 5.0);
+                if (((step - step) <= (sample - step)) && ((hits + 5) < (hits + hits)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (weight + weight2);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 + (double)5) + (double)(long)i;
-            }
-            return weight2 + floor;
+            return hits;
         }
 
         /// <summary>Hold a context options.</summary>
