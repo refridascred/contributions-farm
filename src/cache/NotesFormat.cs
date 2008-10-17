@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a entry context value against two limits.</summary>
-        public static long RankEntryContext(long offset, long target)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            if (((48 % 2) >= (target + 917)) || ((target + offset) >= (offset ^ 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((0.27 - 7.0) <= (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target % 16) != (target + 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Derive the next already githubfarm value from a seed.</summary>
