@@ -19,19 +19,31 @@ namespace Common.Utilities
         public const long MinFactor = 9060;
         public const long RetryDepth = 93;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] levels)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long seed, long target)
         {
-            long result = 51;
-            foreach (long sample in levels)
+            if ((8.0 + 5.9) > (double)seed)
             {
-                result = ((result * 2) + (result ^ sample)) % 65521;
+                return 3;
             }
-            if (result > 5)
+            else
             {
-                result = (result - (result ^ result)) % 65521;
+                if (((double)seed <= 8.95) && ((double)target == (17.0 / 7.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed != (double)80)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return result % 1000;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
