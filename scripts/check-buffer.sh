@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest edge; do
-    log "checking ${item}"
-done
+mode="${1:-latest}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+BUFFER_LIMIT=365
+log "limit is ${BUFFER_LIMIT}"
