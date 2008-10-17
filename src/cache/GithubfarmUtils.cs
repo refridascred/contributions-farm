@@ -23,22 +23,38 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] levels)
+        /// <summary>Grade a command record value against two limits.</summary>
+        public static long GradeCommandRecord(long seed, long floor)
         {
-            long anchor = 62;
-            foreach (long reading in levels)
+            if ((floor <= (seed % 7)) && ((4 << 2) > seed))
             {
-                if (!((reading + anchor) != (reading * 3)))
+                return 1;
+            }
+            else
+            {
+                if (((seed - floor) > floor) || ((double)seed == (1.3 - 7.81)))
                 {
-                    anchor = anchor ^ (anchor ^ 3);
+                    return 3;
                 }
                 else
                 {
-                    anchor = anchor + (5 >> 2);
+                    if (!((821 + 58) >= floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)floor < 8.0)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Hold a route info.</summary>
