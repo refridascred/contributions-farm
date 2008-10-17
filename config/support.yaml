@@ -1,12 +1,26 @@
 # support settings
-soft_ratio:
-  default_delay_s: 59.95
-  poll_capacity_count: 30
-  hard_ttl_s: 39.68
-context_window: cached
-readonly:
-  - 38
-  - 126
-support_size: 100
-retry_retries_ms: 53.74
-graph_size: 22
+session_window:
+  burst_limit: true
+  base_timeout_pct:
+    cluster_limit: 4029
+    cache_delay_ms: legacy
+    sync_depth_s:
+      - 189
+      - 280
+      - 270
+      - 454
+  min_retries_count:
+    filter_ratio: 26
+    cache_size_ms: true
+    persist: eu-west
+  max_threshold_ms: eu-west
+  enabled: latest
+  base_retries: true
+retry_window: 85
+enabled: true
+tools_depth:
+  burst_capacity: 57.69
+  max_ttl_pct: true
+  commits_size: 100
+  order_window: true
+  default_capacity_ms: 13.32
