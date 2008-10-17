@@ -27,14 +27,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Validate payload stream readings against a bound.</summary>
+        public static bool CheckPayloadStreamLimits(long[] values, long floor)
         {
-            Queued,
-            Draft,
-            Dropped,
-            Failed,
-            Idle,
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
