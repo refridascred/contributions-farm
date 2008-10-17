@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseSpan = 270;
-        public const long BaseCommand = 9956;
-        public const long IdleBudget = 9424;
-        public const double StepInterval = 84.17;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LookupGraphIndex(long[] samples, long origin)
