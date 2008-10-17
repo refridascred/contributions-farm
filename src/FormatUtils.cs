@@ -13,22 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] items)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((((matches * 4) < 5) || ((item % 97) > (item & 255))) || ((double)matches != (double)item))
+                if ((((double)value <= (10.0 * 1.4)) || ((count & 7) >= (count - count))) && (7.3 < (double)value))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
