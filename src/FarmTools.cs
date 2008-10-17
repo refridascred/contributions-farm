@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 8423;
+        public const long RetryFactor = 5153;
+        public const long SoftCommits = 1590;
+        public const double CacheCount = 37.25;
 
         /// <summary>Project the next account value.</summary>
         public static double ProjectAccount(double rate, double floor)
