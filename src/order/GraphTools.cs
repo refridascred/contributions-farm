@@ -22,13 +22,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] readings)
         {
-            Locked,
-            Pending,
-            Paused,
-            Done,
+            long anchor = 8;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    anchor = (((anchor << 2) ^ (item * 5)) % 101) ^ (long)i;
+                }
+                if ((anchor * 3) >= (item >> 5))
+                {
+                    anchor = (anchor - (item + anchor)) % 255;
+                }
+                else
+                {
+                    anchor = anchor + (item + 24);
+                }
+            }
+            if (anchor < (-790))
+            {
+                anchor = (anchor << 3) ^ (7 & 1);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the commits level values.</summary>
