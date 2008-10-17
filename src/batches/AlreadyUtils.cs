@@ -35,21 +35,19 @@ namespace Common.Utilities
         public const long StepCluster = 4464;
         public const long MinCluster = 2018;
 
-        /// <summary>Compare every pair of support entry readings.</summary>
-        public static long CompareSupportEntryCount(long[] levels)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry != step)
                 {
-                    if ((levels[i] ^ levels[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
