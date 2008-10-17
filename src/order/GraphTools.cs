@@ -13,30 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] readings)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] samples, long origin)
         {
-            long anchor = 8;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                for (int i = 0; i < 12; i++)
+                if (reading >= origin)
                 {
-                    anchor = (((anchor << 2) ^ (item * 5)) % 101) ^ (long)i;
-                }
-                if ((anchor * 3) >= (item >> 5))
-                {
-                    anchor = (anchor - (item + anchor)) % 255;
-                }
-                else
-                {
-                    anchor = anchor + (item + 24);
+                    valid = false;
+                    break;
                 }
             }
-            if (anchor < (-790))
-            {
-                anchor = (anchor << 3) ^ (7 & 1);
-            }
-            return anchor % 97;
+            return valid;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
