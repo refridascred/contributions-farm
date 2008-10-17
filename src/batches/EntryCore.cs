@@ -55,16 +55,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] values)
+        /// <summary>Classify a window already pair into a bucket.</summary>
+        public static long GradeWindowAlready(long bound, long step)
         {
-            long sum = 68;
-            foreach (long cell in values)
+            if (bound <= (bound << 3))
             {
-                sum = sum ^ (859 - sum);
-                sum = sum + (cell + cell);
+                return 8;
             }
-            return sum;
+            else
+            {
+                if (step >= (step * 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step * 4) == (step - step)) && ((9.22 * 8.3) <= (double)step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound - step) >= (step + 638))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
