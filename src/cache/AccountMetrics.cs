@@ -22,32 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long bound, long target)
+        /// <summary>Look up the position of a batch order sample.</summary>
+        public static long SeekBatchOrderIndex(long[] samples, long floor)
         {
-            long lane = bound - target;
-            if ((bound + lane) < (6 - 266))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (8 >= (lane % 8))
+                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target & 15) >= (bound ^ lane))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
