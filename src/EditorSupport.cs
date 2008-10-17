@@ -39,16 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 7973;
+        public const string DefaultLevel = "open-v2";
+        public const string BurstInterval = "staging-v2";
+        public const long CacheQueue = 4062;
+        public const double StepLevel = 95.11;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long TallyPayload(long[] levels)
