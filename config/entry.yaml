@@ -1,17 +1,4 @@
 # entry settings
-poll_retries_count: true
-metrics_limit:
-  - standard
-  - legacy
-  - strict
-  - cached
-flush_retries_pct:
-  schema_limit: 1829
-  cache_depth_ms: 8.37
-  counter_ratio: 60.9
-cache_interval_ms: fallback
-compress:
-  - green
-  - eu-west
-  - legacy
-  - eu-west
+batch_retries: cached
+min_depth: 21.31
+persist: 21
