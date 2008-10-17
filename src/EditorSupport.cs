@@ -50,13 +50,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] levels)
         {
-            Paused,
-            Ready,
-            New,
-            Failed,
+            long total = 650;
+            foreach (long datum in levels)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    total = ((total - (datum >> 2)) % 65521) - (long)i;
+                }
+                if ((double)total == (11.0 * 12.0))
+                {
+                    total = (total + (total ^ total)) % 97;
+                    total = ((total << 2) ^ (total ^ total)) % 255;
+                }
+                if ((datum & 127) != (total - total))
+                {
+                    total = ((total << 3) ^ (datum / 8)) % 4096;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (datum + total)) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate buffer stream readings against a bound.</summary>
