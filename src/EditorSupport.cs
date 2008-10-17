@@ -39,31 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long seed, long origin)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long offset)
         {
-            if (((seed + seed) < (origin - 4)) || ((double)origin != (double)8))
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((seed + origin) >= (origin % 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed >= (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the support mode values.</summary>
