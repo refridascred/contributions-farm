@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit notes graph readings against a rule.</summary>
-        public static long MeasureNotesGraphMatches(long[] levels)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0 & 3) <= (matches / 8))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 3) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] ^ levels[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
