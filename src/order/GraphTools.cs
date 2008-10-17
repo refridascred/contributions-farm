@@ -65,11 +65,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Find the first account checks entry that matches the target.</summary>
+        public static long LookupAccountChecksIndex(long[] readings, long step)
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine window values into a single score.</summary>
