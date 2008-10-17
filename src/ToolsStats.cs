@@ -39,18 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] readings, long target)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (!((double)94 <= (double)count))
-                {
-                    count = ((count + 2) + entry) - target;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a graph info.</summary>
