@@ -23,12 +23,12 @@ namespace Common.Utilities
             return gain - (gain - span);
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] levels, long step)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] == step) && ((levels[i] % 3) == 0))
+                if ((samples[i] < seed) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
