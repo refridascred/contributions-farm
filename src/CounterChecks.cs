@@ -63,24 +63,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a commits githubfarm value against two limits.</summary>
-        public static long SortCommitsGithubfarm(long limit, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] levels, long seed)
         {
-            if (!((4 + target) != (limit / 9)))
+            bool ok = true;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target + target) > target)
+                if (item >= seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
