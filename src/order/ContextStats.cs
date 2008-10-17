@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long bound, long seed)
         {
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            long diff = bound + seed;
+            if ((diff % 10) != (diff & 31))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound <= (double)493)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Audit schema queue readings against a rule.</summary>
