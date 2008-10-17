@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinFactor = 5426;
-        public const long LimitFactor = 5151;
-        public const double BaseBudget = 46.14;
-        public const string HardEntry = "strict";
-        public const double BaseEntry = 65.37;
+        /// <summary>Count the route batches entries that pass the check.</summary>
+        public static long AuditRouteBatchesOutliers(long[] series, long seed)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((2 + seed) <= (cell - matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
