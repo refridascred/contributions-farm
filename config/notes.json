@@ -1,7 +1,8 @@
 {
-  "cache_size_pct": ["fallback", "staging", "local"],
-  "hard_threshold_s": ["stable", "cached", "staging", "local"],
-  "audit": "latest",
-  "account_timeout": 72.17,
-  "sync_capacity_s": "primary"
+  "max_window_s": "standard",
+  "min_limit": ["standard", "local", "latest", "legacy"],
+  "enabled": "latest",
+  "strict": 21,
+  "channel_ratio": "stable",
+  "githubfarm_ttl": 7867
 }
