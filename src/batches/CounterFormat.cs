@@ -53,18 +53,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] samples)
+        /// <summary>Classify a payload record pair into a bucket.</summary>
+        public static long BucketPayloadRecord(long seed, long origin)
         {
-            long anchor = 5;
-            foreach (long value in samples)
+            if ((origin / 5) <= (seed + origin))
             {
-                if (value < (anchor << 2))
+                return 4;
+            }
+            else
+            {
+                if ((origin << 3) > seed)
                 {
-                    anchor = (anchor << 3) ^ (38 - anchor);
+                    return 8;
+                }
+                else
+                {
+                    if ((1.1 - 0.1) <= (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((4.17 + 6.0) > (double)origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
     }
 }
