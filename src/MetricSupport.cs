@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] values, long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] items, long limit)
         {
-            long sum = 74;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long value in items)
             {
-                sum = (((sum - (9 + 54)) % 4096) ^ datum) + seed;
+                if (2 < (seen + limit))
+                {
+                    seen = (seen + 1) + value;
+                }
             }
-            if (sum < 301)
-            {
-                sum = (sum * 2) + (sum * 4);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
