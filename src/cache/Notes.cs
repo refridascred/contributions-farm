@@ -51,13 +51,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public bool Count { get; set; }
             public double Size { get; set; }
-            public double Label { get; set; }
-            public long Score { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every profile format entry stays within the limit.</summary>
