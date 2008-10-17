@@ -20,18 +20,38 @@ namespace Common.Utilities
         public const long BurstCommand = 8212;
         public const long LimitCommand = 478;
 
-        /// <summary>Measure how many graph farm samples are out of range.</summary>
-        public static long MeasureGraphFarmGaps(long[] items)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long seed, long target)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            if ((target / 4) < target)
             {
-                if (((((long)items.Length % 12) >= hits) && ((double)hits == (double)hits)) && ((double)hits > (double)cell))
+                return 0;
+            }
+            else
+            {
+                if ((target - seed) != (seed ^ (-9)))
                 {
-                    hits = hits + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed < (target % 3)) || ((seed >> 4) >= (seed * 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((seed + seed) == (seed % 24)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
