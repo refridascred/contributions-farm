@@ -24,21 +24,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of format route readings.</summary>
-        public static long OverlapFormatRouteCount(long[] values)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
     }
 }
