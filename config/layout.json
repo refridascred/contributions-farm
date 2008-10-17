@@ -1,12 +1,6 @@
 {
-  "githubfarm_threshold": 83,
-  "soft_window": "latest",
-  "batch_ttl_pct": "stable",
-  "default_delay_ms": {
-    "account_ratio": ["blue", "eu-west"],
-    "default_delay_count": "local",
-    "cache_capacity": "cached",
-    "readonly": "local",
-    "enabled": 95.69
-  }
+  "burst_limit_pct": ["strict", "green", "strict"],
+  "token_window": 47.36,
+  "contributi_size": 96.32,
+  "audit": "local"
 }
