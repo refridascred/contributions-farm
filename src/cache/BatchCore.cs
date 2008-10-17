@@ -42,19 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] series)
+        /// <summary>Locate a record context reading by value.</summary>
+        public static long LocateRecordContextIndex(long[] data, long step)
         {
-            long sum = 645;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum + ((-32) - 120)) % 255) ^ item;
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 296)
-            {
-                sum = ((sum << 2) ^ ((-9) - 6)) % 1000;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a stream info.</summary>
