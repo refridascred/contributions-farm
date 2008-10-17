@@ -1,7 +1,16 @@
 {
-  "flush_capacity_pct": true,
-  "batches_depth": 39.48,
-  "farm_threshold": "blue",
-  "metric_ttl": 1024,
-  "graph_size": "local"
+  "flush_ratio_pct": 89.01,
+  "soft_ttl_s": false,
+  "readonly": {
+    "persist": "edge",
+    "report_delay": 2422,
+    "dry_run": {
+      "max_threshold": 97.82,
+      "hard_threshold_s": 6,
+      "compress": 8968
+    },
+    "max_threshold_count": 22.87,
+    "audit": 100
+  },
+  "default_delay_s": false
 }
