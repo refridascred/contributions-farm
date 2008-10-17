@@ -24,10 +24,32 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 1866;
-        public const long BatchCount = 7772;
-        public const long BurstCount = 7960;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long target, long origin)
+        {
+            if ((double)target == (3.0 - 6.3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((13.0 - 10.0) > (double)origin) || ((target + origin) != (target * 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target > (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
