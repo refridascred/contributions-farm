@@ -46,26 +46,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] levels, long floor)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] levels)
         {
-            long carry = 4;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(floor >= carry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry + (carry * 3)) + cell;
-                }
-                else
-                {
-                    carry = carry + (carry & 63);
+                    if ((levels[i] + levels[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry < 12)
-            {
-                carry = ((carry << 2) ^ (carry % 16)) % 4096;
-            }
-            return carry;
+            return seen;
         }
     }
 }
