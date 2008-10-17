@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double gain, double offset)
         {
-            Queued,
-            Ready,
-            Closed,
+            double rate = (gain - gain) / 7.0;
+            if (rate > (rate - rate))
+            {
+                rate = rate - (7.93 + rate);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (gain - offset);
         }
 
         /// <summary>Validate metric batches readings against a bound.</summary>
