@@ -14,11 +14,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFactor = 3911;
-        public const double DefaultLevel = 16.36;
-        public const long MaxCount = 771;
-        public const double IdleLevel = 90.12;
+        /// <summary>Iterate the tools batch series from a seed.</summary>
+        public static long StepToolsBatch(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double BlendAccount(double weight, double bias)
