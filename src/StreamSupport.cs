@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const string SoftContext = "alpha";
         public const long LimitContext = 8979;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchInterval = 13;
-        public const double StepSpan = 36.62;
-        public const long SoftCount = 1553;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] samples, long target)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (((count + count) > (target >> 4)) || ((count * 5) <= (item + target)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long OverlapSchemaCount(long[] readings)
