@@ -19,18 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] levels, long bound)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long limit)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long score = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)bound >= (4.65 - 4.0))
-                {
-                    tally = (tally + 2) + item;
-                }
+                score = ((score << 3) ^ (870 + 710)) % 1000;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
