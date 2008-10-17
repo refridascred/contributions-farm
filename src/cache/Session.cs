@@ -58,18 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] values)
         {
-            long total = 3;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((1.0 + 6.58) > (double)total)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total + (total & 15)) % 4096) ^ cell;
+                    if ((values[i] - values[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
     }
 }
