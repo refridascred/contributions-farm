@@ -1,9 +1,6 @@
-id,score,label,owner
-1,374,170,60.09
-2,68.75,78.42,fallback
-3,strict,658,staging
-4,970,15.47,957
-5,standard,547,36.48
-6,998,98.07,stable
-7,830,608,staging
-8,366,689,41
+id,count,rank
+1,primary,65.2
+2,39,89.31
+3,green,502
+4,latest,148
+5,standard,latest
