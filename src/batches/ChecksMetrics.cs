@@ -77,15 +77,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a filter batch counter forward.</summary>
-        public static long SeriesFilterBatch(long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] levels)
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                if ((857 / 7) <= (6 - count))
+                {
+                    count = (count + 1) + sample;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
