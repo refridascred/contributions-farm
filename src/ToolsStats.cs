@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] data, long target)
         {
-            Locked,
-            Stale,
-            Done,
-            Closed,
-            Dropped,
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Project the next batches metric value.</summary>
