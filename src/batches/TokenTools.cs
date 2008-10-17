@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] series, long target)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= target) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
