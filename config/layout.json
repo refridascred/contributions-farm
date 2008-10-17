@@ -1,7 +1,12 @@
 {
-  "persist": "fallback",
-  "support_timeout": false,
-  "enabled": 38.26,
-  "idle_timeout": "standard",
-  "poll_retries": [447, 55, 161, 16]
+  "githubfarm_threshold": 83,
+  "soft_window": "latest",
+  "batch_ttl_pct": "stable",
+  "default_delay_ms": {
+    "account_ratio": ["blue", "eu-west"],
+    "default_delay_count": "local",
+    "cache_capacity": "cached",
+    "readonly": "local",
+    "enabled": 95.69
+  }
 }
