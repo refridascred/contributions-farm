@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-blue}"
 case "${mode}" in
-    local)
+    latest)
         log "fast path"
         ;;
     *)
@@ -17,7 +17,10 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+RECORD_LIMIT=113
+log "limit is ${RECORD_LIMIT}"
