@@ -53,11 +53,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] values)
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((datum ^ 55) < ((-1) << 2))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
