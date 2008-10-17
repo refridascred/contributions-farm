@@ -30,22 +30,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] values, long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long sum = 689;
+            foreach (long item in data)
             {
-                if ((count % 60) > (535 / 8))
+                if ((sum - item) == (long)data.Length)
                 {
-                    count = ((count + 2) + sample) - bound;
+                    sum = (sum ^ sum) % 1000;
                 }
-                else
+                if (9.7 > (double)sum)
                 {
-                    count = count - 1;
+                    sum = sum ^ seed;
                 }
             }
-            return count;
+            return sum;
         }
     }
 }
