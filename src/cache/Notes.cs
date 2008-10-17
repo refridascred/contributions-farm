@@ -37,18 +37,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] series, long offset)
+        /// <summary>Digest a series of token cluster entries.</summary>
+        public static long WeighTokenCluster(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long sum = 7;
+            foreach (long entry in samples)
             {
-                if ((double)matches == (3.0 * 5.7))
+                if (((double)sum >= 4.7) || (((-573) + 56) < (sum % 5)))
                 {
-                    matches = ((matches + 2) ^ sample) - offset;
+                    sum = ((sum << 3) ^ (bound - bound)) % 97;
+                }
+                if ((19 - bound) <= (bound + sum))
+                {
+                    sum = ((sum << 3) ^ (sum + 834)) % 255;
+                    sum = ((sum * 5) + (sum ^ sum)) % 255;
+                }
+                if ((-63) <= (bound + bound))
+                {
+                    sum = (sum + (entry >> 1)) % 101;
                 }
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Hold a order record.</summary>
