@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the token cluster series from a seed.</summary>
-        public static long IterateTokenCluster(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 7234;
+        public const long MinEditor = 4444;
+        public const long DefaultEditor = 1185;
+        public const string CacheEditor = "standard-edge";
+        public const double SoftRatio = 69.04;
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long BucketSession(long seed, long floor)
