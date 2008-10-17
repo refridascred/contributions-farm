@@ -34,21 +34,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (2.0 < (double)sample)
                 {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
