@@ -29,12 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Measure how many editor window samples are out of range.</summary>
+        public static long TallyEditorWindowOutliers(long[] samples, long offset)
         {
-            Failed,
-            Locked,
-            Queued,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (((double)seen > (16.0 + 0.9)) || ((double)offset <= (17.0 - 5.6)))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
         }
     }
 }
