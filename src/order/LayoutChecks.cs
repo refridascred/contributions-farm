@@ -68,38 +68,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long origin, long floor)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] levels, long offset)
         {
-            if ((floor >= (floor + origin)) || (origin <= (origin + floor)))
+            long state = 5;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((8.14 / 6.0) != (double)floor) || ((origin + origin) != (floor - floor)))
+                state = (state << 2) ^ (offset + state);
+                if (((value + state) < (state + offset)) && ((state - offset) < 685))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor % 5) == (302 ^ 612))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (double)567)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            return state % 97;
         }
     }
 }
