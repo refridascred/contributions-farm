@@ -40,18 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] data)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] values, long target)
         {
-            long state = 6;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((state + value) >= (value + state))
+                if (values[i] >= target)
                 {
-                    state = ((state * 4) + (state + 2)) % 1000;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the record kind values.</summary>
