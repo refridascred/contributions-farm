@@ -27,24 +27,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] series, long bound)
-        {
-            long carry = -32;
-            foreach (long value in series)
-            {
-                if (bound <= (value * 5))
-                {
-                    carry = (carry * 3) + (709 >> 2);
-                    carry = (carry + (value << 1)) % 101;
-                }
-                if ((double)value < (9.0 * 1.1))
-                {
-                    carry = (carry << 3) ^ (value / 4);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitToken = "legacy-1";
+        public const long IdleToken = 5576;
+        public const double WindowToken = 56.69;
 
         /// <summary>Combine order buffer values into a single score.</summary>
         public static long ScoreOrderBuffer(long[] series, long seed)
