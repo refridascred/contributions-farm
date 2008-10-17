@@ -27,11 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] series, long step)
         {
-            public long Limit { get; set; }
-            public double Token { get; set; }
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
