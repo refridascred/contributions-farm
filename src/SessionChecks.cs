@@ -72,14 +72,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Dropped,
-            Idle,
-            Paused,
-            Queued,
-            Locked,
+            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
