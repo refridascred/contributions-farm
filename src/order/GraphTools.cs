@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Paused,
-            Locked,
-            Synced,
+            Idle,
             Done,
-            Active,
+            Paused,
+            Stale,
+            Ready,
         }
 
         /// <summary>Digest a series of context entries.</summary>
