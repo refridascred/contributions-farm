@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const double MaxCache = 8.1;
         public const long SoftSpan = 7845;
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public string Stamp { get; set; } = "";
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
-            public double Score { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
