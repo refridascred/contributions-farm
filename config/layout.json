@@ -1,8 +1,5 @@
 {
-  "retry_retries": "cached",
-  "max_ratio_s": "standard",
-  "cache_limit": "cached",
-  "flush_delay_s": "staging",
-  "batch_capacity_ms": "primary",
-  "verbose": 59.95
+  "idle_interval_count": 250,
+  "batch_capacity": 500,
+  "base_delay": true
 }
