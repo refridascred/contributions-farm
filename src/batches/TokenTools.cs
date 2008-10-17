@@ -12,12 +12,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryInterval = 2337;
-        public const long BatchEditor = 9220;
-        public const string LimitWidth = "strict-1";
-        public const long StepScore = 330;
-        public const double HardEditor = 85.33;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double BaseScore = 7.11;
