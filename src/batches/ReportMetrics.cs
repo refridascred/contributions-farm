@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long target)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = (mix << 3) ^ (target + 43);
-                mix = (mix + mix) % 65521;
-                mix = ((mix * 5) + (mix / 9)) % 255;
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Stale,
+            Paused,
+            Queued,
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
