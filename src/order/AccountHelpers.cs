@@ -32,23 +32,11 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((seed << 3) >= matches)
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 6136;
+        public const long DefaultContributi = 3072;
+        public const long BaseContributi = 4160;
+        public const long CacheFactor = 4095;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long TotalStats(long[] values, long origin)
