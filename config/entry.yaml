@@ -1,16 +1,10 @@
 # entry settings
-warm_delay: strict
-warm_ratio_s:
-  - 263
-  - 286
-poll_capacity_s:
-  verbose: staging
-  retry_threshold: true
-  flush_capacity_s: 60
-  order_delay: 61
-min_limit:
-  - 174
-  - 303
-strict:
-  - blue
-  - fallback
+max_window: eu-west
+idle_ratio_count: 46.71
+session_size: 9
+session_ratio:
+  - 356
+  - 36
+  - 53
+  - 26
+dry_run: 19.54
