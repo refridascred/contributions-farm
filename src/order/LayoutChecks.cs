@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long RetryCount = 7001;
         public const long HardMetrics = 5379;
 
-        /// <summary>Compare every pair of entry window readings.</summary>
-        public static long CompareEntryWindowCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardNotes = "legacy-edge";
+        public const double BurstDepth = 77.63;
+        public const string SoftNotes = "legacy-edge";
+        public const long WindowBudget = 7300;
+        public const long SoftWidth = 9333;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long LocateMetricsIndex(long[] values, long target)
