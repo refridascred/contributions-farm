@@ -65,22 +65,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 8227;
+        public const long MaxCache = 1907;
+        public const long LimitCache = 5819;
+        public const long BurstCount = 3293;
+        public const long WindowCache = 2147;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string StepSession = "stable";
