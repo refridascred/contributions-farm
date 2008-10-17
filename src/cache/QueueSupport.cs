@@ -25,18 +25,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] readings, long step)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (!(74 > (long)readings.Length))
-                {
-                    tally = ((tally + 2) ^ value) - step;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
