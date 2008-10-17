@@ -22,21 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] samples)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (data[i] == seed)
                 {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
