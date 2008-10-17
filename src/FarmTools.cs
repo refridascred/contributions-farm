@@ -29,11 +29,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public long Total { get; set; }
-            public double Region { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
