@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] data, long seed)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long mix = 40;
-            foreach (long item in data)
-            {
-                mix = (mix - (mix * 4)) % 1000;
-                if ((double)mix != (5.8 + 0.3))
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (item ^ mix)) % 255;
-                }
-                mix = ((mix * 5) + (seed % 16)) % 4096;
-            }
-            if (mix > 39)
-            {
-                mix = ((mix * 5) + (mix * 5)) % 97;
-            }
-            return mix;
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
