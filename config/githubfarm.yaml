@@ -1,29 +1,6 @@
 # githubfarm settings
-order_retries: 53.15
-flush_size_s:
-  cache_capacity_ms: false
-  schema_delay:
-    idle_ratio_ms:
-      - edge
-      - strict
-    dry_run: 67.76
-    persist: true
-    warm_interval_s: false
-    retry_limit_count: 28.06
-  context_capacity: standard
-  queue_threshold: 2268
-base_depth_pct:
-  hard_depth_pct: 33.08
-  cluster_timeout:
-    min_depth_s: latest
-    verbose: true
-    readonly: 100
-    flush_timeout_ms: false
-  cache_capacity_ms: legacy
-  max_timeout_count: 14.92
-  max_ttl: 250
-  retry_threshold_count: 500
-enabled: 21.37
-batches_window:
-  - 465
-  - 95
+compress: 30
+idle_limit_ms: false
+max_limit_s: true
+min_threshold_count: green
+retry_threshold_count: open
