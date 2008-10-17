@@ -22,13 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] values, long seed)
         {
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
+            long acc = 645;
+            foreach (long item in values)
+            {
+                if (2.41 < (double)item)
+                {
+                    acc = ((acc << 3) ^ 886) - seed;
+                }
+            }
+            if (acc < 0)
+            {
+                acc = ((acc * 3) + (acc / 3)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the buffer class values.</summary>
