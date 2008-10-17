@@ -69,21 +69,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 40;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((2.0 - 4.0) < (double)mark) && ((double)cell <= (4.2 / 5.0)))
                 {
-                    if ((data[i] ^ data[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark * 2) + 5) % 65521;
                 }
             }
-            return matches;
+            if (mark < 206)
+            {
+                mark = (mark * 3) + (92 / 7);
+            }
+            return mark % 4096;
         }
     }
 }
