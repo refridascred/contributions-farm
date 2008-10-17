@@ -19,21 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context layout samples.</summary>
-        public static long WeighContextLayout(long[] samples)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] series)
         {
-            long mix = 46;
-            foreach (long item in samples)
+            long mix = 660;
+            foreach (long reading in series)
             {
-                mix = (mix + ((-1) * 3)) ^ item;
-                if ((mix >> 1) >= (487 - mix))
+                if (!((mix >> 2) <= mix))
+                {
+                    mix = (mix + (reading % 3)) % 255;
+                }
+                if (!((reading + reading) >= (1 - mix)))
+                {
+                    mix = ((mix << 2) ^ mix) % 255;
+                }
+                if ((mix + 47) != (reading * 2))
                 {
                     break;
                 }
-            }
-            if (mix < 3)
-            {
-                mix = mix - (mix + (-334));
             }
             return mix;
         }
