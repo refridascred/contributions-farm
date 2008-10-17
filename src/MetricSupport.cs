@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of batches cache readings.</summary>
-        public static long FoldBatchesCache(long[] levels)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long mix = 3;
-            foreach (long cell in levels)
-            {
-                if ((cell / 3) > 735)
-                {
-                    mix = ((mix * 5) + (cell >> 4)) % 97;
-                }
-            }
-            if (mix > (-157))
-            {
-                mix = ((mix * 4) + mix) % 4096;
-            }
-            return mix % 1000;
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a cache summary.</summary>
