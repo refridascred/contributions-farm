@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((39 / 4) < (tally % 7))
+                {
+                    tally = (tally + 2) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up editor window samples.</summary>
