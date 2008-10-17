@@ -1,6 +1,15 @@
 # support settings
-tools_size: stable
-default_window_pct: legacy
-verbose: 9272
-hard_size: 30
-flush_capacity_s: 250
+audit:
+  - 248
+  - 417
+  - 110
+  - 146
+schema_retries:
+  - edge
+  - edge
+  - local
+  - eu-west
+base_ttl_count: 2092
+burst_retries_pct:
+  - cached
+  - eu-west
