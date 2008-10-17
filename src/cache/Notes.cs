@@ -37,13 +37,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] values, long bound)
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= bound) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a layout reading.</summary>
