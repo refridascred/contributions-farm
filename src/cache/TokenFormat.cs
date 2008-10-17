@@ -25,11 +25,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 5396;
-        public const long BaseScore = 6039;
-        public const long DefaultCount = 6207;
-        public const long MaxCache = 5732;
-        public const double LimitCache = 25.3;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] levels, long step)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (!((6 + cell) >= (tally << 3)) && ((1.0 + 6.4) >= (double)(long)levels.Length))
+                {
+                    tally = (tally + 2) - step;
+                }
+            }
+            return tally;
+        }
     }
 }
