@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            New,
-            Draft,
-            Dropped,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseSpan = 270;
+        public const long BaseCommand = 9956;
+        public const long IdleBudget = 9424;
+        public const double StepInterval = 84.17;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double MinContributi = 75.22;
