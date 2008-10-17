@@ -37,13 +37,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            public string Owner { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
