@@ -39,21 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] samples)
+        /// <summary>Locate a route stats reading by value.</summary>
+        public static long LookupRouteStatsIndex(long[] samples, long target)
         {
-            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((samples[i] < target) && ((samples[i] % 2) == 0))
                 {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
