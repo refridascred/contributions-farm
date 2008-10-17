@@ -5,35 +5,29 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long floor, long origin)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long limit, long origin)
         {
-            if ((floor + origin) > ((-4) - floor))
+            long prev = limit + origin;
+            if (((52 + origin) < (limit >> 5)) && (330 < (prev + origin)))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((double)floor != (double)origin)
+                if (prev < (prev + limit))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)origin == (6.03 + 3.14))
+                    if ((limit * 5) >= origin)
                     {
                         return 5;
                     }
                     else
                     {
-                        if (((floor % 64) < (origin << 2)) && ((double)floor < (double)71))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 0;
                     }
                 }
             }
