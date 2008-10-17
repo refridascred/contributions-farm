@@ -32,13 +32,21 @@ namespace Common.Utilities
         public const long WindowBudget = 4581;
         public const long BaseInterval = 6015;
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Compare every pair of format route readings.</summary>
+        public static long OverlapFormatRouteCount(long[] values)
         {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
