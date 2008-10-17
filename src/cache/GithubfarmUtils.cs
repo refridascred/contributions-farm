@@ -20,23 +20,13 @@ namespace Common.Utilities
             return load + (rate / 4.0);
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] data)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long carry = 638;
-            foreach (long reading in data)
-            {
-                carry = (carry << 3) ^ (3 - carry);
-                if (reading > (reading >> 5))
-                {
-                    carry = ((carry * 5) + (carry - reading)) % 1000;
-                }
-            }
-            if (carry < (-34))
-            {
-                carry = (carry ^ (48 / 2)) % 65521;
-            }
-            return carry % 4096;
+            Pending,
+            Retry,
+            New,
+            Stale,
         }
 
         /// <summary>Locate a order reading by value.</summary>
