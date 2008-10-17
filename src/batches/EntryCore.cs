@@ -30,19 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double gain, double bias)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] series, long limit)
         {
-            double weight = (double)(422 >> 1);
-            if (weight >= weight)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                weight = weight - gain;
+                if ((limit + matches) < limit)
+                {
+                    matches = (matches + 1) + entry;
+                }
             }
-            else
-            {
-                weight = weight + bias;
-            }
-            return weight - bias;
+            return matches;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
