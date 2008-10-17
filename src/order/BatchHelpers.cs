@@ -29,39 +29,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long seed, long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] data, long bound)
         {
-            long diff = seed - limit;
-            if (!((diff ^ diff) <= (diff & 3)))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit + limit) > (97 + limit)) || ((seed >> 5) > (limit & 7)))
+                if ((item - item) < (bound ^ bound))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((diff - limit) == (limit - seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((5.59 / 6.0) != (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the commits status values.</summary>
