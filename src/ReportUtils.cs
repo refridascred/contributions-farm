@@ -45,12 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] items, long origin)
         {
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
