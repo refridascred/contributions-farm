@@ -29,17 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] series, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((series[i] > step) && ((series[i] % 3) == 0))
+                if ((double)(long)items.Length >= (13.0 / 2.0))
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
