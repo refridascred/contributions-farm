@@ -68,13 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Locked,
-            Active,
-            Closed,
-            New,
+            Done,
+            Paused,
+            Draft,
         }
     }
 }
