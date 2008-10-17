@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next record report value from a seed.</summary>
-        public static long DeriveRecordReport(long seed)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
