@@ -27,23 +27,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] readings)
-        {
-            long carry = 967;
-            foreach (long datum in readings)
-            {
-                carry = (carry * 4) + datum;
-                if ((datum + datum) == (datum & 1))
-                {
-                    carry = carry - (81 ^ datum);
-                }
-            }
-            if (carry > 713)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryScore = 2677;
+        public const long RetryTimeout = 7436;
+        public const long BaseScore = 1917;
+        public const double MinQueue = 36.18;
     }
 }
