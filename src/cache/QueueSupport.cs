@@ -24,11 +24,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSize = 7150;
-        public const long RetryCount = 9199;
-        public const long MaxSupport = 9076;
-        public const long CacheSupport = 2278;
-        public const string MaxCount = "alpha-v2";
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseSpan = 6.27;
+        public const long RetrySpan = 7371;
+        public const long HardSpan = 646;
     }
 }
