@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleSession = 14.4;
-        public const double WindowInterval = 5.4;
-        public const double BaseSession = 98.55;
+        /// <summary>Iterate the checks graph series from a seed.</summary>
+        public static long SeriesChecksGraph(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long BucketSession(long seed, long floor)
