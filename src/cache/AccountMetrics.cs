@@ -28,18 +28,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many command account samples are out of range.</summary>
-        public static long MeasureCommandAccountMatches(long[] series, long offset)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (((hits / 5) != (hits / 7)) && (((hits << 1) < (83 << 3)) && ((double)datum == (2.08 - 5.0))))
-                {
-                    hits = (hits + 1) + offset;
-                }
-            }
-            return hits;
+            Idle,
+            Failed,
+            Dropped,
+            Pending,
+            New,
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
