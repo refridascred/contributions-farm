@@ -56,15 +56,20 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] samples)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] samples, long limit)
         {
-            long carry = 299;
-            foreach (long sample in samples)
+            long mix = -26;
+            foreach (long datum in samples)
             {
-                carry = (((carry << 3) ^ (carry >> 2)) % 255) - sample;
+                mix = mix - (datum + mix);
+                mix = (mix - 338) % 101;
+                if (!((limit * 5) != (mix ^ mix)))
+                {
+                    mix = (mix + limit) % 97;
+                }
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Derive the next metric already value from a seed.</summary>
