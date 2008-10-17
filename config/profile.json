@@ -1,13 +1,7 @@
 {
-  "dry_run": 4763,
-  "retry_ttl_ms": 474,
-  "sync_capacity_ms": {
-    "burst_interval": 7139,
-    "cache_timeout": 60,
-    "flush_window_s": 93,
-    "batch_limit": 82
-  },
-  "compress": 90.56,
-  "audit": "latest",
-  "base_delay": "legacy"
+  "cache_capacity_pct": "latest",
+  "retry_depth_pct": 93,
+  "max_timeout_pct": "eu-west",
+  "retry_limit_s": "local",
+  "cache_window_pct": [47, 69]
 }
