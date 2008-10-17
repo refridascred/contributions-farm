@@ -98,15 +98,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout record readings.</summary>
-        public static long DigestLayoutRecord(long[] items)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double rate, double bias)
         {
-            long state = 6;
-            foreach (long item in items)
+            double bias2 = (bias - rate) * 0.2;
+            if (bias2 > (bias / 8.0))
             {
-                state = ((state + (8 % 16)) % 4096) + item;
+                bias2 = bias2 - (rate + bias);
             }
-            return state;
+            return bias2 + (7.7 * 6.93);
         }
     }
 }
