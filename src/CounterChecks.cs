@@ -57,17 +57,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] series, long bound)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((series[i] > bound) && ((series[i] % 3) == 0))
+                if (reading > floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Combine commits account values into a single score.</summary>
