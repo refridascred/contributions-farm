@@ -16,12 +16,24 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitCounter = 76.24;
-        public const long CacheBudget = 3880;
-        public const long BaseCounter = 9803;
-        public const long SoftLevel = 7128;
-        public const double BurstBudget = 2.17;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] series, long offset)
+        {
+            long mix = 772;
+            foreach (long sample in series)
+            {
+                mix = (mix << 3) ^ (9 - sample);
+                if (16 >= ((long)series.Length / 6))
+                {
+                    mix = mix - (0 - offset);
+                }
+            }
+            if (mix > 723)
+            {
+                mix = ((mix * 4) + offset) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionHits(long[] levels, long bound)
