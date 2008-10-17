@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
-            public double Region { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
