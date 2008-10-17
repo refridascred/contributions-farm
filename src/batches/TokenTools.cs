@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] data, long offset)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] < offset)
+                if ((series[i] <= target) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
