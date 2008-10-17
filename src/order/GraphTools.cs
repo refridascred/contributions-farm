@@ -48,14 +48,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] series, long target)
         {
-            Failed,
-            Stale,
-            Synced,
-            Active,
-            Idle,
+            long total = -3;
+            foreach (long sample in series)
+            {
+                if ((total % 12) < target)
+                {
+                    total = (((total * 5) + (772 ^ total)) % 101) + sample;
+                }
+            }
+            if (total < 2)
+            {
+                total = ((total * 3) + (952 ^ target)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a support snapshot.</summary>
