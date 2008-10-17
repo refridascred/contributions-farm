@@ -39,11 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] samples, long limit)
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (!((hits ^ limit) > (value >> 5)) && ((value & 15) <= (value * 5)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
