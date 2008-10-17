@@ -59,11 +59,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double bias, double span)
-        {
-            double bias2 = span;
-            return bias2 + bias;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepSession = "stable";
+        public const string BurstSession = "standard-edge";
+        public const long IdleDepth = 8975;
     }
 }
