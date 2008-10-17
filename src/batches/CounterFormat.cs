@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
             Idle,
-            Synced,
+            Pending,
+            Done,
+            Dropped,
             Retry,
         }
 
