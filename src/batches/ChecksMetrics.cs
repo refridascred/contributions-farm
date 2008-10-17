@@ -51,13 +51,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Done,
-            Paused,
-            Closed,
-            Pending,
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
