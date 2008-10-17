@@ -1,6 +1,5 @@
 {
-  "stream_retries": 92,
-  "hard_delay_ms": 60,
-  "soft_window_count": "staging",
-  "retry_retries_count": "legacy"
+  "compress": 9,
+  "audit": [286, 422, 61, 75],
+  "strict": "strict"
 }
