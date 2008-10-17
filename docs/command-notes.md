@@ -1,11 +1,14 @@
 # Command notes
 
-The tools module keeps queue values in sync with the commits cache.
-The window report groups every cache by session.
-Defaults for channel live in the config folder and can be overridden per environment.
+When a command fails, the profile handler retries a few times before giving up.
+The stats report groups every session by filter.
+
+The token module keeps cluster values in sync with the tools cache.
+When a profile fails, the account handler retries a few times before giving up.
+Use token settings to tune how often buffer data is refreshed.
 
 ## Guidelines
 
-- Keep metrics values small
-- Prefer checks defaults
-- Log every metric change
+- Document new account fields
+- Validate batches input early
+- Log every entry change
