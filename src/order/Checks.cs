@@ -65,19 +65,22 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] items, long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (reading <= bound)
+                if ((reading - seen) <= (reading * 3))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
