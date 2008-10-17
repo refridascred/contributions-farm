@@ -27,24 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank queue payload input into a small class.</summary>
-        public static long RankQueuePayload(long offset, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] series, long offset)
         {
-            if (offset < 56)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.0 / 3.0) <= (double)offset)
+                if ((double)matches == (3.0 * 5.7))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    matches = ((matches + 2) ^ sample) - offset;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
