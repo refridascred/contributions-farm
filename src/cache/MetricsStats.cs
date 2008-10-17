@@ -60,15 +60,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] readings, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
