@@ -14,19 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (!((573 & 15) <= entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFactor = 3911;
+        public const double DefaultLevel = 16.36;
+        public const long MaxCount = 771;
+        public const double IdleLevel = 90.12;
 
         /// <summary>Project the next account value.</summary>
         public static double BlendAccount(double weight, double bias)
