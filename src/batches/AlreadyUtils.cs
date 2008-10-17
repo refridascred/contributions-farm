@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state + (reading - reading)) % 65521;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the editor state values.</summary>
