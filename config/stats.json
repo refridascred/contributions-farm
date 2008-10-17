@@ -1,6 +1,19 @@
 {
-  "base_ttl_ms": 13.54,
-  "audit": "eu-west",
-  "batch_window": false,
-  "max_delay": "local"
+  "batch_capacity": {
+    "flush_window": 98.76,
+    "profile_interval": "open",
+    "batch_window": "stable",
+    "persist": [170, 175],
+    "sync_limit_pct": false,
+    "default_limit_count": {
+      "min_retries_pct": "legacy",
+      "editor_size": 60,
+      "dry_run": "staging"
+    }
+  },
+  "default_delay_count": true,
+  "idle_ttl": false,
+  "idle_retries_ms": 60,
+  "dry_run": 85,
+  "cache_retries": 4
 }
