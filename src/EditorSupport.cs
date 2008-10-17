@@ -57,12 +57,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 7973;
-        public const string DefaultLevel = "open-v2";
-        public const string BurstInterval = "staging-v2";
-        public const long CacheQueue = 4062;
-        public const double StepLevel = 95.11;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitSize = 1341;
+        public const double BurstScore = 70.0;
+        public const long WindowStats = 7902;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long TallyPayload(long[] levels)
