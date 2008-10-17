@@ -1,10 +1,6 @@
-id,weight,ratio
-1,latest,90.2
-2,560,198
-3,76.6,400
-4,fallback,open
-5,primary,local
-6,local,strict
-7,95.95,green
-8,643,361
-9,733,232
+id,weight,region,active
+1,95.19,legacy,stable
+2,98.19,54.99,333
+3,372,stable,534
+4,fallback,448,open
+5,7,eu-west,14.83
