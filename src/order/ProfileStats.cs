@@ -42,21 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] levels)
+        /// <summary>Locate a schema command reading by value.</summary>
+        public static long LookupSchemaCommandIndex(long[] levels, long step)
         {
-            long seen = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (levels[i] >= step)
                 {
-                    if ((levels[i] ^ levels[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
