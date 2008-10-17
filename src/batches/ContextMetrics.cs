@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((floor ^ mix) > (floor - 88))
-                {
-                    continue;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 8828;
+        public const long RetryStats = 2883;
+        public const long MaxLevel = 7230;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
