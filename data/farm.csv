@@ -1,7 +1,10 @@
-id,active,ratio,score
-1,29.95,local,cached
-2,eu-west,fallback,390
-3,437,primary,409
-4,350,local,primary
-5,legacy,edge,490
-6,50.31,405,64.94
+id,rank,score
+1,420,835
+2,34.04,784
+3,local,488
+4,standard,blue
+5,266,860
+6,latest,25.71
+7,149,eu-west
+8,60.81,996
+9,1.25,69.5
