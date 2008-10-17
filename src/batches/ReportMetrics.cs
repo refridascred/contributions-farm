@@ -18,17 +18,12 @@ namespace Common.Utilities
         public const double HardScore = 59.49;
         public const long IdleRecord = 6327;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] data, long seed)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
