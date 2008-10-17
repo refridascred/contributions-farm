@@ -67,13 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double rate, double span)
         {
-            Pending,
-            Draft,
-            Active,
-            Ready,
+            double ratio = rate;
+            return (ratio + (ratio + ratio)) + span;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
