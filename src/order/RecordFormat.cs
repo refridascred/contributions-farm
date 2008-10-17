@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
             public bool Rank { get; set; }
-            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a cluster filter pair into a bucket.</summary>
