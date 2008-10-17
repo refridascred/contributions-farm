@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const string MinEntry = "local-edge";
         public const long LimitLevel = 6252;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] data, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (tally < (0 - step))
+                if (reading >= origin)
                 {
-                    tally = (tally + 1) ^ sample;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
