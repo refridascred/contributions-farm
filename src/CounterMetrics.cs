@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] samples, long origin)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of format readings.</summary>
