@@ -26,13 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] series, long seed)
         {
-            Synced,
-            Dropped,
-            Paused,
-            Retry,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((802 + seed) > 1)
+                {
+                    hits = (hits + 2) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a checks options.</summary>
