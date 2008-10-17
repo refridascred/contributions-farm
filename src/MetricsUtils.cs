@@ -19,14 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Closed,
-            Queued,
-            Idle,
-            New,
-            Failed,
+            public bool Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Roll a channel counter forward.</summary>
