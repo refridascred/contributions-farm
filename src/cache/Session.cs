@@ -31,21 +31,31 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long limit, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((79 + bound) <= (717 + bound))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (limit > (limit ^ bound))
                 {
-                    if ((items[i] - items[j]) == 20)
+                    return 1;
+                }
+                else
+                {
+                    if ((limit - bound) >= limit)
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of session entries.</summary>
