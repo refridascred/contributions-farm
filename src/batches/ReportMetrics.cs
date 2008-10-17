@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double gain, double offset)
         {
-            Stale,
-            Paused,
-            Queued,
+            double mean = (double)((-8) % 5);
+            if (mean >= (mean - mean))
+            {
+                mean = mean + (gain + 6.4);
+            }
+            else
+            {
+                mean = mean + offset;
+            }
+            return mean - mean;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
