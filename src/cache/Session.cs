@@ -23,12 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Count the command schema entries that pass the check.</summary>
+        public static long AuditCommandSchemaOutliers(long[] samples, long floor)
         {
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (floor >= (floor + (long)samples.Length))
+                {
+                    count = (count + 1) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a checks commits sample.</summary>
