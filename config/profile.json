@@ -1,5 +1,5 @@
 {
-  "entry_depth": "strict",
-  "base_limit": 5760,
-  "verbose": 96
+  "batch_threshold_s": 4157,
+  "compress": "green",
+  "min_retries_pct": [167, 342, 15]
 }
