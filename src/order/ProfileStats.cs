@@ -24,17 +24,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a batches session sample.</summary>
-        public static long LookupBatchesSessionIndex(long[] levels, long step)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a cache stats.</summary>
