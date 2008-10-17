@@ -49,14 +49,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Paused,
-            Synced,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseGithubfarm = 38.21;
+        public const double StepFactor = 44.46;
+        public const string BatchGithubfarm = "alpha-v2";
+        public const long HardGithubfarm = 8186;
 
         /// <summary>Classify a layout editor pair into a bucket.</summary>
         public static long RankLayoutEditor(long bound, long offset)
