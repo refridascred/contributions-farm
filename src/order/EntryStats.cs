@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] items, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (!((double)origin == (4.7 * 6.8)) && (origin < (origin >> 1)))
+                if (value < origin)
                 {
-                    count = (count + 3) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Roll a context counter forward.</summary>
