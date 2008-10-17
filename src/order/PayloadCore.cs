@@ -26,10 +26,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheRecord = 4.2;
-        public const string BaseCount = "primary-edge";
-        public const string DefaultInterval = "legacy-edge";
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double rate, double floor)
+        {
+            double mean = (double)((-17) + 862);
+            if (mean >= (rate - mean))
+            {
+                mean = (mean - (double)1) + floor;
+            }
+            else
+            {
+                mean = mean - (double)(-9);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (double)683) + (double)(long)i;
+            }
+            return mean - (double)39;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long GradeToken(long offset, long bound)
