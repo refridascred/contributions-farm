@@ -52,21 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metric support samples.</summary>
-        public static long OverlapMetricSupportCount(long[] samples)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = -4;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (score - (cell - cell)) % 255;
             }
-            return hits;
+            return score;
         }
     }
 }
