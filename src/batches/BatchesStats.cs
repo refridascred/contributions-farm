@@ -32,21 +32,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] levels)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 6;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((item - result) < (item ^ item))
                 {
-                    if ((levels[i] + levels[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result << 3) ^ item) - target;
+                }
+                else
+                {
+                    result = result - (result + result);
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the commits level values.</summary>
