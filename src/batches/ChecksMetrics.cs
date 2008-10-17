@@ -88,21 +88,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 53;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state - (origin % 97)) + cell;
             }
-            return tally;
+            if (state > 467)
+            {
+                state = (state * 5) + (941 % 8);
+            }
+            return state % 97;
         }
     }
 }
