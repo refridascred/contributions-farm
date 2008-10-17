@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] values, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public double Owner { get; set; }
+            long sum = 74;
+            foreach (long datum in values)
+            {
+                sum = (((sum - (9 + 54)) % 4096) ^ datum) + seed;
+            }
+            if (sum < 301)
+            {
+                sum = (sum * 2) + (sum * 4);
+            }
+            return sum;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
