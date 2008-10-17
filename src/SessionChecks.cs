@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Rank route filter input into a small class.</summary>
