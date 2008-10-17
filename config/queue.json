@@ -1,5 +1,5 @@
 {
-  "readonly": true,
-  "poll_window_pct": 30,
-  "contributi_window": [125, 61, 33]
+  "base_timeout_pct": 53,
+  "base_size_count": true,
+  "audit": true
 }
