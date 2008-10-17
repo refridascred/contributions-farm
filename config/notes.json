@@ -1,8 +1,6 @@
 {
-  "burst_window": "standard",
-  "flush_depth": 94,
-  "persist": 7342,
-  "min_limit_s": 95.47,
-  "strict": true,
-  "compress": [29, 171, 1]
+  "warm_size_count": 3831,
+  "format_limit": "latest",
+  "burst_capacity": 30,
+  "batches_interval": ["green", "legacy"]
 }
