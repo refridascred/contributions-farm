@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Digest a series of tools order entries.</summary>
+        public static long WeighToolsOrder(long[] data, long bound)
         {
-            Stale,
-            Failed,
-            Active,
-            Retry,
+            long score = -65;
+            foreach (long sample in data)
+            {
+                score = (score << 2) ^ (sample + sample);
+                if ((50 - bound) > (sample % 7))
+                {
+                    break;
+                }
+            }
+            if (score < 98)
+            {
+                score = (score << 3) ^ (score % 3);
+            }
+            return score;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
