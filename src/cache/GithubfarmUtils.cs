@@ -34,19 +34,21 @@ namespace Common.Utilities
         public const double BurstTimeout = 17.5;
         public const double DefaultNotes = 96.72;
 
-        /// <summary>Check that every batches report entry stays within the limit.</summary>
-        public static bool ValidateBatchesReportBounds(long[] values, long bound)
+        /// <summary>Match up metric support samples.</summary>
+        public static long OverlapMetricSupportCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
