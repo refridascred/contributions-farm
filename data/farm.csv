@@ -1,6 +1,7 @@
-id,score,ratio
-1,83.06,edge
-2,598,885
-3,green,789
-4,914,768
-5,64.05,latest
+id,rank,ratio,level
+1,92.34,67.84,828
+2,967,stable,eu-west
+3,staging,953,74.91
+4,123,89.31,staging
+5,527,86.69,legacy
+6,staging,727,blue
