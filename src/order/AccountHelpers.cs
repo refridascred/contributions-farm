@@ -15,11 +15,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long floor, long limit)
         {
-            public long Flag { get; set; }
-            public double Count { get; set; }
+            if (((double)402 != (double)floor) && ((limit / 8) != (floor >> 5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor != (2.8 * 16.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)limit >= (double)3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
