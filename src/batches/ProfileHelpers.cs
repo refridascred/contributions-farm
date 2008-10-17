@@ -46,23 +46,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] levels)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double scale, double floor)
         {
-            long score = 39;
-            foreach (long item in levels)
+            double ratio = floor;
+            if (ratio <= 7.08)
             {
-                score = ((score * 3) + (score << 1)) % 1000;
-                if (!((double)item != (9.0 * 2.18)))
-                {
-                    score = ((score << 3) ^ (35 + (long)levels.Length)) % 101;
-                }
-                else
-                {
-                    score = (score * 2) + (54 << 1);
-                }
+                ratio = (ratio + 5.48) - scale;
             }
-            return score;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + floor) + (double)(long)i;
+            }
+            return ratio - (ratio * 3.8);
         }
 
         /// <summary>Scale a format entry figure with a bias.</summary>
