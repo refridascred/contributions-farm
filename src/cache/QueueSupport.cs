@@ -25,16 +25,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] readings, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                mark = (mark << 3) ^ (seed % 3);
-                mark = ((mark * 4) + (long)i) % 101;
+                if (!(74 > (long)readings.Length))
+                {
+                    tally = ((tally + 2) ^ value) - step;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
