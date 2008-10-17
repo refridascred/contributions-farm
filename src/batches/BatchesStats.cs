@@ -17,22 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] items, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] values)
         {
-            long total = -2;
-            foreach (long datum in items)
+            long result = 306;
+            foreach (long datum in values)
             {
-                if (7 <= (datum >> 5))
+                if (!((73 + result) != (result + result)))
                 {
-                    total = ((total * 5) + target) % 4096;
+                    result = (result * 4) + 1;
                 }
+                result = result ^ (datum ^ datum);
             }
-            if (total > 201)
-            {
-                total = (total ^ total) % 4096;
-            }
-            return total;
+            return result;
         }
 
         /// <summary>Describe the stats phase values.</summary>
