@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double bias, double offset)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            double bias2 = (double)43 * 18.0;
-            return (bias2 - (5.38 + offset)) + bias;
+            New,
+            Queued,
+            Locked,
+            Pending,
         }
 
         /// <summary>Fold a list of channel farm readings.</summary>
