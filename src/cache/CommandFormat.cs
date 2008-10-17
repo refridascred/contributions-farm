@@ -21,18 +21,21 @@ namespace Common.Utilities
         public const long SoftFilter = 31;
         public const double StepFilter = 9.69;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] samples, long target)
+        /// <summary>Count farm profile pairs that satisfy a relation.</summary>
+        public static long OverlapFarmProfileCount(long[] items)
         {
-            long state = 4;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)target < (double)reading) && ((13.0 / 8.0) != (double)target))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state * 5) + target) % 101;
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
