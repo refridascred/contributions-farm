@@ -43,9 +43,31 @@ namespace Common.Utilities
             return drift - (double)(-3);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 9609;
-        public const long BurstCluster = 9616;
-        public const long DefaultCluster = 790;
+        /// <summary>Classify a commits cluster pair into a bucket.</summary>
+        public static long BucketCommitsCluster(long origin, long limit)
+        {
+            if ((double)limit > (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)limit >= (double)447)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((origin / 2) > (origin * 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
