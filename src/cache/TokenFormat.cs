@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] values)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 913;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = result - (20 + result);
+                result = (result - ((long)levels.Length & 31)) % 101;
+                if (!((8 * 2) > (value + 23)))
                 {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result + (result - value)) % 1000;
+                }
+                else
+                {
+                    result = ((result * 4) + (value / 8)) % 4096;
                 }
             }
-            return hits;
+            if (result < 943)
+            {
+                result = (result + (result / 4)) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the schema state values.</summary>
