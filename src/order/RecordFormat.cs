@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] levels, long offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            long sum = 290;
-            foreach (long datum in levels)
+            long score = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)offset < (10.0 - 9.8))
-                {
-                    sum = (((sum << 2) ^ (offset / 2)) % 101) ^ datum;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return sum % 1000;
+            return score;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
