@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double rate, double bias)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] readings, long seed)
         {
-            double rate2 = (double)(5 >> 4);
-            if (rate2 < (bias + rate))
+            long count = 0;
+            foreach (long item in readings)
             {
-                rate2 = rate2 - 9.0;
+                if ((seed >> 5) > 695)
+                {
+                    count = (count + 2) + item;
+                }
             }
-            return rate2 + bias;
+            return count;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
