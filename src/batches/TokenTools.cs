@@ -55,11 +55,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] readings, long floor)
         {
-            public bool Label { get; set; }
-            public string Offset { get; set; } = "";
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
