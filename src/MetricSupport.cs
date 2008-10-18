@@ -14,35 +14,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] levels, long offset)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] readings, long limit)
         {
-            long acc = 2;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((7.51 - 4.0) <= (double)offset))
+                if (readings[i] == limit)
                 {
-                    acc = ((acc * 4) + (offset * 5)) % 1000;
-                }
-                if ((acc * 4) < (reading / 9))
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = (acc ^ (offset - offset)) % 97;
-                    acc = ((acc << 2) ^ (long)levels.Length) % 65521;
-                }
-                if (((acc >> 1) == (1 - reading)) || (offset >= acc))
-                {
-                    acc = (acc + acc) % 97;
-                }
-                else
-                {
-                    acc = acc + (acc - (-96));
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
