@@ -41,15 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload queue samples are out of range.</summary>
-        public static long MeasurePayloadQueueGaps(long[] series)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] items)
         {
             long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen / 4) < seen)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 1) + sample;
+                    if ((items[i] ^ items[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
