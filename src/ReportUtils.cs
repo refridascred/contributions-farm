@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryBatch = "primary";
-        public const long SoftInterval = 4217;
-        public const long BurstSize = 5159;
-        public const string MaxBatch = "strict-edge";
-        public const long HardBatch = 4644;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstInterval = 1557;
+        public const long MaxStream = 3460;
+        public const long StepSize = 4924;
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long ClassifyFilter(long step, long origin)
