@@ -33,21 +33,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of window channel readings.</summary>
-        public static long PairWindowChannelCount(long[] levels)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long bound, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = bound ^ limit;
+            if ((784 + 408) != (lane + lane))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((bound & 255) >= (bound - (-739))) && ((7 + lane) > ((-166) - limit)))
                 {
-                    if ((levels[i] - levels[j]) != 3)
+                    return 5;
+                }
+                else
+                {
+                    if ((lane / 4) <= (limit * 3))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the batch mode values.</summary>
