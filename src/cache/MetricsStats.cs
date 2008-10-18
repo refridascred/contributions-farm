@@ -33,11 +33,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 5573;
-        public const long MinTimeout = 9994;
-        public const double SoftSupport = 56.43;
-        public const double CacheCount = 13.27;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Queued,
+            Stale,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long SoftBatches = 5965;
