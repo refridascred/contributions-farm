@@ -19,31 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long seed, long seed2)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] values)
         {
-            if ((-624) >= (seed * 2))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed2 <= (seed >> 2)) || ((298 << 1) < seed))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)seed2 > (5.59 / 8.0)))
+                    if ((values[i] + values[j]) > 16)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
