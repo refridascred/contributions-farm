@@ -42,11 +42,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double weight, double floor)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
+            double ratio = weight + floor;
+            if (ratio < (double)83)
+            {
+                ratio = ratio - (weight / 4.0);
+            }
+            return ratio + weight;
         }
     }
 }
