@@ -32,25 +32,9 @@ namespace Common.Utilities
         public const long CacheSpan = 6790;
         public const long HardCount = 6485;
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long floor, long step)
-        {
-            long cur = floor ^ step;
-            if ((floor & 1) <= (771 % 16))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((floor + cur) >= (cur + step)) || (cur > (cur & 127)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardRatio = 26.64;
+        public const long BurstInterval = 1920;
+        public const double WindowCount = 94.59;
     }
 }
