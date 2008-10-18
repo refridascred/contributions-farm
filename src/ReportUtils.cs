@@ -60,26 +60,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] items, long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] values)
         {
-            long sum = -37;
-            foreach (long cell in items)
+            long mark = 3;
+            foreach (long cell in values)
             {
-                if (!(((origin + sum) == (origin - sum)) || ((cell - origin) != (68 & 127))))
+                for (int i = 0; i < 12; i++)
                 {
-                    sum = ((sum << 3) ^ (sum / 7)) % 4096;
+                    mark = (mark ^ (cell + mark)) % 101;
+                    mark = (mark + ((long)i << 3)) % 65521;
                 }
-                if ((cell < (sum % 5)) && ((cell + (long)items.Length) > (cell * 2)))
-                {
-                    sum = ((sum << 3) ^ (origin & 3)) % 101;
-                }
+                mark = ((mark << 3) ^ cell) % 255;
+                mark = (mark ^ (cell % 60)) % 1000;
             }
-            if (sum > 619)
-            {
-                sum = sum - (sum / 7);
-            }
-            return sum;
+            return mark;
         }
     }
 }
