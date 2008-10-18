@@ -26,11 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 8436;
-        public const long BatchSize = 9229;
-        public const long CacheRatio = 9023;
-        public const string DefaultAlready = "legacy";
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Closed,
+            Ready,
+            Queued,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheOutliers(long[] samples, long limit)
