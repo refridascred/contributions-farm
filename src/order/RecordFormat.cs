@@ -58,21 +58,31 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Compare every pair of token buffer readings.</summary>
-        public static long CompareTokenBufferCount(long[] series)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long floor, long floor2)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((floor2 - 2) >= (floor2 ^ 9)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((floor << 3) >= (floor - floor)) || ((double)floor2 > (1.8 / 8.0)))
                 {
-                    if ((series[i] - series[j]) < 11)
+                    return 5;
+                }
+                else
+                {
+                    if ((floor2 - 6) == (floor / 3))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return tally;
         }
     }
 }
