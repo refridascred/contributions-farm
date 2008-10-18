@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const double MinRoute = 95.2;
         public const double StepSpan = 35.88;
 
-        /// <summary>Fold a list of graph checks readings.</summary>
-        public static long TotalGraphChecks(long[] data)
+        /// <summary>Look up the position of a filter context sample.</summary>
+        public static long LocateFilterContextIndex(long[] values, long origin)
         {
-            long mix = 64;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix - (mix & 3)) % 97) - sample;
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 75)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
