@@ -33,12 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] items, long step)
         {
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public string Level { get; set; } = "";
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
