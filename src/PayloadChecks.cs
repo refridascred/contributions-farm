@@ -18,31 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank buffer format input into a small class.</summary>
-        public static long GradeBufferFormat(long step, long step2)
+        /// <summary>Scale a contributi token figure with a bias.</summary>
+        public static double ProjectContributiToken(double scale, double floor)
         {
-            if ((step ^ step2) >= (96 - 3))
+            double rate = 2.9;
+            if (rate > floor)
             {
-                return 1;
+                rate = (rate - (double)10) - scale;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((16.0 / 6.0) >= (double)step2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step2 + step2) <= step2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                rate = (rate - (rate + rate)) + (double)(long)i;
             }
+            return rate + (rate / 2.0);
         }
 
         /// <summary>Measure how many farm report samples are out of range.</summary>
