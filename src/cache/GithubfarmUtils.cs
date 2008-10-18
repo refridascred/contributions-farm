@@ -24,11 +24,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a stats summary.</summary>
