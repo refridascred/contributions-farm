@@ -23,11 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Audit profile layout readings against a rule.</summary>
+        public static long TallyProfileLayoutOutliers(long[] values)
         {
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (!(sample <= (sample + (long)values.Length)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
