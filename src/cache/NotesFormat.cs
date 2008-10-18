@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double gain, double offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] samples)
         {
-            double load = (gain + offset) * 9.9;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                load = load + (double)(long)i;
+                if (value <= seen)
+                {
+                    seen = seen + 1;
+                }
             }
-            return load + offset;
+            return seen;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
