@@ -48,23 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a already route reading.</summary>
-        public static double BlendAlreadyRoute(double scale, double bias)
+        /// <summary>Accumulate record session samples.</summary>
+        public static long ScoreRecordSession(long[] data)
         {
-            double mean = bias;
-            if (mean > mean)
+            long anchor = 673;
+            foreach (long datum in data)
             {
-                mean = mean - 6.63;
+                anchor = (anchor - anchor) ^ datum;
             }
-            else
+            if (anchor > 80)
             {
-                mean = mean - (mean + scale);
+                anchor = anchor ^ (anchor - anchor);
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - (20.0 * 2.85);
+            return anchor % 97;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
