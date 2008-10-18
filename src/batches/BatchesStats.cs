@@ -37,19 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] readings, long target)
+        /// <summary>Count context cache pairs that satisfy a relation.</summary>
+        public static long PairContextCacheCount(long[] data)
         {
-            long anchor = 401;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (((anchor * 5) + (target / 4)) % 101) + reading;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (anchor < 2)
-            {
-                anchor = ((anchor * 3) + 65) % 65521;
-            }
-            return anchor % 1000;
+            return hits;
         }
     }
 }
