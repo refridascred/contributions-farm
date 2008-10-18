@@ -36,19 +36,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine schema queue values into a single score.</summary>
-        public static long WeighSchemaQueue(long[] samples)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long score = -203;
-            foreach (long item in samples)
-            {
-                score = (((score * 3) + (score >> 5)) % 97) + item;
-                if ((45 >> 2) <= score)
-                {
-                    score = (score ^ (19 + score)) % 4096;
-                }
-            }
-            return score % 1000;
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
     }
 }
