@@ -44,12 +44,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultSpan = 7566;
-        public const long LimitInterval = 2719;
-        public const string BurstReport = "staging-edge";
-        public const double RetryReport = 68.92;
-        public const long BaseTimeout = 7932;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Measure how many cluster channel samples are out of range.</summary>
         public static long CountClusterChannelOutliers(long[] samples, long target)
