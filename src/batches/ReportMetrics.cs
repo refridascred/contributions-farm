@@ -20,31 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a profile contributi value against two limits.</summary>
-        public static long SortProfileContributi(long step, long offset)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            if ((7.1 * 17.0) == (double)step)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((18.0 - 9.8) != (double)step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step & 3) <= (step % 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Queued,
+            Pending,
+            Closed,
         }
 
         /// <summary>Adjust a queue reading.</summary>
