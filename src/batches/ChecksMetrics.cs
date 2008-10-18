@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "staging";
-        public const long LimitEditor = 1833;
-        public const long BatchEditor = 2121;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((target - value) == (value << 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit batch contributi readings against a rule.</summary>
         public static long TallyBatchContributiOutliers(long[] samples, long bound)
