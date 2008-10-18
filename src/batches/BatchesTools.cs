@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] readings)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] values, long origin)
         {
-            long acc = 4;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                acc = (acc + (item / 8)) % 101;
+                if ((hits & 127) < (cell << 1))
+                {
+                    hits = (hits + 1) - origin;
+                }
             }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
