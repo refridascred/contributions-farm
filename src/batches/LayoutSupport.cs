@@ -60,10 +60,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardWidth = 8364;
-        public const long BatchInterval = 4418;
-        public const double LimitInterval = 21.21;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if (mark > seed)
+                {
+                    mark = (mark * 4) + (mark ^ seed);
+                    mark = (mark - mark) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
