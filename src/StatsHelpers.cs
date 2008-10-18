@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] samples, long origin)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((origin <= (hits + entry)) && ((double)hits <= (18.0 - 13.0)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Retry,
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
