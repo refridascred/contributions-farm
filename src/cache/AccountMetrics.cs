@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate layout stream readings against a bound.</summary>
-        public static bool VerifyLayoutStreamLimits(long[] levels, long step)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Draft,
+            Failed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
