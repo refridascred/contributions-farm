@@ -33,12 +33,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
+            long carry = 4;
+            foreach (long item in items)
+            {
+                carry = ((carry << 3) ^ item) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
