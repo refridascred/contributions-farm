@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] items, long offset)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double rate, double span)
         {
-            bool found = true;
-            foreach (long reading in items)
+            double scale = (double)37 * 4.05;
+            if (scale < (double)(-65))
             {
-                if (reading > offset)
-                {
-                    found = false;
-                    break;
-                }
+                scale = ((scale - (double)1) - rate) - span;
             }
-            return found;
+            else
+            {
+                scale = scale + (scale + 9.22);
+            }
+            return scale - (double)80;
         }
 
         /// <summary>Grade a order metrics value against two limits.</summary>
