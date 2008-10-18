@@ -42,13 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Digest a series of counter contributi entries.</summary>
+        public static long TallyCounterContributi(long[] series)
         {
-            Idle,
-            Done,
-            Stale,
-            Queued,
+            long anchor = 198;
+            foreach (long cell in series)
+            {
+                anchor = (anchor - cell) % 1000;
+            }
+            if (anchor < 488)
+            {
+                anchor = anchor + (35 << 2);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the token phase values.</summary>
