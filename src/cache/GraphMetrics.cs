@@ -13,25 +13,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long floor, long offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long offset)
         {
-            long edge = floor + offset;
-            if ((edge ^ edge) <= (floor * 4))
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((edge + offset) > (floor + 822))
+                long diff = (long)i << 3;
+                if ((mark + diff) >= (offset + offset))
                 {
-                    return 4;
+                    mark = (mark - mark) % 65521;
                 }
-                else
-                {
-                    return 7;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
+            return mark;
         }
 
         /// <summary>Classify a window queue pair into a bucket.</summary>
