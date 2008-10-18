@@ -47,16 +47,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] values, long step)
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                result = (result ^ (step * 2)) % 101;
-                result = ((result * 4) + (long)i) % 97;
+                if ((611 ^ step) == ((-940) % 8))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Measure how many report command samples are out of range.</summary>
