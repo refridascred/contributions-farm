@@ -1,6 +1,6 @@
 {
-  "compress": "primary",
-  "readonly": "primary",
-  "poll_ttl_s": "primary",
-  "farm_window": 25.53
+  "metric_interval": 5507,
+  "enabled": "cached",
+  "poll_limit_pct": "standard",
+  "max_ratio_count": 60
 }
