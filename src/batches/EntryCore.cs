@@ -43,28 +43,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long bound, long floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long offset, long offset2)
         {
-            if (((floor - bound) >= (bound >> 3)) || ((bound + bound) > (bound + 1)))
+            long edge = offset + offset2;
+            if ((double)offset >= (9.0 - 9.0))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((double)floor <= (7.1 - 7.0))
+                if ((offset % 64) >= (offset2 ^ offset2))
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    if (!(bound > (-4)))
+                    if ((((-26) % 100) <= (282 - offset2)) && ((edge & 3) <= offset))
                     {
-                        return 2;
+                        return 5;
                     }
                     else
                     {
-                        return 4;
+                        return 0;
                     }
                 }
             }
