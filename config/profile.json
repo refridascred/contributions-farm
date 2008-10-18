@@ -1,5 +1,5 @@
 {
-  "account_size": "legacy",
-  "persist": "stable",
-  "schema_interval": [58, 304]
+  "default_interval_ms": ["staging", "stable", "fallback", "legacy"],
+  "verbose": "stable",
+  "compress": "latest"
 }
