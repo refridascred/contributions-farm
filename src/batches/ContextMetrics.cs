@@ -65,24 +65,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((5.04 / 5.0) != (double)state))
-                {
-                    state = state ^ (floor + (long)i);
-                }
-                else
-                {
-                    state = (state ^ (floor + (long)i)) % 255;
-                }
-                state = state + ((long)i * 2);
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowRatio = 2016;
+        public const long MaxSize = 9306;
+        public const string BaseRatio = "cached-1";
     }
 }
