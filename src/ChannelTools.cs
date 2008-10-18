@@ -27,31 +27,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a graph notes pair into a bucket.</summary>
-        public static long SortGraphNotes(long floor, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] samples)
         {
-            if ((floor - bound) < floor)
+            long total = 11;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-66) + bound) == (floor >> 2))
+                if (!((8 << 3) > (total & 7)))
                 {
-                    return 1;
+                    total = (total * 4) + (reading / 2);
                 }
-                else
+                if ((257 + reading) > (reading % 97))
                 {
-                    if ((3.8 / 4.0) <= (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            return total % 97;
         }
     }
 }
