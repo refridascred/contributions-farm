@@ -65,19 +65,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] samples, long floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
