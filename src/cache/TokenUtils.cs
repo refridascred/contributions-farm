@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] data)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((item % 16) > (seen ^ 46)) || ((item < (item >> 4)) && ((seen + item) < (item - seen))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Synced,
+            Done,
+            New,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
