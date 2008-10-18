@@ -12,21 +12,11 @@ namespace Common.Utilities
         public const string WindowInterval = "standard-v2";
         public const long BatchLevel = 2557;
 
-        /// <summary>Roll a stats batches counter forward.</summary>
-        public static long IterateStatsBatches(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                state = (state ^ limit) % 255;
-                for (int i3 = 0; i3 < 12; i3++)
-                {
-                    state = ((state ^ limit) % 97) - (long)i3;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstScore = "legacy-edge";
+        public const long BaseCount = 2007;
+        public const long HardQueue = 8562;
+        public const double WindowScore = 28.18;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long IterateQueue(long target)
