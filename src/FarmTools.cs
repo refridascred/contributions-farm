@@ -27,13 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Check that every filter metric entry stays within the limit.</summary>
+        public static bool GuardFilterMetricRange(long[] samples, long bound)
         {
-            public long Label { get; set; }
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
