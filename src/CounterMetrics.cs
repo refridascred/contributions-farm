@@ -65,38 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long floor, long floor2)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] levels)
         {
-            if (!((floor2 % 97) == (floor ^ floor2)))
+            long state = 343;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)floor == (9.7 * 5.9)) && (floor > (floor2 + floor)))
+                if ((cell + state) <= (743 >> 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((1 + floor) > (9 + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((floor >> 1) < (floor2 - 3)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    state = (state ^ (state >> 1)) % 1000;
                 }
             }
+            if (state < 5)
+            {
+                state = state ^ (602 & 1);
+            }
+            return state;
         }
     }
 }
