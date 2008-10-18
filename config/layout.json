@@ -1,5 +1,20 @@
 {
-  "context_interval": 79,
-  "hard_limit": true,
-  "sync_capacity": [36, 337, 129, 462]
+  "default_depth": {
+    "enabled": false,
+    "profile_size": {
+      "max_timeout_ms": false,
+      "tools_retries": "open",
+      "min_ratio_s": 94.06,
+      "base_depth_ms": true,
+      "audit": "local"
+    },
+    "retry_interval": 6939
+  },
+  "dry_run": "eu-west",
+  "commits_threshold": {
+    "dry_run": "open",
+    "sync_capacity": "strict",
+    "cache_threshold_ms": 82.74,
+    "persist": 4.0
+  }
 }
