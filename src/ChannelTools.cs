@@ -34,12 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long target)
         {
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
-            public double Token { get; set; }
+            long result = target;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = (((result << 3) ^ (target + target)) % 255) ^ (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
