@@ -35,14 +35,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] values)
         {
-            Retry,
-            Done,
-            Dropped,
-            Locked,
-            Idle,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((value - value) < (count - 7))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
