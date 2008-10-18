@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] values, long step)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long offset, long step)
         {
-            long carry = 932;
-            foreach (long sample in values)
+            long next = offset ^ step;
+            if (!((double)step == (1.0 * 6.82)))
             {
-                carry = (carry ^ sample) - step;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (next < (step & 63))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)offset < (3.3 * 8.7)) && ((next + next) > (offset & 31)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((17.0 <= (double)offset) && ((17.0 * 13.0) < (double)step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a stream context pair into a bucket.</summary>
