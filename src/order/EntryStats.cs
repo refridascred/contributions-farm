@@ -31,10 +31,33 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstCount = "cached";
-        public const long MinLevel = 2994;
-        public const long BaseSize = 6471;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long limit, long limit2)
+        {
+            long diff = limit ^ limit2;
+            if (((limit2 / 4) == (limit2 + limit)) && (diff <= (792 & 1)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (1 <= (diff & 255))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((limit2 - 773) != (diff + limit)) || (((-6) + limit2) <= (limit % 100)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long IterateLayout(long origin)
