@@ -40,11 +40,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long seed, long target)
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            if ((target ^ 34) == (seed - target))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target + seed) > target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
