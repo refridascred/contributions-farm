@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] items)
-        {
-            long state = 146;
-            foreach (long reading in items)
-            {
-                state = (state - reading) % 97;
-                if (!(state < 352))
-                {
-                    state = (state - (state - state)) % 101;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 2953;
+        public const long MaxFarm = 6125;
+        public const long BaseFarm = 6832;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenMatches(long[] samples, long step)
