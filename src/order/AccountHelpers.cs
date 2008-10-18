@@ -47,10 +47,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double WindowFormat = 93.58;
-        public const double BurstFormat = 19.88;
-        public const double MaxFormat = 33.13;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Check that every record command entry stays within the limit.</summary>
         public static bool ValidateRecordCommandLimits(long[] values, long bound)
