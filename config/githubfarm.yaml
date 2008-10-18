@@ -1,6 +1,18 @@
 # githubfarm settings
-readonly: open
-buffer_timeout: true
-min_capacity: blue
-hard_depth: 7969
-min_timeout_ms: 99
+cache_retries_ms: 3447
+burst_timeout_s:
+  - 264
+  - 220
+  - 338
+  - 148
+idle_threshold_pct: staging
+retry_capacity: primary
+min_capacity_pct:
+  idle_limit_ms:
+    - cached
+    - edge
+  compress: 3.56
+  retry_limit_count: 14.63
+  token_delay: 100
+  hard_depth_pct: edge
+  sync_threshold: 89.89
