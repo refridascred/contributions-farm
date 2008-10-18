@@ -44,11 +44,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitRatio = 4953;
-        public const double IdleAccount = 37.94;
-        public const double MinAccount = 90.85;
-        public const long LimitSpan = 7928;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many cluster channel samples are out of range.</summary>
         public static long CountClusterChannelOutliers(long[] samples, long target)
