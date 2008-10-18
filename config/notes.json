@@ -1,6 +1,9 @@
 {
-  "metric_interval": 5507,
-  "enabled": "cached",
-  "poll_limit_pct": "standard",
-  "max_ratio_count": 60
+  "persist": {
+    "poll_delay": 7590,
+    "compress": "strict",
+    "checks_ttl": "strict"
+  },
+  "burst_ttl": "staging",
+  "flush_limit_pct": "stable"
 }
