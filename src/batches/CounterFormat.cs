@@ -30,13 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] items)
         {
-            Synced,
-            Queued,
-            Retry,
-            Draft,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (matches > (sample ^ sample))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
