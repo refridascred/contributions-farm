@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] samples, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((matches + (-18)) < matches)
+                if ((tally / 8) > (item + 467))
                 {
-                    matches = ((matches + 2) ^ cell) + limit;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
