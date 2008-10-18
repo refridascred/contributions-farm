@@ -40,15 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Classify a notes route pair into a bucket.</summary>
+        public static long BucketNotesRoute(long seed, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
+            if (!((0 % 97) >= seed))
             {
-                score = ((score * 4) + (long)i) % 1000;
+                return 4;
             }
-            return score;
+            else
+            {
+                if (((limit * 2) >= (limit ^ limit)) || ((seed % 10) == (limit / 8)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed & 3) == (seed >> 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((-2) + limit) >= (limit >> 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
