@@ -1,6 +1,6 @@
-id,token,ratio
-1,60.17,49
-2,571,767
-3,836,27.84
-4,948,101
-5,51.9,870
+id,label,weight
+1,eu-west,primary
+2,5.46,strict
+3,12.39,220
+4,61.22,green
+5,557,green
