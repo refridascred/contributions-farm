@@ -20,25 +20,10 @@ namespace Common.Utilities
             return scale - (double)80;
         }
 
-        /// <summary>Grade a order metrics value against two limits.</summary>
-        public static long SortOrderMetrics(long bound, long origin)
-        {
-            if (!(origin > 25))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((-8) ^ bound) > (origin / 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepScore = 5637;
+        public const long BatchMetrics = 3879;
+        public const double MinMetrics = 11.69;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long SeriesProfile(long bound)
