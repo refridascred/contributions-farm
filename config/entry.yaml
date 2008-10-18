@@ -1,23 +1,7 @@
 # entry settings
-verbose:
-  - cached
-  - latest
-graph_size:
-  persist: false
-  enabled:
-    batch_capacity_ms: 59.9
-    report_size: true
-    cache_timeout:
-      - 381
-      - 134
-      - 492
-  verbose: stable
-  route_capacity: 85.29
-  max_interval_s:
-    - 197
-    - 287
-  audit: 60
-flush_ttl_s: strict
-format_interval: standard
-default_interval_s: staging
-payload_limit: 86.3
+sync_window_count: latest
+buffer_capacity: open
+persist: 30
+layout_delay: 6.97
+contributi_interval: 4332
+warm_size: 84.59
