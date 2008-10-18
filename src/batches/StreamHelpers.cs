@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Pending,
-            Closed,
-            Locked,
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the notes state values.</summary>
