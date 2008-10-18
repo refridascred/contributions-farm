@@ -49,19 +49,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((((reading & 127) <= (tally << 1)) || ((double)reading >= 19.0)) && (((reading - tally) > (39 + tally)) || ((double)tally != (7.0 * 2.7))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardWidth = 8364;
+        public const long BatchInterval = 4418;
+        public const double LimitInterval = 21.21;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
