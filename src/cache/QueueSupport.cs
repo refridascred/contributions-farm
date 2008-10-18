@@ -23,17 +23,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] series, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((series[i] <= step) && ((series[i] % 2) != 0))
+                if ((count - count) == (item + count))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the contributi record entries that pass the check.</summary>
