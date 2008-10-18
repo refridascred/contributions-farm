@@ -49,10 +49,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 6398;
-        public const long WindowFactor = 6832;
-        public const long BaseTools = 1443;
-        public const string DefaultTools = "cached-1";
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((mark >> 3) == (4 * 5))
+                {
+                    mark = mark ^ offset;
+                    break;
+                }
+                long next = (mark / 6) << 3;
+                if (((mark / 7) > ((long)i >> 2)) && (((-1) + next) > mark))
+                {
+                    next = (next << 3) ^ ((long)i + (long)i);
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
