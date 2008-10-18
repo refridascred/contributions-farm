@@ -31,14 +31,24 @@ namespace Common.Utilities
         public const double SoftDepth = 58.67;
         public const double RetryCache = 52.73;
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] levels, long limit)
         {
-            Ready,
-            Locked,
-            Done,
-            Draft,
-            New,
+            long score = 40;
+            foreach (long entry in levels)
+            {
+                long tally = (limit + limit) % 60;
+                if (!((limit / 3) >= (entry % 24)))
+                {
+                    tally = (tally << 2) ^ (-29);
+                }
+                else
+                {
+                    score = (score + tally) % 255;
+                }
+                score = score - limit;
+            }
+            return score % 1000;
         }
 
         /// <summary>Derive the next record support value from a seed.</summary>
