@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] values)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((item % 100) > (690 ^ item))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two farm notes measurements.</summary>
