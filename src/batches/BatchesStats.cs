@@ -40,12 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftLevel = 9008;
-        public const string MaxInterval = "strict-edge";
-        public const long SoftSession = 929;
-        public const string MaxSession = "staging-1";
-        public const long WindowInterval = 7309;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "legacy-v2";
+        public const long DefaultEntry = 2440;
+        public const long BaseEntry = 5979;
+        public const string CacheEntry = "strict-edge";
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportOutliers(long[] levels, long origin)
