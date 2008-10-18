@@ -20,39 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank metrics stream input into a small class.</summary>
-        public static long ClassifyMetricsStream(long step, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] data, long origin)
         {
-            long lane = step ^ limit;
-            if ((lane % 3) > 512)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step >> 5) < (step + step))
+                if (sample < origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(step < 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit & 31) <= limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
