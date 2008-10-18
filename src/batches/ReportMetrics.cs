@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] series)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((double)seen > (3.0 - 8.22))
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public bool Score { get; set; }
+            public double Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a channel checks sample.</summary>
