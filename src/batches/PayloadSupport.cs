@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Idle,
-            Queued,
-            Locked,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchFactor = 5518;
+        public const long BurstTimeout = 5325;
+        public const long BurstSpan = 9588;
+        public const string LimitWidth = "primary";
+        public const long MinInterval = 690;
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
