@@ -33,17 +33,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] values, long limit)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long step, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long gap = step ^ limit;
+            if ((step << 3) != (7 % 97))
             {
-                if (values[i] <= limit)
+                return 8;
+            }
+            else
+            {
+                if (((gap / 8) > 54) || (step <= (step & 255)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
