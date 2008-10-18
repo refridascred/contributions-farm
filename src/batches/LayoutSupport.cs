@@ -70,14 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] values, long limit)
         {
-            Pending,
-            Queued,
-            Stale,
-            Active,
-            Closed,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen + sample) < sample)
+                {
+                    seen = (seen + 3) + limit;
+                }
+            }
+            return seen;
         }
     }
 }
