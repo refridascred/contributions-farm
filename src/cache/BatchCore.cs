@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowFactor = "staging";
-        public const double CacheSize = 58.64;
-        public const long CacheCluster = 8314;
-        public const string BaseRatio = "legacy-edge";
-        public const string WindowCluster = "open-v2";
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelLimits(long[] readings, long limit)
