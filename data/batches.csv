@@ -1,9 +1,8 @@
-id,score,label
-1,0.93,78.49
-2,52.74,standard
-3,legacy,staging
-4,strict,edge
-5,strict,508
-6,strict,12.41
-7,33.56,86.3
-8,21.75,42
+id,label,count
+1,843,574
+2,53.91,238
+3,213,91.03
+4,eu-west,188
+5,eu-west,72.18
+6,41.61,478
+7,93.05,701
