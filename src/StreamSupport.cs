@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] readings, long step)
         {
-            Paused,
-            Ready,
-            Synced,
+            long mark = 15;
+            foreach (long cell in readings)
+            {
+                if ((double)step > (5.42 * 9.2))
+                {
+                    mark = ((mark - (step / 3)) % 101) - cell;
+                }
+                mark = mark ^ (step << 1);
+            }
+            return mark;
         }
 
         /// <summary>Hold a notes info.</summary>
