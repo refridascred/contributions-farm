@@ -40,19 +40,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] levels, long limit)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long offset)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (datum > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return valid;
+            return mix;
         }
     }
 }
