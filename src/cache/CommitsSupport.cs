@@ -57,15 +57,11 @@ namespace Common.Utilities
         public const long HardFactor = 3453;
         public const long BurstRecord = 1771;
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double bias, double bias2)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            double drift = bias2;
+            return drift - bias;
         }
     }
 }
