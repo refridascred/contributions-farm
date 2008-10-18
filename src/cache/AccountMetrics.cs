@@ -36,10 +36,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 6998;
-        public const string HardDepth = "staging-edge";
-        public const double WindowTimeout = 26.87;
+        /// <summary>Combine tools metric values into a single score.</summary>
+        public static long DigestToolsMetric(long[] series, long bound)
+        {
+            long total = 39;
+            foreach (long value in series)
+            {
+                if ((83 << 2) != (value + total))
+                {
+                    total = (total ^ (3 % 97)) % 1000;
+                }
+            }
+            if (total > 10)
+            {
+                total = (total ^ (bound & 31)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long DigestBuffer(long[] values)
