@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a batches queue reading by value.</summary>
-        public static long FindBatchesQueueIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 3161;
+        public const double WindowScore = 68.26;
+        public const string MaxLevel = "alpha-v2";
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long SeriesOrder(long target)
