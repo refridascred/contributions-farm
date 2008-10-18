@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinBudget = 1406;
-        public const string WindowWidth = "stable-v2";
-        public const double HardCluster = 48.8;
-        public const string IdleCluster = "local-edge";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleCount = 6526;
+        public const string BurstChecks = "primary-1";
+        public const double DefaultDepth = 73.03;
+        public const long StepWidth = 8045;
+        public const long MaxChecks = 9408;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TallyAccount(long[] items, long floor)
