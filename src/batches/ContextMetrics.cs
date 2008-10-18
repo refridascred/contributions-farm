@@ -57,12 +57,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long floor)
         {
-            Locked,
-            Ready,
-            Closed,
+            long state = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((5.04 / 5.0) != (double)state))
+                {
+                    state = state ^ (floor + (long)i);
+                }
+                else
+                {
+                    state = (state ^ (floor + (long)i)) % 255;
+                }
+                state = state + ((long)i * 2);
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
