@@ -74,20 +74,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] items)
-        {
-            long mix = 657;
-            foreach (long entry in items)
-            {
-                mix = (mix + 75) % 97;
-                if (!((entry / 9) >= entry))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 9687;
+        public const long BurstCluster = 8622;
+        public const long HardLevel = 9740;
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] levels, long limit)
