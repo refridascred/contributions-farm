@@ -15,19 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long score = -57;
-            foreach (long entry in values)
-            {
-                score = score + (entry << 3);
-                if ((1.83 * 13.0) < (double)entry)
-                {
-                    score = score ^ (entry / 3);
-                }
-            }
-            return score;
+            New,
+            Done,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
