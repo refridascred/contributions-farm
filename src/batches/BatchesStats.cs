@@ -40,22 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftLevel = 9008;
+        public const string MaxInterval = "strict-edge";
+        public const long SoftSession = 929;
+        public const string MaxSession = "staging-1";
+        public const long WindowInterval = 7309;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportOutliers(long[] levels, long origin)
