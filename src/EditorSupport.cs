@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double gain, double offset)
         {
-            Ready,
-            Locked,
-            New,
+            double bias = offset;
+            if (bias > (5.67 / 4.0))
+            {
+                bias = bias + gain;
+            }
+            return bias + offset;
         }
 
         /// <summary>Describe the schema kind values.</summary>
