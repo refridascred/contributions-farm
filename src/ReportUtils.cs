@@ -46,22 +46,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] series)
+        /// <summary>Count the stats support entries that pass the check.</summary>
+        public static long AuditStatsSupportGaps(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((reading >> 5) >= (seen * 4))
+                if ((790 / 8) > (datum & 15))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 2) - offset;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank account input into a small class.</summary>
