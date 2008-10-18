@@ -19,11 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultQueue = "latest-1";
-        public const long WindowQueue = 8246;
-        public const long BurstScore = 9823;
-        public const long BurstQueue = 1163;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public double Flag { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Check that every counter session entry stays within the limit.</summary>
         public static bool ValidateCounterSessionRange(long[] readings, long offset)
