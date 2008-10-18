@@ -71,11 +71,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 2960;
-        public const long HardFactor = 2310;
-        public const string BatchLevel = "stable-v2";
-        public const long CacheContributi = 8509;
-        public const long StepContributi = 7004;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
+            public bool Count { get; set; }
+        }
     }
 }
