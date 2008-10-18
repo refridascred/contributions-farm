@@ -65,15 +65,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] samples)
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if ((count % 16) == (155 % 3))
+                {
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
