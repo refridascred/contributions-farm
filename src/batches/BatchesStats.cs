@@ -27,12 +27,16 @@ namespace Common.Utilities
         public const long SoftCluster = 7407;
         public const long MaxSize = 3004;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxRatio = 9819;
-        public const long BurstCache = 9600;
-        public const long HardTimeout = 8586;
-        public const string StepTimeout = "latest";
-        public const long RetryCache = 3697;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Derive the next session tools value from a seed.</summary>
         public static long DeriveSessionTools(long floor)
