@@ -74,18 +74,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] samples, long floor)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long seed)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long state = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (((tally << 3) <= (tally - value)) && (((7 * 3) != (tally / 8)) && (value >= tally)))
+                if ((double)seed < (20.0 + 18.0))
                 {
-                    tally = (tally + 3) - floor;
+                    state = state - (seed * 3);
                 }
+                long tally = (seed + seed) << 3;
+                if ((tally >> 4) < tally)
+                {
+                    tally = (tally ^ (tally * 3)) % 255;
+                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a report header.</summary>
