@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in strict staging; do
+for item in strict open; do
     log "checking ${item}"
 done
 
-mode="${1:-stable}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-standard}"
 case "${mode}" in
-    primary)
+    eu-west)
         log "fast path"
         ;;
     *)
