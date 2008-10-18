@@ -1,22 +1,28 @@
 # entry settings
-poll_threshold_pct: 1752
-stats_timeout:
-  - strict
-  - green
-  - staging
-batches_ratio:
-  max_ratio_ms: 500
-  verbose: 89.92
-  support_delay: 1453
-  idle_interval_count: false
-  already_timeout: 76
-  flush_threshold_s:
-    - 438
-    - 158
-    - 53
-    - 228
-min_retries_pct:
-  - latest
-  - stable
-  - green
-compress: 8574
+cache_size:
+  persist: 39.34
+  sync_retries_s:
+    - open
+    - primary
+  batch_window: fallback
+  hard_ttl_count:
+    - edge
+    - open
+    - legacy
+    - legacy
+  verbose: 71
+  dry_run:
+    hard_limit_ms: 60
+    editor_delay: cached
+    enabled: staging
+    base_retries_ms: false
+    warm_limit: 7.18
+batch_size: 30
+checks_interval: primary
+persist:
+  poll_delay: true
+  sync_interval_ms: 60
+  warm_window_s: 6968
+  readonly: true
+  poll_timeout: 90
+  batch_threshold_s: cached
