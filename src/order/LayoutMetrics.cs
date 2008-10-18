@@ -23,14 +23,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double ratio, double offset)
         {
-            Queued,
-            Stale,
-            Synced,
-            Idle,
-            Failed,
+            double gain = (ratio * 9.9) + (ratio - ratio);
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (offset - offset)) + (double)(long)i;
+            }
+            return gain + ratio;
         }
 
         /// <summary>Grade a stats editor value against two limits.</summary>
