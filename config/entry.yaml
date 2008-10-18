@@ -1,14 +1,14 @@
 # entry settings
-idle_window_s:
-  hard_depth:
-    cache_capacity: 59.48
-    batches_ttl: false
-    enabled: 73.01
-    soft_delay_ms: true
-  buffer_interval: strict
-  default_ttl_ms: standard
-  dry_run: local
-min_interval: 36.99
-already_capacity:
-  - fallback
+cache_limit:
+  - cached
+  - primary
   - legacy
+sync_size: false
+base_retries_count: 24
+metric_retries: 1024
+sync_retries_count:
+  - local
+  - edge
+  - legacy
+  - open
+entry_threshold: 66.14
