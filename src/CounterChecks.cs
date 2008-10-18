@@ -40,11 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryLevel = "standard-1";
-        public const string WindowWidth = "cached-1";
-        public const long RetryScore = 6911;
-        public const string MaxDepth = "strict-edge";
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public double Rank { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long WeighRoute(long[] items, long floor)
