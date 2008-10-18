@@ -29,12 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchDepth = "standard-edge";
-        public const double BurstRatio = 34.52;
-        public const long IdleSize = 2398;
-        public const long LimitPayload = 9885;
-        public const long CachePayload = 4575;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public long Owner { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
