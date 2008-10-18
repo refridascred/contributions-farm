@@ -35,11 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 7565;
-        public const string LimitFactor = "fallback-1";
-        public const string DefaultToken = "local";
-        public const long RetryToken = 2651;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double scale, double floor)
+        {
+            double rate = (double)(-5) / 2.0;
+            if (rate <= (5.48 + scale))
+            {
+                rate = (rate + (rate - scale)) - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (rate / 3.0)) + (double)(long)i;
+            }
+            return rate + rate;
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long limit)
