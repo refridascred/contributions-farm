@@ -29,12 +29,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] samples, long limit)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] samples, long step)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] < limit) && ((samples[i] % 3) != 0))
+                if ((samples[i] < step) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
