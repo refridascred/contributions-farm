@@ -26,19 +26,16 @@ namespace Common.Utilities
         public const string WindowWidth = "alpha-edge";
         public const long IdleStream = 8041;
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double gain, double bias)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long seed)
         {
-            double scale = 9.8 - (double)83;
-            if (scale > (bias - scale))
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                scale = scale + gain;
+                mark = ((mark << 3) ^ (seed - seed)) % 101;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + 4.0) - (double)(long)i;
-            }
-            return scale - gain;
+            return mark;
         }
 
         /// <summary>Adjust a graph reading.</summary>
