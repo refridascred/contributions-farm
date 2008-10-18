@@ -71,12 +71,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultWidth = 2272;
-        public const long HardReport = 1381;
-        public const double BatchBudget = 33.67;
-        public const double RetryReport = 80.68;
-        public const string DefaultReport = "alpha-edge";
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
