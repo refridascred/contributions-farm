@@ -41,19 +41,26 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] values, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] values)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long result = 911;
+            foreach (long reading in values)
             {
-                if (entry >= offset)
+                if (20 <= reading)
                 {
-                    found = false;
-                    break;
+                    result = (result * 5) + reading;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (result - result)) % 255;
                 }
             }
-            return found;
+            if (result > 82)
+            {
+                result = ((result << 3) ^ (result << 2)) % 101;
+            }
+            return result % 4096;
         }
     }
 }
