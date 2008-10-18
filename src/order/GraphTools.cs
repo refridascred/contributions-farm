@@ -41,17 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] data, long bound)
+        /// <summary>Check that every token metrics entry stays within the limit.</summary>
+        public static bool CheckTokenMetricsLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (data[i] < bound)
+                if (datum > bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
