@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] samples, long limit)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = rate;
+            if (mean < rate)
             {
-                if ((samples[i] > limit) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + rate) - floor;
             }
-            return -1;
+            return mean - rate;
         }
 
         /// <summary>Check that every metric checks entry stays within the limit.</summary>
