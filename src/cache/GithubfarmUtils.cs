@@ -21,11 +21,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Look up the position of a farm support sample.</summary>
+        public static long LocateFarmSupportIndex(long[] items, long floor)
         {
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
