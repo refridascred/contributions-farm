@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long offset)
         {
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            long state = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                state = (state + offset) % 101;
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Derive the next already githubfarm value from a seed.</summary>
