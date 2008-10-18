@@ -31,12 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] levels)
         {
-            public double Offset { get; set; }
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell - seen) < cell)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
