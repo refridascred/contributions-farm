@@ -1,17 +1,15 @@
 # entry settings
-persist: 88.95
-warm_size_s: 46
-flush_window_s:
-  - 74
-  - 381
-  - 242
-default_interval_s:
-  - fallback
-  - stable
-warm_retries_count: 100
-batch_capacity_ms:
-  batch_capacity_count: 100
-  base_capacity_count: false
-  payload_limit: false
-  cache_depth_s: staging
-  token_capacity: true
+verbose:
+  - 281
+  - 304
+  - 4
+  - 441
+strict: 30
+compress: 8497
+warm_retries:
+  notes_limit: 53.83
+  max_timeout: 100
+  soft_ttl_count: false
+  layout_threshold:
+    - 308
+    - 104
