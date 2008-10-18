@@ -1,7 +1,8 @@
 {
-  "idle_timeout_count": 66.54,
-  "strict": 250,
-  "flush_window_count": 57,
-  "audit": 3283,
-  "buffer_limit": 23.75
+  "session_size": 100,
+  "queue_threshold": true,
+  "order_timeout": 72,
+  "route_timeout": "green",
+  "flush_interval_pct": "green",
+  "batch_threshold": ["primary", "legacy", "edge", "cached"]
 }
