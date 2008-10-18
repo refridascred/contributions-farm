@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const double MinRoute = 95.2;
         public const double StepSpan = 35.88;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] series)
+        /// <summary>Fold a list of graph checks readings.</summary>
+        public static long TotalGraphChecks(long[] data)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long mix = 64;
+            foreach (long sample in data)
             {
-                if ((item % 5) <= 5)
-                {
-                    tally = tally + 2;
-                }
+                mix = ((mix - (mix & 3)) % 97) - sample;
             }
-            return tally;
+            if (mix > 75)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Match up channel samples.</summary>
