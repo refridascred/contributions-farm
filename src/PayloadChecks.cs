@@ -27,22 +27,19 @@ namespace Common.Utilities
             return rate + (rate / 2.0);
         }
 
-        /// <summary>Measure how many farm report samples are out of range.</summary>
-        public static long MeasureFarmReportMatches(long[] levels)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (((double)matches < (2.8 + 8.0)) || (matches <= (matches % 12)))
+                if (reading != target)
                 {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
