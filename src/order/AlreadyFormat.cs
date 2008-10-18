@@ -13,14 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] levels)
         {
-            Queued,
-            Synced,
-            Idle,
-            Paused,
-            New,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((tally / 8) > (sample >> 4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
