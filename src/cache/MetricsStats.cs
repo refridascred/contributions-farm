@@ -49,15 +49,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] readings, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long item in readings)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                if (item != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Hold a stats header.</summary>
