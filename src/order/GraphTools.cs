@@ -61,22 +61,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many report command samples are out of range.</summary>
-        public static long MeasureReportCommandGaps(long[] items)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((hits & 3) == (hits + hits))
-                {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            New,
+            Locked,
         }
     }
 }
