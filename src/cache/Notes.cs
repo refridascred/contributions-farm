@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count batches window pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesWindowCount(long[] readings)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 795;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (mark >= target)
                 {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (((mark * 3) + target) % 65521) ^ entry;
                 }
             }
-            return tally;
+            if (mark < 287)
+            {
+                mark = (mark << 3) ^ (583 + target);
+            }
+            return mark;
         }
 
         /// <summary>Define order limits and defaults.</summary>
