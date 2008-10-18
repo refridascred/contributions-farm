@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((long)i - total) > floor)
-                {
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the tools status values.</summary>
