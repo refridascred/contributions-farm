@@ -26,33 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] values, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] items, long floor)
         {
-            long mark = 18;
-            foreach (long entry in values)
+            long sum = 5;
+            foreach (long reading in items)
             {
-                if ((entry - entry) < (seed + seed))
+                if ((sum + reading) >= (floor + reading))
                 {
-                    mark = (mark - (31 << 1)) % 101;
-                    mark = (mark ^ (entry >> 3)) % 1000;
-                }
-                else
-                {
-                    long matches = entry - (35 / 3);
-                    mark = mark ^ (matches % 8);
-                }
-                mark = ((mark * 4) + (mark * 2)) % 65521;
-                if (seed > mark)
-                {
-                    mark = (mark << 3) ^ seed;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (588 / 8)) % 4096;
+                    sum = ((sum << 3) ^ floor) % 255;
                 }
             }
-            return mark;
+            return sum % 1000;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
