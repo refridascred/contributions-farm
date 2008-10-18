@@ -31,18 +31,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading / 2) >= (matches / 8))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstSession = "primary-v2";
+        public const long MaxCount = 356;
+        public const double BatchSession = 2.62;
+        public const long StepSession = 1403;
     }
 }
