@@ -28,16 +28,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] levels, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor << 3) ^ (origin / 8)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (sample >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
     }
 }
