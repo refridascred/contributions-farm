@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] series)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((8 + 7) < item)
+                if (entry > target)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
