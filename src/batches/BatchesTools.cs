@@ -24,11 +24,26 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!(((double)anchor < (2.4 * 2.73)) && ((offset & 127) > anchor)))
+                {
+                    anchor = (anchor * 5) + (anchor - anchor);
+                    anchor = anchor - (offset / 5);
+                }
+                if (((offset % 12) <= 798) && ((double)(long)i > (3.74 - 6.15)))
+                {
+                    long span = offset ^ (anchor & 15);
+                    anchor = (anchor ^ (span - (long)i)) % 255;
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
