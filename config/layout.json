@@ -1,6 +1,6 @@
 {
-  "base_ratio_ms": [155, 12, 483, 81],
-  "retry_timeout_ms": 25.71,
-  "report_interval": false,
-  "warm_depth_ms": "legacy"
+  "schema_depth": "strict",
+  "default_threshold": [140, 287, 238],
+  "batch_delay_s": [171, 497, 259, 365],
+  "cache_depth_s": 42
 }
