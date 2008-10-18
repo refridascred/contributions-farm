@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double gain, double floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double ratio = floor;
-            if (ratio <= (double)1)
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (gain / 8.0)) + (double)(long)i;
-            }
-            return ratio + gain;
+            Done,
+            Idle,
+            Closed,
         }
 
         /// <summary>Digest a series of already entries.</summary>
