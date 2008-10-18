@@ -23,21 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] items)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark * 2) + ((long)i >> 2)) % 101;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
