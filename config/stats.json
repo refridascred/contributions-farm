@@ -1,5 +1,22 @@
 {
-  "poll_threshold": [17, 455, 394, 173],
-  "route_threshold": 3568,
-  "sync_ttl_pct": 76
+  "dry_run": ["latest", "standard", "eu-west"],
+  "min_capacity_s": 8264,
+  "enabled": {
+    "persist": 80.73,
+    "filter_ttl": 48.19,
+    "checks_ratio": {
+      "min_window_s": 96.54,
+      "max_window_count": 1024,
+      "cache_ratio": 59,
+      "soft_threshold_count": "local",
+      "batch_retries_s": 9592
+    },
+    "buffer_limit": {
+      "metric_threshold": true,
+      "base_timeout_ms": 5.55,
+      "cluster_size": false
+    },
+    "soft_ttl_count": "primary"
+  },
+  "poll_window": ["edge", "legacy", "green", "eu-west"]
 }
