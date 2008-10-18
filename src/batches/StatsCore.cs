@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 5;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (((state * 2) + (56 / 9)) ^ datum) - target;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Combine route filter values into a single score.</summary>
