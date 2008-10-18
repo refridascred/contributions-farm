@@ -36,31 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long floor, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] levels)
         {
-            if ((floor + floor) <= (floor * 3))
+            long mark = 2;
+            foreach (long cell in levels)
             {
-                return 8;
+                mark = (mark - (mark - mark)) % 101;
+                mark = ((mark << 2) ^ cell) % 97;
             }
-            else
-            {
-                if ((bound >> 3) <= (floor & 127))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor > (floor + floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
