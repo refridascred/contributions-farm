@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryDepth = 9938;
-        public const long MaxLevel = 7338;
-        public const double RetryBudget = 9.04;
-        public const long IdleQueue = 8155;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long HardWidth = 8164;
