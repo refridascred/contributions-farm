@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] readings, long floor)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Scale a contributi token figure with a bias.</summary>
