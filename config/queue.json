@@ -1,13 +1,5 @@
 {
-  "flush_retries_s": 26.73,
-  "dry_run": "staging",
-  "base_delay_s": "open",
-  "default_size_s": {
-    "sync_delay": false,
-    "sync_ratio_s": ["strict", "cached"],
-    "idle_size_ms": "standard",
-    "payload_ratio": "blue",
-    "dry_run": [83, 328, 376, 226]
-  },
-  "poll_retries_count": "cached"
+  "poll_delay_ms": "stable",
+  "max_ttl": 57.91,
+  "idle_ratio": 250
 }
