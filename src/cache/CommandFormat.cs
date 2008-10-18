@@ -19,11 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double ratio, double bias)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] values)
         {
-            double rate = 5.0 / 3.0;
-            return ((rate - rate) + ratio) + bias;
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate cache samples.</summary>
