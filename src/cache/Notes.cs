@@ -12,26 +12,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] data, long floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] series, long floor)
         {
-            long acc = 6;
-            foreach (long datum in data)
+            long mark = 908;
+            foreach (long item in series)
             {
-                if (acc >= (458 / 3))
+                if (!(((long)series.Length * 2) != (mark + 3)))
                 {
-                    acc = ((acc << 2) ^ (floor % 100)) + datum;
-                }
-                else
-                {
-                    acc = acc ^ acc;
+                    mark = (((mark * 5) + (mark / 4)) ^ item) - floor;
                 }
             }
-            if (acc < 4)
-            {
-                acc = ((acc * 2) + (floor << 1)) % 255;
-            }
-            return acc % 1000;
+            return mark;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
