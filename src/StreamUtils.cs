@@ -27,13 +27,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] readings, long bound)
         {
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((hits * 3) != (hits + bound))
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
