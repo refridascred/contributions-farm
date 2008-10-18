@@ -30,21 +30,13 @@ namespace Common.Utilities
         public const long DefaultContributi = 1605;
         public const long StepSize = 4075;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] data)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
