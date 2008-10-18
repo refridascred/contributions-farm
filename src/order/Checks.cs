@@ -72,14 +72,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] readings, long seed)
         {
-            Stale,
-            Dropped,
-            Done,
-            Draft,
-            Ready,
+            long mark = 17;
+            foreach (long reading in readings)
+            {
+                if (((mark + reading) >= reading) && ((mark - mark) <= (reading + 617)))
+                {
+                    mark = (mark + (reading + mark)) - seed;
+                }
+            }
+            return mark % 4096;
         }
     }
 }
