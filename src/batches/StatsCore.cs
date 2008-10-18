@@ -46,19 +46,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] values, long seed)
+        /// <summary>Check that every filter batch entry stays within the limit.</summary>
+        public static bool CheckFilterBatchRange(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (cell <= seed)
+                if (cell != floor)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Describe the channel class values.</summary>
