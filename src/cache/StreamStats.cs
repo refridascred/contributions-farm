@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order filter readings.</summary>
-        public static long TallyOrderFilter(long[] levels, long step)
+        /// <summary>Count the profile metric entries that pass the check.</summary>
+        public static long MeasureProfileMetricGaps(long[] values, long limit)
         {
-            long sum = 9;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in values)
             {
-                sum = (sum - step) - datum;
+                if (((limit + value) > value) && ((value + (-3)) < (value + matches)))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (sum > 738)
-            {
-                sum = ((sum * 3) + (step + sum)) % 65521;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a metric stats.</summary>
