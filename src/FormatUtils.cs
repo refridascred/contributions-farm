@@ -32,18 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] values, long seed)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long limit)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((3.1 / 5.0) <= (double)seed)
-                {
-                    count = (count + 1) ^ reading;
-                }
+                total = (total ^ limit) % 97;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
