@@ -17,19 +17,26 @@ namespace Common.Utilities
         public const long StepCluster = 774;
         public const long IdleCluster = 3774;
 
-        /// <summary>Digest a series of counter contributi entries.</summary>
-        public static long TallyCounterContributi(long[] series)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] readings, long target)
         {
-            long anchor = 198;
-            foreach (long cell in series)
+            long anchor = 7;
+            foreach (long item in readings)
             {
-                anchor = (anchor - cell) % 1000;
+                if ((anchor >> 5) < target)
+                {
+                    anchor = ((anchor ^ 9) % 4096) + item;
+                }
+                else
+                {
+                    anchor = anchor - (anchor * 3);
+                }
             }
-            if (anchor < 488)
+            if (anchor > 40)
             {
-                anchor = anchor + (35 << 2);
+                anchor = ((anchor << 2) ^ (anchor + target)) % 65521;
             }
-            return anchor;
+            return anchor % 97;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
