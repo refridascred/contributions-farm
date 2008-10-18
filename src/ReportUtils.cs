@@ -53,12 +53,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long seed, long bound)
         {
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
+            long lane = seed - bound;
+            if (!((bound - 96) < seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if (seed <= (lane - bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (seed < (seed + lane))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
