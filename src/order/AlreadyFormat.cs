@@ -32,11 +32,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleTimeout = "standard-v2";
-        public const string WindowWidth = "fallback-1";
-        public const long MinAccount = 7025;
-        public const string SoftScore = "local-v2";
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Roll a githubfarm queue counter forward.</summary>
         public static long SeriesGithubfarmQueue(long offset)
