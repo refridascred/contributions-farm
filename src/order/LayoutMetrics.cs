@@ -32,36 +32,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long target, long floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long bound, long limit)
         {
-            if (((double)floor <= (2.0 * 1.07)) || (target >= floor))
+            if ((8.78 >= (double)bound) || (bound > ((-874) ^ limit)))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if ((target & 31) == (floor - target))
+                if ((double)limit > 5.5)
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if (((double)target >= (6.0 * 2.1)) || ((target << 3) == (1 % 12)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((floor ^ target) >= floor) || ((double)target > 6.5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
