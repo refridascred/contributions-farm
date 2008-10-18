@@ -71,19 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] samples, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long score = 708;
+            foreach (long sample in series)
             {
-                if (cell < bound)
+                if ((0 / 7) > (offset + score))
                 {
-                    ready = false;
-                    break;
+                    score = (score - sample) % 65521;
                 }
             }
-            return ready;
+            if (score < 826)
+            {
+                score = score + (offset + 21);
+            }
+            return score;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
