@@ -54,18 +54,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] series, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] levels, long bound)
         {
-            long carry = 640;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((cell >= carry) || (bound <= (cell + bound)))
+                if (entry < bound)
                 {
-                    carry = carry - carry;
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
     }
 }
