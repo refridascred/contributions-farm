@@ -23,11 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 9375;
-        public const long RetryLevel = 4888;
-        public const long BatchReport = 2968;
-        public const long MinWidth = 2686;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] items, long step)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits * 3) <= (item + 8))
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BurstToken = 7565;
