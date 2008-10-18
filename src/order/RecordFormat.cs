@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long limit, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] items)
         {
-            long prev = limit ^ origin;
-            if ((24 < (limit / 7)) || ((limit % 24) > limit))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit ^ origin) > prev)
+                if ((7.58 > (double)matches) && ((double)cell >= (4.0 - 8.7)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)limit <= (16.0 + 11.0)) || (origin <= (7 * 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit + prev) < (prev - limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
