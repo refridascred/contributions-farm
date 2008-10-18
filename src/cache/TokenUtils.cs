@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] levels)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] data)
         {
             long seen = 0;
-            foreach (long item in levels)
+            foreach (long item in data)
             {
-                if (((seen / 9) <= item) || !((double)seen < (double)item))
+                if (((item % 16) > (seen ^ 46)) || ((item < (item >> 4)) && ((seen + item) < (item - seen))))
                 {
-                    seen = seen + 2;
+                    seen = seen + 1;
                 }
             }
             return seen;
