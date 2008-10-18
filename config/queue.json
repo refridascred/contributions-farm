@@ -1,7 +1,6 @@
 {
-  "min_timeout_ms": 30,
-  "sync_threshold": 8121,
-  "flush_timeout": 2417,
-  "cache_timeout": false,
-  "max_ratio_ms": 58
+  "cache_window": true,
+  "batch_window_ms": 30,
+  "warm_timeout_pct": 7057,
+  "base_ratio_pct": false
 }
