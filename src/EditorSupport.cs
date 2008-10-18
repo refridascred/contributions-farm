@@ -56,18 +56,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] readings)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((count % 8) > (count + sample))
+                if (cell <= bound)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
