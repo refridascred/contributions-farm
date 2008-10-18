@@ -67,19 +67,24 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] items, long target)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long seed, long origin)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            if ((((-4) >> 3) <= (origin + seed)) || ((seed * 3) <= origin))
             {
-                if (cell > target)
+                return 1;
+            }
+            else
+            {
+                if ((double)seed < (4.1 - 3.25))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return valid;
         }
     }
 }
