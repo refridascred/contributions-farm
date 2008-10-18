@@ -40,16 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long bound)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
             {
-                score = ((score << 2) ^ (bound + bound)) % 97;
-                score = ((score * 5) + (long)i) % 1000;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
