@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] data)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample >> 2) < (92 >> 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Paused,
+            Ready,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
