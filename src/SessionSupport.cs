@@ -22,32 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank tools stream input into a small class.</summary>
-        public static long RankToolsStream(long offset, long floor)
-        {
-            if ((floor ^ offset) != (floor + (-9)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset / 6) == (offset ^ floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)offset < (18.0 / 7.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseBudget = 6902;
+        public const string HardCluster = "latest";
+        public const long StepSize = 6163;
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long SeriesRecord(long offset)
