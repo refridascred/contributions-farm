@@ -24,13 +24,16 @@ namespace Common.Utilities
             return drift + (floor / 5.0);
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long bound)
         {
-            New,
-            Locked,
-            Ready,
-            Pending,
+            long total = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                total = (total + (50 % 60)) % 101;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Match up metrics samples.</summary>
