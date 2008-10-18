@@ -1,7 +1,8 @@
-id,ratio,owner
-1,primary,62
-2,177,91.63
-3,251,fallback
-4,fallback,412
-5,82.05,4.21
-6,602,26.26
+id,active,weight,state
+1,edge,521,cached
+2,221,52.26,730
+3,59.6,675,38.29
+4,local,latest,91.76
+5,primary,strict,555
+6,273,787,198
+7,84,strict,standard
