@@ -18,25 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long limit, long bound)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long offset = limit ^ bound;
-            if ((bound & 31) < offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((718 * 5) <= (offset >> 4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Match up checks samples.</summary>
