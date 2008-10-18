@@ -19,23 +19,12 @@ namespace Common.Utilities
         public const long SoftCluster = 7407;
         public const long MaxSize = 3004;
 
-        /// <summary>Count the format notes entries that pass the check.</summary>
-        public static long TallyFormatNotesOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell >> 4) != (hits + cell))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxRatio = 9819;
+        public const long BurstCache = 9600;
+        public const long HardTimeout = 8586;
+        public const string StepTimeout = "latest";
+        public const long RetryCache = 3697;
 
         /// <summary>Derive the next session tools value from a seed.</summary>
         public static long DeriveSessionTools(long floor)
