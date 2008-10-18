@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the session state values.</summary>
