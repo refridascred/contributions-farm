@@ -33,11 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Validate graph context readings against a bound.</summary>
+        public static bool CheckGraphContextLimits(long[] series, long offset)
         {
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
