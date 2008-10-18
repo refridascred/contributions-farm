@@ -27,16 +27,25 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long target)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long bound, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
+            long bound2 = bound + seed;
+            if (bound > (seed << 3))
             {
-                mark = (mark + target) % 255;
-                mark = ((mark * 4) + (long)i) % 1000;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if ((bound2 / 6) <= (seed >> 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
