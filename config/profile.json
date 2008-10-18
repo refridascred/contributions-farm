@@ -1,8 +1,21 @@
 {
-  "warm_ttl_count": [176, 348, 412, 184],
-  "editor_size": [287, 224, 169, 430],
-  "max_retries_s": "eu-west",
-  "cache_threshold": "fallback",
-  "warm_timeout_count": 66,
-  "report_delay": 1037
+  "channel_depth": {
+    "strict": false,
+    "base_interval": 37,
+    "max_ttl": 30,
+    "session_depth": 14
+  },
+  "default_timeout": {
+    "buffer_retries": false,
+    "notes_timeout": {
+      "hard_delay_s": ["strict", "legacy", "strict", "standard"],
+      "compress": ["standard", "local", "primary"],
+      "channel_window": 72.04
+    },
+    "retry_interval_s": 21.07,
+    "readonly": 100
+  },
+  "entry_ttl": 4142,
+  "verbose": false,
+  "soft_retries_s": "latest"
 }
