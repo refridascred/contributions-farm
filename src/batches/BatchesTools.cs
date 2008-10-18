@@ -33,12 +33,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long offset)
         {
-            Ready,
-            Dropped,
-            Synced,
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = (mix ^ offset) % 97;
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
