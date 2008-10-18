@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate order token readings against a bound.</summary>
-        public static bool CheckOrderTokenBounds(long[] levels, long offset)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long target)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long state = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (value > offset)
+                if (!((51 ^ 77) <= state))
                 {
-                    flag = false;
-                    break;
+                    state = state + target;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
