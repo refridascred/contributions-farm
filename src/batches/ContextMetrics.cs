@@ -34,18 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] samples)
+        /// <summary>Check that every layout notes entry stays within the limit.</summary>
+        public static bool CheckLayoutNotesRange(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((sample + sample) == (sample >> 4))
+                if (sample <= offset)
                 {
-                    seen = seen + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
