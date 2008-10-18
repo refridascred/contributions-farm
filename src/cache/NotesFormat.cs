@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepFactor = "legacy";
-        public const long BaseChannel = 7094;
-        public const long StepChannel = 9796;
+        /// <summary>Audit format filter readings against a rule.</summary>
+        public static long MeasureFormatFilterGaps(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((double)matches <= (9.93 * 3.4))
+                {
+                    matches = ((matches + 1) ^ entry) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long AuditEntryGaps(long[] samples)
