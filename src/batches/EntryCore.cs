@@ -51,12 +51,16 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] items, long floor)
         {
-            public double Label { get; set; }
-            public bool Mode { get; set; }
-            public double Total { get; set; }
+            long total = 50;
+            foreach (long value in items)
+            {
+                total = (((total * 5) + (floor + (long)items.Length)) % 1000) ^ value;
+                total = (total ^ (893 % 5)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
