@@ -30,18 +30,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] data, long offset)
+        /// <summary>Iterate the window contributi series from a seed.</summary>
+        public static long SeriesWindowContributi(long floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((double)offset < (9.7 + 4.07)) || (43 > (offset + 891)))
-                {
-                    tally = (tally + 2) + reading;
-                }
+                anchor = (anchor * 3) + ((long)i & 63);
+                anchor = ((anchor << 3) ^ anchor) % 97;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
