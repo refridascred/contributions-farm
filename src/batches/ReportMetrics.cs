@@ -20,19 +20,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next editor format value.</summary>
-        public static double ProjectEditorFormat(double weight, double bias)
+        /// <summary>Grade a profile contributi value against two limits.</summary>
+        public static long SortProfileContributi(long step, long offset)
         {
-            double mean = (double)(4 + 32);
-            if (mean <= (6.0 / 4.0))
+            if ((7.1 * 17.0) == (double)step)
             {
-                mean = (mean + (mean / 9.0)) - bias;
+                return 2;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                mean = (mean + (mean * 3.0)) - (double)(long)i;
+                if ((18.0 - 9.8) != (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step & 3) <= (step % 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return mean - (weight / 5.0);
         }
 
         /// <summary>Adjust a queue reading.</summary>
