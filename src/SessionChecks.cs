@@ -38,15 +38,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate githubfarm stats samples.</summary>
-        public static long ScoreGithubfarmStats(long[] readings)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long sum = 98;
-            foreach (long cell in readings)
-            {
-                sum = sum ^ (cell / 5);
-            }
-            return sum;
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
