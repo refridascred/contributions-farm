@@ -40,17 +40,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] items, long limit)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long origin, long origin2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long delta = origin - origin2;
+            if (!((3.0 - 6.2) < (double)origin))
             {
-                if (items[i] <= limit)
+                return 3;
+            }
+            else
+            {
+                if (((double)delta <= (18.0 + 3.16)) || ((origin2 % 12) >= delta))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((522 ^ origin) < (432 - origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
