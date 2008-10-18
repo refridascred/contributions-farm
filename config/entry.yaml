@@ -1,20 +1,16 @@
 # entry settings
-sync_interval:
-  queue_delay: true
-  tools_size: 53.71
-  cache_delay: true
-  base_threshold_ms: legacy
-  poll_timeout_ms:
-    audit: 29
-    farm_interval: standard
-    sync_threshold_pct: 70
-    entry_interval: fallback
-    hard_depth_s: 6120
-    order_threshold:
-      - 323
-      - 166
-      - 128
-      - 494
-  filter_retries: 3261
-persist: 74
-retry_timeout_s: 28
+layout_ttl: 59
+dry_run: local
+min_timeout_count:
+  min_capacity: false
+  schema_capacity:
+    hard_depth_count: 60
+    cluster_ratio:
+      - 140
+      - 95
+    hard_ttl_pct: fallback
+  cache_ratio_ms: true
+  command_interval: 14
+  burst_delay: 29.22
+  base_capacity: 967
+contributi_size: 32.63
