@@ -1,8 +1,7 @@
 {
-  "hard_interval": true,
-  "session_ratio": "staging",
-  "poll_delay_count": false,
-  "warm_delay_s": true,
-  "idle_threshold_s": 7646,
-  "stream_interval": "eu-west"
+  "warm_delay_count": [318, 213],
+  "account_delay": "edge",
+  "compress": 15,
+  "readonly": 500,
+  "base_delay_count": true
 }
