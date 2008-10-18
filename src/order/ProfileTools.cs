@@ -34,26 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] values, long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] levels, long limit)
         {
-            long result = 153;
-            foreach (long entry in values)
+            long mark = 580;
+            foreach (long datum in levels)
             {
-                if (result > step)
+                if ((11.0 / 4.0) != (double)limit)
                 {
-                    result = ((result << 3) ^ (entry + entry)) % 65521;
+                    mark = mark - (datum << 1);
                 }
                 else
                 {
-                    result = (result << 2) ^ (entry - entry);
+                    mark = (mark * 3) + (datum + mark);
                 }
             }
-            if (result > 43)
-            {
-                result = result ^ (1 >> 4);
-            }
-            return result;
+            return mark;
         }
 
         /// <summary>Adjust a editor record reading.</summary>
