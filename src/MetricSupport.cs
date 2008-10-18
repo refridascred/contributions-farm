@@ -16,13 +16,19 @@ namespace Common.Utilities
             return rate2 + (rate2 / 8.0);
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] items, long floor)
         {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Ratio { get; set; }
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every editor buffer entry stays within the limit.</summary>
