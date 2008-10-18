@@ -15,26 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] series, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] values)
         {
-            long mark = 130;
-            foreach (long entry in series)
+            long anchor = 595;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    mark = ((mark ^ (seed << 2)) % 101) - (long)i;
-                }
-                if ((5.0 - 5.7) <= (double)entry)
-                {
-                    mark = (mark << 2) ^ (25 + mark);
-                }
-                if ((double)seed != (2.3 - 13.0))
-                {
-                    break;
-                }
+                anchor = ((anchor + (6 + anchor)) % 4096) - cell;
             }
-            return mark;
+            if (anchor < 5)
+            {
+                anchor = (anchor + (anchor & 15)) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
