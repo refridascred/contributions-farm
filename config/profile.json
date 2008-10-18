@@ -1,11 +1,12 @@
 {
-  "command_size": 78.21,
-  "metrics_size": [216, 141],
-  "soft_size": {
-    "cache_ratio": 8261,
-    "filter_window": [4, 417, 487, 227],
-    "cache_delay": true
+  "cache_delay_s": {
+    "soft_retries_count": false,
+    "dry_run": 40,
+    "default_retries_pct": [137, 398, 77],
+    "warm_size_ms": "legacy"
   },
-  "compress": 58.16,
-  "cache_capacity_ms": 1287
+  "format_size": true,
+  "dry_run": "staging",
+  "flush_delay_ms": "local",
+  "window_depth": 30
 }
