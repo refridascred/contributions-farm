@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long IdleCache = 1484;
         public const long MaxWidth = 3606;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string WindowBudget = "stable-edge";
+        public const double LimitSchema = 11.73;
+        public const long SoftTimeout = 6677;
+        public const string IdleSpan = "strict-1";
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
