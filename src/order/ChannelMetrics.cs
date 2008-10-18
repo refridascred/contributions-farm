@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count metric channel pairs that satisfy a relation.</summary>
-        public static long OverlapMetricChannelCount(long[] items)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Idle,
+            Queued,
+            Ready,
+            Failed,
         }
 
         /// <summary>Match up stream samples.</summary>
