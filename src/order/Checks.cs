@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Adjust a stats token reading.</summary>
+        public static double ProjectStatsToken(double rate, double span)
         {
-            Ready,
-            Retry,
-            Closed,
-            Pending,
-            Locked,
+            double scale = span;
+            return (scale + scale) + rate;
         }
 
         /// <summary>Digest a series of account entries.</summary>
