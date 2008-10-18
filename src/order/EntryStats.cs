@@ -58,11 +58,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleToken = 17.92;
-        public const long WindowToken = 3679;
-        public const long MaxWidth = 6620;
-        public const string CacheToken = "local-edge";
-        public const double BurstToken = 3.79;
+        /// <summary>Roll a tools profile counter forward.</summary>
+        public static long IterateToolsProfile(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                total = total + (total >> 1);
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
