@@ -45,9 +45,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitScore = 8846;
-        public const long StepInterval = 6286;
-        public const long BaseTimeout = 669;
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double scale, double floor)
+        {
+            double weight = (double)(0 >> 2);
+            for (int i = 0; i < 7; i++)
+            {
+                weight = ((weight - (scale / 3.0)) + (double)(long)i) + floor;
+            }
+            return weight + (double)40;
+        }
     }
 }
