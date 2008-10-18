@@ -1,21 +1,22 @@
 # support settings
-sync_threshold_pct: 69.98
-poll_limit_s: true
-batch_limit:
-  idle_limit_pct: local
-  sync_threshold: open
-  enabled: eu-west
-  cache_interval_ms:
-    default_delay_s: 78
-    min_ttl_s: stable
-    strict: open
-    cache_capacity_pct: eu-west
-    poll_depth_pct: 1747
-  hard_capacity_pct: false
-  metrics_size: 23
-support_window:
-  - 259
-  - 257
-  - 367
-  - 375
-min_capacity_ms: true
+already_interval:
+  - 397
+  - 41
+  - 164
+  - 26
+dry_run: 8722
+schema_window:
+  - 132
+  - 321
+audit:
+  farm_retries: legacy
+  compress:
+    batch_capacity_pct: 60
+    batch_ratio: 500
+    readonly: 3350
+    persist: legacy
+    base_capacity: 50
+    context_delay:
+      - legacy
+      - standard
+  retry_timeout: 97.05
