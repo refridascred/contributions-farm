@@ -1,6 +1,8 @@
-id,level
-1,green
-2,917
-3,strict
-4,stable
-5,544
+id,ratio,active
+1,95.68,stable
+2,legacy,open
+3,9.41,blue
+4,11.22,blue
+5,staging,524
+6,open,243
+7,19.92,838
