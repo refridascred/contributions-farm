@@ -26,10 +26,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 2468;
-        public const long RetryCount = 3369;
-        public const double LimitWidth = 33.2;
-        public const string MinLevel = "cached";
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
+        {
+            Draft,
+            Ready,
+            Retry,
+            Synced,
+        }
     }
 }
