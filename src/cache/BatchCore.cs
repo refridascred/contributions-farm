@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Check that every cache record entry stays within the limit.</summary>
+        public static bool ValidateCacheRecordLimits(long[] samples, long floor)
         {
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define command limits and defaults.</summary>
