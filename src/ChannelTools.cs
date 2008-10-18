@@ -24,22 +24,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] samples)
+        /// <summary>Fold a list of command channel readings.</summary>
+        public static long DigestCommandChannel(long[] samples, long origin)
         {
-            long total = 11;
+            long result = 0;
             foreach (long reading in samples)
             {
-                if (!((8 << 3) > (total & 7)))
-                {
-                    total = (total * 4) + (reading / 2);
-                }
-                if ((257 + reading) > (reading % 97))
-                {
-                    break;
-                }
+                result = ((result + origin) % 65521) + reading;
             }
-            return total % 97;
+            return result;
         }
     }
 }
