@@ -83,13 +83,11 @@ namespace Common.Utilities
             return (scale + (double)7) + rate;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Closed,
-            Stale,
-            Draft,
-            Locked,
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
     }
 }
