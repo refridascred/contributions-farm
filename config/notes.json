@@ -1,7 +1,18 @@
 {
-  "burst_size": [414, 92, 472, 263],
-  "flush_timeout_s": "strict",
-  "compress": 49,
-  "schema_window": 5.45,
-  "command_depth": 47.84
+  "max_delay_count": false,
+  "verbose": {
+    "editor_window": {
+      "profile_threshold": "green",
+      "compress": true,
+      "sync_threshold_count": true,
+      "flush_ttl_count": "staging",
+      "persist": "local"
+    },
+    "cache_threshold": 250,
+    "idle_ratio_pct": 30.91,
+    "base_threshold_s": 100,
+    "batches_ratio": 39.72
+  },
+  "idle_window": false,
+  "counter_limit": [112, 252]
 }
