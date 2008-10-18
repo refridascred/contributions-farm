@@ -47,12 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public bool Score { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 3737;
+        public const string StepCommand = "open-edge";
+        public const string BatchCommand = "alpha-edge";
+        public const long MinInterval = 8909;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long MeasureBatchesGaps(long[] levels)
