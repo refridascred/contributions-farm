@@ -1,8 +1,5 @@
 {
-  "layout_delay": 30,
-  "warm_ratio_s": "standard",
-  "metric_limit": "cached",
-  "readonly": 500,
-  "strict": ["latest", "fallback", "primary"],
-  "enabled": [417, 196, 212, 182]
+  "poll_threshold": [17, 455, 394, 173],
+  "route_threshold": 3568,
+  "sync_ttl_pct": 76
 }
