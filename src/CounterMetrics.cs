@@ -18,19 +18,31 @@ namespace Common.Utilities
         public const long HardQueue = 8562;
         public const double WindowScore = 28.18;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long target)
+        /// <summary>Rank order profile input into a small class.</summary>
+        public static long BucketOrderProfile(long offset, long step)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            if (offset >= (step - step))
             {
-                if ((score ^ (long)i) < target)
-                {
-                    score = (score - (2 ^ target)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 97;
+                return 5;
             }
-            return score;
+            else
+            {
+                if (((45 << 3) != (step - offset)) && (step >= (step - offset)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step + step) >= 773)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every filter layout entry stays within the limit.</summary>
