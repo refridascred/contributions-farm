@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const string WindowInterval = "standard-v2";
         public const long BatchLevel = 2557;
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Done,
-            Failed,
-            Paused,
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Grade a report value against two limits.</summary>
