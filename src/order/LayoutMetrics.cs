@@ -31,24 +31,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long bound, long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] items, long bound)
         {
-            if ((8.78 >= (double)bound) || (bound > ((-874) ^ limit)))
+            long score = 202;
+            foreach (long datum in items)
             {
-                return 7;
+                score = (((score * 4) + datum) % 97) - bound;
             }
-            else
-            {
-                if ((double)limit > 5.5)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return score;
         }
     }
 }
