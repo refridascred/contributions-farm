@@ -1,15 +1,15 @@
 # Command notes
 
-The checks module keeps tools values in sync with the payload cache.
-The metrics module keeps support values in sync with the format cache.
-Run the report check before changing any format limits.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Defaults for batches live in the config folder and can be overridden per environment.
+When a metric fails, the editor handler retries a few times before giving up.
 
-A farm that stays idle for too long is moved to the metrics list.
-The payload module keeps githubfarm values in sync with the format cache.
+Run the queue check before changing any account limits.
+Keep queue and support names short and lowercase.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Document new order fields
-- Prefer tools defaults
-- Validate metric input early
+- Document new notes fields
+- Validate cluster input early
+- Log every contributi change
