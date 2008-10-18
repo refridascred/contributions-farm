@@ -27,11 +27,18 @@ namespace Common.Utilities
         public const double SoftTimeout = 40.7;
         public const double StepSize = 73.15;
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] levels)
         {
-            public bool Count { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((327 * 2) >= (12 + entry))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
