@@ -36,14 +36,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Done,
-            Closed,
-            Dropped,
             Idle,
-            Queued,
+            Dropped,
+            Closed,
+            Locked,
         }
     }
 }
