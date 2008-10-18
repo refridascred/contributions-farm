@@ -29,18 +29,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] readings, long origin)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long origin)
         {
-            long mark = -83;
-            foreach (long cell in readings)
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((mark << 2) <= (779 + mark))
+                sum = sum ^ (sum << 2);
+                if (origin <= (origin + sum))
                 {
-                    mark = (mark + (origin << 1)) ^ cell;
+                    sum = (sum << 2) ^ 3;
+                    break;
                 }
+                else
+                {
+                    sum = sum + (origin >> 4);
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return mark % 1000;
+            return sum;
         }
 
         /// <summary>Hold a session header.</summary>
