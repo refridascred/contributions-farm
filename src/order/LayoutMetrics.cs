@@ -57,22 +57,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stats editor value against two limits.</summary>
-        public static long RankStatsEditor(long bound, long limit)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long target, long floor)
         {
-            if (5 >= (limit + bound))
+            if (((double)floor <= (2.0 * 1.07)) || (target >= floor))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((bound * 5) <= (35 >> 1))
+                if ((target & 31) == (floor - target))
                 {
                     return 0;
                 }
                 else
                 {
-                    return 6;
+                    if (((double)target >= (6.0 * 2.1)) || ((target << 3) == (1 % 12)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((floor ^ target) >= floor) || ((double)target > 6.5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
