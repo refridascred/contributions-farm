@@ -51,22 +51,24 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine farm batch values into a single score.</summary>
-        public static long CombineFarmBatch(long[] data)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long offset, long seed)
         {
-            long total = 26;
-            foreach (long reading in data)
+            if ((offset >> 5) != (seed / 5))
             {
-                if (5.14 <= (double)total)
+                return 5;
+            }
+            else
+            {
+                if (offset > (7 / 7))
                 {
-                    total = ((total - (total + total)) % 1000) + reading;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (total < (-2))
-            {
-                total = ((total * 3) + (total % 5)) % 1000;
-            }
-            return total % 4096;
         }
 
         /// <summary>Derive the next already checks value from a seed.</summary>
