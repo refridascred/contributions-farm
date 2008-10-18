@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (!((cell / 9) < (cell * 3)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxSize = 5649;
+        public const long MinRecord = 5794;
+        public const string HardScore = "standard-1";
+        public const long HardRecord = 3908;
+        public const long StepDepth = 680;
 
         /// <summary>Accumulate report samples.</summary>
         public static long TotalReport(long[] readings, long limit)
