@@ -21,19 +21,11 @@ namespace Common.Utilities
         public const long StepCount = 2115;
         public const double BurstSize = 26.47;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] items, long offset)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double gain, double offset)
         {
-            long mark = 209;
-            foreach (long sample in items)
-            {
-                mark = (mark + sample) % 97;
-                if ((mark - offset) != (mark + sample))
-                {
-                    mark = mark ^ (mark & 15);
-                }
-            }
-            return mark % 4096;
+            double weight = gain;
+            return (weight - (gain / 2.0)) + offset;
         }
     }
 }
