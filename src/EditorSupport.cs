@@ -43,19 +43,13 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Scale a batches command figure with a bias.</summary>
-        public static double ScaleBatchesCommand(double bias, double span)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            double ratio = span;
-            if (ratio <= 11.0)
-            {
-                ratio = (ratio - span) - bias;
-            }
-            else
-            {
-                ratio = ratio - (ratio * 7.91);
-            }
-            return ratio - span;
+            Retry,
+            Queued,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
