@@ -40,15 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] data, long bound)
         {
-            long sum = 4;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = sum ^ (value + value);
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Accumulate cache samples.</summary>
