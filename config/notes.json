@@ -1,6 +1,6 @@
 {
-  "hard_ratio": "blue",
-  "poll_window_s": "latest",
-  "githubfarm_delay": true,
-  "default_depth_count": 48.96
+  "max_threshold": false,
+  "strict": "primary",
+  "dry_run": "local",
+  "buffer_interval": true
 }
