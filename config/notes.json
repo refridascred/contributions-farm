@@ -1,5 +1,5 @@
 {
-  "retry_delay_pct": "fallback",
-  "min_ttl_pct": 8.55,
-  "default_ratio_s": 25.1
+  "hard_depth_count": 69.5,
+  "format_retries": "edge",
+  "hard_timeout_count": 100
 }
