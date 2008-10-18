@@ -52,22 +52,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] levels)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long offset, long floor)
         {
-            long mark = 3;
-            foreach (long value in levels)
+            if ((double)offset != (6.35 - 2.0))
             {
-                if (!(10.0 >= (double)value))
+                return 2;
+            }
+            else
+            {
+                if (((-73) + floor) >= (offset ^ offset))
                 {
-                    mark = mark ^ ((long)levels.Length ^ value);
+                    return 3;
+                }
+                else
+                {
+                    if (!((6.26 / 8.0) != (double)floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor << 2) < floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (mark > 9)
-            {
-                mark = ((mark << 2) ^ ((long)levels.Length << 3)) % 65521;
-            }
-            return mark;
         }
 
         /// <summary>Count notes batch pairs that satisfy a relation.</summary>
