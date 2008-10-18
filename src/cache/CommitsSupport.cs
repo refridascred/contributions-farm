@@ -31,18 +31,12 @@ namespace Common.Utilities
         public const long LimitPayload = 9885;
         public const long CachePayload = 4575;
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBudget = 6861;
+        public const long StepInterval = 2075;
+        public const string BaseInterval = "cached";
+        public const long MaxBatch = 4700;
+        public const long DefaultBatch = 4923;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool VerifyMetricsLimits(long[] samples, long offset)
