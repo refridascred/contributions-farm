@@ -70,11 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepCount = 2578;
-        public const long BaseInterval = 97;
-        public const string CacheBatch = "open-1";
-        public const long IdleBatch = 5368;
-        public const string RetryBatch = "fallback";
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Dropped,
+            Done,
+            Queued,
+        }
     }
 }
