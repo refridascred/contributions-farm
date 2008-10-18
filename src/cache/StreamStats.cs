@@ -39,18 +39,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((seen - value) > seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 3744;
+        public const double LimitCommand = 47.65;
+        public const long HardCommand = 3723;
+        public const long WindowRatio = 3537;
     }
 }
