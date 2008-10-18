@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long offset)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state + offset) % 101;
-                state = ((state * 4) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
