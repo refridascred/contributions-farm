@@ -63,12 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((long)levels.Length != (reading + 82))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
