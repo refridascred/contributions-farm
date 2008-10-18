@@ -31,14 +31,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Derive the next context route value from a seed.</summary>
+        public static long SeriesContextRoute(long origin)
         {
-            Synced,
-            New,
-            Paused,
-            Pending,
-            Locked,
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((double)origin == (9.6 * 6.0)))
+                {
+                    acc = (acc * 2) + acc;
+                }
+                acc = (acc * 3) + (origin ^ (long)i);
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
