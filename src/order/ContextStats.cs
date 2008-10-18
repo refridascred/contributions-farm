@@ -21,18 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] series)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((seen <= (seen % 97)) && (((double)seen > (6.8 - 14.0)) && ((double)seen < (6.0 * 0.27))))
+                if ((double)floor > (double)reading)
                 {
-                    seen = (seen + 1) - value;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up format samples.</summary>
