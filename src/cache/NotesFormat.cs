@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] readings)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 239;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry << 3) ^ (carry + value)) % 65521;
+                carry = ((carry * 5) + (value + value)) % 97;
+                carry = (carry - carry) % 101;
             }
-            return count;
+            if (carry < (-605))
+            {
+                carry = carry + (carry - 281);
+            }
+            return carry % 97;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
