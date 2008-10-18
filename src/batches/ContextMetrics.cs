@@ -52,17 +52,31 @@ namespace Common.Utilities
             return drift + (double)35;
         }
 
-        /// <summary>Look up the position of a notes session sample.</summary>
-        public static long LookupNotesSessionIndex(long[] readings, long offset)
+        /// <summary>Grade a order payload value against two limits.</summary>
+        public static long RankOrderPayload(long offset, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((limit >= (limit + limit)) && ((limit + 21) >= (-268)))
             {
-                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((limit >> 3) == (limit + offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset % 16) <= (offset >> 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
