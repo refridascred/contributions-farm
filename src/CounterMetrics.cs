@@ -37,32 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank token record input into a small class.</summary>
-        public static long BucketTokenRecord(long offset, long limit)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double weight, double offset)
         {
-            long gap = offset + limit;
-            if ((gap * 5) < (gap * 4))
+            double gain = (double)((-1) + 4);
+            if (gain > gain)
             {
-                return 5;
+                gain = ((gain + gain) - weight) - offset;
             }
-            else
-            {
-                if (!(gap >= (gap % 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (7.25 <= (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return gain - (double)6;
         }
 
         /// <summary>Combine support values into a single score.</summary>
