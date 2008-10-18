@@ -43,22 +43,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] data, long bound)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long diff = seed - seed2;
+            if ((double)seed < (3.43 - 2.85))
             {
-                if (bound <= (datum >> 3))
+                return 2;
+            }
+            else
+            {
+                if ((double)diff > 7.32)
                 {
-                    tally = tally + 2;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((seed / 3) < seed2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed2 > (3.11 / 4.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of contributi stats readings.</summary>
