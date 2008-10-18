@@ -23,19 +23,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Adjust a payload filter reading.</summary>
-        public static double ProjectPayloadFilter(double bias, double bias2)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] readings)
         {
-            double bias3 = bias2 * 1.92;
-            if (bias3 < (bias / 2.0))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                bias3 = bias3 + bias3;
+                if (!((datum ^ seen) >= 2))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias3 = (bias3 + (bias + 0.2)) + (double)(long)i;
-            }
-            return bias3 + bias;
+            return seen;
         }
     }
 }
