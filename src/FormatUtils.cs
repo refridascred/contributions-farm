@@ -40,22 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] series, long seed)
+        /// <summary>Accumulate metric account samples.</summary>
+        public static long WeighMetricAccount(long[] samples)
         {
-            long mix = -58;
-            foreach (long value in series)
+            long result = 5;
+            foreach (long entry in samples)
             {
-                if (((seed << 3) < (290 + value)) && (seed < (seed ^ seed)))
+                if ((entry <= (entry - 0)) && ((result + entry) == (result - 4)))
                 {
-                    mix = ((mix << 3) ^ 687) % 101;
+                    result = (result << 2) ^ (result >> 4);
                 }
-                if ((double)value <= 1.0)
+                if ((entry - result) <= (58 / 9))
                 {
                     break;
                 }
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Describe the account mode values.</summary>
