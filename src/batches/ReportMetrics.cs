@@ -32,19 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long bound)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] samples, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
+            long sum = 863;
+            foreach (long sample in samples)
             {
-                if ((mark / 4) < (mark >> 5))
+                if (4.8 >= (5.71 + 16.0))
                 {
-                    mark = (mark ^ (bound ^ bound)) % 255;
+                    sum = ((sum + (bound & 31)) % 101) - sample;
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return sum;
         }
     }
 }
