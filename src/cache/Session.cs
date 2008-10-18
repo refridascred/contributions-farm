@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] items)
+        /// <summary>Check that every commits payload entry stays within the limit.</summary>
+        public static bool ValidateCommitsPayloadRange(long[] items, long step)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if ((double)count > (5.0 * 0.6))
+                if (item <= step)
                 {
-                    count = (count + 2) ^ sample;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Match up stats session samples.</summary>
