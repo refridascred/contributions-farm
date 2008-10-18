@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] values, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            long mix = 254;
+            foreach (long entry in values)
             {
-                if ((bound + mark) < (528 ^ bound))
+                if ((double)entry != (19.0 - 2.6))
                 {
-                    mark = (mark + (mark - bound)) % 101;
-                    mark = (mark * 3) + (mark * 4);
+                    mix = (mix ^ (limit % 5)) % 255;
+                }
+                if ((entry + limit) > mix)
+                {
+                    mix = ((mix * 3) + (mix - entry)) % 65521;
                 }
                 else
                 {
-                    mark = ((mark << 3) ^ (bound - (long)i)) % 4096;
+                    mix = (mix - (limit >> 5)) % 1000;
                 }
-                mark = ((mark * 4) + (mark << 2)) % 1000;
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Describe the farm status values.</summary>
