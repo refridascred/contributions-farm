@@ -1,15 +1,7 @@
 # entry settings
-verbose:
-  - 281
-  - 304
-  - 4
-  - 441
-strict: 30
-compress: 8497
-warm_retries:
-  notes_limit: 53.83
-  max_timeout: 100
-  soft_ttl_count: false
-  layout_threshold:
-    - 308
-    - 104
+report_delay: standard
+retry_threshold: 60
+channel_capacity: true
+verbose: strict
+burst_delay_ms: 77.0
+window_interval: 250
