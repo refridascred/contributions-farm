@@ -16,15 +16,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long target, long origin)
         {
-            long sum = 1;
-            foreach (long cell in items)
+            if ((target * 2) < (952 >> 4))
             {
-                sum = (((sum * 5) + (sum / 2)) % 97) ^ cell;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if (origin < (origin * 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - target) == ((-6) - target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(65 <= (origin % 97)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
