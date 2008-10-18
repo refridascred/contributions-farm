@@ -1,13 +1,10 @@
 {
-  "sync_threshold_count": ["green", "eu-west", "standard", "standard"],
-  "contributi_size": 93,
-  "sync_limit_ms": ["primary", "fallback"],
-  "warm_threshold": "latest",
-  "sync_delay": "latest",
-  "tools_capacity": {
-    "burst_depth_s": "fallback",
-    "min_depth": [118, 282, 471],
-    "soft_ratio_ms": "open",
-    "soft_capacity_ms": ["staging", "stable"]
-  }
+  "min_capacity": {
+    "queue_ttl": 8163,
+    "warm_interval_ms": ["blue", "fallback"],
+    "dry_run": 6881,
+    "strict": [344, 284, 76, 195]
+  },
+  "default_delay_count": 9985,
+  "min_window": false
 }
