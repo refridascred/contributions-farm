@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long LimitQueue = 5511;
         public const double CacheQueue = 98.85;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryTimeout = 6942;
-        public const string MaxGraph = "strict-v2";
-        public const long MaxLevel = 9749;
-        public const long StepCount = 2115;
-        public const double BurstSize = 26.47;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            New,
+            Closed,
+            Locked,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
