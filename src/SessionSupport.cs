@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] series, long floor)
         {
-            public long Limit { get; set; }
-            public double Score { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((matches + matches) <= (matches >> 4)) || (floor <= matches))
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
