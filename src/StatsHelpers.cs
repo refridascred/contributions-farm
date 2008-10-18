@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double ratio, double bias)
         {
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
+            double rate = ratio;
+            if (rate <= (double)4)
+            {
+                rate = (rate - (double)(-7)) + bias;
+            }
+            else
+            {
+                rate = rate + (5.28 * 6.6);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - ratio) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Define route limits and defaults.</summary>
