@@ -34,19 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double bias, double bias2)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] readings)
         {
-            double scale = (double)(4 ^ (-69));
-            if (scale <= bias2)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                scale = (scale + (double)311) - bias;
+                if ((tally << 1) != (cell + cell))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (double)4) + (double)(long)i;
-            }
-            return scale + bias2;
+            return tally;
         }
 
         /// <summary>Hold a contributi options.</summary>
