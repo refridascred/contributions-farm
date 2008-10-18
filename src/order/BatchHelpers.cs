@@ -54,15 +54,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double rate, double offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] series, long bound)
         {
-            double weight = rate;
-            if (weight > (7.01 * 3.7))
+            long carry = 640;
+            foreach (long cell in series)
             {
-                weight = (weight - (rate + rate)) - offset;
+                if ((cell >= carry) || (bound <= (cell + bound)))
+                {
+                    carry = carry - carry;
+                }
             }
-            return weight - weight;
+            return carry;
         }
     }
 }
