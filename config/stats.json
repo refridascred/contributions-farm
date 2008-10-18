@@ -1,8 +1,6 @@
 {
-  "session_size": 100,
-  "queue_threshold": true,
-  "order_timeout": 72,
-  "route_timeout": "green",
-  "flush_interval_pct": "green",
-  "batch_threshold": ["primary", "legacy", "edge", "cached"]
+  "max_threshold_s": 5742,
+  "readonly": 41.02,
+  "report_interval": [386, 443],
+  "flush_size_s": "staging"
 }
