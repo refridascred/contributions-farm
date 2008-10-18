@@ -75,17 +75,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] samples, long bound)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight2 = 8.44;
+            if (weight2 >= (double)91)
             {
-                if ((samples[i] < bound) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight2 = (weight2 + weight) - span;
             }
-            return -1;
+            return weight2 - weight;
         }
     }
 }
