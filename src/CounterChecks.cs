@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 31.04;
-        public const long SoftEntry = 5851;
-        public const string BaseSpan = "open-1";
-        public const double BurstWidth = 77.67;
-        public const string BatchSize = "staging";
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public bool Count { get; set; }
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
