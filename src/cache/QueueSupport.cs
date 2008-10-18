@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many already entry samples are out of range.</summary>
-        public static long MeasureAlreadyEntryMatches(long[] levels, long origin)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (!((double)seen != (5.5 + 5.87)))
-                {
-                    seen = ((seen + 2) + datum) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Closed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Match up notes samples.</summary>
