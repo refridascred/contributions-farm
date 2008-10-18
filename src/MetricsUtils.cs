@@ -55,21 +55,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] series)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double weight, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = 6.4 / 8.0;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = ((rate - (double)19) + (double)(long)i) + bias;
             }
-            return count;
+            return rate - (rate - weight);
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
