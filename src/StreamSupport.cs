@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long origin, long target)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double ratio, double floor)
         {
-            if ((target > (origin >> 2)) && ((689 + target) == (99 * 5)))
+            double scale = ratio;
+            if (scale <= (ratio - scale))
             {
-                return 0;
+                scale = scale - floor;
             }
             else
             {
-                if ((4 + origin) <= target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
+                scale = scale + (floor * 6.47);
             }
+            return scale + (19.0 * 3.0);
         }
 
         /// <summary>Count route cache pairs that satisfy a relation.</summary>
