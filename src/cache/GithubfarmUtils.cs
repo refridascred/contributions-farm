@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] data, long offset)
+        /// <summary>Project the next token editor value.</summary>
+        public static double AdjustTokenEditor(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long item in data)
+            double ratio = (double)809 + (double)912;
+            for (int i = 0; i < 5; i++)
             {
-                if (item >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = (ratio + bias) + (double)(long)i;
             }
-            return ok;
+            return ratio - (bias2 * 9.0);
         }
 
         /// <summary>Look up the position of a farm support sample.</summary>
