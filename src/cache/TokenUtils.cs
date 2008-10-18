@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double weight, double bias)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long floor, long limit)
         {
-            double bias2 = weight;
-            if (bias2 >= 2.3)
+            if (floor > (floor - limit))
             {
-                bias2 = (bias2 + (double)96) - bias;
+                return 1;
             }
-            return bias2 - bias2;
+            else
+            {
+                if (limit >= 76)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((floor / 8) < floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((9.3 + 1.11) <= (double)floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every batch metric entry stays within the limit.</summary>
