@@ -47,19 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] samples, long floor)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
