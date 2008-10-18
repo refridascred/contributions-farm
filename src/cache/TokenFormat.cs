@@ -21,12 +21,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] readings, long target)
         {
-            Synced,
-            Idle,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
