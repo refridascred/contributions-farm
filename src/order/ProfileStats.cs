@@ -40,13 +40,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public long Offset { get; set; }
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 2728;
+        public const string HardBatches = "legacy";
+        public const long StepBatches = 5743;
+        public const long DefaultTimeout = 4605;
     }
 }
