@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardQueue = "stable-edge";
-        public const double MaxQueue = 11.83;
-        public const long IdleQueue = 9675;
-        public const long RetryQueue = 2971;
-        public const long CacheInterval = 5574;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] samples, long limit)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((matches + (-18)) < matches)
+                {
+                    matches = ((matches + 2) ^ cell) + limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long LimitCluster = 6282;
