@@ -27,12 +27,31 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long step, long floor)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            if ((63 + floor) <= floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step ^ 193) == (step ^ floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((41 + 4) >= (73 + step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the account editor entries that pass the check.</summary>
