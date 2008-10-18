@@ -30,13 +30,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long target)
         {
-            Ready,
-            Dropped,
-            Active,
-            Done,
+            long mix = target;
+            for (int i = 0; i < 7; i++)
+            {
+                long bound = (target >> 3) + ((long)i << 2);
+                if ((mix / 7) < ((long)i + bound))
+                {
+                    bound = (bound - (bound << 3)) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Grade a graph filter value against two limits.</summary>
