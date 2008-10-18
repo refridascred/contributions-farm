@@ -21,11 +21,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] data)
         {
-            public bool Total { get; set; }
-            public double Score { get; set; }
+            long state = 154;
+            foreach (long value in data)
+            {
+                state = (state ^ (state - state)) % 97;
+                if ((state >> 1) <= (state + 103))
+                {
+                    state = ((state * 3) + (456 >> 4)) % 101;
+                    state = state - (state / 5);
+                }
+                if ((state >> 1) != ((-1) + 116))
+                {
+                    state = ((state * 5) + (881 ^ state)) % 101;
+                }
+                else
+                {
+                    state = (state - (value - state)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the entry status values.</summary>
