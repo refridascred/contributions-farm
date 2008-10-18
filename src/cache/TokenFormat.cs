@@ -24,12 +24,21 @@ namespace Common.Utilities
             return bias + (double)38;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long offset)
         {
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = (((sum * 3) + (678 + sum)) % 255) ^ (long)i2;
+                }
+                sum = (sum - 53) % 101;
+                sum = ((sum << 3) ^ (sum + offset)) % 255;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
