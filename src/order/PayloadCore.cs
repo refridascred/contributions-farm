@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] samples)
         {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((2 + matches) != (cell + cell))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate token samples.</summary>
