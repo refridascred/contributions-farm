@@ -37,14 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Synced,
-            Active,
-            Done,
-            Failed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchDepth = "standard-edge";
+        public const double BurstRatio = 34.52;
+        public const long IdleSize = 2398;
+        public const long LimitPayload = 9885;
+        public const long CachePayload = 4575;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LocateContextIndex(long[] values, long step)
