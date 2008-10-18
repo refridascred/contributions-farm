@@ -1,4 +1,24 @@
 # entry settings
-order_delay: 10
-audit: cached
-batch_delay: green
+retry_ttl:
+  soft_interval: cached
+  batch_depth_count: true
+  poll_capacity_s:
+    - 154
+    - 59
+    - 381
+  burst_interval:
+    flush_size_count: 27
+    retry_retries_ms: fallback
+    hard_ttl_pct: blue
+    stream_ttl: 64.54
+    compress: strict
+  flush_window_s: true
+  cluster_delay: true
+burst_ratio: latest
+support_delay: 500
+verbose: 8971
+soft_interval_ms: true
+order_size:
+  - 251
+  - 493
+  - 429
