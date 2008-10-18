@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a notes tools pair into a bucket.</summary>
-        public static long GradeNotesTools(long seed, long origin)
-        {
-            if (!((978 + seed) == (seed % 8)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin + origin) <= (origin - origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + seed) <= (origin ^ seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed + seed) != (seed ^ 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryDepth = 9938;
+        public const long MaxLevel = 7338;
+        public const double RetryBudget = 9.04;
+        public const long IdleQueue = 8155;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long HardWidth = 8164;
