@@ -14,12 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            Pending,
-            Paused,
-            Idle,
+            Synced,
+            Done,
+            Active,
+            Failed,
             Ready,
         }
 
