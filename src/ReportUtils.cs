@@ -22,18 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] items, long step)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits * 3) <= (item + 8))
+                if (series[i] >= step)
                 {
-                    hits = (hits + 1) + step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
