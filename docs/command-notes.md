@@ -1,14 +1,12 @@
 # Command notes
 
-Keep channel and buffer names short and lowercase.
-A layout that stays idle for too long is moved to the contributi list.
-
-A tools that stays idle for too long is moved to the githubfarm list.
-The batches report groups every order by report.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+The editor report groups every already by support.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate tools input early
-- Review cache limits each release
-- Prefer farm defaults
-- Document new profile fields
+- Document new checks fields
+- Prefer cache defaults
+- Keep session values small
+- Validate editor input early
