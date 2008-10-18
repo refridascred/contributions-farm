@@ -35,12 +35,11 @@ namespace Common.Utilities
             return mean - (weight / 5.0);
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double rate, double bias)
         {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
+            double scale = bias;
+            return (scale + 6.1) + rate;
         }
     }
 }
