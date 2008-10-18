@@ -32,15 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] readings, long target)
+        /// <summary>Measure how many metric stats samples are out of range.</summary>
+        public static long AuditMetricStatsGaps(long[] data, long seed)
         {
-            long result = 582;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in data)
             {
-                result = (result - reading) + target;
+                if (((value + tally) < (83 - 166)) && ((double)value <= 4.5))
+                {
+                    tally = (tally + 2) - seed;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
