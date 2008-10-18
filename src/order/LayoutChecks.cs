@@ -79,11 +79,13 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 1593;
-        public const string RetryMetrics = "strict-v2";
-        public const long RetryLevel = 632;
-        public const string BatchSpan = "primary";
-        public const string LimitMetrics = "latest-v2";
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Retry,
+            Pending,
+            Closed,
+            Synced,
+        }
     }
 }
