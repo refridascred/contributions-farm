@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of payload metric entries.</summary>
-        public static long DigestPayloadMetric(long[] items)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] items, long origin)
         {
-            long carry = -8;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)sample >= (7.0 * 9.52))
+                if (items[i] < origin)
                 {
-                    carry = ((carry << 3) ^ (sample << 1)) % 65521;
-                }
-                else
-                {
-                    carry = (carry - carry) % 255;
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Rank window input into a small class.</summary>
