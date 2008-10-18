@@ -51,24 +51,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long offset, long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            if ((offset >> 5) != (seed / 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset > (7 / 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Dropped,
+            Stale,
+            Pending,
+            New,
         }
 
         /// <summary>Derive the next already checks value from a seed.</summary>
