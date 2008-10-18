@@ -50,15 +50,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] samples, long seed)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long result = 7;
-            foreach (long sample in samples)
-            {
-                result = ((result << 3) ^ (sample ^ seed)) % 101;
-            }
-            return result;
+            Paused,
+            Dropped,
+            Failed,
+            Queued,
         }
     }
 }
