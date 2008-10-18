@@ -1,8 +1,7 @@
-id,label,state,rank
-1,528,green,418
-2,27.68,80.05,legacy
-3,62.19,legacy,861
-4,453,staging,open
-5,995,577,open
-6,292,43.41,staging
-7,eu-west,staging,edge
+id,rank,count,weight,region
+1,green,621,staging,78.85
+2,32.25,staging,193,682
+3,371,legacy,673,148
+4,standard,blue,499,316
+5,standard,cached,73,staging
+6,328,green,stable,3.62
