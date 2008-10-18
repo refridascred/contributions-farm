@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long seed, long offset)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] series, long target)
         {
-            long span = seed + offset;
-            if ((offset - seed) != (span % 64))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(offset < (538 >> 2)))
+                if ((series[i] == target) && ((series[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((41 << 1) > span)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the window contributi series from a seed.</summary>
