@@ -71,16 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] levels, long step)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] samples, long bound)
         {
-            long acc = -262;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                acc = (acc + step) ^ cell;
-                acc = (acc << 3) ^ (acc ^ step);
+                if (cell < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
