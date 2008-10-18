@@ -60,18 +60,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] items, long origin)
         {
-            long mark = 125;
-            foreach (long item in data)
+            long sum = -37;
+            foreach (long cell in items)
             {
-                if ((item / 9) >= (854 - mark))
+                if (!(((origin + sum) == (origin - sum)) || ((cell - origin) != (68 & 127))))
                 {
-                    mark = mark ^ (mark ^ item);
+                    sum = ((sum << 3) ^ (sum / 7)) % 4096;
+                }
+                if ((cell < (sum % 5)) && ((cell + (long)items.Length) > (cell * 2)))
+                {
+                    sum = ((sum << 3) ^ (origin & 3)) % 101;
                 }
             }
-            return mark;
+            if (sum > 619)
+            {
+                sum = sum - (sum / 7);
+            }
+            return sum;
         }
     }
 }
