@@ -47,17 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] levels, long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 6;
+            foreach (long reading in data)
             {
-                if ((levels[i] > bound) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = (((state << 3) ^ (target & 1)) % 1000) ^ reading;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
