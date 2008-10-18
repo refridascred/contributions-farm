@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a counter cache reading by value.</summary>
-        public static long SeekCounterCacheIndex(long[] series, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (series[i] == floor)
+                if ((matches - cell) == (540 + matches))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
