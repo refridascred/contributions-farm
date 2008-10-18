@@ -26,10 +26,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 66.87;
-        public const string StepDepth = "fallback-v2";
-        public const string MaxProfile = "alpha";
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] series)
+        {
+            long mix = 83;
+            foreach (long datum in series)
+            {
+                mix = (mix * 5) + (mix / 2);
+                if (mix <= 70)
+                {
+                    mix = ((mix * 3) + mix) % 255;
+                }
+                if (datum <= (datum & 15))
+                {
+                    break;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long FoldLayout(long[] values, long step)
