@@ -54,14 +54,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] values)
         {
-            Stale,
-            Done,
-            Locked,
-            Pending,
-            Paused,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((tally ^ tally) <= 4)
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
