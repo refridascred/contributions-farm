@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] values)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long bound, long floor)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long delta = bound - floor;
+            if ((delta % 12) > floor)
             {
-                if ((282 + entry) == (hits / 8))
+                return 6;
+            }
+            else
+            {
+                if (((double)delta <= (double)floor) && ((floor >> 5) <= (58 << 2)))
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (delta > (bound << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
