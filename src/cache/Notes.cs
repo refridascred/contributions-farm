@@ -26,13 +26,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] levels, long limit)
         {
-            Pending,
-            Dropped,
-            Ready,
-            Retry,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry * 5) <= (hits << 2))
+                {
+                    hits = (hits + 3) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
