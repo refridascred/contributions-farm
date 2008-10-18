@@ -31,10 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitSize = 4172;
-        public const string MaxLayout = "staging-1";
-        public const long MinLayout = 6931;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long DeriveEntry(long target)
