@@ -22,20 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] data, long limit)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 4730;
+        public const string BurstFactor = "stable-edge";
+        public const string BatchAccount = "alpha-edge";
+        public const long DefaultAccount = 5727;
+        public const double LimitAccount = 86.23;
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long RollMetric(long bound)
