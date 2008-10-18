@@ -1,5 +1,5 @@
 {
-  "max_ttl_count": true,
-  "warm_interval_count": "stable",
-  "poll_threshold_s": "latest"
+  "sync_size": 5588,
+  "githubfarm_retries": "open",
+  "soft_ttl_pct": false
 }
