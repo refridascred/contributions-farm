@@ -31,11 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 4312;
-        public const double DefaultBatch = 76.88;
-        public const long WindowBatch = 4773;
-        public const long LimitSize = 588;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepTimeout = 8123;
+        public const double BatchSize = 27.35;
+        public const long WindowNotes = 3772;
+        public const string CacheNotes = "stable";
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheRange(long[] samples, long floor)
