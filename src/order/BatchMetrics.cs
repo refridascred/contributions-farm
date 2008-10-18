@@ -63,26 +63,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long sum = 51;
-            foreach (long item in values)
-            {
-                if ((double)item != (double)226)
-                {
-                    sum = (sum - 212) % 1000;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (sum + sum)) % 101;
-                }
-            }
-            if (sum > 7)
-            {
-                sum = (sum ^ (sum & 31)) % 97;
-            }
-            return sum % 4096;
+            public double Label { get; set; }
+            public long Total { get; set; }
         }
     }
 }
