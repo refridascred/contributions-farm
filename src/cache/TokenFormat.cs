@@ -13,23 +13,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate graph metric samples.</summary>
-        public static long DigestGraphMetric(long[] values)
-        {
-            long total = 85;
-            foreach (long reading in values)
-            {
-                if (!(total <= (total + reading)))
-                {
-                    total = total - (reading >> 4);
-                }
-                if (((total & 63) <= (total + 247)) || ((total / 6) < ((long)values.Length & 15)))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheScore = "legacy-v2";
+        public const long RetrySpan = 5957;
+        public const long StepCommand = 727;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long SeriesWindow(long offset)
