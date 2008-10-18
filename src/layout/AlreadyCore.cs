@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already core helpers.</summary>
     public static class AlreadyCore
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] readings, long floor)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long floor)
         {
-            long anchor = 8;
-            foreach (long cell in readings)
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = (anchor ^ (cell - (long)readings.Length)) % 1000;
-                if ((((long)readings.Length % 24) < cell) && (floor <= (cell * 5)))
-                {
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
+                mix = ((mix * 2) + (mix % 8)) % 1000;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Hold a booking header.</summary>
