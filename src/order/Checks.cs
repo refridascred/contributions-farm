@@ -32,15 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] readings, long target)
         {
-            long mix = 51;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                mix = ((mix << 3) ^ (reading + mix)) % 65521;
+                if (reading < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
