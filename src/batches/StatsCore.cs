@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count + 10) < limit)
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepBuffer = 56.27;
+        public const string SoftBuffer = "local-edge";
+        public const double HardBuffer = 29.38;
+        public const string DefaultBudget = "staging-edge";
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long TallySessionHits(long[] data, long offset)
