@@ -89,22 +89,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report support readings against a rule.</summary>
-        public static long CountReportSupportHits(long[] data, long floor)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((long)data.Length - count) <= count) && ((5 >> 4) <= floor))
+                if ((samples[i] < bound) && ((samples[i] % 5) == 0))
                 {
-                    count = (count + 2) - sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
