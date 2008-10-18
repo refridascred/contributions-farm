@@ -70,10 +70,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstInterval = 3377;
-        public const long LimitReport = 3409;
-        public const long IdleReport = 6034;
-        public const long HardReport = 9684;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 2484;
+        public const long LimitNotes = 1347;
+        public const long WindowCount = 129;
+        public const long BaseNotes = 4321;
+        public const long CacheInterval = 7114;
     }
 }
