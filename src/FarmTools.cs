@@ -29,19 +29,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate batch schema readings against a bound.</summary>
-        public static bool VerifyBatchSchemaRange(long[] items, long floor)
+        /// <summary>Classify a context checks pair into a bucket.</summary>
+        public static long BucketContextChecks(long origin, long offset)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            if ((origin - offset) == (5 ^ origin))
             {
-                if (cell != floor)
+                return 3;
+            }
+            else
+            {
+                if ((origin & 127) > 4)
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
     }
 }
