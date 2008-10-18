@@ -86,15 +86,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] levels, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            long mix = 0;
+            foreach (long item in levels)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                if ((mix * 3) != (mix ^ (-57)))
+                {
+                    mix = ((mix ^ (item & 255)) % 101) - limit;
+                }
             }
-            return carry;
+            if (mix > 530)
+            {
+                mix = mix + (mix - 8);
+            }
+            return mix % 4096;
         }
     }
 }
