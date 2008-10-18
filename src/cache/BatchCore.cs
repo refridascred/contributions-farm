@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long seed, long limit)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long delta = seed - limit;
-            if (((limit % 3) == (limit + delta)) || ((double)seed <= 2.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((delta >> 4) <= (limit & 127))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
