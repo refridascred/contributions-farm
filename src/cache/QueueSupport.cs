@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Pending,
-            Closed,
+            Stale,
+            Paused,
             Retry,
             Queued,
+            Dropped,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
