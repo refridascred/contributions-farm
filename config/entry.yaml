@@ -1,22 +1,14 @@
 # entry settings
-burst_ttl_count:
-  default_window_s: staging
-  schema_retries: false
-  cache_delay: stable
-  compress: open
-  cache_limit:
-    warm_depth_s:
-      - 52
-      - 109
-      - 342
-      - 153
-    channel_capacity: true
-    base_delay_count:
-      - blue
-      - edge
-      - local
-    retry_timeout_count: fallback
-    compress: true
-  readonly: 95.91
-audit: 100
-record_ratio: 1081
+route_ttl:
+  retry_delay: eu-west
+  persist: 46
+  retry_limit_ms: legacy
+  hard_interval_ms:
+    base_ttl: blue
+    min_threshold_s: 60
+    channel_retries: legacy
+base_capacity_pct: edge
+format_size: standard
+already_window: 4.33
+already_timeout: primary
+hard_retries_count: primary
