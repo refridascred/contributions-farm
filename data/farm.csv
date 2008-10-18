@@ -1,6 +1,9 @@
-id,active
-1,565
-2,35.83
-3,687
-4,897
-5,235
+id,owner,state,token,rank
+1,93.74,760,914,edge
+2,23.48,83,634,cached
+3,50.93,strict,fallback,strict
+4,284,82.8,553,36
+5,29.0,433,open,stable
+6,60.4,438,106,577
+7,44.22,987,441,32.46
+8,118,stable,17.84,edge
