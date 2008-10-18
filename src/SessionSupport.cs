@@ -10,15 +10,16 @@ namespace Common.Utilities
         public const long BaseDepth = 7445;
         public const long BatchTools = 3477;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                carry = (carry ^ limit) % 101;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
