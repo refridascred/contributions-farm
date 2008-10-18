@@ -13,19 +13,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (origin <= (5 << 2))
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 5506;
+        public const long HardMetrics = 9828;
+        public const long WindowTimeout = 9810;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long WindowDepth = 5452;
