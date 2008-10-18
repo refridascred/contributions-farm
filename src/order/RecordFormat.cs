@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double bias, double floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] readings)
         {
-            double scale = 7.8;
-            if (scale >= (double)82)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                scale = (scale + 3.0) + bias;
+                if ((5.0 * 1.2) >= (double)datum)
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                scale = scale - (double)(-820);
-            }
-            return scale - floor;
+            return count;
         }
 
         /// <summary>Describe the editor level values.</summary>
