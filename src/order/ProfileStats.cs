@@ -40,10 +40,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 2728;
-        public const string HardBatches = "legacy";
-        public const long StepBatches = 5743;
-        public const long DefaultTimeout = 4605;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 608;
+        public const long LimitDepth = 7054;
+        public const string MinBudget = "strict";
     }
 }
