@@ -16,18 +16,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine route filter values into a single score.</summary>
-        public static long TallyRouteFilter(long[] series, long origin)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] data, long seed)
         {
-            long mark = 25;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((value - mark) <= (value + 6)))
+                if (data[i] <= seed)
                 {
-                    mark = ((mark * 5) + (value - 456)) + origin;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
