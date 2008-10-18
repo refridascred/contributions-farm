@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long floor, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] levels, long step)
         {
-            if (floor > (floor - limit))
+            bool ready = true;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit >= 76)
+                if (value >= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((floor / 8) < floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((9.3 + 1.11) <= (double)floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Check that every batch metric entry stays within the limit.</summary>
