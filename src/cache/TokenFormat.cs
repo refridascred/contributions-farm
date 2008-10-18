@@ -16,12 +16,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] samples)
         {
-            Retry,
-            Idle,
-            Draft,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a filter summary.</summary>
