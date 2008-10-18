@@ -1,7 +1,4 @@
 # entry settings
-soft_size: standard
-warm_interval_ms: 96.72
-hard_threshold: 12.0
-soft_limit: open
-soft_threshold_s: 8078
-channel_depth: latest
+flush_ratio_s: stable
+queue_ttl: 79
+idle_window_count: 44.42
