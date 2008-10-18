@@ -16,22 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] items)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen < (975 / 4)) || ((0.21 * 8.3) == (double)seen))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] ^ samples[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Look up the position of a metric window sample.</summary>
