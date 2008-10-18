@@ -22,13 +22,21 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 273;
         public const long BaseGithubfarm = 8646;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Size { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
