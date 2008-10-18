@@ -38,18 +38,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stats window samples are out of range.</summary>
-        public static long MeasureStatsWindowGaps(long[] series)
+        /// <summary>Scale a filter editor figure with a bias.</summary>
+        public static double ProjectFilterEditor(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            double bias2 = 1.76;
+            if (bias2 > (ratio / 8.0))
             {
-                if (20.0 > (double)entry)
-                {
-                    hits = hits + 3;
-                }
+                bias2 = bias2 - (bias * 5.2);
             }
-            return hits;
+            return bias2 + bias2;
         }
     }
 }
