@@ -34,22 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] items, long limit)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((long)items.Length == (limit - reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
