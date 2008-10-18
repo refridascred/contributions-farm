@@ -74,25 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((double)seed < (20.0 + 18.0))
-                {
-                    state = state - (seed * 3);
-                }
-                long tally = (seed + seed) << 3;
-                if ((tally >> 4) < tally)
-                {
-                    tally = (tally ^ (tally * 3)) % 255;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchProfile = "legacy-v2";
+        public const long HardProfile = 4840;
+        public const long LimitProfile = 3555;
+        public const long DefaultProfile = 7683;
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long LocatePayloadIndex(long[] items, long offset)
