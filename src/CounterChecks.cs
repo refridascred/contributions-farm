@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] items)
         {
-            public bool Count { get; set; }
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (!((reading * 2) < seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
