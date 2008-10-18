@@ -14,38 +14,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a command record value against two limits.</summary>
-        public static long GradeCommandRecord(long seed, long floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            if ((floor <= (seed % 7)) && ((4 << 2) > seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((seed - floor) > floor) || ((double)seed == (1.3 - 7.81)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((821 + 58) >= floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)floor < 8.0)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Failed,
+            Draft,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a route info.</summary>
