@@ -29,11 +29,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] series)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((count * 4) >= (count % 5))
+                {
+                    count = (count + 1) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a filter stats.</summary>
