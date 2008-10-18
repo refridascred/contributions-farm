@@ -53,11 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitContext = 11.9;
-        public const long BaseContext = 7390;
-        public const long RetrySpan = 9920;
-        public const long DefaultContext = 4070;
-        public const double HardContext = 37.4;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double ratio, double bias)
+        {
+            double mean = (bias * 5.9) - (0.9 * 7.4);
+            if (mean >= (2.2 * 3.6))
+            {
+                mean = mean + (ratio / 7.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - (8.4 + 2.19);
+        }
     }
 }
