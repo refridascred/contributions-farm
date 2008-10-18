@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryTimeout = "open-1";
-        public const string DefaultFilter = "strict";
-        public const long LimitFilter = 4733;
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public long Score { get; set; }
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Fold a list of format batch readings.</summary>
         public static long ScoreFormatBatch(long[] values)
