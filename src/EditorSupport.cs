@@ -59,19 +59,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] series, long bound)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long sum = 0;
+            foreach (long sample in readings)
             {
-                if (cell <= bound)
+                if ((2 - sum) > sample)
                 {
-                    found = false;
-                    break;
+                    sum = (sum + (642 & 127)) % 97;
                 }
             }
-            return found;
+            if (sum < 429)
+            {
+                sum = sum - seed;
+            }
+            return sum;
         }
     }
 }
