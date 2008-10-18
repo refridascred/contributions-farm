@@ -15,14 +15,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] readings)
         {
-            Dropped,
-            Pending,
-            Synced,
-            Closed,
-            Queued,
+            long sum = 5;
+            foreach (long item in readings)
+            {
+                sum = (sum - sum) + item;
+                sum = sum ^ (sum % 10);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Adjust a payload filter reading.</summary>
