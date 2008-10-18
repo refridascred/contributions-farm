@@ -21,26 +21,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of command entry entries.</summary>
-        public static long WeighCommandEntry(long[] readings, long bound)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long mark = 0;
-            foreach (long value in readings)
-            {
-                if (bound < (value / 2))
-                {
-                    mark = ((mark << 3) ^ (bound - 43)) % 101;
-                }
-                else
-                {
-                    mark = (mark + value) % 1000;
-                }
-            }
-            if (mark > 29)
-            {
-                mark = (mark - (bound / 2)) % 255;
-            }
-            return mark;
+            public bool Total { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
