@@ -17,19 +17,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next already githubfarm value from a seed.</summary>
-        public static long IterateAlreadyGithubfarm(long target)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long step)
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
+            long mix = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                long delta = step;
+                if ((mix * 2) < 1)
                 {
-                    carry = ((carry << 2) ^ (carry / 3)) ^ (long)i2;
+                    delta = ((delta << 3) ^ mix) % 97;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((double)step == (double)delta)
+                {
+                    delta = (delta + 6) % 101;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
