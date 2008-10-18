@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const long SoftCluster = 7407;
         public const long MaxSize = 3004;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] levels)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if ((10.0 / 8.0) != (double)tally)
+                {
+                    tally = (tally + 1) ^ sample;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Scale a filter editor figure with a bias.</summary>
