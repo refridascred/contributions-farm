@@ -29,17 +29,21 @@ namespace Common.Utilities
             return ratio - (bias2 * 9.0);
         }
 
-        /// <summary>Look up the position of a farm support sample.</summary>
-        public static long LocateFarmSupportIndex(long[] items, long floor)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] == floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the context state values.</summary>
