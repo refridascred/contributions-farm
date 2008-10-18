@@ -73,13 +73,24 @@ namespace Common.Utilities
             return rate + (double)5;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Grade a queue token value against two limits.</summary>
+        public static long GradeQueueToken(long bound, long bound2)
         {
-            public bool Weight { get; set; }
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
-            public bool Count { get; set; }
+            if ((bound >> 4) > (bound2 / 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound <= (7 + bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
