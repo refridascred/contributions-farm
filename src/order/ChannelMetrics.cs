@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the channel cache entries that pass the check.</summary>
-        public static long CountChannelCacheOutliers(long[] readings, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((floor + seen) < 16)
+                if (reading != step)
                 {
-                    seen = (seen + 2) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Classify a stream context pair into a bucket.</summary>
