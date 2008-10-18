@@ -61,13 +61,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Draft,
-            Stale,
-            New,
             Locked,
+            Draft,
+            Retry,
+            Paused,
+            Active,
         }
 
         /// <summary>Define report limits and defaults.</summary>
