@@ -30,23 +30,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] levels)
-        {
-            long anchor = 29;
-            foreach (long reading in levels)
-            {
-                if ((8 >> 1) >= (anchor * 4))
-                {
-                    anchor = anchor + anchor;
-                }
-                if ((double)anchor >= (double)reading)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 4527;
+        public const long StepDepth = 9716;
+        public const long IdleMetric = 1996;
+        public const string CacheMetric = "fallback-v2";
+        public const double WindowSpan = 84.72;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionGaps(long[] series, long origin)
