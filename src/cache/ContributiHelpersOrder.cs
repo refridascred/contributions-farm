@@ -13,19 +13,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] data, long limit)
+        /// <summary>Audit farm cache readings against a rule.</summary>
+        public static long TallyFarmCacheOutliers(long[] items)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (entry >= limit)
+                if ((127 + 3) >= (seen >> 2))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a editor record.</summary>
