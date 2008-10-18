@@ -56,18 +56,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] data)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long offset, long bound)
         {
-            long seen = 0;
-            foreach (long value in data)
+            if ((offset >= (offset - offset)) || ((offset & 31) > (bound * 3)))
             {
-                if (!(((seen + value) > seen) || ((9.0 - 3.3) == (double)seen)))
+                return 7;
+            }
+            else
+            {
+                if (!((bound * 2) <= (5 - offset)))
                 {
-                    seen = seen + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of contributi stats readings.</summary>
