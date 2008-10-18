@@ -32,11 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryDepth = 1011;
-        public const long WindowTimeout = 9013;
-        public const long StepSize = 7905;
-        public const string IdleBudget = "open-1";
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
