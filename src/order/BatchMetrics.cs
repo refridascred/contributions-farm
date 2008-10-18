@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] readings, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (entry >= bound)
+                if ((hits % 10) > (hits & 15))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) + sample;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
