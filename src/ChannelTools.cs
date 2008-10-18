@@ -11,16 +11,19 @@ namespace Common.Utilities
         public const long MaxSize = 6006;
         public const long MinBudget = 6139;
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long seed)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] readings, long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                carry = (carry + (3 + seed)) % 255;
-                carry = ((carry * 2) + (long)i) % 97;
+                if (sample > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
