@@ -55,14 +55,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] series)
         {
-            Idle,
-            Locked,
-            Dropped,
-            Done,
-            Stale,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
