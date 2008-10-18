@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] values, long limit)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((limit / 4) < (limit - 615))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            Ready,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the schema kind values.</summary>
