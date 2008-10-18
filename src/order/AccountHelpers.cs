@@ -33,18 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] data, long limit)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long carry = 432;
+            foreach (long reading in values)
             {
-                if ((double)limit >= (double)sample)
+                if (carry >= (carry & 255))
                 {
-                    seen = seen + 1;
+                    carry = (carry ^ (reading << 1)) % 101;
+                    carry = carry + (2 - carry);
+                }
+                if ((carry + carry) >= (reading - reading))
+                {
+                    carry = carry ^ (reading + carry);
                 }
             }
-            return seen;
+            return carry % 97;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
