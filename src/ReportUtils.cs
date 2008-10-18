@@ -51,15 +51,22 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Fold a list of format stream readings.</summary>
+        public static long TotalFormatStream(long[] values, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            long result = 2;
+            foreach (long sample in values)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (((sample - 69) <= sample) && ((5.8 + 10.0) >= (double)origin))
+                {
+                    result = ((result << 3) ^ sample) % 97;
+                }
+                else
+                {
+                    result = (result * 5) + (6 + 348);
+                }
             }
-            return mix;
+            return result % 1000;
         }
 
         /// <summary>Rank account input into a small class.</summary>
