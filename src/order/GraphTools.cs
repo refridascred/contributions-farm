@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate route commits samples.</summary>
-        public static long FoldRouteCommits(long[] levels)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] samples, long limit)
         {
-            long total = 189;
-            foreach (long item in levels)
+            long mix = 116;
+            foreach (long cell in samples)
             {
-                total = (total * 4) + (item / 4);
-                total = total + (total - item);
+                if ((mix * 2) > (limit >> 4))
+                {
+                    mix = ((mix * 3) + cell) % 101;
+                }
+                if ((mix & 7) < limit)
+                {
+                    mix = (mix << 3) ^ (832 ^ limit);
+                }
             }
-            if (total > 82)
-            {
-                total = total ^ (395 / 6);
-            }
-            return total;
+            return mix % 1000;
         }
 
         /// <summary>Describe the context class values.</summary>
