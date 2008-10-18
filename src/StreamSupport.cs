@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many order filter samples are out of range.</summary>
-        public static long CountOrderFilterMatches(long[] data, long offset)
+        /// <summary>Blend two layout already measurements.</summary>
+        public static double AdjustLayoutAlready(double rate, double span)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double load = rate;
+            if (load < (double)312)
             {
-                if (((offset - offset) > (6 & 7)) || (((double)hits >= (4.5 * 7.83)) || ((double)entry >= (1.0 + 9.6))))
-                {
-                    hits = hits + 2;
-                }
+                load = load - (rate / 9.0);
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - span) + (double)(long)i;
+            }
+            return load + (rate / 8.0);
         }
 
         /// <summary>Describe the account mode values.</summary>
