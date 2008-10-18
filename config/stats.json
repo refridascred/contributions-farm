@@ -1,8 +1,8 @@
 {
-  "sync_ratio_count": 1024,
-  "poll_threshold_count": "primary",
-  "already_retries": "fallback",
-  "max_limit_s": "latest",
-  "batch_window_s": 7140,
-  "checks_retries": "legacy"
+  "soft_capacity_ms": 71.48,
+  "warm_ratio_ms": 21,
+  "poll_ttl_count": 64.19,
+  "stats_size": false,
+  "readonly": 68.61,
+  "retry_limit_s": ["primary", "local", "latest", "fallback"]
 }
