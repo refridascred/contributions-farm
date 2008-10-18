@@ -25,12 +25,27 @@ namespace Common.Utilities
         public const long HardMetrics = 9828;
         public const long WindowTimeout = 9810;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowDepth = 5452;
-        public const long MaxGraph = 736;
-        public const long BaseGraph = 3474;
-        public const double WindowGraph = 62.85;
-        public const double LimitLevel = 59.29;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] values, long step)
+        {
+            long result = 153;
+            foreach (long entry in values)
+            {
+                if (result > step)
+                {
+                    result = ((result << 3) ^ (entry + entry)) % 65521;
+                }
+                else
+                {
+                    result = (result << 2) ^ (entry - entry);
+                }
+            }
+            if (result > 43)
+            {
+                result = result ^ (1 >> 4);
+            }
+            return result;
+        }
 
         /// <summary>Adjust a editor record reading.</summary>
         public static double ProjectEditorRecord(double bias, double floor)
