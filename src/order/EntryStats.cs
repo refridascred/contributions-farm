@@ -51,14 +51,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Locked,
             Synced,
+            Locked,
+            New,
             Retry,
-            Draft,
-            Ready,
+            Closed,
         }
 
         /// <summary>Roll a tools profile counter forward.</summary>
