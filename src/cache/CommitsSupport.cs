@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftTimeout = 1939;
-        public const long StepRatio = 9957;
-        public const string MaxSize = "alpha-edge";
-        public const string StepSize = "primary-1";
-        public const long RetryDepth = 8784;
+        /// <summary>Check that every order already entry stays within the limit.</summary>
+        public static bool CheckOrderAlreadyLimits(long[] series, long bound)
+        {
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long OverlapRecordCount(long[] values)
