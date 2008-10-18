@@ -1,6 +1,9 @@
-id,label,rank
-1,legacy,fallback
-2,local,primary
-3,40.96,37.48
-4,green,73.87
-5,95.86,open
+id,label,score
+1,51.86,55.42
+2,legacy,91.5
+3,139,18
+4,green,600
+5,77.2,613
+6,50,4.53
+7,76.6,169
+8,blue,35.36
