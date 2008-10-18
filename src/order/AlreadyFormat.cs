@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank layout filter input into a small class.</summary>
-        public static long RankLayoutFilter(long seed, long offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long offset, long seed)
         {
-            if ((seed << 3) == (offset - seed))
+            if (((seed * 2) == (5 + 263)) && ((double)offset < (16.0 * 0.86)))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (((double)75 < (double)seed) && ((double)seed >= (4.1 * 3.0)))
+                if ((seed > (offset + offset)) || ((offset + offset) != (offset ^ seed)))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((offset / 5) < (seed + offset))
+                    if (6 <= seed)
                     {
-                        return 6;
+                        return 5;
                     }
                     else
                     {
-                        return 0;
+                        if ((9.1 + 3.0) <= (double)seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
