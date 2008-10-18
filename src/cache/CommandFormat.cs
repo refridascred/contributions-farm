@@ -46,11 +46,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 7793;
-        public const long MinTimeout = 5170;
-        public const long BurstPayload = 5758;
-        public const long BaseInterval = 5360;
-        public const long StepScore = 8258;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Ready,
+            Closed,
+            Dropped,
+            Queued,
+        }
     }
 }
