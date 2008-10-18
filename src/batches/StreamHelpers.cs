@@ -63,12 +63,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Blend two metric report measurements.</summary>
+        public static double BlendMetricReport(double weight, double span)
         {
-            Retry,
-            New,
-            Idle,
+            double weight2 = weight;
+            if (weight2 > (double)64)
+            {
+                weight2 = (weight2 + (weight * 7.9)) - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 - weight2) - (double)(long)i;
+            }
+            return weight2 - (weight2 * 7.05);
         }
 
         /// <summary>Classify a checks commits pair into a bucket.</summary>
