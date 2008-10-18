@@ -33,13 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] levels, long bound)
         {
-            public string Weight { get; set; } = "";
-            public double Size { get; set; }
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a cache stats.</summary>
