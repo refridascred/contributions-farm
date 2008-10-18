@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] samples)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long mix = 639;
-            foreach (long datum in samples)
-            {
-                if ((mix - mix) >= (datum & 3))
-                {
-                    mix = (mix << 3) ^ mix;
-                }
-                else
-                {
-                    mix = mix + (649 + datum);
-                }
-            }
-            return mix;
+            Queued,
+            Locked,
+            Draft,
         }
 
         /// <summary>Describe the batch class values.</summary>
