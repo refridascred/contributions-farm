@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] items)
         {
-            Dropped,
-            Closed,
-            Stale,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits + reading) > (hits - hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every batch window entry stays within the limit.</summary>
