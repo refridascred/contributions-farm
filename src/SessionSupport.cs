@@ -19,32 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long seed, long seed2)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long step)
         {
-            long lane = seed + seed2;
-            if (seed > (seed2 * 4))
+            long sum = step;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (seed <= (seed2 << 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (lane >= (lane + 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
