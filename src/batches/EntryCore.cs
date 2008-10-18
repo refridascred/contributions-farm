@@ -51,16 +51,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] items, long floor)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] data, long floor)
         {
-            long total = 50;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (((total * 5) + (floor + (long)items.Length)) % 1000) ^ value;
-                total = (total ^ (893 % 5)) % 1000;
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
