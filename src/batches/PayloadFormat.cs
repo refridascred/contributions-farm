@@ -13,26 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] items, long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] items)
         {
-            long state = 2;
-            foreach (long entry in items)
+            long result = 13;
+            foreach (long cell in items)
             {
-                if (((6 * 3) < (5 + state)) && (((-31) + entry) < entry))
-                {
-                    state = (state - (entry ^ state)) % 101;
-                }
-                else
-                {
-                    state = (state + state) % 97;
-                }
+                result = (result - (cell + result)) % 1000;
             }
-            if (state < 46)
+            if (result < (-32))
             {
-                state = state - (target ^ target);
+                result = (result - (result % 24)) % 97;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Check that every counter session entry stays within the limit.</summary>
