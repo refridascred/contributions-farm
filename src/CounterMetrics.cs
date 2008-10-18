@@ -21,32 +21,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long origin, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] series, long limit)
         {
-            long delta = origin ^ target;
-            if ((delta << 3) != (target - target))
+            bool ok = true;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((target - target) < delta))
+                if (reading > limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(7.0 >= (double)target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Check that every filter layout entry stays within the limit.</summary>
