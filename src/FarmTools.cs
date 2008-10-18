@@ -14,15 +14,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] series)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if ((seen + seen) >= (seen / 3))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
