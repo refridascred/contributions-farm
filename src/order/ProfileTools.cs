@@ -39,18 +39,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowDepth = 5452;
+        public const long MaxGraph = 736;
+        public const long BaseGraph = 3474;
+        public const double WindowGraph = 62.85;
+        public const double LimitLevel = 59.29;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long DigestEntry(long[] data, long target)
