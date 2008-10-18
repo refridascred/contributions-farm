@@ -32,19 +32,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] series)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long total = 693;
-            foreach (long reading in series)
-            {
-                total = ((total + (286 - total)) % 1000) + reading;
-            }
-            if (total > 75)
-            {
-                total = ((total * 5) + (total / 5)) % 1000;
-            }
-            return total;
+            public double Label { get; set; }
+            public bool Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
