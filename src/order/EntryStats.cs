@@ -56,10 +56,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 4392;
-        public const long DefaultTimeout = 7632;
-        public const long BaseTimeout = 8277;
-        public const double DefaultCount = 40.41;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseCount = 7084;
+        public const double RetryDepth = 81.4;
+        public const double BurstNotes = 55.46;
+        public const long SoftFactor = 1933;
     }
 }
