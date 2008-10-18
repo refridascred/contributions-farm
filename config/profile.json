@@ -1,7 +1,11 @@
 {
-  "profile_size": 37.41,
-  "idle_retries_pct": "green",
-  "sync_capacity": true,
-  "hard_timeout": 1024,
-  "checks_interval": "primary"
+  "command_size": 78.21,
+  "metrics_size": [216, 141],
+  "soft_size": {
+    "cache_ratio": 8261,
+    "filter_window": [4, 417, 487, 227],
+    "cache_delay": true
+  },
+  "compress": 58.16,
+  "cache_capacity_ms": 1287
 }
