@@ -51,20 +51,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long seed)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                if (mark > seed)
-                {
-                    mark = (mark * 4) + (mark ^ seed);
-                    mark = (mark - mark) % 255;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Paused,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the graph status values.</summary>
