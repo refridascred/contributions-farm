@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)seen > (3.0 - 8.22))
                 {
-                    if ((data[i] ^ data[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) ^ datum;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Look up the position of a channel checks sample.</summary>
