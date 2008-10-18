@@ -53,13 +53,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
+            Retry,
+            Locked,
+            Draft,
+            New,
+            Dropped,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
