@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Retry,
-            Draft,
-            Failed,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinSpan = 5227;
+        public const string IdlePayload = "alpha";
+        public const long SoftPayload = 8309;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long LimitStream = 4106;
