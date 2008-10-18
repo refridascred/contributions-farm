@@ -1,7 +1,6 @@
 {
-  "hard_size": 5038,
-  "base_ttl": ["green", "standard"],
-  "readonly": false,
-  "metric_ratio": "latest",
-  "burst_limit_ms": "blue"
+  "readonly": "cached",
+  "window_retries": 57.45,
+  "sync_ratio_ms": "standard",
+  "enabled": false
 }
