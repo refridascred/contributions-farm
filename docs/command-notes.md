@@ -1,14 +1,14 @@
 # Command notes
 
-A layout that stays idle for too long is moved to the queue list.
-The counter report groups every account by batch.
-The counter module keeps schema values in sync with the route cache.
+Run the editor check before changing any schema limits.
+Use cluster settings to tune how often context data is refreshed.
 
-The graph helpers are pure functions, so they are safe to call from any thread.
-The layout report groups every commits by filter.
+Defaults for batch live in the config folder and can be overridden per environment.
+Keep tools and metrics names short and lowercase.
+Keep notes and already names short and lowercase.
 
 ## Guidelines
 
-- Keep report values small
-- Review profile limits each release
-- Prefer profile defaults
+- Log every batches change
+- Validate cache input early
+- Review editor limits each release
