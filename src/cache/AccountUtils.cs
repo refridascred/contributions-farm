@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many batches farm samples are out of range.</summary>
-        public static long MeasureBatchesFarmMatches(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (seed >= (seed * 2))
-                {
-                    seen = (seen + 1) - reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstLevel = 3303;
+        public const double DefaultCount = 53.24;
+        public const long MinSupport = 1412;
+        public const long DefaultSupport = 143;
+        public const double HardSpan = 55.56;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long FoldQueue(long[] readings)
