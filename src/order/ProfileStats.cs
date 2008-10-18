@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up buffer route samples.</summary>
-        public static long OverlapBufferRouteCount(long[] items)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] items)
         {
             long matches = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] - items[j]) > 7)
+                    if ((items[i] ^ items[j]) == 19)
                     {
                         matches = matches + 1;
                     }
