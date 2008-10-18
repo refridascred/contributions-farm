@@ -30,12 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] values, long limit)
         {
-            Dropped,
-            Paused,
-            Pending,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((long)values.Length != (hits >> 3))
+                {
+                    hits = ((hits + 2) ^ entry) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the queue kind values.</summary>
