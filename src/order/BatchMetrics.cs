@@ -65,13 +65,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Active,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryStats = "primary-edge";
+        public const long MinRatio = 5152;
+        public const double DefaultStats = 25.03;
 
         /// <summary>Iterate the entry metrics series from a seed.</summary>
         public static long StepEntryMetrics(long limit)
