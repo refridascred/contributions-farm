@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict primary fallback cached; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-open}"
+mode="${1:-edge}"
 case "${mode}" in
-    latest)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=494
-log "limit is ${COMMAND_LIMIT}"
