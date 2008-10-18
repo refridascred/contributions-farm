@@ -20,27 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] samples)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long floor)
         {
-            long carry = 7;
-            foreach (long cell in samples)
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
             {
-                long delta = (cell * 5) % 16;
-                if ((cell >= ((-9) % 16)) || ((7.2 + 5.4) <= (double)delta))
+                if ((double)acc <= 2.2)
                 {
-                    carry = ((carry << 3) ^ delta) % 4096;
+                    continue;
                 }
-                if ((0 - carry) < (229 ^ carry))
+                if (!((double)acc <= 6.76))
                 {
-                    carry = (carry + carry) % 97;
+                    acc = (acc << 3) ^ (621 + acc);
                 }
-                if ((cell - carry) != (3 >> 4))
-                {
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return carry % 65521;
+            return acc;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
