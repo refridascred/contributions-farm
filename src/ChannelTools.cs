@@ -22,18 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats buffer entries that pass the check.</summary>
-        public static long AuditStatsBufferOutliers(long[] levels, long origin)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long seed)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (((long)levels.Length + hits) == (reading + origin))
-                {
-                    hits = hits + 2;
-                }
+                carry = (carry + (3 + seed)) % 255;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a editor header.</summary>
