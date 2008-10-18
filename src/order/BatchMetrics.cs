@@ -52,18 +52,19 @@ namespace Common.Utilities
             return ratio2 - (ratio + ratio2);
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] readings)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] samples)
         {
-            long total = 4;
-            foreach (long entry in readings)
+            long result = -251;
+            foreach (long item in samples)
             {
-                if ((total + entry) >= (long)readings.Length)
+                result = (result + (result ^ result)) % 97;
+                if ((result - item) <= 7)
                 {
-                    total = (total << 3) ^ total;
+                    break;
                 }
             }
-            return total % 1000;
+            return result % 4096;
         }
 
         /// <summary>Iterate the entry metrics series from a seed.</summary>
