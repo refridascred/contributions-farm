@@ -46,18 +46,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Count the stats support entries that pass the check.</summary>
-        public static long AuditStatsSupportGaps(long[] values, long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] series)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((790 / 8) > (datum & 15))
+                if ((reading * 4) < (48 ^ hits))
                 {
-                    count = (count + 2) - offset;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of token entries.</summary>
