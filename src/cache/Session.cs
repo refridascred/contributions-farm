@@ -53,17 +53,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] levels, long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((levels[i] > floor) && ((levels[i] % 5) == 0))
+                if ((long)readings.Length > (count - 835))
                 {
-                    return (long)i;
+                    count = (count + 1) - cell;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
