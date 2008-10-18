@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = (sum - (offset & 127)) % 97;
-                if ((double)sum < (11.0 / 7.0))
-                {
-                    sum = (sum - offset) % 255;
-                    sum = ((sum << 3) ^ (offset * 4)) % 65521;
-                }
-                sum = (sum << 3) ^ (sum / 4);
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Count { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
