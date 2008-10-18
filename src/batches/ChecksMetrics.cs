@@ -49,18 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] data, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] data, long target)
         {
-            long state = 71;
+            bool flag = true;
             foreach (long reading in data)
             {
-                if ((state / 9) != (step + reading))
+                if (reading >= target)
                 {
-                    state = ((state << 3) ^ (-131)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Measure how many cluster channel samples are out of range.</summary>
