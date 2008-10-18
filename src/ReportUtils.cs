@@ -60,18 +60,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 4) + (target + acc)) % 1000;
-                long prev = (long)i;
-                acc = (acc * 4) + prev;
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            New,
+            Failed,
+            Idle,
+            Locked,
         }
     }
 }
