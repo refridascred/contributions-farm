@@ -29,24 +29,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] data, long offset)
-        {
-            long mix = 86;
-            foreach (long cell in data)
-            {
-                if (75 > (offset >> 2))
-                {
-                    mix = mix ^ (mix - offset);
-                }
-                else
-                {
-                    mix = mix - (mix + 276);
-                }
-                mix = ((mix * 2) + (cell * 4)) % 97;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstDepth = 40.7;
+        public const long HardInterval = 8424;
+        public const string IdleScore = "open-1";
+        public const double HardBudget = 44.34;
+        public const string MaxInterval = "primary-1";
 
         /// <summary>Project the next command value.</summary>
         public static double ProjectCommand(double bias, double bias2)
