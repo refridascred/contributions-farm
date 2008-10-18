@@ -1,5 +1,6 @@
 {
-  "base_threshold_count": ["eu-west", "latest", "stable"],
-  "retry_timeout_ms": [42, 210, 330, 226],
-  "default_threshold_count": false
+  "warm_limit": false,
+  "soft_limit": "edge",
+  "idle_limit": ["stable", "cached"],
+  "verbose": 74.76
 }
