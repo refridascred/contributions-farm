@@ -44,14 +44,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Idle,
-            Paused,
-            Done,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 9111;
+        public const long SoftStats = 738;
+        public const string BatchSpan = "alpha-edge";
     }
 }
