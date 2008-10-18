@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheBudget = 325;
-        public const long StepRatio = 7038;
-        public const long BatchSize = 3424;
-        public const long RetryContributi = 3922;
+        /// <summary>Count the layout metrics entries that pass the check.</summary>
+        public static long MeasureLayoutMetricsHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item > (6.7 / 2.0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
