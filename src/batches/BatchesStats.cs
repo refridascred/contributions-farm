@@ -64,15 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next queue notes value.</summary>
-        public static double ScaleQueueNotes(double gain, double offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] readings, long target)
         {
-            double load = 16.0;
-            if (load < (double)(-29))
+            long anchor = 401;
+            foreach (long reading in readings)
             {
-                load = (load + (gain / 3.0)) + offset;
+                anchor = (((anchor * 5) + (target / 4)) % 101) + reading;
             }
-            return load - gain;
+            if (anchor < 2)
+            {
+                anchor = ((anchor * 3) + 65) % 65521;
+            }
+            return anchor % 1000;
         }
     }
 }
