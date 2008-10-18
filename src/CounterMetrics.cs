@@ -41,19 +41,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] readings, long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long acc = 582;
+            foreach (long reading in series)
             {
-                if (cell > seed)
+                if ((acc >> 3) < bound)
                 {
-                    ready = false;
+                    acc = (acc * 5) + reading;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ acc) % 255;
+                }
+                if ((5.0 / 3.0) >= (double)bound)
+                {
                     break;
                 }
             }
-            return ready;
+            if (acc > 386)
+            {
+                acc = ((acc * 3) + (acc / 9)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
