@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRoute = 51.95;
-        public const long BurstLevel = 5573;
-        public const long BurstFactor = 4790;
-        public const string StepFactor = "staging";
-        public const long HardRoute = 8230;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample >= 3.22)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool GuardAlreadyBounds(long[] values, long step)
