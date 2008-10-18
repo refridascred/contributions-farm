@@ -44,15 +44,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double rate, double floor)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double scale, double bias)
         {
-            double mean = rate - (rate / 4.0);
-            for (int i = 0; i < 2; i++)
+            double mean = (6.8 - scale) - bias;
+            if (mean > (double)1)
             {
-                mean = ((mean + (5.1 * 9.0)) + (double)(long)i) - floor;
+                mean = mean - (bias / 8.0);
             }
-            return mean + mean;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - 6.56) + (double)(long)i;
+            }
+            return mean - 0.7;
         }
     }
 }
