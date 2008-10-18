@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 146;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = (state - reading) % 97;
+                if (!(state < 352))
                 {
-                    if ((samples[i] - samples[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state - (state - state)) % 101;
                 }
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
