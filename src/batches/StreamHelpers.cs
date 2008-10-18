@@ -37,19 +37,26 @@ namespace Common.Utilities
         public const long WindowNotes = 3772;
         public const string CacheNotes = "stable";
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] samples, long floor)
+        /// <summary>Accumulate report context samples.</summary>
+        public static long WeighReportContext(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long result = -91;
+            foreach (long cell in series)
             {
-                if (reading >= floor)
+                if ((1.17 / 9.0) <= (double)cell)
                 {
-                    ok = false;
+                    result = result - (cell + cell);
+                }
+                else
+                {
+                    result = (result ^ (result ^ origin)) % 101;
+                }
+                if (!((81 - cell) > (cell ^ result)))
+                {
                     break;
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Blend two metric report measurements.</summary>
