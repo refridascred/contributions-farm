@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] readings)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long origin, long target)
         {
-            long count = 0;
-            foreach (long value in readings)
+            if ((target > (origin >> 2)) && ((689 + target) == (99 * 5)))
             {
-                if ((double)count <= (4.72 / 5.0))
+                return 0;
+            }
+            else
+            {
+                if ((4 + origin) <= target)
                 {
-                    count = (count + 2) ^ value;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Count route cache pairs that satisfy a relation.</summary>
