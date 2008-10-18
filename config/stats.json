@@ -1,8 +1,7 @@
 {
-  "soft_capacity_ms": 71.48,
-  "warm_ratio_ms": 21,
-  "poll_ttl_count": 64.19,
-  "stats_size": false,
-  "readonly": 68.61,
-  "retry_limit_s": ["primary", "local", "latest", "fallback"]
+  "profile_depth": "cached",
+  "dry_run": "eu-west",
+  "notes_delay": false,
+  "max_delay_s": "edge",
+  "cache_interval_ms": 4733
 }
