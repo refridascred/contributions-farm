@@ -25,10 +25,10 @@ namespace Common.Utilities
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
         {
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public long Level { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
