@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile metric entries that pass the check.</summary>
-        public static long MeasureProfileMetricGaps(long[] values, long limit)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (((limit + value) > value) && ((value + (-3)) < (value + matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a metric stats.</summary>
