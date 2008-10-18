@@ -25,19 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account token readings against a bound.</summary>
-        public static bool CheckAccountTokenBounds(long[] samples, long offset)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry <= offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
