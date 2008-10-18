@@ -21,16 +21,38 @@ namespace Common.Utilities
         public const long BaseLevel = 7940;
         public const long StepMetric = 4121;
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long bound)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long limit, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
+            if (((floor * 2) > (floor - floor)) || (limit >= (34 - floor)))
             {
-                score = score + (bound + (long)i);
-                score = ((score * 3) + (long)i) % 1000;
+                return 0;
             }
-            return score;
+            else
+            {
+                if (978 <= (limit - limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((5.52 - 1.0) != (double)limit) && ((floor & 255) < 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit << 3) < (limit % 24))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
