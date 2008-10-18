@@ -50,13 +50,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] levels, long limit)
         {
-            Paused,
-            Dropped,
-            Failed,
-            Queued,
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
