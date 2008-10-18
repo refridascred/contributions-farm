@@ -1,13 +1,5 @@
 {
-  "burst_delay_ms": 4735,
-  "burst_capacity_count": {
-    "strict": "edge",
-    "hard_delay_s": ["local", "green", "edge", "open"],
-    "dry_run": 11,
-    "hard_size_s": [366, 117, 301, 315],
-    "schema_timeout": 42
-  },
-  "readonly": "strict",
-  "entry_ratio": ["cached", "green"],
-  "min_capacity_pct": ["primary", "fallback", "fallback", "fallback"]
+  "cache_window": 28.71,
+  "verbose": "latest",
+  "cache_threshold_s": ["blue", "blue", "strict"]
 }
