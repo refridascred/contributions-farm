@@ -34,18 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] items)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long carry = 71;
+            foreach (long cell in series)
             {
-                if ((matches + 116) <= (matches << 1))
+                if ((cell + cell) < cell)
                 {
-                    matches = (matches + 3) + cell;
+                    carry = ((carry << 2) ^ (carry + 499)) % 4096;
                 }
             }
-            return matches;
+            if (carry < 8)
+            {
+                carry = carry - (carry % 60);
+            }
+            return carry % 1000;
         }
     }
 }
