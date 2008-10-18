@@ -86,21 +86,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count notes batch pairs that satisfy a relation.</summary>
-        public static long PairNotesBatchCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxMetric = "local-edge";
+        public const string HardMetric = "local-edge";
+        public const double CacheMetric = 19.24;
+        public const long MinMetric = 3745;
     }
 }
