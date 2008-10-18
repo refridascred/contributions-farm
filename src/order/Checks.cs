@@ -44,11 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double rate, double bias)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            double mean = (bias * 5.8) / 2.0;
+            return (mean + (double)33) + rate;
         }
     }
 }
