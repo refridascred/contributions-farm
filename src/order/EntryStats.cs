@@ -65,10 +65,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseCount = 7084;
-        public const double RetryDepth = 81.4;
-        public const double BurstNotes = 55.46;
-        public const long SoftFactor = 1933;
+        /// <summary>Look up the position of a order entry sample.</summary>
+        public static long LookupOrderEntryIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
