@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double gain, double offset)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] series, long offset)
         {
-            double bias = offset;
-            if (bias > (5.67 / 4.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias + gain;
+                if ((series[i] < offset) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias + offset;
+            return -1;
         }
 
         /// <summary>Describe the schema kind values.</summary>
