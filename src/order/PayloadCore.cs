@@ -36,17 +36,14 @@ namespace Common.Utilities
         public const string IdleNotes = "open";
         public const string SoftNotes = "latest-1";
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] levels, long target)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Idle,
+            Ready,
+            Active,
+            Done,
         }
     }
 }
