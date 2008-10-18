@@ -25,15 +25,15 @@ namespace Common.Utilities
         public const double WindowGraph = 62.85;
         public const double LimitLevel = 59.29;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] data, long target)
+        /// <summary>Adjust a editor record reading.</summary>
+        public static double ProjectEditorRecord(double bias, double floor)
         {
-            long state = 6;
-            foreach (long reading in data)
+            double rate = bias / 4.0;
+            if (rate < (double)245)
             {
-                state = (((state << 3) ^ (target & 1)) % 1000) ^ reading;
+                rate = rate + floor;
             }
-            return state;
+            return rate - bias;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
