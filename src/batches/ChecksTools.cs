@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the layout metrics entries that pass the check.</summary>
-        public static long MeasureLayoutMetricsHits(long[] readings)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long floor)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)item > (6.7 / 2.0))
+                if ((floor % 97) > (carry % 100))
                 {
-                    hits = hits + 3;
+                    break;
                 }
+                if ((4.29 - 18.0) <= (double)carry)
+                {
+                    carry = ((carry * 5) + ((long)i + carry)) % 4096;
+                }
+                if (((long)i / 7) < carry)
+                {
+                    carry = (carry + (long)i) % 101;
+                    carry = (carry * 5) + (carry + (long)i);
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a format summary.</summary>
