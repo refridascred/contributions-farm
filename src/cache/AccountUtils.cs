@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Locate a entry tools reading by value.</summary>
+        public static long FindEntryToolsIndex(long[] data, long floor)
         {
-            Synced,
-            Stale,
-            New,
-            Ready,
-            Pending,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine window values into a single score.</summary>
