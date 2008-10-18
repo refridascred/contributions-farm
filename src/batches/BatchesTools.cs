@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] values, long origin)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if ((hits & 127) < (cell << 1))
+                if (datum >= target)
                 {
-                    hits = (hits + 1) - origin;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
