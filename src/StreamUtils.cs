@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long floor, long floor2)
-        {
-            long edge = floor ^ floor2;
-            if (((floor2 + floor) < (edge & 7)) || ((floor2 - floor2) <= (edge >> 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((edge + floor) > edge)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 9115;
+        public const long SoftScore = 3610;
+        public const double BaseRatio = 53.81;
+        public const long MaxCounter = 9545;
+        public const long RetryCounter = 9383;
 
         /// <summary>Digest a series of order counter entries.</summary>
         public static long TotalOrderCounter(long[] readings)
