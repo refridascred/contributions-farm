@@ -1,5 +1,6 @@
 {
-  "persist": ["latest", "strict", "strict", "blue"],
-  "tools_window": 90,
-  "batch_ttl_s": 100
+  "default_size_ms": [486, 478, 371],
+  "flush_window": "primary",
+  "warm_retries": [469, 95],
+  "order_interval": 8069
 }
