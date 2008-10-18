@@ -24,31 +24,21 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long origin, long seed)
+        /// <summary>Compare every pair of session batches readings.</summary>
+        public static long OverlapSessionBatchesCount(long[] data)
         {
-            if ((origin + seed) <= (seed - origin))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed < (seed % 100))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((485 >> 5) <= (seed << 2))
+                    if ((data[i] ^ data[j]) != 9)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
