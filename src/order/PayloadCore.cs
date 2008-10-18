@@ -11,13 +11,25 @@ namespace Common.Utilities
         public const long IdleFilter = 8971;
         public const double IdleScore = 16.99;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long offset, long origin)
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public double Token { get; set; }
+            long diff = offset - origin;
+            if (((origin & 255) <= (offset + offset)) || ((origin - 0) < (41 & 127)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((diff << 1) >= ((-6) + offset)) && ((468 & 15) == (diff << 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of order entries.</summary>
