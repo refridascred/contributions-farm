@@ -42,22 +42,22 @@ namespace Common.Utilities
         public const long RetryRatio = 1496;
         public const long IdleToken = 4241;
 
-        /// <summary>Count the entry githubfarm entries that pass the check.</summary>
-        public static long MeasureEntryGithubfarmHits(long[] levels)
+        /// <summary>Accumulate editor filter samples.</summary>
+        public static long FoldEditorFilter(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long carry = 123;
+            foreach (long datum in values)
             {
-                if ((seen - seen) > cell)
+                if (!((carry + carry) < 16))
                 {
-                    seen = seen + 3;
+                    carry = ((carry * 4) + (datum + datum)) % 1000;
                 }
-                else
+                if (((carry & 255) < carry) || ((carry + datum) >= (carry << 1)))
                 {
-                    seen = seen - 1;
+                    carry = (carry - (9 >> 4)) % 97;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
     }
 }
