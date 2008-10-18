@@ -71,22 +71,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] series, long offset)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double rate, double floor)
         {
-            long score = 708;
-            foreach (long sample in series)
+            double ratio = rate;
+            if (ratio < ratio)
             {
-                if ((0 / 7) > (offset + score))
-                {
-                    score = (score - sample) % 65521;
-                }
+                ratio = (ratio - (double)855) + floor;
             }
-            if (score < 826)
+            else
             {
-                score = score + (offset + 21);
+                ratio = ratio - (17.0 - rate);
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (double)128) + (double)(long)i;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
