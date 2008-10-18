@@ -2,10 +2,8 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     weight REAL,
-    ratio REAL,
-    region TEXT
+    label TEXT,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_region ON stats_logs (region);
-
-INSERT INTO stats_logs (weight, ratio, region) VALUES (77.43, 96.01, 'standard');
+CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
