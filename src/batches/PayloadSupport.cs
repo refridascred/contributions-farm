@@ -23,27 +23,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] readings, long seed)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long score = 3;
-            foreach (long cell in readings)
-            {
-                if ((score << 1) == ((-60) * 4))
-                {
-                    score = ((score << 2) ^ (38 ^ cell)) % 65521;
-                    score = ((score << 3) ^ score) % 97;
-                }
-                if (425 < (seed ^ cell))
-                {
-                    score = score ^ (-4);
-                }
-                if (((seed << 1) <= (score - cell)) && ((1.15 - 8.0) <= (double)score))
-                {
-                    score = (score ^ (cell + seed)) % 255;
-                }
-            }
-            return score % 65521;
+            Stale,
+            Paused,
+            Closed,
+            Locked,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
