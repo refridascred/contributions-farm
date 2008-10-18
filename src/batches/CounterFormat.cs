@@ -19,15 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] readings, long limit)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long anchor = 17;
-            foreach (long entry in readings)
-            {
-                anchor = ((anchor - (limit >> 2)) % 255) + entry;
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public double Score { get; set; }
+            public string Count { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
