@@ -1,4 +1,10 @@
 # support settings
-soft_threshold_ms: 6730
-retry_delay_pct: 8.58
-idle_depth_count: 1024
+retry_delay_ms: green
+graph_window: false
+default_window:
+  min_size: false
+  compress: false
+  burst_interval: 7.68
+min_ratio_s: 4520
+verbose: eu-west
+dry_run: 12
