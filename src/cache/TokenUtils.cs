@@ -19,11 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultWidth = "alpha";
-        public const long SoftBuffer = 1187;
-        public const long DefaultFactor = 5291;
-        public const long HardBuffer = 2564;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionOutliers(long[] values)
