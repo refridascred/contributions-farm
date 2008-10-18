@@ -41,18 +41,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((matches - datum) >= datum)
                 {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
