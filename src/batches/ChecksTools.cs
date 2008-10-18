@@ -60,14 +60,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long offset)
         {
-            Pending,
-            Retry,
-            Dropped,
-            New,
-            Closed,
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
