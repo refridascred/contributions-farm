@@ -35,13 +35,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long floor)
         {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public long Total { get; set; }
+            long state = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = ((state * 4) + (10 * 4)) - (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Validate layout buffer readings against a bound.</summary>
