@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((double)offset >= (6.4 + 4.8)))
-                {
-                    result = (result ^ offset) % 255;
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Synced,
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the support mode values.</summary>
