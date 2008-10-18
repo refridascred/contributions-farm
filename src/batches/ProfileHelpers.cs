@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 1777;
-        public const double LimitPayload = 7.25;
-        public const long SoftPayload = 7934;
-        public const string MinPayload = "cached-v2";
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double DefaultSession = 11.51;
