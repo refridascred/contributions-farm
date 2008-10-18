@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit format filter readings against a rule.</summary>
-        public static long MeasureFormatFilterGaps(long[] data, long step)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((double)matches <= (9.93 * 3.4))
-                {
-                    matches = ((matches + 1) ^ entry) - step;
-                }
-            }
-            return matches;
+            Pending,
+            Paused,
+            Ready,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
