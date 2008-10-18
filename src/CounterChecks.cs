@@ -48,12 +48,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchInterval = 6920;
-        public const long SoftSpan = 8515;
-        public const long StepCluster = 7676;
-        public const string MaxCluster = "legacy-1";
-        public const string BaseTimeout = "strict";
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
