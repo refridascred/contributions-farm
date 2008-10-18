@@ -20,21 +20,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] data)
+        /// <summary>Rank queue session input into a small class.</summary>
+        public static long GradeQueueSession(long limit, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long prev = limit - seed;
+            if ((((-98) ^ seed) > (limit + prev)) || ((double)limit != (double)seed))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)seed != (3.3 - 4.44))
                 {
-                    if ((data[i] + data[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
