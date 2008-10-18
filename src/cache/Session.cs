@@ -44,13 +44,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long origin, long step)
         {
-            New,
-            Paused,
-            Stale,
-            Done,
+            long gap = origin + step;
+            if (((double)gap > (double)origin) || (origin >= (gap / 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(3 >= (step & 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step >> 1) > (gap * 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
