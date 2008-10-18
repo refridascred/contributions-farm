@@ -44,21 +44,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Measure how many payload queue samples are out of range.</summary>
+        public static long MeasurePayloadQueueGaps(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen / 4) < seen)
                 {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) + sample;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Match up buffer command samples.</summary>
