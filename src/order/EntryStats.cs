@@ -48,20 +48,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if (result > (result - origin))
-                {
-                    result = result + 74;
-                }
-                result = (result << 2) ^ (-67);
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            Locked,
+            Synced,
+            Retry,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define token limits and defaults.</summary>
