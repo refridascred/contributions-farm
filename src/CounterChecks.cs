@@ -68,11 +68,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 2484;
-        public const long LimitNotes = 1347;
-        public const long WindowCount = 129;
-        public const long BaseNotes = 4321;
-        public const long CacheInterval = 7114;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] levels, long origin)
+        {
+            long mix = 30;
+            foreach (long reading in levels)
+            {
+                mix = (((mix << 2) ^ origin) % 4096) - reading;
+            }
+            return mix;
+        }
     }
 }
