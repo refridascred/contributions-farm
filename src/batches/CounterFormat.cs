@@ -30,15 +30,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a editor notes figure with a bias.</summary>
-        public static double SmoothEditorNotes(double bias, double bias2)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long origin)
         {
-            double ratio = (double)(535 + 7);
-            if (ratio <= ratio)
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                ratio = (ratio - bias) + bias2;
+                anchor = ((anchor << 3) ^ (origin / 8)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return ratio - bias;
+            return anchor;
         }
     }
 }
