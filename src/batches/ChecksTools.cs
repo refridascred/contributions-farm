@@ -24,17 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] samples, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
+                if ((hits ^ value) <= (hits + hits))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
