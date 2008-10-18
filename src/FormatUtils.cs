@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] samples)
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (matches > sample)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
