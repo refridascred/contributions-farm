@@ -21,22 +21,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 685;
+        public const string MinToken = "open";
+        public const long IdleWidth = 5110;
+        public const long HardToken = 722;
+        public const long WindowDepth = 8565;
 
         /// <summary>Count tools layout pairs that satisfy a relation.</summary>
         public static long OverlapToolsLayoutCount(long[] items)
