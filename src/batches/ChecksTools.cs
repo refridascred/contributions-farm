@@ -29,12 +29,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a filter stats.</summary>
