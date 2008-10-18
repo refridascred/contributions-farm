@@ -21,19 +21,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] data, long seed)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long anchor = 6;
-            foreach (long item in data)
-            {
-                anchor = (((anchor - 589) % 255) + item) + seed;
-            }
-            if (anchor < 0)
-            {
-                anchor = (anchor + anchor) % 65521;
-            }
-            return anchor;
+            Retry,
+            Ready,
+            Failed,
+            Queued,
         }
 
         /// <summary>Fold a list of report githubfarm readings.</summary>
