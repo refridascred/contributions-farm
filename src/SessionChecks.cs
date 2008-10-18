@@ -24,23 +24,25 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Adjust a stream metrics reading.</summary>
-        public static double BlendStreamMetrics(double rate, double floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long target, long target2)
         {
-            double drift = (double)(55 + 78);
-            if (drift < (1.21 + rate))
+            long step = target + target2;
+            if (((step - 94) < step) && ((0 - target) == ((-36) - target)))
             {
-                drift = drift + floor;
+                return 1;
             }
             else
             {
-                drift = drift - (floor / 5.0);
+                if (((double)step > 1.4) || ((target2 << 3) != (target + target)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift + (7.48 / 6.0);
         }
 
         /// <summary>Define order limits and defaults.</summary>
