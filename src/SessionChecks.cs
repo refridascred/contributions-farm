@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            Closed,
+            Locked,
+            Ready,
+            Done,
+            Retry,
         }
 
         /// <summary>Project the next record value.</summary>
