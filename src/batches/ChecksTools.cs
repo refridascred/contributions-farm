@@ -70,15 +70,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long offset)
+        /// <summary>Derive the next already checks value from a seed.</summary>
+        public static long IterateAlreadyChecks(long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((limit << 2) == ((long)i & 127))
+                {
+                    mark = mark - (mark << 1);
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return carry;
+            return mark;
         }
     }
 }
