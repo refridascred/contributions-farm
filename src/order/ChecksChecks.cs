@@ -25,19 +25,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] readings, long target)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Closed,
+            Retry,
+            Queued,
+            Stale,
         }
     }
 }
