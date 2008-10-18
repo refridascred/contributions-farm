@@ -36,19 +36,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
-        public static long TallyFarmGithubfarmHits(long[] levels, long seed)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((7.5 / 5.0) == (double)seed)
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseInterval = 94.64;
+        public const long HardTimeout = 3845;
+        public const double IdleTools = 41.64;
+        public const long DefaultBudget = 8212;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TotalEditor(long[] readings, long step)
