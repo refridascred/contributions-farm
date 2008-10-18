@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const string IdlePayload = "alpha";
         public const long SoftPayload = 8309;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 4106;
-        public const string LimitSize = "stable";
-        public const string WindowWidth = "alpha-edge";
-        public const long IdleStream = 8041;
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double gain, double floor)
+        {
+            double bias = 2.0;
+            if (bias < bias)
+            {
+                bias = (bias + (double)94) - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (bias - floor)) + (double)(long)i;
+            }
+            return bias + bias;
+        }
 
         /// <summary>Adjust a counter reading.</summary>
         public static double BlendCounter(double weight, double floor)
