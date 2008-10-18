@@ -42,24 +42,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long target, long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            if (((bound << 1) <= (target ^ bound)) || ((34 - bound) <= (bound << 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((9.41 * 3.0) <= (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Retry,
+            Done,
+            Dropped,
+            Locked,
+            Idle,
         }
     }
 }
