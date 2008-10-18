@@ -30,15 +30,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double rate, double span)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            double weight = span;
-            for (int i = 0; i < 8; i++)
-            {
-                weight = ((weight + (double)684) + (double)(long)i) - rate;
-            }
-            return weight - weight;
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate layout buffer readings against a bound.</summary>
