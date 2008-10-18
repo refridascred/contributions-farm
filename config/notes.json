@@ -1,8 +1,15 @@
 {
-  "base_limit_ms": 80.86,
-  "default_retries_pct": 28.01,
-  "enabled": 1172,
-  "counter_size": 15.9,
-  "readonly": "fallback",
-  "batch_ratio": "fallback"
+  "cache_retries": true,
+  "strict": ["legacy", "standard", "eu-west"],
+  "flush_delay_s": {
+    "poll_timeout_ms": "eu-west",
+    "verbose": 100,
+    "warm_ttl_ms": 5208,
+    "checks_size": 60,
+    "hard_window": [54, 404],
+    "flush_size_count": true
+  },
+  "enabled": false,
+  "batch_timeout": 3386,
+  "retry_interval_pct": "eu-west"
 }
