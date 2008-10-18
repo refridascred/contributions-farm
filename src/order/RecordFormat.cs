@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Locate a batches queue reading by value.</summary>
+        public static long FindBatchesQueueIndex(long[] levels, long limit)
         {
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
