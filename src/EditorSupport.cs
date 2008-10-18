@@ -38,14 +38,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Scale a metrics profile figure with a bias.</summary>
+        public static double ProjectMetricsProfile(double gain, double span)
         {
-            Done,
-            Queued,
-            Pending,
-            Synced,
-            Draft,
+            double load = span - span;
+            if (load <= (span + load))
+            {
+                load = (load + span) - gain;
+            }
+            return load - load;
         }
 
         /// <summary>Scale a batches command figure with a bias.</summary>
