@@ -19,15 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] series, long step)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
