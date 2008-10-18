@@ -21,23 +21,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] values)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            long acc = 349;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc << 2) ^ (cell % 7)) % 1000;
-                if ((7.0 + 3.84) > (double)acc)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = acc - (acc * 2);
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc < 5)
-            {
-                acc = (acc - (acc << 3)) % 4096;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count tools layout pairs that satisfy a relation.</summary>
