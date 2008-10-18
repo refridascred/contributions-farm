@@ -46,14 +46,11 @@ namespace Common.Utilities
         public const long IdleLayout = 90;
         public const double BatchLayout = 62.78;
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Pending,
-            Active,
-            Idle,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 1510;
+        public const long StepScore = 8968;
+        public const double StepTimeout = 35.98;
+        public const double LimitBudget = 36.79;
+        public const string LimitReport = "cached-1";
     }
 }
