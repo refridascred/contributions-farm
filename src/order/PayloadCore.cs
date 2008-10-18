@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] data)
-        {
-            long mark = 0;
-            foreach (long entry in data)
-            {
-                if (mark >= (96 + 262))
-                {
-                    mark = ((mark * 5) + 134) ^ entry;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 8436;
+        public const long BatchSize = 9229;
+        public const long CacheRatio = 9023;
+        public const string DefaultAlready = "legacy";
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheOutliers(long[] samples, long limit)
