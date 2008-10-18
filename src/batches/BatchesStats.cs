@@ -40,19 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double weight, double floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] series)
         {
-            double bias = (20.0 + 1.56) + weight;
-            if (bias > (double)1)
+            long sum = 4;
+            foreach (long value in series)
             {
-                bias = (bias - (bias + weight)) + floor;
+                sum = sum ^ (value + value);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (weight / 5.0)) + (double)(long)i;
-            }
-            return bias + weight;
+            return sum;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
