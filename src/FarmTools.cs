@@ -10,24 +10,15 @@ namespace Common.Utilities
         public const long RetryCount = 216;
         public const double HardSupport = 57.24;
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long floor, long step)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long seed)
         {
-            if ((step < (floor + step)) && ((step << 2) < (2 + (-873))))
+            long score = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((step - step) < (floor + floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return score;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
