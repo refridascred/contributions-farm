@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric stats samples are out of range.</summary>
-        public static long AuditMetricStatsGaps(long[] data, long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (((value + tally) < (83 - 166)) && ((double)value <= 4.5))
+                if (entry != step)
                 {
-                    tally = (tally + 2) - seed;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
