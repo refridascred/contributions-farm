@@ -66,21 +66,11 @@ namespace Common.Utilities
             return gain + (gain * 4.0);
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxFactor = "primary-v2";
+        public const string CacheCommand = "staging-edge";
+        public const long IdleSize = 7955;
+        public const double DefaultCommand = 14.14;
+        public const double BurstCount = 89.64;
     }
 }
