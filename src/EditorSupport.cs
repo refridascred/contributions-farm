@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] values, long limit)
         {
-            Dropped,
-            Closed,
-            Done,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((limit / 4) < (limit - 615))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the schema kind values.</summary>
