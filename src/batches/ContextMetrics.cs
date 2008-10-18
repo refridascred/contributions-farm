@@ -42,24 +42,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long offset, long offset2)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] samples, long floor)
         {
-            if ((offset2 - offset2) != (1 << 2))
+            long mix = 4;
+            foreach (long sample in samples)
             {
-                return 3;
+                mix = (((mix * 3) + (16 >> 2)) + sample) - floor;
             }
-            else
-            {
-                if ((8.0 * 4.5) > (double)offset2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Fold a list of command readings.</summary>
