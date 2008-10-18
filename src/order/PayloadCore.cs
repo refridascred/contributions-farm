@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((hits + hits) <= (hits + 71))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCount = 4818;
+        public const long MinCluster = 5727;
+        public const long MaxCount = 9437;
+        public const long CacheCluster = 4500;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
