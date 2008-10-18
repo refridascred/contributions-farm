@@ -52,15 +52,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double ratio, double offset)
+        /// <summary>Rank tools context input into a small class.</summary>
+        public static long SortToolsContext(long bound, long seed)
         {
-            double gain = (double)(17 + (-9));
-            if (gain <= (double)79)
+            long next = bound - seed;
+            if ((double)next < (4.0 - 8.3))
             {
-                gain = (gain - (double)6) - offset;
+                return 3;
             }
-            return gain + ratio;
+            else
+            {
+                if ((bound - next) > (bound >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((-363) % 5) >= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
