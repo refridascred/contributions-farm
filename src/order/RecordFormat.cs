@@ -13,18 +13,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] items)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (((count + entry) >= (count + 10)) || (entry < count))
+                if ((bound + reading) > (reading + bound))
                 {
-                    count = count + 2;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate stream samples.</summary>
