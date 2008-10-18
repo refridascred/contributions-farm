@@ -1,17 +1,8 @@
 {
-  "sync_timeout": ["fallback", "fallback", "latest", "standard"],
-  "default_interval": "strict",
-  "flush_ttl_pct": "edge",
-  "strict": {
-    "readonly": 96,
-    "min_ttl_ms": 86.94,
-    "hard_limit_count": 100,
-    "compress": 7121
-  },
-  "flush_capacity_count": {
-    "commits_size": 923,
-    "default_depth": "blue",
-    "hard_capacity": 73.5,
-    "persist": 72.76
-  }
+  "warm_timeout": "blue",
+  "readonly": 24.68,
+  "poll_limit": "stable",
+  "persist": 79,
+  "batch_delay_count": 1475,
+  "soft_limit_pct": 9744
 }
