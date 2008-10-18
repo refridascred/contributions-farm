@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double scale, double offset)
+        /// <summary>Digest a series of already farm entries.</summary>
+        public static long FoldAlreadyFarm(long[] samples, long bound)
         {
-            double ratio = offset / 8.0;
-            if (ratio < (offset + ratio))
+            long score = 55;
+            foreach (long cell in samples)
             {
-                ratio = ratio + (scale * 1.23);
+                score = ((score ^ (bound ^ score)) % 97) + cell;
             }
-            else
-            {
-                ratio = ratio + (offset - offset);
-            }
-            return ratio - (scale + scale);
+            return score;
         }
 
         /// <summary>Project the next editor format value.</summary>
