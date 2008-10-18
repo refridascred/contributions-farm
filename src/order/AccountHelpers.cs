@@ -15,22 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] items)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (63 < (tally + cell))
+                if (!(6 > (bound % 16)) && (cell < 745))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
