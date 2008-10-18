@@ -44,11 +44,9 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseCounter = 33.51;
+        public const long DefaultCounter = 9399;
+        public const long SoftCounter = 2031;
     }
 }
