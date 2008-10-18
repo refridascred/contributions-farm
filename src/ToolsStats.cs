@@ -24,10 +24,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 6461;
-        public const long LimitGithubfarm = 273;
-        public const long BaseGithubfarm = 8646;
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long PairChecksCount(long[] levels)
