@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] series, long limit)
         {
-            public double Offset { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
