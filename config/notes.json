@@ -1,8 +1,5 @@
 {
-  "commits_timeout": "primary",
-  "retry_ratio": "cached",
-  "sync_depth": true,
-  "dry_run": 72,
-  "base_ttl_pct": ["latest", "staging", "eu-west"],
-  "enabled": ["latest", "primary", "green", "primary"]
+  "base_threshold_count": ["eu-west", "latest", "stable"],
+  "retry_timeout_ms": [42, 210, 330, 226],
+  "default_threshold_count": false
 }
