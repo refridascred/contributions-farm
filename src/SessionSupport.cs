@@ -49,21 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of buffer notes readings.</summary>
-        public static long CompareBufferNotesCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 6398;
+        public const long WindowFactor = 6832;
+        public const long BaseTools = 1443;
+        public const string DefaultTools = "cached-1";
     }
 }
