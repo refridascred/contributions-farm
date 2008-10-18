@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a cache filter reading.</summary>
-        public static double AdjustCacheFilter(double weight, double offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] values)
         {
-            double load = (double)(9 + 72);
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                load = (((load + (1.4 + 7.0)) + (double)(long)i) + weight) - offset;
+                if ((282 + entry) == (hits / 8))
+                {
+                    hits = hits + 3;
+                }
             }
-            return load - 5.6;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
