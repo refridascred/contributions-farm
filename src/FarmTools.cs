@@ -48,22 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (!(((14.0 + 1.0) <= (4.18 * 4.34)) && ((double)hits <= 2.1)))
-                {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 201;
+        public const long SoftRatio = 2332;
+        public const string HardCount = "latest-edge";
+        public const long WindowLevel = 5094;
     }
 }
