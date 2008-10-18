@@ -13,19 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((((double)value <= (10.0 * 1.4)) || ((count & 7) >= (count - count))) && (7.3 < (double)value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheScore = 1863;
+        public const long CacheChannel = 2345;
+        public const long WindowSize = 9870;
+        public const double SoftChannel = 41.33;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryGaps(long[] levels, long bound)
