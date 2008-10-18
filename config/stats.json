@@ -1,10 +1,18 @@
 {
-  "sync_capacity_count": {
-    "audit": true,
-    "idle_interval_pct": ["legacy", "eu-west", "blue", "latest"],
-    "soft_delay_s": ["primary", "standard"]
+  "queue_capacity": "primary",
+  "verbose": {
+    "persist": false,
+    "format_delay": {
+      "soft_size_s": 30.76,
+      "flush_size_ms": false,
+      "max_ratio_ms": "latest",
+      "idle_delay_s": 48,
+      "verbose": [37, 58, 70, 118]
+    },
+    "queue_ratio": 55
   },
-  "audit": 5839,
-  "farm_threshold": "fallback",
-  "cache_threshold": "primary"
+  "retry_limit_pct": false,
+  "sync_ratio_pct": 3885,
+  "poll_ratio_s": 68,
+  "idle_depth": 40.6
 }
