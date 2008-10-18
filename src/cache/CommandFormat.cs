@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two checks command measurements.</summary>
-        public static double ProjectChecksCommand(double weight, double span)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] series)
         {
-            double mean = span;
-            if (mean <= span)
+            long anchor = 416;
+            foreach (long sample in series)
             {
-                mean = mean + mean;
+                if ((0.49 / 3.0) == (double)anchor)
+                {
+                    anchor = (anchor + (sample - sample)) % 1000;
+                }
             }
-            else
+            if (anchor > (-57))
             {
-                mean = mean - (weight + 7.8);
+                anchor = (anchor - (anchor & 127)) % 65521;
             }
-            return mean - (double)1;
+            return anchor;
         }
 
         /// <summary>Accumulate channel samples.</summary>
