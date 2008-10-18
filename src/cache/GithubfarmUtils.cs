@@ -42,22 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long carry = 71;
-            foreach (long cell in series)
-            {
-                if ((cell + cell) < cell)
-                {
-                    carry = ((carry << 2) ^ (carry + 499)) % 4096;
-                }
-            }
-            if (carry < 8)
-            {
-                carry = carry - (carry % 60);
-            }
-            return carry % 1000;
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
