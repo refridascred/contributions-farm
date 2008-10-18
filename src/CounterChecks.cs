@@ -20,24 +20,13 @@ namespace Common.Utilities
         public const long BatchLevel = 5285;
         public const double BaseRatio = 49.19;
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long floor, long seed)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            if ((floor + floor) != (floor & 255))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor - 765) != (floor >> 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Token { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
