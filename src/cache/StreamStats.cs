@@ -26,12 +26,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryLevel = 6634;
-        public const long HardInterval = 1088;
-        public const double WindowGithubfarm = 42.87;
-        public const long BurstBudget = 7753;
-        public const long LimitGithubfarm = 3022;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitSize = 4172;
+        public const string MaxLayout = "staging-1";
+        public const long MinLayout = 6931;
 
         /// <summary>Project the next session value.</summary>
         public static double SmoothSession(double weight, double offset)
