@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Dropped,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleLevel = 8434;
+        public const long RetryWindow = 3467;
+        public const double MaxWidth = 98.21;
+        public const double MinWindow = 41.67;
+        public const string WindowDepth = "alpha-edge";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long LimitSize = 4172;
