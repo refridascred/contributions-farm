@@ -37,20 +37,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] values)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double bias, double offset)
         {
-            long carry = 83;
-            foreach (long entry in values)
-            {
-                carry = (carry + (carry + 13)) % 97;
-                carry = (carry * 2) + (entry >> 4);
-            }
-            if (carry > (-141))
-            {
-                carry = (carry ^ (carry + carry)) % 255;
-            }
-            return carry;
+            double load = (double)(-759) - offset;
+            return (load + load) + bias;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
