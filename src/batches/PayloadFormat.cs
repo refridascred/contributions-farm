@@ -19,11 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
+            Failed,
+            Synced,
+            Done,
         }
 
         /// <summary>Check that every counter session entry stays within the limit.</summary>
