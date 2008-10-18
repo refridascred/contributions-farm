@@ -26,18 +26,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] levels, long step)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)levels.Length / 3) >= ((long)levels.Length % 97))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 2) + cell) - step;
+                    if ((data[i] - data[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
