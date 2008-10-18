@@ -28,18 +28,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] levels)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item << 3) < seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Stale,
+            Queued,
+            Draft,
+            Ready,
+            Idle,
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
