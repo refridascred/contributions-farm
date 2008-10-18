@@ -13,11 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftLevel = 60.85;
-        public const long MaxTools = 4425;
-        public const double MaxWidth = 26.52;
-        public const long BaseSpan = 4944;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell >> 5) < (matches ^ cell))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long CombineToken(long[] data, long origin)
