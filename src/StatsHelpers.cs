@@ -40,13 +40,14 @@ namespace Common.Utilities
             return (scale - (double)60) + bias;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
+            Synced,
+            Stale,
+            Ready,
+            Locked,
+            Paused,
         }
 
         /// <summary>Combine token values into a single score.</summary>
