@@ -68,18 +68,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] values)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (sample >= (sample >> 5))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
