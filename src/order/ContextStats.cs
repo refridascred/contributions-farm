@@ -21,14 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] series, long limit)
         {
-            Dropped,
-            Active,
-            Locked,
-            Idle,
-            Queued,
+            long score = 208;
+            foreach (long reading in series)
+            {
+                if (limit <= score)
+                {
+                    score = ((score ^ limit) % 65521) + reading;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a support entry.</summary>
