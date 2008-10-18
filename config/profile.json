@@ -1,16 +1,7 @@
 {
-  "dry_run": "standard",
-  "min_interval_count": {
-    "queue_delay": true,
-    "graph_window": {
-      "farm_delay": 100,
-      "layout_depth": 82,
-      "soft_timeout_ms": "stable",
-      "commits_depth": 75.09,
-      "min_capacity_ms": "edge"
-    },
-    "layout_window": 2238,
-    "audit": false
-  },
-  "filter_retries": "green"
+  "token_interval": 46.04,
+  "default_delay_count": 4252,
+  "persist": "open",
+  "cache_capacity_s": "primary",
+  "warm_retries_s": "standard"
 }
