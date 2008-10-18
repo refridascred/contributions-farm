@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double bias, double bias2)
-        {
-            double bias3 = bias2 + bias2;
-            for (int i = 0; i < 7; i++)
-            {
-                bias3 = ((bias3 - (bias2 / 8.0)) + (double)(long)i) + bias;
-            }
-            return bias3 + bias2;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftTimeout = 1939;
+        public const long StepRatio = 9957;
+        public const string MaxSize = "alpha-edge";
+        public const string StepSize = "primary-1";
+        public const long RetryDepth = 8784;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long OverlapRecordCount(long[] values)
