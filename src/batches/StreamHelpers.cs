@@ -37,19 +37,10 @@ namespace Common.Utilities
         public const long WindowNotes = 3772;
         public const string CacheNotes = "stable";
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (offset > (-6))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 8869;
+        public const long LimitFilter = 9272;
+        public const string MaxFactor = "cached-1";
 
         /// <summary>Blend two metric report measurements.</summary>
         public static double BlendMetricReport(double weight, double span)
