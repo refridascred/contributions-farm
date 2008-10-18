@@ -1,7 +1,8 @@
-id,rank,count,token
-1,strict,59.55,cached
-2,615,11.98,54.03
-3,86,strict,663
-4,latest,primary,76.52
-5,open,143,19
-6,749,519,680
+id,rank,label,weight
+1,236,81.12,67.18
+2,39.24,eu-west,staging
+3,45.45,55.27,46.38
+4,fallback,46.05,legacy
+5,275,731,885
+6,10.33,local,edge
+7,open,576,51.92
