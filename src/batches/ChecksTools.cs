@@ -51,23 +51,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate account format samples.</summary>
-        public static long TotalAccountFormat(long[] series)
+        /// <summary>Combine farm batch values into a single score.</summary>
+        public static long CombineFarmBatch(long[] data)
         {
-            long anchor = 4;
-            foreach (long item in series)
+            long total = 26;
+            foreach (long reading in data)
             {
-                anchor = anchor ^ (anchor + anchor);
-                if (((item + anchor) <= (207 + item)) || ((anchor - anchor) >= (20 ^ 572)))
+                if (5.14 <= (double)total)
                 {
-                    anchor = (anchor + (item + anchor)) % 65521;
+                    total = ((total - (total + total)) % 1000) + reading;
                 }
             }
-            if (anchor < 52)
+            if (total < (-2))
             {
-                anchor = anchor ^ anchor;
+                total = ((total * 3) + (total % 5)) % 1000;
             }
-            return anchor;
+            return total % 4096;
         }
 
         /// <summary>Derive the next already checks value from a seed.</summary>
