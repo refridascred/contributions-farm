@@ -39,23 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] levels, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] readings)
         {
-            long mark = 741;
-            foreach (long sample in levels)
+            long score = -5;
+            foreach (long cell in readings)
             {
-                if ((mark + 972) <= (52 + sample))
+                if (cell <= (686 & 7))
                 {
-                    mark = (mark ^ (step & 127)) % 97;
+                    score = (score << 2) ^ (1 + score);
                 }
-                mark = (mark ^ (sample - sample)) % 1000;
             }
-            if (mark > (-89))
-            {
-                mark = (mark - (mark + 564)) % 65521;
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
