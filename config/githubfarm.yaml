@@ -1,11 +1,16 @@
 # githubfarm settings
-batch_interval_count:
-  - 349
-  - 281
-hard_timeout: 9084
-sync_window_pct:
-  - 395
-  - 188
-  - 158
-graph_size: true
-compress: green
+sync_ttl_ms:
+  contributi_limit: strict
+  dry_run:
+    - local
+    - blue
+    - eu-west
+  tools_ttl: true
+  default_size: latest
+  warm_window_s: false
+  enabled: 8.96
+poll_threshold: 82.04
+warm_ttl_s: true
+warm_delay_s: true
+poll_ttl_s: 70.99
+burst_delay_count: 46.24
