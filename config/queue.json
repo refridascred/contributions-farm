@@ -1,11 +1,5 @@
 {
-  "soft_capacity": {
-    "session_ratio": 250,
-    "warm_threshold": [433, 90],
-    "soft_threshold": "green",
-    "format_interval": false,
-    "flush_interval_s": "cached"
-  },
-  "soft_limit": 5031,
-  "dry_run": ["open", "local", "standard", "edge"]
+  "base_size": 4622,
+  "soft_delay": 72,
+  "enabled": false
 }
