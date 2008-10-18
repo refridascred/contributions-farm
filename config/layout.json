@@ -1,7 +1,12 @@
 {
-  "enabled": 100,
-  "burst_window": 59,
-  "cache_limit": 88,
-  "default_timeout": 60,
-  "idle_delay_count": ["green", "stable", "green", "cached"]
+  "readonly": ["primary", "strict", "open", "latest"],
+  "metrics_ttl": {
+    "warm_timeout_ms": "standard",
+    "max_ratio": "legacy",
+    "flush_limit_ms": "cached"
+  },
+  "base_delay": 30.14,
+  "profile_ratio": false,
+  "base_size_count": true,
+  "dry_run": 81.9
 }
