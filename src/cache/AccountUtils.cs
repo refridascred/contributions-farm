@@ -15,12 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinScore = "standard-1";
-        public const string DefaultWidth = "cached-edge";
-        public const double RetryFactor = 98.13;
-        public const long SoftStream = 5815;
-        public const long IdleRatio = 8818;
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
