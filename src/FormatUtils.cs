@@ -41,18 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] samples)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((seen + seen) > 74)
+                if (cell > seed)
                 {
-                    seen = (seen + 1) + reading;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Describe the account mode values.</summary>
