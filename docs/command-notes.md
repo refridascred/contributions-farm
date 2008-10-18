@@ -1,11 +1,15 @@
 # Command notes
 
-A contributi that stays idle for too long is moved to the session list.
-Use schema settings to tune how often contributi data is refreshed.
+The route helpers are pure functions, so they are safe to call from any thread.
+The stats helpers are pure functions, so they are safe to call from any thread.
+A batches that stays idle for too long is moved to the channel list.
+
+When a counter fails, the stats handler retries a few times before giving up.
+The account module keeps token values in sync with the contributi cache.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Validate queue input early
-- Document new context fields
-- Prefer queue defaults
+- Prefer window defaults
+- Review cluster limits each release
+- Log every order change
+- Keep profile values small
