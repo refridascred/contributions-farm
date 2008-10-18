@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardRatio = "fallback-v2";
-        public const long SoftSpan = 2211;
-        public const double MaxContributi = 39.14;
-        public const long StepContributi = 3335;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Synced,
+            Locked,
+            New,
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextMatches(long[] readings, long bound)
