@@ -36,17 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a layout cache sample.</summary>
-        public static long LookupLayoutCacheIndex(long[] data, long limit)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Total { get; set; }
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
