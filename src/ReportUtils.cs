@@ -29,19 +29,11 @@ namespace Common.Utilities
         public const long BatchReport = 2968;
         public const long MinWidth = 2686;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (hits <= (datum + 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 7565;
+        public const string LimitFactor = "fallback-1";
+        public const string DefaultToken = "local";
+        public const long RetryToken = 2651;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long limit)
