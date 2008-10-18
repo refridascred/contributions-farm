@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchGraph = 98.02;
+        public const long BurstGraph = 7376;
+        public const double MaxDepth = 79.03;
+        public const double DefaultRatio = 13.59;
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
