@@ -60,13 +60,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] data)
         {
-            New,
-            Failed,
-            Idle,
-            Locked,
+            long mark = 125;
+            foreach (long item in data)
+            {
+                if ((item / 9) >= (854 - mark))
+                {
+                    mark = mark ^ (mark ^ item);
+                }
+            }
+            return mark;
         }
     }
 }
