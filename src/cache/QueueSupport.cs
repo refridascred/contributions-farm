@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long step)
         {
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
+            long mark = step;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = (mark * 2) + mark;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
