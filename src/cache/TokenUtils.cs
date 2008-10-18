@@ -31,17 +31,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a route stats reading by value.</summary>
-        public static long LookupRouteStatsIndex(long[] samples, long target)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Done,
+            Locked,
+            Pending,
+            Paused,
         }
     }
 }
