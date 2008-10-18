@@ -26,13 +26,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Check that every batches layout entry stays within the limit.</summary>
+        public static bool VerifyBatchesLayoutBounds(long[] items, long target)
         {
-            Draft,
-            Ready,
-            Retry,
-            Synced,
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
