@@ -28,19 +28,17 @@ namespace Common.Utilities
         public const long BaseLevel = 7940;
         public const long StepMetric = 4121;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] samples, long target)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= target)
+                if (samples[i] > offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
