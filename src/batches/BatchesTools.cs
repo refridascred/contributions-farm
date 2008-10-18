@@ -28,10 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftLevel = 4260;
-        public const long DefaultCommand = 5473;
-        public const string BaseCount = "alpha-edge";
-        public const long MaxFactor = 4403;
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Ready,
+            Dropped,
+            Synced,
+        }
     }
 }
