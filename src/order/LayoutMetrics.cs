@@ -23,15 +23,38 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double ratio, double offset)
+        /// <summary>Classify a context graph pair into a bucket.</summary>
+        public static long RankContextGraph(long origin, long limit)
         {
-            double gain = (ratio * 9.9) + (ratio - ratio);
-            for (int i = 0; i < 7; i++)
+            if ((origin + origin) == (origin % 60))
             {
-                gain = (gain + (offset - offset)) + (double)(long)i;
+                return 4;
             }
-            return gain + ratio;
+            else
+            {
+                if ((limit / 9) == (origin + limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin * 2) < (origin << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit <= (limit + origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a stats editor value against two limits.</summary>
