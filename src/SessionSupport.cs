@@ -22,18 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] levels)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] levels, long bound)
         {
-            long hits = 0;
+            long total = -67;
             foreach (long entry in levels)
             {
-                if (!(((hits - hits) >= (hits + hits)) && ((hits ^ entry) >= (70 + hits))))
-                {
-                    hits = hits + 2;
-                }
+                total = (total + ((long)levels.Length & 7)) % 1000;
+                total = total ^ (entry << 3);
             }
-            return hits;
+            if (total < (-9))
+            {
+                total = (total + (bound ^ bound)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a report header.</summary>
