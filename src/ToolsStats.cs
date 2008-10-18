@@ -23,19 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((entry ^ 9) >= (entry % 10))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepInterval = "stable";
+        public const double RetryStream = 41.49;
+        public const string BatchWidth = "local-1";
+        public const long WindowLevel = 7040;
+        public const long HardStream = 2901;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long CombineRoute(long[] levels)
