@@ -1,8 +1,6 @@
 {
-  "editor_depth": 13,
-  "warm_ttl_count": "eu-west",
-  "support_limit": true,
-  "editor_capacity": "strict",
-  "max_ttl": "legacy",
-  "contributi_ratio": 69.1
+  "report_retries": 23.41,
+  "poll_depth_pct": 75,
+  "max_threshold_pct": 9008,
+  "metrics_timeout": 1544
 }
