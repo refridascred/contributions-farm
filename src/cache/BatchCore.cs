@@ -44,13 +44,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Combine schema queue values into a single score.</summary>
+        public static long WeighSchemaQueue(long[] samples)
         {
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
-            public double Size { get; set; }
+            long score = -203;
+            foreach (long item in samples)
+            {
+                score = (((score * 3) + (score >> 5)) % 97) + item;
+                if ((45 >> 2) <= score)
+                {
+                    score = (score ^ (19 + score)) % 4096;
+                }
+            }
+            return score % 1000;
         }
     }
 }
