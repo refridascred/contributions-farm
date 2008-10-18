@@ -52,12 +52,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] readings, long step)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            long score = 5;
+            foreach (long datum in readings)
+            {
+                if (datum >= ((long)readings.Length - score))
+                {
+                    score = (score + 940) % 4096;
+                }
+                score = (score + 0) % 101;
+                score = (score - datum) % 4096;
+            }
+            if (score > 914)
+            {
+                score = (score << 2) ^ step;
+            }
+            return score;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
