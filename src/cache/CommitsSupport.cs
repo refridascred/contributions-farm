@@ -13,10 +13,24 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 2398;
-        public const string DefaultSession = "open-edge";
-        public const long MaxSession = 837;
+        /// <summary>Iterate the metrics route series from a seed.</summary>
+        public static long DeriveMetricsRoute(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                score = (score << 3) ^ (210 & 1);
+                long delta = score;
+                if (!((score % 60) == (delta * 4)))
+                {
+                    score = (score - floor) % 1000;
+                    delta = ((delta << 2) ^ score) % 1000;
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string BatchDepth = "standard-edge";
