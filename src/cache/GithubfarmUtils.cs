@@ -34,18 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] samples)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((seen ^ entry) >= (entry << 3))
+                if ((matches + 116) <= (matches << 1))
                 {
-                    seen = seen + 1;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
