@@ -45,10 +45,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryLevel = 13.24;
-        public const double WindowFormat = 10.89;
-        public const string MaxFormat = "primary-1";
-        public const long RetryScore = 6335;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] series)
+        {
+            long mark = 33;
+            foreach (long cell in series)
+            {
+                mark = (mark + ((-740) - cell)) % 97;
+            }
+            return mark;
+        }
     }
 }
