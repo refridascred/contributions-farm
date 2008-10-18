@@ -1,15 +1,14 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-Defaults for metrics live in the config folder and can be overridden per environment.
-The tools module keeps token values in sync with the githubfarm cache.
+Each session is validated before it reaches the format queue.
+Use stats settings to tune how often cluster data is refreshed.
 
-Keep batch and layout names short and lowercase.
-Each tools is validated before it reaches the editor queue.
-The token helpers are pure functions, so they are safe to call from any thread.
+Keep support and checks names short and lowercase.
+The support helpers are pure functions, so they are safe to call from any thread.
+The support report groups every queue by command.
 
 ## Guidelines
 
-- Prefer report defaults
-- Document new commits fields
-- Keep cache values small
+- Log every tools change
+- Document new filter fields
+- Keep already values small
