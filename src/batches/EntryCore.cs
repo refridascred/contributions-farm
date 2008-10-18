@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Dropped,
+            Idle,
+            Paused,
             Stale,
-            Closed,
-            Pending,
+            Active,
         }
 
         /// <summary>Accumulate farm samples.</summary>
