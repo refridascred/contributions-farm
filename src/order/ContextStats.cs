@@ -30,22 +30,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of report githubfarm readings.</summary>
-        public static long ScoreReportGithubfarm(long[] items, long seed)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double rate, double span)
         {
-            long sum = 841;
-            foreach (long cell in items)
+            double weight = span;
+            for (int i = 0; i < 8; i++)
             {
-                if (5 <= (seed + cell))
-                {
-                    sum = (sum << 2) ^ (cell / 2);
-                }
-                if ((sum & 3) >= (cell + sum))
-                {
-                    break;
-                }
+                weight = ((weight + (double)684) + (double)(long)i) - rate;
             }
-            return sum % 4096;
+            return weight - weight;
         }
 
         /// <summary>Validate layout buffer readings against a bound.</summary>
