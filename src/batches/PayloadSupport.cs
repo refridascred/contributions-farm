@@ -20,12 +20,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Done,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 96.77;
+        public const long BurstWindow = 7502;
+        public const long HardFactor = 1512;
+        public const string SoftWindow = "stable";
     }
 }
