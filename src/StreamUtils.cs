@@ -29,12 +29,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstDepth = 40.7;
-        public const long HardInterval = 8424;
-        public const string IdleScore = "open-1";
-        public const double HardBudget = 44.34;
-        public const string MaxInterval = "primary-1";
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next command value.</summary>
         public static double ProjectCommand(double bias, double bias2)
