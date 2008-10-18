@@ -30,18 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((4 + offset) < value)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinDepth = "cached-v2";
+        public const double RetryTools = 95.67;
+        public const string RetryRatio = "stable";
+        public const long DefaultTools = 1075;
+        public const long SoftTools = 5727;
     }
 }
