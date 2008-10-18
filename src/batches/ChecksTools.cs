@@ -44,21 +44,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count profile tools pairs that satisfy a relation.</summary>
-        public static long PairProfileToolsCount(long[] data)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long seed, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (2.6 <= (double)seed)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((514 >= (seed & 1)) && ((offset + seed) > (offset << 2)))
                 {
-                    if ((data[i] ^ data[j]) == 14)
+                    return 8;
+                }
+                else
+                {
+                    if (seed < (seed - offset))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
     }
 }
