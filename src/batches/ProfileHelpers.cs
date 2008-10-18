@@ -75,19 +75,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] readings, long target)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value % 3) < (target - target))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 9694;
+        public const double BaseSession = 87.99;
+        public const string BurstSession = "alpha";
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
