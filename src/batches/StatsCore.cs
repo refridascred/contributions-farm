@@ -63,20 +63,38 @@ namespace Common.Utilities
         public const double RetryReport = 80.68;
         public const string DefaultReport = "alpha-edge";
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long limit)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long bound, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
+            if (((2.18 * 5.33) <= (double)limit) || ((limit ^ 3) < bound))
             {
-                if (limit <= sum)
-                {
-                    sum = (sum - (limit & 7)) % 65521;
-                }
-                sum = sum + (long)i;
-                sum = ((sum * 4) + (long)i) % 97;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((limit + bound) <= (limit * 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)limit >= 6.17) && (bound <= (41 / 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)bound == (4.99 + 4.21))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
