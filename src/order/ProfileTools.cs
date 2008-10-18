@@ -29,22 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] levels, long limit)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long bound)
         {
-            long mark = 580;
-            foreach (long datum in levels)
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((11.0 / 4.0) != (double)limit)
-                {
-                    mark = mark - (datum << 1);
-                }
-                else
-                {
-                    mark = (mark * 3) + (datum + mark);
-                }
+                acc = ((acc << 3) ^ (acc + (long)i)) % 97;
+                acc = (acc << 2) ^ ((long)i % 3);
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
