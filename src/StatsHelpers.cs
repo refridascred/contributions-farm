@@ -19,11 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitWidth = 1893;
-        public const long WindowScore = 957;
-        public const long HardBatch = 712;
-        public const long StepTimeout = 798;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (((hits << 2) >= (hits >> 4)) && ((hits <= (450 - entry)) && ((entry << 2) <= hits)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
