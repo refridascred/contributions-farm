@@ -1,6 +1,7 @@
-id,count,weight
-1,724,40.32
-2,94.67,96.04
-3,420,strict
-4,231,local
-5,935,3
+id,rank,count,token
+1,strict,59.55,cached
+2,615,11.98,54.03
+3,86,strict,663
+4,latest,primary,76.52
+5,open,143,19
+6,749,519,680
