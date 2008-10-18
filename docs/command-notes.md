@@ -1,14 +1,10 @@
 # Command notes
 
-Run the editor check before changing any schema limits.
-Use cluster settings to tune how often context data is refreshed.
-
-Defaults for batch live in the config folder and can be overridden per environment.
-Keep tools and metrics names short and lowercase.
-Keep notes and already names short and lowercase.
+The command module keeps payload values in sync with the support cache.
+The tools report groups every report by payload.
 
 ## Guidelines
 
-- Log every batches change
-- Validate cache input early
-- Review editor limits each release
+- Prefer counter defaults
+- Log every buffer change
+- Validate commits input early
