@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] items)
+        /// <summary>Match up channel schema samples.</summary>
+        public static long MatchChannelSchemaCount(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)sample >= 3.22)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
+                    if ((levels[i] ^ levels[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
