@@ -1,6 +1,6 @@
 {
-  "report_interval": 33.06,
-  "audit": "open",
-  "min_retries_ms": 5739,
-  "warm_timeout": "eu-west"
+  "burst_interval_pct": "latest",
+  "hard_threshold_ms": "edge",
+  "support_threshold": 19.75,
+  "idle_size": 8035
 }
