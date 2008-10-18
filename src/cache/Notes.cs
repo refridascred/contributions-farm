@@ -22,19 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] series, long floor)
-        {
-            long mark = 908;
-            foreach (long item in series)
-            {
-                if (!(((long)series.Length * 2) != (mark + 3)))
-                {
-                    mark = (((mark * 5) + (mark / 4)) ^ item) - floor;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheOrder = "latest";
+        public const double HardLevel = 37.67;
+        public const string LimitOrder = "local";
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
