@@ -48,19 +48,26 @@ namespace Common.Utilities
         public const double DefaultStats = 55.19;
         public const string CacheStats = "alpha-v2";
 
-        /// <summary>Check that every command order entry stays within the limit.</summary>
-        public static bool VerifyCommandOrderRange(long[] values, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] values, long origin)
         {
-            bool valid = true;
+            long result = 1;
             foreach (long item in values)
             {
-                if (item >= origin)
+                if (result >= (68 << 1))
                 {
-                    valid = false;
-                    break;
+                    result = (result ^ item) % 101;
+                }
+                if (((4 - origin) <= (result % 12)) || ((double)result > (3.3 / 3.0)))
+                {
+                    result = result - (6 & 7);
                 }
             }
-            return valid;
+            if (result < 6)
+            {
+                result = result + (origin * 5);
+            }
+            return result;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
