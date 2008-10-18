@@ -48,11 +48,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 9257;
-        public const long MaxRatio = 4564;
-        public const double RetryLevel = 13.35;
-        public const double LimitFarm = 59.86;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double CacheInterval = 9.0;
