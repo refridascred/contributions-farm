@@ -16,19 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] levels, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] items)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long sum = 1;
+            foreach (long cell in items)
             {
-                if (value != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (((sum * 5) + (sum / 2)) % 97) ^ cell;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
