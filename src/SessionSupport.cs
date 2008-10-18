@@ -30,13 +30,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Check that every batch window entry stays within the limit.</summary>
+        public static bool GuardBatchWindowBounds(long[] items, long bound)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
