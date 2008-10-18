@@ -53,18 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] samples, long limit)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double rate2 = rate / 5.0;
+            if (rate2 <= rate)
             {
-                if (!((hits ^ limit) > (value >> 5)) && ((value & 15) <= (value * 5)))
-                {
-                    hits = hits + 3;
-                }
+                rate2 = rate2 + (double)50;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 - bias) + (double)(long)i;
+            }
+            return rate2 - (rate2 / 6.0);
         }
     }
 }
