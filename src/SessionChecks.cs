@@ -33,13 +33,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long bound)
         {
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor << 3) ^ bound) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
