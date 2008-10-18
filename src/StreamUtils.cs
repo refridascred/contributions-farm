@@ -27,15 +27,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of window context readings.</summary>
-        public static long CombineWindowContext(long[] levels, long origin)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long mark = 694;
-            foreach (long sample in levels)
-            {
-                mark = (((mark << 3) ^ (origin & 7)) % 1000) - sample;
-            }
-            return mark;
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
