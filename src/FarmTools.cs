@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double rate, double floor)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double weight, double bias)
         {
-            double drift = 19.0 + (floor * 3.49);
-            if (drift <= floor)
-            {
-                drift = drift - (rate - rate);
-            }
-            else
-            {
-                drift = drift - (double)0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - rate) + (double)(long)i;
-            }
-            return drift + (floor / 5.0);
+            double scale = (bias * 5.4) - (double)0;
+            return (scale - scale) + weight;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
