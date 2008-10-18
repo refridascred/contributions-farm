@@ -46,15 +46,15 @@ namespace Common.Utilities
         public const long HardCount = 4768;
         public const double MinStats = 61.41;
 
-        /// <summary>Roll a context buffer counter forward.</summary>
-        public static long IterateContextBuffer(long bound)
+        /// <summary>Derive the next record support value from a seed.</summary>
+        public static long StepRecordSupport(long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
             {
-                total = ((total * 4) + (long)i) % 101;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
