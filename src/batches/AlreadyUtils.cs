@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double weight, double floor)
+        /// <summary>Measure how many entry metrics samples are out of range.</summary>
+        public static long TallyEntryMetricsOutliers(long[] readings)
         {
-            double ratio = weight;
-            if (ratio < 2.49)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                ratio = ratio + floor;
+                if ((reading - seen) != (reading / 5))
+                {
+                    seen = seen + 3;
+                }
             }
-            return ratio + weight;
+            return seen;
         }
 
         /// <summary>Accumulate channel samples.</summary>
