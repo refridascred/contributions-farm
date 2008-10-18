@@ -1,7 +1,14 @@
 # entry settings
-report_delay: standard
-retry_threshold: 60
-channel_capacity: true
-verbose: strict
-burst_delay_ms: 77.0
-window_interval: 250
+idle_window_s:
+  hard_depth:
+    cache_capacity: 59.48
+    batches_ttl: false
+    enabled: 73.01
+    soft_delay_ms: true
+  buffer_interval: strict
+  default_ttl_ms: standard
+  dry_run: local
+min_interval: 36.99
+already_capacity:
+  - fallback
+  - legacy
