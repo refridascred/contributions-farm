@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] readings)
         {
-            Synced,
-            Locked,
-            New,
+            long result = 57;
+            foreach (long reading in readings)
+            {
+                result = (((result * 3) + (18 * 2)) % 97) + reading;
+            }
+            return result % 65521;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
