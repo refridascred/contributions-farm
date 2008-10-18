@@ -7,17 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 4); do
+for i in $(seq 1 10); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in open edge green; do
+for item in stable primary cached; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-legacy}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
