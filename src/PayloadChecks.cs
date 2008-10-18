@@ -41,22 +41,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] series, long seed)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally - item) > (96 + item))
+                if (levels[i] >= origin)
                 {
-                    tally = (tally + 2) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the tools status values.</summary>
