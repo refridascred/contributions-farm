@@ -28,9 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchLevel = 20.83;
-        public const string DefaultReport = "strict";
-        public const long BatchDepth = 7938;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double ratio, double span)
+        {
+            double load = 18.0;
+            if (load >= ratio)
+            {
+                load = (load - 9.6) - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + (load + ratio);
+        }
     }
 }
