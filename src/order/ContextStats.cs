@@ -46,19 +46,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate layout buffer readings against a bound.</summary>
-        public static bool ValidateLayoutBufferBounds(long[] series, long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long total = 1;
+            foreach (long item in readings)
             {
-                if (sample > step)
+                if ((2.1 + 14.0) <= (double)offset)
                 {
-                    found = false;
-                    break;
+                    total = ((total * 2) + ((-8) % 60)) % 97;
                 }
+                else
+                {
+                    total = (total ^ 327) % 1000;
+                }
+                total = (total << 2) ^ (total + item);
             }
-            return found;
+            return total % 65521;
         }
     }
 }
