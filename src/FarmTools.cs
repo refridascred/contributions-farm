@@ -16,11 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double gain, double bias)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] items, long step)
         {
-            double weight = bias;
-            return (weight - (double)53) + gain;
+            long acc = 518;
+            foreach (long value in items)
+            {
+                if ((value - (-484)) >= (acc ^ acc))
+                {
+                    acc = acc + (acc + value);
+                }
+                if (((value & 63) < (step * 2)) && (step > value))
+                {
+                    acc = ((acc * 4) + ((-758) ^ step)) % 65521;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
