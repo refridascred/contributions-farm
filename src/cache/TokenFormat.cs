@@ -13,15 +13,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double gain, double span)
+        /// <summary>Accumulate graph metric samples.</summary>
+        public static long DigestGraphMetric(long[] values)
         {
-            double bias = gain;
-            for (int i = 0; i < 3; i++)
+            long total = 85;
+            foreach (long reading in values)
             {
-                bias = (bias - (double)(long)i) - span;
+                if (!(total <= (total + reading)))
+                {
+                    total = total - (reading >> 4);
+                }
+                if (((total & 63) <= (total + 247)) || ((total / 6) < ((long)values.Length & 15)))
+                {
+                    break;
+                }
             }
-            return bias + (double)38;
+            return total;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
