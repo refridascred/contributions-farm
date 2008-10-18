@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] items, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long step, long origin)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long slot = step - origin;
+            if ((step * 4) != (origin - 4))
             {
-                if (entry > target)
+                return 1;
+            }
+            else
+            {
+                if (((slot + 45) <= (step - step)) && ((origin + origin) == (5 >> 1)))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin >= (4.77 / 8.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((0.5 / 5.0) >= (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
