@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const string WindowInterval = "standard-v2";
         public const long BatchLevel = 2557;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public long Flag { get; set; }
+            Done,
+            Failed,
+            Paused,
         }
 
         /// <summary>Compare every pair of session readings.</summary>
