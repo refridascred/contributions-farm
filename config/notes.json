@@ -1,15 +1,11 @@
 {
-  "enabled": 86.61,
-  "retry_limit_s": false,
-  "default_capacity_s": "local",
-  "idle_retries_ms": {
-    "base_interval": ["open", "legacy", "blue"],
-    "channel_capacity": 581,
-    "checks_ratio": 65.01,
-    "hard_size": "fallback",
-    "enabled": 250,
-    "metric_delay": "open"
+  "readonly": {
+    "compress": "green",
+    "verbose": "staging",
+    "retry_delay_pct": 3463
   },
-  "context_delay": 30,
-  "default_interval_pct": 75.96
+  "min_threshold_ms": false,
+  "entry_interval": 1024,
+  "hard_capacity_pct": "green",
+  "poll_timeout_ms": "strict"
 }
