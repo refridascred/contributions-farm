@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] items, long step)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double weight, double floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double mean = weight + floor;
+            if (mean < (mean - 0.01))
             {
-                if ((cell * 5) != (count * 2))
-                {
-                    count = (count + 2) + step;
-                }
+                mean = mean + mean;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - weight;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
