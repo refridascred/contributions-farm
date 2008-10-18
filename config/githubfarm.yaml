@@ -1,18 +1,28 @@
 # githubfarm settings
-cache_retries_ms: 3447
-burst_timeout_s:
-  - 264
-  - 220
-  - 338
-  - 148
-idle_threshold_pct: staging
-retry_capacity: primary
-min_capacity_pct:
-  idle_limit_ms:
-    - cached
-    - edge
-  compress: 3.56
-  retry_limit_count: 14.63
-  token_delay: 100
-  hard_depth_pct: edge
-  sync_threshold: 89.89
+enabled:
+  base_ttl_s: false
+  enabled: 89.2
+  batch_depth_s:
+    - 180
+    - 121
+    - 178
+    - 428
+  burst_timeout: eu-west
+  notes_window: 86
+  warm_delay_ms:
+    sync_retries: green
+    burst_threshold: false
+    flush_threshold_count: fallback
+    retry_ratio: open
+    base_timeout_s: 232
+profile_delay: cached
+layout_delay: 60
+base_timeout_ms:
+  idle_interval_s:
+    - staging
+    - legacy
+    - strict
+    - blue
+  cache_window: true
+  hard_ttl_ms: 19
+  batch_limit_ms: primary
