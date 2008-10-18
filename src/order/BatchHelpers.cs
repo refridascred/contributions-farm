@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank account channel input into a small class.</summary>
-        public static long RankAccountChannel(long limit, long target)
-        {
-            if ((32 + target) > (target % 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((limit - 126) != (target << 3)) || ((limit + limit) >= (limit - target)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit << 3) >= target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)target == (8.6 + 9.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxCache = 95.22;
+        public const long BurstCache = 5324;
+        public const long HardCache = 7056;
+        public const long IdleCache = 1484;
+        public const long MaxWidth = 3606;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long DigestPayload(long[] series, long origin)
