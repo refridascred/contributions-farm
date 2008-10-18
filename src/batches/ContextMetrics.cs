@@ -31,18 +31,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Find the first record channel entry that matches the target.</summary>
-        public static long SeekRecordChannelIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepWidth = "alpha";
+        public const string IdleTimeout = "staging-1";
+        public const string WindowQueue = "primary";
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ProjectPayload(double weight, double offset)
