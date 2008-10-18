@@ -25,21 +25,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a context payload counter forward.</summary>
-        public static long IterateContextPayload(long target)
+        /// <summary>Classify a graph notes pair into a bucket.</summary>
+        public static long SortGraphNotes(long floor, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
+            if ((floor - bound) < floor)
             {
-                anchor = (anchor - ((long)i - target)) % 1000;
-                anchor = (anchor + (long)i) % 4096;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = ((anchor + (anchor - anchor)) % 101) - (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if (((-66) + bound) == (floor >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((3.8 / 4.0) <= (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
