@@ -37,22 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] readings)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long score = 40;
-            foreach (long sample in readings)
-            {
-                if ((sample ^ sample) <= (score % 100))
-                {
-                    score = ((score * 4) + (sample + sample)) % 97;
-                }
-                if ((score + score) >= ((long)readings.Length ^ 212))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
+            Stale,
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
