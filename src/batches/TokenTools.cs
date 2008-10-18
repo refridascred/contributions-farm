@@ -49,30 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] levels)
+        /// <summary>Count the support filter entries that pass the check.</summary>
+        public static long MeasureSupportFilterHits(long[] levels)
         {
-            long carry = 36;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((5.15 - 5.2) > (double)carry)
+                if ((item * 2) >= (74 ^ item))
                 {
-                    carry = (carry * 5) + (datum - 0);
-                }
-                if ((double)carry <= (10.0 - 2.1))
-                {
-                    carry = (carry - (carry + datum)) % 65521;
-                }
-                if ((datum / 6) == (datum + datum))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            if (carry > 872)
-            {
-                carry = (carry ^ (carry + (long)levels.Length)) % 101;
-            }
-            return carry % 4096;
+            return seen;
         }
     }
 }
