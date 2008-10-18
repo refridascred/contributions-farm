@@ -34,13 +34,13 @@ namespace Common.Utilities
         public const string BatchCluster = "open-v2";
         public const long IdleLevel = 702;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Synced,
-            Locked,
-            Failed,
-            Draft,
+            Queued,
+            Idle,
+            New,
+            Closed,
         }
 
         /// <summary>Describe the graph status values.</summary>
