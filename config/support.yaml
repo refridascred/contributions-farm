@@ -1,4 +1,9 @@
 # support settings
-base_window: false
-commits_retries: 69.13
-hard_retries_count: 12.02
+burst_capacity: 701
+checks_window: false
+format_size: legacy
+default_timeout_count: local
+channel_delay: legacy
+flush_depth:
+  - edge
+  - eu-west
