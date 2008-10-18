@@ -27,18 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] samples, long bound)
+        /// <summary>Audit commits profile readings against a rule.</summary>
+        public static long CountCommitsProfileGaps(long[] series)
         {
-            long sum = 863;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (4.8 >= (5.71 + 16.0))
+                if (4 <= count)
                 {
-                    sum = ((sum + (bound & 31)) % 101) - sample;
+                    count = (count + 1) ^ datum;
                 }
             }
-            return sum;
+            return count;
         }
     }
 }
