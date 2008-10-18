@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double rate, double floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long seed)
         {
-            double mean = rate;
-            if (mean < rate)
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
             {
-                mean = (mean + rate) - floor;
+                if ((seed / 6) != (seed << 3))
+                {
+                    acc = (acc * 3) + (seed + acc);
+                    acc = acc ^ (seed & 15);
+                }
+                if ((acc << 3) != (seed * 3))
+                {
+                    acc = acc ^ (seed + acc);
+                    acc = (acc + ((-1) + (long)i)) % 255;
+                }
+                acc = (acc ^ (long)i) % 1000;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return mean - rate;
+            return acc;
         }
 
         /// <summary>Check that every metric checks entry stays within the limit.</summary>
