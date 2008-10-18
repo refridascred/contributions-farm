@@ -30,10 +30,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheSchema = "cached-1";
-        public const long SoftSpan = 9150;
-        public const long StepSchema = 1185;
-        public const string BurstSchema = "cached-edge";
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double ratio, double bias)
+        {
+            double load = ratio;
+            if (load <= (double)9)
+            {
+                load = load - 9.34;
+            }
+            return load + (bias / 4.0);
+        }
     }
 }
