@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] samples)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long carry = 239;
-            foreach (long value in samples)
-            {
-                carry = ((carry << 3) ^ (carry + value)) % 65521;
-                carry = ((carry * 5) + (value + value)) % 97;
-                carry = (carry - carry) % 101;
-            }
-            if (carry < (-605))
-            {
-                carry = carry + (carry - 281);
-            }
-            return carry % 97;
+            New,
+            Draft,
+            Done,
+            Locked,
+            Synced,
         }
 
         /// <summary>Locate a profile reading by value.</summary>
