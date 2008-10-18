@@ -1,8 +1,8 @@
-id,count,state
-1,18.47,6.52
-2,55.38,51.97
-3,1.34,980
-4,standard,804
-5,stable,latest
-6,1.5,975
-7,staging,481
+id,owner,level,region,active
+1,190,87.66,693,548
+2,954,cached,local,704
+3,10.79,stable,15.28,8
+4,green,stable,32.34,18.23
+5,640,cached,57.15,74.05
+6,cached,local,67.0,latest
+7,17.06,21.43,green,566
