@@ -1,8 +1,29 @@
 {
-  "burst_size": [381, 99, 302],
-  "graph_limit": 30.05,
-  "max_ratio_count": 84.64,
-  "default_window_s": 100,
-  "default_timeout_s": "strict",
-  "hard_ttl": "local"
+  "context_timeout": {
+    "metric_ttl": ["local", "local", "staging", "green"],
+    "batch_size": {
+      "poll_timeout_pct": true,
+      "default_capacity_count": 41.38,
+      "retry_size_pct": 7974,
+      "flush_threshold_pct": 60
+    },
+    "readonly": 7,
+    "flush_depth_ms": ["staging", "fallback"],
+    "context_capacity": {
+      "farm_timeout": "stable",
+      "flush_size_s": "eu-west",
+      "record_window": 85.29,
+      "sync_delay_count": 55.29
+    },
+    "commits_depth": ["open", "strict"]
+  },
+  "base_delay_pct": {
+    "enabled": "blue",
+    "sync_size_count": "eu-west",
+    "cache_window_ms": true
+  },
+  "min_window_ms": 24,
+  "order_ratio": "standard",
+  "min_size": 27,
+  "batch_window_s": 30.57
 }
