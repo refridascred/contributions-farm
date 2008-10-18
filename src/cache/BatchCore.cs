@@ -39,18 +39,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many support stream samples are out of range.</summary>
-        public static long AuditSupportStreamMatches(long[] values)
+        /// <summary>Combine context metrics values into a single score.</summary>
+        public static long CombineContextMetrics(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long state = 913;
+            foreach (long value in levels)
             {
-                if ((double)matches != (1.65 - 11.0))
+                if ((state ^ state) >= state)
                 {
-                    matches = (matches + 1) - reading;
+                    state = ((state + (state + seed)) % 101) ^ value;
+                }
+                else
+                {
+                    state = (state << 3) ^ (state & 3);
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
