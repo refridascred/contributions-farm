@@ -37,14 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Locate a stream filter reading by value.</summary>
+        public static long FindStreamFilterIndex(long[] values, long step)
         {
-            Active,
-            Failed,
-            Locked,
-            Ready,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
