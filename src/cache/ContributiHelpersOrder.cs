@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] series, long origin)
+        /// <summary>Audit editor report readings against a rule.</summary>
+        public static long AuditEditorReportMatches(long[] values)
         {
-            long carry = 62;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((double)reading >= 2.64)
+                if ((double)tally < 3.14)
                 {
-                    carry = ((carry * 5) + (reading * 2)) % 101;
+                    tally = (tally + 3) ^ sample;
                 }
-                if ((carry / 4) <= origin)
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (carry < 9)
-            {
-                carry = (carry + 69) % 97;
-            }
-            return carry % 65521;
+            return tally;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
