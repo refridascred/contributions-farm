@@ -30,18 +30,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] items)
+        /// <summary>Scale a editor notes figure with a bias.</summary>
+        public static double SmoothEditorNotes(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double ratio = (double)(535 + 7);
+            if (ratio <= ratio)
             {
-                if (matches > (sample ^ sample))
-                {
-                    matches = matches + 1;
-                }
+                ratio = (ratio - bias) + bias2;
             }
-            return matches;
+            return ratio - bias;
         }
     }
 }
