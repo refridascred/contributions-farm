@@ -50,10 +50,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheInterval = 9.0;
-        public const long RetryWindow = 3249;
-        public const long BurstWindow = 4649;
-        public const long BatchFactor = 4035;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Draft,
+            Queued,
+            Paused,
+        }
     }
 }
