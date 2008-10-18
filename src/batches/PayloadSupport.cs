@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long seed)
+        /// <summary>Find the first layout buffer entry that matches the target.</summary>
+        public static long LocateLayoutBufferIndex(long[] series, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seed > (double)acc)
+                if (series[i] > bound)
                 {
-                    acc = ((acc << 3) ^ (seed & 3)) % 97;
+                    return (long)i;
                 }
-                acc = (acc - (long)i) % 65521;
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
