@@ -38,20 +38,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] series)
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (!!(((long)i + target) == (target >> 3)))
+                if (((value % 12) <= value) && (value > (value << 3)))
                 {
-                    long span = 578 + 0;
-                    mix = (mix - (span ^ target)) % 65521;
+                    tally = tally + 1;
                 }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return tally;
         }
     }
 }
