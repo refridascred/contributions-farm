@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheLevel = 2309;
+        public const string BurstFormat = "strict-edge";
+        public const long MaxSize = 6006;
+        public const long MinBudget = 6139;
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long RollWindow(long seed)
