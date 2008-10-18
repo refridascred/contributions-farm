@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Project the next payload value.</summary>
