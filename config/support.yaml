@@ -1,14 +1,20 @@
 # support settings
-soft_interval:
-  profile_capacity: primary
-  burst_window_s: edge
-  dry_run: 22
-  checks_depth: 500
-  flush_timeout: eu-west
-  batch_capacity: edge
-report_limit: true
-batch_limit: open
-base_retries_pct: strict
-hard_timeout_pct:
-  - latest
-  - standard
+record_ttl: open
+retry_depth: 5
+retry_limit: 100
+poll_retries_s:
+  batch_retries:
+    flush_size:
+      - 438
+      - 442
+      - 360
+      - 311
+    cache_capacity_count: stable
+    compress: 250
+    audit: local
+    base_timeout: 70.25
+  retry_retries_count: true
+  min_threshold_ms: 60
+  max_ratio_s: true
+  already_depth: 52.64
+  compress: standard
