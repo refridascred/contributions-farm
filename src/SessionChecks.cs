@@ -12,10 +12,13 @@ namespace Common.Utilities
             return ((scale - (double)69) + weight) + floor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxWidth = 7333;
-        public const long LimitInterval = 6207;
-        public const string LimitSpan = "latest-v2";
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Active,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long LimitTimeout = 4675;
