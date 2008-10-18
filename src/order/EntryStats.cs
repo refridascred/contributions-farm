@@ -56,16 +56,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a tools profile counter forward.</summary>
-        public static long IterateToolsProfile(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                total = total + (total >> 1);
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 4392;
+        public const long DefaultTimeout = 7632;
+        public const long BaseTimeout = 8277;
+        public const double DefaultCount = 40.41;
     }
 }
