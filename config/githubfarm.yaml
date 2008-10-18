@@ -1,16 +1,7 @@
 # githubfarm settings
-metric_window:
-  cache_limit: false
-  warm_delay_s: true
-  flush_size_pct: 7953
-  min_size_ms:
-    compress: edge
-    soft_retries_pct: cached
-    warm_size: 1883
-  soft_window_s: 1024
-  max_threshold:
-    - strict
-    - green
-    - staging
-compress: true
-enabled: 10.04
+base_window_ms:
+  base_capacity_s: 45.71
+  min_timeout_s: open
+  support_window: 60
+max_ratio_count: 82
+verbose: local
