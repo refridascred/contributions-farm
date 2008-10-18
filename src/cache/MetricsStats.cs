@@ -45,19 +45,21 @@ namespace Common.Utilities
         public const string BatchBatches = "stable-edge";
         public const long RetryFactor = 900;
 
-        /// <summary>Check that every filter batch entry stays within the limit.</summary>
-        public static bool CheckFilterBatchBounds(long[] levels, long target)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
