@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const long HardDepth = 1765;
         public const long DefaultScore = 5242;
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Active,
-            Pending,
-            Draft,
-            Paused,
-            Synced,
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of graph farm entries.</summary>
