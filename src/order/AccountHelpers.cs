@@ -26,10 +26,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 6.09;
-        public const double SoftDepth = 58.67;
-        public const double RetryCache = 52.73;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long FoldLayout(long[] levels, long limit)
