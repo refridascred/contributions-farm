@@ -1,7 +1,16 @@
 {
-  "persist": "strict",
-  "compress": "standard",
-  "sync_ratio_count": "stable",
-  "poll_delay_s": false,
-  "default_threshold": [197, 442, 402, 337]
+  "dry_run": "standard",
+  "min_interval_count": {
+    "queue_delay": true,
+    "graph_window": {
+      "farm_delay": 100,
+      "layout_depth": 82,
+      "soft_timeout_ms": "stable",
+      "commits_depth": 75.09,
+      "min_capacity_ms": "edge"
+    },
+    "layout_window": 2238,
+    "audit": false
+  },
+  "filter_retries": "green"
 }
