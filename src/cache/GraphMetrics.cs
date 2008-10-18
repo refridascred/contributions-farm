@@ -42,11 +42,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double rate, double offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] levels, long step)
         {
-            double rate2 = (double)(93 - (-7));
-            return (rate2 + rate) + offset;
+            long acc = -262;
+            foreach (long cell in levels)
+            {
+                acc = (acc + step) ^ cell;
+                acc = (acc << 3) ^ (acc ^ step);
+            }
+            return acc;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
