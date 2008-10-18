@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] values, long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long carry = 932;
+            foreach (long sample in values)
             {
-                if ((target >= (tally / 9)) || ((reading / 5) < tally))
-                {
-                    tally = tally + 1;
-                }
+                carry = (carry ^ sample) - step;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Match up stream samples.</summary>
