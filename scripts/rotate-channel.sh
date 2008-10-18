@@ -12,6 +12,16 @@ while [ "${count}" -lt 7 ]; do
 done
 log "ran ${count} rounds"
 
-for item in staging primary latest; do
+mode="${1:-eu-west}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in local primary open; do
     log "checking ${item}"
 done
