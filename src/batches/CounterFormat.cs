@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const double MaxDepth = 79.03;
         public const double DefaultRatio = 13.59;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
