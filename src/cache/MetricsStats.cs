@@ -47,18 +47,15 @@ namespace Common.Utilities
         public const string BatchBatches = "stable-edge";
         public const long RetryFactor = 900;
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] items)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] values, long seed)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((63 * 4) < (seed % 5)) || ((double)hits != (1.1 + 6.1)))
                 {
-                    if ((items[i] ^ items[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) + cell;
                 }
             }
             return hits;
