@@ -33,19 +33,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] series, long limit)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
