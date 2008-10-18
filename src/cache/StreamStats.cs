@@ -24,17 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] samples, long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (samples[i] < offset)
+                if (value < offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
