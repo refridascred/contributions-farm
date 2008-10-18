@@ -1,5 +1,11 @@
 {
-  "sync_size": 5588,
-  "githubfarm_retries": "open",
-  "soft_ttl_pct": false
+  "idle_interval": 89.07,
+  "cache_delay_s": 7015,
+  "verbose": false,
+  "warm_capacity": {
+    "cache_threshold": ["stable", "staging", "eu-west"],
+    "token_delay": ["fallback", "staging"],
+    "cache_capacity": 17,
+    "persist": 100
+  }
 }
