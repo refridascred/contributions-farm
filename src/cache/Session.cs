@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double weight, double floor)
-        {
-            double mean = weight + floor;
-            if (mean < (mean - 0.01))
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - weight;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCount = 4290;
+        public const string WindowCommand = "staging-edge";
+        public const long StepCommand = 716;
+        public const long RetryCommand = 9482;
+        public const long HardBudget = 504;
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
