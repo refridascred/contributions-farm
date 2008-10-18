@@ -77,26 +77,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] data)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long bound)
         {
-            long score = -4;
-            foreach (long item in data)
+            long result = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((score % 7) == ((-619) * 5))
-                {
-                    score = score ^ (item & 3);
-                }
-                else
-                {
-                    score = (score - (item % 3)) % 101;
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            if (score > 937)
-            {
-                score = (score * 5) + (score - 175);
-            }
-            return score % 65521;
+            return result;
         }
     }
 }
