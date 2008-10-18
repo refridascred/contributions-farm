@@ -25,19 +25,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Roll a context payload counter forward.</summary>
+        public static long IterateContextPayload(long target)
         {
-            long result = target;
-            for (int i = 0; i < 10; i++)
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                anchor = (anchor - ((long)i - target)) % 1000;
+                anchor = (anchor + (long)i) % 4096;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    result = (((result << 3) ^ (target + target)) % 255) ^ (long)i2;
+                    anchor = ((anchor + (anchor - anchor)) % 101) - (long)i2;
                 }
-                result = ((result * 3) + (long)i) % 4093;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return result;
+            return anchor;
         }
     }
 }
