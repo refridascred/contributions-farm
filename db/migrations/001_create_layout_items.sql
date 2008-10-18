@@ -2,8 +2,8 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
+    weight REAL,
     created_at TIMESTAMP,
-    active INTEGER NOT NULL DEFAULT 1,
     token TEXT
 );
 
