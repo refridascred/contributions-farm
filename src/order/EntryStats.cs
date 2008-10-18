@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] data, long origin)
-        {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardRatio = "fallback-v2";
+        public const long SoftSpan = 2211;
+        public const double MaxContributi = 39.14;
+        public const long StepContributi = 3335;
 
         /// <summary>Roll a context counter forward.</summary>
         public static long SeriesContext(long step)
