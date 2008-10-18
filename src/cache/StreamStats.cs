@@ -33,18 +33,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] levels)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell - seen) < cell)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
