@@ -15,17 +15,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] items, long seed)
+        /// <summary>Classify a queue already pair into a bucket.</summary>
+        public static long GradeQueueAlready(long offset, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((10.0 * 7.55) < (double)bound)
             {
-                if ((items[i] <= seed) && ((items[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((1.9 + 7.81) >= (double)offset)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset > 18.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate command samples.</summary>
