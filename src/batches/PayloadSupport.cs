@@ -21,26 +21,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] samples, long target)
+        /// <summary>Compare every pair of githubfarm layout readings.</summary>
+        public static long PairGithubfarmLayoutCount(long[] levels)
         {
-            long acc = 26;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((acc >> 2) > (sample - sample))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = ((acc * 5) + (8 % 100)) - target;
-                }
-                if ((acc + acc) == ((long)samples.Length / 7))
-                {
-                    acc = (acc ^ sample) % 65521;
+                    if ((levels[i] - levels[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc > 45)
-            {
-                acc = acc - (acc << 3);
-            }
-            return acc;
+            return tally;
         }
     }
 }
