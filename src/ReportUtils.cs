@@ -60,32 +60,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long seed, long bound)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            long lane = seed - bound;
-            if (!((bound - 96) < seed))
+            long acc = target;
+            for (int i = 0; i < 22; i++)
             {
-                return 1;
+                acc = ((acc * 4) + (target + acc)) % 1000;
+                long prev = (long)i;
+                acc = (acc * 4) + prev;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (seed <= (lane - bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (seed < (seed + lane))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
