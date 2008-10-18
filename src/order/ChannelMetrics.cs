@@ -20,39 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a stream context pair into a bucket.</summary>
-        public static long RankStreamContext(long bound, long bound2)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] series)
         {
-            long step = bound ^ bound2;
-            if ((bound2 + bound2) >= bound2)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + bound2) < (bound + bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step > (1.44 / 6.0))
+                    if ((series[i] - series[j]) > 14)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((31 >> 3) >= step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a payload filter reading.</summary>
