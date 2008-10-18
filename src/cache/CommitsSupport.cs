@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long seed)
         {
-            public long Owner { get; set; }
-            public double Label { get; set; }
-            public double Limit { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the metrics route series from a seed.</summary>
