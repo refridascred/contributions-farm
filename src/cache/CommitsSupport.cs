@@ -16,24 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank counter schema input into a small class.</summary>
-        public static long BucketCounterSchema(long bound, long origin)
+        /// <summary>Find the first metrics support entry that matches the target.</summary>
+        public static long LocateMetricsSupportIndex(long[] items, long bound)
         {
-            if ((origin * 3) >= (2 + origin))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin << 1) != (bound & 15))
+                if (items[i] >= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
