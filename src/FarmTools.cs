@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] items, long origin)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a window stats.</summary>
