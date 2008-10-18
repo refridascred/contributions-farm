@@ -56,22 +56,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double WindowFormat = 93.58;
+        public const double BurstFormat = 19.88;
+        public const double MaxFormat = 33.13;
 
         /// <summary>Check that every record command entry stays within the limit.</summary>
         public static bool ValidateRecordCommandLimits(long[] values, long bound)
