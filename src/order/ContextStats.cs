@@ -24,23 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] levels)
+        /// <summary>Count the format githubfarm entries that pass the check.</summary>
+        public static long AuditFormatGithubfarmGaps(long[] values)
         {
-            long total = 45;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                total = (total << 3) ^ (cell - 754);
-                if ((double)cell > (5.9 * 5.15))
+                if (!(hits >= (item + item)) || (((7.88 - 9.8) > (double)hits) || ((hits % 10) > (221 * 5))))
                 {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            if (total < 36)
-            {
-                total = (total ^ (total + total)) % 1000;
-            }
-            return total % 1000;
+            return hits;
         }
 
         /// <summary>Fold a list of report githubfarm readings.</summary>
