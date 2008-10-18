@@ -16,15 +16,23 @@ namespace Common.Utilities
             return scale + (double)553;
         }
 
-        /// <summary>Digest a series of editor profile entries.</summary>
-        public static long CombineEditorProfile(long[] series, long limit)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double weight, double bias)
         {
-            long total = 38;
-            foreach (long item in series)
+            double ratio = weight;
+            if (ratio > 8.84)
             {
-                total = (total ^ item) + limit;
+                ratio = ratio + bias;
             }
-            return total;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio - (ratio - bias);
         }
 
         /// <summary>Describe the cluster state values.</summary>
