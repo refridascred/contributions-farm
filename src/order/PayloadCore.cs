@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long origin, long target)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            if ((target + 2) >= (origin - origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin / 7) != (target + (-870)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target > (origin + origin)) || ((94 - 3) < (origin + target)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
