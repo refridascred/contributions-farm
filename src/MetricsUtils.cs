@@ -38,33 +38,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long limit, long offset)
-        {
-            long step = limit - offset;
-            if ((59 + limit) > offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset + 214) > (step % 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((3.3 > (double)step) && (offset >= (limit >> 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 7907;
+        public const double MinBatch = 1.2;
+        public const long StepBatch = 6465;
+        public const string IdleWidth = "strict-1";
+        public const string HardBatch = "alpha-v2";
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
