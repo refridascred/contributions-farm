@@ -20,26 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] levels)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] levels, long step)
         {
-            long mix = 6;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item >> 4) <= (item % 12))
+                if (levels[i] == step)
                 {
-                    mix = (mix << 2) ^ (mix / 3);
-                }
-                else
-                {
-                    mix = (mix * 5) + (mix - mix);
+                    return (long)i;
                 }
             }
-            if (mix > 62)
-            {
-                mix = mix + (mix << 3);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
