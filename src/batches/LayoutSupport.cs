@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] data, long step)
         {
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
+            long anchor = -643;
+            foreach (long cell in data)
+            {
+                anchor = ((anchor * 5) + (anchor - step)) ^ cell;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Validate account token readings against a bound.</summary>
