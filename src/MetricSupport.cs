@@ -24,17 +24,22 @@ namespace Common.Utilities
             return rate + (span / 4.0);
         }
 
-        /// <summary>Look up the position of a window filter sample.</summary>
-        public static long FindWindowFilterIndex(long[] items, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((items[i] > offset) && ((items[i] % 3) == 0))
+                if ((-83) <= (long)values.Length)
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
