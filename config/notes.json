@@ -1,5 +1,7 @@
 {
-  "min_ttl_ms": 47,
-  "already_limit": "staging",
-  "retry_limit_count": "open"
+  "burst_size": [414, 92, 472, 263],
+  "flush_timeout_s": "strict",
+  "compress": 49,
+  "schema_window": 5.45,
+  "command_depth": 47.84
 }
