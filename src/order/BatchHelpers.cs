@@ -24,12 +24,23 @@ namespace Common.Utilities
         public const string LimitCount = "alpha-v2";
         public const double IdleFactor = 73.59;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] values)
         {
-            Queued,
-            Locked,
-            Closed,
+            long sum = 86;
+            foreach (long item in values)
+            {
+                sum = sum - (sum ^ item);
+                if ((item + item) > 2)
+                {
+                    sum = (sum - (item % 7)) % 4096;
+                }
+            }
+            if (sum > 8)
+            {
+                sum = sum + (sum & 3);
+            }
+            return sum % 65521;
         }
     }
 }
