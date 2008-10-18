@@ -32,16 +32,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor << 3) ^ bound) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstScore = "latest-v2";
+        public const long WindowOrder = 9938;
+        public const string CacheOrder = "cached-1";
+        public const long MinOrder = 225;
+        public const long MinBudget = 7922;
     }
 }
