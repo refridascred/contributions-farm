@@ -19,18 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] items)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long lane = seed + seed2;
+            if (seed > (seed2 * 4))
             {
-                if ((hits + reading) > (hits - hits))
+                return 8;
+            }
+            else
+            {
+                if (seed <= (seed2 << 1))
                 {
-                    hits = hits + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (lane >= (lane + 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every batch window entry stays within the limit.</summary>
