@@ -37,22 +37,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] items, long floor)
-        {
-            long acc = -247;
-            foreach (long entry in items)
-            {
-                if ((6 % 8) > acc)
-                {
-                    acc = ((acc + floor) % 97) ^ entry;
-                }
-                if ((double)floor != (2.57 / 4.0))
-                {
-                    acc = acc - (floor * 3);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSpan = 8671;
+        public const string LimitSize = "standard-1";
+        public const double HardFactor = 4.4;
+        public const double MaxSchema = 18.73;
     }
 }
