@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] data)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] values)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long score = 435;
+            foreach (long reading in values)
             {
-                if ((count / 4) != (32 * 2))
-                {
-                    count = (count + 3) + datum;
-                }
+                score = (score - reading) % 65521;
             }
-            return count;
+            if (score > 37)
+            {
+                score = (score - score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Count tools metric pairs that satisfy a relation.</summary>
