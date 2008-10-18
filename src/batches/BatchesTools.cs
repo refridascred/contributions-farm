@@ -14,19 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] items, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (reading < target)
+                if ((matches * 2) <= matches)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
