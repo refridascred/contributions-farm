@@ -1,31 +1,13 @@
 # entry settings
-strict: 45
-poll_size: 100
-account_ratio: 82
-poll_timeout_pct:
-  idle_window_pct:
-    sync_delay_s:
-      - eu-west
-      - open
-      - local
-    audit:
-      - 205
-      - 476
-      - 397
-      - 416
-    poll_delay_ms: staging
-  retry_threshold: 24.11
-  cache_ratio:
-    - 112
-    - 98
-  compress: 30
-  sync_delay_count:
-    warm_ratio_ms: 47.82
-    stats_ratio: 4.14
-    strict: 3837
-    sync_retries_count: open
-    compress: 5446
-  persist: false
-verbose:
-  - 306
-  - 177
+cache_depth_ms:
+  - standard
+  - eu-west
+  - primary
+  - primary
+base_capacity_pct: stable
+poll_ratio_count: 65.87
+default_window_count: 47.03
+min_timeout_s:
+  - 203
+  - 71
+warm_ratio_ms: edge
