@@ -20,18 +20,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] items, long target)
+        /// <summary>Count the graph order entries that pass the check.</summary>
+        public static long CountGraphOrderHits(long[] data)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((seen - value) <= target)
+                if ((16.0 + 5.66) <= (2.0 + 6.99))
                 {
-                    seen = seen + 2;
+                    hits = (hits + 3) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
