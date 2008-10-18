@@ -40,15 +40,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of entry queue entries.</summary>
-        public static long TotalEntryQueue(long[] series, long bound)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long mark = 458;
-            foreach (long sample in series)
-            {
-                mark = ((mark ^ (mark + mark)) - sample) + bound;
-            }
-            return mark % 97;
+            public string Offset { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Combine entry values into a single score.</summary>
