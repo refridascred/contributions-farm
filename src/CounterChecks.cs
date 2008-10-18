@@ -15,22 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the stats layout entries that pass the check.</summary>
-        public static long TallyStatsLayoutGaps(long[] levels, long origin)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((origin <= (sample << 2)) && ((7.0 + 1.11) != (double)origin))
+                if ((series[i] <= bound) && ((series[i] % 2) == 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
