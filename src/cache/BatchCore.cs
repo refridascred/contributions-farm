@@ -42,17 +42,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a route githubfarm reading by value.</summary>
-        public static long LookupRouteGithubfarmIndex(long[] items, long seed)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (items[i] < seed)
+                if (item <= limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Combine schema queue values into a single score.</summary>
