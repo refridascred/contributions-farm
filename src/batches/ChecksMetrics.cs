@@ -35,21 +35,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
