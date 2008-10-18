@@ -25,17 +25,14 @@ namespace Common.Utilities
         public const double HardLevel = 37.67;
         public const string LimitOrder = "local";
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] series, long origin)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Ready,
+            Closed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Grade a filter report value against two limits.</summary>
