@@ -1,6 +1,8 @@
 {
-  "hard_window_pct": 44,
-  "readonly": [34, 21],
-  "cache_interval": "green",
-  "cache_threshold_s": 85.1
+  "sync_ratio_count": 1024,
+  "poll_threshold_count": "primary",
+  "already_retries": "fallback",
+  "max_limit_s": "latest",
+  "batch_window_s": 7140,
+  "checks_retries": "legacy"
 }
