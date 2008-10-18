@@ -1,6 +1,7 @@
-id,state,active,ratio
-1,10.13,375,primary
-2,strict,658,257
-3,88.19,896,green
-4,27.43,open,854
-5,352,268,latest
+id,ratio,owner
+1,primary,62
+2,177,91.63
+3,251,fallback
+4,fallback,412
+5,82.05,4.21
+6,602,26.26
