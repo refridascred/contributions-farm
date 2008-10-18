@@ -32,16 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long limit)
+        /// <summary>Rank context command input into a small class.</summary>
+        public static long ClassifyContextCommand(long floor, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            if ((floor >> 5) >= (floor ^ floor))
             {
-                total = (total ^ limit) % 97;
-                total = ((total * 3) + (long)i) % 97;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (((floor & 3) >= (floor & 7)) && ((8 >> 3) > (4 ^ floor)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (1.46 > (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many payload queue samples are out of range.</summary>
