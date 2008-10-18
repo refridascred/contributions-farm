@@ -40,19 +40,19 @@ namespace Common.Utilities
         public const long WindowLevel = 7040;
         public const long HardStream = 2901;
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double scale, double bias)
+        /// <summary>Accumulate route stream samples.</summary>
+        public static long ScoreRouteStream(long[] samples)
         {
-            double mean = bias;
-            if (mean > bias)
+            long mark = 40;
+            foreach (long value in samples)
             {
-                mean = mean + mean;
+                mark = ((mark ^ mark) % 4096) ^ value;
             }
-            for (int i = 0; i < 5; i++)
+            if (mark < 333)
             {
-                mean = (mean + 18.0) + (double)(long)i;
+                mark = ((mark << 2) ^ (mark + mark)) % 65521;
             }
-            return mean - (scale - mean);
+            return mark;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
