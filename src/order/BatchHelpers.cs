@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 13.73;
-        public const long BaseDepth = 2764;
-        public const string LimitCount = "alpha-v2";
-        public const double IdleFactor = 73.59;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSize = 6953;
+        public const double MaxSession = 74.98;
+        public const long RetrySession = 3012;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TallyRecord(long[] values)
