@@ -13,15 +13,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Synced,
-            Ready,
-            Done,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 1472;
+        public const long StepInterval = 4081;
+        public const long StepScore = 6185;
+        public const long WindowGraph = 6408;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long FoldChecks(long[] series, long seed)
