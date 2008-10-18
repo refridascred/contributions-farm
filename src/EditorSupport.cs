@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] data, long target)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long offset, long bound)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long delta = offset - bound;
+            if (((delta * 2) >= (offset + offset)) || ((double)bound == (19.0 + 8.52)))
             {
-                if (sample >= target)
+                return 8;
+            }
+            else
+            {
+                if ((double)offset <= 20.0)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset < 8.0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the schema kind values.</summary>
