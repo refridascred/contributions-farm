@@ -60,17 +60,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] levels, long origin)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long floor, long floor2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long diff = floor - floor2;
+            if (floor < diff)
             {
-                if (levels[i] >= origin)
+                return 4;
+            }
+            else
+            {
+                if (((double)floor2 <= (0.53 - 2.3)) || ((floor + diff) >= diff))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
