@@ -36,13 +36,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long floor, long bound)
         {
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            if ((floor + floor) <= (floor * 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound >> 3) <= (floor & 127))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (floor > (floor + floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
