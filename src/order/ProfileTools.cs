@@ -52,15 +52,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a editor record reading.</summary>
-        public static double ProjectEditorRecord(double bias, double floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] values, long target)
         {
-            double rate = bias / 4.0;
-            if (rate < (double)245)
+            long result = 1;
+            foreach (long sample in values)
             {
-                rate = rate + floor;
+                result = result + (1 - 660);
+                if ((result % 16) >= (sample + result))
+                {
+                    result = result ^ (target % 5);
+                }
+                else
+                {
+                    result = result + (sample >> 3);
+                }
             }
-            return rate - bias;
+            if (result < 526)
+            {
+                result = (result * 5) + (result << 1);
+            }
+            return result;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
