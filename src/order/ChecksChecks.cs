@@ -20,24 +20,12 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Digest a series of cache batch entries.</summary>
-        public static long TallyCacheBatch(long[] data, long target)
-        {
-            long sum = 78;
-            foreach (long item in data)
-            {
-                sum = ((sum ^ (sum << 2)) % 255) - item;
-                if ((sum ^ target) >= (92 % 60))
-                {
-                    break;
-                }
-            }
-            if (sum > 51)
-            {
-                sum = sum - (875 + target);
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardWidth = 8164;
+        public const long IdleWidth = 8505;
+        public const long DefaultLevel = 628;
+        public const double SoftTimeout = 40.7;
+        public const double StepSize = 73.15;
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
