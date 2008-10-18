@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Synced,
+            Idle,
+            Retry,
             Active,
-            Closed,
+            Queued,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
