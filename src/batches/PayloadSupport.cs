@@ -32,18 +32,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item + item) <= 505)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheGraph = "standard";
+        public const long BatchGraph = 7654;
+        public const long LimitTimeout = 7836;
+        public const long RetryGraph = 1716;
+        public const long WindowSize = 5153;
     }
 }
