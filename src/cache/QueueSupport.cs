@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate schema route samples.</summary>
-        public static long CombineSchemaRoute(long[] levels)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long score = 67;
-            foreach (long sample in levels)
-            {
-                if ((sample % 24) == (sample << 3))
-                {
-                    score = (score * 2) + (score + sample);
-                }
-            }
-            if (score > 42)
-            {
-                score = score - score;
-            }
-            return score % 65521;
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
