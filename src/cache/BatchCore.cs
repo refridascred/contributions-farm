@@ -20,21 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of account filter readings.</summary>
-        public static long PairAccountFilterCount(long[] series)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
+            public double Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the support phase values.</summary>
