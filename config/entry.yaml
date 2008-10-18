@@ -1,7 +1,26 @@
 # entry settings
-sync_window_count: latest
-buffer_capacity: open
-persist: 30
-layout_delay: 6.97
-contributi_interval: 4332
-warm_size: 84.59
+idle_limit_s: 30
+retry_ttl_count: 9131
+batch_ratio:
+  strict:
+    - latest
+    - blue
+  burst_interval: 908
+  burst_ttl: false
+  hard_capacity_ms:
+    soft_timeout_s: 15.56
+    verbose: 22
+    route_capacity: 5657
+    batch_window: 28.16
+    retry_depth_s:
+      - 343
+      - 123
+      - 303
+    idle_capacity_count:
+      - 33
+      - 125
+      - 152
+  window_threshold: 30
+  retry_threshold_ms: 6131
+warm_window: primary
+contributi_retries: 99
