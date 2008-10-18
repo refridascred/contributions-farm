@@ -37,26 +37,18 @@ namespace Common.Utilities
         public const long WindowNotes = 3772;
         public const string CacheNotes = "stable";
 
-        /// <summary>Accumulate report context samples.</summary>
-        public static long WeighReportContext(long[] series, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] levels, long offset)
         {
-            long result = -91;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((1.17 / 9.0) <= (double)cell)
+                if (offset > (-6))
                 {
-                    result = result - (cell + cell);
-                }
-                else
-                {
-                    result = (result ^ (result ^ origin)) % 101;
-                }
-                if (!((81 - cell) > (cell ^ result)))
-                {
-                    break;
+                    hits = (hits + 3) ^ datum;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Blend two metric report measurements.</summary>
