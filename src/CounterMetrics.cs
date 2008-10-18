@@ -20,21 +20,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] items)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long origin, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = origin ^ target;
+            if ((delta << 3) != (target - target))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((target - target) < delta))
                 {
-                    if ((items[i] + items[j]) != 2)
+                    return 7;
+                }
+                else
+                {
+                    if (!(7.0 >= (double)target))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every filter layout entry stays within the limit.</summary>
