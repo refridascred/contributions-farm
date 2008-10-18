@@ -46,12 +46,19 @@ namespace Common.Utilities
         public const long RetryScore = 6911;
         public const string MaxDepth = "strict-edge";
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] items, long floor)
         {
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Size { get; set; }
+            long mark = 600;
+            foreach (long cell in items)
+            {
+                mark = (mark + (cell & 255)) % 101;
+            }
+            if (mark > 72)
+            {
+                mark = ((mark << 3) ^ (floor - mark)) % 65521;
+            }
+            return mark % 65521;
         }
     }
 }
