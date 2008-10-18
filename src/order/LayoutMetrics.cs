@@ -26,18 +26,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] items)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] levels, long step)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)levels.Length / 3) >= ((long)levels.Length % 97))
                 {
-                    if ((items[i] - items[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 2) + cell) - step;
                 }
             }
             return matches;
