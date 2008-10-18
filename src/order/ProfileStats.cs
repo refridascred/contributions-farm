@@ -33,19 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] levels, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (entry != bound)
+                if ((1.8 - 2.9) >= (double)item)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 1) - origin;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a cache stats.</summary>
