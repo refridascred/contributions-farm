@@ -1,7 +1,7 @@
 {
-  "flush_retries_ms": 19.5,
-  "enabled": 3808,
-  "checks_interval": "open",
-  "tools_ratio": "cached",
-  "warm_capacity_s": 1024
+  "min_timeout_ms": 30,
+  "sync_threshold": 8121,
+  "flush_timeout": 2417,
+  "cache_timeout": false,
+  "max_ratio_ms": 58
 }
