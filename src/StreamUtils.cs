@@ -66,11 +66,16 @@ namespace Common.Utilities
             return gain + (gain * 4.0);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxFactor = "primary-v2";
-        public const string CacheCommand = "staging-edge";
-        public const long IdleSize = 7955;
-        public const double DefaultCommand = 14.14;
-        public const double BurstCount = 89.64;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] series, long bound)
+        {
+            long carry = 5;
+            foreach (long reading in series)
+            {
+                carry = ((carry + (3 ^ bound)) % 97) - reading;
+                carry = (carry ^ (0 & 127)) % 101;
+            }
+            return carry;
+        }
     }
 }
