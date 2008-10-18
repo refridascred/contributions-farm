@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const long IdleCommits = 4957;
         public const long BaseTimeout = 1687;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] items, long bound)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] samples)
         {
             long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((bound / 4) < (sample >> 1)) || ((double)bound < (6.02 / 2.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] + samples[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
