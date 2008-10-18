@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitDepth = 1904;
-        public const long BaseBudget = 7229;
-        public const double BurstScore = 58.33;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Failed,
+            Done,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Fold a list of window context readings.</summary>
         public static long CombineWindowContext(long[] levels, long origin)
