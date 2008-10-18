@@ -53,19 +53,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] series, long origin)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long step, long bound)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long span = step - bound;
+            if ((4.34 - 9.41) <= (double)span)
             {
-                if (value >= origin)
+                return 6;
+            }
+            else
+            {
+                if ((step << 3) > 554)
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (step <= (step % 10))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
