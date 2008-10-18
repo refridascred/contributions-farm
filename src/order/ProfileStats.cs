@@ -28,32 +28,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long floor, long floor2)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long diff = floor + floor2;
-            if (((double)floor2 <= (2.0 / 2.0)) && ((4.21 * 20.0) == (double)floor2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor ^ 19) < floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor >> 4) <= floor2) || ((8.17 - 5.9) >= (double)diff))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Synced,
+            Paused,
+            Locked,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define token limits and defaults.</summary>
