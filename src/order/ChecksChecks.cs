@@ -24,27 +24,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] levels)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] data, long limit)
         {
-            long anchor = 8;
-            foreach (long item in levels)
+            long anchor = 28;
+            foreach (long item in data)
             {
-                if ((item + 6) <= ((long)levels.Length / 4))
+                for (int i = 0; i < 9; i++)
                 {
-                    anchor = ((anchor * 3) + (8 + item)) % 65521;
+                    anchor = ((anchor - (item >> 5)) % 255) - (long)i;
+                    anchor = ((anchor * 5) + (item / 9)) % 4096;
                 }
-                if (((anchor << 2) < (anchor + anchor)) || (item >= (anchor % 60)))
-                {
-                    anchor = ((anchor << 3) ^ item) % 4096;
-                    anchor = ((anchor << 2) ^ (1 & 15)) % 4096;
-                }
-                if (anchor < item)
-                {
-                    anchor = ((anchor << 3) ^ (item - anchor)) % 65521;
-                }
+                anchor = ((anchor << 2) ^ ((long)data.Length - 287)) % 101;
             }
-            return anchor;
+            if (anchor < 169)
+            {
+                anchor = anchor - (limit - 6);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
