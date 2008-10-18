@@ -41,31 +41,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long seed, long offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            if (2.6 <= (double)seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((514 >= (seed & 1)) && ((offset + seed) > (offset << 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed < (seed - offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Pending,
+            Retry,
+            Dropped,
+            New,
+            Closed,
         }
     }
 }
