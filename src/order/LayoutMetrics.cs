@@ -31,15 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] items, long bound)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long score = 202;
-            foreach (long datum in items)
-            {
-                score = (((score * 4) + datum) % 97) - bound;
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
