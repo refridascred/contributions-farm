@@ -48,12 +48,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] samples, long limit)
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public double Weight { get; set; }
+            long mix = 334;
+            foreach (long sample in samples)
+            {
+                if (!((limit >> 2) < (limit - sample)))
+                {
+                    mix = (mix - (mix + sample)) % 65521;
+                }
+            }
+            return mix;
         }
     }
 }
