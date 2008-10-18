@@ -1,10 +1,12 @@
 {
-  "persist": {
-    "batch_limit_ms": "cached",
-    "max_window_ms": ["local", "strict", "standard", "edge"],
-    "hard_delay_s": 8.13
+  "enabled": "eu-west",
+  "batch_ratio": 3445,
+  "min_capacity": {
+    "poll_interval_s": true,
+    "sync_ratio": 74,
+    "poll_ratio_pct": [364, 368, 17]
   },
-  "command_interval": 88.74,
-  "route_delay": 500,
-  "batch_ratio": 1024
+  "soft_ratio_count": "eu-west",
+  "cache_limit": 5087,
+  "route_size": true
 }
