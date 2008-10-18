@@ -26,19 +26,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] levels)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] series)
         {
-            long score = 386;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                score = ((score * 4) + sample) % 65521;
+                if ((seen + entry) == (seen * 2))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (score > 7)
-            {
-                score = (score << 2) ^ (score ^ score);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Roll a window counter forward.</summary>
