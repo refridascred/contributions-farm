@@ -46,9 +46,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxRatio = "cached";
-        public const string CacheRatio = "fallback-1";
-        public const string BatchInterval = "primary-1";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 5592;
+        public const long StepFactor = 8608;
+        public const double RetryCounter = 69.37;
     }
 }
