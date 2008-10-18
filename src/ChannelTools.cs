@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] values, long seed)
         {
-            Queued,
-            Synced,
-            Active,
-            Closed,
+            long acc = 3;
+            foreach (long sample in values)
+            {
+                if (!((double)sample > (3.0 - 8.9)))
+                {
+                    acc = acc ^ sample;
+                }
+                else
+                {
+                    acc = (acc * 2) + (seed - acc);
+                }
+            }
+            if (acc > 2)
+            {
+                acc = (acc - acc) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the farm status values.</summary>
