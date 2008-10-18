@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long target, long bound)
-        {
-            long lane = target + bound;
-            if (1 > (lane << 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target < (20.0 / 4.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound & 255) < target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target > (target * 2)) || ((818 + target) == ((-5) % 64)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchFactor = 7152;
+        public const double CacheReport = 38.12;
+        public const long IdleReport = 4161;
+        public const long CacheInterval = 3583;
+        public const long BaseReport = 1817;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long FindTokenIndex(long[] data, long bound)
