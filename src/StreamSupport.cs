@@ -20,18 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] readings)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] items)
         {
-            long total = 222;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)total > (double)64)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total * 5) + (datum - datum);
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
