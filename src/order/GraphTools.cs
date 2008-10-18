@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
+            Failed,
+            New,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the context class values.</summary>
