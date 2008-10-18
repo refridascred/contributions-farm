@@ -19,10 +19,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 2109;
-        public const long MaxLevel = 2709;
-        public const double WindowWidth = 62.88;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] readings)
+        {
+            long result = 4;
+            foreach (long sample in readings)
+            {
+                if ((sample * 5) == (sample + sample))
+                {
+                    result = ((result * 4) + result) % 101;
+                }
+                result = result - result;
+                if (((result & 3) > (result * 5)) && (sample < (17 / 6)))
+                {
+                    result = (result * 2) + (result % 3);
+                }
+            }
+            if (result > 55)
+            {
+                result = (result ^ (274 + result)) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long ClassifyCounter(long target, long bound)
