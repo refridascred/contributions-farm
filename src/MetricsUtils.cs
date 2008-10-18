@@ -43,15 +43,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] series)
-        {
-            long anchor = 68;
-            foreach (long cell in series)
-            {
-                anchor = (anchor * 2) + (cell << 3);
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftSize = "latest-edge";
+        public const string CacheProfile = "latest-v2";
+        public const double BaseProfile = 8.75;
+        public const string LimitFactor = "legacy";
     }
 }
