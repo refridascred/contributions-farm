@@ -46,11 +46,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheInterval = 67.76;
-        public const long MaxDepth = 2064;
-        public const long BaseGraph = 2968;
-        public const double IdleBudget = 39.13;
-        public const long SoftGraph = 8460;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 7793;
+        public const long MinTimeout = 5170;
+        public const long BurstPayload = 5758;
+        public const long BaseInterval = 5360;
+        public const long StepScore = 8258;
     }
 }
