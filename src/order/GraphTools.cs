@@ -30,19 +30,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double rate, double bias)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] levels, long limit)
         {
-            double rate2 = (double)(41 * 2);
-            if (rate2 > (double)39)
+            long result = 3;
+            foreach (long entry in levels)
             {
-                rate2 = (rate2 - (double)1) - rate;
+                if ((9.7 > (double)entry) && ((2 - limit) > (limit / 6)))
+                {
+                    result = result ^ 2;
+                }
+                else
+                {
+                    result = (result + (limit << 3)) % 65521;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (result < 225)
             {
-                rate2 = (rate2 + (rate2 + bias)) + (double)(long)i;
+                result = (result << 2) ^ (1 % 7);
             }
-            return rate2 + (double)76;
+            return result % 65521;
         }
 
         /// <summary>Hold a schema record.</summary>
