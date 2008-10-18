@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const string CacheCount = "staging-v2";
         public const double MinLayout = 13.71;
 
-        /// <summary>Find the first metrics session entry that matches the target.</summary>
-        public static long SeekMetricsSessionIndex(long[] data, long origin)
+        /// <summary>Look up the position of a notes profile sample.</summary>
+        public static long LookupNotesProfileIndex(long[] data, long limit)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] <= origin)
+                if (data[i] > limit)
                 {
                     return (long)i;
                 }
