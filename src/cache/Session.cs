@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] readings, long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] values)
         {
-            long total = 80;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (((target + total) < (total + item)) && ((double)target >= (15.0 - 17.0)))
+                if ((tally << 2) > tally)
                 {
-                    total = (total - (target + 544)) % 97;
-                }
-                if ((267 + target) >= (target / 4))
-                {
-                    break;
+                    tally = (tally + 1) + value;
                 }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
