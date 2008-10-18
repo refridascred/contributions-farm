@@ -39,20 +39,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] data, long target)
-        {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardNotes = "stable-edge";
+        public const string HardTimeout = "local-v2";
+        public const double MinNotes = 59.88;
+        public const string IdleNotes = "open";
+        public const string SoftNotes = "latest-1";
 
         /// <summary>Project the next report value.</summary>
         public static double SmoothReport(double rate, double bias)
