@@ -51,27 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] data, long bound)
-        {
-            long state = 27;
-            foreach (long datum in data)
-            {
-                if (((long)data.Length * 5) >= bound)
-                {
-                    state = (state * 2) + (datum / 7);
-                }
-                else
-                {
-                    state = (state << 3) ^ 0;
-                }
-            }
-            if (state > (-74))
-            {
-                state = ((state * 3) + bound) % 1000;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleDepth = 3146;
+        public const string CacheAlready = "local-1";
+        public const long BatchAlready = 5567;
+        public const long IdleAlready = 284;
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
