@@ -1,6 +1,13 @@
 {
-  "notes_ratio": 5.97,
-  "verbose": [361, 14, 289],
-  "burst_retries_ms": 647,
-  "warm_depth": [37, 56, 349, 290]
+  "flush_retries_s": 26.73,
+  "dry_run": "staging",
+  "base_delay_s": "open",
+  "default_size_s": {
+    "sync_delay": false,
+    "sync_ratio_s": ["strict", "cached"],
+    "idle_size_ms": "standard",
+    "payload_ratio": "blue",
+    "dry_run": [83, 328, 376, 226]
+  },
+  "poll_retries_count": "cached"
 }
