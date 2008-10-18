@@ -77,22 +77,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine format route values into a single score.</summary>
-        public static long FoldFormatRoute(long[] values)
+        /// <summary>Locate a checks window reading by value.</summary>
+        public static long LookupChecksWindowIndex(long[] levels, long target)
         {
-            long sum = 69;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7.02 > (double)sum) || (23 < item))
+                if (levels[i] <= target)
                 {
-                    sum = ((sum * 2) + (sum * 2)) % 65521;
+                    return (long)i;
                 }
             }
-            if (sum > 196)
-            {
-                sum = (sum ^ (sum - sum)) % 1000;
-            }
-            return sum;
+            return -1;
         }
     }
 }
