@@ -15,22 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] levels)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            double drift = floor;
+            if (drift >= rate)
             {
-                if (((sample + 107) > hits) && (((31 + hits) > (hits ^ (-38))) && ((41 & 15) >= (sample + sample))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = drift + (double)2;
             }
-            return hits;
+            return drift - 11.0;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
