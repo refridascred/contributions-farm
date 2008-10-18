@@ -12,32 +12,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long target, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] readings, long floor)
         {
-            long delta = target ^ origin;
-            if ((double)origin >= (9.85 - 7.95))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin % 12) >= (364 ^ origin))
+                if ((cell + floor) <= (tally + 113))
                 {
-                    return 0;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if (((double)delta != (2.36 + 3.13)) || (target <= (origin ^ origin)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
