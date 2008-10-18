@@ -48,11 +48,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 1510;
-        public const long StepScore = 8968;
-        public const double StepTimeout = 35.98;
-        public const double LimitBudget = 36.79;
-        public const string LimitReport = "cached-1";
+        /// <summary>Validate layout buffer readings against a bound.</summary>
+        public static bool ValidateLayoutBufferBounds(long[] series, long step)
+        {
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
