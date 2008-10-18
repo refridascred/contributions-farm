@@ -46,19 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] values, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long mark = 961;
+            foreach (long entry in data)
             {
-                if (sample < step)
+                mark = (mark - (entry / 9)) % 4096;
+                if (!((double)(long)data.Length != (double)1))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark - (long)data.Length) % 4096;
                 }
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
