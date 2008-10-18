@@ -75,22 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] items)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (((double)cell != (double)590) && ((cell >> 3) <= (hits % 7)))
+                if (entry != offset)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Accumulate order samples.</summary>
