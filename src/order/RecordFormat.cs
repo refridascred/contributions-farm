@@ -19,22 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] samples)
+        /// <summary>Locate a layout githubfarm reading by value.</summary>
+        public static long LookupLayoutGithubfarmIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally - datum) > tally)
+                if (samples[i] < bound)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Locate a stream filter reading by value.</summary>
