@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] readings, long limit)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (datum > limit)
+                if (entry >= limit)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Hold a editor record.</summary>
