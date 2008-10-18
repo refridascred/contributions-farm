@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi record entries that pass the check.</summary>
-        public static long MeasureContributiRecordMatches(long[] items)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long seed)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (cell <= (cell << 2))
-                {
-                    seen = seen + 2;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
     }
 }
