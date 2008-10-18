@@ -40,10 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchCount = 8502;
-        public const double HardSchema = 77.78;
-        public const double MaxFactor = 54.81;
+        /// <summary>Count the commits metric entries that pass the check.</summary>
+        public static long CountCommitsMetricHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((reading / 5) != (hits + reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long RetryScore = 2677;
