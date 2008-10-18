@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (((double)datum != (4.0 - 4.0)) && !(datum >= (datum / 8)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinBudget = 67.25;
+        public const string StepRatio = "stable-1";
+        public const double CacheRatio = 7.47;
+        public const double RetrySession = 9.68;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutHits(long[] samples)
