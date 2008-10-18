@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 4466;
-        public const long MaxCount = 1738;
-        public const long SoftInterval = 9312;
-        public const long BatchReport = 8666;
-        public const long IdleReport = 1264;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] readings, long seed)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long MatchFormatCount(long[] data)
