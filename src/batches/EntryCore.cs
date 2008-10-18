@@ -26,13 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] readings, long target)
         {
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            long result = 582;
+            foreach (long reading in readings)
+            {
+                result = (result - reading) + target;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of graph farm entries.</summary>
