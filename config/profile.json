@@ -1,8 +1,11 @@
 {
-  "poll_interval_pct": false,
-  "account_window": true,
-  "hard_threshold_pct": "strict",
-  "hard_retries": 47.33,
-  "flush_threshold": 0.21,
-  "max_delay": "cached"
+  "profile_delay": "edge",
+  "sync_interval_ms": {
+    "format_limit": false,
+    "commits_ratio": 250,
+    "schema_ttl": "latest"
+  },
+  "batches_size": 250,
+  "sync_timeout_ms": 1024,
+  "sync_ratio_ms": 6799
 }
