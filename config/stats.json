@@ -1,5 +1,13 @@
 {
-  "contributi_depth": 13,
-  "enabled": "strict",
-  "batch_capacity": 95.06
+  "sync_threshold_count": ["green", "eu-west", "standard", "standard"],
+  "contributi_size": 93,
+  "sync_limit_ms": ["primary", "fallback"],
+  "warm_threshold": "latest",
+  "sync_delay": "latest",
+  "tools_capacity": {
+    "burst_depth_s": "fallback",
+    "min_depth": [118, 282, 471],
+    "soft_ratio_ms": "open",
+    "soft_capacity_ms": ["staging", "stable"]
+  }
 }
