@@ -1,6 +1,6 @@
 {
-  "soft_window_count": [37, 218, 261],
-  "min_timeout_ms": "stable",
-  "payload_limit": 250,
-  "stream_depth": 93.96
+  "hard_ratio": "blue",
+  "poll_window_s": "latest",
+  "githubfarm_delay": true,
+  "default_depth_count": 48.96
 }
