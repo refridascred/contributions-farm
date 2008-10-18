@@ -1,28 +1,7 @@
 # entry settings
-cache_size:
-  persist: 39.34
-  sync_retries_s:
-    - open
-    - primary
-  batch_window: fallback
-  hard_ttl_count:
-    - edge
-    - open
-    - legacy
-    - legacy
-  verbose: 71
-  dry_run:
-    hard_limit_ms: 60
-    editor_delay: cached
-    enabled: staging
-    base_retries_ms: false
-    warm_limit: 7.18
-batch_size: 30
-checks_interval: primary
-persist:
-  poll_delay: true
-  sync_interval_ms: 60
-  warm_window_s: 6968
-  readonly: true
-  poll_timeout: 90
-  batch_threshold_s: cached
+compress: false
+flush_ttl: 86.51
+editor_ttl:
+  - 241
+  - 190
+  - 175
