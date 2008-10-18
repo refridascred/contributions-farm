@@ -40,18 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor tools samples are out of range.</summary>
-        public static long MeasureEditorToolsMatches(long[] data, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((count > (cell >> 2)) && ((count + cell) <= (count + bound)))
+                if (hits <= (datum + 2))
                 {
-                    count = count + 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
