@@ -36,11 +36,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftScore = 68.98;
-        public const long StepScore = 6181;
-        public const long SoftLevel = 9465;
-        public const long CacheLayout = 2323;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BatchInterval = 6920;
