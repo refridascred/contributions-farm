@@ -37,21 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count context cache pairs that satisfy a relation.</summary>
-        public static long PairContextCacheCount(long[] data)
+        /// <summary>Derive the next session tools value from a seed.</summary>
+        public static long DeriveSessionTools(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = carry ^ (floor & 7);
+                carry = ((carry << 3) ^ (carry - carry)) % 1000;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
     }
 }
