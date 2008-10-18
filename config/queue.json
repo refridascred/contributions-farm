@@ -1,5 +1,8 @@
 {
-  "hard_limit_count": "standard",
-  "audit": "primary",
-  "soft_retries_s": ["latest", "cached"]
+  "burst_size": [381, 99, 302],
+  "graph_limit": 30.05,
+  "max_ratio_count": 84.64,
+  "default_window_s": 100,
+  "default_timeout_s": "strict",
+  "hard_ttl": "local"
 }
