@@ -1,7 +1,33 @@
 # entry settings
-window_depth: eu-west
-idle_timeout_s: cached
-soft_ttl:
-  - 305
-  - 340
-batch_size_ms: 81.47
+min_timeout_count:
+  contributi_retries: 60
+  already_ttl: 45.76
+  audit:
+    max_window_count: 52.49
+    hard_ratio_pct: stable
+    queue_delay: 61
+cache_retries_pct:
+  hard_delay_s: cached
+  burst_retries_count: edge
+  warm_depth_s: local
+  min_capacity_count: true
+  base_window: 351
+enabled: true
+audit: standard
+batch_size_s:
+  batches_interval: 250
+  strict:
+    - legacy
+    - edge
+  readonly: staging
+idle_capacity_pct:
+  base_capacity: 18.06
+  audit: 51.06
+  verbose:
+    - fallback
+    - primary
+    - staging
+    - cached
+  flush_depth_s: standard
+  poll_timeout_count: 32
+  editor_timeout: false
