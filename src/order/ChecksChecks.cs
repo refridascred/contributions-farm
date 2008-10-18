@@ -14,12 +14,16 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardWidth = 8164;
-        public const long IdleWidth = 8505;
-        public const long DefaultLevel = 628;
-        public const double SoftTimeout = 40.7;
-        public const double StepSize = 73.15;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] levels)
+        {
+            long mark = 53;
+            foreach (long sample in levels)
+            {
+                mark = (mark - sample) % 101;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool ValidateStreamRange(long[] readings, long target)
