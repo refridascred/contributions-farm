@@ -42,17 +42,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a cache tools sample.</summary>
-        public static long LocateCacheToolsIndex(long[] series, long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 27;
+            foreach (long datum in data)
             {
-                if (series[i] >= target)
+                if (((long)data.Length * 5) >= bound)
                 {
-                    return (long)i;
+                    state = (state * 2) + (datum / 7);
+                }
+                else
+                {
+                    state = (state << 3) ^ 0;
                 }
             }
-            return -1;
+            if (state > (-74))
+            {
+                state = ((state * 3) + bound) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
