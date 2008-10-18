@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long target, long floor)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            if (floor >= (floor + target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target ^ 29) == (floor + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Pending,
+            Closed,
+            Locked,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
