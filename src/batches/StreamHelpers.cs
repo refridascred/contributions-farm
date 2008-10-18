@@ -13,22 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit command notes readings against a rule.</summary>
-        public static long TallyCommandNotesOutliers(long[] levels)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (!((double)sample > (7.2 / 7.0)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Locked,
+            Done,
+            Pending,
+            Active,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
