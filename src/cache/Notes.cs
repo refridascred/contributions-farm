@@ -26,23 +26,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] series)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long mix = 83;
-            foreach (long datum in series)
-            {
-                mix = (mix * 5) + (mix / 2);
-                if (mix <= 70)
-                {
-                    mix = ((mix * 3) + mix) % 255;
-                }
-                if (datum <= (datum & 15))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            Pending,
+            Dropped,
+            Ready,
+            Retry,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
