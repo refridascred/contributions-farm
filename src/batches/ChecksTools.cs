@@ -24,13 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] samples, long offset)
         {
-            Locked,
-            Failed,
-            Active,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
