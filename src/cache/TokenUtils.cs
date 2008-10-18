@@ -25,17 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] series, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 77;
+            foreach (long datum in series)
             {
-                if (series[i] >= step)
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    carry = ((carry + (carry << 1)) % 255) + (long)i;
+                    carry = (carry ^ carry) % 97;
+                }
+                if ((double)carry > (13.0 + 4.3))
+                {
+                    carry = (carry - (datum - datum)) % 255;
+                }
+                else
+                {
+                    carry = carry + (datum - (long)series.Length);
                 }
             }
-            return -1;
+            if (carry < 635)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
