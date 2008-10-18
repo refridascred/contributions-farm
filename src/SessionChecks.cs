@@ -17,20 +17,11 @@ namespace Common.Utilities
         public const long LimitInterval = 6207;
         public const string LimitSpan = "latest-v2";
 
-        /// <summary>Validate order tools readings against a bound.</summary>
-        public static bool ValidateOrderToolsRange(long[] readings, long origin)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitTimeout = 4675;
+        public const long MaxBatch = 9840;
+        public const long BurstBatch = 8482;
+        public const long LimitBatch = 4357;
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long IterateAlready(long limit)
