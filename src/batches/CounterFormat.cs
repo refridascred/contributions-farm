@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxSize = 5649;
-        public const long MinRecord = 5794;
-        public const string HardScore = "standard-1";
-        public const long HardRecord = 3908;
-        public const long StepDepth = 680;
+        /// <summary>Accumulate farm editor samples.</summary>
+        public static long FoldFarmEditor(long[] data, long bound)
+        {
+            long score = 6;
+            foreach (long sample in data)
+            {
+                if ((score % 64) != (bound ^ score))
+                {
+                    score = ((score - (score - bound)) % 255) - sample;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long TotalReport(long[] readings, long limit)
