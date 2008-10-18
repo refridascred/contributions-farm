@@ -18,11 +18,17 @@ namespace Common.Utilities
         public const long StepCount = 2115;
         public const double BurstSize = 26.47;
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double gain, double offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] series, long target)
         {
-            double weight = gain;
-            return (weight - (gain / 2.0)) + offset;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
