@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double bias, double offset)
         {
-            Locked,
-            Draft,
-            Queued,
+            double rate = (double)(209 >> 1);
+            if (rate > 1.0)
+            {
+                rate = (rate - rate) + bias;
+            }
+            else
+            {
+                rate = rate - (double)1;
+            }
+            return rate - (offset / 3.0);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
