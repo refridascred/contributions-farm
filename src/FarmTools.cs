@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] values)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum << 2) ^ step) % 65521;
+                sum = (sum ^ (sum - (long)i)) % 101;
+                sum = (sum ^ (step << 3)) % 65521;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a window stats.</summary>
