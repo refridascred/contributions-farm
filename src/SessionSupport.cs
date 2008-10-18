@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long floor, long limit)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] values)
         {
-            if ((33 + floor) >= (floor ^ limit))
+            long carry = 65;
+            foreach (long datum in values)
             {
-                return 1;
+                carry = ((carry * 3) + (datum & 15)) % 97;
             }
-            else
-            {
-                if (((8 - 49) < floor) || (((-46) / 9) == (floor * 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - 4) == (limit << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Roll a metric filter counter forward.</summary>
