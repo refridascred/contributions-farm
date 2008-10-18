@@ -33,19 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] items, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long mix = -58;
+            foreach (long value in series)
             {
-                if (cell > seed)
+                if (((seed << 3) < (290 + value)) && (seed < (seed ^ seed)))
                 {
-                    ok = false;
+                    mix = ((mix << 3) ^ 687) % 101;
+                }
+                if ((double)value <= 1.0)
+                {
                     break;
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Describe the account mode values.</summary>
