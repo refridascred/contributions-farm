@@ -1,8 +1,6 @@
-id,active,weight
-1,927,662
-2,green,green
-3,latest,754
-4,524,41.02
-5,local,open
-6,221,336
-7,eu-west,fallback
+id,token,weight,owner
+1,eu-west,18,949
+2,eu-west,82.93,89.36
+3,68,cached,43.6
+4,838,326,88.73
+5,green,18.47,883
