@@ -62,12 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] readings, long target)
         {
-            public long Total { get; set; }
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the support state values.</summary>
