@@ -1,5 +1,5 @@
 {
-  "base_size": 4622,
-  "soft_delay": 72,
-  "enabled": false
+  "hard_limit_count": "standard",
+  "audit": "primary",
+  "soft_retries_s": ["latest", "cached"]
 }
