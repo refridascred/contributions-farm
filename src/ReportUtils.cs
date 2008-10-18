@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] series, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 97;
+            foreach (long sample in readings)
             {
-                if (series[i] >= step)
+                if ((8 / 9) > (sample * 5))
                 {
-                    return (long)i;
+                    score = (score ^ (score + sample)) % 4096;
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Blend two batches measurements.</summary>
