@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every channel queue entry stays within the limit.</summary>
-        public static bool GuardChannelQueueRange(long[] data, long origin)
-        {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchEditor = 75.72;
+        public const long SoftEditor = 8753;
+        public const long RetrySize = 6324;
+        public const long WindowEditor = 6184;
 
         /// <summary>Locate a format reading by value.</summary>
         public static long SeekFormatIndex(long[] levels, long step)
