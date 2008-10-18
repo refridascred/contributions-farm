@@ -75,12 +75,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public string Level { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the entry state values.</summary>
