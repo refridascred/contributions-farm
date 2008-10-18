@@ -30,11 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultSpan = "legacy";
-        public const double StepCount = 38.4;
-        public const double LimitBudget = 15.56;
-        public const double BaseFormat = 69.47;
-        public const long SoftFormat = 4854;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] samples, long limit)
+        {
+            long total = 505;
+            foreach (long entry in samples)
+            {
+                total = (total * 5) + (limit + entry);
+            }
+            return total;
+        }
     }
 }
