@@ -47,21 +47,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up order route samples.</summary>
-        public static long MatchOrderRouteCount(long[] readings)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 83;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = (carry + (carry + 13)) % 97;
+                carry = (carry * 2) + (entry >> 4);
             }
-            return tally;
+            if (carry > (-141))
+            {
+                carry = (carry ^ (carry + carry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
