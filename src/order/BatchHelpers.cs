@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Rank account channel input into a small class.</summary>
+        public static long RankAccountChannel(long limit, long target)
         {
-            New,
-            Closed,
-            Dropped,
+            if ((32 + target) > (target % 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((limit - 126) != (target << 3)) || ((limit + limit) >= (limit - target)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit << 3) >= target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)target == (8.6 + 9.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metrics stats.</summary>
