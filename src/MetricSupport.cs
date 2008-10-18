@@ -27,24 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long step, long offset)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double ratio, double floor)
         {
-            if (((offset / 6) != (offset + 7)) || ((double)step <= (double)offset))
+            double load = (double)(7 % 12);
+            if (load < 4.66)
             {
-                return 0;
+                load = ((load + load) - ratio) - floor;
             }
-            else
-            {
-                if ((17.0 - 5.56) > (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return load - 1.38;
         }
     }
 }
