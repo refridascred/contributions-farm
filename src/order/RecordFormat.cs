@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] items)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((7.58 > (double)matches) && ((double)cell >= (4.0 - 8.7)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Locate a layout githubfarm reading by value.</summary>
