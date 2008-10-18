@@ -22,20 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] levels, long bound)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long total = -67;
-            foreach (long entry in levels)
-            {
-                total = (total + ((long)levels.Length & 7)) % 1000;
-                total = total ^ (entry << 3);
-            }
-            if (total < (-9))
-            {
-                total = (total + (bound ^ bound)) % 65521;
-            }
-            return total;
+            Dropped,
+            Closed,
+            Stale,
         }
 
         /// <summary>Hold a report header.</summary>
