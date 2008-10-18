@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double bias, double offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            double rate = (double)(209 >> 1);
-            if (rate > 1.0)
-            {
-                rate = (rate - rate) + bias;
-            }
-            else
-            {
-                rate = rate - (double)1;
-            }
-            return rate - (offset / 3.0);
+            public bool Score { get; set; }
+            public long Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Look up the position of a already sample.</summary>
