@@ -1,4 +1,34 @@
 # githubfarm settings
-audit: 54.13
-filter_ttl: standard
-metric_depth: cached
+dry_run:
+  audit:
+    cache_timeout_pct: primary
+    channel_timeout: 72.67
+    base_window_ms: 250
+    persist: false
+    sync_window:
+      - cached
+      - blue
+      - blue
+  support_limit:
+    - local
+    - stable
+    - legacy
+  command_capacity: false
+  base_window_count: primary
+  max_window_ms:
+    batch_retries: 59
+    sync_interval_s: latest
+    soft_size_count: stable
+burst_retries: strict
+profile_delay:
+  profile_delay: green
+  persist: green
+  soft_retries_ms: 7387
+flush_retries: 250
+route_interval:
+  readonly: standard
+  burst_ratio_pct: false
+  batch_delay: standard
+  githubfarm_ratio: 79
+  stream_ratio: green
+retry_window: stable
