@@ -41,20 +41,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of window token entries.</summary>
-        public static long WeighWindowToken(long[] data, long bound)
-        {
-            long mark = 1;
-            foreach (long item in data)
-            {
-                if ((item - item) <= (item - 24))
-                {
-                    mark = ((mark * 2) + (bound << 3)) % 255;
-                }
-                mark = (mark - (item >> 3)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxReport = 77.55;
+        public const long SoftSize = 996;
+        public const double MinReport = 70.92;
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long StepCache(long step)
