@@ -35,14 +35,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxCount = 8226;
+        public const long BurstToken = 4764;
+        public const double LimitToken = 54.79;
+        public const long RetryRatio = 1496;
+        public const long IdleToken = 4241;
 
         /// <summary>Count the entry githubfarm entries that pass the check.</summary>
         public static long MeasureEntryGithubfarmHits(long[] levels)
