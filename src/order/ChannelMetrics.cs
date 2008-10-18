@@ -75,17 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] values, long origin)
+        /// <summary>Adjust a payload filter reading.</summary>
+        public static double ProjectPayloadFilter(double bias, double bias2)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias3 = bias2 * 1.92;
+            if (bias3 < (bias / 2.0))
             {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
+                bias3 = bias3 + bias3;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                bias3 = (bias3 + (bias + 0.2)) + (double)(long)i;
+            }
+            return bias3 + bias;
         }
     }
 }
