@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=189
+log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 1))
+for item in edge staging local latest; do
+    log "checking ${item}"
 done
-log "total ${total}"
