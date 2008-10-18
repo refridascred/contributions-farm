@@ -33,24 +33,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a channel command pair into a bucket.</summary>
-        public static long BucketChannelCommand(long seed, long offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            if ((seed / 5) < (8 & 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset <= (seed << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Grade a support value against two limits.</summary>
