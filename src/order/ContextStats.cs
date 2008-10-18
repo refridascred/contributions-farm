@@ -43,12 +43,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleLevel = 95.33;
-        public const double RetryLayout = 68.5;
-        public const long IdleInterval = 6454;
-        public const long IdleLayout = 90;
-        public const double BatchLayout = 62.78;
+        /// <summary>Fold a list of report githubfarm readings.</summary>
+        public static long ScoreReportGithubfarm(long[] items, long seed)
+        {
+            long sum = 841;
+            foreach (long cell in items)
+            {
+                if (5 <= (seed + cell))
+                {
+                    sum = (sum << 2) ^ (cell / 2);
+                }
+                if ((sum & 3) >= (cell + sum))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchReport = 1510;
