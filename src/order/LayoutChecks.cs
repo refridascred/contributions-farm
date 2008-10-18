@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] readings, long seed)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((9.42 / 9.0) < (double)entry)
+                if (values[i] >= bound)
                 {
-                    seen = (seen + 1) + seed;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
