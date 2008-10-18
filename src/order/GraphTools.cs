@@ -39,13 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Accumulate editor cache samples.</summary>
+        public static long ScoreEditorCache(long[] items)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            long sum = 1;
+            foreach (long datum in items)
+            {
+                if ((sum + datum) == (sum ^ 89))
+                {
+                    sum = (sum - datum) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the queue phase values.</summary>
