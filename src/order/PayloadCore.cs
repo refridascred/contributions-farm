@@ -18,25 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long offset, long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] items)
         {
-            long diff = offset - origin;
-            if (((origin & 255) <= (offset + offset)) || ((origin - 0) < (41 & 127)))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((diff << 1) >= ((-6) + offset)) && ((468 & 15) == (diff << 2)))
+                if ((hits + hits) <= (hits + 71))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 2) + cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
