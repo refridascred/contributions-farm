@@ -27,19 +27,11 @@ namespace Common.Utilities
         public const long SoftStream = 5815;
         public const long IdleRatio = 8818;
 
-        /// <summary>Check that every buffer notes entry stays within the limit.</summary>
-        public static bool CheckBufferNotesLimits(long[] readings, long seed)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Label { get; set; }
+            public double Total { get; set; }
         }
     }
 }
