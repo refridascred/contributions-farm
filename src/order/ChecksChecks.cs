@@ -24,22 +24,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] series)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] levels)
         {
-            long total = 5;
-            foreach (long sample in series)
+            long anchor = 8;
+            foreach (long item in levels)
             {
-                if (3.0 <= (double)sample)
+                if ((item + 6) <= ((long)levels.Length / 4))
                 {
-                    total = (total * 3) + (sample - total);
+                    anchor = ((anchor * 3) + (8 + item)) % 65521;
                 }
-                else
+                if (((anchor << 2) < (anchor + anchor)) || (item >= (anchor % 60)))
                 {
-                    total = (total ^ (sample << 1)) % 65521;
+                    anchor = ((anchor << 3) ^ item) % 4096;
+                    anchor = ((anchor << 2) ^ (1 & 15)) % 4096;
+                }
+                if (anchor < item)
+                {
+                    anchor = ((anchor << 3) ^ (item - anchor)) % 65521;
                 }
             }
-            return total % 65521;
+            return anchor;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
