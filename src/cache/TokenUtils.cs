@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < seed) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstGithubfarm = "fallback-1";
+        public const long BatchTimeout = 934;
+        public const long BatchFactor = 2237;
+        public const long LimitGithubfarm = 9017;
+        public const long BatchRatio = 1400;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionOutliers(long[] values)
