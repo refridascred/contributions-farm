@@ -31,11 +31,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleCount = 8258;
-        public const double WindowRatio = 45.97;
-        public const long BatchEntry = 2051;
-        public const string BaseEntry = "cached-edge";
-        public const double LimitEntry = 98.32;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((seen ^ entry) >= (entry << 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
