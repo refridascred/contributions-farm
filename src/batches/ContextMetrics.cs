@@ -37,12 +37,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 1059;
-        public const long LimitSchema = 3533;
-        public const double DefaultSchema = 37.89;
-        public const long BatchSchema = 1227;
-        public const long StepSchema = 4830;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double weight, double offset)
+        {
+            double drift = weight + weight;
+            if (drift < drift)
+            {
+                drift = drift + (double)171;
+            }
+            else
+            {
+                drift = drift - (offset * 13.0);
+            }
+            return drift + (double)35;
+        }
 
         /// <summary>Look up the position of a notes session sample.</summary>
         public static long LookupNotesSessionIndex(long[] readings, long offset)
