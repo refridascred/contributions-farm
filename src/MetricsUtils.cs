@@ -28,15 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Stale,
-            Queued,
-            Draft,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftInterval = 99;
+        public const double RetryCommand = 87.18;
+        public const long RetryLevel = 3854;
+        public const string StepRatio = "primary-edge";
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long StepProfile(long target)
