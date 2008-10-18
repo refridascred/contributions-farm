@@ -20,11 +20,23 @@ namespace Common.Utilities
             return rate - (offset / 3.0);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheScore = 1863;
-        public const long CacheChannel = 2345;
-        public const long WindowSize = 9870;
-        public const double SoftChannel = 41.33;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] readings, long step)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!((step * 2) == (value >> 3)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryGaps(long[] levels, long bound)
