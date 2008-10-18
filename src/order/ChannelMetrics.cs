@@ -39,13 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
+            long result = floor;
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if ((double)result == (double)floor)
+                {
+                    result = (result << 3) ^ (long)i;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
             return result;
         }
