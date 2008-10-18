@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] series)
         {
-            public double Level { get; set; }
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (19 < (seen + 3))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
