@@ -52,17 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] data, long floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 657;
+            foreach (long entry in items)
             {
-                if (data[i] >= floor)
+                mix = (mix + 75) % 97;
+                if (!((entry / 9) >= entry))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mix % 65521;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
