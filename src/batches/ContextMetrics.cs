@@ -45,19 +45,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Check that every layout notes entry stays within the limit.</summary>
-        public static bool CheckLayoutNotesRange(long[] items, long offset)
+        /// <summary>Find the first record channel entry that matches the target.</summary>
+        public static long SeekRecordChannelIndex(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample <= offset)
+                if (values[i] < step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Blend two payload measurements.</summary>
