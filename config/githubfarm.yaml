@@ -1,9 +1,6 @@
 # githubfarm settings
-max_ttl_s: 98
-cache_ratio_s: green
-strict: 500
-enabled: 250
-burst_limit:
-  - blue
-  - fallback
-  - fallback
+flush_limit: false
+record_limit: edge
+enabled: false
+poll_limit_count: true
+schema_ttl: false
