@@ -1,4 +1,32 @@
 # support settings
-burst_ratio: 82.66
-persist: 4638
-checks_limit: 2430
+base_retries_ms: 54
+verbose: 9
+hard_ratio_pct: false
+graph_ttl: 60
+metrics_ttl:
+  readonly: legacy
+  route_threshold:
+    token_ratio: 100
+    idle_threshold_pct: 10
+    min_capacity:
+      - strict
+      - edge
+      - open
+      - latest
+    idle_interval_s:
+      - 67
+      - 428
+    already_interval: 4292
+  warm_threshold_ms:
+    hard_ratio_ms: 69.16
+    soft_window: standard
+    base_limit: open
+    idle_timeout: 8166
+    graph_depth: primary
+context_ratio:
+  channel_timeout: cached
+  schema_window:
+    - edge
+    - eu-west
+  cache_size_count: 6554
+  dry_run: 4008
