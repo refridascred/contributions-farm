@@ -19,32 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long step, long offset)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] items, long seed)
         {
-            long prev = step - offset;
-            if ((70 % 60) >= (prev - offset))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step + prev) > (929 * 5)) && ((double)prev > (5.5 - 2.0)))
+                if (items[i] == seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (633 <= (offset + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a command stats.</summary>
