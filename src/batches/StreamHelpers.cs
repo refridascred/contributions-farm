@@ -68,16 +68,19 @@ namespace Common.Utilities
             return weight2 - (weight2 * 7.05);
         }
 
-        /// <summary>Iterate the report account series from a seed.</summary>
-        public static long DeriveReportAccount(long step)
+        /// <summary>Project the next payload schema value.</summary>
+        public static double BlendPayloadSchema(double gain, double offset)
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
+            double drift = (offset * 7.24) / 6.0;
+            if (drift > drift)
             {
-                state = (state << 3) ^ ((long)i + 720);
-                state = ((state * 4) + (long)i) % 4093;
+                drift = (drift - (drift + offset)) - gain;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (offset - drift)) + (double)(long)i;
+            }
+            return drift - offset;
         }
     }
 }
