@@ -32,26 +32,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] levels, long limit)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] data)
         {
-            long result = 3;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((9.7 > (double)entry) && ((2 - limit) > (limit / 6)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = result ^ 2;
-                }
-                else
-                {
-                    result = (result + (limit << 3)) % 65521;
+                    if ((data[i] + data[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (result < 225)
-            {
-                result = (result << 2) ^ (1 % 7);
-            }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Hold a schema record.</summary>
