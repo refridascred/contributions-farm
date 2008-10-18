@@ -22,10 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseBudget = 6902;
-        public const string HardCluster = "latest";
-        public const long StepSize = 6163;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (!(((hits - hits) >= (hits + hits)) && ((hits ^ entry) >= (70 + hits))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
