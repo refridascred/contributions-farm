@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] samples, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (samples[i] < limit)
+                if ((double)tally == (double)(long)items.Length)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
