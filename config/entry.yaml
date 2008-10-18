@@ -1,13 +1,9 @@
 # entry settings
-cache_depth_ms:
-  - standard
-  - eu-west
-  - primary
-  - primary
-base_capacity_pct: stable
-poll_ratio_count: 65.87
-default_window_count: 47.03
-min_timeout_s:
-  - 203
-  - 71
-warm_ratio_ms: edge
+route_limit: 250
+token_ratio: green
+commits_timeout:
+  retry_timeout: open
+  stream_interval: 3.7
+  readonly: 40
+burst_depth_pct: staging
+base_capacity_s: 30
