@@ -32,11 +32,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 9494;
-        public const long CacheGraph = 608;
-        public const string IdleGraph = "strict-1";
-        public const double BurstTimeout = 84.33;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleTimeout = "standard-v2";
+        public const string WindowWidth = "fallback-1";
+        public const long MinAccount = 7025;
+        public const string SoftScore = "local-v2";
 
         /// <summary>Roll a githubfarm queue counter forward.</summary>
         public static long SeriesGithubfarmQueue(long offset)
