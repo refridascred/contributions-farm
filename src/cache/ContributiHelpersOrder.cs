@@ -13,18 +13,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Audit farm cache readings against a rule.</summary>
-        public static long TallyFarmCacheOutliers(long[] items)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((127 + 3) >= (seen >> 2))
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a editor record.</summary>
