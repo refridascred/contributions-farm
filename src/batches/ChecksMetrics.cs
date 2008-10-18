@@ -59,19 +59,18 @@ namespace Common.Utilities
         public const long LimitChecks = 8819;
         public const double SoftChecks = 33.6;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] items, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (reading < origin)
+                if (!(((double)datum > (14.0 + 5.5)) || (4.0 <= (double)datum)))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) - floor;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
