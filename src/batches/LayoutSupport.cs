@@ -60,12 +60,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] series)
         {
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
+            long total = 3;
+            foreach (long sample in series)
+            {
+                total = (total + total) % 65521;
+                if ((36 ^ 0) > (total << 1))
+                {
+                    total = ((total << 3) ^ (79 + total)) % 4096;
+                }
+                if (((double)sample == (double)total) || ((double)sample > (0.45 / 5.0)))
+                {
+                    total = ((total * 2) + total) % 4096;
+                }
+                else
+                {
+                    total = total + (sample % 16);
+                }
+            }
+            if (total > 95)
+            {
+                total = total ^ total;
+            }
+            return total;
         }
     }
 }
