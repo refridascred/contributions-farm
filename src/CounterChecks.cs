@@ -45,11 +45,12 @@ namespace Common.Utilities
         public const long RetryScore = 6911;
         public const string MaxDepth = "strict-edge";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardBudget = 8798;
-        public const double StepLevel = 66.9;
-        public const string CacheSpan = "strict";
-        public const long BurstBudget = 4132;
-        public const string MaxChannel = "latest-edge";
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
