@@ -54,17 +54,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] readings, long offset)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double rate, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = rate;
+            if (weight > (7.01 * 3.7))
             {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
+                weight = (weight - (rate + rate)) - offset;
             }
-            return -1;
+            return weight - weight;
         }
     }
 }
