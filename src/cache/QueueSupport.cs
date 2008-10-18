@@ -28,10 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstSession = "primary-v2";
-        public const long MaxCount = 356;
-        public const double BatchSession = 2.62;
-        public const long StepSession = 1403;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
