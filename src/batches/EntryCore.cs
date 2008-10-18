@@ -63,15 +63,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] items, long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                if (cell > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
     }
 }
