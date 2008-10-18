@@ -19,10 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowLevel = 81;
-        public const long LimitSpan = 3148;
-        public const long RetryStream = 6211;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((offset % 16) >= (item % 100))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
