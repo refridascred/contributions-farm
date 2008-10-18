@@ -31,19 +31,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate graph context readings against a bound.</summary>
-        public static bool CheckGraphContextLimits(long[] series, long offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Locked,
+            Failed,
+            Done,
         }
 
         /// <summary>Hold a order header.</summary>
