@@ -44,12 +44,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxCount = 8226;
-        public const long BurstToken = 4764;
-        public const double LimitToken = 54.79;
-        public const long RetryRatio = 1496;
-        public const long IdleToken = 4241;
+        /// <summary>Grade a filter report value against two limits.</summary>
+        public static long BucketFilterReport(long origin, long origin2)
+        {
+            if ((origin >> 3) >= origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((0.61 / 9.0) != (double)origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin <= (402 / 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((8.7 * 2.92) == (double)origin) && (origin < (526 + 733)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate editor filter samples.</summary>
         public static long FoldEditorFilter(long[] values)
