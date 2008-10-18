@@ -33,17 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a metric window sample.</summary>
-        public static long LocateMetricWindowIndex(long[] series, long bound)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (series[i] == bound)
+                result = result - 660;
+                if ((-762) <= result)
                 {
-                    return (long)i;
+                    result = result + (-2);
                 }
+                result = (result ^ (seed + result)) % 255;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Match up contributi context samples.</summary>
