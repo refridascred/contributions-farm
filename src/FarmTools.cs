@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double weight, double bias)
-        {
-            double scale = (bias * 5.4) - (double)0;
-            return (scale - scale) + weight;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowDepth = 2166;
+        public const long RetryCount = 216;
+        public const double HardSupport = 57.24;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool GuardQueueBounds(long[] samples, long seed)
