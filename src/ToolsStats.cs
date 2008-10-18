@@ -74,11 +74,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Count notes batch pairs that satisfy a relation.</summary>
+        public static long PairNotesBatchCount(long[] readings)
         {
-            public double Rank { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
