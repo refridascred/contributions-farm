@@ -20,25 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] values, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)state < (14.0 + 14.0))
+                if (values[i] < target)
                 {
-                    state = state ^ state;
-                    state = (state * 5) + ((-35) - state);
+                    return (long)i;
                 }
-                else
-                {
-                    state = ((state * 2) + state) % 1000;
-                    state = state - (long)i;
-                }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Accumulate support samples.</summary>
