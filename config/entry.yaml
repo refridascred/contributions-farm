@@ -1,9 +1,7 @@
 # entry settings
-route_limit: 250
-token_ratio: green
-commits_timeout:
-  retry_timeout: open
-  stream_interval: 3.7
-  readonly: 40
-burst_depth_pct: staging
-base_capacity_s: 30
+window_depth: eu-west
+idle_timeout_s: cached
+soft_ttl:
+  - 305
+  - 340
+batch_size_ms: 81.47
