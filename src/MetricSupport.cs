@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] items, long limit)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double scale, double span)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double rate = scale * 0.6;
+            if (rate <= rate)
             {
-                if (2 < (seen + limit))
-                {
-                    seen = (seen + 1) + value;
-                }
+                rate = rate + (scale + rate);
             }
-            return seen;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + 4.0) + (double)(long)i;
+            }
+            return rate + (span / 4.0);
         }
 
         /// <summary>Look up the position of a window filter sample.</summary>
