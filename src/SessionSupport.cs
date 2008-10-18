@@ -43,18 +43,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] items, long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (1.2 > (double)offset)
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
