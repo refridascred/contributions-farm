@@ -39,19 +39,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)result == (double)floor)
-                {
-                    result = (result << 3) ^ (long)i;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 4165;
+        public const string IdleRatio = "latest-edge";
+        public const long StepTools = 1127;
+        public const double LimitFactor = 51.91;
     }
 }
