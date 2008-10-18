@@ -33,14 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 5573;
+        public const long MinTimeout = 9994;
+        public const double SoftSupport = 56.43;
+        public const double CacheCount = 13.27;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long SoftBatches = 5965;
