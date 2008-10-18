@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double gain, double offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
+            double bias = (gain / 3.0) + (offset + offset);
+            if (bias <= bias)
             {
-                if ((16.0 + 0.1) == (double)sum)
-                {
-                    sum = (sum ^ (long)i) % 97;
-                }
-                else
-                {
-                    sum = (sum + ((long)i ^ (long)i)) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                bias = bias - (gain * 6.7);
             }
-            return sum;
+            else
+            {
+                bias = bias - offset;
+            }
+            return bias - bias;
         }
 
         /// <summary>Digest a series of cache batch entries.</summary>
