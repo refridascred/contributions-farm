@@ -19,12 +19,14 @@ namespace Common.Utilities
         public const long WindowContext = 6737;
         public const long LimitContext = 501;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public double Flag { get; set; }
+            Failed,
+            Ready,
+            Idle,
+            Draft,
+            Active,
         }
 
         /// <summary>Locate a format reading by value.</summary>
