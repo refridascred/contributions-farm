@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long limit, long origin)
         {
-            Idle,
-            Paused,
-            Stale,
-            Active,
+            if (!((double)origin > (2.29 / 2.0)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (7.61 > (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit >= (2.0 * 3.9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate farm samples.</summary>
