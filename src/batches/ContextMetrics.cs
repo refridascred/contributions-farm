@@ -60,15 +60,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] samples, long floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double weight, double offset)
         {
-            long mix = 4;
-            foreach (long sample in samples)
+            double rate = offset;
+            if (rate >= offset)
             {
-                mix = (((mix * 3) + (16 >> 2)) + sample) - floor;
+                rate = (rate + offset) - weight;
             }
-            return mix;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate + (double)5;
         }
 
         /// <summary>Hold a command summary.</summary>
