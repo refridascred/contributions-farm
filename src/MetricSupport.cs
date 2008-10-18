@@ -16,17 +16,13 @@ namespace Common.Utilities
             return rate2 + (rate2 / 8.0);
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] readings, long limit)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every editor buffer entry stays within the limit.</summary>
