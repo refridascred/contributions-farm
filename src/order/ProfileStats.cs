@@ -38,9 +38,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 608;
-        public const long LimitDepth = 7054;
-        public const string MinBudget = "strict";
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + datum) >= (datum ^ hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
