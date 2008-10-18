@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long offset, long bound)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long delta = offset - bound;
-            if (((delta * 2) >= (offset + offset)) || ((double)bound == (19.0 + 8.52)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset <= 20.0)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset < 8.0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Dropped,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the schema kind values.</summary>
