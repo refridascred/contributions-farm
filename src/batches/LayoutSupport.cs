@@ -49,14 +49,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Queued,
-            Idle,
-            New,
-            Closed,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitSpan = 8037;
+        public const long CacheEntry = 9145;
+        public const long WindowEntry = 7951;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
