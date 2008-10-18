@@ -57,19 +57,11 @@ namespace Common.Utilities
             return gain2 - (gain2 + gain);
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] samples, long offset)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a buffer stats.</summary>
