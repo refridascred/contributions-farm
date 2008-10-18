@@ -23,11 +23,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepTimeout = 8123;
-        public const double BatchSize = 27.35;
-        public const long WindowNotes = 3772;
-        public const string CacheNotes = "stable";
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] items, long seed)
+        {
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long DefaultFilter = 8869;
