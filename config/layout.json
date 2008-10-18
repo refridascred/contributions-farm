@@ -1,7 +1,5 @@
 {
-  "batch_threshold": ["stable", "local", "strict", "blue"],
-  "compress": true,
-  "dry_run": 100,
-  "channel_depth": "fallback",
-  "retry_interval_count": 8145
+  "context_interval": 79,
+  "hard_limit": true,
+  "sync_capacity": [36, 337, 129, 462]
 }
