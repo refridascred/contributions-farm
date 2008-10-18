@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] readings)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] samples, long limit)
         {
-            long result = 57;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (((result * 3) + (18 * 2)) % 97) + reading;
+                if ((samples[i] > limit) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
