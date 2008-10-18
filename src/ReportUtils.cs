@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] values)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if ((39 / 4) < (tally % 7))
+                if (datum <= offset)
                 {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
