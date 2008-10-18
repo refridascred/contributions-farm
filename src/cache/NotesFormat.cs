@@ -15,17 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] items, long bound)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (items[i] > bound)
+                if ((cell - cell) >= (6 & 31))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - floor;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Blend two batches measurements.</summary>
