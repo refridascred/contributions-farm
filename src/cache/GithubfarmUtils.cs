@@ -46,14 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Queued,
-            Locked,
-            Retry,
-            Idle,
-            Synced,
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
