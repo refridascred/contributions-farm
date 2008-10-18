@@ -40,38 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a notes route pair into a bucket.</summary>
-        public static long BucketNotesRoute(long seed, long limit)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] data, long step)
         {
-            if (!((0 % 97) >= seed))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit * 2) >= (limit ^ limit)) || ((seed % 10) == (limit / 8)))
+                if (data[i] < step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed & 3) == (seed >> 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((-2) + limit) >= (limit >> 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
