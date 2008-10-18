@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long CacheInterval = 3583;
         public const long BaseReport = 1817;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 9064;
+        public const string CacheCluster = "primary-1";
+        public const double LimitSize = 96.88;
+        public const long SoftCluster = 7407;
+        public const long MaxSize = 3004;
 
         /// <summary>Count the format notes entries that pass the check.</summary>
         public static long TallyFormatNotesOutliers(long[] levels)
