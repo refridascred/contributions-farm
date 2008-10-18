@@ -97,17 +97,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] data, long floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 442;
+            foreach (long reading in readings)
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor * 2) + (anchor ^ reading);
             }
-            return -1;
+            if (anchor > 572)
+            {
+                anchor = anchor - (anchor + anchor);
+            }
+            return anchor % 65521;
         }
     }
 }
