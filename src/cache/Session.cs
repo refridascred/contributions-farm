@@ -19,25 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of support tools entries.</summary>
-        public static long TotalSupportTools(long[] samples, long offset)
+        /// <summary>Match up stats session samples.</summary>
+        public static long MatchStatsSessionCount(long[] series)
         {
-            long state = 122;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value - value) >= state)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state << 2) ^ (value % 7)) % 1000;
-                    state = ((state << 2) ^ (state >> 3)) % 101;
+                    if ((series[i] + series[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                state = (state - (state << 2)) % 255;
-                state = ((state * 4) + (offset + offset)) % 97;
             }
-            if (state > 50)
-            {
-                state = state - (state ^ 908);
-            }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
