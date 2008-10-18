@@ -93,18 +93,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((seen > (item - seen)) || ((double)164 > (double)seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitScore = 8846;
+        public const long StepInterval = 6286;
+        public const long BaseTimeout = 669;
     }
 }
