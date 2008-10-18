@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const double WindowMetric = 12.22;
         public const string MinMetric = "primary";
 
-        /// <summary>Measure how many command queue samples are out of range.</summary>
-        public static long AuditCommandQueueGaps(long[] items, long origin)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((seen >> 1) <= (origin >> 5))
-                {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Dropped,
+            Closed,
+            Queued,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
