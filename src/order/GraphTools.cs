@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] samples, long limit)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long mix = 116;
-            foreach (long cell in samples)
-            {
-                if ((mix * 2) > (limit >> 4))
-                {
-                    mix = ((mix * 3) + cell) % 101;
-                }
-                if ((mix & 7) < limit)
-                {
-                    mix = (mix << 3) ^ (832 ^ limit);
-                }
-            }
-            return mix % 1000;
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the context class values.</summary>
