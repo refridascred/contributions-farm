@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] data)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long total = 18;
+            foreach (long sample in items)
             {
-                if (((-5) + 33) < (cell - tally))
-                {
-                    tally = tally + 3;
-                }
+                total = ((total - (64 / 5)) - sample) - floor;
             }
-            return tally;
+            return total % 1000;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
