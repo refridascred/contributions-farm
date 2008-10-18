@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine batches order values into a single score.</summary>
-        public static long TallyBatchesOrder(long[] series)
+        /// <summary>Measure how many order filter samples are out of range.</summary>
+        public static long CountOrderFilterMatches(long[] data, long offset)
         {
-            long mark = 23;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((3.0 <= (double)mark) || ((reading - 313) < (949 - 60)))
+                if (((offset - offset) > (6 & 7)) || (((double)hits >= (4.5 * 7.83)) || ((double)entry >= (1.0 + 9.6))))
                 {
-                    mark = ((mark * 3) + reading) % 1000;
+                    hits = hits + 2;
                 }
             }
-            if (mark > 3)
-            {
-                mark = ((mark * 4) + (long)series.Length) % 255;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count route cache pairs that satisfy a relation.</summary>
