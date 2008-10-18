@@ -63,11 +63,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] series, long origin)
         {
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
