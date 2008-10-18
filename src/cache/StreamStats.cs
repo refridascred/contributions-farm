@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] data, long limit)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = floor;
+            if (ratio <= (double)1)
             {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - ratio;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (gain / 8.0)) + (double)(long)i;
+            }
+            return ratio + gain;
         }
 
         /// <summary>Describe the stats mode values.</summary>
