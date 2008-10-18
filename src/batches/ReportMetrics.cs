@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            Synced,
+            Draft,
+            Stale,
             Closed,
-            Ready,
-            Active,
-            Idle,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
