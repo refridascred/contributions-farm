@@ -16,23 +16,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the metrics route series from a seed.</summary>
-        public static long DeriveMetricsRoute(long floor)
+        /// <summary>Rank counter schema input into a small class.</summary>
+        public static long BucketCounterSchema(long bound, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
+            if ((origin * 3) >= (2 + origin))
             {
-                score = (score << 3) ^ (210 & 1);
-                long delta = score;
-                if (!((score % 60) == (delta * 4)))
-                {
-                    score = (score - floor) % 1000;
-                    delta = ((delta << 2) ^ score) % 1000;
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 1000;
+                return 4;
             }
-            return score;
+            else
+            {
+                if ((origin << 1) != (bound & 15))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
