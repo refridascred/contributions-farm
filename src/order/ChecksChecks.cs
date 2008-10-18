@@ -24,14 +24,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Digest a series of cache batch entries.</summary>
+        public static long TallyCacheBatch(long[] data, long target)
         {
-            Failed,
-            Draft,
-            Closed,
-            Synced,
-            Ready,
+            long sum = 78;
+            foreach (long item in data)
+            {
+                sum = ((sum ^ (sum << 2)) % 255) - item;
+                if ((sum ^ target) >= (92 % 60))
+                {
+                    break;
+                }
+            }
+            if (sum > 51)
+            {
+                sum = sum - (875 + target);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Check that every account channel entry stays within the limit.</summary>
