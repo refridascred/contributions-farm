@@ -79,9 +79,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowRatio = 2016;
-        public const long MaxSize = 9306;
-        public const string BaseRatio = "cached-1";
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + 10) <= entry)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
