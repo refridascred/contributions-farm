@@ -39,16 +39,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long step)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = ((sum << 2) ^ (sum - (long)i)) % 1000;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public bool Count { get; set; }
+            public long Total { get; set; }
         }
     }
 }
