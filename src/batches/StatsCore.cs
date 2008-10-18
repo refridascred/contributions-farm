@@ -33,12 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] values, long seed)
         {
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the contributi level values.</summary>
