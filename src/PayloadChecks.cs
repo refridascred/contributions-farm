@@ -45,14 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Measure how many farm report samples are out of range.</summary>
+        public static long MeasureFarmReportMatches(long[] levels)
         {
-            Pending,
-            Closed,
-            Active,
-            Stale,
-            Paused,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (((double)matches < (2.8 + 8.0)) || (matches <= (matches % 12)))
+                {
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
