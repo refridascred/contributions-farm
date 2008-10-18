@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] items)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((item < (item - item)) && ((7.61 * 1.2) == (double)item))
+                if (((limit - limit) <= (sample * 3)) && !((391 % 2) <= (hits << 1)))
                 {
-                    matches = matches + 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
