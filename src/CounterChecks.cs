@@ -29,16 +29,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] levels)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long floor, long seed)
         {
-            long mark = 2;
-            foreach (long cell in levels)
+            if ((floor + floor) != (floor & 255))
             {
-                mark = (mark - (mark - mark)) % 101;
-                mark = ((mark << 2) ^ cell) % 97;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if ((floor - 765) != (floor >> 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
