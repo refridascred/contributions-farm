@@ -37,19 +37,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double weight, double offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long target, long origin)
         {
-            double drift = weight + weight;
-            if (drift < drift)
+            if (24 < (origin / 4))
             {
-                drift = drift + (double)171;
+                return 4;
             }
             else
             {
-                drift = drift - (offset * 13.0);
+                if ((target % 24) <= origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)39 >= (double)target) || (origin >= (origin * 4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return drift + (double)35;
         }
 
         /// <summary>Grade a order payload value against two limits.</summary>
