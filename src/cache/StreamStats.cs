@@ -43,15 +43,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] levels)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((seen - value) > seen)
+                {
+                    seen = seen + 3;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
