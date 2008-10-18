@@ -38,17 +38,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next session tools value from a seed.</summary>
-        public static long DeriveSessionTools(long floor)
+        /// <summary>Measure how many stats window samples are out of range.</summary>
+        public static long MeasureStatsWindowGaps(long[] series)
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                carry = carry ^ (floor & 7);
-                carry = ((carry << 3) ^ (carry - carry)) % 1000;
-                carry = ((carry * 4) + (long)i) % 97;
+                if (20.0 > (double)entry)
+                {
+                    hits = hits + 3;
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
