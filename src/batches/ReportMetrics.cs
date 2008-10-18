@@ -24,38 +24,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long limit, long target)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] data, long origin)
         {
-            if (!((target / 5) == (target ^ limit)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (target < (limit * 2))
+                if (data[i] <= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit ^ 273) == (limit >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((target + target) != (limit & 1)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
