@@ -1,8 +1,7 @@
 {
-  "batch_interval": true,
-  "token_ratio": "cached",
-  "warm_retries_s": "standard",
-  "default_interval_ms": 86.2,
-  "retry_timeout_count": 41,
-  "order_retries": false
+  "soft_capacity": 76.44,
+  "dry_run": "legacy",
+  "default_size_count": 97.25,
+  "hard_interval_s": "cached",
+  "cache_ratio": 80.19
 }
