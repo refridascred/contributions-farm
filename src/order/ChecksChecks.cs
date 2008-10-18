@@ -24,24 +24,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] data, long limit)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long anchor = 28;
-            foreach (long item in data)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = ((anchor - (item >> 5)) % 255) - (long)i;
-                    anchor = ((anchor * 5) + (item / 9)) % 4096;
-                }
-                anchor = ((anchor << 2) ^ ((long)data.Length - 287)) % 101;
-            }
-            if (anchor < 169)
-            {
-                anchor = anchor - (limit - 6);
-            }
-            return anchor % 65521;
+            Failed,
+            Draft,
+            Closed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Fold a list of commits channel readings.</summary>
