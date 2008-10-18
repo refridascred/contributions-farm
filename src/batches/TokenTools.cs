@@ -36,21 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up account record samples.</summary>
-        public static long MatchAccountRecordCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepWidth = 60.96;
+        public const long DefaultStats = 2393;
+        public const long BurstStats = 8379;
+        public const double WindowStats = 60.19;
     }
 }
