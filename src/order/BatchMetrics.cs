@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long step, long origin)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long slot = step - origin;
-            if ((step * 4) != (origin - 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((slot + 45) <= (step - step)) && ((origin + origin) == (5 >> 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin >= (4.77 / 8.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((0.5 / 5.0) >= (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
