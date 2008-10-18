@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] readings)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] items, long target)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((5.0 * 1.2) >= (double)datum)
+                if ((69 + hits) >= (reading % 24))
                 {
-                    count = count + 3;
+                    hits = (hits + 3) + target;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the editor level values.</summary>
