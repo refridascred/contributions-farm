@@ -38,19 +38,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double scale, double span)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long floor, long step)
         {
-            double bias = (double)24 * 9.0;
-            if (bias < (double)110)
+            long cur = floor ^ step;
+            if ((floor & 1) <= (771 % 16))
             {
-                bias = (bias + (bias * 9.91)) - scale;
+                return 3;
             }
             else
             {
-                bias = bias + span;
+                if (((floor + cur) >= (cur + step)) || (cur > (cur & 127)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return bias - (double)685;
         }
     }
 }
