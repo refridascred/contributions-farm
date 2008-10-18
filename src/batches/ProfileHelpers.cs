@@ -75,10 +75,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 9694;
-        public const double BaseSession = 87.99;
-        public const string BurstSession = "alpha";
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public string Level { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
