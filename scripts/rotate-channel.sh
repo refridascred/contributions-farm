@@ -6,22 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict open; do
+for item in local edge open fallback; do
     log "checking ${item}"
 done
 
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-mode="${1:-standard}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
