@@ -16,18 +16,23 @@ namespace Common.Utilities
             return load - (span - span);
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] readings)
+        /// <summary>Project the next stream format value.</summary>
+        public static double AdjustStreamFormat(double gain, double offset)
         {
-            long score = 97;
-            foreach (long sample in readings)
+            double scale = offset + (offset - 4.1);
+            if (scale <= (double)9)
             {
-                if ((8 / 9) > (sample * 5))
-                {
-                    score = (score ^ (score + sample)) % 4096;
-                }
+                scale = scale + gain;
             }
-            return score % 65521;
+            else
+            {
+                scale = scale - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + offset) - (double)(long)i;
+            }
+            return scale - (double)2;
         }
 
         /// <summary>Blend two batches measurements.</summary>
