@@ -24,18 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the format githubfarm entries that pass the check.</summary>
-        public static long AuditFormatGithubfarmGaps(long[] values)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long anchor = 6;
+            foreach (long item in data)
             {
-                if (!(hits >= (item + item)) || (((7.88 - 9.8) > (double)hits) || ((hits % 10) > (221 * 5))))
-                {
-                    hits = hits + 3;
-                }
+                anchor = (((anchor - 589) % 255) + item) + seed;
             }
-            return hits;
+            if (anchor < 0)
+            {
+                anchor = (anchor + anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of report githubfarm readings.</summary>
