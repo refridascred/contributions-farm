@@ -58,18 +58,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] levels)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((long)levels.Length != (reading + 82))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public long Count { get; set; }
         }
     }
 }
