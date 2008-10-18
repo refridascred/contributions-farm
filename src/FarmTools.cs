@@ -10,19 +10,24 @@ namespace Common.Utilities
         public const long RetryCount = 216;
         public const double HardSupport = 57.24;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] samples, long seed)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long floor, long step)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            if ((step < (floor + step)) && ((step << 2) < (2 + (-873))))
             {
-                if (sample <= seed)
+                return 8;
+            }
+            else
+            {
+                if ((step - step) < (floor + floor))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ready;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
