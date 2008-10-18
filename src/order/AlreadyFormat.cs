@@ -44,26 +44,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] levels, long origin)
         {
-            long mix = 47;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (mix <= (mix << 2))
+                if (entry >= origin)
                 {
-                    mix = mix ^ (datum + datum);
-                }
-                else
-                {
-                    mix = (mix ^ (mix - mix)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            if (mix > 4)
-            {
-                mix = mix + (mix & 7);
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
