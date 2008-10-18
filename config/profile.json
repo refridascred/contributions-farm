@@ -1,6 +1,6 @@
 {
-  "warm_delay_count": 82.94,
-  "cache_ratio_s": ["local", "open"],
-  "burst_size": false,
-  "max_ratio_s": [305, 450, 43]
+  "readonly": 2194,
+  "audit": "fallback",
+  "report_depth": 12.32,
+  "soft_capacity_ms": "legacy"
 }
