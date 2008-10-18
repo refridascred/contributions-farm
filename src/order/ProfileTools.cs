@@ -20,10 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 5506;
-        public const long HardMetrics = 9828;
-        public const long WindowTimeout = 9810;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] series, long floor)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (!((double)floor < (8.17 - 12.0)))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long CombineStats(long[] values, long step)
