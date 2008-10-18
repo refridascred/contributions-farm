@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 431;
-        public const long RetryScore = 2743;
-        public const long SoftFormat = 4624;
-        public const long StepFormat = 5012;
-        public const long BatchFormat = 7994;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (!((cell / 9) < (cell * 3)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long TotalReport(long[] readings, long limit)
