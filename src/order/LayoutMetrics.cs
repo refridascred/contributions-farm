@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many channel profile samples are out of range.</summary>
-        public static long AuditChannelProfileGaps(long[] series)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((12.0 + 12.0) != (double)matches) || (((double)matches >= (20.0 / 5.0)) || (entry < (matches / 4))))
+                if (items[i] <= target)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Roll a already counter forward.</summary>
