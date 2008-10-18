@@ -33,11 +33,19 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] values, long seed)
         {
-            public string Owner { get; set; } = "";
-            public bool Region { get; set; }
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
