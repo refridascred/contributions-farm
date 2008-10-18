@@ -14,11 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] items, long bound)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
