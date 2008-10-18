@@ -57,12 +57,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a notes order sample.</summary>
-        public static long FindNotesOrderIndex(long[] readings, long target)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] < target)
+                if ((series[i] <= step) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
