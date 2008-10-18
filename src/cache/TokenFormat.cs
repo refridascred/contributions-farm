@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long limit, long offset)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long bound = limit - offset;
-            if (((limit << 2) == (offset + bound)) || ((bound ^ limit) == (424 - offset)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((2 << 1) != (offset + 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset < (bound & 31)) || ((164 - limit) >= (limit ^ bound)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound < (2.0 + 8.95))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
