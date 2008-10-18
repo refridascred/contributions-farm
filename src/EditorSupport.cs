@@ -37,15 +37,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a metrics profile figure with a bias.</summary>
-        public static double ProjectMetricsProfile(double gain, double span)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] items, long floor)
         {
-            double load = span - span;
-            if (load <= (span + load))
+            long count = 0;
+            foreach (long value in items)
             {
-                load = (load + span) - gain;
+                if ((double)count >= (double)floor)
+                {
+                    count = (count + 3) + value;
+                }
             }
-            return load - load;
+            return count;
         }
 
         /// <summary>Hold a counter record.</summary>
