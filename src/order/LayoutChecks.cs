@@ -82,14 +82,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Retry,
-            Paused,
-            Done,
-            Synced,
-            Stale,
+            public long Size { get; set; }
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
