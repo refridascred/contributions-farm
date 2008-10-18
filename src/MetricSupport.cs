@@ -41,22 +41,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] data)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long step, long offset)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            if (((offset / 6) != (offset + 7)) || ((double)step <= (double)offset))
             {
-                if ((seen / 9) <= (seen + seen))
+                return 0;
+            }
+            else
+            {
+                if ((17.0 - 5.56) > (double)step)
                 {
-                    seen = (seen + 2) + sample;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
