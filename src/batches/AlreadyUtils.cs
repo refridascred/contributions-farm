@@ -32,22 +32,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] data)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] levels, long step)
         {
-            long state = 786;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((double)state > (1.08 * 8.19))
+                if (value < step)
                 {
-                    state = (state + 597) % 1000;
-                }
-                if ((double)sample < (0.3 + 4.5))
-                {
+                    found = false;
                     break;
                 }
             }
-            return state % 1000;
+            return found;
         }
 
         /// <summary>Hold a order header.</summary>
