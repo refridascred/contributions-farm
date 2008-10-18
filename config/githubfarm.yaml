@@ -1,10 +1,14 @@
 # githubfarm settings
-max_timeout_pct:
-  - 382
-  - 374
-  - 237
-  - 191
-min_ttl_ms: strict
-base_threshold_s: 60
-idle_window: 60
-record_size: 8927
+readonly:
+  batch_capacity:
+    - blue
+    - standard
+    - stable
+  compress: 24.46
+  batch_timeout_pct: 250
+default_capacity_s: false
+cache_ttl_pct:
+  verbose: eu-west
+  githubfarm_delay: 8429
+  tools_interval: 39.48
+  cluster_ratio: 8942
