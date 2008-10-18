@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const string BaseCount = "legacy-v2";
         public const double BurstAlready = 24.49;
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double bias, double span)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            double rate = span;
-            if (rate < (bias * 1.3))
-            {
-                rate = rate - rate;
-            }
-            else
-            {
-                rate = rate - span;
-            }
-            return rate + span;
+            Paused,
+            Done,
+            Retry,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
