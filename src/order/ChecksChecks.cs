@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] items, long target)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((((784 % 8) >= (cell % 10)) || ((target + target) <= 924)) && ((target - cell) <= 7))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            New,
+            Locked,
+            Ready,
+            Paused,
+            Synced,
         }
 
         /// <summary>Fold a list of token readings.</summary>
