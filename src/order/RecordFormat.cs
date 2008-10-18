@@ -27,17 +27,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a stream filter reading by value.</summary>
-        public static long FindStreamFilterIndex(long[] values, long step)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 349;
+            foreach (long cell in values)
             {
-                if ((values[i] >= step) && ((values[i] % 2) != 0))
+                acc = ((acc << 2) ^ (cell % 7)) % 1000;
+                if ((7.0 + 3.84) > (double)acc)
                 {
-                    return (long)i;
+                    acc = acc - (acc * 2);
                 }
             }
-            return -1;
+            if (acc < 5)
+            {
+                acc = (acc - (acc << 3)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Hold a format snapshot.</summary>
