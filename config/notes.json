@@ -1,6 +1,8 @@
 {
-  "max_threshold": false,
-  "strict": "primary",
-  "dry_run": "local",
-  "buffer_interval": true
+  "commits_timeout": "primary",
+  "retry_ratio": "cached",
+  "sync_depth": true,
+  "dry_run": 72,
+  "base_ttl_pct": ["latest", "staging", "eu-west"],
+  "enabled": ["latest", "primary", "green", "primary"]
 }
