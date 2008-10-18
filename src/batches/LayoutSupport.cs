@@ -53,11 +53,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public long Mode { get; set; }
-            public double Owner { get; set; }
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
