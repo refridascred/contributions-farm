@@ -50,12 +50,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] series, long target)
         {
-            Draft,
-            Queued,
-            Paused,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (cell >= (count - 3))
+                {
+                    count = (count + 3) + target;
+                }
+            }
+            return count;
         }
     }
 }
