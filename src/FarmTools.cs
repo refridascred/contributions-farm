@@ -33,24 +33,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a context checks pair into a bucket.</summary>
-        public static long BucketContextChecks(long origin, long offset)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] series, long limit)
         {
-            if ((origin - offset) == (5 ^ origin))
+            bool flag = true;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin & 127) > 4)
+                if (entry != limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
