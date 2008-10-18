@@ -48,32 +48,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long offset, long offset2)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] data, long target)
         {
-            long edge = offset + offset2;
-            if ((double)offset >= (9.0 - 9.0))
+            long acc = 96;
+            foreach (long entry in data)
             {
-                return 1;
+                acc = ((acc ^ 2) ^ entry) - target;
             }
-            else
+            if (acc > 292)
             {
-                if ((offset % 64) >= (offset2 ^ offset2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((((-26) % 100) <= (282 - offset2)) && ((edge & 3) <= offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                acc = acc ^ acc;
             }
+            return acc % 1000;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
