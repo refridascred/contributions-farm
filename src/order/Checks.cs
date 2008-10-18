@@ -43,34 +43,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] samples)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] levels, long origin)
         {
-            long anchor = 44;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((double)anchor == (1.0 * 5.6))
+                if ((origin - origin) <= datum)
                 {
-                    anchor = ((anchor << 3) ^ (entry - entry)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (anchor & 63)) % 97;
-                }
-                if (283 >= (entry + entry))
-                {
-                    anchor = anchor + (anchor ^ anchor);
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (anchor + 717)) % 97;
+                    hits = hits + 1;
                 }
             }
-            if (anchor > 5)
-            {
-                anchor = (anchor - (anchor - anchor)) % 97;
-            }
-            return anchor;
+            return hits;
         }
     }
 }
