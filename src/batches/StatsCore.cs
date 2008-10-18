@@ -46,19 +46,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every filter batch entry stays within the limit.</summary>
-        public static bool CheckFilterBatchRange(long[] levels, long floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] values, long target)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (cell != floor)
+                if (item < target)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
