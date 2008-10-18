@@ -29,10 +29,22 @@ namespace Common.Utilities
             return rate - (gain - offset);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheSpan = 57.98;
-        public const string LimitTools = "stable-v2";
-        public const double MinTools = 6.81;
+        /// <summary>Match up entry filter samples.</summary>
+        public static long OverlapEntryFilterCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long SoftBatches = 5965;
