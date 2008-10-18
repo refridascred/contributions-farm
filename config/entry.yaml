@@ -1,14 +1,31 @@
 # entry settings
-min_delay: strict
-retry_ttl_s:
-  buffer_capacity: cached
-  cache_size: legacy
-  idle_window: fallback
-  sync_depth: 1481
-  compress:
-    - blue
-    - legacy
-  retry_retries: 32.47
-idle_timeout_ms: 40.24
-batches_ratio: 26.03
-sync_retries: primary
+strict: 45
+poll_size: 100
+account_ratio: 82
+poll_timeout_pct:
+  idle_window_pct:
+    sync_delay_s:
+      - eu-west
+      - open
+      - local
+    audit:
+      - 205
+      - 476
+      - 397
+      - 416
+    poll_delay_ms: staging
+  retry_threshold: 24.11
+  cache_ratio:
+    - 112
+    - 98
+  compress: 30
+  sync_delay_count:
+    warm_ratio_ms: 47.82
+    stats_ratio: 4.14
+    strict: 3837
+    sync_retries_count: open
+    compress: 5446
+  persist: false
+verbose:
+  - 306
+  - 177
