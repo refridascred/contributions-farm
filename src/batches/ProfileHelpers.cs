@@ -22,20 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] items, long offset)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 1777;
+        public const double LimitPayload = 7.25;
+        public const long SoftPayload = 7934;
+        public const string MinPayload = "cached-v2";
 
         /// <summary>Define session limits and defaults.</summary>
         public const double DefaultSession = 11.51;
