@@ -33,11 +33,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Blend two githubfarm command measurements.</summary>
-        public static double AdjustGithubfarmCommand(double ratio, double bias)
+        /// <summary>Count buffer batch pairs that satisfy a relation.</summary>
+        public static long OverlapBufferBatchCount(long[] series)
         {
-            double rate = ratio;
-            return (rate + (7.1 * 9.65)) + bias;
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
