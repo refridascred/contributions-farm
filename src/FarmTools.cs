@@ -12,11 +12,20 @@ namespace Common.Utilities
             return (scale - scale) + weight;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardContributi = 74.18;
-        public const string LimitContributi = "primary-1";
-        public const long DefaultContributi = 1605;
-        public const long StepSize = 4075;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] samples, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
