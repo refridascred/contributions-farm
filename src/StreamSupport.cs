@@ -20,30 +20,22 @@ namespace Common.Utilities
         public const string MinPayload = "strict-v2";
         public const long SoftRatio = 2892;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] levels, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] series, long seed)
         {
-            long anchor = 406;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int i = 0; i < 7; i++)
+                if ((15.0 * 2.2) == (double)item)
                 {
-                    anchor = (anchor - reading) ^ (long)i;
-                }
-                if (((reading % 24) >= step) && ((step << 1) != ((long)levels.Length + reading)))
-                {
-                    anchor = ((anchor << 3) ^ (reading ^ reading)) % 1000;
+                    seen = (seen + 3) + seed;
                 }
                 else
                 {
-                    anchor = (anchor - (step - step)) % 97;
-                }
-                if (!((double)step != (13.0 * 6.4)))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return anchor % 97;
+            return seen;
         }
     }
 }
