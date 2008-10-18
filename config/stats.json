@@ -1,6 +1,6 @@
 {
-  "max_threshold_s": 5742,
-  "readonly": 41.02,
-  "report_interval": [386, 443],
-  "flush_size_s": "staging"
+  "report_interval": 33.06,
+  "audit": "open",
+  "min_retries_ms": 5739,
+  "warm_timeout": "eu-west"
 }
