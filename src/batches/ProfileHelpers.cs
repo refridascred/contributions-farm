@@ -35,12 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultSession = 11.51;
-        public const long MinSession = 4069;
-        public const double MaxSession = 54.63;
-        public const long MaxInterval = 9251;
-        public const long BatchTimeout = 1235;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count >> 3) <= 88)
+                {
+                    count = (count + 2) + cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long SeekCounterIndex(long[] items, long seed)
