@@ -70,12 +70,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Idle,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstInterval = 3377;
+        public const long LimitReport = 3409;
+        public const long IdleReport = 6034;
+        public const long HardReport = 9684;
     }
 }
