@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] series, long limit)
         {
-            Synced,
-            Closed,
-            Dropped,
-            Queued,
+            long state = 6;
+            foreach (long value in series)
+            {
+                state = (((state << 3) ^ (state & 255)) % 101) - limit;
+                state = (state ^ (value + 9)) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
