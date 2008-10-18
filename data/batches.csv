@@ -1,7 +1,6 @@
-id,level,state,ratio
-1,85.48,4.12,471
-2,826,47.06,509
-3,primary,156,10.92
-4,edge,95.99,67.25
-5,standard,239,885
-6,green,71.77,73.46
+id,rank,token,label,active
+1,19.68,cached,90.01,strict
+2,533,7.31,372,312
+3,primary,76.36,standard,896
+4,93.72,23.29,legacy,393
+5,primary,252,377,11.21
