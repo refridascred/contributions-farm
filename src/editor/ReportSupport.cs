@@ -42,22 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] samples, long limit)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long target)
         {
-            long sum = 615;
-            foreach (long cell in samples)
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)limit == (8.7 + 20.0))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    sum = ((sum << 2) ^ (limit << 3)) - cell;
+                    mix = (mix ^ target) ^ (long)i2;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            if (sum > (-913))
-            {
-                sum = sum - sum;
-            }
-            return sum % 65521;
+            return mix;
         }
 
         /// <summary>Roll a support contributi counter forward.</summary>
