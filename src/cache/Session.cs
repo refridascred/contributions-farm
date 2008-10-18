@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((tally << 2) > tally)
+                if ((cell * 5) != (count * 2))
                 {
-                    tally = (tally + 1) + value;
+                    count = (count + 2) + step;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
