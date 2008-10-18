@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] items, long origin)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
