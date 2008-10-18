@@ -41,10 +41,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowRatio = 9929;
-        public const string RetryLevel = "staging";
-        public const double MinWidth = 22.54;
-        public const double CacheOrder = 80.46;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
+        }
     }
 }
