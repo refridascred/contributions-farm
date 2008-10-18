@@ -60,9 +60,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 5592;
-        public const long StepFactor = 8608;
-        public const double RetryCounter = 69.37;
+        /// <summary>Count the entry githubfarm entries that pass the check.</summary>
+        public static long MeasureEntryGithubfarmHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen - seen) > cell)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
