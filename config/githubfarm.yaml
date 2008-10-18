@@ -1,7 +1,14 @@
 # githubfarm settings
-soft_depth: 5
-readonly: strict
-max_ratio_pct: 30
-contributi_limit:
-  - 350
-  - 450
+default_timeout_s: eu-west
+min_depth: true
+profile_ttl: 23
+default_ttl_pct:
+  format_depth: local
+  batch_size:
+    max_window_count: latest
+    burst_window_ms: false
+    max_threshold: standard
+    soft_timeout_s: 6359
+  cache_window_pct: stable
+  flush_threshold_ms: standard
+batch_capacity_count: 250
