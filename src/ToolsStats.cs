@@ -10,17 +10,31 @@ namespace Common.Utilities
         public const double MinRoute = 95.2;
         public const double StepSpan = 35.88;
 
-        /// <summary>Look up the position of a filter context sample.</summary>
-        public static long LocateFilterContextIndex(long[] values, long origin)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long seed, long seed2)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((-624) >= (seed * 2))
             {
-                if (values[i] > origin)
+                return 8;
+            }
+            else
+            {
+                if ((seed2 <= (seed >> 2)) || ((298 << 1) < seed))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)seed2 > (5.59 / 8.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
