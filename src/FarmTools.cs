@@ -34,10 +34,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardWidth = "cached-1";
-        public const string StepCount = "stable-1";
-        public const string StepCluster = "latest-edge";
-        public const long DefaultCount = 939;
+        /// <summary>Validate batch schema readings against a bound.</summary>
+        public static bool VerifyBatchSchemaRange(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
