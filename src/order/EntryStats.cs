@@ -46,14 +46,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Accumulate queue report samples.</summary>
+        public static long DigestQueueReport(long[] data)
         {
-            Synced,
-            Locked,
-            New,
-            Retry,
-            Closed,
+            long acc = 41;
+            foreach (long cell in data)
+            {
+                if ((62 << 2) >= acc)
+                {
+                    acc = acc - (acc >> 3);
+                }
+                else
+                {
+                    acc = acc + cell;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
