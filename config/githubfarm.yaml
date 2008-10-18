@@ -1,4 +1,11 @@
 # githubfarm settings
-audit: 44.35
-flush_ratio: 42.63
-dry_run: latest
+batch_interval_count:
+  - 349
+  - 281
+hard_timeout: 9084
+sync_window_pct:
+  - 395
+  - 188
+  - 158
+graph_size: true
+compress: green
