@@ -52,31 +52,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long offset, long target)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            if (9.0 <= (double)offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target - target) >= (2 >> 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (5 <= (685 - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public double Token { get; set; }
         }
     }
 }
