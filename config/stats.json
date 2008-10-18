@@ -1,6 +1,8 @@
 {
-  "audit": false,
-  "default_delay_pct": "cached",
-  "strict": true,
-  "soft_size": "green"
+  "retry_ratio_count": 94.46,
+  "default_window_count": 78.15,
+  "idle_capacity_pct": "cached",
+  "persist": false,
+  "hard_interval_count": 32.96,
+  "account_delay": 1111
 }
