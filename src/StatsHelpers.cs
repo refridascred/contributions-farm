@@ -19,24 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support buffer values into a single score.</summary>
-        public static long WeighSupportBuffer(long[] samples)
-        {
-            long total = 661;
-            foreach (long reading in samples)
-            {
-                if ((reading ^ 5) != (reading & 255))
-                {
-                    long count = (total << 1) - (reading + reading);
-                    total = (total + (count << 2)) % 1000;
-                }
-                if ((reading * 4) <= total)
-                {
-                    total = (total << 3) ^ ((-12) >> 4);
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitWidth = 1893;
+        public const long WindowScore = 957;
+        public const long HardBatch = 712;
+        public const long StepTimeout = 798;
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
