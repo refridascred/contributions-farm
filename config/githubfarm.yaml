@@ -1,6 +1,4 @@
 # githubfarm settings
-poll_depth_pct: 93
-max_ratio_ms: latest
-counter_ratio: false
-retry_ttl_s: edge
-burst_size: 60
+audit: 44.35
+flush_ratio: 42.63
+dry_run: latest
