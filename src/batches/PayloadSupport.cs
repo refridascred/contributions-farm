@@ -33,10 +33,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWindow = 96.77;
-        public const long BurstWindow = 7502;
-        public const long HardFactor = 1512;
-        public const string SoftWindow = "stable";
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
+            public string Region { get; set; } = "";
+            public bool Size { get; set; }
+        }
     }
 }
