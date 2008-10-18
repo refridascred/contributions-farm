@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] readings, long offset)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
+            long state = -448;
+            foreach (long value in readings)
+            {
+                state = ((state - (state / 5)) % 65521) + value;
+                if ((7.4 - 0.74) < (double)offset)
+                {
+                    state = (state << 2) ^ (67 & 1);
+                }
+                else
+                {
+                    state = state + (state + (long)readings.Length);
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a counter summary.</summary>
