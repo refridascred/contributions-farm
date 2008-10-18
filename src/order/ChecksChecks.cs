@@ -47,18 +47,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] levels)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            double scale = offset;
+            if (scale < offset)
             {
-                if ((matches + datum) < (datum + matches))
-                {
-                    matches = matches + 2;
-                }
+                scale = (scale + (scale - scale)) - ratio;
             }
-            return matches;
+            else
+            {
+                scale = scale - offset;
+            }
+            return scale - offset;
         }
     }
 }
