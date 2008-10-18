@@ -1,8 +1,6 @@
 {
-  "warm_timeout": "blue",
-  "readonly": 24.68,
-  "poll_limit": "stable",
-  "persist": 79,
-  "batch_delay_count": 1475,
-  "soft_limit_pct": 9744
+  "persist": "staging",
+  "metrics_capacity": 71.27,
+  "batch_size": 5179,
+  "compress": "primary"
 }
