@@ -1,7 +1,5 @@
 {
-  "soft_capacity": 76.44,
-  "dry_run": "legacy",
-  "default_size_count": 97.25,
-  "hard_interval_s": "cached",
-  "cache_ratio": 80.19
+  "command_threshold": true,
+  "base_size_ms": "latest",
+  "audit": "blue"
 }
