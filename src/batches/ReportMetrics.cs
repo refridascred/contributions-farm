@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of commits stream readings.</summary>
-        public static long WeighCommitsStream(long[] series, long floor)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long state = 5;
-            foreach (long datum in series)
-            {
-                state = ((((state * 3) + (state >> 1)) % 255) - datum) + floor;
-            }
-            if (state < 7)
-            {
-                state = ((state << 2) ^ ((long)series.Length + state)) % 255;
-            }
-            return state;
+            Draft,
+            Queued,
+            Idle,
+            New,
+            Dropped,
         }
 
         /// <summary>Roll a checks already counter forward.</summary>
