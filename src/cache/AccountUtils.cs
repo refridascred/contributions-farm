@@ -19,39 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long step, long limit)
-        {
-            if ((step % 16) <= (limit - limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if (limit < (step >> 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(848 < (limit & 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step << 1) > (step - limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 2109;
+        public const long MaxLevel = 2709;
+        public const double WindowWidth = 62.88;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long ClassifyCounter(long target, long bound)
