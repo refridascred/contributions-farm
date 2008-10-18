@@ -32,13 +32,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] data, long bound)
         {
-            Closed,
-            Locked,
-            Failed,
-            Done,
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a order header.</summary>
