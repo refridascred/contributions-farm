@@ -15,15 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Draft,
-            Idle,
-            Closed,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinSpan = 9389;
+        public const string StepMetric = "cached-edge";
+        public const long RetryMetric = 4720;
+        public const double CacheMetric = 89.23;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
