@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] readings, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] readings)
         {
-            long mark = 15;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((double)step > (5.42 * 9.2))
+                if ((double)count <= (4.72 / 5.0))
                 {
-                    mark = ((mark - (step / 3)) % 101) - cell;
+                    count = (count + 2) ^ value;
                 }
-                mark = mark ^ (step << 1);
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
