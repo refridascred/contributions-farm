@@ -67,11 +67,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] readings, long target)
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value % 3) < (target - target))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
