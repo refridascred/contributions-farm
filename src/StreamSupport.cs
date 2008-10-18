@@ -40,21 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count githubfarm contributi pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmContributiCount(long[] series)
+        /// <summary>Validate queue support readings against a bound.</summary>
+        public static bool ValidateQueueSupportRange(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value <= floor)
                 {
-                    if ((series[i] - series[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
