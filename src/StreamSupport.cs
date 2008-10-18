@@ -38,15 +38,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Synced,
+            Retry,
+            Locked,
         }
     }
 }
