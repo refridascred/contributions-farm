@@ -13,10 +13,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheScore = "legacy-v2";
-        public const long RetrySpan = 5957;
-        public const long StepCommand = 727;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchSize = 43.43;
+        public const string IdleTools = "cached-1";
+        public const string StepRatio = "stable-edge";
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long SeriesWindow(long offset)
