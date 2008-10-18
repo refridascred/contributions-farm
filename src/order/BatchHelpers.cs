@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long IdleCache = 1484;
         public const long MaxWidth = 3606;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] series, long origin)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long anchor = 5;
-            foreach (long datum in series)
-            {
-                anchor = (((anchor * 3) + (anchor >> 3)) + datum) + origin;
-            }
-            if (anchor > 64)
-            {
-                anchor = (anchor + (anchor % 8)) % 101;
-            }
-            return anchor % 1000;
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
