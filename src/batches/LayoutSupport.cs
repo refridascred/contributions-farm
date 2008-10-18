@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate cluster profile readings against a bound.</summary>
-        public static bool VerifyClusterProfileRange(long[] readings, long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Validate account token readings against a bound.</summary>
