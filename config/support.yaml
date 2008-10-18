@@ -1,6 +1,10 @@
 # support settings
-sync_limit: 87.72
-readonly: false
-metric_timeout: 86
-enabled: local
-hard_ttl_count: true
+idle_delay_s:
+  - cached
+  - fallback
+  - edge
+  - latest
+batch_threshold_count: 30
+contributi_delay: strict
+hard_interval_pct: 4822
+soft_capacity_count: 8113
