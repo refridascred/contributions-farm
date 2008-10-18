@@ -1,5 +1,7 @@
 {
-  "persist": "local",
-  "sync_size": "edge",
-  "warm_ttl_count": 500
+  "idle_timeout_count": 66.54,
+  "strict": 250,
+  "flush_window_count": 57,
+  "audit": 3283,
+  "buffer_limit": 23.75
 }
