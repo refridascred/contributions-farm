@@ -46,24 +46,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] data, long floor)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] items, long bound)
         {
-            long acc = 754;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc + (acc + datum)) % 65521) - floor;
-                acc = ((acc << 2) ^ (17 / 3)) % 65521;
-                if ((8.0 / 6.0) > (double)datum)
+                if ((items[i] < bound) && ((items[i] % 3) == 0))
                 {
-                    acc = (acc - (datum - (-9))) % 1000;
-                }
-                else
-                {
-                    acc = acc - (acc + datum);
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
     }
 }
