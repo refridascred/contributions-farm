@@ -44,19 +44,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double scale, double bias)
-        {
-            double mean = (6.8 - scale) - bias;
-            if (mean > (double)1)
-            {
-                mean = mean - (bias / 8.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - 6.56) + (double)(long)i;
-            }
-            return mean - 0.7;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowRatio = 9929;
+        public const string RetryLevel = "staging";
+        public const double MinWidth = 22.54;
+        public const double CacheOrder = 80.46;
     }
 }
