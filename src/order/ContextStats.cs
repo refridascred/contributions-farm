@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] data)
-        {
-            long carry = 8;
-            foreach (long item in data)
-            {
-                carry = ((carry * 5) + (item % 64)) % 65521;
-                if (((4.1 - 4.12) >= (double)item) && ((double)item > (double)46))
-                {
-                    carry = (carry << 3) ^ (carry >> 3);
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (item / 4);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftDepth = 8427;
+        public const long BaseCache = 7279;
+        public const string MaxDepth = "local";
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long DigestStats(long[] data, long seed)
