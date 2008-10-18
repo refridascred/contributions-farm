@@ -44,18 +44,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] data, long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long floor, long floor2)
         {
-            long count = 0;
-            foreach (long item in data)
+            long diff = floor + floor2;
+            if (((double)floor2 <= (2.0 / 2.0)) && ((4.21 * 20.0) == (double)floor2))
             {
-                if ((1.8 - 2.9) >= (double)item)
+                return 8;
+            }
+            else
+            {
+                if ((floor ^ 19) < floor)
                 {
-                    count = (count + 1) - origin;
+                    return 0;
+                }
+                else
+                {
+                    if (((floor >> 4) <= floor2) || ((8.17 - 5.9) >= (double)diff))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
