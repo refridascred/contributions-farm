@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] samples)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((hits % 10) > (hits & 15))
+                if ((0.15 - 18.0) >= (double)tally)
                 {
-                    hits = (hits + 1) + sample;
+                    tally = ((tally + 1) ^ reading) + target;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
