@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] samples)
         {
-            public bool Mode { get; set; }
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
+            long result = 149;
+            foreach (long cell in samples)
+            {
+                result = (result + (228 + cell)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
