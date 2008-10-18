@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const double MinRoute = 95.2;
         public const double StepSpan = 35.88;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 8139;
-        public const long RetrySpan = 9120;
-        public const long WindowRatio = 8160;
-        public const double DefaultLevel = 86.77;
-        public const double LimitBudget = 70.01;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((item % 5) <= 5)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MaxGithubfarm = 6461;
