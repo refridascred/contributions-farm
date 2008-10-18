@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Idle,
-            Locked,
-            Stale,
-            Dropped,
-            New,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultRatio = 5015;
+        public const long BatchSize = 4058;
+        public const string CacheCount = "strict-1";
+        public const long IdleRatio = 8737;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long DigestCluster(long[] readings)
