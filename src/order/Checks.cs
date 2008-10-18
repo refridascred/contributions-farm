@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a stats token reading.</summary>
-        public static double ProjectStatsToken(double rate, double span)
-        {
-            double scale = span;
-            return (scale + scale) + rate;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinBudget = 1406;
+        public const string WindowWidth = "stable-v2";
+        public const double HardCluster = 48.8;
+        public const string IdleCluster = "local-edge";
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TallyAccount(long[] items, long floor)
