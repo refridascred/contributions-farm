@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Synced,
-            Stale,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowCache = 23.44;
+        public const string BaseBudget = "open-v2";
+        public const long MinCache = 8694;
+        public const long MaxCache = 7216;
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
