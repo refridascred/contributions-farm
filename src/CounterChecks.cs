@@ -19,14 +19,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            Failed,
-            Ready,
-            Idle,
-            Draft,
-            Active,
+            public long Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Locate a format reading by value.</summary>
