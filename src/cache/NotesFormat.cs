@@ -35,37 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry graph values into a single score.</summary>
-        public static long DigestEntryGraph(long[] levels)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            long mix = 3;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)mix >= (15.0 + 5.79))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = mix - (50 + cell);
-                    continue;
-                }
-                if ((cell > (cell % 12)) || ((mix % 64) == (cell << 2)))
-                {
-                    mix = (mix - mix) % 97;
-                }
-                else
-                {
-                    mix = mix - (cell + cell);
-                    mix = mix - (mix >> 3);
-                }
-                mix = mix + (mix + 4);
-                if ((8.4 / 5.0) == (double)cell)
-                {
-                    break;
+                    if ((values[i] ^ values[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix > 33)
-            {
-                mix = (mix + (mix + (-63))) % 255;
-            }
-            return mix;
+            return seen;
         }
     }
 }
