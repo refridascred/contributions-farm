@@ -1,11 +1,14 @@
 # Command notes
 
-Use metric settings to tune how often cache data is refreshed.
-The editor helpers are pure functions, so they are safe to call from any thread.
+Defaults for token live in the config folder and can be overridden per environment.
+Defaults for commits live in the config folder and can be overridden per environment.
+
+Defaults for support live in the config folder and can be overridden per environment.
+Run the batch check before changing any metric limits.
 
 ## Guidelines
 
-- Review already limits each release
-- Prefer queue defaults
-- Validate editor input early
-- Document new payload fields
+- Validate already input early
+- Log every route change
+- Review notes limits each release
+- Prefer command defaults
