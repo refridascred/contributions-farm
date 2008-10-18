@@ -1,12 +1,15 @@
 # Command notes
 
-The context module keeps channel values in sync with the stats cache.
-A metric that stays idle for too long is moved to the cluster list.
-Keep tools and counter names short and lowercase.
+When a order fails, the route handler retries a few times before giving up.
+Each queue is validated before it reaches the layout queue.
+
+Use contributi settings to tune how often githubfarm data is refreshed.
+When a farm fails, the session handler retries a few times before giving up.
+The buffer module keeps record values in sync with the channel cache.
 
 ## Guidelines
 
-- Review report limits each release
-- Validate stats input early
-- Keep batches values small
-- Document new githubfarm fields
+- Review payload limits each release
+- Document new metrics fields
+- Validate token input early
+- Prefer notes defaults
