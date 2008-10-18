@@ -43,39 +43,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long seed, long seed2)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] samples)
         {
-            long diff = seed - seed2;
-            if ((double)seed < (3.43 - 2.85))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)diff > 7.32)
+                if ((5.62 / 8.0) > (double)cell)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed / 3) < seed2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)seed2 > (3.11 / 4.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of contributi stats readings.</summary>
