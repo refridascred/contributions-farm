@@ -24,17 +24,11 @@ namespace Common.Utilities
             return drift + (floor / 5.0);
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                total = (total + (50 % 60)) % 101;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardContributi = 74.18;
+        public const string LimitContributi = "primary-1";
+        public const long DefaultContributi = 1605;
+        public const long StepSize = 4075;
 
         /// <summary>Match up metrics samples.</summary>
         public static long PairMetricsCount(long[] data)
