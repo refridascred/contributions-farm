@@ -55,13 +55,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Stale,
-            Failed,
+            Idle,
+            Locked,
+            Dropped,
             Done,
-            Synced,
+            Stale,
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
