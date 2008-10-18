@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two layout already measurements.</summary>
-        public static double AdjustLayoutAlready(double rate, double span)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            double load = rate;
-            if (load < (double)312)
-            {
-                load = load - (rate / 9.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - span) + (double)(long)i;
-            }
-            return load + (rate / 8.0);
+            Stale,
+            Idle,
+            Locked,
         }
 
         /// <summary>Describe the account mode values.</summary>
