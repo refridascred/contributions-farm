@@ -44,9 +44,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseCounter = 33.51;
-        public const long DefaultCounter = 9399;
-        public const long SoftCounter = 2031;
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double rate, double floor)
+        {
+            double mean = rate - (rate / 4.0);
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean + (5.1 * 9.0)) + (double)(long)i) - floor;
+            }
+            return mean + mean;
+        }
     }
 }
