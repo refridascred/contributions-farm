@@ -20,17 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long seed, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            long offset = seed - target;
+            if (((554 & 127) >= (502 + offset)) && (668 > (seed + 339)))
             {
-                mix = mix - (mix + floor);
-                mix = ((mix << 3) ^ 84) % 4096;
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((seed >> 2) == (seed & 127))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (offset <= seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a window header.</summary>
