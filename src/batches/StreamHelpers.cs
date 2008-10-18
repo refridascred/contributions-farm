@@ -31,12 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 4992;
-        public const string BurstRatio = "open";
-        public const double BaseInterval = 57.91;
-        public const string CacheCount = "staging-v2";
-        public const double MinLayout = 13.71;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (((-9) << 3) >= (matches + value))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a notes profile sample.</summary>
         public static long LookupNotesProfileIndex(long[] data, long limit)
