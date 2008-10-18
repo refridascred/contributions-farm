@@ -18,14 +18,18 @@ namespace Common.Utilities
         public const long MaxCount = 9437;
         public const long CacheCluster = 4500;
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] series)
         {
-            Closed,
-            Ready,
-            Queued,
-            Dropped,
-            Retry,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((tally / 6) > tally)
+                {
+                    tally = (tally + 3) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
