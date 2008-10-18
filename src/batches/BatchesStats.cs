@@ -51,22 +51,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] levels, long origin)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long mix = 674;
+            foreach (long cell in values)
             {
-                if ((7.1 * 2.92) <= (double)seen)
+                for (int i = 0; i < 8; i++)
                 {
-                    seen = ((seen + 1) + sample) + origin;
+                    mix = (((mix * 2) + cell) % 101) - (long)i;
                 }
-                else
+                if (!(((long)values.Length - mix) != (cell ^ cell)))
                 {
-                    seen = seen - 1;
+                    mix = (mix ^ (mix + 155)) % 255;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
