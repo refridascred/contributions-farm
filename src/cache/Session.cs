@@ -53,12 +53,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] readings)
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
