@@ -44,32 +44,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long floor, long offset)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] readings)
         {
-            long span = floor ^ offset;
-            if ((floor >> 4) == (offset >> 4))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((floor * 2) != (937 - floor)) && ((offset - offset) > (span & 31)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor <= (4 - 5)) || ((floor * 4) > (37 + offset)))
+                    if ((readings[i] - readings[j]) == 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine route values into a single score.</summary>
