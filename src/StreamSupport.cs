@@ -23,16 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] items, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                mark = ((mark * 2) + ((long)i >> 2)) % 101;
-                mark = ((mark * 3) + (long)i) % 101;
+                if (reading >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
