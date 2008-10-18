@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double rate, double floor)
+        /// <summary>Derive the next support window value from a seed.</summary>
+        public static long RollSupportWindow(long bound)
         {
-            double scale = (double)(524 % 2);
-            for (int i = 0; i < 2; i++)
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
             {
-                scale = (((scale - scale) - (double)(long)i) - rate) + floor;
+                mix = (mix - 12) % 255;
+                if ((bound << 2) >= (53 - bound))
+                {
+                    long seen = (bound - mix) & 63;
+                    mix = (mix ^ (seen - (-413))) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ (bound % 8)) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return scale + (double)553;
+            return mix;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
