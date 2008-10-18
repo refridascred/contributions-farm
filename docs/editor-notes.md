@@ -1,12 +1,10 @@
 # Editor notes
 
-Keep session and cluster names short and lowercase.
-Use githubfarm settings to tune how often graph data is refreshed.
-The channel report groups every format by profile.
+Use counter settings to tune how often githubfarm data is refreshed.
+A editor that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Document new cache fields
-- Log every stats change
-- Review channel limits each release
-- Prefer filter defaults
+- Document new account fields
+- Review session limits each release
+- Validate cluster input early
