@@ -48,26 +48,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long offset, long limit)
-        {
-            long next = offset + limit;
-            if ((6.0 * 20.0) <= (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (3.07 <= (double)next)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 9257;
+        public const long MaxRatio = 4564;
+        public const double RetryLevel = 13.35;
+        public const double LimitFarm = 59.86;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double CacheInterval = 9.0;
