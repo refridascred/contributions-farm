@@ -18,15 +18,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] series)
         {
-            long score = 76;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long item in series)
             {
-                score = ((score * 4) + (score - score)) + sample;
+                if ((item + 23) > (matches ^ item))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
