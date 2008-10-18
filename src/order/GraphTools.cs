@@ -50,12 +50,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double scale, double bias)
         {
-            Done,
-            New,
-            Locked,
+            double weight = 9.6;
+            if (weight <= weight)
+            {
+                weight = (weight + scale) - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + (weight / 6.0);
         }
     }
 }
