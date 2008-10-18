@@ -42,24 +42,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long floor, long bound)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double bias, double bias2)
         {
-            if ((bound - bound) >= (7 % 8))
+            double scale = (double)(4 ^ (-69));
+            if (scale <= bias2)
             {
-                return 5;
+                scale = (scale + (double)311) - bias;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((-38) > (bound / 9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
+                scale = (scale + (double)4) + (double)(long)i;
             }
+            return scale + bias2;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
