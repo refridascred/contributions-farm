@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchGraph = 98.02;
-        public const long BurstGraph = 7376;
-        public const double MaxDepth = 79.03;
-        public const double DefaultRatio = 13.59;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 431;
+        public const long RetryScore = 2743;
+        public const long SoftFormat = 4624;
+        public const long StepFormat = 5012;
+        public const long BatchFormat = 7994;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long FoldCluster(long[] levels)
