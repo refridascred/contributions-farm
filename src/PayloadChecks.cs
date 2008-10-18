@@ -12,19 +12,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Scale a contributi token figure with a bias.</summary>
-        public static double ProjectContributiToken(double scale, double floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] data)
         {
-            double rate = 2.9;
-            if (rate > floor)
+            long count = 0;
+            foreach (long item in data)
             {
-                rate = (rate - (double)10) - scale;
+                if (item > (count - item))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (rate + rate)) + (double)(long)i;
-            }
-            return rate + (rate / 2.0);
+            return count;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
