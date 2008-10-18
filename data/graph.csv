@@ -1,11 +1,6 @@
-id,count,rank
-1,79.97,local
-2,19.89,241
-3,14.84,standard
-4,86.69,145
-5,latest,strict
-6,69.82,cached
-7,56.03,standard
-8,561,91.37
-9,33.2,eu-west
-10,eu-west,211
+id,region,score,ratio,owner
+1,green,latest,547,latest
+2,230,legacy,859,45.93
+3,staging,543,blue,504
+4,370,staging,777,983
+5,open,primary,57.38,15.42
