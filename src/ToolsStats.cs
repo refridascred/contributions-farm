@@ -57,21 +57,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Derive the next schema profile value from a seed.</summary>
-        public static long DeriveSchemaProfile(long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                double bias = (double)bound;
-                if (6.6 > bias)
+                double mean = (5.3 + 9.78) / 8.0;
+                if (!(6.94 < mean))
                 {
-                    state = ((state << 3) ^ (state & 63)) % 101;
-                    continue;
+                    break;
                 }
-                state = ((state * 2) + (long)i) % 97;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return state;
+            return result;
         }
     }
 }
