@@ -19,14 +19,10 @@ namespace Common.Utilities
         public const double DefaultLevel = 86.77;
         public const double LimitBudget = 70.01;
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 6461;
+        public const long LimitGithubfarm = 273;
+        public const long BaseGithubfarm = 8646;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
