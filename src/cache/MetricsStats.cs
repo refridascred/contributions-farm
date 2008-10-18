@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
+            Draft,
+            Done,
+            Failed,
+            Retry,
         }
 
         /// <summary>Project the next payload value.</summary>
