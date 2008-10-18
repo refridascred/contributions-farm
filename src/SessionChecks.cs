@@ -20,11 +20,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitTimeout = 4675;
-        public const long MaxBatch = 9840;
-        public const long BurstBatch = 8482;
-        public const long LimitBatch = 4357;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Synced,
+            Stale,
+            Dropped,
+            New,
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long IterateAlready(long limit)
