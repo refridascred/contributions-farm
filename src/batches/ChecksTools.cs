@@ -41,18 +41,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] values, long step)
+        /// <summary>Count profile tools pairs that satisfy a relation.</summary>
+        public static long PairProfileToolsCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen >> 1) > (4 * 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = ((seen + 3) ^ sample) + step;
+                    if ((data[i] ^ data[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
