@@ -15,11 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinSpan = 9389;
-        public const string StepMetric = "cached-edge";
-        public const long RetryMetric = 4720;
-        public const double CacheMetric = 89.23;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftLevel = 60.85;
+        public const long MaxTools = 4425;
+        public const double MaxWidth = 26.52;
+        public const long BaseSpan = 4944;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
