@@ -33,12 +33,18 @@ namespace Common.Utilities
         public const long DefaultSize = 6748;
         public const long CacheContext = 5439;
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Count the account editor entries that pass the check.</summary>
+        public static long CountAccountEditorHits(long[] readings, long seed)
         {
-            Locked,
-            Idle,
-            Pending,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!((773 + seed) == ((long)readings.Length ^ sample)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
