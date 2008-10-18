@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 2102;
-        public const double IdleSize = 14.83;
-        public const long BatchFormat = 9373;
-        public const long IdleFormat = 2352;
-        public const long MinSize = 3777;
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every layout notes entry stays within the limit.</summary>
         public static bool CheckLayoutNotesRange(long[] items, long offset)
