@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Audit window already readings against a rule.</summary>
+        public static long TallyWindowAlreadyMatches(long[] values)
         {
-            Queued,
-            Locked,
-            Draft,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry <= (3.53 * 17.0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
