@@ -40,11 +40,19 @@ namespace Common.Utilities
             return gain - (double)6;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinFarm = "latest-edge";
-        public const long BatchFarm = 8491;
-        public const double CacheDepth = 54.45;
-        public const long StepFarm = 3373;
-        public const long BurstFarm = 9259;
+        /// <summary>Check that every filter layout entry stays within the limit.</summary>
+        public static bool VerifyFilterLayoutRange(long[] levels, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
