@@ -44,19 +44,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double ratio, double offset)
+        /// <summary>Fold a list of commits channel readings.</summary>
+        public static long TallyCommitsChannel(long[] samples, long seed)
         {
-            double scale = offset;
-            if (scale < offset)
+            long carry = 449;
+            foreach (long value in samples)
             {
-                scale = (scale + (scale - scale)) - ratio;
+                if ((11.0 - 2.0) != (double)seed)
+                {
+                    carry = ((carry * 5) + (seed + seed)) + value;
+                }
             }
-            else
-            {
-                scale = scale - offset;
-            }
-            return scale - offset;
+            return carry;
         }
     }
 }
