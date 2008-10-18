@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a support stream reading.</summary>
-        public static double BlendSupportStream(double ratio, double bias)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] items)
         {
-            double load = ratio + (9.0 + ratio);
-            if (load <= (double)52)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                load = (load - 6.6) - bias;
+                if ((194 % 60) >= (seen + seen))
+                {
+                    seen = (seen + 1) + reading;
+                }
             }
-            return load - (ratio / 6.0);
+            return seen;
         }
 
         /// <summary>Accumulate report samples.</summary>
