@@ -1,11 +1,14 @@
 {
-  "profile_delay": "edge",
-  "sync_interval_ms": {
-    "format_limit": false,
-    "commits_ratio": 250,
-    "schema_ttl": "latest"
+  "compress": {
+    "route_delay": 79,
+    "idle_depth_s": 28.68,
+    "min_retries_s": 9826,
+    "order_retries": "latest",
+    "session_delay": "eu-west"
   },
-  "batches_size": 250,
-  "sync_timeout_ms": 1024,
-  "sync_ratio_ms": 6799
+  "batch_limit_ms": false,
+  "flush_window": "fallback",
+  "account_size": "blue",
+  "profile_capacity": true,
+  "soft_window": "eu-west"
 }
