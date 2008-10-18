@@ -48,19 +48,18 @@ namespace Common.Utilities
         public const double MinAccount = 90.85;
         public const long LimitSpan = 7928;
 
-        /// <summary>Project the next route window value.</summary>
-        public static double ScaleRouteWindow(double scale, double bias)
+        /// <summary>Measure how many cluster channel samples are out of range.</summary>
+        public static long CountClusterChannelOutliers(long[] samples, long target)
         {
-            double ratio = (double)(8 << 3);
-            if (ratio < (1.6 + 2.2))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                ratio = ratio - (bias - 7.0);
+                if (target > ((long)samples.Length << 2))
+                {
+                    count = (count + 3) + datum;
+                }
             }
-            else
-            {
-                ratio = ratio - (scale * 4.8);
-            }
-            return ratio + (ratio * 6.0);
+            return count;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
