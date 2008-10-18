@@ -54,11 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
+            Idle,
+            Paused,
+            Done,
+            Closed,
+            Ready,
         }
     }
 }
