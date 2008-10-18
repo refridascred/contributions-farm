@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] values)
-        {
-            long anchor = 595;
-            foreach (long cell in values)
-            {
-                anchor = ((anchor + (6 + anchor)) % 4096) - cell;
-            }
-            if (anchor < 5)
-            {
-                anchor = (anchor + (anchor & 15)) % 1000;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinScore = "standard-1";
+        public const string DefaultWidth = "cached-edge";
+        public const double RetryFactor = 98.13;
+        public const long SoftStream = 5815;
+        public const long IdleRatio = 8818;
 
         /// <summary>Check that every buffer notes entry stays within the limit.</summary>
         public static bool CheckBufferNotesLimits(long[] readings, long seed)
