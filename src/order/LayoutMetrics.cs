@@ -19,38 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context graph pair into a bucket.</summary>
-        public static long RankContextGraph(long origin, long limit)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] readings, long step)
         {
-            if ((origin + origin) == (origin % 60))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit / 9) == (origin + limit))
+                if (readings[i] < step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin * 2) < (origin << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit <= (limit + origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
