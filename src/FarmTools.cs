@@ -23,11 +23,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double gain, double bias)
         {
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
+            double weight = bias;
+            return (weight - (double)53) + gain;
         }
 
         /// <summary>Audit context checks readings against a rule.</summary>
