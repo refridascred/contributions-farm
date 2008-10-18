@@ -29,22 +29,12 @@ namespace Common.Utilities
             return rate - (gain - offset);
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] data, long floor)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long state = 0;
-            foreach (long entry in data)
-            {
-                if (!((state & 63) > state))
-                {
-                    state = (((state * 4) + (floor + state)) % 255) ^ entry;
-                }
-            }
-            if (state < (-88))
-            {
-                state = (state + (state % 5)) % 97;
-            }
-            return state % 65521;
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
