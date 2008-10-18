@@ -62,15 +62,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout metrics values into a single score.</summary>
-        public static long CombineLayoutMetrics(long[] readings)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long result = 73;
-            foreach (long entry in readings)
-            {
-                result = ((result << 2) ^ (entry % 16)) % 101;
-            }
-            return result % 1000;
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a record stats.</summary>
