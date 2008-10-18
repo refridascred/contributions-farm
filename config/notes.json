@@ -1,6 +1,7 @@
 {
-  "poll_depth_pct": "edge",
-  "commits_ttl": true,
-  "audit": 2969,
-  "buffer_ttl": ["strict", "local", "strict", "fallback"]
+  "graph_window": false,
+  "min_ratio": 7471,
+  "default_limit": [412, 500],
+  "readonly": 92.4,
+  "burst_ratio": 83
 }
