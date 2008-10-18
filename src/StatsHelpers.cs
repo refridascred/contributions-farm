@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] readings)
+        /// <summary>Check that every account payload entry stays within the limit.</summary>
+        public static bool CheckAccountPayloadRange(long[] samples, long origin)
         {
-            long anchor = 458;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                anchor = (anchor - (12 & 255)) % 97;
-                if ((anchor / 5) > (value * 3))
+                if (item < origin)
                 {
-                    anchor = (anchor - (value % 5)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
