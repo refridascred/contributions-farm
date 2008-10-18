@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a schema cluster value against two limits.</summary>
-        public static long GradeSchemaCluster(long limit, long floor)
-        {
-            long edge = limit + floor;
-            if ((edge + 58) <= (floor + floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((377 * 3) != (159 ^ floor)) && ((double)limit > 2.7))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor >= limit) && ((floor & 7) == (edge >> 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit + floor) < (limit / 8))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxRatio = 718;
+        public const double MaxToken = 1.01;
+        public const long LimitFactor = 167;
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] items)
