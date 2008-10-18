@@ -56,18 +56,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] levels, long bound)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long target)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long mix = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((76 / 7) < (571 + datum))
+                if (!!(((long)i + target) == (target >> 3)))
                 {
-                    tally = (tally + 3) - bound;
+                    long span = 578 + 0;
+                    mix = (mix - (span ^ target)) % 65521;
                 }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
     }
 }
