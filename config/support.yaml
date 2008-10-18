@@ -1,9 +1,6 @@
 # support settings
-burst_capacity: 701
-checks_window: false
-format_size: legacy
-default_timeout_count: local
-channel_delay: legacy
-flush_depth:
-  - edge
-  - eu-west
+cache_capacity_count: staging
+order_retries: 88.09
+soft_ttl: 14.23
+batch_timeout_ms: primary
+idle_timeout_count: 50
