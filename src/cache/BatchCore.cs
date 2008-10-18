@@ -20,32 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a queue already pair into a bucket.</summary>
-        public static long GradeQueueAlready(long offset, long bound)
-        {
-            if ((10.0 * 7.55) < (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((1.9 + 7.81) >= (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset > 18.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstCount = "standard-v2";
+        public const string StepBatches = "cached-1";
+        public const long CacheBatches = 8119;
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] readings, long floor)
