@@ -42,17 +42,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] series, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((series[i] <= step) && ((series[i] % 5) != 0))
+                if (!((double)limit <= 3.4))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit report schema readings against a rule.</summary>
