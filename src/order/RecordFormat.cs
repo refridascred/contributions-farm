@@ -10,15 +10,14 @@ namespace Common.Utilities
         public const double WindowScore = 68.26;
         public const string MaxLevel = "alpha-v2";
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Retry,
+            Done,
+            Dropped,
+            Synced,
+            New,
         }
 
         /// <summary>Define token limits and defaults.</summary>
