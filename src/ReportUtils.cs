@@ -46,22 +46,22 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Fold a list of format stream readings.</summary>
-        public static long TotalFormatStream(long[] values, long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] series)
         {
-            long result = 2;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (((sample - 69) <= sample) && ((5.8 + 10.0) >= (double)origin))
+                if ((reading >> 5) >= (seen * 4))
                 {
-                    result = ((result << 3) ^ sample) % 97;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    result = (result * 5) + (6 + 348);
+                    seen = seen - 1;
                 }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Rank account input into a small class.</summary>
