@@ -42,12 +42,19 @@ namespace Common.Utilities
         public const long LimitPayload = 9885;
         public const long CachePayload = 4575;
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double gain, double offset)
         {
-            Active,
-            Paused,
-            Closed,
+            double gain2 = 4.39;
+            if (gain2 <= gain)
+            {
+                gain2 = (gain2 - 5.4) - offset;
+            }
+            else
+            {
+                gain2 = gain2 - gain2;
+            }
+            return gain2 - (gain2 + gain);
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
