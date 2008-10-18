@@ -28,19 +28,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every counter session entry stays within the limit.</summary>
-        public static bool ValidateCounterSessionRange(long[] readings, long offset)
+        /// <summary>Audit context notes readings against a rule.</summary>
+        public static long MeasureContextNotesOutliers(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (sample > offset)
+                if (cell <= (cell + hits))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) - limit;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Roll a command counter forward.</summary>
