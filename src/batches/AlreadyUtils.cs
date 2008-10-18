@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxInterval = 6864;
-        public const double HardScore = 83.23;
-        public const double MinEditor = 71.83;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long step, long floor)
+        {
+            if (((double)step <= (0.93 / 5.0)) || ((step * 4) < ((-85) * 4)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (floor <= (step - floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
