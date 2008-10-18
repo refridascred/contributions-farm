@@ -64,13 +64,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Project the next queue notes value.</summary>
+        public static double ScaleQueueNotes(double gain, double offset)
         {
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            double load = 16.0;
+            if (load < (double)(-29))
+            {
+                load = (load + (gain / 3.0)) + offset;
+            }
+            return load - gain;
         }
     }
 }
