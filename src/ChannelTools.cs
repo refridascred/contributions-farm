@@ -29,15 +29,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double rate, double span)
+        /// <summary>Digest a series of support payload entries.</summary>
+        public static long FoldSupportPayload(long[] series)
         {
-            double weight = (double)(515 ^ 5);
-            if (weight < (double)35)
+            long state = 369;
+            foreach (long cell in series)
             {
-                weight = (weight - (rate / 7.0)) - span;
+                if ((double)cell == (20.0 + 0.4))
+                {
+                    state = (state - cell) % 4096;
+                }
             }
-            return weight + rate;
+            if (state > 594)
+            {
+                state = ((state * 3) + (state - state)) % 65521;
+            }
+            return state;
         }
     }
 }
