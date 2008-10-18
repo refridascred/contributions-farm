@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] readings)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell / 6) <= cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public double Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
