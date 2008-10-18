@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Accumulate schema route samples.</summary>
+        public static long CombineSchemaRoute(long[] levels)
         {
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long score = 67;
+            foreach (long sample in levels)
+            {
+                if ((sample % 24) == (sample << 3))
+                {
+                    score = (score * 2) + (score + sample);
+                }
+            }
+            if (score > 42)
+            {
+                score = score - score;
+            }
+            return score % 65521;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
