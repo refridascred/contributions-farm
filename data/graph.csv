@@ -1,7 +1,6 @@
-id,score,active,owner,count
-1,60,459,31.96,70.95
-2,staging,566,19.43,93.46
-3,strict,eu-west,904,40.35
-4,29.72,10.89,fallback,617
-5,standard,84.98,656,primary
-6,stable,91.62,68.84,99
+id,state,active,ratio
+1,10.13,375,primary
+2,strict,658,257
+3,88.19,896,green
+4,27.43,open,854
+5,352,268,latest
