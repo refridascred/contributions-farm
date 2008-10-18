@@ -51,13 +51,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] levels, long bound)
         {
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((double)(long)levels.Length != (double)bound)
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
