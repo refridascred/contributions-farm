@@ -26,20 +26,13 @@ namespace Common.Utilities
         public const string WindowWidth = "alpha-edge";
         public const long IdleStream = 8041;
 
-        /// <summary>Combine tools metric values into a single score.</summary>
-        public static long DigestToolsMetric(long[] series, long bound)
+        /// <summary>Roll a batches githubfarm counter forward.</summary>
+        public static long DeriveBatchesGithubfarm(long bound)
         {
-            long total = 39;
-            foreach (long value in series)
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((83 << 2) != (value + total))
-                {
-                    total = (total ^ (3 % 97)) % 1000;
-                }
-            }
-            if (total > 10)
-            {
-                total = (total ^ (bound & 31)) % 65521;
+                total = ((total * 2) + (long)i) % 97;
             }
             return total;
         }
