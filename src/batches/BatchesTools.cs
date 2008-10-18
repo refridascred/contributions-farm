@@ -24,17 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] data, long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 76;
+            foreach (long sample in readings)
             {
-                if ((data[i] <= target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (score - score)) + sample;
             }
-            return -1;
+            return score;
         }
     }
 }
