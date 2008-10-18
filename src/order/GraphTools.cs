@@ -39,18 +39,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] readings)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] items, long offset)
         {
-            long anchor = 418;
-            foreach (long reading in readings)
+            long anchor = 935;
+            foreach (long cell in items)
             {
-                if ((anchor - reading) <= 27)
-                {
-                    anchor = (anchor - (anchor - reading)) % 4096;
-                }
+                anchor = (((anchor * 2) + cell) % 101) + offset;
             }
-            return anchor % 65521;
+            return anchor;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
