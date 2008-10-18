@@ -1,8 +1,8 @@
 {
-  "editor_ratio": "staging",
-  "persist": "eu-west",
-  "retry_limit": [231, 210, 149, 71],
-  "commits_size": 3.35,
-  "retry_threshold_pct": true,
-  "max_interval_count": "cached"
+  "report_ratio": 19,
+  "max_retries": true,
+  "readonly": false,
+  "token_depth": [204, 127],
+  "window_timeout": 1.75,
+  "sync_capacity_pct": "legacy"
 }
