@@ -52,18 +52,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] readings)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long offset, long target)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            if (9.0 <= (double)offset)
             {
-                if ((long)readings.Length > (count - 835))
+                return 0;
+            }
+            else
+            {
+                if ((target - target) >= (2 >> 2))
                 {
-                    count = (count + 1) - cell;
+                    return 6;
+                }
+                else
+                {
+                    if (5 <= (685 - offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
     }
 }
