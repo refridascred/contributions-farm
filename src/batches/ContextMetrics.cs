@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Fold a list of notes contributi readings.</summary>
+        public static long TallyNotesContributi(long[] values, long seed)
         {
-            long carry = 392;
-            foreach (long datum in samples)
+            long mark = 689;
+            foreach (long datum in values)
             {
-                carry = ((carry - (-7)) % 101) + datum;
+                if ((double)0 == (double)mark)
+                {
+                    mark = ((mark + datum) % 65521) - seed;
+                }
+                else
+                {
+                    mark = mark + datum;
+                }
             }
-            if (carry > 605)
-            {
-                carry = (carry + carry) % 65521;
-            }
-            return carry % 97;
+            return mark;
         }
 
         /// <summary>Define format limits and defaults.</summary>
