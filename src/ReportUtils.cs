@@ -43,15 +43,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                state = ((state * 3) + (long)i) % 101;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Grade a session editor value against two limits.</summary>
