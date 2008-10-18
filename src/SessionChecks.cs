@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] data, long limit)
         {
-            Closed,
-            Locked,
-            Ready,
-            Done,
-            Retry,
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
