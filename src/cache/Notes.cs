@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] items, long target)
+        /// <summary>Project the next account notes value.</summary>
+        public static double AdjustAccountNotes(double scale, double bias)
         {
-            long mark = 795;
-            foreach (long entry in items)
+            double scale2 = (double)(5 - 14);
+            if (scale2 > (scale - 1.0))
             {
-                if (mark >= target)
-                {
-                    mark = (((mark * 3) + target) % 65521) ^ entry;
-                }
+                scale2 = (scale2 + (double)(-49)) - bias;
             }
-            if (mark < 287)
+            for (int i = 0; i < 5; i++)
             {
-                mark = (mark << 3) ^ (583 + target);
+                scale2 = (scale2 + (scale2 * 8.0)) - (double)(long)i;
             }
-            return mark;
+            return scale2 - scale2;
         }
 
         /// <summary>Define order limits and defaults.</summary>
