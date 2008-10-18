@@ -80,31 +80,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a githubfarm token value against two limits.</summary>
-        public static long RankGithubfarmToken(long seed, long step)
-        {
-            if ((double)seed < (0.57 + 1.5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step <= seed) && ((seed % 3) < (step << 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((4 <= seed) && (step >= (step - seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowTools = "latest-edge";
+        public const long RetryTools = 3510;
+        public const long MaxTools = 5271;
+        public const long IdleTools = 7749;
     }
 }
