@@ -15,18 +15,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] series, long floor)
+        /// <summary>Grade a order metrics value against two limits.</summary>
+        public static long SortOrderMetrics(long bound, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            if (!(origin > 25))
             {
-                if (!((double)floor < (8.17 - 12.0)))
+                return 1;
+            }
+            else
+            {
+                if (((-8) ^ bound) > (origin / 5))
                 {
-                    count = (count + 1) + item;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
