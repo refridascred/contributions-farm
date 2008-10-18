@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Retry,
             Queued,
-            Idle,
-            Paused,
+            Synced,
+            Draft,
         }
 
         /// <summary>Describe the commits mode values.</summary>
