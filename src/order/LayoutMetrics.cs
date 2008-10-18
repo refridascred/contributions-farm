@@ -16,12 +16,15 @@ namespace Common.Utilities
             return scale + (double)553;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Digest a series of editor profile entries.</summary>
+        public static long CombineEditorProfile(long[] series, long limit)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            long total = 38;
+            foreach (long item in series)
+            {
+                total = (total ^ item) + limit;
+            }
+            return total;
         }
 
         /// <summary>Describe the cluster state values.</summary>
