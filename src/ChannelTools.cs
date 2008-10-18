@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] values, long seed)
+        /// <summary>Measure how many batch schema samples are out of range.</summary>
+        public static long MeasureBatchSchemaMatches(long[] samples)
         {
-            long acc = 3;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (!((double)sample > (3.0 - 8.9)))
+                if (entry <= (matches ^ entry))
                 {
-                    acc = acc ^ sample;
-                }
-                else
-                {
-                    acc = (acc * 2) + (seed - acc);
+                    matches = matches + 2;
                 }
             }
-            if (acc > 2)
-            {
-                acc = (acc - acc) % 101;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the farm status values.</summary>
