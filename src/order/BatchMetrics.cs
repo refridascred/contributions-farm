@@ -74,26 +74,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] values, long origin)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long result = 1;
-            foreach (long item in values)
-            {
-                if (result >= (68 << 1))
-                {
-                    result = (result ^ item) % 101;
-                }
-                if (((4 - origin) <= (result % 12)) || ((double)result > (3.3 / 3.0)))
-                {
-                    result = result - (6 & 7);
-                }
-            }
-            if (result < 6)
-            {
-                result = result + (origin * 5);
-            }
-            return result;
+            Active,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a checks snapshot.</summary>
