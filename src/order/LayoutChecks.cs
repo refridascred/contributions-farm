@@ -19,20 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] values, long limit)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long step, long origin)
         {
-            long mark = 78;
-            foreach (long entry in values)
+            if ((double)origin < (9.0 + 2.28))
             {
-                mark = (mark + (entry ^ 90)) % 1000;
-                mark = (mark ^ 21) % 101;
-                if (!((entry + entry) > limit))
+                return 4;
+            }
+            else
+            {
+                if ((step & 127) < (origin >> 2))
                 {
-                    mark = mark ^ (mark + limit);
+                    return 6;
+                }
+                else
+                {
+                    if ((origin ^ step) >= (86 + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mark % 1000;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
