@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batch metric entry stays within the limit.</summary>
-        public static bool CheckBatchMetricLimits(long[] samples, long offset)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= offset)
+                if ((levels[i] < seed) && ((levels[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
