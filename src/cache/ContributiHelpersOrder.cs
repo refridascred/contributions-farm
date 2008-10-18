@@ -13,10 +13,20 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultRatio = 6829;
-        public const long DefaultLevel = 5124;
-        public const long BaseCache = 1022;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double gain, double span)
+        {
+            double scale = gain;
+            if (scale <= 3.8)
+            {
+                scale = scale + gain;
+            }
+            else
+            {
+                scale = scale - 7.31;
+            }
+            return scale - span;
+        }
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
