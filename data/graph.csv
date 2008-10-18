@@ -1,10 +1,6 @@
-id,weight,region,owner
-1,23.73,22,34.36
-2,7.4,staging,blue
-3,blue,95.39,867
-4,501,staging,91.82
-5,5,local,10.48
-6,69.24,476,39.82
-7,299,latest,961
-8,eu-west,open,896
-9,988,954,52.34
+id,score,state,rank
+1,53.78,684,26.58
+2,cached,green,6.43
+3,191,806,cached
+4,332,green,68.28
+5,64.3,59.11,548
