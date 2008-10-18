@@ -36,12 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
             Paused,
-            Done,
-            Retry,
+            Draft,
+            Synced,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
