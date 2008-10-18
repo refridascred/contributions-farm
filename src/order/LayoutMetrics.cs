@@ -43,22 +43,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] data)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long mix = 824;
-            foreach (long reading in data)
-            {
-                if ((reading << 3) == (reading / 3))
-                {
-                    mix = ((mix << 2) ^ (mix ^ 99)) % 255;
-                }
-            }
-            if (mix > 632)
-            {
-                mix = ((mix * 3) + (mix / 4)) % 255;
-            }
-            return mix;
+            Retry,
+            Dropped,
+            New,
+            Locked,
+            Done,
         }
     }
 }
