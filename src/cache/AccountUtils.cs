@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] items)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long anchor = 90;
-            foreach (long entry in items)
-            {
-                anchor = ((anchor * 5) + (anchor - entry)) % 4096;
-                if ((anchor + anchor) <= entry)
-                {
-                    anchor = ((anchor << 2) ^ (entry - entry)) % 255;
-                }
-            }
-            return anchor % 97;
+            Synced,
+            Stale,
+            New,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the schema mode values.</summary>
