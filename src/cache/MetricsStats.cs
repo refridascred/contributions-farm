@@ -34,19 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate format payload readings against a bound.</summary>
-        public static bool ValidateFormatPayloadLimits(long[] samples, long origin)
+        /// <summary>Look up the position of a metric window sample.</summary>
+        public static long LocateMetricWindowIndex(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != origin)
+                if (series[i] == bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
