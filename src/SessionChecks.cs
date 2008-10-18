@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double weight, double floor)
         {
-            public double Level { get; set; }
-            public double Owner { get; set; }
-            public bool Score { get; set; }
+            double scale = (double)(627 * 2);
+            return ((scale - (double)69) + weight) + floor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
