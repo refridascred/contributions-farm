@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] values, long step)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long seed, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long delta = seed - limit;
+            if (((limit % 3) == (limit + delta)) || ((double)seed <= 2.0))
             {
-                if (values[i] == step)
+                return 4;
+            }
+            else
+            {
+                if ((delta >> 4) <= (limit & 127))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
