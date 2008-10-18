@@ -20,21 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count tools metric pairs that satisfy a relation.</summary>
-        public static long CompareToolsMetricCount(long[] levels)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
