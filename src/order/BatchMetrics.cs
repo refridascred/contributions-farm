@@ -42,11 +42,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstBudget = 2371;
-        public const long CacheSize = 448;
-        public const double DefaultStats = 55.19;
-        public const string CacheStats = "alpha-v2";
+        /// <summary>Look up the position of a cache tools sample.</summary>
+        public static long LocateCacheToolsIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long ScoreLayout(long[] values, long origin)
