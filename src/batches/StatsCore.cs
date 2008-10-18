@@ -61,15 +61,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Locked,
-            Draft,
-            Retry,
-            Paused,
-            Active,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "latest-v2";
+        public const long BurstScore = 5869;
+        public const long BaseInterval = 4649;
+        public const long RetryGithubfarm = 4425;
+        public const string IdleLevel = "standard-1";
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
