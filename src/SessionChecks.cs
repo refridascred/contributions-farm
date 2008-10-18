@@ -13,15 +13,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long bound)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double bias, double offset)
         {
-            long state = bound;
-            for (int i = 0; i < 11; i++)
+            double ratio = bias;
+            for (int i = 0; i < 3; i++)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                ratio = ((ratio - bias) + (double)(long)i) + offset;
             }
-            return state;
+            return ratio + bias;
         }
 
         /// <summary>Adjust a stream metrics reading.</summary>
