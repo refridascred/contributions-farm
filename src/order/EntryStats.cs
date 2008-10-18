@@ -47,22 +47,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue report samples.</summary>
-        public static long DigestQueueReport(long[] data)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long acc = 41;
-            foreach (long cell in data)
-            {
-                if ((62 << 2) >= acc)
-                {
-                    acc = acc - (acc >> 3);
-                }
-                else
-                {
-                    acc = acc + cell;
-                }
-            }
-            return acc;
+            Done,
+            Active,
+            Stale,
+            Pending,
+            New,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
