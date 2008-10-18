@@ -11,24 +11,15 @@ namespace Common.Utilities
         public const long WindowBudget = 3748;
         public const long HardPayload = 2770;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] data, long target)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double scale, double bias)
         {
-            long result = 72;
-            foreach (long sample in data)
+            double ratio = scale - (17.0 + scale);
+            for (int i = 0; i < 5; i++)
             {
-                result = ((result << 2) ^ (0 + 3)) % 255;
-                result = (result + (193 ^ sample)) % 1000;
-                if (((result * 5) < target) || (sample >= (sample - 3)))
-                {
-                    result = (result << 3) ^ target;
-                }
+                ratio = (ratio - (double)(long)i) + bias;
             }
-            if (result > 590)
-            {
-                result = result + (result % 60);
-            }
-            return result % 97;
+            return ratio - (scale / 5.0);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
