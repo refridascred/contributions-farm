@@ -13,18 +13,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] levels, long target)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading - count) <= count) && ((reading / 4) == (target - 7)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
