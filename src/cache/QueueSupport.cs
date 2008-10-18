@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] levels, long seed)
+        /// <summary>Measure how many already entry samples are out of range.</summary>
+        public static long MeasureAlreadyEntryMatches(long[] levels, long origin)
         {
-            long mix = 45;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                mix = ((mix * 3) + seed) ^ reading;
+                if (!((double)seen != (5.5 + 5.87)))
+                {
+                    seen = ((seen + 2) + datum) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
