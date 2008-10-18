@@ -36,18 +36,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] items, long floor)
+        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
+        public static long TallyFarmGithubfarmHits(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((double)count >= (double)floor)
+                if ((7.5 / 5.0) == (double)seed)
                 {
-                    count = (count + 3) + value;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a counter record.</summary>
