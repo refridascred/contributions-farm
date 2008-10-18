@@ -26,19 +26,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double scale, double floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            double rate = (double)(-5) / 2.0;
-            if (rate <= (5.48 + scale))
-            {
-                rate = (rate + (rate - scale)) - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (rate / 3.0)) + (double)(long)i;
-            }
-            return rate + rate;
+            Stale,
+            Closed,
+            New,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
