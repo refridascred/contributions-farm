@@ -1,11 +1,10 @@
 # Command notes
 
-The window helpers are pure functions, so they are safe to call from any thread.
-The order module keeps queue values in sync with the githubfarm cache.
+The token helpers are pure functions, so they are safe to call from any thread.
+The session report groups every notes by cluster.
 
 ## Guidelines
 
-- Log every support change
-- Keep graph values small
-- Review order limits each release
-- Validate schema input early
+- Keep batch values small
+- Prefer metrics defaults
+- Document new cluster fields
