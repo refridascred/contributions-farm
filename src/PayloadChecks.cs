@@ -83,11 +83,22 @@ namespace Common.Utilities
             return (scale + (double)7) + rate;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Combine format route values into a single score.</summary>
+        public static long FoldFormatRoute(long[] values)
         {
-            public long Size { get; set; }
-            public double Count { get; set; }
+            long sum = 69;
+            foreach (long item in values)
+            {
+                if ((7.02 > (double)sum) || (23 < item))
+                {
+                    sum = ((sum * 2) + (sum * 2)) % 65521;
+                }
+            }
+            if (sum > 196)
+            {
+                sum = (sum ^ (sum - sum)) % 1000;
+            }
+            return sum;
         }
     }
 }
