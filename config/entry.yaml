@@ -1,7 +1,4 @@
 # entry settings
-compress: false
-flush_ttl: 86.51
-editor_ttl:
-  - 241
-  - 190
-  - 175
+warm_ttl_s: 68.04
+dry_run: staging
+batch_threshold_pct: false
