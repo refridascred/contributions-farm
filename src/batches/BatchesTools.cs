@@ -24,10 +24,20 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowDepth = "stable-edge";
-        public const string IdleInterval = "standard";
-        public const long RetryProfile = 1979;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] items, long target)
+        {
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long SoftLevel = 4260;
