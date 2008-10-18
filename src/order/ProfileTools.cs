@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the report checks series from a seed.</summary>
-        public static long RollReportChecks(long origin)
+        /// <summary>Check that every channel queue entry stays within the limit.</summary>
+        public static bool GuardChannelQueueRange(long[] data, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                result = ((result * 3) + (origin - origin)) % 4096;
-                result = ((result * 5) + (long)i) % 101;
+                if (sample != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
