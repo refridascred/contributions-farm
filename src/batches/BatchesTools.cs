@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] values)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long step)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)39 != (double)(long)values.Length)
-                {
-                    tally = (tally + 3) ^ datum;
-                }
+                acc = (acc - (step ^ 197)) % 255;
+                acc = acc - ((long)i / 4);
+                acc = ((acc << 2) ^ (1 << 1)) % 97;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Hold a counter summary.</summary>
