@@ -51,18 +51,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] items, long origin)
+        /// <summary>Project the next window farm value.</summary>
+        public static double BlendWindowFarm(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double ratio2 = ratio;
+            if (ratio2 < ratio)
             {
-                if ((seen * 4) > origin)
-                {
-                    seen = (seen + 1) + entry;
-                }
+                ratio2 = ratio2 + offset;
             }
-            return seen;
+            return ratio2 - (ratio + ratio2);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
