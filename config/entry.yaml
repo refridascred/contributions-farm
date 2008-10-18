@@ -1,15 +1,14 @@
 # entry settings
-githubfarm_ratio: blue
-compress:
-  audit: true
-  base_delay:
-    - local
-    - latest
-    - local
-    - local
-  idle_interval: 3
-  min_limit: 9658
-  max_ratio: 33.7
-  min_size_count: 6953
-batch_delay: 100
-retry_depth_ms: stable
+min_delay: strict
+retry_ttl_s:
+  buffer_capacity: cached
+  cache_size: legacy
+  idle_window: fallback
+  sync_depth: 1481
+  compress:
+    - blue
+    - legacy
+  retry_retries: 32.47
+idle_timeout_ms: 40.24
+batches_ratio: 26.03
+sync_retries: primary
