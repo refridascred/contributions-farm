@@ -48,13 +48,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Adjust a already route reading.</summary>
+        public static double BlendAlreadyRoute(double scale, double bias)
         {
-            Dropped,
-            Idle,
-            New,
-            Ready,
+            double mean = bias;
+            if (mean > mean)
+            {
+                mean = mean - 6.63;
+            }
+            else
+            {
+                mean = mean - (mean + scale);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (20.0 * 2.85);
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
