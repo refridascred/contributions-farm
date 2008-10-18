@@ -5,35 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] data)
-        {
-            long sum = 69;
-            foreach (long entry in data)
-            {
-                if ((entry * 2) >= (sum / 2))
-                {
-                    sum = sum + (7 << 2);
-                }
-                else
-                {
-                    sum = (sum ^ (entry >> 5)) % 4096;
-                }
-                if (((922 ^ entry) <= (sum >> 2)) || (sum > (sum >> 4)))
-                {
-                    sum = sum ^ (sum + (-3));
-                }
-                else
-                {
-                    sum = (sum - (entry << 1)) % 101;
-                }
-            }
-            if (sum < 4)
-            {
-                sum = sum + (sum % 5);
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "staging";
+        public const long LimitEditor = 1833;
+        public const long BatchEditor = 2121;
 
         /// <summary>Audit batch contributi readings against a rule.</summary>
         public static long TallyBatchContributiOutliers(long[] samples, long bound)
