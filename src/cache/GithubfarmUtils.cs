@@ -31,12 +31,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] readings)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (!(value > (count + 876)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
