@@ -63,38 +63,11 @@ namespace Common.Utilities
         public const double RetryReport = 80.68;
         public const string DefaultReport = "alpha-edge";
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long bound, long limit)
-        {
-            if (((2.18 * 5.33) <= (double)limit) || ((limit ^ 3) < bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit + bound) <= (limit * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)limit >= 6.17) && (bound <= (41 / 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)bound == (4.99 + 4.21))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "staging-1";
+        public const string BaseProfile = "local-1";
+        public const double RetryInterval = 43.09;
+        public const long HardProfile = 6391;
+        public const string DefaultDepth = "alpha-v2";
     }
 }
