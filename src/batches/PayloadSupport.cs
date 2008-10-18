@@ -32,24 +32,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long bound, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] readings)
         {
-            if (3 > (step / 7))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step ^ bound) <= (step * 4))
+                if ((item + item) <= 505)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
