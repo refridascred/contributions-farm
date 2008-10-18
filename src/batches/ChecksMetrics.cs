@@ -35,19 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] series, long limit)
+        /// <summary>Audit batch contributi readings against a rule.</summary>
+        public static long TallyBatchContributiOutliers(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (sample <= limit)
+                if ((count + count) >= (datum << 2))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) + bound;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the layout level values.</summary>
