@@ -33,25 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long target, long target2)
+        /// <summary>Compare every pair of window channel readings.</summary>
+        public static long PairWindowChannelCount(long[] levels)
         {
-            long step = target + target2;
-            if (((step - 94) < step) && ((0 - target) == ((-36) - target)))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)step > 1.4) || ((target2 << 3) != (target + target)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    if ((levels[i] - levels[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the batch mode values.</summary>
