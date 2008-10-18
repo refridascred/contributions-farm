@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long step)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long target, long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
+            if (bound > (46 >> 1))
             {
-                mark = ((mark << 2) ^ (step + 330)) % 97;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mark = ((mark + (step + mark)) % 4096) ^ (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((bound & 255) < (22 << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the schema phase values.</summary>
