@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] readings, long step)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long sum = 680;
-            foreach (long reading in readings)
-            {
-                if ((step >= (step % 7)) || ((reading - (-6)) < step))
-                {
-                    continue;
-                }
-                sum = (sum - (sum & 127)) % 97;
-            }
-            return sum % 4096;
+            Paused,
+            Ready,
+            Synced,
         }
 
         /// <summary>Hold a notes info.</summary>
