@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] samples, long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] samples, long seed)
         {
-            long result = 4;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (!((5.9 + 1.2) < (double)datum))
+                if (sample > seed)
                 {
-                    result = ((result + (datum << 2)) % 97) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return ready;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
