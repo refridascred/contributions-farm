@@ -48,13 +48,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] series, long origin)
         {
-            New,
-            Ready,
-            Failed,
-            Synced,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((value << 2) >= 444)
+                {
+                    matches = (matches + 2) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
