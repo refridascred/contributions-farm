@@ -5,17 +5,34 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] values, long floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 69;
+            foreach (long entry in data)
             {
-                if ((values[i] >= floor) && ((values[i] % 2) == 0))
+                if ((entry * 2) >= (sum / 2))
                 {
-                    return (long)i;
+                    sum = sum + (7 << 2);
+                }
+                else
+                {
+                    sum = (sum ^ (entry >> 5)) % 4096;
+                }
+                if (((922 ^ entry) <= (sum >> 2)) || (sum > (sum >> 4)))
+                {
+                    sum = sum ^ (sum + (-3));
+                }
+                else
+                {
+                    sum = (sum - (entry << 1)) % 101;
                 }
             }
-            return -1;
+            if (sum < 4)
+            {
+                sum = sum + (sum % 5);
+            }
+            return sum;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
