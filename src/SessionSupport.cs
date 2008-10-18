@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] values, long floor)
+        /// <summary>Locate a counter cache reading by value.</summary>
+        public static long SeekCounterCacheIndex(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry != floor)
+                if (series[i] == floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
