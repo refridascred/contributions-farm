@@ -61,19 +61,34 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] values, long seed)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long anchor = 44;
+            foreach (long entry in samples)
             {
-                if (cell < seed)
+                if ((double)anchor == (1.0 * 5.6))
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor << 3) ^ (entry - entry)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (anchor & 63)) % 97;
+                }
+                if (283 >= (entry + entry))
+                {
+                    anchor = anchor + (anchor ^ anchor);
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (anchor + 717)) % 97;
                 }
             }
-            return ready;
+            if (anchor > 5)
+            {
+                anchor = (anchor - (anchor - anchor)) % 97;
+            }
+            return anchor;
         }
     }
 }
