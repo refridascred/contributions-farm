@@ -57,12 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "latest-v2";
-        public const long BurstScore = 5869;
-        public const long BaseInterval = 4649;
-        public const long RetryGithubfarm = 4425;
-        public const string IdleLevel = "standard-1";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftBudget = 9502;
+        public const long HardSpan = 7653;
+        public const long MinWidth = 46;
+        public const string MinPayload = "open-1";
+        public const double DefaultPayload = 30.5;
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
