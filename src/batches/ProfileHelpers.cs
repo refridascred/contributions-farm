@@ -62,17 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] items, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] items, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (items[i] > seed)
+                if ((18.0 + 2.93) >= (double)tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 1) - cell) - limit;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a record options.</summary>
