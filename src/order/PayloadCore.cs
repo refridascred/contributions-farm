@@ -46,19 +46,17 @@ namespace Common.Utilities
         public const string IdleNotes = "open";
         public const string SoftNotes = "latest-1";
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double rate, double bias)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] levels, long target)
         {
-            double rate2 = rate / 5.0;
-            if (rate2 <= rate)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate2 = rate2 + (double)50;
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 - bias) + (double)(long)i;
-            }
-            return rate2 - (rate2 / 6.0);
+            return -1;
         }
     }
 }
