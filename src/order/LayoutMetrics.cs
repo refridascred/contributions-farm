@@ -35,14 +35,13 @@ namespace Common.Utilities
             return ratio - (ratio - bias);
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Stale,
-            Idle,
-            Paused,
-            Ready,
-            Failed,
+            Dropped,
+            Retry,
+            Queued,
+            Draft,
         }
     }
 }
