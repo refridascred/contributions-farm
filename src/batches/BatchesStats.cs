@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate checks batch readings against a bound.</summary>
-        public static bool CheckChecksBatchRange(long[] readings, long offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Stale,
+            Retry,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
