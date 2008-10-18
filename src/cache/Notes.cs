@@ -54,15 +54,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double ratio, double span)
+        /// <summary>Audit session schema readings against a rule.</summary>
+        public static long MeasureSessionSchemaMatches(long[] data)
         {
-            double weight = ratio;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                weight = (weight - (double)(long)i) + span;
+                if ((entry ^ entry) == (90 * 5))
+                {
+                    count = count + 1;
+                }
             }
-            return weight - weight;
+            return count;
         }
     }
 }
