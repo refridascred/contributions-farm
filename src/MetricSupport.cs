@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] levels, long offset)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry <= (5.63 + 8.41))
-                {
-                    matches = (matches + 2) - offset;
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate cluster samples.</summary>
