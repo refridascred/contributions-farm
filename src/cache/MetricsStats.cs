@@ -60,13 +60,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Synced,
-            Retry,
-            Pending,
-            Paused,
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
