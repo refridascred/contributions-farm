@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((count / 4) != (32 * 2))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count tools metric pairs that satisfy a relation.</summary>
