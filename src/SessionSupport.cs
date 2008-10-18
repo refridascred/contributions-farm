@@ -43,12 +43,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double rate, double floor)
         {
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            double mean = floor - (double)3;
+            if (mean < (double)6)
+            {
+                mean = (mean - (double)98) - rate;
+            }
+            return mean + (double)6;
         }
     }
 }
