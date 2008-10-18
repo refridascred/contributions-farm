@@ -56,12 +56,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long floor, long floor2)
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            if (!((floor2 % 97) == (floor ^ floor2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)floor == (9.7 * 5.9)) && (floor > (floor2 + floor)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((1 + floor) > (9 + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((floor >> 1) < (floor2 - 3)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
