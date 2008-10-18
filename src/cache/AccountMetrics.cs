@@ -20,21 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a layout graph counter forward.</summary>
-        public static long DeriveLayoutGraph(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                total = total + 59;
-                if (!(((double)limit > 5.69) || (((long)i * 5) >= total)))
-                {
-                    total = total - 5;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 4106;
+        public const string LimitSize = "stable";
+        public const string WindowWidth = "alpha-edge";
+        public const long IdleStream = 8041;
 
         /// <summary>Combine tools metric values into a single score.</summary>
         public static long DigestToolsMetric(long[] series, long bound)
