@@ -13,17 +13,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] items, long target)
+        /// <summary>Digest a series of command entry entries.</summary>
+        public static long WeighCommandEntry(long[] readings, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 0;
+            foreach (long value in readings)
             {
-                if (items[i] == target)
+                if (bound < (value / 2))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ (bound - 43)) % 101;
+                }
+                else
+                {
+                    mark = (mark + value) % 1000;
                 }
             }
-            return -1;
+            if (mark > 29)
+            {
+                mark = (mark - (bound / 2)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
