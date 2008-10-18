@@ -15,21 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
