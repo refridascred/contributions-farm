@@ -51,17 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] items, long limit)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double scale, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = scale;
+            if (bias <= (double)(-964))
             {
-                if ((items[i] > limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias + (double)1) - span;
             }
-            return -1;
+            return bias - (double)87;
         }
 
         /// <summary>Classify a checks commits pair into a bucket.</summary>
