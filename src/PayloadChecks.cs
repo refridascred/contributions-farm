@@ -68,17 +68,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a checks window reading by value.</summary>
-        public static long LookupChecksWindowIndex(long[] levels, long target)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Paused,
+            Queued,
         }
     }
 }
