@@ -20,22 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the graph order entries that pass the check.</summary>
-        public static long CountGraphOrderHits(long[] data)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long total = 222;
+            foreach (long datum in readings)
             {
-                if ((16.0 + 5.66) <= (2.0 + 6.99))
+                if ((double)total > (double)64)
                 {
-                    hits = (hits + 3) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = (total * 5) + (datum - datum);
                 }
             }
-            return hits;
+            return total % 1000;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
