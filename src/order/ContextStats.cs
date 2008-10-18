@@ -39,19 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] readings)
-        {
-            long state = 4;
-            foreach (long entry in readings)
-            {
-                if (entry > state)
-                {
-                    state = (state << 2) ^ state;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleLevel = 95.33;
+        public const double RetryLayout = 68.5;
+        public const long IdleInterval = 6454;
+        public const long IdleLayout = 90;
+        public const double BatchLayout = 62.78;
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
