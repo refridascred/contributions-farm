@@ -16,15 +16,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] samples)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
