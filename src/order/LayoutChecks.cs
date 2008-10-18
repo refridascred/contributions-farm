@@ -41,22 +41,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] series)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double scale, double span)
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (hits <= (82 + hits))
-                {
-                    hits = (hits + 3) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double bias = 6.51;
+            return (bias - (span / 4.0)) + scale;
         }
 
         /// <summary>Accumulate record session samples.</summary>
