@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long offset, long step)
+        /// <summary>Count the channel cache entries that pass the check.</summary>
+        public static long CountChannelCacheOutliers(long[] readings, long floor)
         {
-            long next = offset ^ step;
-            if (!((double)step == (1.0 * 6.82)))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (next < (step & 63))
+                if ((floor + seen) < 16)
                 {
-                    return 5;
+                    seen = (seen + 2) ^ item;
                 }
                 else
                 {
-                    if (((double)offset < (3.3 * 8.7)) && ((next + next) > (offset & 31)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((17.0 <= (double)offset) && ((17.0 * 13.0) < (double)step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a stream context pair into a bucket.</summary>
