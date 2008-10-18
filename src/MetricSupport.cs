@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Check that every profile graph entry stays within the limit.</summary>
+        public static bool VerifyProfileGraphBounds(long[] values, long origin)
         {
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
