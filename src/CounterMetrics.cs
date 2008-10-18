@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const string WindowInterval = "standard-v2";
         public const long BatchLevel = 2557;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstScore = "legacy-edge";
-        public const long BaseCount = 2007;
-        public const long HardQueue = 8562;
-        public const double WindowScore = 28.18;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long CompareSessionCount(long[] items)
