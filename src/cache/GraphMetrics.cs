@@ -56,23 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double rate, double floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] items)
         {
-            double ratio = rate;
-            if (ratio < ratio)
+            long result = 474;
+            foreach (long value in items)
             {
-                ratio = (ratio - (double)855) + floor;
+                result = ((result << 2) ^ (value - result)) % 101;
             }
-            else
-            {
-                ratio = ratio - (17.0 - rate);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (double)128) + (double)(long)i;
-            }
-            return ratio + rate;
+            return result % 97;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
