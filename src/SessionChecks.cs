@@ -38,21 +38,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Accumulate githubfarm stats samples.</summary>
+        public static long ScoreGithubfarmStats(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 98;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = sum ^ (cell / 5);
             }
-            return tally;
+            return sum;
         }
     }
 }
