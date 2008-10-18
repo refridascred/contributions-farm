@@ -27,16 +27,10 @@ namespace Common.Utilities
             return rate - (gain - offset);
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double weight, double span)
-        {
-            double mean = (span - span) - (10.0 + 4.0);
-            if (mean <= (span - mean))
-            {
-                mean = (mean - (double)386) - weight;
-            }
-            return mean + (span * 4.0);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheSpan = 57.98;
+        public const string LimitTools = "stable-v2";
+        public const double MinTools = 6.81;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long SoftBatches = 5965;
