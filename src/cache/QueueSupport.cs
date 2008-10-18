@@ -13,18 +13,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] values)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)reading != (16.0 * 0.8))
+                if ((series[i] <= step) && ((series[i] % 2) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Match up metrics samples.</summary>
