@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank support contributi input into a small class.</summary>
-        public static long BucketSupportContributi(long origin, long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long diff = origin - step;
-            if ((2.6 / 9.0) < (double)step)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin + diff) < 1)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Dropped,
+            Stale,
+            Closed,
+            Pending,
         }
 
         /// <summary>Accumulate farm samples.</summary>
