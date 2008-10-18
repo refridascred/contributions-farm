@@ -42,11 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Closed,
+            Ready,
+            Idle,
+            Done,
         }
     }
 }
