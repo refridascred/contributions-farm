@@ -27,31 +27,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long step, long floor)
+        /// <summary>Accumulate support commits samples.</summary>
+        public static long FoldSupportCommits(long[] items)
         {
-            if ((63 + floor) <= floor)
+            long state = 3;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step ^ 193) == (step ^ floor))
+                if ((value * 4) > state)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((41 + 4) >= (73 + step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    state = (state * 2) + (value << 2);
                 }
             }
+            if (state < (-25))
+            {
+                state = ((state << 2) ^ (423 << 1)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the account editor entries that pass the check.</summary>
