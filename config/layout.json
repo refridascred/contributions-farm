@@ -1,19 +1,7 @@
 {
-  "base_limit_pct": {
-    "counter_ttl": true,
-    "retry_window_pct": {
-      "hard_retries": "green",
-      "flush_delay_s": 3490,
-      "batch_delay_s": 64
-    },
-    "dry_run": 1024,
-    "poll_depth": "strict",
-    "audit": "local",
-    "account_window": 8166
-  },
-  "cache_retries": "latest",
-  "order_interval": "blue",
-  "strict": 17.3,
-  "base_ttl": 9886,
-  "compress": [211, 226, 216, 297]
+  "batch_threshold": ["stable", "local", "strict", "blue"],
+  "compress": true,
+  "dry_run": 100,
+  "channel_depth": "fallback",
+  "retry_interval_count": 8145
 }
