@@ -15,13 +15,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            New,
-            Done,
-            Locked,
+            Dropped,
+            Stale,
             Pending,
+            Queued,
+            Paused,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
