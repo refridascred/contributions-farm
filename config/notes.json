@@ -1,5 +1,6 @@
 {
-  "max_window_count": 9801,
-  "verbose": "standard",
-  "dry_run": false
+  "soft_window_count": [37, 218, 261],
+  "min_timeout_ms": "stable",
+  "payload_limit": 250,
+  "stream_depth": 93.96
 }
