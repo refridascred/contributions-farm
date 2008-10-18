@@ -77,20 +77,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                double mean = (5.3 + 9.78) / 8.0;
-                if (!(6.94 < mean))
-                {
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public double Rank { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
