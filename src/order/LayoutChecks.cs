@@ -67,17 +67,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] data, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((data[i] <= limit) && ((data[i] % 5) != 0))
+                if (value > origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
