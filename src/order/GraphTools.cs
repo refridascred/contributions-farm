@@ -48,19 +48,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] series, long bound)
+        /// <summary>Classify a token window pair into a bucket.</summary>
+        public static long ClassifyTokenWindow(long offset, long target)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long diff = offset + target;
+            if ((target / 8) == ((-852) << 2))
             {
-                if (value < bound)
+                return 2;
+            }
+            else
+            {
+                if (((offset + 4) > (offset - diff)) && ((target + diff) < offset))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (target <= (offset + 24))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
