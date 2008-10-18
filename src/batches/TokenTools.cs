@@ -26,21 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] items)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = rate;
+            if (scale < (rate - floor))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale - (scale + floor);
             }
-            return hits;
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - 6.6;
         }
 
         /// <summary>Combine route values into a single score.</summary>
