@@ -33,21 +33,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count buffer batch pairs that satisfy a relation.</summary>
-        public static long OverlapBufferBatchCount(long[] series)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
