@@ -50,13 +50,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            Paused,
+            Active,
+            Queued,
+            Failed,
         }
 
         /// <summary>Measure how many cluster channel samples are out of range.</summary>
