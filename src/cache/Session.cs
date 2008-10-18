@@ -40,24 +40,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long seed, long target)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] series, long step)
         {
-            if ((target ^ 34) == (seed - target))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target + seed) > target)
+                if ((series[i] <= step) && ((series[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
