@@ -68,15 +68,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double rate, double bias)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] readings, long limit)
         {
-            double drift = 8.82;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift - bias) + (double)(long)i;
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return drift - rate;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
