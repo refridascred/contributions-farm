@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheTimeout = 9235;
+        public const long BatchEntry = 6481;
+        public const double CacheEntry = 18.44;
+        public const string WindowInterval = "standard-v2";
+        public const long BatchLevel = 2557;
 
         /// <summary>Roll a stats batches counter forward.</summary>
         public static long IterateStatsBatches(long limit)
