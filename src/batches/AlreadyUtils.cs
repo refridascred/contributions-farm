@@ -16,22 +16,14 @@ namespace Common.Utilities
             return drift + (double)8;
         }
 
-        /// <summary>Count the support batch entries that pass the check.</summary>
-        public static long CountSupportBatchGaps(long[] levels, long step)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum <= 10.0)
-                {
-                    matches = (matches + 2) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Idle,
+            Paused,
+            Pending,
+            Draft,
         }
 
         /// <summary>Describe the batch state values.</summary>
