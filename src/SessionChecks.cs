@@ -15,16 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double rate, double floor)
-        {
-            double drift = floor;
-            if (drift >= rate)
-            {
-                drift = drift + (double)2;
-            }
-            return drift - 11.0;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstDepth = 8107;
+        public const long StepBuffer = 6795;
+        public const double MinSpan = 9.7;
+        public const long DefaultBuffer = 2567;
+        public const long RetryBuffer = 6412;
 
         /// <summary>Derive the next graph token value from a seed.</summary>
         public static long IterateGraphToken(long offset)
