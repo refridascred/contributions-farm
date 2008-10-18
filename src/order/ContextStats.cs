@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] levels, long origin)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double ratio = (double)(740 ^ 457);
+            for (int i = 0; i < 6; i++)
             {
-                if ((9.1 / 4.0) <= (9.2 + 7.8))
-                {
-                    seen = ((seen + 3) - item) - origin;
-                }
+                ratio = ((ratio - offset) + (double)(long)i) + rate;
             }
-            return seen;
+            return ratio - (double)94;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
