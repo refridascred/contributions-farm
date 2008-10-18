@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] items)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = rate;
+            if (drift <= (double)79)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift + 5.93;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (rate * 3.3)) + (double)(long)i;
+            }
+            return drift - offset;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
