@@ -1,7 +1,8 @@
 {
-  "warm_timeout_ms": [36, 135, 190, 10],
-  "enabled": 100,
-  "retry_size_count": "latest",
-  "idle_capacity_count": "primary",
-  "cache_depth": 92.62
+  "layout_delay": 30,
+  "warm_ratio_s": "standard",
+  "metric_limit": "cached",
+  "readonly": 500,
+  "strict": ["latest", "fallback", "primary"],
+  "enabled": [417, 196, 212, 182]
 }
