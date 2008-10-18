@@ -28,12 +28,14 @@ namespace Common.Utilities
         public const long SoftTimeout = 6677;
         public const string IdleSpan = "strict-1";
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Mode { get; set; }
+            Pending,
+            Closed,
+            Ready,
+            Dropped,
+            Synced,
         }
     }
 }
