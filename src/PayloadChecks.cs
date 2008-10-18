@@ -23,12 +23,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheTimeout = 3189;
-        public const long StepLevel = 7351;
-        public const double SoftSize = 98.05;
-        public const double StepFormat = 2.25;
-        public const long BurstFormat = 2121;
+        /// <summary>Rank buffer format input into a small class.</summary>
+        public static long GradeBufferFormat(long step, long step2)
+        {
+            if ((step ^ step2) >= (96 - 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((16.0 / 6.0) >= (double)step2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step2 + step2) <= step2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
