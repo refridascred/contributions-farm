@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long step)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] levels, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            long anchor = 98;
+            foreach (long reading in levels)
             {
-                sum = ((sum << 2) ^ step) % 65521;
-                sum = (sum ^ (sum - (long)i)) % 101;
-                sum = (sum ^ (step << 3)) % 65521;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (751 < (anchor % 7))
+                {
+                    anchor = ((anchor << 3) ^ (anchor ^ reading)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (floor - floor)) % 1000;
+                }
             }
-            return sum;
+            return anchor % 97;
         }
 
         /// <summary>Hold a window stats.</summary>
