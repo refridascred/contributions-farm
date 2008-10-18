@@ -46,22 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] values)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((tally ^ tally) <= 4)
-                {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Draft,
+            Synced,
+            Queued,
         }
     }
 }
