@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] data, long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long step, long seed)
         {
-            long anchor = -643;
-            foreach (long cell in data)
+            if ((5 + step) < (step - step))
             {
-                anchor = ((anchor * 5) + (anchor - step)) ^ cell;
+                return 0;
             }
-            return anchor % 65521;
+            else
+            {
+                if (((step % 7) > (seed + step)) && ((double)seed == (2.0 - 9.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Validate account token readings against a bound.</summary>
