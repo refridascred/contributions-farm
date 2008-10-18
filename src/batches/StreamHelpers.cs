@@ -12,14 +12,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Blend two farm notes measurements.</summary>
+        public static double SmoothFarmNotes(double ratio, double span)
         {
-            Failed,
-            Locked,
-            Done,
-            Pending,
-            Active,
+            double mean = span;
+            if (mean < span)
+            {
+                mean = mean + ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (1.48 + mean);
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
