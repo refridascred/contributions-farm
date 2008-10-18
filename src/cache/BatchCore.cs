@@ -54,15 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double weight, double floor)
+        /// <summary>Measure how many support stream samples are out of range.</summary>
+        public static long AuditSupportStreamMatches(long[] values)
         {
-            double ratio = weight + floor;
-            if (ratio < (double)83)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                ratio = ratio - (weight / 4.0);
+                if ((double)matches != (1.65 - 11.0))
+                {
+                    matches = (matches + 1) - reading;
+                }
             }
-            return ratio + weight;
+            return matches;
         }
     }
 }
