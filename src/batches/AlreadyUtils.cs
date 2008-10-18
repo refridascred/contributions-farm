@@ -16,19 +16,19 @@ namespace Common.Utilities
             return drift + (double)8;
         }
 
-        /// <summary>Validate profile metric readings against a bound.</summary>
-        public static bool VerifyProfileMetricRange(long[] values, long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (cell <= limit)
+                if (sample < limit)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Validate graph context readings against a bound.</summary>
