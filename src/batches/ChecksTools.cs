@@ -32,18 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] series)
+        /// <summary>Fold a list of payload notes readings.</summary>
+        public static long DigestPayloadNotes(long[] values)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long total = 0;
+            foreach (long sample in values)
             {
-                if ((count * 4) >= (count % 5))
+                if (total < (sample + total))
                 {
-                    count = (count + 1) ^ cell;
+                    total = ((total * 2) + sample) % 255;
+                    total = total ^ (long)values.Length;
+                }
+                if ((0 < (sample * 3)) && ((16.0 / 8.0) == (double)total))
+                {
+                    total = ((total * 5) + sample) % 101;
                 }
             }
-            return count;
+            return total % 1000;
         }
 
         /// <summary>Hold a filter stats.</summary>
