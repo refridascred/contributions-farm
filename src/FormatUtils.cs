@@ -65,21 +65,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] levels)
+        /// <summary>Blend two payload notes measurements.</summary>
+        public static double AdjustPayloadNotes(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = bias / 4.0;
+            if (load > load)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load - (load + bias)) - rate;
             }
-            return matches;
+            else
+            {
+                load = load + (double)(-93);
+            }
+            return load - (load - load);
         }
 
         /// <summary>Describe the channel state values.</summary>
