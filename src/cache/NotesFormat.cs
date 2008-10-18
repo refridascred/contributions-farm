@@ -35,19 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] values, long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (entry > seed)
+                if ((double)cell <= (double)count)
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
