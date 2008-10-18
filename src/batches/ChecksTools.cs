@@ -20,18 +20,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] data)
+        /// <summary>Classify a channel command pair into a bucket.</summary>
+        public static long BucketChannelCommand(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if ((seed / 5) < (8 & 1))
             {
-                if ((hits ^ value) <= (hits + hits))
+                return 6;
+            }
+            else
+            {
+                if (offset <= (seed << 2))
                 {
-                    hits = hits + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
