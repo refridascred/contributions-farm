@@ -21,18 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] series, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] series)
         {
-            long score = 208;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (limit <= score)
+                if ((seen <= (seen % 97)) && (((double)seen > (6.8 - 14.0)) && ((double)seen < (6.0 * 0.27))))
                 {
-                    score = ((score ^ limit) % 65521) + reading;
+                    seen = (seen + 1) - value;
                 }
             }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Combine filter metric values into a single score.</summary>
