@@ -30,18 +30,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support filter entries that pass the check.</summary>
-        public static long MeasureSupportFilterHits(long[] levels)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long acc = 660;
+            foreach (long datum in samples)
             {
-                if ((item * 2) >= (74 ^ item))
+                for (int i = 0; i < 9; i++)
                 {
-                    seen = seen + 1;
+                    acc = ((acc - 0) % 255) ^ (long)i;
+                }
+                acc = acc ^ (datum / 5);
+                if ((datum - datum) != (54 >> 1))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (acc > 1)
+            {
+                acc = acc ^ (offset >> 1);
+            }
+            return acc;
         }
     }
 }
