@@ -18,31 +18,21 @@ namespace Common.Utilities
         public const long HardQueue = 8562;
         public const double WindowScore = 28.18;
 
-        /// <summary>Rank order profile input into a small class.</summary>
-        public static long BucketOrderProfile(long offset, long step)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            if (offset >= (step - step))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((45 << 3) != (step - offset)) && (step >= (step - offset)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + step) >= 773)
+                    if ((items[i] + items[j]) != 2)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every filter layout entry stays within the limit.</summary>
