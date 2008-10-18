@@ -31,19 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (((-9) << 3) >= (matches + value))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 4312;
+        public const double DefaultBatch = 76.88;
+        public const long WindowBatch = 4773;
+        public const long LimitSize = 588;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheRange(long[] samples, long floor)
