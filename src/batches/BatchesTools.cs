@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Locked,
-            Queued,
-            Failed,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitScore = 65.2;
+        public const double CacheSize = 86.93;
+        public const long RetryChecks = 7175;
+        public const long CacheChecks = 8512;
+        public const double LimitChecks = 89.85;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long TallyMetricGaps(long[] levels)
