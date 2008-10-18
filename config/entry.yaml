@@ -1,8 +1,15 @@
 # entry settings
-batches_limit:
-  - 164
-  - 461
-  - 395
-batch_ttl: false
-support_retries: stable
-window_capacity: false
+cache_delay:
+  flush_ratio_count: false
+  cache_depth_count: 51.99
+  audit: legacy
+  compress:
+    buffer_limit: eu-west
+    retry_delay_count: 61.9
+    metrics_capacity: true
+    cache_retries_ms: legacy
+    dry_run: true
+  sync_capacity_count: fallback
+idle_window: false
+retry_retries_ms: false
+soft_depth_pct: 56.69
