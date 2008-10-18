@@ -1,7 +1,5 @@
 {
-  "entry_delay": 55,
-  "cache_size": "open",
-  "min_size_pct": false,
-  "persist": 20.57,
-  "profile_timeout": 55.5
+  "persist": 11.4,
+  "max_depth_count": [335, 412],
+  "flush_window_s": 4405
 }
