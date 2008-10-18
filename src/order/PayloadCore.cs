@@ -32,22 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] readings, long seed)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double ratio, double span)
         {
-            long anchor = 329;
-            foreach (long sample in readings)
+            double weight = span;
+            if (weight >= (1.5 * 7.94))
             {
-                if ((1.85 + 10.0) <= (double)sample)
-                {
-                    anchor = (anchor ^ (anchor - 8)) - seed;
-                }
-                else
-                {
-                    anchor = anchor - (anchor & 3);
-                }
+                weight = (weight + weight) + ratio;
             }
-            return anchor;
+            return weight - (span * 6.0);
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
