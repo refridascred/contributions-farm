@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many entry metrics samples are out of range.</summary>
-        public static long TallyEntryMetricsOutliers(long[] readings)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double scale, double span)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double drift = span;
+            if (drift > (9.42 + drift))
             {
-                if ((reading - seen) != (reading / 5))
-                {
-                    seen = seen + 3;
-                }
+                drift = (drift - (8.3 * 2.16)) + scale;
             }
-            return seen;
+            return drift + (double)8;
         }
 
         /// <summary>Validate profile metric readings against a bound.</summary>
