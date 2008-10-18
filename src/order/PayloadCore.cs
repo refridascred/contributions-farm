@@ -40,16 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double ratio, double span)
-        {
-            double weight = span;
-            if (weight >= (1.5 * 7.94))
-            {
-                weight = (weight + weight) + ratio;
-            }
-            return weight - (span * 6.0);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 7551;
+        public const double SoftMetric = 8.15;
+        public const long WindowLevel = 1637;
+        public const long RetryTimeout = 2562;
+        public const long BaseMetric = 4223;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheOutliers(long[] samples, long limit)
