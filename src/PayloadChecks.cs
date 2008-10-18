@@ -30,15 +30,14 @@ namespace Common.Utilities
         public const double StepFormat = 2.25;
         public const long BurstFormat = 2121;
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Pending,
+            Closed,
+            Active,
+            Stale,
+            Paused,
         }
 
         /// <summary>Locate a batches reading by value.</summary>
