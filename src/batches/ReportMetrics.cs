@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] readings, long step)
         {
-            Draft,
-            Queued,
-            Idle,
-            New,
-            Dropped,
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a checks already counter forward.</summary>
