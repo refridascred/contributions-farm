@@ -63,23 +63,25 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double gain, double floor)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long bound, long floor)
         {
-            double gain2 = floor;
-            if (gain2 < (floor - floor))
+            long prev = bound ^ floor;
+            if (((floor * 2) <= (prev << 3)) || ((prev + 230) >= (floor + bound)))
             {
-                gain2 = (gain2 + (4.4 / 6.0)) - gain;
+                return 1;
             }
             else
             {
-                gain2 = gain2 + (double)495;
+                if ((10.0 + 7.0) != (double)prev)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 + gain2) + (double)(long)i;
-            }
-            return gain2 + gain2;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
