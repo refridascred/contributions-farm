@@ -1,9 +1,5 @@
 {
-  "persist": {
-    "poll_delay": 7590,
-    "compress": "strict",
-    "checks_ttl": "strict"
-  },
-  "burst_ttl": "staging",
-  "flush_limit_pct": "stable"
+  "retry_delay_pct": "fallback",
+  "min_ttl_pct": 8.55,
+  "default_ratio_s": 25.1
 }
