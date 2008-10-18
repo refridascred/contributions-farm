@@ -1,17 +1,8 @@
 # support settings
-token_size: 500
-hard_capacity: false
-cache_timeout_ms:
-  warm_retries_count: 250
-  idle_retries_ms: stable
-  min_retries_pct:
-    - 194
-    - 250
-    - 477
-    - 98
-  metrics_window:
-    batch_depth: 72.37
-    hard_size_count: false
-    cache_interval: 23.07
-    idle_size_ms: false
-retry_capacity_s: 1024
+window_ttl: 80.71
+dry_run: 45.22
+soft_ratio: 6173
+min_retries_s: legacy
+hard_depth:
+  - 203
+  - 75
