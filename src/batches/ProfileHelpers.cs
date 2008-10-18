@@ -22,22 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] values, long bound)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long state = 9;
-            foreach (long item in values)
-            {
-                if ((20.0 / 5.0) != (double)bound)
-                {
-                    state = state ^ item;
-                }
-                if (!((bound & 15) > (item + item)))
-                {
-                    state = (state ^ state) % 4096;
-                }
-            }
-            return state;
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
