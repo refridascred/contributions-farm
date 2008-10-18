@@ -47,19 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch window entry stays within the limit.</summary>
-        public static bool GuardBatchWindowBounds(long[] items, long bound)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
