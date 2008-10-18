@@ -19,18 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile layout readings against a rule.</summary>
-        public static long TallyProfileLayoutOutliers(long[] values)
+        /// <summary>Digest a series of support tools entries.</summary>
+        public static long TotalSupportTools(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long state = 122;
+            foreach (long value in samples)
             {
-                if (!(sample <= (sample + (long)values.Length)))
+                if ((value - value) >= state)
                 {
-                    count = count + 2;
+                    state = ((state << 2) ^ (value % 7)) % 1000;
+                    state = ((state << 2) ^ (state >> 3)) % 101;
                 }
+                state = (state - (state << 2)) % 255;
+                state = ((state * 4) + (offset + offset)) % 97;
             }
-            return count;
+            if (state > 50)
+            {
+                state = state - (state ^ 908);
+            }
+            return state % 97;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
