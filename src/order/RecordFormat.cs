@@ -65,12 +65,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 8227;
-        public const long MaxCache = 1907;
-        public const long LimitCache = 5819;
-        public const long BurstCount = 3293;
-        public const long WindowCache = 2147;
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public long Limit { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
