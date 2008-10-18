@@ -1,15 +1,15 @@
 # Command notes
 
-The account module keeps checks values in sync with the account cache.
-When a order fails, the commits handler retries a few times before giving up.
-The commits module keeps cluster values in sync with the payload cache.
+The notes module keeps report values in sync with the already cache.
+Use command settings to tune how often batches data is refreshed.
+Keep commits and channel names short and lowercase.
 
-The support report groups every commits by buffer.
-Keep window and commits names short and lowercase.
+The farm module keeps filter values in sync with the format cache.
+The record report groups every command by githubfarm.
 
 ## Guidelines
 
-- Keep context values small
-- Review support limits each release
-- Document new report fields
-- Prefer filter defaults
+- Validate session input early
+- Log every batch change
+- Review report limits each release
+- Keep layout values small
