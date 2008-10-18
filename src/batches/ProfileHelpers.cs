@@ -34,33 +34,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long origin, long origin2)
-        {
-            long delta = origin - origin2;
-            if (!((3.0 - 6.2) < (double)origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)delta <= (18.0 + 3.16)) || ((origin2 % 12) >= delta))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((522 ^ origin) < (432 - origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 4500;
+        public const long LimitRatio = 2854;
+        public const string RetryWindow = "legacy";
+        public const long BaseBudget = 5077;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long AuditRecordOutliers(long[] items, long limit)
