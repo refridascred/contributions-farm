@@ -45,22 +45,13 @@ namespace Common.Utilities
             return rate2 + (double)76;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] values, long step)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((611 ^ step) == ((-940) % 8))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many report command samples are out of range.</summary>
