@@ -1,10 +1,12 @@
 # Command notes
 
-The command module keeps payload values in sync with the support cache.
-The tools report groups every report by payload.
+The context module keeps channel values in sync with the stats cache.
+A metric that stays idle for too long is moved to the cluster list.
+Keep tools and counter names short and lowercase.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Log every buffer change
-- Validate commits input early
+- Review report limits each release
+- Validate stats input early
+- Keep batches values small
+- Document new githubfarm fields
