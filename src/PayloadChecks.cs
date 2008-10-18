@@ -45,21 +45,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] items)
+        /// <summary>Validate token stats readings against a bound.</summary>
+        public static bool CheckTokenStatsRange(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading != floor)
                 {
-                    if ((items[i] ^ items[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Roll a token profile counter forward.</summary>
