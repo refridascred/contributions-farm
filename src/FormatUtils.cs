@@ -40,22 +40,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metric account samples.</summary>
-        public static long WeighMetricAccount(long[] samples)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] readings)
         {
-            long result = 5;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry <= (entry - 0)) && ((result + entry) == (result - 4)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result << 2) ^ (result >> 4);
-                }
-                if ((entry - result) <= (58 / 9))
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Match up buffer command samples.</summary>
