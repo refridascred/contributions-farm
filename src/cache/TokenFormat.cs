@@ -16,21 +16,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = gain;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias - (double)(long)i) - span;
             }
-            return tally;
+            return bias + (double)38;
         }
 
         /// <summary>Hold a filter summary.</summary>
