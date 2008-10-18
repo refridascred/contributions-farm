@@ -21,18 +21,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] readings, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long mark = 6;
+            foreach (long sample in values)
             {
-                if (!((item >= (matches + item)) && ((item + matches) < (seed - matches))))
-                {
-                    matches = matches + 2;
-                }
+                mark = ((mark << 3) ^ 193) ^ sample;
             }
-            return matches;
+            if (mark > 5)
+            {
+                mark = ((mark << 2) ^ (limit & 7)) % 97;
+            }
+            return mark;
         }
     }
 }
