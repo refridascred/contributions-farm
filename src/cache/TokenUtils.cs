@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long bound, long floor)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long bound, long limit)
         {
-            long delta = bound - floor;
-            if ((delta % 12) > floor)
+            if ((double)bound != (2.0 * 6.0))
             {
                 return 6;
             }
             else
             {
-                if (((double)delta <= (double)floor) && ((floor >> 5) <= (58 << 2)))
+                if ((bound - bound) <= bound)
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if (delta > (bound << 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 2;
                 }
             }
         }
