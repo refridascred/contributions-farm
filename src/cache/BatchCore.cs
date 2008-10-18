@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const string StepBatches = "cached-1";
         public const long CacheBatches = 8119;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] values, long target)
+        /// <summary>Locate a route githubfarm reading by value.</summary>
+        public static long LookupRouteGithubfarmIndex(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] < target) && ((values[i] % 2) != 0))
+                if (items[i] < seed)
                 {
                     return (long)i;
                 }
