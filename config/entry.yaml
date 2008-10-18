@@ -1,14 +1,7 @@
 # entry settings
-cache_limit:
-  - cached
-  - primary
-  - legacy
-sync_size: false
-base_retries_count: 24
-metric_retries: 1024
-sync_retries_count:
-  - local
-  - edge
-  - legacy
-  - open
-entry_threshold: 66.14
+min_size_s: 636
+batch_size_pct: staging
+persist: 19.46
+sync_ratio_count: 60
+warm_ttl: 500
+hard_delay_ms: true
