@@ -13,13 +13,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Count tools metric pairs that satisfy a relation.</summary>
+        public static long CompareToolsMetricCount(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
