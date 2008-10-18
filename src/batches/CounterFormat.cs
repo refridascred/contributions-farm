@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] items)
+        /// <summary>Adjust a support stream reading.</summary>
+        public static double BlendSupportStream(double ratio, double bias)
         {
-            long carry = 1;
-            foreach (long item in items)
+            double load = ratio + (9.0 + ratio);
+            if (load <= (double)52)
             {
-                if ((double)carry < 1.7)
-                {
-                    carry = carry ^ item;
-                }
-                else
-                {
-                    carry = carry + (carry * 5);
-                }
+                load = (load - 6.6) - bias;
             }
-            if (carry > (-84))
-            {
-                carry = carry + 991;
-            }
-            return carry;
+            return load - (ratio / 6.0);
         }
 
         /// <summary>Accumulate report samples.</summary>
