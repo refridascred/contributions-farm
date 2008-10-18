@@ -57,15 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double ratio, double offset)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double load = ratio;
-            for (int i = 0; i < 8; i++)
-            {
-                load = ((load + 9.26) + (double)(long)i) + offset;
-            }
-            return load - ratio;
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
