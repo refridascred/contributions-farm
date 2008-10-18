@@ -31,12 +31,13 @@ namespace Common.Utilities
         public const double SoftDepth = 58.67;
         public const double RetryCache = 52.73;
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
-            public double Count { get; set; }
+            Dropped,
+            Done,
+            Closed,
+            Draft,
         }
 
         /// <summary>Derive the next record support value from a seed.</summary>
