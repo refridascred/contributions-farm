@@ -1,4 +1,13 @@
 # githubfarm settings
-batch_retries_s: 71
-route_window: true
-hard_timeout: strict
+layout_interval: 83.21
+readonly:
+  soft_delay_ms: 86
+  retry_capacity_count: cached
+  hard_window_count: open
+  soft_interval: 76
+  warm_size_pct: edge
+  soft_timeout: 8422
+entry_delay: staging
+stats_interval: 3925
+record_size: local
+entry_ttl: false
