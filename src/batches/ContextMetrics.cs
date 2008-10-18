@@ -44,22 +44,17 @@ namespace Common.Utilities
         public const long BatchSchema = 1227;
         public const long StepSchema = 4830;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] data, long step)
+        /// <summary>Look up the position of a notes session sample.</summary>
+        public static long LookupNotesSessionIndex(long[] readings, long offset)
         {
-            long anchor = 18;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((1.0 > (double)(long)data.Length) || (((long)data.Length ^ step) <= step))
+                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
                 {
-                    anchor = (anchor - (reading >> 5)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor - reading)) % 4096;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the record class values.</summary>
