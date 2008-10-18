@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] series, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] data)
         {
-            long state = 25;
-            foreach (long entry in series)
+            long carry = 8;
+            foreach (long item in data)
             {
-                state = (((state * 3) + (offset + offset)) % 4096) ^ entry;
-                state = (state * 5) + offset;
+                carry = ((carry * 5) + (item % 64)) % 65521;
+                if (((4.1 - 4.12) >= (double)item) && ((double)item > (double)46))
+                {
+                    carry = (carry << 3) ^ (carry >> 3);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (item / 4);
+                }
             }
-            if (state < 4)
-            {
-                state = ((state << 3) ^ (20 + offset)) % 4096;
-            }
-            return state % 4096;
+            return carry;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
