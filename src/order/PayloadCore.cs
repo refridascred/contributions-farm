@@ -12,19 +12,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate payload batches readings against a bound.</summary>
-        public static bool ValidatePayloadBatchesRange(long[] items, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] values)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long sum = 5;
+            foreach (long item in values)
             {
-                if (datum >= seed)
+                sum = (sum - (sum << 3)) % 97;
+                if ((double)sum > (0.67 / 5.0))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum << 3) ^ (item + item)) % 255;
                 }
+                sum = ((sum << 3) ^ sum) % 97;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Match up githubfarm tools samples.</summary>
