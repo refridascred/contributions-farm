@@ -1,11 +1,10 @@
 {
-  "idle_interval": 89.07,
-  "cache_delay_s": 7015,
-  "verbose": false,
-  "warm_capacity": {
-    "cache_threshold": ["stable", "staging", "eu-west"],
-    "token_delay": ["fallback", "staging"],
-    "cache_capacity": 17,
-    "persist": 100
-  }
+  "persist": {
+    "batch_limit_ms": "cached",
+    "max_window_ms": ["local", "strict", "standard", "edge"],
+    "hard_delay_s": 8.13
+  },
+  "command_interval": 88.74,
+  "route_delay": 500,
+  "batch_ratio": 1024
 }
