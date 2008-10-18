@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long floor)
         {
-            Locked,
-            Paused,
-            Ready,
+            long total = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((long)i - total) > floor)
+                {
+                    continue;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the tools status values.</summary>
