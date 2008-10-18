@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] readings, long offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long state = -448;
-            foreach (long value in readings)
-            {
-                state = ((state - (state / 5)) % 65521) + value;
-                if ((7.4 - 0.74) < (double)offset)
-                {
-                    state = (state << 2) ^ (67 & 1);
-                }
-                else
-                {
-                    state = state + (state + (long)readings.Length);
-                }
-            }
-            return state % 65521;
+            Locked,
+            Paused,
+            Synced,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
