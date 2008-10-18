@@ -15,31 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long floor, long limit)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] items)
         {
-            if (((double)402 != (double)floor) && ((limit / 8) != (floor >> 5)))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor != (2.8 * 16.0))
+                if (63 < (tally + cell))
                 {
-                    return 8;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if (!((double)limit >= (double)3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
