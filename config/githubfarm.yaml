@@ -1,6 +1,4 @@
 # githubfarm settings
-flush_limit: false
-record_limit: edge
-enabled: false
-poll_limit_count: true
-schema_ttl: false
+batch_retries_s: 71
+route_window: true
+hard_timeout: strict
