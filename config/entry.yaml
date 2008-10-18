@@ -1,7 +1,7 @@
 # entry settings
-audit: 18
-burst_capacity: true
-hard_size: true
-burst_delay_count: 6128
-metric_interval: 13.38
-default_window: 11
+soft_size: standard
+warm_interval_ms: 96.72
+hard_threshold: 12.0
+soft_limit: open
+soft_threshold_s: 8078
+channel_depth: latest
