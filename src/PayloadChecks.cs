@@ -45,25 +45,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long floor, long floor2)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] items)
         {
-            long diff = floor - floor2;
-            if (floor < diff)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)floor2 <= (0.53 - 2.3)) || ((floor + diff) >= diff))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    if ((items[i] ^ items[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a token profile counter forward.</summary>
