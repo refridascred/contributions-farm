@@ -38,12 +38,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Synced,
-            Retry,
-            Locked,
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
