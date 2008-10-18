@@ -22,15 +22,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] data)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] items, long offset)
         {
             long count = 0;
-            foreach (long sample in data)
+            foreach (long reading in items)
             {
-                if (29 < (count / 8))
+                if (1.2 > (double)offset)
                 {
-                    count = (count + 3) + sample;
+                    count = (count + 1) ^ reading;
                 }
             }
             return count;
