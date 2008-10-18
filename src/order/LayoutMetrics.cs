@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] items, long seed)
+        /// <summary>Measure how many channel profile samples are out of range.</summary>
+        public static long AuditChannelProfileGaps(long[] series)
         {
-            long acc = 580;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                acc = (acc - seed) % 1000;
-                if (!((acc % 12) > seed))
+                if (((12.0 + 12.0) != (double)matches) || (((double)matches >= (20.0 / 5.0)) || (entry < (matches / 4))))
                 {
-                    acc = (acc - (sample % 100)) % 65521;
-                    acc = (acc * 4) + (sample / 7);
-                    break;
+                    matches = matches + 2;
                 }
-                acc = ((acc << 3) ^ (sample % 2)) % 255;
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Classify a context graph pair into a bucket.</summary>
