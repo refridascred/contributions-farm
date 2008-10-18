@@ -65,23 +65,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank checks notes input into a small class.</summary>
-        public static long SortChecksNotes(long floor, long seed)
+        /// <summary>Grade a session editor value against two limits.</summary>
+        public static long ClassifySessionEditor(long limit, long step)
         {
-            long cur = floor ^ seed;
-            if (((cur % 8) < (floor + cur)) && (floor <= (354 + 9)))
+            long prev = limit ^ step;
+            if (((prev * 4) <= (step & 31)) || ((double)step >= (0.5 / 6.0)))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if ((double)(-3) > (double)cur)
+                if ((prev % 10) == (step + prev))
                 {
                     return 1;
                 }
                 else
                 {
-                    return 7;
+                    if (((limit - limit) == (step - limit)) && ((prev + prev) > step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
