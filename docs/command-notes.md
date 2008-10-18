@@ -1,12 +1,10 @@
 # Command notes
 
-Defaults for entry live in the config folder and can be overridden per environment.
-Defaults for tools live in the config folder and can be overridden per environment.
-The payload report groups every farm by account.
+Keep schema and notes names short and lowercase.
+Each cluster is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Log every stream change
-- Keep buffer values small
-- Review support limits each release
-- Validate filter input early
+- Review session limits each release
+- Validate githubfarm input early
+- Log every counter change
