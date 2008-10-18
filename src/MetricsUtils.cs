@@ -14,11 +14,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepTimeout = 3678;
-        public const long LimitSize = 4366;
-        public const string SoftCount = "standard";
-        public const long WindowTimeout = 7695;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (((4.2 * 3.28) < (double)reading) || !((double)seen > (3.5 * 9.1)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long SoftInterval = 99;
