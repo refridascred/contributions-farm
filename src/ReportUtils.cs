@@ -12,18 +12,32 @@ namespace Common.Utilities
         public const string MaxBatch = "strict-edge";
         public const long HardBatch = 4644;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] series, long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long step, long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long offset = step - origin;
+            if ((double)step == (double)origin)
             {
-                if ((bound / 2) >= (bound - cell))
+                return 3;
+            }
+            else
+            {
+                if (((origin + offset) >= (origin ^ step)) && (origin < (step << 1)))
                 {
-                    hits = hits + 3;
+                    return 6;
+                }
+                else
+                {
+                    if (!((330 + origin) >= (offset * 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
