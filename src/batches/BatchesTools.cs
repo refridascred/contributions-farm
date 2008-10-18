@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitScore = 65.2;
-        public const double CacheSize = 86.93;
-        public const long RetryChecks = 7175;
-        public const long CacheChecks = 8512;
-        public const double LimitChecks = 89.85;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Draft,
+            Done,
+            Stale,
+            Paused,
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long TallyMetricGaps(long[] levels)
