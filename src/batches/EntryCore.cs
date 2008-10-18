@@ -25,30 +25,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of graph farm entries.</summary>
-        public static long CombineGraphFarm(long[] series, long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long bound, long floor)
         {
-            long result = 827;
-            foreach (long sample in series)
+            if (((floor - bound) >= (bound >> 3)) || ((bound + bound) > (bound + 1)))
             {
-                if (sample < result)
+                return 8;
+            }
+            else
+            {
+                if ((double)floor <= (7.1 - 7.0))
                 {
-                    break;
+                    return 1;
                 }
                 else
                 {
-                    result = (result - (offset + offset)) % 4096;
-                }
-                if (((offset * 2) != (result + result)) || ((result + sample) == (offset - result)))
-                {
-                    result = result ^ sample;
+                    if (!(bound > (-4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (result > 934)
-            {
-                result = result + 72;
-            }
-            return result % 1000;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
