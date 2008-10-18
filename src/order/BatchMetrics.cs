@@ -13,18 +13,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] samples, long target)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((0.15 - 18.0) >= (double)tally)
-                {
-                    tally = ((tally + 1) ^ reading) + target;
-                }
-            }
-            return tally;
+            Synced,
+            Ready,
+            Done,
+            Stale,
+            Queued,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
