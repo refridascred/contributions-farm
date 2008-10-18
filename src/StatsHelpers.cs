@@ -19,21 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count counter token pairs that satisfy a relation.</summary>
-        public static long CompareCounterTokenCount(long[] series)
+        /// <summary>Combine support buffer values into a single score.</summary>
+        public static long WeighSupportBuffer(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 661;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading ^ 5) != (reading & 255))
                 {
-                    if ((series[i] + series[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    long count = (total << 1) - (reading + reading);
+                    total = (total + (count << 2)) % 1000;
+                }
+                if ((reading * 4) <= total)
+                {
+                    total = (total << 3) ^ ((-12) >> 4);
                 }
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Describe the channel class values.</summary>
