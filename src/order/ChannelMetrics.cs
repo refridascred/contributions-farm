@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine record cluster values into a single score.</summary>
-        public static long CombineRecordCluster(long[] data, long floor)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long step)
         {
-            long state = 5;
-            foreach (long cell in data)
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((cell / 5) <= (cell + cell))
+                mark = ((mark << 2) ^ (step + 330)) % 97;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    state = ((state << 3) ^ (state - floor)) % 255;
+                    mark = ((mark + (step + mark)) % 4096) ^ (long)i2;
                 }
-                else
-                {
-                    state = ((state * 2) + floor) % 255;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
