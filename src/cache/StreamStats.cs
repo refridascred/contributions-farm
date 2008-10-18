@@ -37,31 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long limit, long seed)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            if ((seed - (-3)) <= (seed - seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(seed <= (limit ^ seed)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed < (double)4)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public double Size { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
