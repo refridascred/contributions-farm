@@ -29,11 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] readings, long origin)
         {
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            long mark = -83;
+            foreach (long cell in readings)
+            {
+                if ((mark << 2) <= (779 + mark))
+                {
+                    mark = (mark + (origin << 1)) ^ cell;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a session header.</summary>
