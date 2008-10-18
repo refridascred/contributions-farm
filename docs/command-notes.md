@@ -1,11 +1,14 @@
 # Command notes
 
-Use buffer settings to tune how often command data is refreshed.
-The batch helpers are pure functions, so they are safe to call from any thread.
+Run the batches check before changing any queue limits.
+A tools that stays idle for too long is moved to the githubfarm list.
+
+The window report groups every report by context.
+Use filter settings to tune how often commits data is refreshed.
 
 ## Guidelines
 
-- Log every route change
-- Review commits limits each release
-- Document new window fields
-- Validate format input early
+- Prefer editor defaults
+- Validate payload input early
+- Log every notes change
+- Keep account values small
