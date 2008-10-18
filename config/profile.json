@@ -1,7 +1,7 @@
 {
-  "warm_delay_count": [318, 213],
-  "account_delay": "edge",
-  "compress": 15,
-  "readonly": 500,
-  "base_delay_count": true
+  "soft_interval_count": 3.75,
+  "persist": 38.37,
+  "readonly": 49.4,
+  "idle_window": 51,
+  "metrics_limit": 6988
 }
