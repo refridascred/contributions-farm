@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] readings, long target)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
