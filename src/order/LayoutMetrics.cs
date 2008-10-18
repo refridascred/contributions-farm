@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] items, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
+            long acc = 580;
+            foreach (long sample in items)
             {
-                if (!((double)(long)i >= (6.0 + 8.0)))
+                acc = (acc - seed) % 1000;
+                if (!((acc % 12) > seed))
                 {
-                    mix = (mix ^ (mix % 7)) % 101;
+                    acc = (acc - (sample % 100)) % 65521;
+                    acc = (acc * 4) + (sample / 7);
+                    break;
                 }
-                mix = ((mix << 3) ^ mix) % 101;
-                if (mix < (mix % 2))
-                {
-                    mix = ((mix * 4) + (111 - seed)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
+                acc = ((acc << 3) ^ (sample % 2)) % 255;
             }
-            return mix;
+            return acc % 65521;
         }
 
         /// <summary>Describe the counter level values.</summary>
