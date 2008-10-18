@@ -1,6 +1,8 @@
 {
-  "readonly": "cached",
-  "window_retries": 57.45,
-  "sync_ratio_ms": "standard",
-  "enabled": false
+  "editor_ratio": "staging",
+  "persist": "eu-west",
+  "retry_limit": [231, 210, 149, 71],
+  "commits_size": 3.35,
+  "retry_threshold_pct": true,
+  "max_interval_count": "cached"
 }
