@@ -30,14 +30,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] levels)
         {
-            New,
-            Queued,
-            Dropped,
-            Failed,
-            Idle,
+            long anchor = 29;
+            foreach (long reading in levels)
+            {
+                if ((8 >> 1) >= (anchor * 4))
+                {
+                    anchor = anchor + anchor;
+                }
+                if ((double)anchor >= (double)reading)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the window kind values.</summary>
