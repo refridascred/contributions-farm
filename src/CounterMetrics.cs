@@ -28,15 +28,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double weight, double offset)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long target)
         {
-            double gain = (double)((-1) + 4);
-            if (gain > gain)
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                gain = ((gain + gain) - weight) - offset;
+                if ((score ^ (long)i) < target)
+                {
+                    score = (score - (2 ^ target)) % 65521;
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return gain - (double)6;
+            return score;
         }
 
         /// <summary>Check that every filter layout entry stays within the limit.</summary>
