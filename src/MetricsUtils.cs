@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine metrics commits values into a single score.</summary>
-        public static long WeighMetricsCommits(long[] series, long floor)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long carry = 8;
-            foreach (long reading in series)
-            {
-                carry = ((carry << 2) ^ (floor + reading)) % 97;
-                carry = carry - carry;
-            }
-            return carry % 97;
+            Synced,
+            Closed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
