@@ -16,13 +16,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long floor, long offset)
         {
-            Paused,
-            Idle,
-            Closed,
-            Retry,
+            long edge = floor + offset;
+            if ((edge ^ edge) <= (floor * 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((edge + offset) > (floor + 822))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
