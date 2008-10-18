@@ -32,36 +32,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] series)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long limit)
         {
-            long mix = 44;
-            foreach (long datum in series)
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (((double)datum > 3.9) && (749 <= (datum * 4)))
-                {
-                    mix = (mix + (567 + mix)) % 255;
-                    continue;
-                }
-                else
-                {
-                    mix = mix - datum;
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    mix = ((mix << 3) ^ (datum + 8)) + (long)i;
-                    mix = mix ^ (datum + datum);
-                }
-                if ((6 - mix) < (-224))
-                {
-                    mix = mix + (datum + 71);
-                }
-                else
-                {
-                    mix = (mix + (mix * 2)) % 1000;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mix % 1000;
+            return mark;
         }
     }
 }
