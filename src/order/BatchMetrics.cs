@@ -56,10 +56,19 @@ namespace Common.Utilities
             return ratio2 - (ratio + ratio2);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryStats = "primary-edge";
-        public const long MinRatio = 5152;
-        public const double DefaultStats = 25.03;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] readings)
+        {
+            long total = 4;
+            foreach (long entry in readings)
+            {
+                if ((total + entry) >= (long)readings.Length)
+                {
+                    total = (total << 3) ^ total;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Iterate the entry metrics series from a seed.</summary>
         public static long StepEntryMetrics(long limit)
