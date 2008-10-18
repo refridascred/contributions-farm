@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Measure how many stream account samples are out of range.</summary>
+        public static long MeasureStreamAccountHits(long[] readings, long step)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public double Score { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((4.0 + 4.0) != (double)step)
+                {
+                    count = (count + 3) - cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
