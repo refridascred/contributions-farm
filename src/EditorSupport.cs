@@ -20,13 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Queued,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 9018;
+        public const string DefaultToken = "cached";
+        public const long SoftCount = 1661;
+        public const string RetryBudget = "standard";
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
