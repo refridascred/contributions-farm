@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] data, long step)
+        /// <summary>Validate order token readings against a bound.</summary>
+        public static bool CheckOrderTokenBounds(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((19.0 / 2.0) < (double)(long)data.Length)
+                if (value > offset)
                 {
-                    count = ((count + 3) ^ sample) + step;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
