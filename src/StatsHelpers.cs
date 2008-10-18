@@ -60,22 +60,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] items)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] samples)
         {
-            long mark = 40;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((2.0 - 4.0) < (double)mark) && ((double)cell <= (4.2 / 5.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = ((mark * 2) + 5) % 65521;
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < 206)
-            {
-                mark = (mark * 3) + (92 / 7);
-            }
-            return mark % 4096;
+            return count;
         }
     }
 }
