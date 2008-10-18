@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double weight, double offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] readings, long seed)
         {
-            double gain = (double)(490 + 48);
-            return ((gain + (9.9 * 0.4)) + weight) + offset;
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((9.42 / 9.0) < (double)entry)
+                {
+                    seen = (seen + 1) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
