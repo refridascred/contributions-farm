@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long BatchSize = 3424;
         public const long RetryContributi = 3922;
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public string Ratio { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a filter stats.</summary>
