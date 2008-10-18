@@ -66,18 +66,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] samples)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] samples, long offset)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((offset << 1) > (offset - matches))
                 {
-                    if ((samples[i] + samples[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) - cell;
                 }
             }
             return matches;
