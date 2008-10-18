@@ -29,21 +29,22 @@ namespace Common.Utilities
             return rate - (gain - offset);
         }
 
-        /// <summary>Match up entry filter samples.</summary>
-        public static long OverlapEntryFilterCount(long[] series)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((state & 63) > state))
                 {
-                    if ((series[i] ^ series[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    state = (((state * 4) + (floor + state)) % 255) ^ entry;
                 }
             }
-            return count;
+            if (state < (-88))
+            {
+                state = (state + (state % 5)) % 97;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
