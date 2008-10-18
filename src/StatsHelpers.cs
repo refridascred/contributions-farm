@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double ratio, double bias)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] samples, long origin)
         {
-            double rate = ratio;
-            if (rate <= (double)4)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                rate = (rate - (double)(-7)) + bias;
+                if ((origin <= (hits + entry)) && ((double)hits <= (18.0 - 13.0)))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                rate = rate + (5.28 * 6.6);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - ratio) + (double)(long)i;
-            }
-            return rate + rate;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
