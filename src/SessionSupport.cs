@@ -32,15 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] series, long origin)
+        /// <summary>Roll a metric filter counter forward.</summary>
+        public static long IterateMetricFilter(long step)
         {
-            long carry = 795;
-            foreach (long sample in series)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                carry = ((carry + ((long)series.Length + 1)) + sample) + origin;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Adjust a token reading.</summary>
