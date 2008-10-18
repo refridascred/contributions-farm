@@ -1,16 +1,14 @@
 # entry settings
-layout_ttl: 59
-dry_run: local
-min_timeout_count:
-  min_capacity: false
-  schema_capacity:
-    hard_depth_count: 60
-    cluster_ratio:
-      - 140
-      - 95
-    hard_ttl_pct: fallback
-  cache_ratio_ms: true
-  command_interval: 14
-  burst_delay: 29.22
-  base_capacity: 967
-contributi_size: 32.63
+hard_limit_ms:
+  dry_run: 80.8
+  poll_limit: 9.18
+  default_size_pct:
+    layout_capacity: false
+    hard_retries_pct: false
+    dry_run: primary
+    poll_depth_pct: false
+    max_delay: 83.63
+    support_window: 12.74
+  account_depth: false
+flush_retries: cached
+readonly: primary
