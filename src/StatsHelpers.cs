@@ -19,11 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryDepth = 57.02;
-        public const long CacheRatio = 1678;
-        public const string BaseCount = "legacy-v2";
-        public const double BurstAlready = 24.49;
+        /// <summary>Count counter token pairs that satisfy a relation.</summary>
+        public static long CompareCounterTokenCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
