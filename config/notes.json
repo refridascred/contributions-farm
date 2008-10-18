@@ -1,7 +1,5 @@
 {
-  "notes_window": 12.48,
-  "warm_ratio_ms": 6317,
-  "min_size": "open",
-  "dry_run": "eu-west",
-  "burst_ratio_count": 38.85
+  "burst_capacity": "green",
+  "cache_ratio": "edge",
+  "cache_delay_count": [104, 144, 192, 458]
 }
