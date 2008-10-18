@@ -31,12 +31,13 @@ namespace Common.Utilities
             return rate - (gain - offset);
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public long Total { get; set; }
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
