@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 2953;
-        public const long MaxFarm = 6125;
-        public const long BaseFarm = 6832;
+        /// <summary>Count format order pairs that satisfy a relation.</summary>
+        public static long OverlapFormatOrderCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenMatches(long[] samples, long step)
