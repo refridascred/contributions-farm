@@ -35,14 +35,19 @@ namespace Common.Utilities
             return (load + load) + bias;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] series, long origin)
         {
-            Retry,
-            Queued,
-            Active,
-            Done,
-            Draft,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define already limits and defaults.</summary>
