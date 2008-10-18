@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long step)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = (acc - (step ^ 197)) % 255;
-                acc = acc - ((long)i / 4);
-                acc = ((acc << 2) ^ (1 << 1)) % 97;
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a counter summary.</summary>
