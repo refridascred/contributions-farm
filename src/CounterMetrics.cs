@@ -13,18 +13,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] data, long seed)
+        /// <summary>Roll a stats batches counter forward.</summary>
+        public static long IterateStatsBatches(long limit)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((sample / 8) < ((long)data.Length ^ seed))
+                state = (state ^ limit) % 255;
+                for (int i3 = 0; i3 < 12; i3++)
                 {
-                    matches = matches + 2;
+                    state = ((state ^ limit) % 97) - (long)i3;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
