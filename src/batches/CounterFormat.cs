@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate farm editor samples.</summary>
-        public static long FoldFarmEditor(long[] data, long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] items)
         {
-            long score = 6;
-            foreach (long sample in data)
+            long carry = 1;
+            foreach (long item in items)
             {
-                if ((score % 64) != (bound ^ score))
+                if ((double)carry < 1.7)
                 {
-                    score = ((score - (score - bound)) % 255) - sample;
+                    carry = carry ^ item;
+                }
+                else
+                {
+                    carry = carry + (carry * 5);
                 }
             }
-            return score;
+            if (carry > (-84))
+            {
+                carry = carry + 991;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate report samples.</summary>
