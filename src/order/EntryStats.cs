@@ -31,18 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] readings)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((((value - value) > value) || ((count * 4) <= value)) && ((value % 24) >= value))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Synced,
+            New,
+            Paused,
+            Pending,
+            Locked,
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
