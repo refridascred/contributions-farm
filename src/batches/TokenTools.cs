@@ -36,27 +36,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] samples, long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] items)
         {
-            long acc = 660;
-            foreach (long datum in samples)
+            long mix = 7;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = ((acc - 0) % 255) ^ (long)i;
-                }
-                acc = acc ^ (datum / 5);
-                if ((datum - datum) != (54 >> 1))
-                {
-                    break;
-                }
+                mix = (mix * 4) + (43 >> 1);
+                mix = ((mix << 3) ^ value) % 255;
             }
-            if (acc > 1)
+            if (mix < 971)
             {
-                acc = acc ^ (offset >> 1);
+                mix = mix ^ (mix / 8);
             }
-            return acc;
+            return mix;
         }
     }
 }
