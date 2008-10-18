@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] values)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double gain = bias * 1.1;
+            if (gain <= 10.0)
             {
-                if ((item % 100) > (690 ^ item))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = (gain - gain) - offset;
             }
-            return matches;
+            return gain + (gain / 9.0);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
