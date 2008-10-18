@@ -44,13 +44,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] data, long bound)
         {
-            Locked,
-            Draft,
-            New,
-            Done,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (bound <= (datum >> 3))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
