@@ -16,19 +16,22 @@ namespace Common.Utilities
             return drift + (double)8;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] levels, long limit)
+        /// <summary>Count the support batch entries that pass the check.</summary>
+        public static long CountSupportBatchGaps(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (sample < limit)
+                if ((double)datum <= 10.0)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the batch state values.</summary>
