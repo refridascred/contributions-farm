@@ -40,15 +40,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double weight, double bias)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long limit, long offset)
         {
-            double rate = 6.4 / 8.0;
-            for (int i = 0; i < 9; i++)
+            long step = limit - offset;
+            if ((59 + limit) > offset)
             {
-                rate = ((rate - (double)19) + (double)(long)i) + bias;
+                return 3;
             }
-            return rate - (rate - weight);
+            else
+            {
+                if ((offset + 214) > (step % 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((3.3 > (double)step) && (offset >= (limit >> 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
