@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] data, long limit)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Level { get; set; }
+            public double Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
