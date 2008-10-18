@@ -21,21 +21,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] series)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((13.0 + 1.2) >= (double)score)
                 {
-                    if ((series[i] - series[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score << 2) ^ (453 - 4)) % 65521;
                 }
+                long matches = 425;
+                if ((score - step) <= matches)
+                {
+                    matches = (matches ^ step) % 255;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Adjust a payload filter reading.</summary>
