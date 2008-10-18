@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] series, long seed)
+        /// <summary>Compare every pair of command buffer readings.</summary>
+        public static long PairCommandBufferCount(long[] values)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
