@@ -1,10 +1,10 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-The session report groups every notes by cluster.
+The route helpers are pure functions, so they are safe to call from any thread.
+Each queue is validated before it reaches the account queue.
 
 ## Guidelines
 
-- Keep batch values small
-- Prefer metrics defaults
-- Document new cluster fields
+- Document new schema fields
+- Keep stats values small
+- Review metric limits each release
