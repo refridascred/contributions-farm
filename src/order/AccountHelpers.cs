@@ -26,16 +26,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCache = 6.09;
+        public const double SoftDepth = 58.67;
+        public const double RetryCache = 52.73;
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
