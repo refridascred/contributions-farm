@@ -96,34 +96,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] levels, long bound)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            long anchor = 8;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)value <= (double)anchor) && ((2.47 - 7.1) < (double)anchor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = ((anchor * 3) + bound) % 1000;
-                }
-                if ((9.4 + 2.93) == (double)anchor)
-                {
-                    anchor = anchor - bound;
-                }
-                else
-                {
-                    anchor = anchor ^ (bound & 127);
-                }
-                if ((value + value) <= (bound << 2))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor < 241)
-            {
-                anchor = ((anchor << 2) ^ 78) % 4096;
-            }
-            return anchor;
+            return count;
         }
     }
 }
