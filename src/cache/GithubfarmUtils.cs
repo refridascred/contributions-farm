@@ -18,15 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next token editor value.</summary>
-        public static double AdjustTokenEditor(double bias, double bias2)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long limit, long bound)
         {
-            double ratio = (double)809 + (double)912;
-            for (int i = 0; i < 5; i++)
+            long offset = limit ^ bound;
+            if ((bound & 31) < offset)
             {
-                ratio = (ratio + bias) + (double)(long)i;
+                return 2;
             }
-            return ratio - (bias2 * 9.0);
+            else
+            {
+                if (!((718 * 5) <= (offset >> 4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Match up checks samples.</summary>
