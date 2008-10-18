@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 4730;
-        public const string BurstFactor = "stable-edge";
-        public const string BatchAccount = "alpha-edge";
-        public const long DefaultAccount = 5727;
-        public const double LimitAccount = 86.23;
+        /// <summary>Look up the position of a channel checks sample.</summary>
+        public static long LookupChannelChecksIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long RollMetric(long bound)
