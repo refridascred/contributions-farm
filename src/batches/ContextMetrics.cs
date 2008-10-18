@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 5729;
+        public const double BaseChecks = 59.93;
+        public const string WindowInterval = "staging-v2";
 
         /// <summary>Rank queue session input into a small class.</summary>
         public static long GradeQueueSession(long limit, long seed)
