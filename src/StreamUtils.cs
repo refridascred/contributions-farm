@@ -82,13 +82,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] series, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Score { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
