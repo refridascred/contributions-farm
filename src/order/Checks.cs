@@ -41,11 +41,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public string Offset { get; set; } = "";
-            public string Count { get; set; } = "";
+            Synced,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the window status values.</summary>
