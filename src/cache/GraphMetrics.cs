@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the checks graph series from a seed.</summary>
-        public static long SeriesChecksGraph(long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                sum = (sum - (offset & 127)) % 97;
+                if ((double)sum < (11.0 / 7.0))
+                {
+                    sum = (sum - offset) % 255;
+                    sum = ((sum << 3) ^ (offset * 4)) % 65521;
+                }
+                sum = (sum << 3) ^ (sum / 4);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
