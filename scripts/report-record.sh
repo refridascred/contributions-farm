@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached edge standard; do
+for item in cached fallback local eu-west; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-RECORD_LIMIT=404
+RECORD_LIMIT=474
 log "limit is ${RECORD_LIMIT}"
