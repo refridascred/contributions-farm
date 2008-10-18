@@ -1,8 +1,7 @@
 # support settings
-batch_timeout: cached
-warm_retries:
-  - 341
-  - 77
-  - 136
-  - 94
-dry_run: 24
+batch_ttl_ms: local
+poll_threshold_ms: 15
+strict:
+  - 96
+  - 229
+sync_size_count: green
