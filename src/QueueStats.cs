@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 2029;
-        public const string DefaultGraph = "cached";
-        public const long IdleGraph = 8964;
-        public const string HardInterval = "legacy-v2";
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] series, long limit)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell - count) < (8 + count))
+                {
+                    count = (count + 2) + limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TotalCounter(long[] readings, long origin)
