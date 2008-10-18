@@ -1,12 +1,6 @@
 {
-  "enabled": "eu-west",
-  "batch_ratio": 3445,
-  "min_capacity": {
-    "poll_interval_s": true,
-    "sync_ratio": 74,
-    "poll_ratio_pct": [364, 368, 17]
-  },
-  "soft_ratio_count": "eu-west",
-  "cache_limit": 5087,
-  "route_size": true
+  "hard_window_pct": 44,
+  "readonly": [34, 21],
+  "cache_interval": "green",
+  "cache_threshold_s": 85.1
 }
