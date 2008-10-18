@@ -33,10 +33,15 @@ namespace Common.Utilities
         public const long BurstBudget = 7753;
         public const long LimitGithubfarm = 3022;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 3744;
-        public const double LimitCommand = 47.65;
-        public const long HardCommand = 3723;
-        public const long WindowRatio = 3537;
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double weight, double offset)
+        {
+            double bias = (weight / 3.0) / 8.0;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = ((bias + (weight - weight)) + (double)(long)i) - offset;
+            }
+            return bias + 8.0;
+        }
     }
 }
