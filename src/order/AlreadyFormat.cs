@@ -44,26 +44,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] samples)
+        /// <summary>Count the batches commits entries that pass the check.</summary>
+        public static long MeasureBatchesCommitsGaps(long[] levels, long bound)
         {
-            long score = 6;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (((1.15 * 9.8) != (double)score) || ((score & 255) >= (score << 3)))
+                if ((double)entry <= (4.3 + 4.6))
                 {
-                    score = (score * 5) + (score % 100);
-                }
-                else
-                {
-                    score = score - (datum + (-992));
+                    hits = (hits + 2) + bound;
                 }
             }
-            if (score > 130)
-            {
-                score = (score - 18) % 4096;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
