@@ -36,12 +36,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxSpan = 3905;
-        public const long StepBudget = 5212;
-        public const long MinRatio = 9816;
-        public const double BurstFactor = 90.32;
-        public const double RetryEntry = 96.65;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long seed, long floor)
+        {
+            if (seed > (seed & 31))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((3.8 - 7.7) < (double)floor) || ((seed % 8) < (seed * 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
