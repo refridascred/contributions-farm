@@ -67,15 +67,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] values, long limit)
+        /// <summary>Audit report schema readings against a rule.</summary>
+        public static long TallyReportSchemaMatches(long[] data, long offset)
         {
             long seen = 0;
-            foreach (long sample in values)
+            foreach (long reading in data)
             {
-                if ((seen + sample) < sample)
+                if (13.0 < (double)seen)
                 {
-                    seen = (seen + 3) + limit;
+                    seen = ((seen + 2) ^ reading) - offset;
                 }
             }
             return seen;
