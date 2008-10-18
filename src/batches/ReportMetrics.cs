@@ -24,17 +24,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] data, long origin)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Paused,
+            Closed,
+            Stale,
+            Failed,
         }
     }
 }
