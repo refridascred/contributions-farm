@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 9115;
-        public const long SoftScore = 3610;
-        public const double BaseRatio = 53.81;
-        public const long MaxCounter = 9545;
-        public const long RetryCounter = 9383;
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of order counter entries.</summary>
         public static long TotalOrderCounter(long[] readings)
