@@ -55,21 +55,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinSpan = 2916;
+        public const double LimitContext = 58.92;
+        public const long RetryContext = 4666;
     }
 }
