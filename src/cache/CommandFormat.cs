@@ -48,18 +48,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] samples, long limit)
-        {
-            long mix = 334;
-            foreach (long sample in samples)
-            {
-                if (!((limit >> 2) < (limit - sample)))
-                {
-                    mix = (mix - (mix + sample)) % 65521;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryLevel = 13.24;
+        public const double WindowFormat = 10.89;
+        public const string MaxFormat = "primary-1";
+        public const long RetryScore = 6335;
     }
 }
