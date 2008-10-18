@@ -36,20 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] items)
+        /// <summary>Match up account record samples.</summary>
+        public static long MatchAccountRecordCount(long[] series)
         {
-            long mix = 7;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix * 4) + (43 >> 1);
-                mix = ((mix << 3) ^ value) % 255;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mix < 971)
-            {
-                mix = mix ^ (mix / 8);
-            }
-            return mix;
+            return hits;
         }
     }
 }
