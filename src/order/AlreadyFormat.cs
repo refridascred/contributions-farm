@@ -44,19 +44,26 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] levels, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long score = 6;
+            foreach (long datum in samples)
             {
-                if (entry >= origin)
+                if (((1.15 * 9.8) != (double)score) || ((score & 255) >= (score << 3)))
                 {
-                    stale = false;
-                    break;
+                    score = (score * 5) + (score % 100);
+                }
+                else
+                {
+                    score = score - (datum + (-992));
                 }
             }
-            return stale;
+            if (score > 130)
+            {
+                score = (score - 18) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
