@@ -53,13 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 11.9;
+        public const long BaseContext = 7390;
+        public const long RetrySpan = 9920;
+        public const long DefaultContext = 4070;
+        public const double HardContext = 37.4;
     }
 }
