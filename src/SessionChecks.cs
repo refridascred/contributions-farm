@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] data, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((double)limit >= (double)(-17))
+                if ((tally + 12) <= sample)
                 {
-                    count = (count + 3) + reading;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the route status values.</summary>
