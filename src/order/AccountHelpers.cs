@@ -47,25 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long floor, long target)
-        {
-            if ((1.1 * 16.0) > (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((18.0 * 9.0) >= (double)target) && (target <= (target - floor)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetrySpan = 80.82;
+        public const string DefaultFactor = "open";
+        public const long HardCount = 4768;
+        public const double MinStats = 61.41;
 
         /// <summary>Check that every record command entry stays within the limit.</summary>
         public static bool ValidateRecordCommandLimits(long[] values, long bound)
