@@ -44,38 +44,19 @@ namespace Common.Utilities
             return (load + load) + bias;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long bound, long step)
+        /// <summary>Validate account already readings against a bound.</summary>
+        public static bool GuardAccountAlreadyBounds(long[] levels, long offset)
         {
-            if (((step + bound) <= bound) && ((bound ^ bound) >= 41))
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound & 31) <= (-2))
+                if (datum > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((step << 1) < step) || ((step & 255) >= (step + 8)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (step > (bound / 9))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define already limits and defaults.</summary>
