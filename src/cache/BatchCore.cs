@@ -20,26 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] series, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                acc = (acc << 2) ^ (acc + (long)i);
-                acc = ((acc << 3) ^ ((long)i + bound)) % 97;
-                if (((long)i ^ bound) == (long)i)
+                if (item <= seed)
                 {
-                    acc = ((acc << 2) ^ (bound >> 1)) % 97;
-                    acc = (acc << 3) ^ ((long)i * 4);
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    acc = ((acc * 4) + acc) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Describe the support phase values.</summary>
