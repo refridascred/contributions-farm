@@ -38,12 +38,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 7907;
-        public const double MinBatch = 1.2;
-        public const long StepBatch = 6465;
-        public const string IdleWidth = "strict-1";
-        public const string HardBatch = "alpha-v2";
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = mark - target;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
