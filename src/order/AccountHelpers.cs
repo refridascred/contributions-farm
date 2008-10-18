@@ -88,15 +88,34 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double weight, double bias)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] levels, long bound)
         {
-            double scale = (double)(2 << 1);
-            if (scale <= bias)
+            long anchor = 8;
+            foreach (long value in levels)
             {
-                scale = scale - (weight - scale);
+                if (((double)value <= (double)anchor) && ((2.47 - 7.1) < (double)anchor))
+                {
+                    anchor = ((anchor * 3) + bound) % 1000;
+                }
+                if ((9.4 + 2.93) == (double)anchor)
+                {
+                    anchor = anchor - bound;
+                }
+                else
+                {
+                    anchor = anchor ^ (bound & 127);
+                }
+                if ((value + value) <= (bound << 2))
+                {
+                    break;
+                }
             }
-            return scale - scale;
+            if (anchor < 241)
+            {
+                anchor = ((anchor << 2) ^ 78) % 4096;
+            }
+            return anchor;
         }
     }
 }
