@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double bias, double span)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double load = bias;
-            if (load > (bias / 2.0))
-            {
-                load = (load - load) + span;
-            }
-            else
-            {
-                load = load - (double)569;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (9.79 - bias)) + (double)(long)i;
-            }
-            return load + load;
+            Paused,
+            Synced,
+            Retry,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Compare every pair of session batches readings.</summary>
