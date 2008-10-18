@@ -46,17 +46,24 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] items, long bound)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long bound, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (3 > (step / 7))
             {
-                if ((items[i] < bound) && ((items[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((step ^ bound) <= (step * 4))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
