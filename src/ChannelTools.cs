@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of stats queue readings.</summary>
-        public static long ScoreStatsQueue(long[] values, long step)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] levels)
         {
-            long result = -59;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (step > (entry + entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result * 4) + entry) % 255;
+                    if ((levels[i] + levels[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    result = (result * 4) + entry;
-                }
-                result = (result ^ (result + 93)) % 101;
-                result = ((result << 3) ^ step) % 97;
             }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Count the stats buffer entries that pass the check.</summary>
