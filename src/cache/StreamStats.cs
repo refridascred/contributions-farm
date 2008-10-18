@@ -37,20 +37,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long limit, long seed)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            if ((seed - (-3)) <= (seed - seed))
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = ((state * 4) + 56) % 97;
-                    state = (state + (state - (long)i2)) % 65521;
-                }
-                state = ((state * 5) + (long)i) % 65521;
+                return 7;
             }
-            return state;
+            else
+            {
+                if (!(seed <= (limit ^ seed)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed < (double)4)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
