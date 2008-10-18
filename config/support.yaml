@@ -1,9 +1,15 @@
 # support settings
-soft_window: strict
-retry_depth_count:
-  - 161
-  - 195
-warm_timeout: true
-cache_depth_ms: cached
-metrics_depth: standard
-sync_timeout_count: staging
+sync_retries_count:
+  stats_threshold:
+    - latest
+    - local
+    - latest
+    - latest
+  hard_window_s: 8196
+  base_window_pct: 27.42
+  persist: local
+  layout_threshold: eu-west
+  filter_timeout: true
+window_window: local
+strict: 41.49
+max_interval: 1414
