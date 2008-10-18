@@ -26,22 +26,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] levels, long limit)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry * 5) <= (hits << 2))
-                {
-                    hits = (hits + 3) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Ready,
+            New,
+            Pending,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
