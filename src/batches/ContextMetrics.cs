@@ -41,31 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long target, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] samples)
         {
-            if (24 < (origin / 4))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target % 24) <= origin)
+                if ((sample + sample) == (sample >> 4))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)39 >= (double)target) || (origin >= (origin * 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
