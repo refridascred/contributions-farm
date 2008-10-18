@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ratio - (scale + scale);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftBudget = 8984;
-        public const long MinWidth = 8607;
-        public const double HardScore = 59.49;
-        public const long IdleRecord = 6327;
+        /// <summary>Project the next editor format value.</summary>
+        public static double ProjectEditorFormat(double weight, double bias)
+        {
+            double mean = (double)(4 + 32);
+            if (mean <= (6.0 / 4.0))
+            {
+                mean = (mean + (mean / 9.0)) - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (mean * 3.0)) - (double)(long)i;
+            }
+            return mean - (weight / 5.0);
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
