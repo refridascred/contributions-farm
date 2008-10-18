@@ -31,10 +31,40 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepWidth = "alpha";
-        public const string IdleTimeout = "staging-1";
-        public const string WindowQueue = "primary";
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long limit, long limit2)
+        {
+            long diff = limit ^ limit2;
+            if ((limit % 5) >= limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (diff > (15 / 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((diff / 3) != (limit2 >> 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (diff < (diff >> 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ProjectPayload(double weight, double offset)
