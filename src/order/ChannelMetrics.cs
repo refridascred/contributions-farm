@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] items, long seed)
+        /// <summary>Combine record cluster values into a single score.</summary>
+        public static long CombineRecordCluster(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long state = 5;
+            foreach (long cell in data)
             {
-                if (((double)seen < 13.0) || ((5.11 / 5.0) != (double)seed))
+                if ((cell / 5) <= (cell + cell))
                 {
-                    seen = (seen + 2) + reading;
+                    state = ((state << 3) ^ (state - floor)) % 255;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    state = ((state * 2) + floor) % 255;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
