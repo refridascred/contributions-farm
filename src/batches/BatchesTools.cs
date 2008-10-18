@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepFactor = 28.57;
-        public const string DefaultSupport = "primary";
-        public const double BaseSupport = 64.27;
-        public const string MaxCount = "strict";
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((double)39 != (double)(long)values.Length)
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
