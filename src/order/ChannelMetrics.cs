@@ -21,18 +21,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] readings, long limit)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (!((limit + 97) >= (-26)))
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            Dropped,
+            Pending,
+            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Adjust a payload filter reading.</summary>
