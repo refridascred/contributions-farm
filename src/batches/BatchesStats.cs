@@ -57,22 +57,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of notes batch entries.</summary>
-        public static long TotalNotesBatch(long[] values)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] levels, long origin)
         {
-            long mix = 65;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((mix ^ mix) >= mix)
+                if ((7.1 * 2.92) <= (double)seen)
                 {
-                    mix = ((mix << 3) ^ (535 / 4)) - item;
+                    seen = ((seen + 1) + sample) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (mix < 6)
-            {
-                mix = ((mix * 2) + (mix + mix)) % 101;
-            }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Hold a profile record.</summary>
