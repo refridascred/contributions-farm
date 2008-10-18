@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long RetrySize = 6324;
         public const long WindowEditor = 6184;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] levels, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (levels[i] == step)
+                if (origin <= (5 << 2))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
