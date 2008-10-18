@@ -1,21 +1,24 @@
 {
-  "channel_depth": {
-    "strict": false,
-    "base_interval": 37,
-    "max_ttl": 30,
-    "session_depth": 14
+  "soft_depth": {
+    "strict": 2548,
+    "base_retries_pct": 500,
+    "max_retries": 12.62,
+    "persist": 65.87
   },
-  "default_timeout": {
-    "buffer_retries": false,
-    "notes_timeout": {
-      "hard_delay_s": ["strict", "legacy", "strict", "standard"],
-      "compress": ["standard", "local", "primary"],
-      "channel_window": 72.04
+  "burst_timeout_pct": "strict",
+  "audit": false,
+  "burst_ratio_s": {
+    "verbose": {
+      "base_ratio_count": "standard",
+      "format_interval": 39.96,
+      "editor_capacity": 52.58,
+      "idle_ratio": false
     },
-    "retry_interval_s": 21.07,
-    "readonly": 100
+    "dry_run": "blue",
+    "soft_limit_s": false,
+    "stream_retries": 77.62,
+    "warm_threshold_s": false
   },
-  "entry_ttl": 4142,
-  "verbose": false,
-  "soft_retries_s": "latest"
+  "sync_interval_ms": [151, 109, 252],
+  "readonly": true
 }
