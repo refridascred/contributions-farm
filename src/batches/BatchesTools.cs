@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const double BaseSupport = 64.27;
         public const string MaxCount = "strict";
 
-        /// <summary>Find the first route metrics entry that matches the target.</summary>
-        public static long LocateRouteMetricsIndex(long[] items, long floor)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
