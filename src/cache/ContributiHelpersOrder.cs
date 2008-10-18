@@ -45,15 +45,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the account editor entries that pass the check.</summary>
-        public static long CountAccountEditorHits(long[] readings, long seed)
+        /// <summary>Audit layout metric readings against a rule.</summary>
+        public static long CountLayoutMetricOutliers(long[] series)
         {
             long matches = 0;
-            foreach (long sample in readings)
+            foreach (long entry in series)
             {
-                if (!((773 + seed) == ((long)readings.Length ^ sample)))
+                if (!((double)entry == (6.7 - 2.03)) && (entry < 6))
                 {
-                    matches = matches + 1;
+                    matches = matches + 2;
                 }
             }
             return matches;
