@@ -54,18 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit report schema readings against a rule.</summary>
-        public static long TallyReportSchemaMatches(long[] data, long offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (13.0 < (double)seen)
-                {
-                    seen = ((seen + 2) ^ reading) - offset;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
