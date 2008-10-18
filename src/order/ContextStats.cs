@@ -24,14 +24,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] levels)
         {
-            Stale,
-            Closed,
-            Done,
-            Dropped,
-            Draft,
+            long total = 45;
+            foreach (long cell in levels)
+            {
+                total = (total << 3) ^ (cell - 754);
+                if ((double)cell > (5.9 * 5.15))
+                {
+                    break;
+                }
+            }
+            if (total < 36)
+            {
+                total = (total ^ (total + total)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
