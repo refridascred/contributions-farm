@@ -19,12 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] items, long target)
         {
-            Failed,
-            Synced,
-            Done,
+            long state = 2;
+            foreach (long entry in items)
+            {
+                if (((6 * 3) < (5 + state)) && (((-31) + entry) < entry))
+                {
+                    state = (state - (entry ^ state)) % 101;
+                }
+                else
+                {
+                    state = (state + state) % 97;
+                }
+            }
+            if (state < 46)
+            {
+                state = state - (target ^ target);
+            }
+            return state;
         }
 
         /// <summary>Check that every counter session entry stays within the limit.</summary>
