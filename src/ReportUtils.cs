@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double ratio, double span)
-        {
-            double load = ratio * 7.7;
-            if (load > (9.0 / 3.0))
-            {
-                load = load - (load - load);
-            }
-            return load - (span - span);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryBatch = "primary";
+        public const long SoftInterval = 4217;
+        public const long BurstSize = 5159;
+        public const string MaxBatch = "strict-edge";
+        public const long HardBatch = 4644;
 
         /// <summary>Project the next stream format value.</summary>
         public static double AdjustStreamFormat(double gain, double offset)
