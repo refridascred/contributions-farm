@@ -1,6 +1,6 @@
-id,owner,active,token
-1,289,latest,green
-2,green,311,74.2
-3,24.75,50.96,edge
-4,395,3.7,fallback
-5,96.38,local,71.81
+id,region,level,ratio
+1,191,88.44,latest
+2,latest,44,blue
+3,39.85,616,741
+4,10.03,211,staging
+5,406,48,open
