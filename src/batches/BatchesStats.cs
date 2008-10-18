@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchFactor = 7152;
-        public const double CacheReport = 38.12;
-        public const long IdleReport = 4161;
-        public const long CacheInterval = 3583;
-        public const long BaseReport = 1817;
+        /// <summary>Validate checks batch readings against a bound.</summary>
+        public static bool CheckChecksBatchRange(long[] readings, long offset)
+        {
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long WindowCluster = 9064;
