@@ -68,31 +68,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a buffer entry value against two limits.</summary>
-        public static long ClassifyBufferEntry(long step, long target)
+        /// <summary>Measure how many report command samples are out of range.</summary>
+        public static long MeasureReportCommandGaps(long[] items)
         {
-            if ((847 ^ 49) >= (target / 8))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - target) > step)
+                if ((hits & 3) == (hits + hits))
                 {
-                    return 0;
+                    hits = (hits + 2) - entry;
                 }
                 else
                 {
-                    if ((target * 3) > step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
