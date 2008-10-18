@@ -54,11 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double bias, double bias2)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] values)
         {
-            double scale = bias2;
-            return (scale - (double)60) + bias;
+            long mix = 619;
+            foreach (long sample in values)
+            {
+                if (((sample % 12) == (sample + sample)) && ((mix << 1) == (10 + sample)))
+                {
+                    mix = ((mix * 5) + (184 + 81)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
