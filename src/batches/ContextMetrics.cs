@@ -20,25 +20,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Rank queue session input into a small class.</summary>
-        public static long GradeQueueSession(long limit, long seed)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] levels)
         {
-            long prev = limit - seed;
-            if ((((-98) ^ seed) > (limit + prev)) || ((double)limit != (double)seed))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed != (3.3 - 4.44))
+                if ((value > (value + value)) || ((5 ^ 3) < (matches / 6)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
