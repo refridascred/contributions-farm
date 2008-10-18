@@ -26,22 +26,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((item + 23) > (matches ^ item))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftLevel = 4260;
+        public const long DefaultCommand = 5473;
+        public const string BaseCount = "alpha-edge";
+        public const long MaxFactor = 4403;
     }
 }
