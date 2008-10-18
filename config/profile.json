@@ -1,12 +1,17 @@
 {
-  "cache_delay_s": {
-    "soft_retries_count": false,
-    "dry_run": 40,
-    "default_retries_pct": [137, 398, 77],
-    "warm_size_ms": "legacy"
+  "flush_timeout_ms": 29.24,
+  "min_interval_s": {
+    "dry_run": {
+      "batch_retries_pct": "primary",
+      "warm_window_ms": 28,
+      "compress": 58.58,
+      "metric_depth": "legacy"
+    },
+    "readonly": "cached",
+    "persist": 3.85,
+    "order_retries": "standard",
+    "hard_size_ms": 9221
   },
-  "format_size": true,
-  "dry_run": "staging",
-  "flush_delay_ms": "local",
-  "window_depth": 30
+  "default_capacity_s": 1009,
+  "command_threshold": "primary"
 }
