@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Classify a payload checks pair into a bucket.</summary>
+        public static long BucketPayloadChecks(long origin, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)seed < (4.8 - 2.3))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((9.0 - 11.0) <= (double)origin)
                 {
-                    if ((data[i] - data[j]) > 12)
+                    return 8;
+                }
+                else
+                {
+                    if (!((seed >> 2) <= ((-565) >> 4)))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
