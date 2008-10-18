@@ -66,11 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double rate, double span)
+        /// <summary>Roll a token profile counter forward.</summary>
+        public static long SeriesTokenProfile(long bound)
         {
-            double scale = span;
-            return (scale + (double)7) + rate;
+            long state = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                state = (state ^ (-4)) % 101;
+                state = state - ((long)i + bound);
+                state = state + (bound + (long)i);
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Combine format route values into a single score.</summary>
