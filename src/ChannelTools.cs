@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseBudget = 69.31;
-        public const double WindowToken = 35.36;
-        public const double SoftToken = 77.58;
-        public const long RetryLevel = 2505;
-        public const long DefaultWidth = 2254;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Queued,
+            Synced,
+            Active,
+            Closed,
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricBounds(long[] readings, long step)
