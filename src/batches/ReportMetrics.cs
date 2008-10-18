@@ -20,12 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Roll a checks already counter forward.</summary>
+        public static long RollChecksAlready(long seed)
         {
-            Queued,
-            Pending,
-            Closed,
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!(((long)i + seed) < mix))
+                {
+                    mix = (mix - mix) % 1000;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a queue reading.</summary>
