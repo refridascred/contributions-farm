@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every order already entry stays within the limit.</summary>
-        public static bool CheckOrderAlreadyLimits(long[] series, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (cell < bound)
+                if ((cell / 6) <= cell)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
