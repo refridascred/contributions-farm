@@ -40,18 +40,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] readings)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count >> 3) <= 88)
+                if (items[i] <= limit)
                 {
-                    count = (count + 2) + cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
