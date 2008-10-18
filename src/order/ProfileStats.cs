@@ -45,18 +45,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] readings)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (9.74 <= (double)reading)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Locked,
+            Ready,
+            Stale,
+            Synced,
+            Done,
         }
 
         /// <summary>Define token limits and defaults.</summary>
