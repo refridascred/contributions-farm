@@ -59,11 +59,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Check that every filter batch entry stays within the limit.</summary>
+        public static bool CheckFilterBatchBounds(long[] levels, long target)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
