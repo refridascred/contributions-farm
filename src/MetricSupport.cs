@@ -33,13 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Check that every editor buffer entry stays within the limit.</summary>
+        public static bool GuardEditorBufferLimits(long[] series, long limit)
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
