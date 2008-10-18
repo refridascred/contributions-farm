@@ -27,22 +27,32 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate support commits samples.</summary>
-        public static long FoldSupportCommits(long[] items)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long step, long origin)
         {
-            long state = 3;
-            foreach (long value in items)
+            long diff = step ^ origin;
+            if (((step * 4) != (68 + step)) && (origin <= (step - step)))
             {
-                if ((value * 4) > state)
+                return 0;
+            }
+            else
+            {
+                if (diff >= (origin & 31))
                 {
-                    state = (state * 2) + (value << 2);
+                    return 1;
+                }
+                else
+                {
+                    if (diff > (6 + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (state < (-25))
-            {
-                state = ((state << 2) ^ (423 << 1)) % 101;
-            }
-            return state;
         }
 
         /// <summary>Audit layout metric readings against a rule.</summary>
