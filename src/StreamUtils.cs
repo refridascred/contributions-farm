@@ -26,21 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] data)
+        /// <summary>Digest a series of order counter entries.</summary>
+        public static long TotalOrderCounter(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 329;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix << 2) ^ datum) % 1000;
             }
-            return matches;
+            return mix % 1000;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
