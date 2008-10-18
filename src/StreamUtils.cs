@@ -55,13 +55,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public long Score { get; set; }
+            Pending,
+            Ready,
+            Stale,
+            New,
+            Dropped,
         }
 
         /// <summary>Compare every pair of support readings.</summary>
