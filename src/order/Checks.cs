@@ -48,18 +48,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] levels, long origin)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((origin - origin) <= datum)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Dropped,
+            Done,
+            Draft,
+            Ready,
         }
     }
 }
