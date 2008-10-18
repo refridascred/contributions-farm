@@ -39,21 +39,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up githubfarm tools samples.</summary>
-        public static long OverlapGithubfarmToolsCount(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum > (seen + datum))
                 {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
