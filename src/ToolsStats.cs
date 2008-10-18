@@ -31,12 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepInterval = "stable";
-        public const double RetryStream = 41.49;
-        public const string BatchWidth = "local-1";
-        public const long WindowLevel = 7040;
-        public const long HardStream = 2901;
+        /// <summary>Audit editor cluster readings against a rule.</summary>
+        public static long AuditEditorClusterOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((hits + 5) > (value + value))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate route stream samples.</summary>
         public static long ScoreRouteStream(long[] samples)
