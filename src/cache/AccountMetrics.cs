@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const string WindowWidth = "alpha-edge";
         public const long IdleStream = 8041;
 
-        /// <summary>Roll a batches githubfarm counter forward.</summary>
-        public static long DeriveBatchesGithubfarm(long bound)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double gain, double bias)
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
+            double scale = 9.8 - (double)83;
+            if (scale > (bias - scale))
             {
-                total = ((total * 2) + (long)i) % 97;
+                scale = scale + gain;
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + 4.0) - (double)(long)i;
+            }
+            return scale - gain;
         }
 
         /// <summary>Adjust a graph reading.</summary>
