@@ -1,5 +1,5 @@
 {
-  "hard_depth_count": 69.5,
-  "format_retries": "edge",
-  "hard_timeout_count": 100
+  "min_ttl_ms": 47,
+  "already_limit": "staging",
+  "retry_limit_count": "open"
 }
