@@ -1,7 +1,4 @@
 # entry settings
-batch_retries: open
-dry_run: false
-cache_ratio_s:
-  soft_ratio: fallback
-  max_ttl_pct: 36
-  default_timeout_s: 56.89
+order_delay: 10
+audit: cached
+batch_delay: green
