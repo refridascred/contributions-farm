@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first notes farm entry that matches the target.</summary>
-        public static long SeekNotesFarmIndex(long[] items, long floor)
+        /// <summary>Check that every metric checks entry stays within the limit.</summary>
+        public static bool GuardMetricChecksLimits(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if (items[i] > floor)
+                if (item > offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Derive the next context route value from a seed.</summary>
