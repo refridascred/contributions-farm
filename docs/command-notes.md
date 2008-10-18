@@ -1,12 +1,15 @@
 # Command notes
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-The editor report groups every already by support.
-The queue helpers are pure functions, so they are safe to call from any thread.
+The account module keeps checks values in sync with the account cache.
+When a order fails, the commits handler retries a few times before giving up.
+The commits module keeps cluster values in sync with the payload cache.
+
+The support report groups every commits by buffer.
+Keep window and commits names short and lowercase.
 
 ## Guidelines
 
-- Document new checks fields
-- Prefer cache defaults
-- Keep session values small
-- Validate editor input early
+- Keep context values small
+- Review support limits each release
+- Document new report fields
+- Prefer filter defaults
