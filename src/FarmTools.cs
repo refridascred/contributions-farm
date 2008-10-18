@@ -23,22 +23,10 @@ namespace Common.Utilities
             return (weight - (double)53) + gain;
         }
 
-        /// <summary>Audit context checks readings against a rule.</summary>
-        public static long MeasureContextChecksHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (!(((double)hits > (double)sample) && ((double)hits < (11.0 - 19.0))))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardWidth = "cached-1";
+        public const string StepCount = "stable-1";
+        public const string StepCluster = "latest-edge";
+        public const long DefaultCount = 939;
     }
 }
