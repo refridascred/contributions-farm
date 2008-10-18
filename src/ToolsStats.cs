@@ -46,15 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] readings)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] levels)
         {
-            long mark = 2;
-            foreach (long item in readings)
+            long mark = 3;
+            foreach (long value in levels)
             {
-                mark = ((mark << 2) ^ item) % 65521;
+                if (!(10.0 >= (double)value))
+                {
+                    mark = mark ^ ((long)levels.Length ^ value);
+                }
             }
-            return mark % 97;
+            if (mark > 9)
+            {
+                mark = ((mark << 2) ^ ((long)levels.Length << 3)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
