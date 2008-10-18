@@ -35,10 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 9623;
-        public const double RetryRoute = 17.81;
-        public const string CacheTimeout = "local";
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long LimitRatio = 4953;
