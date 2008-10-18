@@ -65,13 +65,38 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long offset, long step)
         {
-            public string Offset { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            if (!(((-54) * 2) < offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset + offset) >= (offset + 21))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((55 + 133) < (offset % 24)) || (step < (offset % 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((13.0 - 7.63) >= (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
