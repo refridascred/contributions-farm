@@ -53,13 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            Retry,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 2424;
+        public const long IdleChecks = 3877;
+        public const long LimitChecks = 8819;
+        public const double SoftChecks = 33.6;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool CheckEditorLimits(long[] items, long origin)
