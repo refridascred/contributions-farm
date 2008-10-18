@@ -1,14 +1,14 @@
 # Command notes
 
-Each session is validated before it reaches the format queue.
-Use stats settings to tune how often cluster data is refreshed.
+A command that stays idle for too long is moved to the route list.
+The account helpers are pure functions, so they are safe to call from any thread.
+Each schema is validated before it reaches the cluster queue.
 
-Keep support and checks names short and lowercase.
-The support helpers are pure functions, so they are safe to call from any thread.
-The support report groups every queue by command.
+Run the cluster check before changing any graph limits.
+Use tools settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Log every tools change
-- Document new filter fields
-- Keep already values small
+- Keep channel values small
+- Review cluster limits each release
+- Prefer already defaults
