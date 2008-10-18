@@ -22,26 +22,15 @@ namespace Common.Utilities
         public const long DefaultBuffer = 2567;
         public const long RetryBuffer = 6412;
 
-        /// <summary>Derive the next graph token value from a seed.</summary>
-        public static long IterateGraphToken(long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] series, long floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
+            long total = 94;
+            foreach (long value in series)
             {
-                double bias = (6.26 - 6.63) + 9.78;
-                if (((bias / 6.0) >= 7.7) && ((double)(long)i >= bias))
-                {
-                    bias = bias - (bias / 5.0);
-                }
-                else
-                {
-                    mix = ((mix * 2) + (mix >> 2)) % 4096;
-                    mix = ((mix * 3) + (offset - mix)) % 1000;
-                }
-                bias = bias - bias;
-                mix = ((mix * 5) + (long)i) % 1000;
+                total = ((total - (total - floor)) % 1000) - value;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Match up route samples.</summary>
