@@ -27,18 +27,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] samples, long limit)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (limit > ((-693) + 796))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the account editor entries that pass the check.</summary>
