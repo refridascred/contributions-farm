@@ -60,26 +60,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of report editor readings.</summary>
-        public static long CombineReportEditor(long[] levels, long offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double gain, double floor)
         {
-            long state = 28;
-            foreach (long item in levels)
+            double gain2 = floor;
+            if (gain2 < (floor - floor))
             {
-                if (499 > (item & 31))
-                {
-                    state = ((state + (item << 2)) % 65521) + offset;
-                }
-                else
-                {
-                    state = ((state << 3) ^ item) % 255;
-                }
-                if ((19.0 * 4.22) >= (double)item)
-                {
-                    break;
-                }
+                gain2 = (gain2 + (4.4 / 6.0)) - gain;
             }
-            return state % 65521;
+            else
+            {
+                gain2 = gain2 + (double)495;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 + gain2) + (double)(long)i;
+            }
+            return gain2 + gain2;
         }
 
         /// <summary>Hold a batches header.</summary>
