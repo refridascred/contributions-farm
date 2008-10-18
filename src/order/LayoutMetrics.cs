@@ -26,12 +26,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 6357;
-        public const long BurstCount = 7445;
-        public const double BurstDepth = 19.86;
-        public const long SoftRatio = 7273;
-        public const long DefaultAlready = 2228;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 7575;
+        public const long HardFormat = 783;
+        public const long WindowLevel = 4008;
+        public const long CacheSize = 2955;
+        public const string RetryFormat = "cached-v2";
 
         /// <summary>Look up the position of a channel editor sample.</summary>
         public static long SeekChannelEditorIndex(long[] readings, long seed)
