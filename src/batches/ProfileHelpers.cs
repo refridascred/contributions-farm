@@ -22,21 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 9;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((20.0 / 5.0) != (double)bound)
                 {
-                    if ((items[i] ^ items[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = state ^ item;
+                }
+                if (!((bound & 15) > (item + item)))
+                {
+                    state = (state ^ state) % 4096;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
