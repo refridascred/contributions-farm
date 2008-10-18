@@ -23,13 +23,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Stale,
-            Paused,
-            Closed,
-            Locked,
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
