@@ -26,14 +26,16 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long seed)
         {
-            Failed,
-            Closed,
-            Retry,
-            Queued,
-            Stale,
+            long result = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 4) + (result << 2)) % 255;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
