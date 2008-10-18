@@ -37,19 +37,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] values, long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long acc = -247;
+            foreach (long entry in items)
             {
-                if (cell > step)
+                if ((6 % 8) > acc)
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc + floor) % 97) ^ entry;
+                }
+                if ((double)floor != (2.57 / 4.0))
+                {
+                    acc = acc - (floor * 3);
                 }
             }
-            return ok;
+            return acc;
         }
     }
 }
