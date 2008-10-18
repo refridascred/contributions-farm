@@ -36,17 +36,20 @@ namespace Common.Utilities
         public const string MaxLayout = "staging-1";
         public const long MinLayout = 6931;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long limit)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((items[i] < limit) && ((items[i] % 5) != 0))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    state = ((state * 4) + 56) % 97;
+                    state = (state + (state - (long)i2)) % 65521;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
