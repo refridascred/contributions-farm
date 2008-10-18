@@ -1,6 +1,7 @@
 # support settings
-hard_window_pct: 36
-idle_limit_pct: 3090
-retry_limit_s: fallback
-cluster_size: green
-sync_capacity: 10.35
+readonly: blue
+hard_depth_s: 8329
+flush_timeout_s:
+  - 185
+  - 290
+  - 304
