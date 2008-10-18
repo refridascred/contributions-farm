@@ -1,12 +1,12 @@
 # support settings
-max_size: staging
-audit: true
-sync_delay_s:
-  audit: false
-  sync_capacity_s: cached
-  enabled: 8745
-  strict: 82.46
-  order_delay: true
-  persist: standard
-hard_threshold_ms: 43
-readonly: legacy
+min_timeout_ms: 30
+base_window_count: 10.54
+hard_window_count:
+  retry_ttl_pct:
+    - 15
+    - 109
+  hard_window_ms: open
+  hard_depth: 7746
+  cache_ttl_pct: 1024
+  sync_threshold_count: false
+hard_interval: true
