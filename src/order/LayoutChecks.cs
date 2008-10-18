@@ -41,12 +41,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double scale, double span)
-        {
-            double bias = 6.51;
-            return (bias - (span / 4.0)) + scale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstSize = 53.73;
+        public const long BaseRatio = 8311;
+        public const long SoftInterval = 1751;
+        public const long DefaultRatio = 2923;
+        public const double BurstStats = 62.25;
 
         /// <summary>Accumulate record session samples.</summary>
         public static long ScoreRecordSession(long[] data)
