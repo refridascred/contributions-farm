@@ -2,13 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    owner TEXT NOT NULL,
-    active INTEGER NOT NULL DEFAULT 1,
-    rank INTEGER,
-    region TEXT
+    token TEXT,
+    label TEXT,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_rank ON stats_logs (rank);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
 
-INSERT INTO stats_logs (state, owner, active, rank, region) VALUES ('standard', 'standard', 99, 0, 'eu-west');
-INSERT INTO stats_logs (state, owner, active, rank, region) VALUES ('primary', 'edge', 84, 4, 'cached');
+INSERT INTO stats_logs (state, token, label, ratio) VALUES ('strict', 'primary', 'strict', 70.42);
