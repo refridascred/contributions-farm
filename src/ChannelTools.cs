@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheLevel = 2309;
-        public const string BurstFormat = "strict-edge";
-        public const long MaxSize = 6006;
-        public const long MinBudget = 6139;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 1323;
+        public const long BurstFarm = 7193;
+        public const double WindowCount = 63.94;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricBounds(long[] readings, long step)
