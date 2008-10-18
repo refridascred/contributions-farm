@@ -19,17 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] data, long seed)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long offset, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long step = offset + bound;
+            if (((step - step) == (40 - bound)) || ((offset + offset) != (offset + bound)))
             {
-                if (data[i] == seed)
+                return 1;
+            }
+            else
+            {
+                if ((offset - offset) >= offset)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (13.0 > (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound / 3) == (96 * 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
