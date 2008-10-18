@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinSpan = 3839;
-        public const double MinRoute = 95.2;
-        public const double StepSpan = 35.88;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((bound * 2) > (677 + 136))
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long BucketRoute(long seed, long seed2)
