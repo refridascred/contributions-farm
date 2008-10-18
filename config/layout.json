@@ -1,6 +1,6 @@
 {
-  "default_depth_pct": 34.77,
-  "flush_ttl_s": 4098,
-  "enabled": 44.83,
-  "editor_timeout": 29.93
+  "idle_limit_pct": "stable",
+  "idle_limit_count": "primary",
+  "min_ttl_pct": "edge",
+  "record_ratio": false
 }
