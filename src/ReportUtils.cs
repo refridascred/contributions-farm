@@ -46,32 +46,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a session editor value against two limits.</summary>
-        public static long ClassifySessionEditor(long limit, long step)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long prev = limit ^ step;
-            if (((prev * 4) <= (step & 31)) || ((double)step >= (0.5 / 6.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((prev % 10) == (step + prev))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit - limit) == (step - limit)) && ((prev + prev) > step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
