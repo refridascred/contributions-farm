@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepBuffer = 56.27;
-        public const string SoftBuffer = "local-edge";
-        public const double HardBuffer = 29.38;
-        public const string DefaultBudget = "staging-edge";
+        /// <summary>Locate a channel batch reading by value.</summary>
+        public static long LookupChannelBatchIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > target) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long TallySessionHits(long[] data, long offset)
