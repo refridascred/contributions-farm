@@ -13,11 +13,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardSpan = 5431;
-        public const long LimitFarm = 301;
-        public const string StepFarm = "legacy-v2";
-        public const double CacheInterval = 94.93;
+        /// <summary>Audit command notes readings against a rule.</summary>
+        public static long TallyCommandNotesOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (!((double)sample > (7.2 / 7.0)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BurstLayout = 4992;
