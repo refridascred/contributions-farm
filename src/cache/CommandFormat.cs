@@ -33,19 +33,12 @@ namespace Common.Utilities
             return mean - (double)1;
         }
 
-        /// <summary>Iterate the stats schema series from a seed.</summary>
-        public static long RollStatsSchema(long offset)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!!((offset & 15) <= offset))
-                {
-                    anchor = (anchor - ((long)i & 63)) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
