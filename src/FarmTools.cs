@@ -20,22 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] items, long step)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long acc = 518;
-            foreach (long value in items)
-            {
-                if ((value - (-484)) >= (acc ^ acc))
-                {
-                    acc = acc + (acc + value);
-                }
-                if (((value & 63) < (step * 2)) && (step > value))
-                {
-                    acc = ((acc * 4) + ((-758) ^ step)) % 65521;
-                }
-            }
-            return acc % 97;
+            New,
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Validate batch schema readings against a bound.</summary>
