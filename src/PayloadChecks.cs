@@ -77,22 +77,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] items)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((count + entry) < (entry << 2))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Stale,
+            Draft,
+            Locked,
         }
     }
 }
