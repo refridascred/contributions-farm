@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] data, long offset)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (datum < (17 << 3))
-                {
-                    seen = (seen + 2) - offset;
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
