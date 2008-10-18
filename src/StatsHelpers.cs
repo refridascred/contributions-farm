@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((51 ^ 77) <= state))
-                {
-                    state = state + target;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
