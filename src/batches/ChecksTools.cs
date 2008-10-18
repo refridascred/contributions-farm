@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Measure how many githubfarm counter samples are out of range.</summary>
+        public static long TallyGithubfarmCounterGaps(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((cell >> 2) != (cell + cell))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
