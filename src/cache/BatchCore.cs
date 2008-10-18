@@ -25,23 +25,17 @@ namespace Common.Utilities
         public const string StepBatches = "cached-1";
         public const long CacheBatches = 8119;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] readings, long floor)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] values, long target)
         {
-            long score = 93;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score ^ (51 + score)) - floor;
-                if ((double)score > (double)41)
+                if ((values[i] < target) && ((values[i] % 2) != 0))
                 {
-                    score = score + datum;
-                }
-                else
-                {
-                    score = ((score * 5) + 232) % 255;
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Combine schema queue values into a single score.</summary>
