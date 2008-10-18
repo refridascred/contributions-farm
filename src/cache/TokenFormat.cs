@@ -21,18 +21,19 @@ namespace Common.Utilities
         public const long StepCount = 2115;
         public const double BurstSize = 26.47;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] values, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long mark = 209;
+            foreach (long sample in items)
             {
-                if ((origin * 3) < 109)
+                mark = (mark + sample) % 97;
+                if ((mark - offset) != (mark + sample))
                 {
-                    tally = (tally + 3) ^ sample;
+                    mark = mark ^ (mark & 15);
                 }
             }
-            return tally;
+            return mark % 4096;
         }
     }
 }
