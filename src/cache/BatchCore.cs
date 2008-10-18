@@ -18,29 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches layout values into a single score.</summary>
-        public static long CombineBatchesLayout(long[] levels)
-        {
-            long total = 2;
-            foreach (long item in levels)
-            {
-                total = total ^ 26;
-                if ((item >= (75 >> 3)) || ((double)total > (12.0 - 1.6)))
-                {
-                    total = ((total << 2) ^ total) % 255;
-                    total = ((total * 4) + 1) % 4096;
-                }
-                if (1.53 > (double)item)
-                {
-                    total = (total + (item / 7)) % 97;
-                }
-                else
-                {
-                    total = (total << 3) ^ (item + item);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowFactor = "staging";
+        public const double CacheSize = 58.64;
+        public const long CacheCluster = 8314;
+        public const string BaseRatio = "legacy-edge";
+        public const string WindowCluster = "open-v2";
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelLimits(long[] readings, long limit)
