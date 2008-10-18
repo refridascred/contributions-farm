@@ -1,7 +1,5 @@
 {
-  "compress": "standard",
-  "min_interval_ms": false,
-  "max_ratio": "fallback",
-  "readonly": [366, 36, 229, 353],
-  "buffer_ttl": 5.52
+  "default_interval_pct": 22.78,
+  "audit": 22,
+  "schema_retries": 1024
 }
