@@ -30,31 +30,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long step, long seed)
+        /// <summary>Audit context checks readings against a rule.</summary>
+        public static long MeasureContextChecksHits(long[] levels)
         {
-            if ((step / 8) <= seed)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(seed < (78 - step)))
+                if (!(((double)hits > (double)sample) && ((double)hits < (11.0 - 19.0))))
                 {
-                    return 1;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((double)seed >= (4.9 - 7.31))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
