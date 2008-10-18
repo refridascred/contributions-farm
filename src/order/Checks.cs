@@ -47,18 +47,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] series, long origin)
+        /// <summary>Digest a series of entry queue entries.</summary>
+        public static long TotalEntryQueue(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long mark = 458;
+            foreach (long sample in series)
             {
-                if ((value << 2) >= 444)
-                {
-                    matches = (matches + 2) + origin;
-                }
+                mark = ((mark ^ (mark + mark)) - sample) + bound;
             }
-            return matches;
+            return mark % 97;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
