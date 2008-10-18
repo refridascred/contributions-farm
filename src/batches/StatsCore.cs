@@ -5,17 +5,29 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a channel batch reading by value.</summary>
-        public static long LookupChannelBatchIndex(long[] values, long target)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((values[i] > target) && ((values[i] % 5) != 0))
+                if ((0.37 * 5.1) <= (double)limit)
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ (8 & 3)) % 97;
+                    carry = ((carry * 5) + ((long)i + (long)i)) % 4096;
+                    break;
                 }
+                else
+                {
+                    carry = carry - (limit / 3);
+                }
+                if (!(((double)carry < 5.7) && (((long)i % 3) != (carry << 2))))
+                {
+                    carry = carry - (long)i;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
