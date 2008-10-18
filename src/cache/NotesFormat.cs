@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up session window samples.</summary>
-        public static long PairSessionWindowCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepFactor = "legacy";
+        public const long BaseChannel = 7094;
+        public const long StepChannel = 9796;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long AuditEntryGaps(long[] samples)
