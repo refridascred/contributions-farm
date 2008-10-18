@@ -69,13 +69,9 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepToken = "alpha-edge";
+        public const string BatchToken = "open";
+        public const string StepSize = "primary-edge";
     }
 }
