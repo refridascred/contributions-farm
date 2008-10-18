@@ -18,31 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long step, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] samples)
         {
-            if ((double)origin < (9.0 + 2.28))
+            long carry = 7;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step & 127) < (origin >> 2))
+                long delta = (cell * 5) % 16;
+                if ((cell >= ((-9) % 16)) || ((7.2 + 5.4) <= (double)delta))
                 {
-                    return 6;
+                    carry = ((carry << 3) ^ delta) % 4096;
                 }
-                else
+                if ((0 - carry) < (229 ^ carry))
                 {
-                    if ((origin ^ step) >= (86 + step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    carry = (carry + carry) % 97;
+                }
+                if ((cell - carry) != (3 >> 4))
+                {
+                    break;
                 }
             }
+            return carry % 65521;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
