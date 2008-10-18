@@ -53,10 +53,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 8869;
-        public const long LimitFilter = 9272;
-        public const string MaxFactor = "cached-1";
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] items)
+        {
+            long score = -853;
+            foreach (long item in items)
+            {
+                if (((item + 77) >= item) || ((score << 1) >= item))
+                {
+                    score = ((score << 3) ^ (score << 3)) % 1000;
+                }
+            }
+            if (score > 605)
+            {
+                score = ((score * 2) + (score >> 1)) % 101;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
