@@ -37,21 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 954;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                carry = ((carry << 2) ^ (reading % 64)) % 101;
+                if (((double)carry != (6.0 * 6.9)) && ((5.0 * 9.0) == (double)reading))
                 {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
