@@ -27,25 +27,13 @@ namespace Common.Utilities
         public const string HardCluster = "latest";
         public const long StepSize = 6163;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((mark >> 3) == (4 * 5))
-                {
-                    mark = mark ^ offset;
-                    break;
-                }
-                long next = (mark / 6) << 3;
-                if (((mark / 7) > ((long)i >> 2)) && (((-1) + next) > mark))
-                {
-                    next = (next << 3) ^ ((long)i + (long)i);
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
