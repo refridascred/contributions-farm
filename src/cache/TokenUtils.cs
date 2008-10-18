@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Adjust a cache filter reading.</summary>
+        public static double AdjustCacheFilter(double weight, double offset)
         {
-            Synced,
-            Done,
-            New,
+            double load = (double)(9 + 72);
+            for (int i = 0; i < 3; i++)
+            {
+                load = (((load + (1.4 + 7.0)) + (double)(long)i) + weight) - offset;
+            }
+            return load - 5.6;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
