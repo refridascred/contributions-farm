@@ -32,30 +32,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] series, long bound)
+        /// <summary>Rank token record input into a small class.</summary>
+        public static long BucketTokenRecord(long offset, long limit)
         {
-            long acc = 582;
-            foreach (long reading in series)
+            long gap = offset + limit;
+            if ((gap * 5) < (gap * 4))
             {
-                if ((acc >> 3) < bound)
+                return 5;
+            }
+            else
+            {
+                if (!(gap >= (gap % 5)))
                 {
-                    acc = (acc * 5) + reading;
+                    return 7;
                 }
                 else
                 {
-                    acc = ((acc << 3) ^ acc) % 255;
-                }
-                if ((5.0 / 3.0) >= (double)bound)
-                {
-                    break;
+                    if (7.25 <= (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (acc > 386)
-            {
-                acc = ((acc * 3) + (acc / 9)) % 97;
-            }
-            return acc;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
