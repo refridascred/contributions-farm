@@ -14,14 +14,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            New,
-            Queued,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstCount = 62.55;
+        public const double RetryAlready = 15.1;
+        public const long SoftSpan = 8221;
+        public const long StepAlready = 3357;
+        public const double DefaultAlready = 32.44;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
