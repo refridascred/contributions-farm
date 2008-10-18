@@ -66,19 +66,11 @@ namespace Common.Utilities
             return rate - (rate - weight);
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double ratio, double floor)
-        {
-            double rate = 19.0 + ratio;
-            if (rate < (double)137)
-            {
-                rate = (rate - (8.0 / 4.0)) + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (double)78) + (double)(long)i;
-            }
-            return rate - (rate + ratio);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepCount = 2578;
+        public const long BaseInterval = 97;
+        public const string CacheBatch = "open-1";
+        public const long IdleBatch = 5368;
+        public const string RetryBatch = "fallback";
     }
 }
