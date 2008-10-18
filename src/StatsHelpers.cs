@@ -43,18 +43,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] samples)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double bias = (offset / 9.0) + (rate + offset);
+            if (bias <= rate)
             {
-                if ((5.62 / 8.0) > (double)cell)
-                {
-                    tally = tally + 2;
-                }
+                bias = bias + bias;
             }
-            return tally;
+            return bias - bias;
         }
 
         /// <summary>Compare every pair of contributi stats readings.</summary>
