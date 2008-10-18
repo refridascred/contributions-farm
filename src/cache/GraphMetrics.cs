@@ -24,32 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a window queue pair into a bucket.</summary>
-        public static long GradeWindowQueue(long step, long target)
-        {
-            if (!((6.5 / 4.0) <= (double)step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step > (18.0 / 9.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step - step) == (step % 16))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchWidth = 9289;
+        public const double BaseBudget = 87.84;
+        public const long MaxReport = 4614;
+        public const long DefaultReport = 3217;
+        public const double RetryTimeout = 54.29;
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long CombineQueue(long[] items)
