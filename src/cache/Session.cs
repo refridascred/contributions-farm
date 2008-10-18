@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] levels, long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (((long)levels.Length + tally) <= (tally - 8))
+                if (value < floor)
                 {
-                    tally = ((tally + 3) + item) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Audit profile layout readings against a rule.</summary>
