@@ -47,19 +47,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] readings, long floor)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Retry,
+            Synced,
+            Failed,
+            Stale,
         }
     }
 }
