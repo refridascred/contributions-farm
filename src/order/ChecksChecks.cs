@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double gain, double offset)
+        /// <summary>Classify a notes tools pair into a bucket.</summary>
+        public static long GradeNotesTools(long seed, long origin)
         {
-            double bias = (gain / 3.0) + (offset + offset);
-            if (bias <= bias)
+            if (!((978 + seed) == (seed % 8)))
             {
-                bias = bias - (gain * 6.7);
+                return 5;
             }
             else
             {
-                bias = bias - offset;
+                if ((origin + origin) <= (origin - origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + seed) <= (origin ^ seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed + seed) != (seed ^ 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return bias - bias;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
