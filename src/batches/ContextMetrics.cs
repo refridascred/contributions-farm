@@ -68,29 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order payload value against two limits.</summary>
-        public static long RankOrderPayload(long offset, long limit)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long offset, long offset2)
         {
-            if ((limit >= (limit + limit)) && ((limit + 21) >= (-268)))
+            if ((offset2 - offset2) != (1 << 2))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if ((limit >> 3) == (limit + offset))
+                if ((8.0 * 4.5) > (double)offset2)
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if ((offset % 16) <= (offset >> 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 6;
                 }
             }
         }
