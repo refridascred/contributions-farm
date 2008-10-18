@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] items)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)offset >= (6.4 + 4.8)))
                 {
-                    if ((items[i] ^ items[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result ^ offset) % 255;
+                    continue;
                 }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Digest a series of command entry entries.</summary>
