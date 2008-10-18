@@ -45,26 +45,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] data, long bound)
         {
-            long result = 911;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (20 <= reading)
+                if ((entry >> 2) != (tally * 2))
                 {
-                    result = (result * 5) + reading;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result - result)) % 255;
+                    tally = (tally + 1) + bound;
                 }
             }
-            if (result > 82)
-            {
-                result = ((result << 3) ^ (result << 2)) % 101;
-            }
-            return result % 4096;
+            return tally;
         }
     }
 }
