@@ -1,10 +1,15 @@
 # Command notes
 
-The session module keeps support values in sync with the support cache.
-The payload module keeps entry values in sync with the route cache.
+The counter helpers are pure functions, so they are safe to call from any thread.
+When a format fails, the notes handler retries a few times before giving up.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+
+Use stream settings to tune how often layout data is refreshed.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review record limits each release
-- Prefer entry defaults
-- Document new session fields
+- Log every editor change
+- Review notes limits each release
+- Validate checks input early
+- Prefer metrics defaults
