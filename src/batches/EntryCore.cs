@@ -74,10 +74,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 9687;
-        public const long BurstCluster = 8622;
-        public const long HardLevel = 9740;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (((double)cell != (double)590) && ((cell >> 3) <= (hits % 7)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] levels, long limit)
