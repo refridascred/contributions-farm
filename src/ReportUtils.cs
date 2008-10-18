@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = ratio * 7.7;
+            if (load > (9.0 / 3.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - (load - load);
             }
-            return seen;
+            return load - (span - span);
         }
 
         /// <summary>Fold a list of stream readings.</summary>
