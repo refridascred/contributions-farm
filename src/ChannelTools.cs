@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many batch schema samples are out of range.</summary>
-        public static long MeasureBatchSchemaMatches(long[] samples)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long bound)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry <= (matches ^ entry))
+                if ((bound + mark) < (528 ^ bound))
                 {
-                    matches = matches + 2;
+                    mark = (mark + (mark - bound)) % 101;
+                    mark = (mark * 3) + (mark * 4);
                 }
+                else
+                {
+                    mark = ((mark << 3) ^ (bound - (long)i)) % 4096;
+                }
+                mark = ((mark * 4) + (mark << 2)) % 1000;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the farm status values.</summary>
