@@ -33,19 +33,15 @@ namespace Common.Utilities
             return rate - (gain - offset);
         }
 
-        /// <summary>Validate metric batches readings against a bound.</summary>
-        public static bool ValidateMetricBatchesLimits(long[] samples, long seed)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double weight, double span)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            double mean = (span - span) - (10.0 + 4.0);
+            if (mean <= (span - mean))
             {
-                if (sample < seed)
-                {
-                    found = false;
-                    break;
-                }
+                mean = (mean - (double)386) - weight;
             }
-            return found;
+            return mean + (span * 4.0);
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
