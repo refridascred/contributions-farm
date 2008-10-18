@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] data)
-        {
-            long acc = 4;
-            foreach (long cell in data)
-            {
-                if (((acc + acc) <= acc) || ((double)acc <= (6.9 * 6.0)))
-                {
-                    acc = ((acc + (acc % 7)) % 65521) - cell;
-                }
-            }
-            if (acc < 51)
-            {
-                acc = ((acc * 5) + (acc * 2)) % 101;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepBudget = 31.15;
+        public const double SoftCluster = 91.09;
+        public const long HardInterval = 6259;
+        public const long IdleBudget = 8673;
+        public const long IdleCluster = 6646;
 
         /// <summary>Accumulate session samples.</summary>
         public static long WeighSession(long[] values)
