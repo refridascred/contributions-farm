@@ -1,6 +1,19 @@
 {
-  "default_size_ms": [486, 478, 371],
-  "flush_window": "primary",
-  "warm_retries": [469, 95],
-  "order_interval": 8069
+  "base_limit_pct": {
+    "counter_ttl": true,
+    "retry_window_pct": {
+      "hard_retries": "green",
+      "flush_delay_s": 3490,
+      "batch_delay_s": 64
+    },
+    "dry_run": 1024,
+    "poll_depth": "strict",
+    "audit": "local",
+    "account_window": 8166
+  },
+  "cache_retries": "latest",
+  "order_interval": "blue",
+  "strict": 17.3,
+  "base_ttl": 9886,
+  "compress": [211, 226, 216, 297]
 }
