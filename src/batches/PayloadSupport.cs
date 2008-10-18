@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 3757;
-        public const string BaseStats = "standard-v2";
-        public const long BurstSize = 6173;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)seed > (double)acc)
+                {
+                    acc = ((acc << 3) ^ (seed & 3)) % 97;
+                }
+                acc = (acc - (long)i) % 65521;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long TotalWindow(long[] readings, long seed)
