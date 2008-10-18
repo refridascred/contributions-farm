@@ -62,22 +62,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] data, long offset)
+        /// <summary>Rank support session input into a small class.</summary>
+        public static long ClassifySupportSession(long target, long bound)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long next = target + bound;
+            if ((6.7 - 3.87) != (double)next)
             {
-                if ((reading - seen) <= (reading * 3))
+                return 5;
+            }
+            else
+            {
+                if (!(next < (target * 4)))
                 {
-                    seen = (seen + 3) - offset;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((target + 7) <= next)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((next > (target + next)) || (25 >= (next ^ target)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
