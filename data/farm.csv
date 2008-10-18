@@ -1,9 +1,6 @@
-id,state
-1,37
-2,482
-3,56
-4,544
-5,96.8
-6,latest
-7,533
-8,31.6
+id,token,region,rank,count
+1,staging,latest,cached,496
+2,standard,91.48,503,16.34
+3,579,140,10.63,95.2
+4,266,9.96,green,198
+5,17.81,fallback,latest,strict
