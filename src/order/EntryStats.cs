@@ -65,17 +65,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a order entry sample.</summary>
-        public static long LookupOrderEntryIndex(long[] items, long target)
+        /// <summary>Validate metric notes readings against a bound.</summary>
+        public static bool CheckMetricNotesBounds(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (items[i] < target)
+                if (sample < limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
