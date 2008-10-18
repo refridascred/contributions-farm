@@ -15,18 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 6045;
+        public const double DefaultInterval = 60.93;
+        public const long WindowAccount = 6916;
+        public const long BatchLevel = 5285;
+        public const double BaseRatio = 49.19;
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long GradeCache(long floor, long seed)
