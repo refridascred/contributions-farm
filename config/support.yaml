@@ -1,22 +1,6 @@
 # support settings
-already_interval:
-  - 397
-  - 41
-  - 164
-  - 26
-dry_run: 8722
-schema_window:
-  - 132
-  - 321
-audit:
-  farm_retries: legacy
-  compress:
-    batch_capacity_pct: 60
-    batch_ratio: 500
-    readonly: 3350
-    persist: legacy
-    base_capacity: 50
-    context_delay:
-      - legacy
-      - standard
-  retry_timeout: 97.05
+hard_window_pct: 36
+idle_limit_pct: 3090
+retry_limit_s: fallback
+cluster_size: green
+sync_capacity: 10.35
