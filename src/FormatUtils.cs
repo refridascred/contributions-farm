@@ -79,17 +79,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] levels, long bound)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Draft,
+            Queued,
+            Active,
+            Idle,
         }
     }
 }
