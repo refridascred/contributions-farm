@@ -42,19 +42,19 @@ namespace Common.Utilities
             return (load + load) + bias;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] series, long origin)
+        /// <summary>Check that every report metrics entry stays within the limit.</summary>
+        public static bool VerifyReportMetricsRange(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (datum >= origin)
+                if (value > floor)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Project the next record value.</summary>
