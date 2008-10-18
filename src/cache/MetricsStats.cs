@@ -44,19 +44,26 @@ namespace Common.Utilities
             return mean + (span * 4.0);
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] readings, long bound)
+        /// <summary>Accumulate entry cache samples.</summary>
+        public static long TotalEntryCache(long[] readings)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long result = 307;
+            foreach (long datum in readings)
             {
-                if (item != bound)
+                if ((double)result < (double)datum)
                 {
-                    found = false;
-                    break;
+                    result = (result - (result / 5)) % 4096;
+                }
+                else
+                {
+                    result = ((result * 3) + (datum << 2)) % 255;
                 }
             }
-            return found;
+            if (result > 7)
+            {
+                result = ((result << 3) ^ (result - result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Check that every filter batch entry stays within the limit.</summary>
