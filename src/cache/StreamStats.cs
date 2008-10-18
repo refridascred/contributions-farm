@@ -47,11 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 3737;
-        public const string StepCommand = "open-edge";
-        public const string BatchCommand = "alpha-edge";
-        public const long MinInterval = 8909;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public double Offset { get; set; }
+            public bool Size { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long MeasureBatchesGaps(long[] levels)
