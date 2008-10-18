@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] series, long floor)
-        {
-            long result = 0;
-            foreach (long sample in series)
-            {
-                result = (result << 3) ^ (6 + result);
-                result = (result << 3) ^ result;
-                if (!(floor <= (result - sample)))
-                {
-                    result = ((result << 3) ^ (sample + sample)) % 65521;
-                }
-            }
-            if (result > 66)
-            {
-                result = (result << 3) ^ 37;
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitPayload = "open-edge";
+        public const long RetryTimeout = 3568;
+        public const long WindowPayload = 5715;
+        public const double MaxBudget = 78.26;
+        public const long DefaultPayload = 352;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double IdleLevel = 76.32;
