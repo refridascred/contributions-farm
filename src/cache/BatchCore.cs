@@ -15,12 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Ready,
-            Paused,
-            New,
+            public bool Size { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate command samples.</summary>
