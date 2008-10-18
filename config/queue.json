@@ -1,5 +1,8 @@
 {
-  "poll_delay_ms": "stable",
-  "max_ttl": 57.91,
-  "idle_ratio": 250
+  "metric_size": "edge",
+  "warm_capacity_ms": 29,
+  "enabled": ["legacy", "eu-west", "legacy", "blue"],
+  "warm_capacity": true,
+  "sync_delay_count": 7244,
+  "warm_timeout_ms": [161, 450, 173]
 }
