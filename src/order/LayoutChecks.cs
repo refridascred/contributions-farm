@@ -73,21 +73,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
