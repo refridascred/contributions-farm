@@ -38,13 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double scale, double span)
         {
-            Dropped,
-            Draft,
-            Synced,
-            Queued,
+            double bias = (double)24 * 9.0;
+            if (bias < (double)110)
+            {
+                bias = (bias + (bias * 9.91)) - scale;
+            }
+            else
+            {
+                bias = bias + span;
+            }
+            return bias - (double)685;
         }
     }
 }
