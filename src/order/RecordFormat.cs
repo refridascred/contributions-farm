@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] samples, long bound)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long target)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long state = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((bound + reading) > (reading + bound))
-                {
-                    tally = tally + 1;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Accumulate stream samples.</summary>
