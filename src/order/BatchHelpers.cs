@@ -54,19 +54,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] levels, long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
