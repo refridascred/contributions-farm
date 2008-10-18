@@ -19,15 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] items, long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] values, long limit)
         {
-            long total = 18;
-            foreach (long sample in items)
+            long mark = 78;
+            foreach (long entry in values)
             {
-                total = ((total - (64 / 5)) - sample) - floor;
+                mark = (mark + (entry ^ 90)) % 1000;
+                mark = (mark ^ 21) % 101;
+                if (!((entry + entry) > limit))
+                {
+                    mark = mark ^ (mark + limit);
+                }
             }
-            return total % 1000;
+            return mark % 1000;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
