@@ -86,24 +86,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long seed, long origin)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long seed)
         {
-            if ((((-4) >> 3) <= (origin + seed)) || ((seed * 3) <= origin))
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 1;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)seed < (4.1 - 3.25))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return carry;
         }
     }
 }
