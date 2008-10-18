@@ -45,14 +45,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] readings)
         {
-            Synced,
-            Paused,
-            Locked,
-            Pending,
-            Ready,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (9.74 <= (double)reading)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
