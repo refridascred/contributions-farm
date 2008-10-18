@@ -45,14 +45,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long target)
         {
-            Done,
-            Active,
-            Stale,
-            Pending,
-            New,
+            long sum = target;
+            for (int i = 0; i < 23; i++)
+            {
+                long seen = sum + target;
+                if ((double)target <= 8.0)
+                {
+                    sum = (sum * 3) + (sum - seen);
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
