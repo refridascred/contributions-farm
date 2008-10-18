@@ -24,13 +24,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Locked,
-            Dropped,
-            Closed,
-            Queued,
+            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a filter stats.</summary>
