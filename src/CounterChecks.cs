@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleTimeout = 1775;
-        public const string DefaultTimeout = "standard";
-        public const long BaseBatch = 5623;
-        public const long LimitBatch = 2962;
-        public const string MinDepth = "alpha";
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
+        {
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string HardCount = "alpha-1";
