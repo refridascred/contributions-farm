@@ -24,27 +24,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!(((double)anchor < (2.4 * 2.73)) && ((offset & 127) > anchor)))
-                {
-                    anchor = (anchor * 5) + (anchor - anchor);
-                    anchor = anchor - (offset / 5);
-                }
-                if (((offset % 12) <= 798) && ((double)(long)i > (3.74 - 6.15)))
-                {
-                    long span = offset ^ (anchor & 15);
-                    anchor = (anchor ^ (span - (long)i)) % 255;
-                    break;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowDepth = "stable-edge";
+        public const string IdleInterval = "standard";
+        public const long RetryProfile = 1979;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long SoftLevel = 4260;
