@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long offset, long bound)
+        /// <summary>Count the layout tools entries that pass the check.</summary>
+        public static long TallyLayoutToolsMatches(long[] data)
         {
-            long edge = offset ^ bound;
-            if ((offset - bound) == (34 >> 4))
+            long hits = 0;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset - 440) != (edge + 427)) && ((double)edge <= (7.3 - 1.0)))
+                if ((932 % 10) < (hits % 64))
                 {
-                    return 4;
+                    hits = (hits + 2) - value;
                 }
                 else
                 {
-                    if ((809 + 187) == (bound & 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((edge - offset) <= (edge - bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a entry entry.</summary>
