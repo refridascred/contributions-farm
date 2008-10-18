@@ -21,16 +21,11 @@ namespace Common.Utilities
         public const string WindowWidth = "alpha-edge";
         public const long IdleStream = 8041;
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long seed)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark << 3) ^ (seed - seed)) % 101;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Adjust a graph reading.</summary>
