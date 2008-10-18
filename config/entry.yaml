@@ -1,13 +1,22 @@
 # entry settings
-sync_capacity_s: true
-verbose: 3623
-farm_window:
-  - eu-west
-  - latest
-  - edge
-  - stable
-base_depth_ms: latest
-flush_interval: 35.48
-burst_threshold:
-  - local
-  - fallback
+burst_ttl_count:
+  default_window_s: staging
+  schema_retries: false
+  cache_delay: stable
+  compress: open
+  cache_limit:
+    warm_depth_s:
+      - 52
+      - 109
+      - 342
+      - 153
+    channel_capacity: true
+    base_delay_count:
+      - blue
+      - edge
+      - local
+    retry_timeout_count: fallback
+    compress: true
+  readonly: 95.91
+audit: 100
+record_ratio: 1081
