@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 43.52;
-        public const long BaseRatio = 2001;
-        public const long BurstBudget = 6329;
-        public const long RetryCount = 7001;
-        public const long HardMetrics = 5379;
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double weight, double offset)
+        {
+            double gain = (double)(490 + 48);
+            return ((gain + (9.9 * 0.4)) + weight) + offset;
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
