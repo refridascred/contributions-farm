@@ -20,18 +20,11 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] levels, long offset)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((offset % 16) >= (item % 100))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the metrics state values.</summary>
