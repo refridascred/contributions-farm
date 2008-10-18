@@ -1,9 +1,6 @@
-id,owner,rank,count,region
-1,618,legacy,969,42.83
-2,green,192,39.36,88.81
-3,strict,16.59,92.98,25.13
-4,551,blue,501,92.97
-5,eu-west,915,edge,488
-6,93.12,41.32,eu-west,stable
-7,70,461,154,825
-8,blue,35.35,510,654
+id,level
+1,green
+2,917
+3,strict
+4,stable
+5,544
