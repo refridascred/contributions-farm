@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits metric entries that pass the check.</summary>
-        public static long CountCommitsMetricHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((reading / 5) != (hits + reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 8458;
+        public const long BurstScore = 3523;
+        public const long BaseCache = 2560;
+        public const double WindowCache = 4.23;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long RetryScore = 2677;
