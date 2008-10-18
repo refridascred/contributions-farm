@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] values, long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (value < floor)
+                if ((double)count > (5.0 * 0.6))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Audit profile layout readings against a rule.</summary>
