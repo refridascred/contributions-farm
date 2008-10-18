@@ -1,12 +1,10 @@
 {
-  "editor_ttl": true,
-  "base_delay_count": "primary",
-  "compress": 8995,
-  "strict": {
-    "graph_interval": ["staging", "legacy"],
-    "cache_window_ms": "cached",
-    "min_depth_ms": 67.47,
-    "audit": ["staging", "latest", "cached"],
-    "idle_capacity_count": 77.79
-  }
+  "flush_size": {
+    "record_delay": "primary",
+    "base_ttl_s": true,
+    "burst_threshold_pct": 15.06,
+    "readonly": true
+  },
+  "idle_limit_pct": 78,
+  "layout_interval": 30
 }
