@@ -45,15 +45,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] series)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double rate, double span)
         {
-            long mark = 33;
-            foreach (long cell in series)
+            double load = (double)(76 >> 3);
+            if (load <= (rate + 1.2))
             {
-                mark = (mark + ((-740) - cell)) % 97;
+                load = load + load;
             }
-            return mark;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load - rate;
         }
     }
 }
