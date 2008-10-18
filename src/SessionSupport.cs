@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] series, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (((matches + matches) <= (matches >> 4)) || (floor <= matches))
-                {
-                    matches = (matches + 3) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultLevel = 33.51;
+        public const long BaseDepth = 7445;
+        public const long BatchTools = 3477;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long RollWindow(long step)
