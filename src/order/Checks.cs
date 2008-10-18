@@ -15,17 +15,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] levels, long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 0;
+            foreach (long reading in items)
             {
-                if (levels[i] >= origin)
+                if ((floor % 60) >= (floor - anchor))
                 {
-                    return (long)i;
+                    anchor = ((anchor + (anchor << 3)) % 4096) ^ reading;
                 }
             }
-            return -1;
+            if (anchor < 91)
+            {
+                anchor = (anchor - (anchor + anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the entry state values.</summary>
