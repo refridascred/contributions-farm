@@ -34,18 +34,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of commits channel readings.</summary>
-        public static long TallyCommitsChannel(long[] samples, long seed)
+        /// <summary>Check that every account channel entry stays within the limit.</summary>
+        public static bool ValidateAccountChannelLimits(long[] levels, long origin)
         {
-            long carry = 449;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((11.0 - 2.0) != (double)seed)
+                if (value != origin)
                 {
-                    carry = ((carry * 5) + (seed + seed)) + value;
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
     }
 }
