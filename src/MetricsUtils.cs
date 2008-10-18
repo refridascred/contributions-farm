@@ -56,12 +56,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] series)
         {
-            Dropped,
-            Done,
-            Queued,
+            long anchor = 68;
+            foreach (long cell in series)
+            {
+                anchor = (anchor * 2) + (cell << 3);
+            }
+            return anchor;
         }
     }
 }
