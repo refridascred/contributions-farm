@@ -1,5 +1,6 @@
 {
-  "cache_window": 28.71,
-  "verbose": "latest",
-  "cache_threshold_s": ["blue", "blue", "strict"]
+  "audit": false,
+  "default_delay_pct": "cached",
+  "strict": true,
+  "soft_size": "green"
 }
