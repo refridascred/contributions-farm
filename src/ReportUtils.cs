@@ -23,22 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up editor window samples.</summary>
-        public static long PairEditorWindowCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 9375;
+        public const long RetryLevel = 4888;
+        public const long BatchReport = 2968;
+        public const long MinWidth = 2686;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteOutliers(long[] data)
