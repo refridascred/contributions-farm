@@ -44,11 +44,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            public double Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
