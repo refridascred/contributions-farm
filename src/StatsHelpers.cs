@@ -48,15 +48,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double rate, double offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] data)
         {
-            double bias = (offset / 9.0) + (rate + offset);
-            if (bias <= rate)
+            long seen = 0;
+            foreach (long value in data)
             {
-                bias = bias + bias;
+                if (!(((seen + value) > seen) || ((9.0 - 3.3) == (double)seen)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return bias - bias;
+            return seen;
         }
 
         /// <summary>Compare every pair of contributi stats readings.</summary>
