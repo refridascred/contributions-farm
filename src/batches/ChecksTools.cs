@@ -5,28 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long floor)
+        /// <summary>Grade a cache metrics value against two limits.</summary>
+        public static long BucketCacheMetrics(long origin, long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
+            if ((step % 12) == (step % 2))
             {
-                if ((floor % 97) > (carry % 100))
-                {
-                    break;
-                }
-                if ((4.29 - 18.0) <= (double)carry)
-                {
-                    carry = ((carry * 5) + ((long)i + carry)) % 4096;
-                }
-                if (((long)i / 7) < carry)
-                {
-                    carry = (carry + (long)i) % 101;
-                    carry = (carry * 5) + (carry + (long)i);
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((double)step >= (16.0 - 6.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step ^ origin) <= (origin + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
