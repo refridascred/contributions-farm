@@ -15,18 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] items)
+        /// <summary>Count the stats layout entries that pass the check.</summary>
+        public static long TallyStatsLayoutGaps(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (!((reading * 2) < seen))
+                if ((origin <= (sample << 2)) && ((7.0 + 1.11) != (double)origin))
                 {
-                    seen = seen + 3;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
