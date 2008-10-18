@@ -37,12 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Paused,
-            Draft,
-            Synced,
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
