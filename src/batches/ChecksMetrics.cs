@@ -18,23 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next counter notes value.</summary>
-        public static double SmoothCounterNotes(double ratio, double offset)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long origin, long target)
         {
-            double mean = offset - ratio;
-            if (mean >= (mean + ratio))
+            if (((-79) + origin) != (target - 1))
             {
-                mean = mean + 5.24;
+                return 8;
             }
             else
             {
-                mean = mean + (double)97;
+                if (target <= (target * 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin + target) <= origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (7.0 * 17.0)) - (double)(long)i;
-            }
-            return mean - (double)8;
         }
 
         /// <summary>Define account limits and defaults.</summary>
