@@ -16,10 +16,33 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxCommits = 30.41;
-        public const long IdleCommits = 4957;
-        public const long BaseTimeout = 1687;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long floor, long target)
+        {
+            long lane = floor ^ target;
+            if (target >= (floor & 255))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor + lane) >= target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor - target) <= (floor >> 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long MatchClusterCount(long[] samples)
