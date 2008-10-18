@@ -12,32 +12,21 @@ namespace Common.Utilities
         public const long MaxPayload = 9705;
         public const long WindowBudget = 7177;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long bound, long seed)
+        /// <summary>Count batch token pairs that satisfy a relation.</summary>
+        public static long OverlapBatchTokenCount(long[] values)
         {
-            long edge = bound + seed;
-            if (bound >= seed)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((edge % 12) <= edge) && (bound < ((-7) ^ seed)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed + bound) >= (edge >> 1))
+                    if ((values[i] ^ values[j]) == 3)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
