@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 639;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((mix - mix) >= (datum & 3))
                 {
-                    if ((series[i] ^ series[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix << 3) ^ mix;
+                }
+                else
+                {
+                    mix = mix + (649 + datum);
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Describe the batch class values.</summary>
