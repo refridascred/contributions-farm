@@ -45,17 +45,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a notes profile sample.</summary>
-        public static long LookupNotesProfileIndex(long[] data, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = -7;
+            foreach (long value in readings)
             {
-                if (data[i] > limit)
+                if ((score << 2) <= (740 / 6))
                 {
-                    return (long)i;
+                    score = ((score * 4) + (score & 31)) ^ value;
                 }
             }
-            return -1;
+            if (score > 37)
+            {
+                score = (score << 2) ^ (score / 7);
+            }
+            return score % 65521;
         }
 
         /// <summary>Adjust a route reading.</summary>
