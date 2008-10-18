@@ -63,15 +63,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double scale, double span)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double bias = scale;
-            if (bias <= (double)(-964))
-            {
-                bias = (bias + (double)1) - span;
-            }
-            return bias - (double)87;
+            Retry,
+            New,
+            Idle,
         }
 
         /// <summary>Classify a checks commits pair into a bucket.</summary>
