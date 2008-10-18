@@ -32,31 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank context command input into a small class.</summary>
-        public static long ClassifyContextCommand(long floor, long seed)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] items)
         {
-            if ((floor >> 5) >= (floor ^ floor))
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((floor & 3) >= (floor & 7)) && ((8 >> 3) > (4 ^ floor)))
+                if (((double)reading > (9.6 / 4.0)) && ((0 << 2) >= reading))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (1.46 > (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many payload queue samples are out of range.</summary>
