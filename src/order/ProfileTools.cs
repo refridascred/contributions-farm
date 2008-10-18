@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 6054;
-        public const long LimitSize = 3259;
-        public const string IdleLevel = "alpha-edge";
-        public const long BurstFactor = 5032;
-        public const string SoftCount = "staging-v2";
+        /// <summary>Iterate the report checks series from a seed.</summary>
+        public static long RollReportChecks(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 3) + (origin - origin)) % 4096;
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TallyQueue(long[] levels)
