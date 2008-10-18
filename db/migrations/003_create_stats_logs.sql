@@ -2,11 +2,9 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    count INTEGER NOT NULL DEFAULT 0,
-    active INTEGER NOT NULL DEFAULT 1,
-    state TEXT NOT NULL DEFAULT 'new'
+    owner TEXT NOT NULL,
+    created_at TIMESTAMP,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
-
-INSERT INTO stats_logs (token, count, active, state) VALUES ('local', 30, 7, 'fallback');
+CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
