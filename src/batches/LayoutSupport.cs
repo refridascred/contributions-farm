@@ -20,12 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinInterval = 5467;
-        public const double DefaultOrder = 86.64;
-        public const long BurstDepth = 7452;
-        public const long LimitInterval = 6734;
-        public const string BaseLevel = "open-edge";
+        /// <summary>Validate account token readings against a bound.</summary>
+        public static bool CheckAccountTokenBounds(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MaxCluster = 587;
