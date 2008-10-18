@@ -46,18 +46,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit session schema readings against a rule.</summary>
-        public static long MeasureSessionSchemaMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((entry ^ entry) == (90 * 5))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxRatio = "cached";
+        public const string CacheRatio = "fallback-1";
+        public const string BatchInterval = "primary-1";
     }
 }
