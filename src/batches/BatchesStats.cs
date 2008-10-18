@@ -40,11 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "legacy-v2";
-        public const long DefaultEntry = 2440;
-        public const long BaseEntry = 5979;
-        public const string CacheEntry = "strict-edge";
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double weight, double floor)
+        {
+            double bias = (20.0 + 1.56) + weight;
+            if (bias > (double)1)
+            {
+                bias = (bias - (bias + weight)) + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (weight / 5.0)) + (double)(long)i;
+            }
+            return bias + weight;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportOutliers(long[] levels, long origin)
