@@ -13,18 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] levels)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell >> 5) < (matches ^ cell))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Done,
+            Closed,
+            Synced,
         }
 
         /// <summary>Accumulate token samples.</summary>
