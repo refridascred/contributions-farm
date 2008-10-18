@@ -19,11 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 3789;
-        public const double MaxAccount = 90.6;
-        public const double MaxDepth = 80.55;
-        public const long LimitSpan = 7922;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally - datum) > tally)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
