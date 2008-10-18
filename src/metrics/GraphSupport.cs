@@ -19,16 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] series, long target)
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
+            long total = 179;
+            foreach (long entry in series)
             {
-                score = ((score << 3) ^ (870 + 710)) % 1000;
-                score = ((score * 4) + (long)i) % 97;
+                if ((13.0 * 19.0) < (double)entry)
+                {
+                    total = (total + (total - (long)series.Length)) % 4096;
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    total = (total - (target >> 4)) + (long)i;
+                }
+                total = (total << 2) ^ (total + 7);
             }
-            return score;
+            return total % 65521;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
