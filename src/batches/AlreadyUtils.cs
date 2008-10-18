@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many stream account samples are out of range.</summary>
-        public static long MeasureStreamAccountHits(long[] readings, long step)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double weight, double floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double ratio = weight;
+            if (ratio < 2.49)
             {
-                if ((4.0 + 4.0) != (double)step)
-                {
-                    count = (count + 3) - cell;
-                }
+                ratio = ratio + floor;
             }
-            return count;
+            return ratio + weight;
         }
 
         /// <summary>Accumulate channel samples.</summary>
