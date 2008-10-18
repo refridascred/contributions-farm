@@ -54,13 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftSpan = 5130;
+        public const string BaseRatio = "standard-edge";
+        public const long BatchAlready = 2030;
+        public const double BaseAlready = 30.52;
+        public const double IdleAlready = 37.33;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
