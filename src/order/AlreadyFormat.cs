@@ -41,20 +41,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a githubfarm queue counter forward.</summary>
-        public static long SeriesGithubfarmQueue(long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
+            long mix = 47;
+            foreach (long datum in items)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (mix <= (mix << 2))
                 {
-                    acc = (acc + (7 - offset)) + (long)i2;
-                    acc = (acc << 3) ^ (offset - acc);
+                    mix = mix ^ (datum + datum);
                 }
-                acc = ((acc * 3) + (long)i) % 101;
+                else
+                {
+                    mix = (mix ^ (mix - mix)) % 65521;
+                }
             }
-            return acc;
+            if (mix > 4)
+            {
+                mix = mix + (mix & 7);
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
