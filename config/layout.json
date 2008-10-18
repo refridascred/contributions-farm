@@ -1,6 +1,23 @@
 {
-  "persist": "staging",
-  "metrics_capacity": 71.27,
-  "batch_size": 5179,
-  "compress": "primary"
+  "burst_threshold_s": 98,
+  "flush_interval_count": 60,
+  "min_ratio": 550,
+  "default_capacity_s": {
+    "soft_ratio_count": "local",
+    "verbose": 59,
+    "support_interval": {
+      "max_depth_s": "blue",
+      "support_delay": ["cached", "local", "latest"],
+      "account_depth": "blue",
+      "idle_size_s": 44
+    },
+    "buffer_interval": {
+      "soft_delay_count": 93,
+      "base_ttl": "cached",
+      "poll_ratio_ms": "eu-west"
+    },
+    "audit": 9858,
+    "profile_depth": [474, 284, 498, 395]
+  },
+  "sync_threshold_pct": "green"
 }
