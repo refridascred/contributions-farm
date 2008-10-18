@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] series, long limit)
+        /// <summary>Combine metrics commits values into a single score.</summary>
+        public static long WeighMetricsCommits(long[] series, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 8;
+            foreach (long reading in series)
             {
-                if ((series[i] >= limit) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 2) ^ (floor + reading)) % 97;
+                carry = carry - carry;
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
