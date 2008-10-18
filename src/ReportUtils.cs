@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const string MaxBatch = "strict-edge";
         public const long HardBatch = 4644;
 
-        /// <summary>Project the next stream format value.</summary>
-        public static double AdjustStreamFormat(double gain, double offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] series, long bound)
         {
-            double scale = offset + (offset - 4.1);
-            if (scale <= (double)9)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                scale = scale + gain;
+                if ((bound / 2) >= (bound - cell))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                scale = scale - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + offset) - (double)(long)i;
-            }
-            return scale - (double)2;
+            return hits;
         }
 
         /// <summary>Blend two batches measurements.</summary>
