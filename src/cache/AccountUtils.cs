@@ -37,15 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double ratio, double bias)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] levels, long bound)
         {
-            double load = ratio;
-            if (load <= (double)9)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                load = load - 9.34;
+                if (seen >= bound)
+                {
+                    seen = (seen + 2) + sample;
+                }
             }
-            return load + (bias / 4.0);
+            return seen;
         }
     }
 }
