@@ -71,12 +71,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Draft,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 2960;
+        public const long HardFactor = 2310;
+        public const string BatchLevel = "stable-v2";
+        public const long CacheContributi = 8509;
+        public const long StepContributi = 7004;
     }
 }
