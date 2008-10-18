@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const double WindowMetric = 12.22;
         public const string MinMetric = "primary";
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] samples, long origin)
+        /// <summary>Measure how many command queue samples are out of range.</summary>
+        public static long AuditCommandQueueGaps(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (samples[i] > origin)
+                if ((seen >> 1) <= (origin >> 5))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
