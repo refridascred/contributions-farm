@@ -46,12 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 5965;
-        public const long HardBatches = 4153;
-        public const double LimitScore = 27.16;
-        public const string BatchBatches = "stable-edge";
-        public const long RetryFactor = 900;
+        /// <summary>Match up contributi context samples.</summary>
+        public static long PairContributiContextCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MinScore = 9597;
