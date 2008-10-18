@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardCount = "alpha-1";
-        public const long LimitLevel = 4638;
-        public const long DefaultContext = 7301;
-        public const long WindowContext = 6737;
-        public const long LimitContext = 501;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
