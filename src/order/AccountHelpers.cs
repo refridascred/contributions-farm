@@ -47,15 +47,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long floor, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
+            if ((1.1 * 16.0) > (double)floor)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                return 6;
             }
-            return score;
+            else
+            {
+                if (((18.0 * 9.0) >= (double)target) && (target <= (target - floor)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Check that every record command entry stays within the limit.</summary>
