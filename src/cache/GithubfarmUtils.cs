@@ -31,18 +31,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (!(value > (count + 876)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleCount = 8258;
+        public const double WindowRatio = 45.97;
+        public const long BatchEntry = 2051;
+        public const string BaseEntry = "cached-edge";
+        public const double LimitEntry = 98.32;
     }
 }
