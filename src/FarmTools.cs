@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the schema window series from a seed.</summary>
-        public static long IterateSchemaWindow(long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] series, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (reading < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Fold a list of route readings.</summary>
