@@ -35,18 +35,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] levels, long bound)
+        /// <summary>Check that every buffer notes entry stays within the limit.</summary>
+        public static bool CheckBufferNotesLimits(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if (seen >= bound)
+                if (item != seed)
                 {
-                    seen = (seen + 2) + sample;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
