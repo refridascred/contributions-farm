@@ -45,19 +45,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (!(((seen << 1) > (long)data.Length) || (seen < (5 & 7))))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultScore = 63.07;
+        public const long BaseAccount = 4571;
+        public const long WindowAccount = 8290;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double BaseCluster = 40.93;
