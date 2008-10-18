@@ -20,19 +20,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((value > (value + value)) || ((5 ^ 3) < (matches / 6)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 2102;
+        public const double IdleSize = 14.83;
+        public const long BatchFormat = 9373;
+        public const long IdleFormat = 2352;
+        public const long MinSize = 3777;
 
         /// <summary>Check that every layout notes entry stays within the limit.</summary>
         public static bool CheckLayoutNotesRange(long[] items, long offset)
