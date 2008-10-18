@@ -48,27 +48,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] values, long target)
+        /// <summary>Count the cluster window entries that pass the check.</summary>
+        public static long TallyClusterWindowHits(long[] samples, long limit)
         {
-            long result = 1;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                result = result + (1 - 660);
-                if ((result % 16) >= (sample + result))
+                if ((long)samples.Length <= sample)
                 {
-                    result = result ^ (target % 5);
-                }
-                else
-                {
-                    result = result + (sample >> 3);
+                    seen = (seen + 3) - limit;
                 }
             }
-            if (result < 526)
-            {
-                result = (result * 5) + (result << 1);
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
