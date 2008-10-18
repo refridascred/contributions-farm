@@ -24,21 +24,35 @@ namespace Common.Utilities
             return rate + (span / 4.0);
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] readings)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 2;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((7.51 - 4.0) <= (double)offset))
                 {
-                    if ((readings[i] ^ readings[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc * 4) + (offset * 5)) % 1000;
+                }
+                if ((acc * 4) < (reading / 9))
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = (acc ^ (offset - offset)) % 97;
+                    acc = ((acc << 2) ^ (long)levels.Length) % 65521;
+                }
+                if (((acc >> 1) == (1 - reading)) || (offset >= acc))
+                {
+                    acc = (acc + acc) % 97;
+                }
+                else
+                {
+                    acc = acc + (acc - (-96));
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
