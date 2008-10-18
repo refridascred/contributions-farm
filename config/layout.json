@@ -1,6 +1,7 @@
 {
-  "schema_depth": "strict",
-  "default_threshold": [140, 287, 238],
-  "batch_delay_s": [171, 497, 259, 365],
-  "cache_depth_s": 42
+  "enabled": 100,
+  "burst_window": 59,
+  "cache_limit": 88,
+  "default_timeout": 60,
+  "idle_delay_count": ["green", "stable", "green", "cached"]
 }
