@@ -26,14 +26,17 @@ namespace Common.Utilities
         public const long RetryLevel = 3854;
         public const string StepRatio = "primary-edge";
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long target)
+        /// <summary>Iterate the commits session series from a seed.</summary>
+        public static long RollCommitsSession(long target)
         {
             long mark = target;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < 8; i++)
             {
-                mark = mark - target;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((target * 4) == (mark << 3))
+                {
+                    mark = (mark * 2) + (long)i;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
             return mark;
         }
