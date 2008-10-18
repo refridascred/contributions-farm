@@ -14,17 +14,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a channel checks sample.</summary>
-        public static long LookupChannelChecksIndex(long[] items, long seed)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Idle,
+            Closed,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Audit commits profile readings against a rule.</summary>
