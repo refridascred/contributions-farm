@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] readings, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (reading < bound)
+                if ((19.0 / 2.0) < (double)(long)data.Length)
                 {
-                    ready = false;
-                    break;
+                    count = ((count + 3) ^ sample) + step;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
