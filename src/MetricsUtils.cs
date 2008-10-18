@@ -14,19 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (!(16 >= (hits % 8)))
-                {
-                    hits = ((hits + 3) ^ entry) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepTimeout = 3678;
+        public const long LimitSize = 4366;
+        public const string SoftCount = "standard";
+        public const long WindowTimeout = 7695;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long SoftInterval = 99;
