@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double gain, double span)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] readings, long limit)
         {
-            double scale = gain;
-            if (scale <= 3.8)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                scale = scale + gain;
+                if (datum > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - 7.31;
-            }
-            return scale - span;
+            return ok;
         }
 
         /// <summary>Hold a editor record.</summary>
