@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 8828;
-        public const long RetryStats = 2883;
-        public const long MaxLevel = 7230;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 4466;
+        public const long MaxCount = 1738;
+        public const long SoftInterval = 9312;
+        public const long BatchReport = 8666;
+        public const long IdleReport = 1264;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long MatchFormatCount(long[] data)
