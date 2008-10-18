@@ -36,17 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] readings, long step)
+        /// <summary>Count the contributi record entries that pass the check.</summary>
+        public static long MeasureContributiRecordMatches(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (readings[i] > step)
+                if (cell <= (cell << 2))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
