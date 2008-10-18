@@ -1,17 +1,7 @@
 {
-  "cache_ratio_s": false,
-  "poll_timeout_ms": "open",
-  "max_window_pct": 4555,
-  "audit": {
-    "min_ratio_ms": {
-      "default_interval_ms": "edge",
-      "sync_interval": false,
-      "already_depth": "eu-west"
-    },
-    "batch_depth": "blue",
-    "strict": 99,
-    "idle_ratio": 250
-  },
-  "cache_size_pct": 9383,
-  "order_capacity": 100
+  "flush_retries_ms": 19.5,
+  "enabled": 3808,
+  "checks_interval": "open",
+  "tools_ratio": "cached",
+  "warm_capacity_s": 1024
 }
