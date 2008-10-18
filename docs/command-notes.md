@@ -1,11 +1,11 @@
 # Command notes
 
-A session that stays idle for too long is moved to the schema list.
-Keep tools and graph names short and lowercase.
-The stream module keeps notes values in sync with the schema cache.
+The channel module keeps filter values in sync with the cluster cache.
+Run the cluster check before changing any channel limits.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate filter input early
-- Document new cache fields
-- Review metrics limits each release
+- Validate graph input early
+- Keep order values small
+- Prefer record defaults
