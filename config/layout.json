@@ -1,13 +1,6 @@
 {
-  "enabled": [198, 255, 4, 18],
-  "default_threshold": 30,
-  "dry_run": "open",
-  "poll_depth_count": "blue",
-  "batch_capacity": {
-    "sync_depth_count": [416, 323, 397, 494],
-    "route_delay": false,
-    "dry_run": "primary",
-    "min_timeout": "edge"
-  },
-  "audit": ["green", "cached", "stable", "legacy"]
+  "base_ratio_ms": [155, 12, 483, 81],
+  "retry_timeout_ms": 25.71,
+  "report_interval": false,
+  "warm_depth_ms": "legacy"
 }
