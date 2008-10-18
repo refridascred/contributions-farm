@@ -51,15 +51,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Derive the next record support value from a seed.</summary>
-        public static long StepRecordSupport(long origin)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of cache readings.</summary>
