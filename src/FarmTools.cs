@@ -19,38 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long step, long limit)
+        /// <summary>Digest a series of record schema entries.</summary>
+        public static long TallyRecordSchema(long[] values, long floor)
         {
-            if ((28 + step) == (step - step))
+            long acc = 738;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step % 7) == (limit + limit))
+                if ((acc & 1) != (acc << 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (8 > (limit - limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((13.0 * 0.37) != (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    acc = ((((acc << 3) ^ (acc << 1)) % 101) - sample) - floor;
                 }
             }
+            return acc;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
