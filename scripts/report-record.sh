@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local latest fallback; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=231
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-local}"
+mode="${1:-green}"
 case "${mode}" in
-    fallback)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in fallback legacy; do
+    log "checking ${item}"
+done
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
