@@ -1,23 +1,7 @@
 # entry settings
-order_depth: 2802
-tools_capacity: blue
-route_capacity:
-  batches_size:
-    idle_threshold_pct: 74.66
-    already_depth: eu-west
-    retry_limit_s: true
-    account_interval: cached
-    support_ttl: standard
-    idle_interval_ms:
-      - strict
-      - edge
-      - green
-  default_threshold_count: cached
-  support_delay: 3547
-verbose:
-  enabled: 4730
-  base_ttl_count: 26
-  report_ratio:
-    - staging
-    - eu-west
-    - stable
+cache_limit_ms: 2594
+githubfarm_retries:
+  - 27
+  - 371
+  - 100
+retry_delay: true
