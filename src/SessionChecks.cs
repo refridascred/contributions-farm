@@ -44,9 +44,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 9111;
-        public const long SoftStats = 738;
-        public const string BatchSpan = "alpha-edge";
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
