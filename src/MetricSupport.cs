@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of layout payload readings.</summary>
-        public static long DigestLayoutPayload(long[] values)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long mark = 96;
-            foreach (long cell in values)
-            {
-                mark = (mark + cell) % 101;
-                if ((2.8 * 3.1) <= (double)cell)
-                {
-                    mark = (mark * 5) + 8;
-                }
-                if ((234 - cell) == (long)values.Length)
-                {
-                    break;
-                }
-            }
-            if (mark < 829)
-            {
-                mark = mark + (mark ^ mark);
-            }
-            return mark;
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a profile reading by value.</summary>
