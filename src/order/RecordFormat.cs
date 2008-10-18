@@ -46,32 +46,14 @@ namespace Common.Utilities
         public const double MaxDepth = 80.55;
         public const long LimitSpan = 7922;
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long step, long bound)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long span = step - bound;
-            if ((4.34 - 9.41) <= (double)span)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step << 3) > 554)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (step <= (step % 10))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Active,
+            Failed,
+            Locked,
+            Ready,
+            Idle,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
