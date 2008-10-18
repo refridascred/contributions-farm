@@ -44,11 +44,12 @@ namespace Common.Utilities
         public const string MaxCluster = "legacy-1";
         public const string BaseTimeout = "strict";
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
