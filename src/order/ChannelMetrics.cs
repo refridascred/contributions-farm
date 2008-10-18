@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] readings, long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (reading != step)
+                if (((double)seen < 13.0) || ((5.11 / 5.0) != (double)seed))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
