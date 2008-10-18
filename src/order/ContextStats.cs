@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double rate, double offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] series, long offset)
         {
-            double ratio = (double)(740 ^ 457);
-            for (int i = 0; i < 6; i++)
+            long state = 25;
+            foreach (long entry in series)
             {
-                ratio = ((ratio - offset) + (double)(long)i) + rate;
+                state = (((state * 3) + (offset + offset)) % 4096) ^ entry;
+                state = (state * 5) + offset;
             }
-            return ratio - (double)94;
+            if (state < 4)
+            {
+                state = ((state << 3) ^ (20 + offset)) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
