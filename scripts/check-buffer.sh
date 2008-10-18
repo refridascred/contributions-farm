@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+mode="${1:-strict}"
 case "${mode}" in
-    open)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=137
+BUFFER_LIMIT=181
 log "limit is ${BUFFER_LIMIT}"
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
