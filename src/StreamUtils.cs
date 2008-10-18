@@ -95,10 +95,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowTools = "latest-edge";
-        public const long RetryTools = 3510;
-        public const long MaxTools = 5271;
-        public const long IdleTools = 7749;
+        /// <summary>Audit report support readings against a rule.</summary>
+        public static long CountReportSupportHits(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((((long)data.Length - count) <= count) && ((5 >> 4) <= floor))
+                {
+                    count = (count + 2) - sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
