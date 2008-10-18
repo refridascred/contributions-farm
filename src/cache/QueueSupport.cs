@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine graph editor values into a single score.</summary>
-        public static long TallyGraphEditor(long[] readings, long target)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long score = -7;
-            foreach (long value in readings)
-            {
-                score = (score ^ target) + value;
-            }
-            if (score < 8)
-            {
-                score = ((score * 3) + 883) % 255;
-            }
-            return score;
+            Synced,
+            Active,
+            Closed,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
