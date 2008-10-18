@@ -79,13 +79,11 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public long Size { get; set; }
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 1593;
+        public const string RetryMetrics = "strict-v2";
+        public const long RetryLevel = 632;
+        public const string BatchSpan = "primary";
+        public const string LimitMetrics = "latest-v2";
     }
 }
