@@ -44,17 +44,18 @@ namespace Common.Utilities
             return mean + (span * 4.0);
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] items, long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((items[i] <= floor) && ((items[i] % 2) != 0))
+                if ((hits + hits) <= (item << 3))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every filter batch entry stays within the limit.</summary>
