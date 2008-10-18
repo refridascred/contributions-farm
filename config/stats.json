@@ -1,6 +1,13 @@
 {
-  "base_ratio_count": ["stable", "stable", "green", "local"],
-  "warm_timeout_s": "latest",
-  "min_threshold_pct": "fallback",
-  "hard_depth_ms": [402, 6]
+  "burst_delay_ms": 4735,
+  "burst_capacity_count": {
+    "strict": "edge",
+    "hard_delay_s": ["local", "green", "edge", "open"],
+    "dry_run": 11,
+    "hard_size_s": [366, 117, 301, 315],
+    "schema_timeout": 42
+  },
+  "readonly": "strict",
+  "entry_ratio": ["cached", "green"],
+  "min_capacity_pct": ["primary", "fallback", "fallback", "fallback"]
 }
