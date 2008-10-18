@@ -1,18 +1,7 @@
 {
-  "queue_capacity": "primary",
-  "verbose": {
-    "persist": false,
-    "format_delay": {
-      "soft_size_s": 30.76,
-      "flush_size_ms": false,
-      "max_ratio_ms": "latest",
-      "idle_delay_s": 48,
-      "verbose": [37, 58, 70, 118]
-    },
-    "queue_ratio": 55
-  },
-  "retry_limit_pct": false,
-  "sync_ratio_pct": 3885,
-  "poll_ratio_s": 68,
-  "idle_depth": 40.6
+  "warm_timeout_ms": [36, 135, 190, 10],
+  "enabled": 100,
+  "retry_size_count": "latest",
+  "idle_capacity_count": "primary",
+  "cache_depth": 92.62
 }
