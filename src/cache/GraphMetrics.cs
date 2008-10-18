@@ -16,32 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long floor, long target)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long lane = floor ^ target;
-            if (target >= (floor & 255))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor + lane) >= target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor - target) <= (floor >> 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Paused,
+            Idle,
+            Closed,
+            Retry,
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
