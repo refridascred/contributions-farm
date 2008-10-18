@@ -46,18 +46,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] data)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.0 <= (double)tally) || ((18.0 * 4.75) <= (6.47 + 5.13)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) ^ reading;
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Match up buffer command samples.</summary>
