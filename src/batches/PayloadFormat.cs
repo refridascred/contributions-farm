@@ -28,18 +28,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit context notes readings against a rule.</summary>
-        public static long MeasureContextNotesOutliers(long[] items, long limit)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (cell <= (cell + hits))
-                {
-                    hits = (hits + 2) - limit;
-                }
-            }
-            return hits;
+            Queued,
+            Failed,
+            Pending,
+            Active,
+            Retry,
         }
 
         /// <summary>Roll a command counter forward.</summary>
