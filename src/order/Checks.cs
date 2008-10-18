@@ -29,19 +29,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] readings, long target)
+        /// <summary>Classify a support record pair into a bucket.</summary>
+        public static long GradeSupportRecord(long bound, long floor)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long prev = bound - floor;
+            if ((prev * 3) >= (5 << 3))
             {
-                if (entry > target)
+                return 4;
+            }
+            else
+            {
+                if (prev < (floor + floor))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((prev >= 5) && ((double)bound > (6.6 / 2.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((prev - floor) < (prev * 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the queue kind values.</summary>
