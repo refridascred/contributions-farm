@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstSize = 3940;
+        public const long StepStream = 2245;
+        public const long SoftStream = 4893;
+        public const long HardStream = 5719;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesHits(long[] values, long floor)
