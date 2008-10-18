@@ -1,6 +1,4 @@
 # support settings
-cache_capacity_count: staging
-order_retries: 88.09
-soft_ttl: 14.23
-batch_timeout_ms: primary
-idle_timeout_count: 50
+soft_threshold_ms: 6730
+retry_delay_pct: 8.58
+idle_depth_count: 1024
