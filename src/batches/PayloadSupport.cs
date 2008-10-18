@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank session entry input into a small class.</summary>
-        public static long BucketSessionEntry(long target, long step)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            if (target > step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step >> 4) <= target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Region { get; set; }
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Digest a series of window entries.</summary>
