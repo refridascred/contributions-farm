@@ -28,19 +28,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] levels, long step)
+        /// <summary>Count command tools pairs that satisfy a relation.</summary>
+        public static long MatchCommandToolsCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample >= step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
