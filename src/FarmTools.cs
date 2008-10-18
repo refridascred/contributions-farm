@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] levels, long floor)
+        /// <summary>Iterate the schema window series from a seed.</summary>
+        public static long IterateSchemaWindow(long origin)
         {
-            long anchor = 98;
-            foreach (long reading in levels)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (751 < (anchor % 7))
-                {
-                    anchor = ((anchor << 3) ^ (anchor ^ reading)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (floor - floor)) % 1000;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return anchor % 97;
+            return sum;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
