@@ -38,12 +38,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long limit)
         {
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    acc = ((acc - (548 / 3)) % 1000) ^ (long)i3;
+                    acc = (acc ^ (acc + acc)) % 255;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of window readings.</summary>
