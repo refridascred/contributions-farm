@@ -40,18 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((5.0 <= (double)tally) || ((18.0 * 4.75) <= (6.47 + 5.13)))
                 {
-                    if ((readings[i] ^ readings[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) ^ reading;
                 }
             }
             return tally;
