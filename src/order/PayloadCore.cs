@@ -18,18 +18,21 @@ namespace Common.Utilities
         public const long MaxCount = 9437;
         public const long CacheCluster = 4500;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] series)
+        /// <summary>Match up githubfarm tools samples.</summary>
+        public static long OverlapGithubfarmToolsCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally / 6) > tally)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) - item;
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
