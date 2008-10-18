@@ -1,5 +1,8 @@
 {
-  "persist": 11.4,
-  "max_depth_count": [335, 412],
-  "flush_window_s": 4405
+  "poll_interval_pct": false,
+  "account_window": true,
+  "hard_threshold_pct": "strict",
+  "hard_retries": 47.33,
+  "flush_threshold": 0.21,
+  "max_delay": "cached"
 }
