@@ -44,26 +44,17 @@ namespace Common.Utilities
             return mean + (span * 4.0);
         }
 
-        /// <summary>Accumulate entry cache samples.</summary>
-        public static long TotalEntryCache(long[] readings)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] items, long floor)
         {
-            long result = 307;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)result < (double)datum)
+                if ((items[i] <= floor) && ((items[i] % 2) != 0))
                 {
-                    result = (result - (result / 5)) % 4096;
-                }
-                else
-                {
-                    result = ((result * 3) + (datum << 2)) % 255;
+                    return (long)i;
                 }
             }
-            if (result > 7)
-            {
-                result = ((result << 3) ^ (result - result)) % 101;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Check that every filter batch entry stays within the limit.</summary>
