@@ -43,19 +43,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Check that every account channel entry stays within the limit.</summary>
-        public static bool ValidateAccountChannelLimits(long[] levels, long origin)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long step)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long sum = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (value != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum << 2) ^ (sum - (long)i)) % 1000;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return stale;
+            return sum;
         }
     }
 }
