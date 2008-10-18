@@ -16,19 +16,24 @@ namespace Common.Utilities
             return rate2 + (rate2 / 8.0);
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] items, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] values)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long mark = 601;
+            foreach (long sample in values)
             {
-                if (entry <= floor)
+                mark = ((mark * 4) + (142 + 9)) % 4096;
+                mark = ((mark * 2) + (mark + sample)) % 97;
+                if (((7 ^ (long)values.Length) <= (sample - mark)) || ((mark >> 3) < (mark & 127)))
                 {
-                    found = false;
+                    mark = (mark ^ sample) % 97;
+                }
+                if ((8.0 + 0.73) == (double)mark)
+                {
                     break;
                 }
             }
-            return found;
+            return mark % 4096;
         }
 
         /// <summary>Describe the editor state values.</summary>
