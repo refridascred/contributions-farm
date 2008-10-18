@@ -1,7 +1,6 @@
 # githubfarm settings
-base_window_ms:
-  base_capacity_s: 45.71
-  min_timeout_s: open
-  support_window: 60
-max_ratio_count: 82
-verbose: local
+readonly: open
+buffer_timeout: true
+min_capacity: blue
+hard_depth: 7969
+min_timeout_ms: 99
