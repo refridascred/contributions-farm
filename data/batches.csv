@@ -1,8 +1,8 @@
-id,count,active,state
-1,eu-west,cached,588
-2,60.2,615,edge
-3,green,33.9,332
-4,36.44,346,blue
-5,539,31.15,182
-6,standard,230,391
-7,local,stable,41.77
+id,state,level,region
+1,11.19,latest,30.83
+2,58.51,primary,latest
+3,edge,54.05,674
+4,62.91,edge,955
+5,81.46,green,blue
+6,231,39.0,fallback
+7,770,359,52.18
