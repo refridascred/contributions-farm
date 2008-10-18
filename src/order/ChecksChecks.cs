@@ -27,18 +27,21 @@ namespace Common.Utilities
         public const double SoftTimeout = 40.7;
         public const double StepSize = 73.15;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] levels)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((327 * 2) >= (12 + entry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
