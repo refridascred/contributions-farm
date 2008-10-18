@@ -50,19 +50,15 @@ namespace Common.Utilities
         public const long HardCount = 4768;
         public const double MinStats = 61.41;
 
-        /// <summary>Check that every record command entry stays within the limit.</summary>
-        public static bool ValidateRecordCommandLimits(long[] values, long bound)
+        /// <summary>Roll a context buffer counter forward.</summary>
+        public static long IterateContextBuffer(long bound)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long total = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
