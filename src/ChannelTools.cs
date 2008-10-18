@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const string RetryRecord = "local-edge";
         public const long DefaultRecord = 9869;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] levels, long target)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((-222) >= (480 + seen))
-                {
-                    seen = ((seen + 1) + cell) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Stale,
+            Active,
         }
 
         /// <summary>Digest a series of support payload entries.</summary>
