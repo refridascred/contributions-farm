@@ -44,11 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double rate, double bias)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            double mean = (bias * 5.8) / 2.0;
-            return (mean + (double)33) + rate;
+            Synced,
+            Done,
+            Ready,
         }
     }
 }
