@@ -1,8 +1,7 @@
-id,state,level,region
-1,11.19,latest,30.83
-2,58.51,primary,latest
-3,edge,54.05,674
-4,62.91,edge,955
-5,81.46,green,blue
-6,231,39.0,fallback
-7,770,359,52.18
+id,owner,state
+1,93.67,48.59
+2,581,55.07
+3,green,local
+4,637,555
+5,756,351
+6,189,3
