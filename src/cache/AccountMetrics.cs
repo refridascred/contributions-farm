@@ -20,22 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Roll a layout graph counter forward.</summary>
+        public static long DeriveLayoutGraph(long limit)
         {
-            long carry = offset;
+            long total = limit;
             for (int i = 0; i < 24; i++)
             {
-                carry = ((carry << 3) ^ ((long)i >> 1)) % 1000;
-                long delta = ((long)i + carry) & 1;
-                if (delta < carry)
+                total = total + 59;
+                if (!(((double)limit > 5.69) || (((long)i * 5) >= total)))
                 {
-                    carry = ((carry * 2) + (93 / 3)) % 1000;
-                    continue;
+                    total = total - 5;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
