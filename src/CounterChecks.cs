@@ -70,19 +70,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] items, long floor)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long mark = 600;
-            foreach (long cell in items)
-            {
-                mark = (mark + (cell & 255)) % 101;
-            }
-            if (mark > 72)
-            {
-                mark = ((mark << 3) ^ (floor - mark)) % 65521;
-            }
-            return mark % 65521;
+            Idle,
+            Locked,
+            Paused,
         }
     }
 }
