@@ -19,13 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long step, long offset)
         {
-            Active,
-            Pending,
-            Retry,
-            Synced,
+            long prev = step - offset;
+            if ((70 % 60) >= (prev - offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step + prev) > (929 * 5)) && ((double)prev > (5.5 - 2.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (633 <= (offset + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
