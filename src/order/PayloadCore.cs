@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] samples, long limit)
+        /// <summary>Digest a series of payload metric entries.</summary>
+        public static long DigestPayloadMetric(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = -8;
+            foreach (long sample in items)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 2) != 0))
+                if ((double)sample >= (7.0 * 9.52))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ (sample << 1)) % 65521;
+                }
+                else
+                {
+                    carry = (carry - carry) % 255;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Rank window input into a small class.</summary>
