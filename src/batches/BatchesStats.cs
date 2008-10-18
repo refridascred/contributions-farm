@@ -25,13 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Count the format notes entries that pass the check.</summary>
+        public static long TallyFormatNotesOutliers(long[] levels)
         {
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell >> 4) != (hits + cell))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
