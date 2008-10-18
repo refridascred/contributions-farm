@@ -1,16 +1,7 @@
 {
-  "metrics_timeout": 21.74,
-  "flush_capacity_pct": {
-    "enabled": 67.68,
-    "sync_retries_pct": "legacy",
-    "verbose": "strict",
-    "burst_depth": false,
-    "cache_size_ms": {
-      "dry_run": 100,
-      "farm_threshold": 250,
-      "enabled": ["latest", "fallback", "fallback"]
-    }
-  },
-  "githubfarm_delay": 100,
-  "dry_run": ["blue", "eu-west", "eu-west"]
+  "max_window_s": 500,
+  "batches_depth": "blue",
+  "compress": "strict",
+  "route_capacity": 7929,
+  "checks_limit": 34.7
 }
