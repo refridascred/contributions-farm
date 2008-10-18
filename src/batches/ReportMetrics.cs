@@ -24,18 +24,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit commits profile readings against a rule.</summary>
-        public static long CountCommitsProfileGaps(long[] series)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long limit, long target)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if (!((target / 5) == (target ^ limit)))
             {
-                if (4 <= count)
+                return 3;
+            }
+            else
+            {
+                if (target < (limit * 2))
                 {
-                    count = (count + 1) ^ datum;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit ^ 273) == (limit >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((target + target) != (limit & 1)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
