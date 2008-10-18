@@ -51,13 +51,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Accumulate account format samples.</summary>
+        public static long TotalAccountFormat(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Level { get; set; }
-            public double Count { get; set; }
+            long anchor = 4;
+            foreach (long item in series)
+            {
+                anchor = anchor ^ (anchor + anchor);
+                if (((item + anchor) <= (207 + item)) || ((anchor - anchor) >= (20 ^ 572)))
+                {
+                    anchor = (anchor + (item + anchor)) % 65521;
+                }
+            }
+            if (anchor < 52)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
