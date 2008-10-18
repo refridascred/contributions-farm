@@ -27,19 +27,21 @@ namespace Common.Utilities
         public const long StepCommand = 535;
         public const double SoftCount = 79.52;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] readings, long limit)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] series)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item <= limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] + series[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Project the next checks value.</summary>
