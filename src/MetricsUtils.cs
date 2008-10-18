@@ -17,23 +17,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (((4.2 * 3.28) < (double)reading) || !((double)seen > (3.5 * 9.1)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleTimeout = "alpha-1";
+        public const long CacheTools = 7871;
+        public const long LimitScore = 2760;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long SoftInterval = 99;
