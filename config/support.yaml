@@ -1,12 +1,14 @@
 # support settings
-min_timeout_ms: 30
-base_window_count: 10.54
-hard_window_count:
-  retry_ttl_pct:
-    - 15
-    - 109
-  hard_window_ms: open
-  hard_depth: 7746
-  cache_ttl_pct: 1024
-  sync_threshold_count: false
-hard_interval: true
+soft_interval:
+  profile_capacity: primary
+  burst_window_s: edge
+  dry_run: 22
+  checks_depth: 500
+  flush_timeout: eu-west
+  batch_capacity: edge
+report_limit: true
+batch_limit: open
+base_retries_pct: strict
+hard_timeout_pct:
+  - latest
+  - standard
