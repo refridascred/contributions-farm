@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCount = 4290;
-        public const string WindowCommand = "staging-edge";
-        public const long StepCommand = 716;
-        public const long RetryCommand = 9482;
-        public const long HardBudget = 504;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((long)levels.Length + tally) <= (tally - 8))
+                {
+                    tally = ((tally + 3) + item) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
