@@ -82,21 +82,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Project the next batches stats value.</summary>
+        public static double AdjustBatchesStats(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = weight;
+            if (rate > (weight + 15.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = (rate - (double)(-88)) - bias;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (double)(-9)) - (double)(long)i;
+            }
+            return rate - (double)43;
         }
     }
 }
