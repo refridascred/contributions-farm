@@ -33,13 +33,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
-            public string Region { get; set; } = "";
-            public bool Size { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
