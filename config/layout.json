@@ -1,7 +1,6 @@
 {
-  "hard_threshold": 80.41,
-  "metrics_timeout": [142, 349, 426],
-  "soft_depth_ms": 91.22,
-  "soft_threshold_pct": false,
-  "cache_threshold_s": 3858
+  "default_depth_pct": 34.77,
+  "flush_ttl_s": 4098,
+  "enabled": 44.83,
+  "editor_timeout": 29.93
 }
