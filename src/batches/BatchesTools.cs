@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] levels)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long acc = 4;
+            foreach (long item in readings)
             {
-                if ((matches * 2) <= matches)
-                {
-                    matches = (matches + 2) ^ reading;
-                }
+                acc = (acc + (item / 8)) % 101;
             }
-            return matches;
+            return acc % 97;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
