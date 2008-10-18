@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long bound, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] series, long floor)
         {
-            if ((double)bound != (2.0 * 6.0))
+            long result = 0;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound - bound) <= bound)
+                result = (result << 3) ^ (6 + result);
+                result = (result << 3) ^ result;
+                if (!(floor <= (result - sample)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    result = ((result << 3) ^ (sample + sample)) % 65521;
                 }
             }
+            if (result > 66)
+            {
+                result = (result << 3) ^ 37;
+            }
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
