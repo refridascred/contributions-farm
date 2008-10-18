@@ -1,10 +1,6 @@
-id,weight,active
-1,63.19,strict
-2,20.05,62
-3,699,585
-4,697,619
-5,stable,35.42
-6,207,staging
-7,staging,open
-8,cached,5
-9,470,59.68
+id,level
+1,staging
+2,63.79
+3,852
+4,82
+5,357
