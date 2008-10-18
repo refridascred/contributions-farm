@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double rate, double offset)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            double drift = rate;
-            if (drift <= (double)79)
-            {
-                drift = drift + 5.93;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (rate * 3.3)) + (double)(long)i;
-            }
-            return drift - offset;
+            Active,
+            Done,
+            Queued,
+            Pending,
+            Idle,
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
