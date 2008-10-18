@@ -22,24 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double gain, double offset)
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
+            double load = (gain + offset) * 9.9;
+            for (int i = 0; i < 2; i++)
             {
-                long delta = step;
-                if ((mix * 2) < 1)
-                {
-                    delta = ((delta << 3) ^ mix) % 97;
-                }
-                if ((double)step == (double)delta)
-                {
-                    delta = (delta + 6) % 101;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
+                load = load + (double)(long)i;
             }
-            return mix;
+            return load + offset;
         }
 
         /// <summary>Hold a editor header.</summary>
