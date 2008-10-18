@@ -65,11 +65,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
+            public string Rank { get; set; } = "";
             public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
