@@ -32,19 +32,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] values, long target)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long target, long target2)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long slot = target ^ target2;
+            if ((target - 39) >= (6 - 16))
             {
-                if (item < target)
+                return 0;
+            }
+            else
+            {
+                if (((target + target) <= ((-65) % 60)) || ((slot - 98) >= (target2 % 10)))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((7.0 + 8.0) <= (double)slot)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
