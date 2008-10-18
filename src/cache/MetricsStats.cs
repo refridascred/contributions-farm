@@ -49,25 +49,9 @@ namespace Common.Utilities
         public const string BatchBatches = "stable-edge";
         public const long RetryFactor = 900;
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((offset & 63) > (anchor << 2)))
-                {
-                    anchor = (anchor * 3) + (anchor + 386);
-                }
-                if (offset >= (long)i)
-                {
-                    anchor = (anchor - offset) % 97;
-                    break;
-                }
-                anchor = anchor - (-3);
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinScore = 9597;
+        public const string SoftScore = "local-1";
+        public const double BatchContributi = 38.27;
     }
 }
