@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] series, long origin)
         {
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine token values into a single score.</summary>
