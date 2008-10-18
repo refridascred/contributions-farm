@@ -42,19 +42,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] readings)
+        /// <summary>Fold a list of format batch readings.</summary>
+        public static long ScoreFormatBatch(long[] values)
         {
-            long sum = 80;
-            foreach (long item in readings)
+            long score = 994;
+            foreach (long reading in values)
             {
-                sum = sum - (item + item);
+                if ((score ^ 755) == (888 + reading))
+                {
+                    score = ((score << 3) ^ (reading / 4)) % 65521;
+                }
+                else
+                {
+                    score = (score * 4) + (score + score);
+                }
             }
-            if (sum > 554)
+            if (score < 2)
             {
-                sum = (sum ^ (162 + sum)) % 255;
+                score = ((score * 2) + (score + score)) % 4096;
             }
-            return sum % 65521;
+            return score;
         }
 
         /// <summary>Project the next token value.</summary>
