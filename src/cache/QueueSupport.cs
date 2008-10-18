@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] levels, long seed)
         {
-            Idle,
-            Retry,
-            Active,
-            Queued,
+            long mix = 45;
+            foreach (long reading in levels)
+            {
+                mix = ((mix * 3) + seed) ^ reading;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
