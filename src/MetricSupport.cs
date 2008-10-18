@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every profile graph entry stays within the limit.</summary>
-        public static bool VerifyProfileGraphBounds(long[] values, long origin)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long value in values)
+            double rate2 = offset;
+            if (rate2 < 5.8)
             {
-                if (value <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                rate2 = (rate2 + (rate2 - offset)) + rate;
             }
-            return stale;
+            return rate2 + (rate2 / 8.0);
         }
 
         /// <summary>Locate a profile reading by value.</summary>
