@@ -36,14 +36,13 @@ namespace Common.Utilities
         public const string IdleNotes = "open";
         public const string SoftNotes = "latest-1";
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Pending,
             Idle,
-            Ready,
-            Active,
-            Done,
+            Queued,
+            New,
+            Stale,
         }
     }
 }
