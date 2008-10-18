@@ -32,19 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] readings, long target)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Paused,
+            Pending,
         }
 
         /// <summary>Digest a series of entry queue entries.</summary>
