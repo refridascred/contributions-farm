@@ -31,18 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long limit)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                total = (total - (limit << 1)) % 97;
-                total = total + limit;
-                total = total - (total ^ limit);
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Done,
+            Locked,
+            Failed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
