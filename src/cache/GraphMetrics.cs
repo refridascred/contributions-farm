@@ -42,20 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long limit)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double rate, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    acc = ((acc - (548 / 3)) % 1000) ^ (long)i3;
-                    acc = (acc ^ (acc + acc)) % 255;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            double rate2 = (double)(93 - (-7));
+            return (rate2 + rate) + offset;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
