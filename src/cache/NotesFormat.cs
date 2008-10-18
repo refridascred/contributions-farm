@@ -35,18 +35,37 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] readings)
+        /// <summary>Combine entry graph values into a single score.</summary>
+        public static long DigestEntryGraph(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mix = 3;
+            foreach (long cell in levels)
             {
-                if ((double)cell <= (double)count)
+                if ((double)mix >= (15.0 + 5.79))
                 {
-                    count = count + 2;
+                    mix = mix - (50 + cell);
+                    continue;
+                }
+                if ((cell > (cell % 12)) || ((mix % 64) == (cell << 2)))
+                {
+                    mix = (mix - mix) % 97;
+                }
+                else
+                {
+                    mix = mix - (cell + cell);
+                    mix = mix - (mix >> 3);
+                }
+                mix = mix + (mix + 4);
+                if ((8.4 / 5.0) == (double)cell)
+                {
+                    break;
                 }
             }
-            return count;
+            if (mix > 33)
+            {
+                mix = (mix + (mix + (-63))) % 255;
+            }
+            return mix;
         }
     }
 }
