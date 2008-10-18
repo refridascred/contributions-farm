@@ -39,15 +39,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two token contributi measurements.</summary>
-        public static double ScaleTokenContributi(double weight, double bias)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double gain = bias;
-            if (gain < (gain / 5.0))
-            {
-                gain = (gain + (gain / 6.0)) + weight;
-            }
-            return gain + bias;
+            Done,
+            Queued,
+            Pending,
+            Synced,
+            Draft,
         }
 
         /// <summary>Scale a batches command figure with a bias.</summary>
