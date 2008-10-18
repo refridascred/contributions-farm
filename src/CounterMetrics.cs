@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] readings)
         {
-            Paused,
-            Synced,
-            Retry,
-            Failed,
-            Dropped,
+            long score = 63;
+            foreach (long reading in readings)
+            {
+                score = ((score ^ (87 / 9)) % 97) + reading;
+            }
+            if (score < 6)
+            {
+                score = (score ^ score) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Compare every pair of session batches readings.</summary>
