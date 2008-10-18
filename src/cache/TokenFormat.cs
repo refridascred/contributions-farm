@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] samples)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long result = 149;
-            foreach (long cell in samples)
-            {
-                result = (result + (228 + cell)) % 255;
-            }
-            return result;
+            Failed,
+            Queued,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
