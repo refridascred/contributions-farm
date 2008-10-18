@@ -1,16 +1,21 @@
 # support settings
-sync_timeout: green
-idle_size: 30
-cache_interval:
-  batch_depth: 25
-  hard_capacity_count: 1964
-  compress:
-    - fallback
-    - standard
-    - open
-    - standard
-  soft_capacity_pct: 57.76
-  graph_size: green
-retry_depth: blue
-layout_interval: false
-poll_capacity: primary
+sync_threshold_pct: 69.98
+poll_limit_s: true
+batch_limit:
+  idle_limit_pct: local
+  sync_threshold: open
+  enabled: eu-west
+  cache_interval_ms:
+    default_delay_s: 78
+    min_ttl_s: stable
+    strict: open
+    cache_capacity_pct: eu-west
+    poll_depth_pct: 1747
+  hard_capacity_pct: false
+  metrics_size: 23
+support_window:
+  - 259
+  - 257
+  - 367
+  - 375
+min_capacity_ms: true
