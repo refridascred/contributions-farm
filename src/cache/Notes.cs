@@ -35,19 +35,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] values, long step)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long mix = 41;
-            foreach (long item in values)
-            {
-                mix = (mix - (mix - step)) + item;
-                if ((step - 6) >= (mix & 127))
-                {
-                    mix = (mix + (long)values.Length) % 101;
-                }
-            }
-            return mix;
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the entry githubfarm entries that pass the check.</summary>
