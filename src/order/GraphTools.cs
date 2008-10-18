@@ -23,20 +23,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] readings, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((double)score > 5.33)
+                if ((3 ^ 51) < datum)
                 {
-                    score = (score - (bound >> 1)) % 1000;
-                    continue;
+                    count = (count + 1) - target;
                 }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
