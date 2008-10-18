@@ -79,25 +79,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long bound, long floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] data, long limit)
         {
-            long prev = bound ^ floor;
-            if (((floor * 2) <= (prev << 3)) || ((prev + 230) >= (floor + bound)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((10.0 + 7.0) != (double)prev)
+                if ((data[i] <= limit) && ((data[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
