@@ -13,11 +13,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string WindowBudget = "stable-edge";
-        public const double LimitSchema = 11.73;
-        public const long SoftTimeout = 6677;
-        public const string IdleSpan = "strict-1";
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public long Count { get; set; }
+            public double Weight { get; set; }
+            public long Token { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
