@@ -21,19 +21,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double ratio, double span)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            double mean = span;
-            if (mean > (span - mean))
-            {
-                mean = (mean + (double)9) + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (mean * 5.42)) + (double)(long)i;
-            }
-            return mean + mean;
+            Dropped,
+            Active,
+            Locked,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a support entry.</summary>
