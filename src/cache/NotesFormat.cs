@@ -37,10 +37,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSpan = 8671;
-        public const string LimitSize = "standard-1";
-        public const double HardFactor = 4.4;
-        public const double MaxSchema = 18.73;
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double bias, double floor)
+        {
+            double ratio = floor;
+            if (ratio <= (ratio + 1.63))
+            {
+                ratio = (ratio + (double)661) - bias;
+            }
+            return ratio + ratio;
+        }
     }
 }
