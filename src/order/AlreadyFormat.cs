@@ -58,18 +58,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] data, long bound)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double ratio = gain;
+            if (ratio >= floor)
             {
-                if ((entry >> 2) != (tally * 2))
-                {
-                    tally = (tally + 1) + bound;
-                }
+                ratio = ratio + (ratio + 5.58);
             }
-            return tally;
+            else
+            {
+                ratio = ratio + (gain * 9.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (double)590) + (double)(long)i;
+            }
+            return ratio + (ratio + gain);
         }
     }
 }
