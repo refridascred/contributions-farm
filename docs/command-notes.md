@@ -1,10 +1,10 @@
 # Command notes
 
-Keep graph and batches names short and lowercase.
-A notes that stays idle for too long is moved to the payload list.
+The session module keeps support values in sync with the support cache.
+The payload module keeps entry values in sync with the route cache.
 
 ## Guidelines
 
-- Review tools limits each release
-- Validate metric input early
-- Prefer profile defaults
+- Review record limits each release
+- Prefer entry defaults
+- Document new session fields
