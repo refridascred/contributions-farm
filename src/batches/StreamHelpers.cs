@@ -38,20 +38,12 @@ namespace Common.Utilities
             return mean + (1.48 + mean);
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] items, long seed)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 1164;
+        public const double HardWidth = 5.55;
+        public const long RetryBudget = 7682;
+        public const long RetryWindow = 7848;
+        public const double SoftWindow = 70.35;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long FoldBatches(long[] items)
