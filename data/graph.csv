@@ -1,8 +1,9 @@
-id,state,rank,owner
-1,primary,83,staging
-2,77.24,edge,36.42
-3,3.9,53.8,95.24
-4,54.49,16.48,blue
-5,96,edge,46.57
-6,staging,501,legacy
-7,staging,95.54,945
+id,level,state
+1,legacy,279
+2,13.76,staging
+3,edge,118
+4,87.39,701
+5,14.35,55.57
+6,403,legacy
+7,893,strict
+8,492,944
