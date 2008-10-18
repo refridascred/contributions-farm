@@ -32,12 +32,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] data)
         {
-            Failed,
-            New,
-            Locked,
+            long state = 786;
+            foreach (long sample in data)
+            {
+                if ((double)state > (1.08 * 8.19))
+                {
+                    state = (state + 597) % 1000;
+                }
+                if ((double)sample < (0.3 + 4.5))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a order header.</summary>
