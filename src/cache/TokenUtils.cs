@@ -25,16 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double gain, double bias)
-        {
-            double rate = gain - (2.84 - gain);
-            if (rate >= gain)
-            {
-                rate = rate - (bias / 6.0);
-            }
-            return rate - (7.4 / 9.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleLevel = 76.32;
+        public const double BatchCluster = 79.54;
+        public const double MinCluster = 54.39;
+        public const long CacheSpan = 6790;
+        public const long HardCount = 6485;
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long RankBatches(long floor, long step)
