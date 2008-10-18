@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxCache = 95.22;
-        public const long BurstCache = 5324;
-        public const long HardCache = 7056;
-        public const long IdleCache = 1484;
-        public const long MaxWidth = 3606;
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string WindowBudget = "stable-edge";
