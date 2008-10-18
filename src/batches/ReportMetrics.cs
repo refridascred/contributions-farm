@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long step, long floor)
         {
-            public bool Label { get; set; }
-            public bool Score { get; set; }
-            public double Region { get; set; }
-            public long Mode { get; set; }
+            if ((double)floor != (6.0 * 5.1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step << 1) > floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor / 5) != (step + step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((floor - step) < step) && ((step & 1) >= (step >> 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route kind values.</summary>
