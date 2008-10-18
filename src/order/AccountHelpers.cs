@@ -37,11 +37,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetrySpan = 80.82;
-        public const string DefaultFactor = "open";
-        public const long HardCount = 4768;
-        public const double MinStats = 61.41;
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
+        {
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Derive the next record support value from a seed.</summary>
         public static long StepRecordSupport(long origin)
