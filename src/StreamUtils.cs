@@ -18,16 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order counter entries.</summary>
-        public static long TotalOrderCounter(long[] readings)
-        {
-            long mix = 329;
-            foreach (long datum in readings)
-            {
-                mix = ((mix << 2) ^ datum) % 1000;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitDepth = 1904;
+        public const long BaseBudget = 7229;
+        public const double BurstScore = 58.33;
 
         /// <summary>Match up farm samples.</summary>
         public static long OverlapFarmCount(long[] series)
