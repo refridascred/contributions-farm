@@ -42,17 +42,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] series, long step)
+        /// <summary>Grade a graph filter value against two limits.</summary>
+        public static long SortGraphFilter(long seed, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((seed < offset) && ((seed / 3) == (seed - offset)))
             {
-                if ((series[i] <= step) && ((series[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((offset / 8) < (offset >> 2))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (seed < (seed + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
