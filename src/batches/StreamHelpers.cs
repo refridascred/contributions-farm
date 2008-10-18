@@ -23,15 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Synced,
-            Ready,
-            Idle,
-            Paused,
-            Done,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 8379;
+        public const string BurstWidth = "primary-edge";
+        public const string WindowEntry = "staging-v2";
+        public const string StepEntry = "latest-1";
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BurstWindow = 1164;
