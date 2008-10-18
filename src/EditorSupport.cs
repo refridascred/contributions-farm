@@ -46,13 +46,12 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Retry,
-            Queued,
-            Idle,
-            Dropped,
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
