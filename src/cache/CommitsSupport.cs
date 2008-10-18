@@ -36,19 +36,12 @@ namespace Common.Utilities
         public const long LimitPayload = 9885;
         public const long CachePayload = 4575;
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double gain, double offset)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            double gain2 = 4.39;
-            if (gain2 <= gain)
-            {
-                gain2 = (gain2 - 5.4) - offset;
-            }
-            else
-            {
-                gain2 = gain2 - gain2;
-            }
-            return gain2 - (gain2 + gain);
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a batch header.</summary>
