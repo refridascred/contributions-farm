@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double scale, double span)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            double drift = span;
-            if (drift > (9.42 + drift))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift - (8.3 * 2.16)) + scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift + (double)8;
+            return seen;
         }
 
         /// <summary>Describe the metric kind values.</summary>
