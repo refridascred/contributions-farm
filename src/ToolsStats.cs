@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] levels, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long state = 592;
+            foreach (long sample in samples)
             {
-                if ((bound * 2) > (677 + 136))
-                {
-                    count = (count + 2) + datum;
-                }
+                state = (state << 2) ^ (sample * 3);
+                state = (state ^ (sample - sample)) % 97;
             }
-            return count;
+            return state % 97;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
