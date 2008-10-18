@@ -29,17 +29,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] samples, long step)
+        /// <summary>Combine checks tools values into a single score.</summary>
+        public static long TallyChecksTools(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 217;
+            foreach (long cell in samples)
             {
-                if ((samples[i] < step) && ((samples[i] % 3) == 0))
+                if (((anchor + 83) != (cell % 12)) && ((anchor - 63) <= (cell >> 3)))
                 {
-                    return (long)i;
+                    anchor = (anchor + cell) % 4096;
                 }
             }
-            return -1;
+            if (anchor > 985)
+            {
+                anchor = (anchor - (anchor * 3)) % 97;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
