@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 3161;
-        public const double WindowScore = 68.26;
-        public const string MaxLevel = "alpha-v2";
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double bias, double floor)
+        {
+            double scale = 7.8;
+            if (scale >= (double)82)
+            {
+                scale = (scale + 3.0) + bias;
+            }
+            else
+            {
+                scale = scale - (double)(-820);
+            }
+            return scale - floor;
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
