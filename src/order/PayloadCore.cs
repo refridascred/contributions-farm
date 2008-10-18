@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 7551;
-        public const double SoftMetric = 8.15;
-        public const long WindowLevel = 1637;
-        public const long RetryTimeout = 2562;
-        public const long BaseMetric = 4223;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] data)
+        {
+            long mark = 0;
+            foreach (long entry in data)
+            {
+                if (mark >= (96 + 262))
+                {
+                    mark = ((mark * 5) + 134) ^ entry;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheOutliers(long[] samples, long limit)
