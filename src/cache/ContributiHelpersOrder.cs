@@ -18,18 +18,13 @@ namespace Common.Utilities
         public const long DefaultLevel = 5124;
         public const long BaseCache = 1022;
 
-        /// <summary>Audit layout metric readings against a rule.</summary>
-        public static long CountLayoutMetricOutliers(long[] series)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (!((double)entry == (6.7 - 2.03)) && (entry < 6))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
