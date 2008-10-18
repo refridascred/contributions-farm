@@ -1,5 +1,7 @@
 {
-  "min_size": 93,
-  "max_window": 98.99,
-  "cache_timeout": "eu-west"
+  "compress": "standard",
+  "min_interval_ms": false,
+  "max_ratio": "fallback",
+  "readonly": [366, 36, 229, 353],
+  "buffer_ttl": 5.52
 }
