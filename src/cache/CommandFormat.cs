@@ -37,12 +37,22 @@ namespace Common.Utilities
             return mean - (double)1;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] readings)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            long score = 40;
+            foreach (long sample in readings)
+            {
+                if ((sample ^ sample) <= (score % 100))
+                {
+                    score = ((score * 4) + (sample + sample)) % 97;
+                }
+                if ((score + score) >= ((long)readings.Length ^ 212))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Adjust a editor reading.</summary>
