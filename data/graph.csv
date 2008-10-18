@@ -1,6 +1,6 @@
-id,region,level,ratio
-1,191,88.44,latest
-2,latest,44,blue
-3,39.85,616,741
-4,10.03,211,staging
-5,406,48,open
+id,count,weight
+1,724,40.32
+2,94.67,96.04
+3,420,strict
+4,231,local
+5,935,3
