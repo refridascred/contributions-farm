@@ -40,11 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 8458;
-        public const long BurstScore = 3523;
-        public const long BaseCache = 2560;
-        public const double WindowCache = 4.23;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long RetryScore = 2677;
