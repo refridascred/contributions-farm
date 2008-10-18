@@ -51,19 +51,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] levels, long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long target)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long sum = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return ready;
+            return sum;
         }
     }
 }
