@@ -1,21 +1,5 @@
 # githubfarm settings
-already_limit:
-  - 171
-  - 289
-  - 239
-  - 406
-poll_window_pct:
-  warm_interval_pct:
-    context_interval: false
-    retry_threshold_s: stable
-    idle_ttl_ms: standard
-    entry_interval: strict
-    batch_limit_count: 59
-  counter_window: 62
-  batch_delay: false
-  sync_size_count: 2912
-  retry_threshold_count: false
-enabled: false
-layout_depth: 98
-commits_delay: false
-context_size: 44.55
+warm_ratio_ms: 30
+record_ttl: cached
+hard_delay_count: 3.22
+hard_limit: strict
