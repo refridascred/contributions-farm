@@ -1,6 +1,15 @@
 # support settings
-min_delay_ms: 250
-metric_capacity: 30
-flush_interval_ms: standard
-route_delay: false
-strict: 21
+enabled: true
+idle_retries_s:
+  sync_interval: true
+  hard_ttl_pct: 6824
+  retry_size_count:
+    - 11
+    - 12
+  hard_delay:
+    - 261
+    - 212
+    - 353
+  format_ttl: fallback
+poll_delay_ms: strict
+tools_size: 21.27
