@@ -53,31 +53,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a graph filter value against two limits.</summary>
-        public static long SortGraphFilter(long seed, long offset)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] levels, long floor)
         {
-            if ((seed < offset) && ((seed / 3) == (seed - offset)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset / 8) < (offset >> 2))
+                if ((levels[i] > floor) && ((levels[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (seed < (seed + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
