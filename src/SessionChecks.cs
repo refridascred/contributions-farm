@@ -54,11 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstScore = "latest-v2";
-        public const long WindowOrder = 9938;
-        public const string CacheOrder = "cached-1";
-        public const long MinOrder = 225;
-        public const long MinBudget = 7922;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public long Total { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
