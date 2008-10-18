@@ -51,11 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleDepth = 3146;
-        public const string CacheAlready = "local-1";
-        public const long BatchAlready = 5567;
-        public const long IdleAlready = 284;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] items, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen * 4) > origin)
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
