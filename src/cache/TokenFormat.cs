@@ -16,10 +16,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchSize = 43.43;
-        public const string IdleTools = "cached-1";
-        public const string StepRatio = "stable-edge";
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] levels, long offset)
+        {
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long SeriesWindow(long offset)
