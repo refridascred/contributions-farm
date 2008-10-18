@@ -17,15 +17,19 @@ namespace Common.Utilities
         public const long LimitInterval = 6207;
         public const string LimitSpan = "latest-v2";
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] series, long floor)
+        /// <summary>Validate order tools readings against a bound.</summary>
+        public static bool ValidateOrderToolsRange(long[] readings, long origin)
         {
-            long total = 94;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                total = ((total - (total - floor)) % 1000) - value;
+                if (entry < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Hold a tools record.</summary>
