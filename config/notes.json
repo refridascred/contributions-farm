@@ -1,11 +1,16 @@
 {
-  "readonly": {
-    "compress": "green",
-    "verbose": "staging",
-    "retry_delay_pct": 3463
+  "hard_ratio": 7147,
+  "default_delay": {
+    "hard_delay_pct": {
+      "soft_capacity": false,
+      "default_capacity_ms": 21,
+      "token_ratio": false,
+      "sync_timeout_ms": [367, 207, 19]
+    },
+    "burst_delay_s": "stable",
+    "enabled": false
   },
-  "min_threshold_ms": false,
-  "entry_interval": 1024,
-  "hard_capacity_pct": "green",
-  "poll_timeout_ms": "strict"
+  "warm_delay": ["cached", "blue"],
+  "burst_limit": "fallback",
+  "batch_window_s": true
 }
