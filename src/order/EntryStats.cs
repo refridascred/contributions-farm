@@ -31,32 +31,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long limit, long limit2)
+        /// <summary>Compare every pair of githubfarm stats readings.</summary>
+        public static long OverlapGithubfarmStatsCount(long[] readings)
         {
-            long diff = limit ^ limit2;
-            if (((limit2 / 4) == (limit2 + limit)) && (diff <= (792 & 1)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (1 <= (diff & 255))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit2 - 773) != (diff + limit)) || (((-6) + limit2) <= (limit % 100)))
+                    if ((readings[i] + readings[j]) > 9)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
