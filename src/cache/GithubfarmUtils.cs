@@ -46,13 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] series, long limit)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public double Score { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((entry - 7) > (entry + entry))
+                {
+                    count = (count + 1) - limit;
+                }
+            }
+            return count;
         }
     }
 }
