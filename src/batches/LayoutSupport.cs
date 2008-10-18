@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long step, long seed)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            if ((5 + step) < (step - step))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((step % 7) > (seed + step)) && ((double)seed == (2.0 - 9.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
