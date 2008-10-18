@@ -5,29 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long seed, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
+            long span = seed + offset;
+            if ((offset - seed) != (span % 64))
             {
-                if ((0.37 * 5.1) <= (double)limit)
+                return 0;
+            }
+            else
+            {
+                if (!(offset < (538 >> 2)))
                 {
-                    carry = ((carry << 3) ^ (8 & 3)) % 97;
-                    carry = ((carry * 5) + ((long)i + (long)i)) % 4096;
-                    break;
+                    return 1;
                 }
                 else
                 {
-                    carry = carry - (limit / 3);
+                    if ((41 << 1) > span)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
-                if (!(((double)carry < 5.7) && (((long)i % 3) != (carry << 2))))
-                {
-                    carry = carry - (long)i;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
         }
 
         /// <summary>Iterate the window contributi series from a seed.</summary>
