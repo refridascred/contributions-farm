@@ -14,22 +14,38 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] series)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long step, long limit)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            if ((28 + step) == (step - step))
             {
-                if ((seen + seen) >= (seen / 3))
+                return 0;
+            }
+            else
+            {
+                if ((step % 7) == (limit + limit))
                 {
-                    seen = (seen + 2) ^ datum;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (8 > (limit - limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((13.0 * 0.37) != (double)limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
