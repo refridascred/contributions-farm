@@ -25,22 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long mix = 674;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    mix = (((mix * 2) + cell) % 101) - (long)i;
-                }
-                if (!(((long)values.Length - mix) != (cell ^ cell)))
-                {
-                    mix = (mix ^ (mix + 155)) % 255;
-                }
-            }
-            return mix;
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
