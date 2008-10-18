@@ -1,8 +1,8 @@
-id,owner,active,count,level
-1,69.5,42.2,76.01,59.91
-2,600,local,860,869
-3,142,60.41,32.98,87.73
-4,64.69,98.28,4,legacy
-5,94.11,539,800,eu-west
-6,green,427,open,292
-7,91,54.62,65.86,legacy
+id,score
+1,585
+2,329
+3,cached
+4,688
+5,eu-west
+6,eu-west
+7,19.6
