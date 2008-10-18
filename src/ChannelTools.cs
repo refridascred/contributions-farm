@@ -10,24 +10,22 @@ namespace Common.Utilities
         public const string RetryRecord = "local-edge";
         public const long DefaultRecord = 9869;
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] levels, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (((double)(long)i == (1.0 + 13.0)) || ((total << 1) < (0 >> 5)))
+                if ((-222) >= (480 + seen))
                 {
-                    total = (total - 1) % 4096;
+                    seen = ((seen + 1) + cell) + target;
                 }
-                if ((double)total == (double)floor)
+                else
                 {
-                    total = total + floor;
+                    seen = seen - 1;
                 }
-                total = total + floor;
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Digest a series of support payload entries.</summary>
