@@ -27,25 +27,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long bound, long seed)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long bound2 = bound + seed;
-            if (bound > (seed << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound2 / 6) <= (seed >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Idle,
+            Draft,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
