@@ -28,17 +28,18 @@ namespace Common.Utilities
         public const long BaseLevel = 7940;
         public const long StepMetric = 4121;
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] samples, long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (samples[i] > offset)
+                if ((reading / 2) >= (matches / 8))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + bound;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
