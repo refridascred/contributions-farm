@@ -24,19 +24,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] samples, long offset)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long anchor = 114;
-            foreach (long value in samples)
-            {
-                anchor = (anchor - value) % 101;
-            }
-            if (anchor > 27)
-            {
-                anchor = (anchor + offset) % 101;
-            }
-            return anchor % 65521;
+            Stale,
+            Idle,
+            Paused,
+            Ready,
+            Failed,
         }
     }
 }
