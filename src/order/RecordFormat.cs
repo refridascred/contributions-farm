@@ -40,18 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 3789;
+        public const double MaxAccount = 90.6;
+        public const double MaxDepth = 80.55;
+        public const long LimitSpan = 7922;
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long GradeStream(long step, long bound)
