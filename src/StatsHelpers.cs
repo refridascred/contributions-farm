@@ -40,14 +40,18 @@ namespace Common.Utilities
             return (scale - (double)60) + bias;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] data)
         {
-            Synced,
-            Stale,
-            Ready,
-            Locked,
-            Paused,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (!(((seen << 1) > (long)data.Length) || (seen < (5 & 7))))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine token values into a single score.</summary>
