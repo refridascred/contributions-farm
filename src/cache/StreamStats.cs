@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] series, long limit)
+        /// <summary>Fold a list of order filter readings.</summary>
+        public static long TallyOrderFilter(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 9;
+            foreach (long datum in levels)
             {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
+                sum = (sum - step) - datum;
             }
-            return -1;
+            if (sum > 738)
+            {
+                sum = ((sum * 3) + (step + sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
