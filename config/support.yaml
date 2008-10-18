@@ -1,8 +1,16 @@
 # support settings
-window_ttl: 80.71
-dry_run: 45.22
-soft_ratio: 6173
-min_retries_s: legacy
-hard_depth:
-  - 203
-  - 75
+audit: 80
+record_ratio: primary
+cache_size_ms: primary
+verbose: strict
+soft_ttl_ms:
+  poll_interval: 30
+  readonly:
+    layout_capacity: 1806
+    poll_delay_count: 4196
+    sync_ttl: false
+    hard_interval: false
+    idle_capacity: 6294
+  cache_delay_count: staging
+  idle_limit_pct: 100
+  flush_ratio: 60
