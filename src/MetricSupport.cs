@@ -33,19 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] items, long step)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
