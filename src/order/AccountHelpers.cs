@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long limit, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
+            long diff = limit - origin;
+            if ((double)origin >= (5.87 - 4.87))
             {
-                state = ((state * 3) + (long)i) % 97;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((double)diff > (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (32 >= (limit - origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)origin > (double)8) || ((double)diff == (double)limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up batch samples.</summary>
