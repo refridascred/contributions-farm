@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public double Weight { get; set; }
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
