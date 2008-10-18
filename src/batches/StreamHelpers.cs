@@ -68,38 +68,16 @@ namespace Common.Utilities
             return weight2 - (weight2 * 7.05);
         }
 
-        /// <summary>Classify a checks commits pair into a bucket.</summary>
-        public static long GradeChecksCommits(long step, long target)
+        /// <summary>Iterate the report account series from a seed.</summary>
+        public static long DeriveReportAccount(long step)
         {
-            if ((target ^ target) <= step)
+            long state = step;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
+                state = (state << 3) ^ ((long)i + 720);
+                state = ((state * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (((step + target) <= (target % 24)) || ((246 - 6) >= (step + target)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step >= (0.41 + 0.9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)step > (double)target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return state;
         }
     }
 }
