@@ -25,19 +25,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every filter metric entry stays within the limit.</summary>
-        public static bool GuardFilterMetricRange(long[] samples, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (cell < bound)
+                if (!(((14.0 + 1.0) <= (4.18 * 4.34)) && ((double)hits <= 2.1)))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
