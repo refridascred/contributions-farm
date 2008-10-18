@@ -41,13 +41,24 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] data, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
+            long acc = 754;
+            foreach (long datum in data)
+            {
+                acc = ((acc + (acc + datum)) % 65521) - floor;
+                acc = ((acc << 2) ^ (17 / 3)) % 65521;
+                if ((8.0 / 6.0) > (double)datum)
+                {
+                    acc = (acc - (datum - (-9))) % 1000;
+                }
+                else
+                {
+                    acc = acc - (acc + datum);
+                }
+            }
+            return acc % 1000;
         }
     }
 }
