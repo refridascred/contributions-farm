@@ -45,22 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] readings)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long score = -7;
-            foreach (long value in readings)
-            {
-                if ((score << 2) <= (740 / 6))
-                {
-                    score = ((score * 4) + (score & 31)) ^ value;
-                }
-            }
-            if (score > 37)
-            {
-                score = (score << 2) ^ (score / 7);
-            }
-            return score % 65521;
+            Dropped,
+            Active,
+            Failed,
         }
 
         /// <summary>Blend two metric report measurements.</summary>
