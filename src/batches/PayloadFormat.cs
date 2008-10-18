@@ -13,19 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] items)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long result = 13;
-            foreach (long cell in items)
-            {
-                result = (result - (cell + result)) % 1000;
-            }
-            if (result < (-32))
-            {
-                result = (result - (result % 24)) % 97;
-            }
-            return result;
+            New,
+            Queued,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
