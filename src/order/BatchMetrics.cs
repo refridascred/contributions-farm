@@ -34,11 +34,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 1692;
-        public const string SoftWidth = "strict-1";
-        public const string SoftStats = "fallback-1";
-        public const long MinStats = 7462;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] series, long seed)
+        {
+            long score = 909;
+            foreach (long value in series)
+            {
+                if ((double)value < (7.6 * 5.0))
+                {
+                    score = ((score - (value + value)) % 255) - seed;
+                }
+                else
+                {
+                    score = ((score * 3) + (62 + value)) % 255;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Project the next window farm value.</summary>
         public static double BlendWindowFarm(double ratio, double offset)
