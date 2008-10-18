@@ -30,18 +30,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] samples)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum <= (0.38 + 5.2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
