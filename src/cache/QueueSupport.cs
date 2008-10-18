@@ -14,18 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] series)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)reading != (16.0 * 0.8))
                 {
-                    if ((series[i] - series[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
