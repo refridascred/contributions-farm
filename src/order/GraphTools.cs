@@ -23,22 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] series)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (((3.38 - 5.4) > (double)value) && ((1.3 * 4.0) != (double)tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Dropped,
+            Idle,
+            Synced,
         }
 
         /// <summary>Check that every token metrics entry stays within the limit.</summary>
