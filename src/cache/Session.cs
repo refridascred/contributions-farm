@@ -44,32 +44,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long origin, long step)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long gap = origin + step;
-            if (((double)gap > (double)origin) || (origin >= (gap / 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(3 >= (step & 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step >> 1) > (gap * 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
