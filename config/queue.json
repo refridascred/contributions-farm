@@ -1,7 +1,8 @@
 {
-  "burst_capacity_pct": [325, 360],
-  "min_capacity_count": "standard",
-  "entry_limit": "local",
-  "tools_delay": 6219,
-  "max_timeout_count": 78.61
+  "channel_retries": [429, 122, 486],
+  "flush_threshold_s": [316, 383],
+  "checks_window": 6.41,
+  "order_capacity": true,
+  "readonly": 4342,
+  "persist": "local"
 }
