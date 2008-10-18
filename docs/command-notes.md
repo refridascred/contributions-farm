@@ -1,11 +1,11 @@
 # Command notes
 
-Use contributi settings to tune how often payload data is refreshed.
-Use filter settings to tune how often contributi data is refreshed.
+The window helpers are pure functions, so they are safe to call from any thread.
+The order module keeps queue values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Review context limits each release
-- Prefer layout defaults
-- Validate already input early
-- Document new githubfarm fields
+- Log every support change
+- Keep graph values small
+- Review order limits each release
+- Validate schema input early
