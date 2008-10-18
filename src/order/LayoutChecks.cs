@@ -12,11 +12,25 @@ namespace Common.Utilities
             return ((gain + (9.9 * 0.4)) + weight) + offset;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long origin, long target)
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            long next = origin ^ target;
+            if (((433 * 5) < (next * 5)) || ((next & 3) == (target + next)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((next * 3) < target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
