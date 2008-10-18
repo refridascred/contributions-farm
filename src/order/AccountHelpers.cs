@@ -51,18 +51,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] levels, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((double)(long)levels.Length != (double)bound)
+                if ((tally % 12) > seed)
                 {
-                    matches = (matches + 2) ^ value;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
