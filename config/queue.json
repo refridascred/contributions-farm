@@ -1,6 +1,7 @@
 {
-  "strict": true,
-  "readonly": 67.55,
-  "channel_timeout": 96.12,
-  "compress": 10
+  "burst_capacity_pct": [325, 360],
+  "min_capacity_count": "standard",
+  "entry_limit": "local",
+  "tools_delay": 6219,
+  "max_timeout_count": 78.61
 }
