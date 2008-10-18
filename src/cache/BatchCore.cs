@@ -47,17 +47,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] levels, long step)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
+            public double Size { get; set; }
         }
     }
 }
