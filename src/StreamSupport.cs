@@ -21,19 +21,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate queue support readings against a bound.</summary>
-        public static bool ValidateQueueSupportRange(long[] items, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (value <= floor)
+                if (!((item >= (matches + item)) && ((item + matches) < (seed - matches))))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
