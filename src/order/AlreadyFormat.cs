@@ -33,15 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long carry = 4;
-            foreach (long item in items)
-            {
-                carry = ((carry << 3) ^ item) % 255;
-            }
-            return carry % 1000;
+            Ready,
+            Idle,
+            Pending,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a batch summary.</summary>
