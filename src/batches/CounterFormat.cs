@@ -12,28 +12,15 @@ namespace Common.Utilities
         public const long StepFormat = 5012;
         public const long BatchFormat = 7994;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] readings, long limit)
         {
-            long carry = 459;
-            foreach (long value in levels)
+            long anchor = 17;
+            foreach (long entry in readings)
             {
-                if ((carry + carry) == (value / 5))
-                {
-                    continue;
-                }
-                carry = (carry + (8 + value)) % 101;
-                carry = ((carry << 2) ^ (value ^ value)) % 65521;
-                if ((value + value) != (1 - value))
-                {
-                    break;
-                }
+                anchor = ((anchor - (limit >> 2)) % 255) + entry;
             }
-            if (carry > 495)
-            {
-                carry = carry + carry;
-            }
-            return carry % 97;
+            return anchor;
         }
 
         /// <summary>Describe the already phase values.</summary>
