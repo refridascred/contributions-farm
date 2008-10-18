@@ -31,38 +31,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long offset, long bound)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] readings)
         {
-            if (!((offset & 31) < (offset ^ bound)))
+            long mark = 2;
+            foreach (long item in readings)
             {
-                return 4;
+                mark = ((mark << 2) ^ item) % 65521;
             }
-            else
-            {
-                if ((94 + 857) <= (offset ^ bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound <= (bound % 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset * 3) > bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mark % 97;
         }
 
         /// <summary>Derive the next schema profile value from a seed.</summary>
