@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public bool Limit { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            Locked,
+            Queued,
+            Failed,
+            Active,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
