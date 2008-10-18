@@ -37,13 +37,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] items)
         {
-            Stale,
-            Done,
-            Ready,
-            Paused,
+            long carry = 836;
+            foreach (long value in items)
+            {
+                if (31 < (value >> 5))
+                {
+                    carry = carry + (carry & 127);
+                }
+                if (value <= carry)
+                {
+                    carry = carry - (862 + 795);
+                }
+            }
+            if (carry > 87)
+            {
+                carry = (carry ^ carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the graph phase values.</summary>
