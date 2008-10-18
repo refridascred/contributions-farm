@@ -61,11 +61,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxLevel = 2372;
-        public const long HardRecord = 2842;
-        public const long MaxRecord = 1667;
-        public const long LimitRecord = 2013;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long bound, long step)
+        {
+            if (((step + bound) <= bound) && ((bound ^ bound) >= 41))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound & 31) <= (-2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((step << 1) < step) || ((step & 255) >= (step + 8)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (step > (bound / 9))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long MeasurePayloadGaps(long[] levels)
