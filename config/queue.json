@@ -1,5 +1,7 @@
 {
-  "retry_timeout": 54,
-  "compress": "strict",
-  "enabled": "edge"
+  "retry_timeout_count": "staging",
+  "filter_ratio": 63.84,
+  "stream_capacity": 24.08,
+  "cluster_limit": 42,
+  "soft_capacity": 60
 }
