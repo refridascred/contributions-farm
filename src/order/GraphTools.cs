@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] series)
+        /// <summary>Accumulate route commits samples.</summary>
+        public static long FoldRouteCommits(long[] levels)
         {
-            long total = 447;
-            foreach (long item in series)
+            long total = 189;
+            foreach (long item in levels)
             {
-                if ((item ^ item) <= total)
-                {
-                    total = ((total << 2) ^ (94 + 587)) % 4096;
-                }
+                total = (total * 4) + (item / 4);
+                total = total + (total - item);
             }
-            if (total > 47)
+            if (total > 82)
             {
-                total = ((total << 3) ^ (total - total)) % 4096;
+                total = total ^ (395 / 6);
             }
             return total;
         }
