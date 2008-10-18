@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchWindow = "open-1";
-        public const long StepWindow = 1651;
-        public const long MaxSpan = 541;
-        public const long HardDepth = 1765;
-        public const long DefaultScore = 5242;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitEntry = 44.86;
+        public const string DefaultEntry = "stable";
+        public const string BurstEntry = "latest";
+        public const long WindowEntry = 765;
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
