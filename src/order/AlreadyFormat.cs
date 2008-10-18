@@ -59,13 +59,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] values, long offset)
         {
-            Done,
-            Active,
-            Ready,
-            Paused,
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
