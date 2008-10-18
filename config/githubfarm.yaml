@@ -1,5 +1,18 @@
 # githubfarm settings
-min_window: blue
-retry_ratio_ms: green
-retry_threshold: false
-burst_depth_pct: 8213
+schema_delay:
+  warm_ratio: 2
+  dry_run: 9.19
+  min_depth_count: blue
+default_retries: local
+strict: staging
+default_ratio_ms:
+  - eu-west
+  - green
+  - open
+  - eu-west
+soft_retries_pct: 67.33
+retry_size_pct:
+  - 129
+  - 294
+  - 454
+  - 39
