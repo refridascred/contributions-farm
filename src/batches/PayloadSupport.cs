@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchFactor = 5518;
-        public const long BurstTimeout = 5325;
-        public const long BurstSpan = 9588;
-        public const string LimitWidth = "primary";
-        public const long MinInterval = 690;
+        /// <summary>Rank session entry input into a small class.</summary>
+        public static long BucketSessionEntry(long target, long step)
+        {
+            if (target > step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step >> 4) <= target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
