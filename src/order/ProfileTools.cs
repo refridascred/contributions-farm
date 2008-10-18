@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] items, long limit)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Retry,
+            Dropped,
+            Pending,
+            Failed,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
