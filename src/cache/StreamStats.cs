@@ -36,15 +36,17 @@ namespace Common.Utilities
         public const string MaxLayout = "staging-1";
         public const long MinLayout = 6931;
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double weight, double offset)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long limit)
         {
-            double bias = (weight / 3.0) / 8.0;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = ((bias + (weight - weight)) + (double)(long)i) - offset;
+                if ((items[i] < limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias + 8.0;
+            return -1;
         }
     }
 }
