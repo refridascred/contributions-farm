@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] values)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long score = -3;
-            foreach (long cell in values)
-            {
-                if ((score * 4) >= (cell + (long)values.Length))
-                {
-                    score = (score << 2) ^ score;
-                }
-                if (!((score + cell) != (cell + (-745))))
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a entry entry.</summary>
