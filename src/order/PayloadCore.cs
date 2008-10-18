@@ -39,18 +39,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] data)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if (datum > (seen + datum))
+                if (cell < target)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Project the next report value.</summary>
