@@ -1,6 +1,6 @@
-id,token,region,rank,count
-1,staging,latest,cached,496
-2,standard,91.48,503,16.34
-3,579,140,10.63,95.2
-4,266,9.96,green,198
-5,17.81,fallback,latest,strict
+id,region,label
+1,272,eu-west
+2,996,legacy
+3,123,60.49
+4,14.82,851
+5,20.1,55.1
