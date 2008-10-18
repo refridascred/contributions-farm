@@ -15,14 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            Dropped,
-            Stale,
-            Pending,
-            Queued,
+            Idle,
             Paused,
+            Ready,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
