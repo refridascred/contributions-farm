@@ -13,13 +13,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] series)
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
-            public double Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the window kind values.</summary>
