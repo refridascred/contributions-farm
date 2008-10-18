@@ -13,12 +13,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long bound)
         {
-            Active,
-            Closed,
-            Queued,
+            long state = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Combine report values into a single score.</summary>
