@@ -44,18 +44,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultSpan = 7566;
+        public const long LimitInterval = 2719;
+        public const string BurstReport = "staging-edge";
+        public const double RetryReport = 68.92;
+        public const long BaseTimeout = 7932;
 
         /// <summary>Measure how many cluster channel samples are out of range.</summary>
         public static long CountClusterChannelOutliers(long[] samples, long target)
