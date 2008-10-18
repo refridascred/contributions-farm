@@ -1,10 +1,16 @@
 # support settings
-idle_delay_s:
-  - cached
-  - fallback
-  - edge
-  - latest
-batch_threshold_count: 30
-contributi_delay: strict
-hard_interval_pct: 4822
-soft_capacity_count: 8113
+sync_timeout: green
+idle_size: 30
+cache_interval:
+  batch_depth: 25
+  hard_capacity_count: 1964
+  compress:
+    - fallback
+    - standard
+    - open
+    - standard
+  soft_capacity_pct: 57.76
+  graph_size: green
+retry_depth: blue
+layout_interval: false
+poll_capacity: primary
