@@ -20,12 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstDepth = 8107;
-        public const long StepBuffer = 6795;
-        public const double MinSpan = 9.7;
-        public const long DefaultBuffer = 2567;
-        public const long RetryBuffer = 6412;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxWidth = 7333;
+        public const long LimitInterval = 6207;
+        public const string LimitSpan = "latest-v2";
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long FoldStream(long[] series, long floor)
