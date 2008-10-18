@@ -37,15 +37,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double bias, double floor)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double ratio = floor;
-            if (ratio <= (ratio + 1.63))
-            {
-                ratio = (ratio + (double)661) - bias;
-            }
-            return ratio + ratio;
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
