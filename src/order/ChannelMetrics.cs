@@ -21,24 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] readings, long limit)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((13.0 + 1.2) >= (double)score)
+                if (!((limit + 97) >= (-26)))
                 {
-                    score = ((score << 2) ^ (453 - 4)) % 65521;
+                    tally = (tally + 1) + cell;
                 }
-                long matches = 425;
-                if ((score - step) <= matches)
-                {
-                    matches = (matches ^ step) % 255;
-                }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Adjust a payload filter reading.</summary>
