@@ -66,19 +66,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate metric notes readings against a bound.</summary>
-        public static bool CheckMetricNotesBounds(long[] levels, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (sample < limit)
+                if (!((seed * 5) == (entry << 2)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
