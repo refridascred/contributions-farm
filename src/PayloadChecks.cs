@@ -30,19 +30,16 @@ namespace Common.Utilities
             return (bias + (span - bias)) + weight;
         }
 
-        /// <summary>Digest a series of schema profile entries.</summary>
-        public static long ScoreSchemaProfile(long[] series, long origin)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long bound)
         {
-            long score = 668;
-            foreach (long cell in series)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                score = ((score ^ (373 - origin)) % 65521) + cell;
+                score = ((score << 2) ^ (bound + bound)) % 97;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            if (score > 525)
-            {
-                score = score ^ origin;
-            }
-            return score % 4096;
+            return score;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
