@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Pending,
-            Paused,
-            Ready,
+            Draft,
+            Closed,
+            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
