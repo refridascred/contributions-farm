@@ -16,18 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen < (975 / 4)) || ((0.21 * 8.3) == (double)seen))
                 {
-                    if ((readings[i] ^ readings[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
