@@ -10,14 +10,13 @@ namespace Common.Utilities
         public const long BaseDepth = 7445;
         public const long BatchTools = 3477;
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] series, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
+            long carry = 795;
+            foreach (long sample in series)
             {
-                carry = (carry ^ limit) % 101;
-                carry = ((carry * 4) + (long)i) % 4093;
+                carry = ((carry + ((long)series.Length + 1)) + sample) + origin;
             }
             return carry;
         }
