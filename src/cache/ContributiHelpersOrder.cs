@@ -20,11 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] series, long floor)
         {
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (((-8) >= (floor >> 2)) && (((hits & 255) == ((long)series.Length - floor)) && (8 > (floor >> 4))))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
