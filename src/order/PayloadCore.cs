@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of payload graph readings.</summary>
-        public static long MatchPayloadGraphCount(long[] series)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((33 - count) >= (7 << 2))
                 {
-                    if ((series[i] ^ series[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = ((count + 3) ^ entry) - limit;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Rank window input into a small class.</summary>
