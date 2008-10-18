@@ -53,19 +53,19 @@ namespace Common.Utilities
         public const long WindowLevel = 7040;
         public const long HardStream = 2901;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double scale, double bias)
         {
-            long carry = 954;
-            foreach (long reading in levels)
+            double mean = bias;
+            if (mean > bias)
             {
-                carry = ((carry << 2) ^ (reading % 64)) % 101;
-                if (((double)carry != (6.0 * 6.9)) && ((5.0 * 9.0) == (double)reading))
-                {
-                    break;
-                }
+                mean = mean + mean;
             }
-            return carry;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + 18.0) + (double)(long)i;
+            }
+            return mean - (scale - mean);
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
