@@ -45,12 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] samples, long floor)
         {
-            Dropped,
-            Active,
-            Failed,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Blend two metric report measurements.</summary>
