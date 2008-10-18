@@ -62,13 +62,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
             Locked,
-            New,
-            Active,
-            Paused,
+            Ready,
+            Closed,
         }
     }
 }
