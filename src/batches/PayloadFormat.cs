@@ -26,25 +26,14 @@ namespace Common.Utilities
         public const long HardFactor = 7248;
         public const long MinProfile = 4450;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long step, long limit)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long gap = step ^ limit;
-            if ((step << 3) != (7 % 97))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((gap / 8) > 54) || (step <= (step & 255)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Failed,
+            Stale,
+            Draft,
+            Retry,
+            Pending,
         }
     }
 }
