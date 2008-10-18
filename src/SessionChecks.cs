@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double weight, double floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] data, long limit)
         {
-            double scale = (double)(627 * 2);
-            return ((scale - (double)69) + weight) + floor;
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((double)limit >= (double)(-17))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route status values.</summary>
