@@ -1,7 +1,13 @@
 {
-  "retry_timeout_count": "staging",
-  "filter_ratio": 63.84,
-  "stream_capacity": 24.08,
-  "cluster_limit": 42,
-  "soft_capacity": 60
+  "warm_retries_ms": "local",
+  "batch_delay_count": "standard",
+  "flush_timeout_s": {
+    "batch_ttl_s": [338, 190, 75, 246],
+    "idle_interval": "green",
+    "entry_delay": 10,
+    "idle_depth_pct": 6113,
+    "retry_ttl_ms": 8602
+  },
+  "enabled": "stable",
+  "max_retries_count": 3155
 }
