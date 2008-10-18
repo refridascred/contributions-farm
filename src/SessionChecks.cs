@@ -26,32 +26,26 @@ namespace Common.Utilities
             return drift - 11.0;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long bound, long limit)
+        /// <summary>Derive the next graph token value from a seed.</summary>
+        public static long IterateGraphToken(long offset)
         {
-            long lane = bound ^ limit;
-            if ((784 + 408) != (lane + lane))
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((bound & 255) >= (bound - (-739))) && ((7 + lane) > ((-166) - limit)))
+                double bias = (6.26 - 6.63) + 9.78;
+                if (((bias / 6.0) >= 7.7) && ((double)(long)i >= bias))
                 {
-                    return 5;
+                    bias = bias - (bias / 5.0);
                 }
                 else
                 {
-                    if ((lane / 4) <= (limit * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = ((mix * 2) + (mix >> 2)) % 4096;
+                    mix = ((mix * 3) + (offset - mix)) % 1000;
                 }
+                bias = bias - bias;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Describe the batch mode values.</summary>
