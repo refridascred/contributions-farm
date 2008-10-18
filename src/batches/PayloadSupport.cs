@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public bool Region { get; set; }
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 3757;
+        public const string BaseStats = "standard-v2";
+        public const long BurstSize = 6173;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long TotalWindow(long[] readings, long seed)
