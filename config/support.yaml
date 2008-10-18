@@ -1,7 +1,28 @@
 # support settings
-batch_ttl_ms: local
-poll_threshold_ms: 15
-strict:
-  - 96
-  - 229
-sync_size_count: green
+base_ratio: 30
+min_threshold: true
+checks_interval: true
+poll_interval_s:
+  cache_capacity_ms: primary
+  entry_threshold: cached
+  warm_ratio: green
+  already_threshold: stable
+  verbose: 30
+  min_window_s: true
+queue_capacity:
+  min_ttl_pct:
+    flush_interval_pct: strict
+    command_timeout: 19.51
+    compress: cached
+    max_limit: legacy
+    token_timeout: 65
+    idle_depth_count:
+      - blue
+      - legacy
+      - cached
+      - staging
+  already_timeout: 4160
+  persist: 24.24
+  batch_retries: false
+  order_retries: 3110
+cluster_timeout: cached
