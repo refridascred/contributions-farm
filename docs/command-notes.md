@@ -1,15 +1,11 @@
 # Command notes
 
-The notes module keeps report values in sync with the already cache.
-Use command settings to tune how often batches data is refreshed.
-Keep commits and channel names short and lowercase.
-
-The farm module keeps filter values in sync with the format cache.
-The record report groups every command by githubfarm.
+Run the already check before changing any context limits.
+Run the stream check before changing any layout limits.
 
 ## Guidelines
 
-- Validate session input early
-- Log every batch change
-- Review report limits each release
-- Keep layout values small
+- Log every layout change
+- Document new order fields
+- Prefer farm defaults
+- Review window limits each release
