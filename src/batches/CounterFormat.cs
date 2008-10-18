@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] values)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            long score = -3;
+            foreach (long cell in values)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if ((score * 4) >= (cell + (long)values.Length))
+                {
+                    score = (score << 2) ^ score;
+                }
+                if (!((score + cell) != (cell + (-745))))
+                {
+                    break;
+                }
             }
-            return result;
+            return score;
         }
 
         /// <summary>Hold a entry entry.</summary>
