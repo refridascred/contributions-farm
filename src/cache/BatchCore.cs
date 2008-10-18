@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] data)
+        /// <summary>Compare every pair of account filter readings.</summary>
+        public static long PairAccountFilterCount(long[] series)
         {
-            long anchor = 6;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (anchor <= (anchor ^ anchor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = anchor - (anchor - anchor);
+                    if ((series[i] - series[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                anchor = anchor + (datum - anchor);
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
