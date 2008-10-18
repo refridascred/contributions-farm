@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultLevel = 33.51;
-        public const long BaseDepth = 7445;
-        public const long BatchTools = 3477;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long floor, long limit)
+        {
+            if ((33 + floor) >= (floor ^ limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((8 - 49) < floor) || (((-46) / 9) == (floor * 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - 4) == (limit << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long FoldPayload(long[] series, long origin)
