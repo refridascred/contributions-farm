@@ -1,13 +1,21 @@
 # githubfarm settings
-layout_interval: 83.21
-readonly:
-  soft_delay_ms: 86
-  retry_capacity_count: cached
-  hard_window_count: open
-  soft_interval: 76
-  warm_size_pct: edge
-  soft_timeout: 8422
-entry_delay: staging
-stats_interval: 3925
-record_size: local
-entry_ttl: false
+already_limit:
+  - 171
+  - 289
+  - 239
+  - 406
+poll_window_pct:
+  warm_interval_pct:
+    context_interval: false
+    retry_threshold_s: stable
+    idle_ttl_ms: standard
+    entry_interval: strict
+    batch_limit_count: 59
+  counter_window: 62
+  batch_delay: false
+  sync_size_count: 2912
+  retry_threshold_count: false
+enabled: false
+layout_depth: 98
+commits_delay: false
+context_size: 44.55
