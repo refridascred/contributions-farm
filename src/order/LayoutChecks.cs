@@ -100,12 +100,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] readings, long limit)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] > limit) && ((readings[i] % 5) != 0))
+                if ((values[i] <= seed) && ((values[i] % 5) == 0))
                 {
                     return (long)i;
                 }
