@@ -59,19 +59,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] readings, long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (cell <= offset)
+                if (value != target)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
