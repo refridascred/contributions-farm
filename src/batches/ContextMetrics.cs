@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 5729;
-        public const double BaseChecks = 59.93;
-        public const string WindowInterval = "staging-v2";
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] samples)
+        {
+            long carry = 392;
+            foreach (long datum in samples)
+            {
+                carry = ((carry - (-7)) % 101) + datum;
+            }
+            if (carry > 605)
+            {
+                carry = (carry + carry) % 65521;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Rank queue session input into a small class.</summary>
         public static long GradeQueueSession(long limit, long seed)
