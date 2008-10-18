@@ -19,17 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] readings, long step)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
+                mix = mix - (mix + floor);
+                mix = ((mix << 3) ^ 84) % 4096;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
