@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] values, long offset)
         {
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((((6.0 + 9.9) < (double)offset) || (hits < (203 / 9))) || ((offset * 2) == (13 & 63)))
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
