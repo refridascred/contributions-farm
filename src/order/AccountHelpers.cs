@@ -15,18 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] samples, long bound)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long target)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(6 > (bound % 16)) && (cell < 745))
-                {
-                    count = count + 3;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
