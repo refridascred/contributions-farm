@@ -51,11 +51,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Count tools layout pairs that satisfy a relation.</summary>
+        public static long OverlapToolsLayoutCount(long[] items)
         {
-            public bool Offset { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
