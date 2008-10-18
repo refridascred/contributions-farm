@@ -1,10 +1,6 @@
-id,region,owner,active
-1,eu-west,31.99,875
-2,24.2,111,632
-3,fallback,primary,6.59
-4,stable,656,615
-5,56.46,97.17,473
-6,450,719,fallback
-7,513,primary,654
-8,standard,55.25,53.25
-9,strict,local,primary
+id,ratio,label
+1,107,cached
+2,cached,3.0
+3,65.47,local
+4,46,979
+5,standard,24.56
