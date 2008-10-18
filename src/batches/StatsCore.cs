@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the window contributi series from a seed.</summary>
-        public static long SeriesWindowContributi(long floor)
+        /// <summary>Combine route filter values into a single score.</summary>
+        public static long TallyRouteFilter(long[] series, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
+            long mark = 25;
+            foreach (long value in series)
             {
-                anchor = (anchor * 3) + ((long)i & 63);
-                anchor = ((anchor << 3) ^ anchor) % 97;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (!((value - mark) <= (value + 6)))
+                {
+                    mark = ((mark * 5) + (value - 456)) + origin;
+                }
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
