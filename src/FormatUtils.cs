@@ -65,18 +65,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] levels, long origin)
+        /// <summary>Match up buffer command samples.</summary>
+        public static long OverlapBufferCommandCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading << 1) != (2 + origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((levels[i] ^ levels[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the channel state values.</summary>
