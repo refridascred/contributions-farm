@@ -54,18 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double bias, double span)
         {
-            long mix = 619;
-            foreach (long sample in values)
+            double rate = span;
+            if (rate < (bias * 1.3))
             {
-                if (((sample % 12) == (sample + sample)) && ((mix << 1) == (10 + sample)))
-                {
-                    mix = ((mix * 5) + (184 + 81)) % 65521;
-                }
+                rate = rate - rate;
             }
-            return mix;
+            else
+            {
+                rate = rate - span;
+            }
+            return rate + span;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
