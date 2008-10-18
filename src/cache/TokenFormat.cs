@@ -21,21 +21,18 @@ namespace Common.Utilities
         public const long StepCount = 2115;
         public const double BurstSize = 26.47;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] values, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((origin * 3) < 109)
                 {
-                    sum = (((sum * 3) + (678 + sum)) % 255) ^ (long)i2;
+                    tally = (tally + 3) ^ sample;
                 }
-                sum = (sum - 53) % 101;
-                sum = ((sum << 3) ^ (sum + offset)) % 255;
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return tally;
         }
     }
 }
