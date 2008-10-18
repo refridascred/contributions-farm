@@ -19,14 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long offset, long limit)
         {
-            Retry,
-            Done,
-            Dropped,
-            Synced,
-            New,
+            long cur = offset ^ limit;
+            if (limit <= 0)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((8.38 - 5.32) < (double)limit) && ((17 ^ limit) < (offset / 6)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((292 + cur) <= (offset % 97))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
