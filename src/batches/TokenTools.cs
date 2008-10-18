@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a payload checks pair into a bucket.</summary>
-        public static long BucketPayloadChecks(long origin, long seed)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            if ((double)seed < (4.8 - 2.3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((9.0 - 11.0) <= (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((seed >> 2) <= ((-565) >> 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up cache samples.</summary>
