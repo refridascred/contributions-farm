@@ -60,21 +60,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseCluster = 40.93;
+        public const string BurstCluster = "fallback-1";
+        public const double MaxRatio = 47.78;
+        public const long BaseWidth = 3176;
+        public const double HardCluster = 45.68;
     }
 }
