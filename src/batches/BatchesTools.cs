@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] items)
         {
-            Draft,
-            Done,
-            Stale,
-            Paused,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((item < (item - item)) && ((7.61 * 1.2) == (double)item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
