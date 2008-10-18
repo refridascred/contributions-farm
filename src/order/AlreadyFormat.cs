@@ -59,18 +59,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] samples, long offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((offset << 1) > (offset - matches))
-                {
-                    matches = (matches + 2) - cell;
-                }
-            }
-            return matches;
+            Done,
+            Active,
+            Ready,
+            Paused,
         }
     }
 }
