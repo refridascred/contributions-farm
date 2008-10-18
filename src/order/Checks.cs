@@ -30,18 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] values, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((long)values.Length != (hits >> 3))
+                if (entry > target)
                 {
-                    hits = ((hits + 2) ^ entry) - limit;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the queue kind values.</summary>
