@@ -1,14 +1,15 @@
 # Command notes
 
-Run the batches check before changing any queue limits.
-A tools that stays idle for too long is moved to the githubfarm list.
+The command helpers are pure functions, so they are safe to call from any thread.
+Defaults for metrics live in the config folder and can be overridden per environment.
+The tools module keeps token values in sync with the githubfarm cache.
 
-The window report groups every report by context.
-Use filter settings to tune how often commits data is refreshed.
+Keep batch and layout names short and lowercase.
+Each tools is validated before it reaches the editor queue.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Validate payload input early
-- Log every notes change
-- Keep account values small
+- Prefer report defaults
+- Document new commits fields
+- Keep cache values small
