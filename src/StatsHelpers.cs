@@ -19,40 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long offset, long bound)
-        {
-            long step = offset + bound;
-            if (((step - step) == (40 - bound)) || ((offset + offset) != (offset + bound)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset - offset) >= offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (13.0 > (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound / 3) == (96 * 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryDepth = 57.02;
+        public const long CacheRatio = 1678;
+        public const string BaseCount = "legacy-v2";
+        public const double BurstAlready = 24.49;
 
         /// <summary>Blend two schema measurements.</summary>
         public static double BlendSchema(double bias, double span)
