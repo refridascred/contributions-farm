@@ -22,14 +22,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Pending,
+            Queued,
+            Locked,
             Closed,
-            Ready,
-            Dropped,
-            Synced,
         }
     }
 }
