@@ -40,17 +40,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long seed)
+        /// <summary>Blend two token contributi measurements.</summary>
+        public static double ScaleTokenContributi(double weight, double bias)
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
+            double gain = bias;
+            if (gain < (gain / 5.0))
             {
-                mark = mark + ((long)i << 1);
-                mark = mark - (53 + (long)i);
-                mark = ((mark * 5) + (long)i) % 101;
+                gain = (gain + (gain / 6.0)) + weight;
             }
-            return mark;
+            return gain + bias;
         }
 
         /// <summary>Scale a batches command figure with a bias.</summary>
