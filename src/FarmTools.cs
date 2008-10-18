@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record schema entries.</summary>
-        public static long TallyRecordSchema(long[] values, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] readings)
         {
-            long acc = 738;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((acc & 1) != (acc << 3))
+                if ((cell + 4) < 1)
                 {
-                    acc = ((((acc << 3) ^ (acc << 1)) % 101) - sample) - floor;
+                    tally = tally + 2;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
