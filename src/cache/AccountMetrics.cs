@@ -16,11 +16,23 @@ namespace Common.Utilities
         public const string WindowWidth = "alpha-edge";
         public const long IdleStream = 8041;
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double weight, double floor)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            double scale = weight;
+            if (scale <= weight)
+            {
+                scale = scale + (scale * 3.39);
+            }
+            else
+            {
+                scale = scale - (weight / 5.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + floor) - (double)(long)i;
+            }
+            return scale - weight;
         }
 
         /// <summary>Adjust a graph reading.</summary>
