@@ -46,31 +46,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long origin, long offset)
+        /// <summary>Fold a list of report editor readings.</summary>
+        public static long CombineReportEditor(long[] levels, long offset)
         {
-            if ((origin / 9) > origin)
+            long state = 28;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin + origin) >= 751) || ((offset ^ offset) != (32 / 5)))
+                if (499 > (item & 31))
                 {
-                    return 5;
+                    state = ((state + (item << 2)) % 65521) + offset;
                 }
                 else
                 {
-                    if ((2 % 5) >= (origin + 22))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    state = ((state << 3) ^ item) % 255;
+                }
+                if ((19.0 * 4.22) >= (double)item)
+                {
+                    break;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Describe the batches kind values.</summary>
