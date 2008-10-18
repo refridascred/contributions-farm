@@ -75,11 +75,11 @@ namespace Common.Utilities
         public const double RetryReport = 80.68;
         public const string DefaultReport = "alpha-edge";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitProfile = "staging-1";
-        public const string BaseProfile = "local-1";
-        public const double RetryInterval = 43.09;
-        public const long HardProfile = 6391;
-        public const string DefaultDepth = "alpha-v2";
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+        }
     }
 }
