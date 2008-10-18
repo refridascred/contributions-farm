@@ -53,10 +53,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 5750;
-        public const long RetryBuffer = 1209;
-        public const string MinBuffer = "alpha-1";
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
