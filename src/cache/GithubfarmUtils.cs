@@ -33,11 +33,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Blend two githubfarm command measurements.</summary>
+        public static double AdjustGithubfarmCommand(double ratio, double bias)
         {
-            public long Total { get; set; }
-            public double Mode { get; set; }
+            double rate = ratio;
+            return (rate + (7.1 * 9.65)) + bias;
         }
     }
 }
