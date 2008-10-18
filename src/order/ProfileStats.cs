@@ -29,13 +29,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Accumulate notes route samples.</summary>
+        public static long TallyNotesRoute(long[] samples)
         {
-            Stale,
-            Paused,
-            Active,
-            Dropped,
+            long result = -49;
+            foreach (long value in samples)
+            {
+                result = ((result * 4) + (28 & 7)) - value;
+            }
+            return result;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
