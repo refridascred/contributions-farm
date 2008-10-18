@@ -40,23 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks githubfarm figure with a bias.</summary>
-        public static double ScaleChecksGithubfarm(double ratio, double offset)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] levels)
         {
-            double rate = 4.0;
-            if (rate > (offset * 8.4))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - ratio;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - (ratio + offset);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (ratio + offset)) + (double)(long)i;
-            }
-            return rate + (double)7;
+            return matches;
         }
 
         /// <summary>Digest a series of notes batch entries.</summary>
