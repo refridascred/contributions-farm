@@ -47,19 +47,12 @@ namespace Common.Utilities
         public const long LimitFilter = 9272;
         public const string MaxFactor = "cached-1";
 
-        /// <summary>Blend two metric report measurements.</summary>
-        public static double BlendMetricReport(double weight, double span)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            double weight2 = weight;
-            if (weight2 > (double)64)
-            {
-                weight2 = (weight2 + (weight * 7.9)) - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 - weight2) - (double)(long)i;
-            }
-            return weight2 - (weight2 * 7.05);
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Project the next payload schema value.</summary>
