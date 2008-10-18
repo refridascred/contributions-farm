@@ -23,17 +23,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] series, long seed)
+        /// <summary>Digest a series of buffer farm entries.</summary>
+        public static long FoldBufferFarm(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 5;
+            foreach (long entry in values)
             {
-                if (series[i] > seed)
+                if (((-1) & 1) != (entry - acc))
                 {
-                    return (long)i;
+                    acc = (acc + (entry - acc)) - target;
+                }
+                if ((acc / 3) >= (entry + entry))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc > 4)
+            {
+                acc = (acc * 5) + (39 >> 4);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Check that every layout notes entry stays within the limit.</summary>
