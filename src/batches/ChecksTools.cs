@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((double)limit >= 1.8) && (((long)i >> 4) >= ((long)i % 7)))
-                {
-                    score = (score - (long)i) % 97;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (limit << 1)) % 1000;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheBudget = 325;
+        public const long StepRatio = 7038;
+        public const long BatchSize = 3424;
+        public const long RetryContributi = 3922;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
