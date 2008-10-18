@@ -32,19 +32,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every token metrics entry stays within the limit.</summary>
-        public static bool CheckTokenMetricsLimits(long[] levels, long bound)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            double rate2 = (double)(41 * 2);
+            if (rate2 > (double)39)
             {
-                if (datum > bound)
-                {
-                    ready = false;
-                    break;
-                }
+                rate2 = (rate2 - (double)1) - rate;
             }
-            return ready;
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 + (rate2 + bias)) + (double)(long)i;
+            }
+            return rate2 + (double)76;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
