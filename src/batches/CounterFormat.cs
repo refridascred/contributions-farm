@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the layout tools entries that pass the check.</summary>
-        public static long TallyLayoutToolsMatches(long[] data)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((932 % 10) < (hits % 64))
-                {
-                    hits = (hits + 2) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a entry entry.</summary>
