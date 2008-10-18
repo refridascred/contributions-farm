@@ -1,22 +1,8 @@
 {
-  "default_ttl": 5511,
-  "hard_window": 10.82,
-  "burst_capacity": false,
-  "flush_window_ms": "stable",
-  "hard_threshold_ms": {
-    "support_interval": {
-      "retry_capacity_count": 28.55,
-      "metrics_retries": ["open", "local", "blue"],
-      "warm_window_pct": 1024,
-      "flush_capacity": 500,
-      "retry_delay_s": "stable",
-      "batch_size": ["local", "strict"]
-    },
-    "githubfarm_interval": {
-      "hard_window": "stable",
-      "default_ratio": 23,
-      "retry_window_s": 1024
-    },
-    "persist": 30
-  }
+  "warm_ttl_count": [176, 348, 412, 184],
+  "editor_size": [287, 224, 169, 430],
+  "max_retries_s": "eu-west",
+  "cache_threshold": "fallback",
+  "warm_timeout_count": 66,
+  "report_delay": 1037
 }
