@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of command buffer readings.</summary>
-        public static long PairCommandBufferCount(long[] values)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = (double)(524 % 2);
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = (((scale - scale) - (double)(long)i) - rate) + floor;
             }
-            return seen;
+            return scale + (double)553;
         }
 
         /// <summary>Hold a command header.</summary>
