@@ -16,12 +16,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Classify a stream context pair into a bucket.</summary>
+        public static long RankStreamContext(long bound, long bound2)
         {
-            Stale,
-            Idle,
-            Paused,
+            long step = bound ^ bound2;
+            if ((bound2 + bound2) >= bound2)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + bound2) < (bound + bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step > (1.44 / 6.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((31 >> 3) >= step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
