@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinBudget = 67.25;
-        public const string StepRatio = "stable-1";
-        public const double CacheRatio = 7.47;
-        public const double RetrySession = 9.68;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] data)
+        {
+            long total = 91;
+            foreach (long datum in data)
+            {
+                if (((984 - total) >= (datum + datum)) && ((datum + total) <= (total - total)))
+                {
+                    total = total ^ (total << 3);
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutHits(long[] samples)
