@@ -23,19 +23,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] samples, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (reading >= origin)
+                if (((3.38 - 5.4) > (double)value) && ((1.3 * 4.0) != (double)tally))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Digest a series of window token entries.</summary>
