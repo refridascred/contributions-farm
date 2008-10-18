@@ -1,7 +1,8 @@
-id,ratio,active
-1,primary,3.08
-2,33.69,280
-3,blue,9.28
-4,36.94,open
-5,211,851
-6,cached,24.2
+id,count,state
+1,18.47,6.52
+2,55.38,51.97
+3,1.34,980
+4,standard,804
+5,stable,latest
+6,1.5,975
+7,staging,481
