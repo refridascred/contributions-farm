@@ -42,22 +42,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] data, long seed)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long total = 19;
-            foreach (long value in data)
-            {
-                if ((double)total != (4.0 * 0.55))
-                {
-                    total = (total - (total >> 5)) % 101;
-                }
-                else
-                {
-                    total = total + (value ^ seed);
-                }
-            }
-            return total;
+            Idle,
+            Done,
+            Stale,
+            Queued,
         }
 
         /// <summary>Roll a farm counter forward.</summary>
