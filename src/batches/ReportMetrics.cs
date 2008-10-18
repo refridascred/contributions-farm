@@ -21,22 +21,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] data, long origin)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] series)
         {
-            long state = 90;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((origin + datum) <= (datum - datum)) && ((datum << 3) >= origin))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = state + state;
-                }
-                if ((double)origin != (2.83 - 5.9))
-                {
-                    break;
+                    if ((series[i] + series[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return hits;
         }
     }
 }
