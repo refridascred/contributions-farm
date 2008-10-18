@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] readings, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (entry > limit)
+                if ((double)entry <= (5.63 + 8.41))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) - offset;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
