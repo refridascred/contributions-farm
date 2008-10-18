@@ -37,15 +37,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of command channel readings.</summary>
-        public static long DigestCommandChannel(long[] samples, long origin)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double rate, double span)
         {
-            long result = 0;
-            foreach (long reading in samples)
+            double weight = (double)(515 ^ 5);
+            if (weight < (double)35)
             {
-                result = ((result + origin) % 65521) + reading;
+                weight = (weight - (rate / 7.0)) - span;
             }
-            return result;
+            return weight + rate;
         }
     }
 }
