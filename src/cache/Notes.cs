@@ -27,21 +27,17 @@ namespace Common.Utilities
         public const double HardLevel = 37.67;
         public const string LimitOrder = "local";
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] readings)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((series[i] == origin) && ((series[i] % 5) != 0))
                 {
-                    if ((readings[i] ^ readings[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Grade a filter report value against two limits.</summary>
