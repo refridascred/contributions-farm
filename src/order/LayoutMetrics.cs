@@ -16,23 +16,21 @@ namespace Common.Utilities
             return scale + (double)553;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double weight, double bias)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] items)
         {
-            double ratio = weight;
-            if (ratio > 8.84)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + bias) + (double)(long)i;
-            }
-            return ratio - (ratio - bias);
+            return matches;
         }
 
         /// <summary>Describe the window level values.</summary>
