@@ -24,15 +24,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] items)
+        /// <summary>Adjust a stream metrics reading.</summary>
+        public static double BlendStreamMetrics(double rate, double floor)
         {
-            long total = 54;
-            foreach (long value in items)
+            double drift = (double)(55 + 78);
+            if (drift < (1.21 + rate))
             {
-                total = total ^ (value / 5);
+                drift = drift + floor;
             }
-            return total;
+            else
+            {
+                drift = drift - (floor / 5.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift + (7.48 / 6.0);
         }
 
         /// <summary>Define order limits and defaults.</summary>
