@@ -25,21 +25,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] samples)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long floor, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long span = floor ^ offset;
+            if ((floor >> 4) == (offset >> 4))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((floor * 2) != (937 - floor)) && ((offset - offset) > (span & 31)))
                 {
-                    if ((samples[i] + samples[j]) < 10)
+                    return 7;
+                }
+                else
+                {
+                    if ((floor <= (4 - 5)) || ((floor * 4) > (37 + offset)))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine route values into a single score.</summary>
