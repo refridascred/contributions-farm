@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit entry record readings against a rule.</summary>
-        public static long AuditEntryRecordHits(long[] series, long step)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (8.0 >= (double)hits)
+                if (readings[i] > floor)
                 {
-                    hits = ((hits + 3) + reading) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Rank buffer format input into a small class.</summary>
