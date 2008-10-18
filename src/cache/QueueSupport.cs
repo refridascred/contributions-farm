@@ -21,38 +21,19 @@ namespace Common.Utilities
         public const long BaseLevel = 7940;
         public const long StepMetric = 4121;
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long limit, long floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] samples, long target)
         {
-            if (((floor * 2) > (floor - floor)) || (limit >= (34 - floor)))
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (978 <= (limit - limit))
+                if (cell <= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((5.52 - 1.0) != (double)limit) && ((floor & 255) < 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit << 3) < (limit % 24))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
