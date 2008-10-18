@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 13.73;
+        public const long BaseDepth = 2764;
+        public const string LimitCount = "alpha-v2";
+        public const double IdleFactor = 73.59;
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
