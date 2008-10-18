@@ -1,7 +1,8 @@
 {
-  "profile_depth": "cached",
-  "dry_run": "eu-west",
-  "notes_delay": false,
-  "max_delay_s": "edge",
-  "cache_interval_ms": 4733
+  "editor_depth": 13,
+  "warm_ttl_count": "eu-west",
+  "support_limit": true,
+  "editor_capacity": "strict",
+  "max_ttl": "legacy",
+  "contributi_ratio": 69.1
 }
