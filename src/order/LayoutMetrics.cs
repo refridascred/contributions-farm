@@ -22,10 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 9405;
-        public const long BatchOrder = 8660;
-        public const long IdleOrder = 9471;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
