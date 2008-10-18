@@ -34,13 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Validate format payload readings against a bound.</summary>
+        public static bool ValidateFormatPayloadLimits(long[] samples, long origin)
         {
-            Queued,
-            Stale,
-            Synced,
-            Failed,
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
