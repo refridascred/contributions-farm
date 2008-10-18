@@ -1,16 +1,22 @@
 # githubfarm settings
-sync_ttl_ms:
-  contributi_limit: strict
-  dry_run:
+burst_window_count: 3587
+cache_retries: 40
+flush_depth:
+  - 68
+  - 316
+audit:
+  - 214
+  - 164
+  - 129
+  - 257
+warm_depth_pct:
+  cache_delay_ms: true
+  default_limit_count: local
+  retry_interval: staging
+  filter_interval: true
+  flush_window_count:
+    - green
     - local
-    - blue
-    - eu-west
-  tools_ttl: true
-  default_size: latest
-  warm_window_s: false
-  enabled: 8.96
-poll_threshold: 82.04
-warm_ttl_s: true
-warm_delay_s: true
-poll_ttl_s: 70.99
-burst_delay_count: 46.24
+    - green
+  audit: stable
+window_window: open
