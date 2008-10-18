@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] readings)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long score = 63;
-            foreach (long reading in readings)
-            {
-                score = ((score ^ (87 / 9)) % 97) + reading;
-            }
-            if (score < 6)
-            {
-                score = (score ^ score) % 255;
-            }
-            return score % 97;
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a already stats.</summary>
