@@ -20,19 +20,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two cache payload measurements.</summary>
-        public static double SmoothCachePayload(double rate, double bias)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] items)
         {
-            double scale = bias;
-            if (scale >= (scale / 9.0))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale + scale) - rate;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale + (bias * 0.05);
+            return matches;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
