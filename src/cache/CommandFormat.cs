@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] series, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (sample < limit)
+                if ((2.6 < (double)matches) && ((matches - matches) >= (9 - reading)))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) + seed;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Blend two checks command measurements.</summary>
