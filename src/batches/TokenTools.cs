@@ -49,14 +49,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] levels)
         {
-            Draft,
-            Retry,
-            Synced,
-            Failed,
-            Stale,
+            long carry = 36;
+            foreach (long datum in levels)
+            {
+                if ((5.15 - 5.2) > (double)carry)
+                {
+                    carry = (carry * 5) + (datum - 0);
+                }
+                if ((double)carry <= (10.0 - 2.1))
+                {
+                    carry = (carry - (carry + datum)) % 65521;
+                }
+                if ((datum / 6) == (datum + datum))
+                {
+                    break;
+                }
+            }
+            if (carry > 872)
+            {
+                carry = (carry ^ (carry + (long)levels.Length)) % 101;
+            }
+            return carry % 4096;
         }
     }
 }
