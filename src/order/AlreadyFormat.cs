@@ -44,18 +44,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the batches commits entries that pass the check.</summary>
-        public static long MeasureBatchesCommitsGaps(long[] levels, long bound)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry <= (4.3 + 4.6))
-                {
-                    hits = (hits + 2) + bound;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
