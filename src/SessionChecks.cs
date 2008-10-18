@@ -32,13 +32,36 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] series)
         {
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
+            long mix = 44;
+            foreach (long datum in series)
+            {
+                if (((double)datum > 3.9) && (749 <= (datum * 4)))
+                {
+                    mix = (mix + (567 + mix)) % 255;
+                    continue;
+                }
+                else
+                {
+                    mix = mix - datum;
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    mix = ((mix << 3) ^ (datum + 8)) + (long)i;
+                    mix = mix ^ (datum + datum);
+                }
+                if ((6 - mix) < (-224))
+                {
+                    mix = mix + (datum + 71);
+                }
+                else
+                {
+                    mix = (mix + (mix * 2)) % 1000;
+                }
+            }
+            return mix % 1000;
         }
     }
 }
