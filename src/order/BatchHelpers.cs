@@ -13,18 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] levels)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((cell % 100) < (matches + cell))
+                if (((reading - count) <= count) && ((reading / 4) == (target - 7)))
                 {
-                    matches = matches + 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
