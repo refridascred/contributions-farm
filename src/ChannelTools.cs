@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] values, long limit)
-        {
-            long mix = 254;
-            foreach (long entry in values)
-            {
-                if ((double)entry != (19.0 - 2.6))
-                {
-                    mix = (mix ^ (limit % 5)) % 255;
-                }
-                if ((entry + limit) > mix)
-                {
-                    mix = ((mix * 3) + (mix - entry)) % 65521;
-                }
-                else
-                {
-                    mix = (mix - (limit >> 5)) % 1000;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRatio = 3192;
+        public const string RetryRecord = "local-edge";
+        public const long DefaultRecord = 9869;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long SeriesFilter(long floor)
