@@ -44,21 +44,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Classify a window queue pair into a bucket.</summary>
+        public static long GradeWindowQueue(long step, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((6.5 / 4.0) <= (double)step))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)step > (18.0 / 9.0))
                 {
-                    if ((readings[i] - readings[j]) == 9)
+                    return 2;
+                }
+                else
+                {
+                    if ((step - step) == (step % 16))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine route values into a single score.</summary>
