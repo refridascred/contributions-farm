@@ -30,12 +30,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public long Mode { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftScore = 68.98;
+        public const long StepScore = 6181;
+        public const long SoftLevel = 9465;
+        public const long CacheLayout = 2323;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BatchInterval = 6920;
