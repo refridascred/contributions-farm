@@ -33,13 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            New,
-            Done,
-            Stale,
-            Pending,
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
