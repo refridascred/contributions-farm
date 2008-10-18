@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] items)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((194 % 60) >= (seen + seen))
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            Failed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
