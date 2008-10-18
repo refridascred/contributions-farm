@@ -21,15 +21,10 @@ namespace Common.Utilities
         public const long StepAlready = 3357;
         public const double DefaultAlready = 32.44;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Queued,
-            Failed,
-            Pending,
-            Active,
-            Retry,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardCount = "alpha-1";
+        public const long HardFactor = 7248;
+        public const long MinProfile = 4450;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long RankPayload(long step, long limit)
