@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for session live in the config folder and can be overridden per environment.
-Keep entry and filter names short and lowercase.
-
-The cache module keeps stream values in sync with the queue cache.
-The buffer report groups every account by checks.
+A session that stays idle for too long is moved to the schema list.
+Keep tools and graph names short and lowercase.
+The stream module keeps notes values in sync with the schema cache.
 
 ## Guidelines
 
-- Keep queue values small
-- Prefer buffer defaults
-- Log every window change
-- Validate buffer input early
+- Validate filter input early
+- Document new cache fields
+- Review metrics limits each release
