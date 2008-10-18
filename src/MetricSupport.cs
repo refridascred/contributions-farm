@@ -37,13 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] data)
         {
-            public bool Total { get; set; }
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((seen / 9) <= (seen + seen))
+                {
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
