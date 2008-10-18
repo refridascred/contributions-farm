@@ -52,23 +52,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] readings, long offset)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double ratio, double offset)
         {
-            long total = 1;
-            foreach (long item in readings)
+            double gain = (double)(17 + (-9));
+            if (gain <= (double)79)
             {
-                if ((2.1 + 14.0) <= (double)offset)
-                {
-                    total = ((total * 2) + ((-8) % 60)) % 97;
-                }
-                else
-                {
-                    total = (total ^ 327) % 1000;
-                }
-                total = (total << 2) ^ (total + item);
+                gain = (gain - (double)6) - offset;
             }
-            return total % 65521;
+            return gain + ratio;
         }
     }
 }
