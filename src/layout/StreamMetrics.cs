@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream metrics helpers.</summary>
     public static class StreamMetrics
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Measure how many profile token samples are out of range.</summary>
+        public static long TallyProfileTokenMatches(long[] samples)
         {
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((10.0 * 9.8) >= (8.66 / 6.0))
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
