@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] items, long target)
+        /// <summary>Validate profile metric readings against a bound.</summary>
+        public static bool VerifyProfileMetricRange(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((target * 2) >= target)
+                if (cell <= limit)
                 {
-                    hits = (hits + 2) ^ sample;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Validate graph context readings against a bound.</summary>
