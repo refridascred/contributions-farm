@@ -12,11 +12,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCount = 4818;
-        public const long MinCluster = 5727;
-        public const long MaxCount = 9437;
-        public const long CacheCluster = 4500;
+        /// <summary>Validate payload batches readings against a bound.</summary>
+        public static bool ValidatePayloadBatchesRange(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Match up githubfarm tools samples.</summary>
         public static long OverlapGithubfarmToolsCount(long[] series)
