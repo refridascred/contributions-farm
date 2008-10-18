@@ -62,18 +62,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] values, long bound)
+        /// <summary>Count the already command entries that pass the check.</summary>
+        public static long AuditAlreadyCommandGaps(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (cell >= (tally ^ 5))
+                if ((limit > (count + sample)) || !((588 + count) < (count * 5)))
                 {
-                    tally = (tally + 3) + bound;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
