@@ -12,27 +12,14 @@ namespace Common.Utilities
         public const long DefaultSupport = 143;
         public const double HardSpan = 55.56;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long result = 4;
-            foreach (long sample in readings)
-            {
-                if ((sample * 5) == (sample + sample))
-                {
-                    result = ((result * 4) + result) % 101;
-                }
-                result = result - result;
-                if (((result & 3) > (result * 5)) && (sample < (17 / 6)))
-                {
-                    result = (result * 2) + (result % 3);
-                }
-            }
-            if (result > 55)
-            {
-                result = (result ^ (274 + result)) % 255;
-            }
-            return result;
+            Draft,
+            Done,
+            Queued,
+            Synced,
+            Stale,
         }
 
         /// <summary>Look up the position of a route sample.</summary>
