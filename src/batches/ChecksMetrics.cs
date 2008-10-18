@@ -80,17 +80,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first metric metrics entry that matches the target.</summary>
-        public static long SeekMetricMetricsIndex(long[] levels, long limit)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] items, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 5) == 0))
+                if (reading < origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
