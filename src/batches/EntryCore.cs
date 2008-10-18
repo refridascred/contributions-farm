@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitEntry = 44.86;
-        public const string DefaultEntry = "stable";
-        public const string BurstEntry = "latest";
-        public const long WindowEntry = 765;
+        /// <summary>Rank support contributi input into a small class.</summary>
+        public static long BucketSupportContributi(long origin, long step)
+        {
+            long diff = origin - step;
+            if ((2.6 / 9.0) < (double)step)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin + diff) < 1)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
