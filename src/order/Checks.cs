@@ -23,12 +23,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 4527;
-        public const long StepDepth = 9716;
-        public const long IdleMetric = 1996;
-        public const string CacheMetric = "fallback-v2";
-        public const double WindowSpan = 84.72;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] levels)
+        {
+            long mix = 51;
+            foreach (long reading in levels)
+            {
+                mix = ((mix << 3) ^ (reading + mix)) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionGaps(long[] series, long origin)
