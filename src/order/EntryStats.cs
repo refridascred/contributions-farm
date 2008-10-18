@@ -11,24 +11,22 @@ namespace Common.Utilities
         public const double MaxContributi = 39.14;
         public const long StepContributi = 3335;
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] readings, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((sum + (long)i) > step)
+                if (((reading > (bound + reading)) || (bound >= (hits + 536))) && ((hits >= (bound % 100)) || (reading <= (2 + hits))))
                 {
-                    break;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    sum = ((sum << 3) ^ ((long)i - sum)) % 255;
-                    sum = ((sum << 3) ^ ((long)i - (long)i)) % 255;
+                    hits = hits - 1;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
