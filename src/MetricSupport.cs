@@ -31,19 +31,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every editor buffer entry stays within the limit.</summary>
-        public static bool GuardEditorBufferLimits(long[] series, long limit)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Closed,
+            Dropped,
+            Idle,
+            Queued,
         }
     }
 }
