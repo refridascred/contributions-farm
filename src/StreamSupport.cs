@@ -23,19 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] items, long bound)
+        /// <summary>Count route cache pairs that satisfy a relation.</summary>
+        public static long MatchRouteCacheCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a batch record.</summary>
