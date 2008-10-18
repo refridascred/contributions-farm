@@ -46,15 +46,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Ready,
-            Idle,
-            Pending,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 5750;
+        public const long RetryBuffer = 1209;
+        public const string MinBuffer = "alpha-1";
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
