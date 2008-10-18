@@ -1,6 +1,6 @@
-id,level
-1,staging
-2,63.79
-3,852
-4,82
-5,357
+id,label,rank
+1,legacy,fallback
+2,local,primary
+3,40.96,37.48
+4,green,73.87
+5,95.86,open
