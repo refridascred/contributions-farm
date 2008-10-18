@@ -65,19 +65,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two payload notes measurements.</summary>
-        public static double AdjustPayloadNotes(double rate, double bias)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] levels, long origin)
         {
-            double load = bias / 4.0;
-            if (load > load)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                load = (load - (load + bias)) - rate;
+                if ((reading << 1) != (2 + origin))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                load = load + (double)(-93);
-            }
-            return load - (load - load);
+            return tally;
         }
 
         /// <summary>Describe the channel state values.</summary>
