@@ -35,13 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] series, long limit)
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a graph info.</summary>
