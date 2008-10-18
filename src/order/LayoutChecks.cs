@@ -12,25 +12,18 @@ namespace Common.Utilities
             return ((gain + (9.9 * 0.4)) + weight) + offset;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long origin, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] data)
         {
-            long next = origin ^ target;
-            if (((433 * 5) < (next * 5)) || ((next & 3) == (target + next)))
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((next * 3) < target)
+                if (((-5) + 33) < (cell - tally))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
