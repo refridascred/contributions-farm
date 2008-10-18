@@ -29,14 +29,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Locked,
-            Ready,
             Stale,
-            Synced,
-            Done,
+            Paused,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define token limits and defaults.</summary>
