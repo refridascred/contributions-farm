@@ -1,6 +1,6 @@
 {
-  "cache_window": true,
-  "batch_window_ms": 30,
-  "warm_timeout_pct": 7057,
-  "base_ratio_pct": false
+  "strict": true,
+  "readonly": 67.55,
+  "channel_timeout": 96.12,
+  "compress": 10
 }
