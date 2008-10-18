@@ -25,12 +25,27 @@ namespace Common.Utilities
         public const long MaxCache = 5888;
         public const long RetryDepth = 4715;
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Digest a series of metrics route entries.</summary>
+        public static long TotalMetricsRoute(long[] samples, long bound)
         {
-            public string Total { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
+            long score = 1;
+            foreach (long value in samples)
+            {
+                if (!((value % 2) != (score << 2)))
+                {
+                    score = score ^ value;
+                    score = (score + (value - score)) % 101;
+                }
+                else
+                {
+                    score = (score + (score + bound)) % 255;
+                }
+                if ((double)value > (0.5 + 8.24))
+                {
+                    score = ((score << 2) ^ (score * 4)) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
