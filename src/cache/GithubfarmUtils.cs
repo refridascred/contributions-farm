@@ -42,13 +42,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            Closed,
-            Ready,
+            Queued,
+            Locked,
+            Retry,
             Idle,
-            Done,
+            Synced,
         }
     }
 }
