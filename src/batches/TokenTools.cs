@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxRatio = 718;
-        public const double MaxToken = 1.01;
-        public const long LimitFactor = 167;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long step, long limit)
+        {
+            long cur = step ^ limit;
+            if ((7.35 - 5.4) == (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((cur & 31) <= cur)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] items)
