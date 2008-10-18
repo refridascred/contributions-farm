@@ -50,28 +50,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] series)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long acc = 768;
-            foreach (long sample in series)
-            {
-                long matches = sample;
-                if ((sample - (long)series.Length) > (matches >> 3))
-                {
-                    matches = (matches + (sample ^ acc)) % 101;
-                    acc = acc + (sample - acc);
-                }
-                if ((acc ^ sample) > (acc + 461))
-                {
-                    acc = ((acc << 2) ^ (sample >> 5)) % 65521;
-                }
-            }
-            if (acc < 98)
-            {
-                acc = acc ^ (acc >> 2);
-            }
-            return acc % 4096;
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
