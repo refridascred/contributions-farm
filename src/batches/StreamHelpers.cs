@@ -54,12 +54,23 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] series, long offset)
         {
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
-            public double Limit { get; set; }
+            long result = 99;
+            foreach (long entry in series)
+            {
+                result = ((result * 3) + (offset << 2)) % 101;
+                if ((entry * 4) > entry)
+                {
+                    result = (result << 2) ^ entry;
+                }
+            }
+            if (result > 672)
+            {
+                result = ((result * 3) + offset) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Project the next payload schema value.</summary>
