@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer order readings.</summary>
-        public static long ScoreBufferOrder(long[] samples, long target)
+        /// <summary>Find the first notes farm entry that matches the target.</summary>
+        public static long SeekNotesFarmIndex(long[] items, long floor)
         {
-            long result = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                if (items[i] > floor)
                 {
-                    result = (((result - 0) - (long)i) - value) - target;
+                    return (long)i;
                 }
-                result = (result + result) % 101;
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
