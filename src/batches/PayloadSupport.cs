@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first layout buffer entry that matches the target.</summary>
-        public static long LocateLayoutBufferIndex(long[] series, long bound)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 4;
+            foreach (long cell in data)
             {
-                if (series[i] > bound)
+                if (((acc + acc) <= acc) || ((double)acc <= (6.9 * 6.0)))
                 {
-                    return (long)i;
+                    acc = ((acc + (acc % 7)) % 65521) - cell;
                 }
             }
-            return -1;
+            if (acc < 51)
+            {
+                acc = ((acc * 5) + (acc * 2)) % 101;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of window entries.</summary>
