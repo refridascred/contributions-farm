@@ -33,15 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double ratio, double floor)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            double load = (double)(7 % 12);
-            if (load < 4.66)
-            {
-                load = ((load + load) - ratio) - floor;
-            }
-            return load - 1.38;
+            New,
+            Done,
+            Stale,
+            Pending,
         }
     }
 }
