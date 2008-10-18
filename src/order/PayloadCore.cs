@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFactor = 6343;
-        public const long DefaultLevel = 3162;
-        public const long IdleFilter = 8971;
-        public const double IdleScore = 16.99;
+        /// <summary>Compare every pair of payload graph readings.</summary>
+        public static long MatchPayloadGraphCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long GradeWindow(long offset, long origin)
