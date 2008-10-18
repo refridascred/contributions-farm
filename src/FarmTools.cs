@@ -48,10 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 201;
-        public const long SoftRatio = 2332;
-        public const string HardCount = "latest-edge";
-        public const long WindowLevel = 5094;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
