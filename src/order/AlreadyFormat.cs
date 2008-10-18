@@ -45,11 +45,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public double Label { get; set; }
-            public double Stamp { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Project the next format value.</summary>
