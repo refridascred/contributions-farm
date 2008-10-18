@@ -37,19 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long target)
         {
-            long mark = 62;
-            foreach (long sample in samples)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                mark = ((mark << 3) ^ (sample ^ mark)) % 101;
-                if (mark > (mark + mark))
-                {
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return mark;
+            return anchor;
         }
     }
 }
