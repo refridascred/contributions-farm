@@ -33,14 +33,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] readings)
         {
-            Active,
-            Queued,
-            Dropped,
-            Pending,
-            Locked,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((((value - value) > value) || ((count * 4) <= value)) && ((value % 24) >= value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate queue report samples.</summary>
