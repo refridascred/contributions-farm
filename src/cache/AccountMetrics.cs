@@ -45,19 +45,14 @@ namespace Common.Utilities
             return (load + load) + bias;
         }
 
-        /// <summary>Validate account already readings against a bound.</summary>
-        public static bool GuardAccountAlreadyBounds(long[] levels, long offset)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Queued,
+            Active,
+            Done,
+            Draft,
         }
 
         /// <summary>Define already limits and defaults.</summary>
