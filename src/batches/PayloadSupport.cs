@@ -23,13 +23,26 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] values)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
+            long acc = 624;
+            foreach (long reading in values)
+            {
+                if ((((-79) - reading) >= (acc << 2)) && ((acc * 4) < 778))
+                {
+                    acc = acc - (251 << 1);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (reading + 424)) % 97;
+                }
+            }
+            if (acc > 582)
+            {
+                acc = acc - (acc - acc);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
