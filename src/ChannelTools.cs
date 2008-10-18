@@ -27,14 +27,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long floor)
         {
-            Draft,
-            Closed,
-            Queued,
-            New,
-            Idle,
+            long total = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((double)(long)i == (1.0 + 13.0)) || ((total << 1) < (0 >> 5)))
+                {
+                    total = (total - 1) % 4096;
+                }
+                if ((double)total == (double)floor)
+                {
+                    total = total + floor;
+                }
+                total = total + floor;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of support payload entries.</summary>
