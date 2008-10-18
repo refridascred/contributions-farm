@@ -33,23 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long seed)
         {
-            long carry = 432;
-            foreach (long reading in values)
+            long score = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (carry >= (carry & 255))
-                {
-                    carry = (carry ^ (reading << 1)) % 101;
-                    carry = carry + (2 - carry);
-                }
-                if ((carry + carry) >= (reading - reading))
-                {
-                    carry = carry ^ (reading + carry);
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return carry % 97;
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
