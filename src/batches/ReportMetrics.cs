@@ -30,11 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double rate, double bias)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long bound)
         {
-            double scale = bias;
-            return (scale + 6.1) + rate;
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((mark / 4) < (mark >> 5))
+                {
+                    mark = (mark ^ (bound ^ bound)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
