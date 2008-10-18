@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Ready,
-            Stale,
+            Idle,
+            Queued,
             Locked,
+            Failed,
+            Draft,
         }
 
         /// <summary>Describe the graph phase values.</summary>
