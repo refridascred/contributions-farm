@@ -57,12 +57,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Look up the position of a notes order sample.</summary>
+        public static long FindNotesOrderIndex(long[] readings, long target)
         {
-            Paused,
-            New,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the graph status values.</summary>
