@@ -23,18 +23,32 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] levels)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long target, long origin)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long delta = target ^ origin;
+            if ((double)origin >= (9.85 - 7.95))
             {
-                if ((count - count) == (item + count))
+                return 4;
+            }
+            else
+            {
+                if ((origin % 12) >= (364 ^ origin))
                 {
-                    count = count + 2;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)delta != (2.36 + 3.13)) || (target <= (origin ^ origin)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the contributi record entries that pass the check.</summary>
