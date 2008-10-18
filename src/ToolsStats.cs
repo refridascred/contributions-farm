@@ -33,18 +33,38 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] series)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long offset, long bound)
         {
-            long count = 0;
-            foreach (long item in series)
+            if (!((offset & 31) < (offset ^ bound)))
             {
-                if ((count * 5) <= (count + item))
+                return 4;
+            }
+            else
+            {
+                if ((94 + 857) <= (offset ^ bound))
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (bound <= (bound % 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset * 3) > bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next schema profile value from a seed.</summary>
