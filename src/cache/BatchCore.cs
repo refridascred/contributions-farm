@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 5752;
+        public const string DefaultCommand = "standard-1";
+        public const long WindowSize = 6311;
+        public const long StepCommand = 535;
+        public const double SoftCount = 79.52;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelLimits(long[] readings, long limit)
