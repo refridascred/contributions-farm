@@ -25,17 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] readings, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (readings[i] > limit)
+                if (((3.4 - 8.66) == (double)(long)values.Length) || ((sample - seen) == (55 + seen)))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + floor;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of counter contributi entries.</summary>
