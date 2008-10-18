@@ -57,18 +57,13 @@ namespace Common.Utilities
             return scale + bias2;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] series, long bound)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((8 ^ tally) != (bound + tally))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
