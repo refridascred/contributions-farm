@@ -55,11 +55,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long origin, long offset)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            if ((origin / 9) > origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((origin + origin) >= 751) || ((offset ^ offset) != (32 / 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((2 % 5) >= (origin + 22))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batches kind values.</summary>
