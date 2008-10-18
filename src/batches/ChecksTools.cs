@@ -32,25 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a report format pair into a bucket.</summary>
-        public static long SortReportFormat(long origin, long offset)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long next = origin + offset;
-            if ((offset >= origin) && (origin > next))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((next - offset) < offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Locked,
+            Failed,
+            Active,
+            Synced,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
