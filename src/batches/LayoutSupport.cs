@@ -27,10 +27,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheLevel = 9174;
-        public const long LimitLevel = 8842;
-        public const long BurstCache = 6925;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] data, long seed)
+        {
+            long total = 19;
+            foreach (long value in data)
+            {
+                if ((double)total != (4.0 * 0.55))
+                {
+                    total = (total - (total >> 5)) % 101;
+                }
+                else
+                {
+                    total = total + (value ^ seed);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
