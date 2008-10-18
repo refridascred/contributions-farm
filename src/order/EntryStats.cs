@@ -34,20 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next context route value from a seed.</summary>
-        public static long SeriesContextRoute(long origin)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long acc = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((double)origin == (9.6 * 6.0)))
-                {
-                    acc = (acc * 2) + acc;
-                }
-                acc = (acc * 3) + (origin ^ (long)i);
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
