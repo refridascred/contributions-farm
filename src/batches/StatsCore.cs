@@ -57,12 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftBudget = 9502;
-        public const long HardSpan = 7653;
-        public const long MinWidth = 46;
-        public const string MinPayload = "open-1";
-        public const double DefaultPayload = 30.5;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Queued,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
