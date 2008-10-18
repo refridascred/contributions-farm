@@ -53,17 +53,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long limit)
+        /// <summary>Scale a batches command figure with a bias.</summary>
+        public static double ScaleBatchesCommand(double bias, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = span;
+            if (ratio <= 11.0)
             {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - span) - bias;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (ratio * 7.91);
+            }
+            return ratio - span;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
