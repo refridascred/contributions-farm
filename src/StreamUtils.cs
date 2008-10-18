@@ -23,21 +23,15 @@ namespace Common.Utilities
         public const long BaseBudget = 7229;
         public const double BurstScore = 58.33;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Fold a list of window context readings.</summary>
+        public static long CombineWindowContext(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 694;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (((mark << 3) ^ (origin & 7)) % 1000) - sample;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Project the next command value.</summary>
