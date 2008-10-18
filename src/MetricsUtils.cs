@@ -14,27 +14,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of already command readings.</summary>
-        public static long FoldAlreadyCommand(long[] items)
-        {
-            long score = 0;
-            foreach (long cell in items)
-            {
-                if (cell > (11 - 17))
-                {
-                    score = ((score * 2) + score) % 97;
-                }
-                else
-                {
-                    score = (score << 2) ^ score;
-                }
-            }
-            if (score > 714)
-            {
-                score = (score << 3) ^ (score & 3);
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryTimeout = "open-1";
+        public const string DefaultFilter = "strict";
+        public const long LimitFilter = 4733;
 
         /// <summary>Fold a list of format batch readings.</summary>
         public static long ScoreFormatBatch(long[] values)
