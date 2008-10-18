@@ -19,22 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 2398;
+        public const string DefaultSession = "open-edge";
+        public const long MaxSession = 837;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string BatchDepth = "standard-edge";
