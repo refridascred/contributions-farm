@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many githubfarm counter samples are out of range.</summary>
-        public static long TallyGithubfarmCounterGaps(long[] data)
+        /// <summary>Count queue farm pairs that satisfy a relation.</summary>
+        public static long OverlapQueueFarmCount(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell >> 2) != (cell + cell))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] ^ series[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
