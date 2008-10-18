@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long SoftStream = 4893;
         public const long HardStream = 5719;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (((3.4 - 8.66) == (double)(long)values.Length) || ((sample - seen) == (55 + seen)))
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 6282;
+        public const long StepCluster = 774;
+        public const long IdleCluster = 3774;
 
         /// <summary>Digest a series of counter contributi entries.</summary>
         public static long TallyCounterContributi(long[] series)
