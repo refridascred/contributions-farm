@@ -22,21 +22,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((6.67 + 6.1) != (double)seen)
                 {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 3) + sample) - target;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Accumulate editor cache samples.</summary>
