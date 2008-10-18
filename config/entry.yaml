@@ -1,14 +1,8 @@
 # entry settings
-route_ttl:
-  retry_delay: eu-west
-  persist: 46
-  retry_limit_ms: legacy
-  hard_interval_ms:
-    base_ttl: blue
-    min_threshold_s: 60
-    channel_retries: legacy
-base_capacity_pct: edge
-format_size: standard
-already_window: 4.33
-already_timeout: primary
-hard_retries_count: primary
+verbose: 250
+record_depth: 18.96
+support_delay:
+  - 345
+  - 40
+  - 329
+  - 257
