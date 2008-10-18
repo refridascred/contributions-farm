@@ -37,22 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
-        public static long MeasureFarmGithubfarmMatches(long[] samples)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (cell > (cell & 15))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Rank filter input into a small class.</summary>
