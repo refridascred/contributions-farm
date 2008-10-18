@@ -19,17 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 7; i++)
-            {
-                total = (total ^ total) % 101;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowLevel = 81;
+        public const long LimitSpan = 3148;
+        public const long RetryStream = 6211;
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
