@@ -20,13 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] items, long target)
         {
-            public long Total { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public bool Count { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen - value) <= target)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
