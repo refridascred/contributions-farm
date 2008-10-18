@@ -19,24 +19,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if (mix < (mix + mix))
-                {
-                    mix = (mix - (seed << 1)) % 65521;
-                }
-                mix = ((mix * 2) + ((long)i + mix)) % 97;
-                if (!((seed & 255) <= 36))
-                {
-                    mix = (mix * 2) + mix;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Synced,
+            Queued,
+            Retry,
+            Draft,
         }
     }
 }
