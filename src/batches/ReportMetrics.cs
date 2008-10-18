@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of already farm entries.</summary>
-        public static long FoldAlreadyFarm(long[] samples, long bound)
+        /// <summary>Fold a list of commits stream readings.</summary>
+        public static long WeighCommitsStream(long[] series, long floor)
         {
-            long score = 55;
-            foreach (long cell in samples)
+            long state = 5;
+            foreach (long datum in series)
             {
-                score = ((score ^ (bound ^ score)) % 97) + cell;
+                state = ((((state * 3) + (state >> 1)) % 255) - datum) + floor;
             }
-            return score;
+            if (state < 7)
+            {
+                state = ((state << 2) ^ ((long)series.Length + state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Project the next editor format value.</summary>
