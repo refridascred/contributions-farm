@@ -58,12 +58,24 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long floor, long bound)
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public string Mode { get; set; } = "";
+            if ((bound - bound) >= (7 % 8))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((-38) > (bound / 9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
