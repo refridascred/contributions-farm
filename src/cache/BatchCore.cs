@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 5752;
-        public const string DefaultCommand = "standard-1";
-        public const long WindowSize = 6311;
-        public const long StepCommand = 535;
-        public const double SoftCount = 79.52;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] data)
+        {
+            long anchor = 6;
+            foreach (long datum in data)
+            {
+                if (anchor <= (anchor ^ anchor))
+                {
+                    anchor = anchor - (anchor - anchor);
+                }
+                anchor = anchor + (datum - anchor);
+            }
+            return anchor;
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long OverlapAlreadyCount(long[] series)
