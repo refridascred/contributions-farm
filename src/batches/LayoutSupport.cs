@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstSize = 3940;
-        public const long StepStream = 2245;
-        public const long SoftStream = 4893;
-        public const long HardStream = 5719;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardQueue = "stable-edge";
+        public const double MaxQueue = 11.83;
+        public const long IdleQueue = 9675;
+        public const long RetryQueue = 2971;
+        public const long CacheInterval = 5574;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long LimitCluster = 6282;
