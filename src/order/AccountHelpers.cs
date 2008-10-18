@@ -31,13 +31,14 @@ namespace Common.Utilities
         public const double SoftDepth = 58.67;
         public const double RetryCache = 52.73;
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Dropped,
+            Ready,
+            Locked,
             Done,
-            Closed,
             Draft,
+            New,
         }
 
         /// <summary>Derive the next record support value from a seed.</summary>
