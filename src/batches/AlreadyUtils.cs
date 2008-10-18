@@ -40,18 +40,25 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] readings)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long offset, long limit)
         {
-            long score = -5;
-            foreach (long cell in readings)
+            long next = offset + limit;
+            if ((6.0 * 20.0) <= (double)offset)
             {
-                if (cell <= (686 & 7))
+                return 6;
+            }
+            else
+            {
+                if (3.07 <= (double)next)
                 {
-                    score = (score << 2) ^ (1 + score);
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
