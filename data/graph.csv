@@ -1,6 +1,10 @@
-id,region,score,ratio,owner
-1,green,latest,547,latest
-2,230,legacy,859,45.93
-3,staging,543,blue,504
-4,370,staging,777,983
-5,open,primary,57.38,15.42
+id,weight,active
+1,63.19,strict
+2,20.05,62
+3,699,585
+4,697,619
+5,stable,35.42
+6,207,staging
+7,staging,open
+8,cached,5
+9,470,59.68
