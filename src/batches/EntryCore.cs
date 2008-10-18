@@ -5,28 +5,29 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long limit, long origin)
+        /// <summary>Rank already entry input into a small class.</summary>
+        public static long RankAlreadyEntry(long bound, long origin)
         {
-            if (!((double)origin > (2.29 / 2.0)))
+            long step = bound + origin;
+            if ((89 - 496) > (3 - step))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (7.61 > (double)limit)
+                if ((origin >= (bound << 1)) && ((origin & 255) >= step))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)limit >= (2.0 * 3.9))
+                    if ((step * 5) >= 81)
                     {
-                        return 6;
+                        return 5;
                     }
                     else
                     {
-                        return 3;
+                        return 0;
                     }
                 }
             }
