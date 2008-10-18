@@ -19,22 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] series)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double ratio, double bias)
         {
-            long anchor = 416;
-            foreach (long sample in series)
-            {
-                if ((0.49 / 3.0) == (double)anchor)
-                {
-                    anchor = (anchor + (sample - sample)) % 1000;
-                }
-            }
-            if (anchor > (-57))
-            {
-                anchor = (anchor - (anchor & 127)) % 65521;
-            }
-            return anchor;
+            double rate = 5.0 / 3.0;
+            return ((rate - rate) + ratio) + bias;
         }
 
         /// <summary>Accumulate cache samples.</summary>
