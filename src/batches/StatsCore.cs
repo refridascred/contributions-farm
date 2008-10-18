@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] readings, long limit)
         {
-            Synced,
-            Ready,
-            New,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count + 10) < limit)
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
