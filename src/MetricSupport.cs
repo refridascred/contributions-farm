@@ -24,22 +24,21 @@ namespace Common.Utilities
             return rate + (span / 4.0);
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] values)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((-83) <= (long)values.Length)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] ^ readings[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
