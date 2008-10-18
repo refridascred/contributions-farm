@@ -23,26 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of buffer farm entries.</summary>
-        public static long FoldBufferFarm(long[] values, long target)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long acc = 5;
-            foreach (long entry in values)
-            {
-                if (((-1) & 1) != (entry - acc))
-                {
-                    acc = (acc + (entry - acc)) - target;
-                }
-                if ((acc / 3) >= (entry + entry))
-                {
-                    break;
-                }
-            }
-            if (acc > 4)
-            {
-                acc = (acc * 5) + (39 >> 4);
-            }
-            return acc % 4096;
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Find the first record channel entry that matches the target.</summary>
