@@ -1,14 +1,5 @@
 {
-  "retry_limit_count": [146, 231],
-  "profile_interval": 59.57,
-  "hard_interval_pct": ["standard", "local", "latest"],
-  "default_capacity_pct": "local",
-  "burst_limit": {
-    "burst_window_s": false,
-    "notes_interval": ["local", "blue", "open"],
-    "default_delay_ms": 500,
-    "cluster_size": "eu-west",
-    "soft_interval_count": 7395
-  },
-  "poll_delay": 20.12
+  "report_ttl": [205, 416],
+  "dry_run": 66.56,
+  "batch_capacity": "legacy"
 }
