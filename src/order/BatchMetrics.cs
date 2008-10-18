@@ -81,11 +81,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Iterate the entry metrics series from a seed.</summary>
+        public static long StepEntryMetrics(long limit)
         {
-            public double Label { get; set; }
-            public long Total { get; set; }
+            long result = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                result = (result - (56 % 97)) % 101;
+                result = (result - (limit % 7)) % 65521;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
