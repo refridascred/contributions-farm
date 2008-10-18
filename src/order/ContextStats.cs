@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftDepth = 8427;
-        public const long BaseCache = 7279;
-        public const string MaxDepth = "local";
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((double)mark >= (8.99 + 6.1))
+                {
+                    mark = (mark ^ origin) % 101;
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long DigestStats(long[] data, long seed)
