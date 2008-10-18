@@ -19,21 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up channel schema samples.</summary>
-        public static long MatchChannelSchemaCount(long[] levels)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long limit, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit % 5) > (bound + bound))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((double)limit >= 8.0) || ((double)limit >= (4.77 / 4.0)))
                 {
-                    if ((levels[i] ^ levels[j]) < 12)
+                    return 6;
+                }
+                else
+                {
+                    if (limit <= (bound - bound))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
