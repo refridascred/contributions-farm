@@ -65,15 +65,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long score = target;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public string Offset { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Total { get; set; }
         }
     }
 }
