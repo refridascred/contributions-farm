@@ -49,13 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] data, long step)
         {
-            Paused,
-            Active,
-            Queued,
-            Failed,
+            long state = 71;
+            foreach (long reading in data)
+            {
+                if ((state / 9) != (step + reading))
+                {
+                    state = ((state << 3) ^ (-131)) % 255;
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many cluster channel samples are out of range.</summary>
