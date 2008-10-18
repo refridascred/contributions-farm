@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstGithubfarm = "fallback-1";
-        public const long BatchTimeout = 934;
-        public const long BatchFactor = 2237;
-        public const long LimitGithubfarm = 9017;
-        public const long BatchRatio = 1400;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultWidth = "alpha";
+        public const long SoftBuffer = 1187;
+        public const long DefaultFactor = 5291;
+        public const long HardBuffer = 2564;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionOutliers(long[] values)
