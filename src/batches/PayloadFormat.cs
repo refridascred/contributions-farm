@@ -56,18 +56,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] values)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((matches - datum) >= datum)
+                if ((76 / 7) < (571 + datum))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 3) - bound;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
