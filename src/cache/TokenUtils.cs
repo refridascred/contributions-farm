@@ -25,31 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] series)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double gain, double bias)
         {
-            long carry = 77;
-            foreach (long datum in series)
+            double rate = gain - (2.84 - gain);
+            if (rate >= gain)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = ((carry + (carry << 1)) % 255) + (long)i;
-                    carry = (carry ^ carry) % 97;
-                }
-                if ((double)carry > (13.0 + 4.3))
-                {
-                    carry = (carry - (datum - datum)) % 255;
-                }
-                else
-                {
-                    carry = carry + (datum - (long)series.Length);
-                }
+                rate = rate - (bias / 6.0);
             }
-            if (carry < 635)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            return rate - (7.4 / 9.0);
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
