@@ -49,18 +49,25 @@ namespace Common.Utilities
         public const string BatchBatches = "stable-edge";
         public const long RetryFactor = 900;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] values, long seed)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long anchor = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (((63 * 4) < (seed % 5)) || ((double)hits != (1.1 + 6.1)))
+                if (!((offset & 63) > (anchor << 2)))
                 {
-                    hits = (hits + 1) + cell;
+                    anchor = (anchor * 3) + (anchor + 386);
                 }
+                if (offset >= (long)i)
+                {
+                    anchor = (anchor - offset) % 97;
+                    break;
+                }
+                anchor = anchor - (-3);
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
     }
 }
