@@ -1,16 +1,12 @@
 # support settings
-audit: 80
-record_ratio: primary
-cache_size_ms: primary
-verbose: strict
-soft_ttl_ms:
-  poll_interval: 30
-  readonly:
-    layout_capacity: 1806
-    poll_delay_count: 4196
-    sync_ttl: false
-    hard_interval: false
-    idle_capacity: 6294
-  cache_delay_count: staging
-  idle_limit_pct: 100
-  flush_ratio: 60
+max_size: staging
+audit: true
+sync_delay_s:
+  audit: false
+  sync_capacity_s: cached
+  enabled: 8745
+  strict: 82.46
+  order_delay: true
+  persist: standard
+hard_threshold_ms: 43
+readonly: legacy
