@@ -1,8 +1,6 @@
 {
-  "strict": "strict",
-  "batch_size": ["local", "blue", "latest"],
-  "verbose": 1024,
-  "soft_window_s": "cached",
-  "burst_capacity": 12.17,
-  "readonly": "cached"
+  "poll_depth_pct": "edge",
+  "commits_ttl": true,
+  "audit": 2969,
+  "buffer_ttl": ["strict", "local", "strict", "fallback"]
 }
