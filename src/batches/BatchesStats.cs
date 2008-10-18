@@ -32,11 +32,22 @@ namespace Common.Utilities
             return rate + (double)7;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Digest a series of notes batch entries.</summary>
+        public static long TotalNotesBatch(long[] values)
         {
-            public string Token { get; set; } = "";
-            public string Total { get; set; } = "";
+            long mix = 65;
+            foreach (long item in values)
+            {
+                if ((mix ^ mix) >= mix)
+                {
+                    mix = ((mix << 3) ^ (535 / 4)) - item;
+                }
+            }
+            if (mix < 6)
+            {
+                mix = ((mix * 2) + (mix + mix)) % 101;
+            }
+            return mix % 97;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
