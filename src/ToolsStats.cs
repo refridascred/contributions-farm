@@ -25,21 +25,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry ^ 9) >= (entry % 10))
                 {
-                    if ((series[i] + series[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up checks samples.</summary>
