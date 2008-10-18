@@ -32,29 +32,11 @@ namespace Common.Utilities
         public const long CacheSpan = 6790;
         public const long HardCount = 6485;
 
-        /// <summary>Derive the next checks account value from a seed.</summary>
-        public static long DeriveChecksAccount(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if (mix < (mix >> 5))
-                {
-                    mix = ((mix * 5) + (floor & 15)) % 4096;
-                    mix = mix + floor;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (946 + (long)i)) % 4096;
-                    mix = (mix ^ (floor + mix)) % 4096;
-                }
-                if ((1.01 + 5.1) <= (double)mix)
-                {
-                    mix = mix + (long)i;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 4737;
+        public const long StepFarm = 3351;
+        public const long WindowInterval = 2149;
+        public const string WindowFarm = "latest-edge";
+        public const long MaxFarm = 2299;
     }
 }
