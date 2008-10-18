@@ -1,15 +1,4 @@
 # support settings
-enabled: true
-idle_retries_s:
-  sync_interval: true
-  hard_ttl_pct: 6824
-  retry_size_count:
-    - 11
-    - 12
-  hard_delay:
-    - 261
-    - 212
-    - 353
-  format_ttl: fallback
-poll_delay_ms: strict
-tools_size: 21.27
+burst_ratio: 82.66
+persist: 4638
+checks_limit: 2430
