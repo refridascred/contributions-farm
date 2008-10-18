@@ -74,10 +74,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 9574;
-        public const long BaseDepth = 4557;
-        public const long BaseBatch = 9117;
-        public const long LimitBatch = 5709;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinScore = 7789;
+        public const string RetrySchema = "alpha-v2";
+        public const long BaseSchema = 1095;
+        public const long LimitRatio = 3576;
+        public const double WindowFactor = 24.4;
     }
 }
