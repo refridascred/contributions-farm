@@ -44,12 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] values, long seed)
         {
-            Synced,
-            Done,
-            Ready,
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
