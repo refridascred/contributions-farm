@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long bound)
         {
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Ratio { get; set; }
+            long result = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a entry entry.</summary>
