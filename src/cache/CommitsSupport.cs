@@ -53,11 +53,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double bias, double bias2)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            double drift = bias2;
-            return drift - bias;
+            long score = target;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
