@@ -1,14 +1,16 @@
 # githubfarm settings
-readonly:
-  batch_capacity:
-    - blue
-    - standard
-    - stable
-  compress: 24.46
-  batch_timeout_pct: 250
-default_capacity_s: false
-cache_ttl_pct:
-  verbose: eu-west
-  githubfarm_delay: 8429
-  tools_interval: 39.48
-  cluster_ratio: 8942
+metric_window:
+  cache_limit: false
+  warm_delay_s: true
+  flush_size_pct: 7953
+  min_size_ms:
+    compress: edge
+    soft_retries_pct: cached
+    warm_size: 1883
+  soft_window_s: 1024
+  max_threshold:
+    - strict
+    - green
+    - staging
+compress: true
+enabled: 10.04
