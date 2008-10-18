@@ -30,15 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] data, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((4 + offset) < value)
+                {
+                    hits = hits + 2;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
