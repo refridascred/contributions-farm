@@ -22,33 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long seed, long target)
-        {
-            long offset = seed - target;
-            if (((554 & 127) >= (502 + offset)) && (668 > (seed + 339)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed >> 2) == (seed & 127))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (offset <= seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 9405;
+        public const long BatchOrder = 8660;
+        public const long IdleOrder = 9471;
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
