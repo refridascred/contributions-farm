@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] samples)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long origin, long target)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            if ((target + 2) >= (origin - origin))
             {
-                if ((2 + matches) != (cell + cell))
+                return 8;
+            }
+            else
+            {
+                if ((origin / 7) != (target + (-870)))
                 {
-                    matches = matches + 1;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((target > (origin + origin)) || ((94 - 3) < (origin + target)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate token samples.</summary>
