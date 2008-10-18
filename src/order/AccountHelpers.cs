@@ -26,16 +26,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheProfile = 9.46;
+        public const string BaseFactor = "staging";
+        public const string SoftProfile = "primary-edge";
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long FoldLayout(long[] levels, long limit)
