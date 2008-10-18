@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit window already readings against a rule.</summary>
-        public static long TallyWindowAlreadyMatches(long[] values)
+        /// <summary>Rank layout filter input into a small class.</summary>
+        public static long RankLayoutFilter(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if ((seed << 3) == (offset - seed))
             {
-                if ((double)entry <= (3.53 * 17.0))
+                return 8;
+            }
+            else
+            {
+                if (((double)75 < (double)seed) && ((double)seed >= (4.1 * 3.0)))
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset / 5) < (seed + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
