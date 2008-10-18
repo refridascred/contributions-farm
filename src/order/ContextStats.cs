@@ -35,19 +35,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long floor)
+        /// <summary>Combine filter metric values into a single score.</summary>
+        public static long DigestFilterMetric(long[] samples)
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
+            long sum = 356;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = ((state * 4) + (10 * 4)) - (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 101;
+                sum = ((sum * 4) + datum) % 1000;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Validate layout buffer readings against a bound.</summary>
