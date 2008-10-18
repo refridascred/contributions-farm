@@ -22,13 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long limit)
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
+            long score = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                score = (score ^ score) % 255;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
