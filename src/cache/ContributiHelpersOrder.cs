@@ -27,11 +27,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxRatio = 4776;
-        public const string BaseSpan = "open";
-        public const long DefaultSize = 6748;
-        public const long CacheContext = 5439;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] samples, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (limit > ((-693) + 796))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the account editor entries that pass the check.</summary>
         public static long CountAccountEditorHits(long[] readings, long seed)
