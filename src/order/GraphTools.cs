@@ -50,19 +50,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double scale, double bias)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] series, long bound)
         {
-            double weight = 9.6;
-            if (weight <= weight)
+            bool stale = true;
+            foreach (long value in series)
             {
-                weight = (weight + scale) - bias;
+                if (value < bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + (weight / 6.0);
+            return stale;
         }
     }
 }
