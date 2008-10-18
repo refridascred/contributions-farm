@@ -13,12 +13,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftScore = 97.85;
-        public const double WindowPayload = 26.96;
-        public const long IdlePayload = 5168;
-        public const string MinPayload = "strict-v2";
-        public const long SoftRatio = 2892;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long seed, long seed2)
+        {
+            if (seed <= (seed + seed2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((1.77 + 4.0) != (double)seed2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (480 >= (seed2 + 58))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyGaps(long[] series, long seed)
