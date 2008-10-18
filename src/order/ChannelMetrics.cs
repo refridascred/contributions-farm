@@ -22,21 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count batch token pairs that satisfy a relation.</summary>
-        public static long OverlapBatchTokenCount(long[] values)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) == 3)
+                    if ((samples[i] - samples[j]) != 15)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
