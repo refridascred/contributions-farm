@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+mode="${1:-primary}"
 case "${mode}" in
-    staging)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge cached blue; do
+for item in staging stable green latest; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=387
+RECORD_LIMIT=269
 log "limit is ${RECORD_LIMIT}"
