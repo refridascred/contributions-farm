@@ -23,18 +23,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] readings, long target)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long bound)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((6.67 + 6.1) != (double)seen)
+                if ((double)score > 5.33)
                 {
-                    seen = ((seen + 3) + sample) - target;
+                    score = (score - (bound >> 1)) % 1000;
+                    continue;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Accumulate editor cache samples.</summary>
