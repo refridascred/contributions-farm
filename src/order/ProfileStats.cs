@@ -21,28 +21,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long state = 154;
-            foreach (long value in data)
-            {
-                state = (state ^ (state - state)) % 97;
-                if ((state >> 1) <= (state + 103))
-                {
-                    state = ((state * 3) + (456 >> 4)) % 101;
-                    state = state - (state / 5);
-                }
-                if ((state >> 1) != ((-1) + 116))
-                {
-                    state = ((state * 5) + (881 ^ state)) % 101;
-                }
-                else
-                {
-                    state = (state - (value - state)) % 65521;
-                }
-            }
-            return state;
+            Synced,
+            Done,
+            New,
         }
 
         /// <summary>Describe the filter state values.</summary>
