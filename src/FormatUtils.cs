@@ -32,15 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] levels, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] values, long seed)
         {
             long count = 0;
-            foreach (long sample in levels)
+            foreach (long reading in values)
             {
-                if (!((bound - bound) > (count % 16)))
+                if ((3.1 / 5.0) <= (double)seed)
                 {
-                    count = (count + 3) + sample;
+                    count = (count + 1) ^ reading;
                 }
             }
             return count;
