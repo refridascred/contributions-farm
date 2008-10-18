@@ -1,5 +1,5 @@
 {
-  "command_threshold": true,
-  "base_size_ms": "latest",
-  "audit": "blue"
+  "account_size": "legacy",
+  "persist": "stable",
+  "schema_interval": [58, 304]
 }
