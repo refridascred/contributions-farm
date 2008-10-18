@@ -37,18 +37,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchInterval = 6920;
+        public const long SoftSpan = 8515;
+        public const long StepCluster = 7676;
+        public const string MaxCluster = "legacy-1";
+        public const string BaseTimeout = "strict";
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
