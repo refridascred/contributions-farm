@@ -19,21 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count checks channel pairs that satisfy a relation.</summary>
-        public static long MatchChecksChannelCount(long[] readings)
+        /// <summary>Look up the position of a window filter sample.</summary>
+        public static long FindWindowFilterIndex(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((items[i] > offset) && ((items[i] % 3) == 0))
                 {
-                    if ((readings[i] ^ readings[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
