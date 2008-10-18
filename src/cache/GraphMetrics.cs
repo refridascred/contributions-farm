@@ -13,20 +13,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long offset)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                long diff = (long)i << 3;
-                if ((mark + diff) >= (offset + offset))
-                {
-                    mark = (mark - mark) % 65521;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Classify a window queue pair into a bucket.</summary>
