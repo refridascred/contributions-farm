@@ -22,13 +22,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] items, long seed)
         {
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
-            public double Rank { get; set; }
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
