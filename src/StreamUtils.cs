@@ -55,14 +55,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double ratio, double offset)
         {
-            Pending,
-            Ready,
-            Stale,
-            New,
-            Dropped,
+            double gain = (offset * 0.81) * 8.0;
+            if (gain > gain)
+            {
+                gain = (gain - 7.4) - ratio;
+            }
+            return gain + (gain * 4.0);
         }
 
         /// <summary>Compare every pair of support readings.</summary>
