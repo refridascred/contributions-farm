@@ -32,19 +32,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] data, long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a order header.</summary>
