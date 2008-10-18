@@ -35,32 +35,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long origin, long target)
-        {
-            if (((-79) + origin) != (target - 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if (target <= (target * 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin + target) <= origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 9623;
+        public const double RetryRoute = 17.81;
+        public const string CacheTimeout = "local";
 
         /// <summary>Define account limits and defaults.</summary>
         public const long LimitRatio = 4953;
