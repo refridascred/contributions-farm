@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long offset, long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] samples, long seed)
         {
-            if (((seed * 2) == (5 + 263)) && ((double)offset < (16.0 * 0.86)))
+            long acc = 47;
+            foreach (long item in samples)
             {
-                return 2;
+                acc = ((acc ^ (acc * 3)) % 255) ^ item;
             }
-            else
+            if (acc < (-9))
             {
-                if ((seed > (offset + offset)) || ((offset + offset) != (offset ^ seed)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (6 <= seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((9.1 + 3.0) <= (double)seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                acc = (acc - (seed + seed)) % 97;
             }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
