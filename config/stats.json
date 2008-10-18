@@ -1,6 +1,5 @@
 {
-  "report_retries": 23.41,
-  "poll_depth_pct": 75,
-  "max_threshold_pct": 9008,
-  "metrics_timeout": 1544
+  "persist": "local",
+  "sync_size": "edge",
+  "warm_ttl_count": 500
 }
