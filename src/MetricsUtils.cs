@@ -17,10 +17,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleTimeout = "alpha-1";
-        public const long CacheTools = 7871;
-        public const long LimitScore = 2760;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (hits >= (hits + hits))
+                {
+                    hits = (hits + 3) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long SoftInterval = 99;
