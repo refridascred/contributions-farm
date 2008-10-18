@@ -22,17 +22,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] series, long limit)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Draft,
+            New,
+            Closed,
+            Pending,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
