@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long target, long bound)
         {
-            Pending,
-            Retry,
-            Ready,
+            long lane = target + bound;
+            if (1 > (lane << 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target < (20.0 / 4.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound & 255) < target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target > (target * 2)) || ((818 + target) == ((-5) % 64)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a checks githubfarm figure with a bias.</summary>
