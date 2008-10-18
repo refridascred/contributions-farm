@@ -24,22 +24,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] readings, long bound)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)sample <= (9.0 / 8.0))
-                {
-                    hits = (hits + 2) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Closed,
+            Done,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
