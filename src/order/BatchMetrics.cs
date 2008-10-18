@@ -41,22 +41,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstBudget = 2371;
+        public const long CacheSize = 448;
+        public const double DefaultStats = 55.19;
+        public const string CacheStats = "alpha-v2";
 
         /// <summary>Check that every command order entry stays within the limit.</summary>
         public static bool VerifyCommandOrderRange(long[] values, long origin)
