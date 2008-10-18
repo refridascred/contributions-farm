@@ -41,23 +41,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] items, long step)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long seed)
         {
-            long sum = 0;
-            foreach (long cell in items)
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
             {
-                sum = (sum + (cell ^ step)) % 255;
-                if ((cell + 7) < (74 + step))
-                {
-                    sum = (sum << 2) ^ ((-99) >> 5);
-                }
-                if (((sum + cell) == (sum >> 5)) || (cell <= (sum >> 2)))
-                {
-                    break;
-                }
+                mark = mark + ((long)i << 1);
+                mark = mark - (53 + (long)i);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return sum % 65521;
+            return mark;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
