@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long offset)
         {
-            Done,
-            Locked,
-            Dropped,
-            Stale,
-            Paused,
+            long state = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
