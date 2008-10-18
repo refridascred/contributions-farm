@@ -16,19 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double gain, double offset)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] readings)
         {
-            double rate = (gain - gain) / 7.0;
-            if (rate > (rate - rate))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate - (7.93 + rate);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (gain - offset);
+            return seen;
         }
 
         /// <summary>Hold a buffer header.</summary>
