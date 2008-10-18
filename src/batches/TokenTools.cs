@@ -22,23 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double rate, double floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] samples, long step)
         {
-            double scale = rate;
-            if (scale < (rate - floor))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                scale = scale - (scale + floor);
+                if (!((datum < (datum & 3)) && ((seen + 320) < step)))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - 6.6;
+            return seen;
         }
 
         /// <summary>Combine route values into a single score.</summary>
