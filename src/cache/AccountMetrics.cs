@@ -38,14 +38,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Draft,
-            Active,
-            Queued,
-            New,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 6998;
+        public const string HardDepth = "staging-edge";
+        public const double WindowTimeout = 26.87;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long DigestBuffer(long[] values)
