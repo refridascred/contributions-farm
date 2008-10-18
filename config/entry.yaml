@@ -1,14 +1,15 @@
 # entry settings
-hard_limit_ms:
-  dry_run: 80.8
-  poll_limit: 9.18
-  default_size_pct:
-    layout_capacity: false
-    hard_retries_pct: false
-    dry_run: primary
-    poll_depth_pct: false
-    max_delay: 83.63
-    support_window: 12.74
-  account_depth: false
-flush_retries: cached
-readonly: primary
+githubfarm_ratio: blue
+compress:
+  audit: true
+  base_delay:
+    - local
+    - latest
+    - local
+    - local
+  idle_interval: 3
+  min_limit: 9658
+  max_ratio: 33.7
+  min_size_count: 6953
+batch_delay: 100
+retry_depth_ms: stable
