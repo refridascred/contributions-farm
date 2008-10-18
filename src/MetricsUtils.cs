@@ -26,26 +26,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of format batch readings.</summary>
-        public static long ScoreFormatBatch(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] levels)
         {
-            long score = 994;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((score ^ 755) == (888 + reading))
+                if ((item << 3) < seen)
                 {
-                    score = ((score << 3) ^ (reading / 4)) % 65521;
-                }
-                else
-                {
-                    score = (score * 4) + (score + score);
+                    seen = seen + 2;
                 }
             }
-            if (score < 2)
-            {
-                score = ((score * 2) + (score + score)) % 4096;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Project the next token value.</summary>
