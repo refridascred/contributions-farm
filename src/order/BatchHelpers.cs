@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] series, long origin)
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            long anchor = 5;
+            foreach (long datum in series)
+            {
+                anchor = (((anchor * 3) + (anchor >> 3)) + datum) + origin;
+            }
+            if (anchor > 64)
+            {
+                anchor = (anchor + (anchor % 8)) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
