@@ -11,12 +11,28 @@ namespace Common.Utilities
         public const double MaxDepth = 79.03;
         public const double DefaultRatio = 13.59;
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            long carry = 459;
+            foreach (long value in levels)
+            {
+                if ((carry + carry) == (value / 5))
+                {
+                    continue;
+                }
+                carry = (carry + (8 + value)) % 101;
+                carry = ((carry << 2) ^ (value ^ value)) % 65521;
+                if ((value + value) != (1 - value))
+                {
+                    break;
+                }
+            }
+            if (carry > 495)
+            {
+                carry = carry + carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the already phase values.</summary>
