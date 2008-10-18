@@ -38,19 +38,12 @@ namespace Common.Utilities
             return mean + (span * 4.0);
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((hits + hits) <= (item << 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 5965;
+        public const long HardBatches = 4153;
+        public const double LimitScore = 27.16;
+        public const string BatchBatches = "stable-edge";
+        public const long RetryFactor = 900;
 
         /// <summary>Check that every filter batch entry stays within the limit.</summary>
         public static bool CheckFilterBatchBounds(long[] levels, long target)
