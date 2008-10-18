@@ -42,21 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count editor filter pairs that satisfy a relation.</summary>
-        public static long CompareEditorFilterCount(long[] series)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
