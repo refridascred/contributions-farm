@@ -48,22 +48,11 @@ namespace Common.Utilities
             return gain - (double)6;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] levels)
-        {
-            long state = 343;
-            foreach (long cell in levels)
-            {
-                if ((cell + state) <= (743 >> 5))
-                {
-                    state = (state ^ (state >> 1)) % 1000;
-                }
-            }
-            if (state < 5)
-            {
-                state = state ^ (602 & 1);
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinFarm = "latest-edge";
+        public const long BatchFarm = 8491;
+        public const double CacheDepth = 54.45;
+        public const long StepFarm = 3373;
+        public const long BurstFarm = 9259;
     }
 }
