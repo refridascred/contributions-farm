@@ -14,38 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long target, long origin)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            if ((target * 2) < (952 >> 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin < (origin * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - target) == ((-6) - target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(65 <= (origin % 97)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Paused,
+            Idle,
+            Ready,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
