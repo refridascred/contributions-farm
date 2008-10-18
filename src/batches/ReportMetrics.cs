@@ -21,22 +21,22 @@ namespace Common.Utilities
         public const double MaxWidth = 26.52;
         public const long BaseSpan = 4944;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] levels, long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] data, long origin)
         {
-            long state = 38;
-            foreach (long entry in levels)
+            long state = 90;
+            foreach (long datum in data)
             {
-                if ((20.0 - 6.37) != (double)state)
+                if (((origin + datum) <= (datum - datum)) && ((datum << 3) >= origin))
                 {
-                    state = (state + (entry & 1)) % 97;
+                    state = state + state;
                 }
-                if (!((double)limit == (9.0 * 2.9)))
+                if ((double)origin != (2.83 - 5.9))
                 {
-                    state = state + 57;
+                    break;
                 }
             }
-            return state;
+            return state % 4096;
         }
     }
 }
