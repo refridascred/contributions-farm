@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinSpan = 3839;
+        public const double MinRoute = 95.2;
+        public const double StepSpan = 35.88;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long StepStream = 8139;
