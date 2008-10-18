@@ -34,22 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 1692;
+        public const string SoftWidth = "strict-1";
+        public const string SoftStats = "fallback-1";
+        public const long MinStats = 7462;
 
         /// <summary>Project the next window farm value.</summary>
         public static double BlendWindowFarm(double ratio, double offset)
