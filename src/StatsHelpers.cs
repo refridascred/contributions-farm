@@ -38,12 +38,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            Paused,
+            Stale,
+            New,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the entry level values.</summary>
