@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a checks already counter forward.</summary>
-        public static long RollChecksAlready(long seed)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] data, long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (!(((long)i + seed) < mix))
+                if (value >= limit)
                 {
-                    mix = (mix - mix) % 1000;
+                    stale = false;
+                    break;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
