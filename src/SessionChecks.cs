@@ -15,15 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double bias, double offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] levels)
         {
-            double ratio = bias;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                ratio = ((ratio - bias) + (double)(long)i) + offset;
+                if (((sample + 107) > hits) && (((31 + hits) > (hits ^ (-38))) && ((41 & 15) >= (sample + sample))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio + bias;
+            return hits;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
