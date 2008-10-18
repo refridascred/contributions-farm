@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] items, long target)
         {
-            long total = 91;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (((984 - total) >= (datum + datum)) && ((datum + total) <= (total - total)))
+                if ((target * 2) >= target)
                 {
-                    total = total ^ (total << 3);
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Hold a profile entry.</summary>
