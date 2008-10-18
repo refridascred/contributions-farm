@@ -35,15 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter metric values into a single score.</summary>
-        public static long DigestFilterMetric(long[] samples)
+        /// <summary>Count the support payload entries that pass the check.</summary>
+        public static long MeasureSupportPayloadHits(long[] series)
         {
-            long sum = 356;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in series)
             {
-                sum = ((sum * 4) + datum) % 1000;
+                if ((5.0 * 7.91) <= (double)count)
+                {
+                    count = (count + 2) + cell;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
