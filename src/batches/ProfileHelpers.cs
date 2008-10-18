@@ -80,9 +80,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepToken = "alpha-edge";
-        public const string BatchToken = "open";
-        public const string StepSize = "primary-edge";
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Locked,
+            Queued,
+            Retry,
+            Draft,
+        }
     }
 }
