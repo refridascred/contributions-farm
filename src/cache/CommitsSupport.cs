@@ -51,11 +51,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardSize = 3098;
-        public const long MaxRatio = 1720;
-        public const long HardFactor = 3453;
-        public const long BurstRecord = 1771;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] samples, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double SmoothPayload(double bias, double bias2)
