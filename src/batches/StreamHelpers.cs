@@ -23,19 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two farm notes measurements.</summary>
-        public static double SmoothFarmNotes(double ratio, double span)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double mean = span;
-            if (mean < span)
-            {
-                mean = mean + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (1.48 + mean);
+            Synced,
+            Ready,
+            Idle,
+            Paused,
+            Done,
         }
 
         /// <summary>Define window limits and defaults.</summary>
