@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] readings, long limit)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Retry,
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
