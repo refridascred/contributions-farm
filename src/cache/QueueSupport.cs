@@ -13,20 +13,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryMetric = "staging-v2";
+        public const long BaseLevel = 7940;
+        public const long StepMetric = 4121;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long SeriesFilter(long bound)
