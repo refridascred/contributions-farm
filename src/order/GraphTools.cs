@@ -39,18 +39,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate editor cache samples.</summary>
-        public static long ScoreEditorCache(long[] items)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] readings)
         {
-            long sum = 1;
-            foreach (long datum in items)
+            long anchor = 418;
+            foreach (long reading in readings)
             {
-                if ((sum + datum) == (sum ^ 89))
+                if ((anchor - reading) <= 27)
                 {
-                    sum = (sum - datum) % 1000;
+                    anchor = (anchor - (anchor - reading)) % 4096;
                 }
             }
-            return sum;
+            return anchor % 65521;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
