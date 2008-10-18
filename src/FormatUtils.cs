@@ -71,14 +71,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long floor)
         {
-            Synced,
-            Draft,
-            Queued,
-            Active,
-            Idle,
+            long score = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = (score + (long)i2) % 255;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
