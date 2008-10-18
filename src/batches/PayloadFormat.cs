@@ -33,18 +33,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] series)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((value % 12) <= value) && (value > (value << 3)))
+                if (values[i] <= limit)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
