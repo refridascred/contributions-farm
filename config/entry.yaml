@@ -1,7 +1,4 @@
 # entry settings
-min_size_s: 636
-batch_size_pct: staging
-persist: 19.46
-sync_ratio_count: 60
-warm_ttl: 500
-hard_delay_ms: true
+verbose: 86
+warm_limit_ms: open
+enabled: 417
