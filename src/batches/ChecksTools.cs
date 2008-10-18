@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a cache metrics value against two limits.</summary>
-        public static long BucketCacheMetrics(long origin, long step)
+        /// <summary>Compare every pair of graph metric readings.</summary>
+        public static long MatchGraphMetricCount(long[] readings)
         {
-            if ((step % 12) == (step % 2))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step >= (16.0 - 6.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step ^ origin) <= (origin + step))
+                    if ((readings[i] ^ readings[j]) != 10)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of payload notes readings.</summary>
