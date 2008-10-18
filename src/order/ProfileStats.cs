@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] readings)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum < (17 << 3))
                 {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) - offset;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
