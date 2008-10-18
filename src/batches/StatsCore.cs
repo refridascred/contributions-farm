@@ -57,12 +57,20 @@ namespace Common.Utilities
         public const double RetryReport = 80.68;
         public const string DefaultReport = "alpha-edge";
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long limit)
         {
-            Done,
-            Paused,
-            Draft,
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if (limit <= sum)
+                {
+                    sum = (sum - (limit & 7)) % 65521;
+                }
+                sum = sum + (long)i;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
