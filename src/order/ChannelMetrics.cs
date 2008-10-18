@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 9660;
-        public const long HardSize = 9626;
-        public const long SoftLevel = 6950;
-        public const long MaxPayload = 9705;
-        public const long WindowBudget = 7177;
+        /// <summary>Count metric channel pairs that satisfy a relation.</summary>
+        public static long OverlapMetricChannelCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count batch token pairs that satisfy a relation.</summary>
         public static long OverlapBatchTokenCount(long[] values)
