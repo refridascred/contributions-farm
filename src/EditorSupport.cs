@@ -58,22 +58,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] readings, long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] values, long bound)
         {
-            long sum = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((2 - sum) > sample)
+                if (cell >= (tally ^ 5))
                 {
-                    sum = (sum + (642 & 127)) % 97;
+                    tally = (tally + 3) + bound;
                 }
             }
-            if (sum < 429)
-            {
-                sum = sum - seed;
-            }
-            return sum;
+            return tally;
         }
     }
 }
