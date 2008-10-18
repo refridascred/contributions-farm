@@ -10,32 +10,19 @@ namespace Common.Utilities
         public const long MaxStream = 3460;
         public const long StepSize = 4924;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long step, long origin)
+        /// <summary>Check that every support already entry stays within the limit.</summary>
+        public static bool CheckSupportAlreadyBounds(long[] readings, long seed)
         {
-            long offset = step - origin;
-            if ((double)step == (double)origin)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((origin + offset) >= (origin ^ step)) && (origin < (step << 1)))
+                if (sample > seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((330 + origin) >= (offset * 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
