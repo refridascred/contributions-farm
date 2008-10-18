@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Synced,
-            Failed,
             Closed,
-            New,
-            Active,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define account limits and defaults.</summary>
