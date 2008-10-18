@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] data, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                sum = (sum + sum) % 97;
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (sample >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Describe the schema kind values.</summary>
