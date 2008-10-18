@@ -20,21 +20,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Compare every pair of session batches readings.</summary>
-        public static long OverlapSessionBatchesCount(long[] data)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
