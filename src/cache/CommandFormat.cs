@@ -55,19 +55,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double rate, double span)
-        {
-            double load = (double)(76 >> 3);
-            if (load <= (rate + 1.2))
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + span) + (double)(long)i;
-            }
-            return load - rate;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheInterval = 67.76;
+        public const long MaxDepth = 2064;
+        public const long BaseGraph = 2968;
+        public const double IdleBudget = 39.13;
+        public const long SoftGraph = 8460;
     }
 }
