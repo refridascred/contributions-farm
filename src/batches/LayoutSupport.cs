@@ -27,12 +27,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 587;
-        public const string SoftWidth = "standard-v2";
-        public const long WindowCluster = 5800;
-        public const string BatchCluster = "open-v2";
-        public const long IdleLevel = 702;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheLevel = 9174;
+        public const long LimitLevel = 8842;
+        public const long BurstCache = 6925;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
