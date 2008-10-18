@@ -50,12 +50,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Count checks cache pairs that satisfy a relation.</summary>
+        public static long PairChecksCacheCount(long[] samples)
         {
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batch header.</summary>
