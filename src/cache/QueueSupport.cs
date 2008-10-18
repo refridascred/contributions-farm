@@ -29,19 +29,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] data, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (entry != target)
+                if ((long)items.Length == (limit - reading))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
