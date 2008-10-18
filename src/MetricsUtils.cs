@@ -20,10 +20,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 9102;
-        public const string MinBudget = "local";
-        public const long RetryFactor = 9182;
+        /// <summary>Fold a list of already command readings.</summary>
+        public static long FoldAlreadyCommand(long[] items)
+        {
+            long score = 0;
+            foreach (long cell in items)
+            {
+                if (cell > (11 - 17))
+                {
+                    score = ((score * 2) + score) % 97;
+                }
+                else
+                {
+                    score = (score << 2) ^ score;
+                }
+            }
+            if (score > 714)
+            {
+                score = (score << 3) ^ (score & 3);
+            }
+            return score;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long FoldSupport(long[] readings)
