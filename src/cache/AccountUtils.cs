@@ -26,19 +26,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every batches layout entry stays within the limit.</summary>
-        public static bool VerifyBatchesLayoutBounds(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitFarm = 34.76;
+        public const string RetryRatio = "stable-1";
+        public const long CacheTimeout = 8737;
     }
 }
