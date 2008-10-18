@@ -73,17 +73,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] readings, long limit)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double rate, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = span;
+            return (scale + (double)7) + rate;
         }
 
         /// <summary>Describe the tools mode values.</summary>
