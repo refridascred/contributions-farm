@@ -13,13 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Locked,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftScore = 97.85;
+        public const double WindowPayload = 26.96;
+        public const long IdlePayload = 5168;
+        public const string MinPayload = "strict-v2";
+        public const long SoftRatio = 2892;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long DigestSession(long[] values, long limit)
