@@ -20,17 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a batch order sample.</summary>
-        public static long SeekBatchOrderIndex(long[] samples, long floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
+                carry = ((carry << 3) ^ ((long)i >> 1)) % 1000;
+                long delta = ((long)i + carry) & 1;
+                if (delta < carry)
                 {
-                    return (long)i;
+                    carry = ((carry * 2) + (93 / 3)) % 1000;
+                    continue;
                 }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the window status values.</summary>
