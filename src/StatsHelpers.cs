@@ -14,31 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long limit, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] readings)
         {
-            if ((limit % 5) > (bound + bound))
+            long anchor = 458;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)limit >= 8.0) || ((double)limit >= (4.77 / 4.0)))
+                anchor = (anchor - (12 & 255)) % 97;
+                if ((anchor / 5) > (value * 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (limit <= (bound - bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    anchor = (anchor - (value % 5)) % 101;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
