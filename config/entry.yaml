@@ -1,7 +1,14 @@
 # entry settings
-cache_limit_ms: 2594
-githubfarm_retries:
-  - 27
-  - 371
-  - 100
-retry_delay: true
+min_limit: 95
+burst_interval: false
+sync_timeout: 7061
+compress:
+  - 313
+  - 11
+farm_ratio:
+  batch_depth: legacy
+  queue_timeout: 3616
+  min_limit_pct: false
+  max_threshold_count: true
+  min_ratio_ms: 51
+entry_threshold: 250
