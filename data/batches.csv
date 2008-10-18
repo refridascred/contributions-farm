@@ -1,7 +1,9 @@
-id,ratio,count,level
-1,eu-west,991,17.39
-2,eu-west,53.38,legacy
-3,48.36,stable,20
-4,93,484,edge
-5,blue,latest,614
-6,1.58,86.01,61.03
+id,score,label
+1,0.93,78.49
+2,52.74,standard
+3,legacy,staging
+4,strict,edge
+5,strict,508
+6,strict,12.41
+7,33.56,86.3
+8,21.75,42
