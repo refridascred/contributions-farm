@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchFactor = 98.96;
-        public const string StepCount = "open-edge";
-        public const double WindowSpan = 80.04;
-        public const long WindowScore = 3354;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] readings, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long DigestCluster(long[] levels, long offset)
