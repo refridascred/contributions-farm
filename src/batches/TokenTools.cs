@@ -32,20 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] readings, long seed)
-        {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryDepth = 1011;
+        public const long WindowTimeout = 9013;
+        public const long StepSize = 7905;
+        public const string IdleBudget = "open-1";
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
