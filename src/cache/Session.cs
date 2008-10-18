@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up stats session samples.</summary>
-        public static long MatchStatsSessionCount(long[] series)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double gain, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain2 = gain;
+            if (gain2 > (gain2 / 7.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain2 = (gain2 + (double)74) - bias;
             }
-            return hits;
+            return gain2 - 2.4;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
