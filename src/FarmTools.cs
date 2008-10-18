@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowDepth = 2166;
-        public const long RetryCount = 216;
-        public const double HardSupport = 57.24;
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public double Level { get; set; }
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long SeriesFarm(long seed)
