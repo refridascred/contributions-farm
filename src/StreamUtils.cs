@@ -76,15 +76,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double weight, double span)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] readings, long offset)
         {
-            double weight2 = 8.44;
-            if (weight2 >= (double)91)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                weight2 = (weight2 + weight) - span;
+                if (cell <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight2 - weight;
+            return ok;
         }
     }
 }
