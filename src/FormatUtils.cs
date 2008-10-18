@@ -35,21 +35,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 5;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((limit % 100) > (sum >> 2))
                 {
-                    if ((items[i] ^ items[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum << 3) ^ 856) - datum;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Match up buffer command samples.</summary>
