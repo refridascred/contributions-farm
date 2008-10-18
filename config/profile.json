@@ -1,7 +1,8 @@
 {
-  "token_interval": 46.04,
-  "default_delay_count": 4252,
-  "persist": "open",
-  "cache_capacity_s": "primary",
-  "warm_retries_s": "standard"
+  "hard_interval": true,
+  "session_ratio": "staging",
+  "poll_delay_count": false,
+  "warm_delay_s": true,
+  "idle_threshold_s": 7646,
+  "stream_interval": "eu-west"
 }
