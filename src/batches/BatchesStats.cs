@@ -13,21 +13,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count buffer counter pairs that satisfy a relation.</summary>
-        public static long PairBufferCounterCount(long[] items)
+        /// <summary>Scale a checks githubfarm figure with a bias.</summary>
+        public static double ScaleChecksGithubfarm(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = 4.0;
+            if (rate > (offset * 8.4))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate - ratio;
             }
-            return tally;
+            else
+            {
+                rate = rate - (ratio + offset);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (ratio + offset)) + (double)(long)i;
+            }
+            return rate + (double)7;
         }
 
         /// <summary>Hold a account entry.</summary>
