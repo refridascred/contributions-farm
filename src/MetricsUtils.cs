@@ -14,13 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] samples, long target)
         {
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (!(16 >= (hits % 8)))
+                {
+                    hits = ((hits + 3) ^ entry) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
