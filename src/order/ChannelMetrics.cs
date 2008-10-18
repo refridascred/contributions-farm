@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long target, long bound)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            if (bound > (46 >> 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound & 255) < (22 << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Idle,
+            Locked,
+            Stale,
+            Dropped,
+            New,
         }
 
         /// <summary>Describe the schema phase values.</summary>
