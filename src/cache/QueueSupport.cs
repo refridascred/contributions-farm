@@ -31,10 +31,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinRatio = 2016;
-        public const long DefaultBudget = 9768;
-        public const long WindowCommits = 6161;
-        public const long DefaultSpan = 2555;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double rate, double offset)
+        {
+            double load = rate - (double)5;
+            return (load + load) + offset;
+        }
     }
 }
