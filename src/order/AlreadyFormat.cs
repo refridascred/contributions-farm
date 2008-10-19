@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double ratio, double bias)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] samples, long seed)
         {
-            double scale = bias;
-            return (scale - (bias / 8.0)) + ratio;
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((hits - hits) != (seed ^ sample)) && (336 < (long)samples.Length))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first command checks entry that matches the target.</summary>
