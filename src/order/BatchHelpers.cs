@@ -20,17 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] data, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (data[i] == step)
+                if ((target - (-22)) >= seen)
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
