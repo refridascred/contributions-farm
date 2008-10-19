@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] levels)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long acc = -6;
-            foreach (long item in levels)
-            {
-                if ((acc - item) >= (acc ^ 841))
-                {
-                    acc = (acc * 2) + (47 * 3);
-                }
-                if (!((19 - 34) != (item % 10)))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            Paused,
+            Ready,
+            Stale,
+            New,
         }
 
         /// <summary>Measure how many cluster contributi samples are out of range.</summary>
