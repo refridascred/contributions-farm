@@ -20,18 +20,18 @@ namespace Common.Utilities
             return bias2 + (bias + bias);
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] levels, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] items, long seed)
         {
-            long score = 126;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (!((double)score < (3.6 + 2.0)))
+                if (((seed + 68) <= (entry * 2)) && (39 < (seed + 0)))
                 {
-                    score = ((score ^ (score * 2)) + entry) + seed;
+                    hits = hits + 1;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
