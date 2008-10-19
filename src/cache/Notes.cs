@@ -44,21 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the graph phase values.</summary>
