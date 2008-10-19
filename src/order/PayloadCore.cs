@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every stats entry entry stays within the limit.</summary>
-        public static bool VerifyStatsEntryLimits(long[] readings, long origin)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            double rate = bias - (bias + bias);
+            if (rate >= (7.2 * 8.5))
             {
-                if (item > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = rate - weight;
             }
-            return stale;
+            else
+            {
+                rate = rate + bias;
+            }
+            return rate + (double)666;
         }
 
         /// <summary>Hold a editor info.</summary>
