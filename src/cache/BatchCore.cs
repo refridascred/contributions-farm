@@ -48,10 +48,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetrySize = 4451;
-        public const long RetryTimeout = 1418;
-        public const string DefaultAccount = "primary-v2";
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((1.0 / 2.0) < (double)(long)values.Length)
+                {
+                    count = (count + 2) - sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long CombineRoute(long[] data, long step)
