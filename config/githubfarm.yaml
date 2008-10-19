@@ -1,15 +1,9 @@
 # githubfarm settings
-burst_delay_count: standard
-min_retries_s: 100
-idle_retries_ms:
-  contributi_interval: 53
-  default_ttl_count: eu-west
-  min_delay_count: primary
-  report_depth: 65.71
-  buffer_interval: 5161
-  max_window_s:
-    dry_run: true
-    strict: true
-    contributi_ratio: 90.4
-    soft_threshold_s: 12.48
-max_capacity_ms: latest
+cache_limit_ms: edge
+graph_limit: 6781
+idle_threshold_ms: true
+counter_limit:
+  - local
+  - standard
+  - edge
+  - cached
