@@ -55,12 +55,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            Stale,
-            Ready,
-            Done,
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
