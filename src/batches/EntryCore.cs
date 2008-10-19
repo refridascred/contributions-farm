@@ -39,11 +39,22 @@ namespace Common.Utilities
         public const long BatchSize = 7451;
         public const long BatchTimeout = 8103;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 7174;
-        public const long MaxTimeout = 8626;
-        public const long CacheCommits = 6842;
-        public const long MinCommits = 1268;
+        /// <summary>Count session counter pairs that satisfy a relation.</summary>
+        public static long CompareSessionCounterCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] levels, long limit)
