@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftWidth = 238;
-        public const string MaxBuffer = "legacy";
-        public const double LimitBuffer = 97.09;
-        public const long BatchBuffer = 5671;
-        public const double SoftBuffer = 60.07;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 4066;
+        public const double LimitSize = 3.67;
+        public const string BaseSupport = "cached-edge";
+        public const string StepBudget = "standard-1";
+        public const string HardRatio = "primary-v2";
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long SeriesCache(long origin)
