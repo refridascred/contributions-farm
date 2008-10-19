@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long origin, long step)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] series, long target)
         {
-            long diff = origin ^ step;
-            if ((origin % 16) == (step & 7))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (step >= diff)
+                if (series[i] > target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((469 % 97) < (origin + 27))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
