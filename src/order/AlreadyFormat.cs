@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command checks entry that matches the target.</summary>
-        public static long LocateCommandChecksIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseRatio = 8948;
+        public const long MinTimeout = 4888;
+        public const string HardChannel = "latest";
+        public const long RetryChannel = 8402;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportRange(long[] data, long offset)
