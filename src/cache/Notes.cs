@@ -14,10 +14,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 3370;
-        public const double CacheLevel = 95.58;
-        public const double BaseRatio = 43.93;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (matches >= (1 & 31))
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long FindGithubfarmIndex(long[] levels, long limit)
