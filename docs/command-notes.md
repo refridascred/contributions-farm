@@ -1,14 +1,13 @@
 # Command notes
 
-Use report settings to tune how often batch data is refreshed.
-Defaults for stats live in the config folder and can be overridden per environment.
-Defaults for token live in the config folder and can be overridden per environment.
+The metric report groups every graph by format.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
-The route helpers are pure functions, so they are safe to call from any thread.
-The tools report groups every layout by order.
+The already helpers are pure functions, so they are safe to call from any thread.
+Run the cluster check before changing any commits limits.
 
 ## Guidelines
 
-- Log every entry change
-- Validate stats input early
-- Review farm limits each release
+- Validate counter input early
+- Keep graph values small
+- Review schema limits each release
