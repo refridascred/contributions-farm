@@ -40,14 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Ready,
-            Dropped,
-            Done,
-            Failed,
-            Active,
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
