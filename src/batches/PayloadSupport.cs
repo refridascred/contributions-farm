@@ -27,11 +27,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchReport = "staging-edge";
-        public const string SoftScore = "alpha";
-        public const double BaseReport = 21.93;
-        public const double DefaultReport = 46.02;
-        public const double IdleReport = 74.17;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 4969;
+        public const string BatchSize = "fallback-v2";
+        public const long StepTools = 87;
     }
 }
