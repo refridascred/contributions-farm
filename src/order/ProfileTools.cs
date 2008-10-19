@@ -22,17 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batch counter value from a seed.</summary>
-        public static long RollBatchCounter(long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] readings, long target)
         {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                state = ((state * 4) + (bound >> 4)) % 65521;
-                state = (state ^ (bound - state)) % 97;
-                state = ((state * 5) + (long)i) % 101;
+                if (item <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
