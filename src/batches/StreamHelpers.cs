@@ -44,22 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] items)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] samples, long target)
         {
-            long score = -853;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (((item + 77) >= item) || ((score << 1) >= item))
+                if (entry <= target)
                 {
-                    score = ((score << 3) ^ (score << 3)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            if (score > 605)
-            {
-                score = ((score * 2) + (score >> 1)) % 101;
-            }
-            return score % 1000;
+            return stale;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
