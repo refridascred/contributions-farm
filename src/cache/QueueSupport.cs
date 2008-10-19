@@ -33,11 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinDepth = "cached-v2";
-        public const double RetryTools = 95.67;
-        public const string RetryRatio = "stable";
-        public const long DefaultTools = 1075;
-        public const long SoftTools = 5727;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 6326;
+        public const long LimitScore = 6468;
+        public const long BatchFormat = 5332;
+        public const long BurstFormat = 1577;
     }
 }
