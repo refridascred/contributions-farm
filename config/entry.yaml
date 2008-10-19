@@ -1,4 +1,13 @@
 # entry settings
-flush_size_s: 19
-flush_threshold: 3
-report_delay: standard
+cache_ratio_count:
+  enabled: 1
+  route_delay:
+    strict: 71.61
+    soft_ttl_pct: 9902
+    audit: 29
+    contributi_delay: 14.53
+  soft_timeout_count: strict
+  audit: 3
+  persist: false
+counter_capacity: stable
+window_threshold: edge
