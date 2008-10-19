@@ -1,8 +1,5 @@
 # githubfarm settings
-burst_threshold_pct: 94.98
-order_ratio: 99
-default_limit_pct:
-  - 350
-  - 163
-sync_timeout_s: green
-flush_threshold_count: 13
+readonly: 33
+support_threshold: legacy
+audit: 250
+max_limit_pct: standard
