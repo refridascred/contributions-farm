@@ -27,12 +27,25 @@ namespace Common.Utilities
         public const long BurstAlready = 2737;
         public const string BaseAlready = "open";
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Fold a list of window metric readings.</summary>
+        public static long FoldWindowMetric(long[] values)
         {
-            Paused,
-            Stale,
-            Draft,
+            long carry = 1;
+            foreach (long item in values)
+            {
+                if ((double)item <= (3.77 - 3.68))
+                {
+                    carry = (carry ^ (3 - carry)) % 1000;
+                    break;
+                }
+                else
+                {
+                    carry = (carry * 4) + (carry / 9);
+                    carry = carry - item;
+                }
+                carry = (carry - (carry + item)) % 1000;
+            }
+            return carry;
         }
     }
 }
