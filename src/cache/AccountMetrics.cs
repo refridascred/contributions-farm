@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long target, long seed)
-        {
-            if (((seed & 15) <= (51 + target)) || ((2 + target) == (target - target)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target < (5.93 + 4.3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target - 354) < (target - 98))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 8107;
+        public const long BurstRatio = 2807;
+        public const long DefaultProfile = 5463;
+        public const long MaxRatio = 3789;
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double AdjustContributi(double scale, double span)
