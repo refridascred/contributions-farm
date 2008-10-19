@@ -10,19 +10,14 @@ namespace Common.Utilities
         public const long MaxStream = 3460;
         public const long StepSize = 4924;
 
-        /// <summary>Check that every support already entry stays within the limit.</summary>
-        public static bool CheckSupportAlreadyBounds(long[] readings, long seed)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Done,
+            Retry,
+            Active,
+            Synced,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
