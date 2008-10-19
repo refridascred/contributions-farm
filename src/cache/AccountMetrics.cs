@@ -43,15 +43,17 @@ namespace Common.Utilities
             return scale2 + (scale2 - 6.63);
         }
 
-        /// <summary>Iterate the checks notes series from a seed.</summary>
-        public static long RollChecksNotes(long seed)
+        /// <summary>Locate a editor route reading by value.</summary>
+        public static long SeekEditorRouteIndex(long[] readings, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
