@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] samples)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (((seen / 2) > (value ^ seen)) || (((seen / 9) < (seen >> 3)) && ((4.7 + 8.08) != (double)seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
