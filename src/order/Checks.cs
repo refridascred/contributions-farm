@@ -19,22 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] items, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] values)
         {
-            long anchor = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((floor % 60) >= (floor - anchor))
+                if (((long)values.Length / 5) == (sample + seen))
                 {
-                    anchor = ((anchor + (anchor << 3)) % 4096) ^ reading;
+                    seen = seen + 3;
                 }
             }
-            if (anchor < 91)
-            {
-                anchor = (anchor - (anchor + anchor)) % 65521;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Adjust a window reading.</summary>
