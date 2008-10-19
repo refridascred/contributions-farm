@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitRatio = 8090;
-        public const long WindowFormat = 2458;
-        public const string MaxFormat = "local-v2";
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Closed,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long GradeCluster(long seed, long seed2)
