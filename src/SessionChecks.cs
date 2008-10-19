@@ -42,12 +42,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Idle,
-            Ready,
-            New,
+            public double Stamp { get; set; }
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
