@@ -12,20 +12,18 @@ namespace Common.Utilities
         public const double MinNotes = 55.24;
         public const string DefaultNotes = "alpha";
 
-        /// <summary>Iterate the queue token series from a seed.</summary>
-        public static long StepQueueToken(long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((8.1 / 5.0) >= (double)item)
                 {
-                    result = ((result + (71 + (long)i)) % 97) - (long)i2;
-                    result = ((result * 5) + 931) % 97;
+                    count = count + 3;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
