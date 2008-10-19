@@ -34,10 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepWidth = 60.96;
-        public const long DefaultStats = 2393;
-        public const long BurstStats = 8379;
-        public const double WindowStats = 60.19;
+        /// <summary>Validate report layout readings against a bound.</summary>
+        public static bool CheckReportLayoutBounds(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
