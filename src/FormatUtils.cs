@@ -19,15 +19,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Failed,
+            Idle,
+            Closed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Accumulate session samples.</summary>
