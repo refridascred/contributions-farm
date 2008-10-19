@@ -1,15 +1,12 @@
 # githubfarm settings
-poll_threshold_s: false
-poll_ttl_ms: staging
-poll_ratio_ms:
-  order_ttl: 39.97
-  warm_capacity_pct: 40.17
-  burst_retries: 4924
-  max_depth: 93.77
-  cache_window_ms:
-    - 90
-    - 373
-    - 403
-cache_size_pct: false
-compress: 88.02
-min_capacity_s: 30
+flush_threshold_count: 15
+base_size:
+  default_capacity_s: 74.02
+  report_depth: 5099
+  sync_size_ms: open
+  poll_window: legacy
+  persist: 89
+retry_ttl: 7138
+checks_retries: true
+warm_ratio: true
+sync_size_count: green
