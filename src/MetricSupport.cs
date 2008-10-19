@@ -14,22 +14,16 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] series)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            long score = 404;
-            foreach (long datum in series)
+            long carry = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (((5 & 255) < (score + score)) || ((score + score) >= (datum - (-939))))
-                {
-                    score = ((score * 3) + 0) % 4096;
-                }
+                carry = (carry ^ (long)i) % 4096;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            if (score < 66)
-            {
-                score = score - ((long)series.Length + score);
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
