@@ -52,18 +52,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] levels)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double gain, double span)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double scale = (double)(424 / 6);
+            if (scale <= (double)23)
             {
-                if (((reading + matches) < (-529)) && ((2 + matches) != (matches % 5)))
-                {
-                    matches = matches + 1;
-                }
+                scale = scale - (gain - span);
             }
-            return matches;
+            return scale + (scale * 11.0);
         }
 
         /// <summary>Locate a context reading by value.</summary>
