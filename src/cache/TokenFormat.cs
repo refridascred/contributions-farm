@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate report record readings against a bound.</summary>
-        public static bool ValidateReportRecordRange(long[] items, long seed)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Active,
+            Synced,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define already limits and defaults.</summary>
