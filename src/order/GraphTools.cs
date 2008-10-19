@@ -18,17 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] levels, long floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long floor, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (origin < 86)
             {
-                if (levels[i] <= floor)
+                return 5;
+            }
+            else
+            {
+                if (((-3) & 15) != (origin ^ floor))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!(origin >= (floor & 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)floor >= (1.75 + 5.7)) || ((double)floor == (5.33 * 7.3)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
