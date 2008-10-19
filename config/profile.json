@@ -1,16 +1,5 @@
 {
-  "channel_size": 8264,
-  "warm_ttl_s": {
-    "checks_ttl": true,
-    "metrics_retries": "cached",
-    "soft_size_s": {
-      "batches_threshold": false,
-      "soft_ttl_s": "latest",
-      "burst_capacity_s": 59
-    },
-    "default_ratio": true
-  },
-  "max_capacity_s": 9655,
-  "counter_timeout": 30,
-  "batch_ttl_pct": 30
+  "hard_ttl_s": false,
+  "token_depth": 15.3,
+  "cache_retries": 3874
 }
