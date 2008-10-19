@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] samples)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((84 + entry) <= (entry & 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Draft,
+            Locked,
+            Active,
+            Closed,
+            Idle,
         }
 
         /// <summary>Look up the position of a buffer payload sample.</summary>
