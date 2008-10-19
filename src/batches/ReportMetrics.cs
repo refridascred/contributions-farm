@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next window metric value from a seed.</summary>
-        public static long SeriesWindowMetric(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 4334;
+        public const long MaxChannel = 4722;
+        public const long LimitChannel = 2003;
+        public const long WindowChannel = 8115;
+        public const long IdleChannel = 9860;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long DefaultSize = 3334;
