@@ -54,12 +54,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long offset, long bound)
         {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            if ((offset * 2) > (2 + offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound >> 1) < ((-1) + 693))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((6.7 - 2.5) != (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batch header.</summary>
