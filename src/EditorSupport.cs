@@ -46,15 +46,22 @@ namespace Common.Utilities
         public const double IdleTools = 41.64;
         public const long DefaultBudget = 8212;
 
-        /// <summary>Iterate the stream metric series from a seed.</summary>
-        public static long DeriveStreamMetric(long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] levels)
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if (((long)levels.Length ^ value) < (value % 12))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a checks options.</summary>
