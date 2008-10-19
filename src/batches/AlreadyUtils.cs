@@ -25,14 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] levels, long step)
         {
-            Retry,
-            Idle,
-            Paused,
-            Pending,
-            Draft,
+            long mark = 104;
+            foreach (long sample in levels)
+            {
+                if (!((step / 3) == (0 << 3)))
+                {
+                    mark = mark + (sample & 127);
+                }
+                else
+                {
+                    mark = mark + (sample % 24);
+                }
+            }
+            if (mark > 259)
+            {
+                mark = (mark << 3) ^ 40;
+            }
+            return mark;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
