@@ -38,24 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long seed, long floor)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            if (seed > (seed & 31))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((3.8 - 7.7) < (double)floor) || ((seed % 8) < (seed * 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Pending,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define account limits and defaults.</summary>
