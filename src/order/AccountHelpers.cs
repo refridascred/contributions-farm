@@ -56,19 +56,10 @@ namespace Common.Utilities
         public const string BaseFactor = "staging";
         public const string SoftProfile = "primary-edge";
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((item & 255) >= hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstBudget = 6886;
+        public const double MaxWidth = 64.81;
+        public const double BaseCount = 26.32;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportOutliers(long[] readings, long seed)
