@@ -36,19 +36,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] data, long step)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double bias, double span)
         {
-            long carry = 199;
-            foreach (long cell in data)
+            double rate = bias;
+            if (rate >= (double)75)
             {
-                carry = ((carry - (cell + carry)) % 101) + step;
+                rate = (rate - (rate * 2.0)) - span;
             }
-            if (carry < 54)
+            else
             {
-                carry = ((carry * 2) + (201 + carry)) % 1000;
+                rate = rate + (double)9;
             }
-            return carry;
+            return rate + (rate - 6.2);
         }
     }
 }
