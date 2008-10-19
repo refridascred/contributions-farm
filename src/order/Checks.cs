@@ -35,20 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi stream readings against a bound.</summary>
-        public static bool CheckContributiStreamBounds(long[] items, long limit)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryTimeout = 7991;
+        public const double MaxBudget = 26.06;
+        public const string LimitRecord = "cached";
+        public const long WindowTimeout = 2824;
+        public const long IdleDepth = 8810;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmMatches(long[] series, long target)
