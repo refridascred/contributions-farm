@@ -1,13 +1,5 @@
 {
-  "audit": 56,
-  "hard_ttl": "legacy",
-  "base_interval_ms": [82, 473, 372],
-  "flush_ratio": 9.28,
-  "min_ttl_ms": {
-    "checks_limit": "stable",
-    "batch_depth_pct": 35.33,
-    "dry_run": 9004,
-    "audit": "edge"
-  },
-  "retry_interval_pct": false
+  "soft_threshold_count": 58.76,
+  "counter_delay": 9190,
+  "channel_size": 89.16
 }
