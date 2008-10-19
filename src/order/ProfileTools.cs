@@ -72,12 +72,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] data, long limit)
         {
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
+            long acc = 0;
+            foreach (long sample in data)
+            {
+                if (!((limit * 4) >= (sample + (long)data.Length)))
+                {
+                    acc = (acc + (sample / 6)) % 255;
+                }
+            }
+            return acc;
         }
     }
 }
