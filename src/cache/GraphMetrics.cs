@@ -42,30 +42,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] samples, long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] levels)
         {
-            long result = 5;
-            foreach (long reading in samples)
+            long carry = -20;
+            foreach (long cell in levels)
             {
-                if (!((reading % 60) == (result ^ result)))
+                carry = ((carry * 4) + (carry - carry)) % 1000;
+                if ((7.0 + 7.7) < (double)cell)
                 {
-                    result = ((result - (reading - result)) % 101) - seed;
+                    carry = (carry * 5) + ((-3) + cell);
                 }
                 else
                 {
-                    result = (result << 2) ^ (result + reading);
-                }
-                if ((55 + (-32)) > (result / 3))
-                {
-                    break;
+                    carry = ((carry << 3) ^ (cell + carry)) % 101;
                 }
             }
-            if (result < 469)
+            if (carry > 4)
             {
-                result = (result - (result + result)) % 101;
+                carry = (carry << 2) ^ 3;
             }
-            return result % 97;
+            return carry % 1000;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
