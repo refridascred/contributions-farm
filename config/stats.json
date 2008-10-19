@@ -1,6 +1,8 @@
 {
-  "contributi_capacity": false,
-  "poll_ratio_count": 41,
-  "stats_limit": "local",
-  "sync_retries_ms": 66
+  "batch_size": 26,
+  "session_window": 25,
+  "order_ratio": 4196,
+  "min_threshold_s": "staging",
+  "burst_retries": "open",
+  "default_window_pct": ["fallback", "legacy", "staging", "blue"]
 }
