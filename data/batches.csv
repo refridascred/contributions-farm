@@ -1,11 +1,6 @@
-id,ratio,level,rank
-1,982,strict,primary
-2,467,blue,45.03
-3,169,534,cached
-4,827,56,32.0
-5,eu-west,96.93,stable
-6,edge,937,cached
-7,44.09,cached,edge
-8,95.21,462,535
-9,77.77,83.88,9.63
-10,871,92.17,43.22
+id,token,ratio
+1,753,747
+2,18,63
+3,604,primary
+4,900,open
+5,standard,261
