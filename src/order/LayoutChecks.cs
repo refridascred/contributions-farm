@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 2254;
-        public const long DefaultSpan = 6461;
-        public const long MaxWidth = 1843;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Project the next token value.</summary>
         public static double AdjustToken(double bias, double span)
