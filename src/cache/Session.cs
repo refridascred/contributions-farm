@@ -26,17 +26,11 @@ namespace Common.Utilities
         public const long DefaultScore = 4503;
         public const long MaxWindow = 8566;
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] levels, long limit)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the token status values.</summary>
