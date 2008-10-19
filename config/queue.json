@@ -1,18 +1,11 @@
 {
-  "base_ratio": "edge",
-  "soft_window": 8655,
-  "idle_retries_pct": {
-    "metric_timeout": 6178,
-    "batch_retries": {
-      "readonly": "staging",
-      "verbose": 96.58,
-      "burst_limit_count": 4.74,
-      "base_limit_ms": "local"
-    },
-    "burst_window_s": 57.94,
-    "soft_retries_s": false,
-    "poll_ttl_pct": 76
+  "warm_delay_s": [135, 379],
+  "readonly": {
+    "sync_timeout_count": "green",
+    "metric_delay": 30,
+    "poll_ttl": "legacy",
+    "checks_ttl": "staging"
   },
-  "report_timeout": false,
-  "enabled": "staging"
+  "farm_window": 60,
+  "audit": [406, 418, 293, 95]
 }
