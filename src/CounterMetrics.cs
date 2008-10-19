@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double gain, double floor)
         {
-            Failed,
-            Pending,
-            Locked,
-            Ready,
-            Synced,
+            double load = floor;
+            if (load >= 17.0)
+            {
+                load = (load - (load * 5.8)) + gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + 1.79) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Match up profile samples.</summary>
