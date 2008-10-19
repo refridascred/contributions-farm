@@ -1,11 +1,5 @@
 {
-  "graph_delay": {
-    "warm_limit_count": 13.86,
-    "contributi_retries": "blue",
-    "queue_retries": "primary",
-    "sync_retries_ms": 87,
-    "soft_window_ms": [61, 19, 407]
-  },
-  "schema_delay": 36,
-  "cache_size_pct": "green"
+  "poll_timeout_count": 34,
+  "editor_interval": 250,
+  "hard_retries_count": 16.48
 }
