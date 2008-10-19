@@ -77,32 +77,20 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Classify a token window pair into a bucket.</summary>
-        public static long ClassifyTokenWindow(long offset, long target)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long limit)
         {
-            long diff = offset + target;
-            if ((target / 8) == ((-852) << 2))
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset + 4) > (offset - diff)) && ((target + diff) < offset))
+                if (((4.45 + 4.7) == (double)limit) && (limit > (mix ^ limit)))
                 {
-                    return 4;
+                    mix = (mix ^ (mix + limit)) % 255;
+                    mix = ((mix * 3) + mix) % 65521;
                 }
-                else
-                {
-                    if (target <= (offset + 24))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
+            return mix;
         }
     }
 }
