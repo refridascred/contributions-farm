@@ -39,18 +39,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] levels, long target)
+        /// <summary>Count the context order entries that pass the check.</summary>
+        public static long MeasureContextOrderHits(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (cell <= (2 ^ target))
+                if ((8.1 * 7.59) < (double)entry)
                 {
-                    tally = tally + 2;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the profile phase values.</summary>
