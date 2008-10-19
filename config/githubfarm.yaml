@@ -1,4 +1,5 @@
 # githubfarm settings
-audit: 72.86
-burst_ratio: 19
-verbose: 83
+readonly: 1024
+idle_size_pct: 26
+default_retries_pct: 33.07
+retry_ttl: cached
