@@ -69,19 +69,11 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Combine command counter values into a single score.</summary>
-        public static long FoldCommandCounter(long[] samples, long seed)
-        {
-            long state = 69;
-            foreach (long item in samples)
-            {
-                state = ((state ^ (seed + seed)) % 1000) ^ item;
-            }
-            if (state < 9)
-            {
-                state = (state ^ (seed >> 4)) % 101;
-            }
-            return state % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheLevel = "cached-1";
+        public const long SoftRecord = 444;
+        public const double RetrySize = 25.29;
+        public const long DefaultRecord = 9105;
+        public const string IdleRecord = "latest-1";
     }
 }
