@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double rate, double span)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] data, long floor)
         {
-            double scale = (double)37 * 4.05;
-            if (scale < (double)(-65))
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = ((scale - (double)1) - rate) - span;
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (scale + 9.22);
-            }
-            return scale - (double)80;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
