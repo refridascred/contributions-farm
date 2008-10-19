@@ -1,15 +1,14 @@
 # Command notes
 
-When a contributi fails, the cluster handler retries a few times before giving up.
-Run the cluster check before changing any payload limits.
-A format that stays idle for too long is moved to the graph list.
+The filter module keeps entry values in sync with the batches cache.
+A stream that stays idle for too long is moved to the filter list.
 
-A filter that stays idle for too long is moved to the filter list.
-The metrics report groups every counter by editor.
+The command helpers are pure functions, so they are safe to call from any thread.
+Run the schema check before changing any filter limits.
 
 ## Guidelines
 
-- Keep counter values small
-- Validate cluster input early
-- Review githubfarm limits each release
-- Document new checks fields
+- Keep filter values small
+- Log every graph change
+- Validate context input early
+- Document new schema fields
