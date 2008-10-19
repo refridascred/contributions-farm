@@ -37,20 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double weight, double bias)
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
+            double weight2 = (double)(4 + 46);
+            if (weight2 <= weight)
             {
-                long tally = (long)i * 3;
-                if (((mark ^ (long)i) < (tally % 2)) && ((0.94 - 2.6) >= (double)mark))
-                {
-                    tally = tally ^ ((long)i / 7);
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
+                weight2 = (weight2 + (double)846) + bias;
             }
-            return mark;
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = weight2 - (double)(long)i;
+            }
+            return weight2 + (double)405;
         }
 
         /// <summary>Accumulate notes samples.</summary>
