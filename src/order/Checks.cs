@@ -72,12 +72,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Synced,
-            Stale,
-            Paused,
+            public double Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
