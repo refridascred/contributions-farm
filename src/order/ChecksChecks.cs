@@ -15,12 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] readings, long floor)
         {
-            public double Region { get; set; }
-            public bool Mode { get; set; }
-            public double Label { get; set; }
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
