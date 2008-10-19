@@ -66,20 +66,27 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] series, long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] series)
         {
-            long acc = 23;
-            foreach (long sample in series)
+            long sum = 40;
+            foreach (long item in series)
             {
-                for (int i = 0; i < 6; i++)
+                sum = ((sum * 5) + sum) % 4096;
+                if ((item & 255) > (item + sum))
                 {
-                    acc = ((((acc << 3) ^ ((long)series.Length % 12)) - (long)i) ^ sample) + step;
-                    acc = acc + (acc * 2);
+                    sum = (sum - (sum / 8)) % 1000;
                 }
-                acc = ((acc * 3) + 626) % 65521;
+                else
+                {
+                    sum = (sum << 3) ^ (sum ^ item);
+                }
             }
-            return acc;
+            if (sum > 883)
+            {
+                sum = (sum + (sum & 63)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
