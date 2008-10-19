@@ -22,21 +22,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] data)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((943 > reading) && ((8.49 + 8.0) == (double)reading)))
                 {
-                    if ((data[i] ^ data[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) - origin;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
