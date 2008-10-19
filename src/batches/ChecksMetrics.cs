@@ -49,18 +49,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many cluster channel samples are out of range.</summary>
-        public static long CountClusterChannelOutliers(long[] samples, long target)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (target > ((long)samples.Length << 2))
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the stream buffer entries that pass the check.</summary>
