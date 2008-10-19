@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] series)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long state = 844;
-            foreach (long value in series)
-            {
-                if (!((value + 944) != (value + value)))
-                {
-                    state = (state ^ (value - value)) % 65521;
-                }
-                if ((63 << 1) <= (state * 3))
-                {
-                    break;
-                }
-            }
-            if (state < 6)
-            {
-                state = (state - (state - 48)) % 65521;
-            }
-            return state;
+            New,
+            Failed,
+            Active,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
