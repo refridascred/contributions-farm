@@ -37,26 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] data)
+        /// <summary>Audit entry context readings against a rule.</summary>
+        public static long MeasureEntryContextMatches(long[] series)
         {
-            long mark = 8;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((mark & 7) >= (-1))
+                if ((cell + matches) == (3 * 3))
                 {
-                    mark = mark - (165 - reading);
-                }
-                else
-                {
-                    mark = (mark + (mark * 4)) % 101;
+                    matches = matches + 3;
                 }
             }
-            if (mark < (-7))
-            {
-                mark = (mark ^ (mark & 1)) % 1000;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
