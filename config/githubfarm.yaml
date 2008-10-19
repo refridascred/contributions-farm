@@ -1,12 +1,8 @@
 # githubfarm settings
-flush_threshold_count: 15
-base_size:
-  default_capacity_s: 74.02
-  report_depth: 5099
-  sync_size_ms: open
-  poll_window: legacy
-  persist: 89
-retry_ttl: 7138
-checks_retries: true
-warm_ratio: true
-sync_size_count: green
+verbose: 1158
+batch_timeout_s:
+  - 436
+  - 489
+batch_size: 9893
+retry_interval_pct: 27
+burst_window_s: 92
