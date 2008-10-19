@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long seed)
+        /// <summary>Scale a batches farm figure with a bias.</summary>
+        public static double BlendBatchesFarm(double weight, double floor)
         {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            double rate = weight;
+            return (rate - (8.29 * 2.99)) + floor;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
