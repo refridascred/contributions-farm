@@ -63,11 +63,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardBudget = 4894;
-        public const long CacheReport = 5455;
-        public const double IdleReport = 75.27;
-        public const string BurstReport = "stable-edge";
-        public const long SoftReport = 9585;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] data, long step)
+        {
+            long mix = 789;
+            foreach (long cell in data)
+            {
+                mix = ((mix << 2) ^ 21) - step;
+                if (154 > (mix & 127))
+                {
+                    mix = mix - (mix >> 1);
+                }
+                else
+                {
+                    mix = (mix ^ cell) % 4096;
+                }
+            }
+            return mix % 97;
+        }
     }
 }
