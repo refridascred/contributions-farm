@@ -27,24 +27,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of contributi cache entries.</summary>
-        public static long CombineContributiCache(long[] series, long offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] values, long offset)
         {
-            long mark = 10;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-3) + (long)series.Length) != (349 / 9))
+                if ((values[i] > offset) && ((values[i] % 5) == 0))
                 {
-                    mark = (mark << 2) ^ (896 - sample);
-                    mark = (mark - (offset + offset)) % 1000;
-                    break;
-                }
-                if (mark <= (1 + sample))
-                {
-                    mark = (mark << 3) ^ 44;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
