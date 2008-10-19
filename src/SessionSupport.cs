@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a commits metrics reading.</summary>
-        public static double ProjectCommitsMetrics(double rate, double bias)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] levels)
         {
-            double drift = (double)743;
-            if (drift <= bias)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift - drift;
+            return seen;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
