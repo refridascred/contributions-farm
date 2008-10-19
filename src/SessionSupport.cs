@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double bias, double floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long seed)
         {
-            double bias2 = floor;
-            if (bias2 >= (bias2 / 8.0))
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                bias2 = bias2 - (double)490;
+                state = (state + (seed % 3)) % 65521;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            return bias2 + (bias + bias);
+            return state;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
