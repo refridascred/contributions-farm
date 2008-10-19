@@ -45,15 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] levels)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] series)
         {
             long seen = 0;
-            foreach (long item in levels)
+            foreach (long cell in series)
             {
-                if ((20 % 64) >= (seen ^ item))
+                if ((seen <= (350 - 911)) || (((long)series.Length <= (cell << 3)) || ((cell >> 5) >= (seen % 12))))
                 {
-                    seen = seen + 3;
+                    seen = seen + 2;
                 }
             }
             return seen;
