@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
-        {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleBudget = 1912;
+        public const long MinSpan = 1270;
+        public const long BurstWindow = 1035;
+        public const double StepTimeout = 30.39;
+        public const string HardWindow = "standard-v2";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double MaxCache = 8.51;
