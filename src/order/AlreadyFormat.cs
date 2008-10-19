@@ -20,19 +20,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] items, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (value <= floor)
+                if ((((reading * 4) >= reading) || ((matches >> 1) >= (matches + reading))) && ((reading - matches) < (reading / 9)))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
