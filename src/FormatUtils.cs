@@ -49,21 +49,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up buffer command samples.</summary>
-        public static long OverlapBufferCommandCount(long[] levels)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 5;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 9; i++)
                 {
-                    if ((levels[i] ^ levels[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc << 3) ^ (acc + (long)i)) % 255;
+                    acc = ((acc * 2) + ((long)i / 4)) % 255;
+                }
+                if ((7.0 >= (double)reading) && ((reading / 7) < (28 * 3)))
+                {
+                    acc = acc ^ (acc - acc);
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Project the next batches stats value.</summary>
