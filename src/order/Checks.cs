@@ -19,18 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] values)
+        /// <summary>Accumulate report cache samples.</summary>
+        public static long FoldReportCache(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long sum = 915;
+            foreach (long value in data)
             {
-                if (((long)values.Length / 5) == (sample + seen))
+                if ((value + 492) <= sum)
                 {
-                    seen = seen + 3;
+                    sum = ((sum * 3) + sum) % 4096;
+                    sum = (sum - 75) % 97;
                 }
+                sum = ((sum * 4) + value) % 255;
             }
-            return seen;
+            return sum % 4096;
         }
 
         /// <summary>Adjust a window reading.</summary>
