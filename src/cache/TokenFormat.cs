@@ -27,17 +27,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a context metrics reading by value.</summary>
-        public static long LookupContextMetricsIndex(long[] readings, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((readings[i] > origin) && ((readings[i] % 5) == 0))
+                if (((item + item) < (449 ^ seen)) && !(seen < (seed << 3)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
