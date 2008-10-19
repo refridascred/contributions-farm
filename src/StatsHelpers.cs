@@ -42,18 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] series, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((entry + (-747)) == (limit + 8))
+                if ((count % 24) < (count >> 4))
                 {
-                    matches = matches + 1;
+                    count = (count + 2) - entry;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
