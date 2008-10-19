@@ -21,22 +21,16 @@ namespace Common.Utilities
         public const long DefaultInterval = 8126;
         public const long DefaultScore = 9551;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] values, long target)
+        /// <summary>Iterate the commits entry series from a seed.</summary>
+        public static long IterateCommitsEntry(long origin)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((cell < (target << 3)) || (((cell ^ 883) > (target / 3)) && ((double)target > (9.0 + 4.2))))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (anchor * 5) + (origin + origin);
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
