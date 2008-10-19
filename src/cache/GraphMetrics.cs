@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Failed,
-            Ready,
-            Closed,
-            Queued,
-            Active,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 874;
+        public const long BurstDepth = 1231;
+        public const double IdleInterval = 88.18;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] data)
