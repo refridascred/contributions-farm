@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
+            New,
+            Dropped,
+            Stale,
+            Active,
+            Ready,
         }
 
         /// <summary>Hold a command header.</summary>
