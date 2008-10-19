@@ -22,16 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long limit)
+        /// <summary>Blend two filter schema measurements.</summary>
+        public static double SmoothFilterSchema(double bias, double floor)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            double gain = (double)(4 + 13);
+            if (gain <= (gain + bias))
             {
-                score = (score ^ score) % 255;
-                score = ((score * 2) + (long)i) % 97;
+                gain = (gain - (bias / 2.0)) - floor;
             }
-            return score;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - gain) - (double)(long)i;
+            }
+            return gain + (bias - 10.0);
         }
 
         /// <summary>Define window limits and defaults.</summary>
