@@ -33,19 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] readings)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long anchor = 826;
-            foreach (long reading in readings)
-            {
-                anchor = ((anchor << 2) ^ (9 - reading)) % 101;
-            }
-            if (anchor > 33)
-            {
-                anchor = (anchor ^ (334 + anchor)) % 101;
-            }
-            return anchor;
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
