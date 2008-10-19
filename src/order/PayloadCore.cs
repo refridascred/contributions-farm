@@ -20,18 +20,11 @@ namespace Common.Utilities
             return rate + (double)666;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] data, long floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((matches + floor) != (long)data.Length)
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
