@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double gain, double span)
-        {
-            double load = (double)(7 % 24);
-            return (load + gain) + span;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxSpan = 97.85;
+        public const long SoftScore = 1219;
+        public const long MinGraph = 4075;
+        public const long LimitGraph = 2161;
+        public const long IdleGraph = 515;
 
         /// <summary>Measure how many format filter samples are out of range.</summary>
         public static long CountFormatFilterHits(long[] readings)
