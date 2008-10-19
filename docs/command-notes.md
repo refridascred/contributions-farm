@@ -1,12 +1,12 @@
 # Command notes
 
-A checks that stays idle for too long is moved to the window list.
-Run the tools check before changing any payload limits.
-The format module keeps editor values in sync with the account cache.
+A format that stays idle for too long is moved to the window list.
+The context report groups every window by batch.
+The batch report groups every cache by profile.
 
 ## Guidelines
 
-- Validate layout input early
-- Keep already values small
-- Prefer editor defaults
-- Log every order change
+- Document new buffer fields
+- Prefer filter defaults
+- Review already limits each release
+- Validate window input early
