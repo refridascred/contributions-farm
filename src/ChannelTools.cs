@@ -13,20 +13,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a counter metrics counter forward.</summary>
-        public static long IterateCounterMetrics(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((long)i - 6) != (675 * 2))
-                {
-                    anchor = ((anchor * 3) + (origin - anchor)) % 255;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftWidth = 238;
+        public const string MaxBuffer = "legacy";
+        public const double LimitBuffer = 97.09;
+        public const long BatchBuffer = 5671;
+        public const double SoftBuffer = 60.07;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamGaps(long[] items, long target)
