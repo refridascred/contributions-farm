@@ -92,18 +92,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] levels, long step)
-        {
-            long score = 325;
-            foreach (long item in levels)
-            {
-                if ((8.0 + 1.7) == (double)item)
-                {
-                    score = score + step;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftFactor = 76.33;
+        public const long MinInterval = 9431;
+        public const string MaxCount = "staging";
+        public const long IdleEntry = 4916;
     }
 }
