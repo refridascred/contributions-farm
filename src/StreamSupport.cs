@@ -13,31 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long seed, long seed2)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] items)
         {
-            if (seed <= (seed + seed2))
+            long total = 99;
+            foreach (long cell in items)
             {
-                return 3;
+                total = (total ^ cell) % 101;
             }
-            else
+            if (total > 51)
             {
-                if ((1.77 + 4.0) != (double)seed2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (480 >= (seed2 + 58))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                total = ((total << 2) ^ (total + 796)) % 97;
             }
+            return total % 1000;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
