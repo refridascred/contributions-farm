@@ -14,18 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Count the record checks entries that pass the check.</summary>
+        public static long MeasureRecordChecksGaps(long[] values, long step)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((-38) - sample) < sample)
                 {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) - step;
                 }
             }
             return hits;
