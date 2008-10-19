@@ -69,26 +69,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a contributi editor pair into a bucket.</summary>
-        public static long BucketContributiEditor(long step, long offset)
-        {
-            long delta = step + offset;
-            if (delta >= step)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((delta * 5) >= delta)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepCount = 36.32;
+        public const long MaxAlready = 1539;
+        public const string MinLevel = "latest-edge";
 
         /// <summary>Accumulate schema window samples.</summary>
         public static long DigestSchemaWindow(long[] readings)
