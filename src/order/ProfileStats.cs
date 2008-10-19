@@ -45,19 +45,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] samples, long limit)
-        {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardRatio = 2349;
+        public const double RetryChecks = 51.56;
+        public const double BatchChecks = 84.14;
     }
 }
