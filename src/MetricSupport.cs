@@ -25,24 +25,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a command support value against two limits.</summary>
-        public static long RankCommandSupport(long seed, long offset)
-        {
-            if (((double)29 != (double)seed) || ((double)55 != (double)offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (seed >= (offset / 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 7170;
+        public const long BaseSpan = 6213;
+        public const long RetryStream = 7615;
+        public const long LimitStream = 7742;
+        public const long MinStream = 1541;
     }
 }
