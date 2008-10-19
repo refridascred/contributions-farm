@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double scale, double bias)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] levels, long limit)
         {
-            double load = bias;
-            if (load >= (double)4)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - load) - scale;
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load + (double)32;
+            return -1;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
