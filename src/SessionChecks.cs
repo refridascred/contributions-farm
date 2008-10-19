@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long seed, long target)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            if (seed < (target * 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)target == (6.7 / 7.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + seed) != (seed & 63))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((2.0 * 7.3) == (double)seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            New,
+            Failed,
+            Ready,
+            Active,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
