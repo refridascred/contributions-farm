@@ -46,18 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum + datum) >= (datum ^ hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 9114;
+        public const string BatchScore = "strict";
+        public const long RetryCount = 1740;
+        public const long StepLevel = 8593;
+        public const long CacheSchema = 804;
     }
 }
