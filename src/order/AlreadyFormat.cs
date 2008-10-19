@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] samples, long seed)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long acc = 720;
+            foreach (long entry in items)
             {
-                if (((hits - hits) != (seed ^ sample)) && (336 < (long)samples.Length))
+                if ((acc + (-7)) > ((-10) & 15))
                 {
-                    hits = hits + 1;
+                    acc = (acc ^ (acc >> 1)) ^ entry;
                 }
             }
-            return hits;
+            if (acc > 61)
+            {
+                acc = ((acc * 2) + (seed & 31)) % 1000;
+            }
+            return acc % 97;
         }
 
         /// <summary>Find the first command checks entry that matches the target.</summary>
