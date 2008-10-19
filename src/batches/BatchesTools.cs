@@ -14,17 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a profile batches counter forward.</summary>
-        public static long SeriesProfileBatches(long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] samples, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
+            long mix = 444;
+            foreach (long entry in samples)
             {
-                result = result ^ (result - bound);
-                result = ((result * 5) + ((long)i * 3)) % 1000;
-                result = ((result * 4) + (long)i) % 97;
+                if (mix <= (mix ^ entry))
+                {
+                    mix = (mix << 2) ^ (7 << 3);
+                }
+                else
+                {
+                    mix = mix + target;
+                }
             }
-            return result;
+            return mix % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
