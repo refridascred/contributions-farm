@@ -28,19 +28,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every buffer farm entry stays within the limit.</summary>
-        public static bool ValidateBufferFarmRange(long[] readings, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (entry != step)
+                if (!((origin ^ count) < (origin ^ origin)))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) ^ entry;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Validate token stats readings against a bound.</summary>
