@@ -1,6 +1,6 @@
-id,weight,owner,active
-1,915,strict,35.47
-2,515,open,legacy
-3,fallback,63.29,blue
-4,cached,466,930
-5,477,384,46.77
+id,state
+1,808
+2,76
+3,legacy
+4,47.93
+5,52.89
