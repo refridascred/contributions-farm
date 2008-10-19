@@ -35,20 +35,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] readings, long bound)
-        {
-            long sum = 647;
-            foreach (long datum in readings)
-            {
-                sum = (((sum ^ 80) % 255) ^ datum) - bound;
-            }
-            if (sum > 7)
-            {
-                sum = (sum + (sum * 5)) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSpan = 2226;
+        public const long CacheSize = 6716;
+        public const double BatchWidth = 36.36;
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
