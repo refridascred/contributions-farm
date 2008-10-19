@@ -15,25 +15,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] series)
-        {
-            long anchor = 1;
-            foreach (long datum in series)
-            {
-                if (((7.0 + 6.69) == (double)anchor) || ((datum >> 5) >= (506 - anchor)))
-                {
-                    anchor = ((anchor << 3) ^ (datum - anchor)) % 255;
-                    anchor = (anchor + datum) % 1000;
-                }
-                anchor = anchor - datum;
-            }
-            if (anchor < 23)
-            {
-                anchor = ((anchor * 4) + anchor) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 4300;
+        public const long DefaultInterval = 8126;
+        public const long DefaultScore = 9551;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowMatches(long[] values, long target)
