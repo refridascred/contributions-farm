@@ -47,31 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a graph payload value against two limits.</summary>
-        public static long RankGraphPayload(long floor, long origin)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            if (floor >= 808)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((origin >> 3) >= (origin / 9)) && ((floor + 1) < (floor - origin)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((-92) < (floor << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
