@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] series, long offset)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long sum = -30;
-            foreach (long cell in series)
-            {
-                sum = (((sum + sum) % 65521) - cell) - offset;
-            }
-            return sum;
+            Done,
+            Locked,
+            New,
+            Retry,
         }
 
         /// <summary>Audit metric batches readings against a rule.</summary>
