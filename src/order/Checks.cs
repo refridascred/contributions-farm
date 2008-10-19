@@ -48,20 +48,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 7445;
+        public const long MaxLevel = 4709;
+        public const long SoftLevel = 6345;
+        public const long DefaultEntry = 2396;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchBuffer = 7877;
