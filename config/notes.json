@@ -1,5 +1,11 @@
 {
-  "hard_capacity_count": 49.97,
-  "checks_size": [314, 298, 429, 7],
-  "max_capacity_count": true
+  "default_ttl": {
+    "default_window_pct": true,
+    "idle_timeout_pct": 250,
+    "batch_window_s": [280, 233, 443, 428],
+    "sync_capacity_s": 86
+  },
+  "base_limit_pct": 88.92,
+  "compress": ["local", "eu-west", "standard", "latest"],
+  "burst_capacity": "eu-west"
 }
