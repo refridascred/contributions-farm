@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] series, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 544;
+            foreach (long datum in values)
             {
-                if ((series[i] <= limit) && ((series[i] % 5) == 0))
+                total = (total ^ (origin + datum)) % 101;
+                if ((total - datum) < (total + total))
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ (total + total)) % 4096;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the queue state values.</summary>
