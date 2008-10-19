@@ -33,9 +33,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "cached-edge";
-        public const long RetryContext = 3106;
-        public const long BatchFactor = 1137;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Locked,
+            New,
+            Closed,
+            Stale,
+        }
     }
 }
