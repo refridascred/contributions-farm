@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of cache commits readings.</summary>
-        public static long FoldCacheCommits(long[] data, long target)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long sum = 849;
-            foreach (long value in data)
-            {
-                if ((41 + target) >= (target ^ 594))
-                {
-                    sum = ((sum * 5) + value) % 101;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (sum % 8)) % 65521;
-                }
-            }
-            if (sum < 55)
-            {
-                sum = sum ^ (sum - target);
-            }
-            return sum;
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
