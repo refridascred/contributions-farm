@@ -37,21 +37,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 1;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = (total * 2) + value;
             }
-            return tally;
+            if (total < 59)
+            {
+                total = ((total << 2) ^ (step - step)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
