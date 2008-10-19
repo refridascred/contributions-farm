@@ -28,14 +28,19 @@ namespace Common.Utilities
         public const long IdleContext = 7577;
         public const long StepTimeout = 8345;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] levels, long step)
         {
-            Closed,
-            Stale,
-            Pending,
-            Dropped,
-            New,
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a token summary.</summary>
