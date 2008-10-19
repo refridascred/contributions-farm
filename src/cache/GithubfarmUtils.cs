@@ -51,29 +51,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long target, long offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long seed, long origin)
         {
-            if ((offset + (-565)) <= (target - offset))
+            if (((origin & 15) <= (seed + origin)) || ((double)seed > (double)4))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (!((1.46 / 6.0) > (double)target))
+                if ((seed % 3) == (1 * 4))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if (target < (offset >> 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 3;
                 }
             }
         }
