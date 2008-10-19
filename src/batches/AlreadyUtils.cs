@@ -44,13 +44,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] series, long limit)
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public long Weight { get; set; }
+            long score = -5;
+            foreach (long item in series)
+            {
+                if ((limit <= ((long)series.Length & 15)) && ((long)series.Length >= (score << 2)))
+                {
+                    score = (score ^ (limit + item)) % 1000;
+                }
+                else
+                {
+                    score = (score ^ (9 >> 2)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Combine support values into a single score.</summary>
