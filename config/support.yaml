@@ -1,8 +1,4 @@
 # support settings
-warm_window_count: 6721
-persist:
-  - blue
-  - cached
-counter_capacity: false
-min_limit_s: 9171
-record_interval: staging
+stats_ratio: false
+base_timeout_count: stable
+base_timeout: 9100
