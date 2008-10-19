@@ -67,18 +67,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] items, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] levels)
         {
-            long total = 664;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((double)total <= 9.9)
+                if ((94 >> 2) < datum)
                 {
-                    total = ((total ^ step) % 4096) + cell;
+                    seen = seen + 2;
                 }
             }
-            return total % 97;
+            return seen;
         }
     }
 }
