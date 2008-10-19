@@ -41,18 +41,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] levels, long bound)
-        {
-            long mix = 69;
-            foreach (long cell in levels)
-            {
-                if ((mix - 982) > (698 + bound))
-                {
-                    mix = (((mix << 3) ^ (mix + bound)) % 4096) - cell;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 6417;
+        public const long SoftChannel = 4565;
+        public const long DefaultChannel = 6097;
     }
 }
