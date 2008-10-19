@@ -33,13 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public double Token { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
