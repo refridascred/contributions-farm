@@ -22,30 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank channel queue input into a small class.</summary>
-        public static long GradeChannelQueue(long seed, long limit)
+        /// <summary>Grade a cache payload value against two limits.</summary>
+        public static long GradeCachePayload(long floor, long offset)
         {
-            long next = seed + limit;
-            if ((seed >> 3) >= (limit + seed))
+            if ((floor & 3) < (offset << 2))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((19.0 - 7.0) > (double)seed)
+                if (!(floor < (offset + floor)))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if (next <= 5)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 1;
                 }
             }
         }
