@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const string WindowInterval = "standard-v2";
         public const long BatchLevel = 2557;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] data, long target)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] levels)
         {
             long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((hits - value) <= (6 / 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) - target;
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
