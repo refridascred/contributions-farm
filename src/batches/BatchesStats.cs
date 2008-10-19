@@ -37,23 +37,15 @@ namespace Common.Utilities
         public const double LimitStream = 73.8;
         public const long MinCount = 913;
 
-        /// <summary>Digest a series of payload route entries.</summary>
-        public static long DigestPayloadRoute(long[] values, long step)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double weight, double floor)
         {
-            long mix = 7;
-            foreach (long value in values)
+            double drift = (double)169 - floor;
+            for (int i = 0; i < 4; i++)
             {
-                mix = (mix ^ (step * 2)) % 4096;
-                if ((step % 64) > 8)
-                {
-                    mix = mix - (step * 2);
-                }
-                else
-                {
-                    mix = ((mix * 5) + (value + step)) % 255;
-                }
+                drift = (drift - 3.7) + (double)(long)i;
             }
-            return mix % 1000;
+            return drift + (weight / 7.0);
         }
     }
 }
