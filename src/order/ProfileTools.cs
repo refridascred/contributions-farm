@@ -18,10 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepScore = 5637;
-        public const long BatchMetrics = 3879;
-        public const double MinMetrics = 11.69;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = (acc ^ (seed >> 2)) % 255;
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long SortOrder(long seed, long seed2)
