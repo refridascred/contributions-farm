@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count format order pairs that satisfy a relation.</summary>
-        public static long OverlapFormatOrderCount(long[] data)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((4.6 / 7.0) > (double)(long)i)
                 {
-                    if ((data[i] + data[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score + (seed & 63);
+                    break;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
