@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepWidth = 2663;
-        public const long StepScore = 3300;
-        public const double MinScore = 89.55;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] readings, long seed)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Roll a profile batches counter forward.</summary>
         public static long SeriesProfileBatches(long bound)
