@@ -32,21 +32,24 @@ namespace Common.Utilities
         public const long BatchSize = 7451;
         public const long BatchTimeout = 8103;
 
-        /// <summary>Count session counter pairs that satisfy a relation.</summary>
-        public static long CompareSessionCounterCount(long[] items)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long target, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!((9 * 3) <= floor))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((floor + floor) <= target)
                 {
-                    if ((items[i] - items[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate order samples.</summary>
