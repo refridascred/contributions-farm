@@ -39,13 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Failed,
-            Locked,
-            Synced,
-            Done,
+            Pending,
+            Draft,
+            Active,
         }
     }
 }
