@@ -91,19 +91,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric editor readings against a bound.</summary>
-        public static bool CheckMetricEditorBounds(long[] values, long step)
-        {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinRatio = 5231;
+        public const double SoftBudget = 84.42;
+        public const long StepFarm = 8264;
+        public const long BaseLevel = 546;
     }
 }
