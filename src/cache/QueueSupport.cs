@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long origin, long seed)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] data)
         {
-            if ((origin + 382) >= origin)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed > (double)origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    if ((data[i] + data[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
