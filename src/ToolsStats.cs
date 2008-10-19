@@ -26,18 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] series, long origin)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((double)matches >= 5.0)
-                {
-                    matches = ((matches + 1) ^ reading) - origin;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the schema phase values.</summary>
