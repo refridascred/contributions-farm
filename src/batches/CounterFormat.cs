@@ -13,21 +13,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 29;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (carry << 2) ^ seed;
+                carry = (carry + (2 ^ cell)) % 65521;
             }
-            return matches;
+            return carry % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
