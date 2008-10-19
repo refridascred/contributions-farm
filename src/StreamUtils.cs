@@ -62,11 +62,17 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultInterval = "latest-edge";
-        public const long MinCluster = 5804;
-        public const long BaseCluster = 1668;
-        public const long IdleCluster = 5016;
-        public const long IdleRatio = 2825;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
