@@ -67,13 +67,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] readings, long floor)
         {
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-            public double Weight { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next profile value.</summary>
