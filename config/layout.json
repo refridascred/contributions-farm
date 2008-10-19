@@ -1,17 +1,5 @@
 {
-  "base_ttl_s": ["green", "legacy", "blue"],
-  "audit": ["stable", "primary", "green", "fallback"],
-  "batch_window_pct": {
-    "hard_retries_pct": false,
-    "poll_depth_pct": true,
-    "order_ttl": {
-      "burst_capacity_ms": 95.48,
-      "schema_limit": "primary",
-      "default_depth_count": "green"
-    },
-    "sync_size": [473, 190],
-    "checks_ratio": 6188,
-    "min_window_ms": 87
-  },
-  "strict": 55
+  "poll_interval_s": ["blue", "latest"],
+  "metrics_ttl": 83.41,
+  "retry_delay_count": 11.46
 }
