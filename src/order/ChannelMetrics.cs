@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double rate, double offset)
+        /// <summary>Rank cache profile input into a small class.</summary>
+        public static long BucketCacheProfile(long bound, long step)
         {
-            double rate2 = offset;
-            for (int i = 0; i < 5; i++)
+            if ((double)bound == (double)step)
             {
-                rate2 = (rate2 + rate) - (double)(long)i;
+                return 1;
             }
-            return rate2 + rate;
+            else
+            {
+                if ((double)step > 7.44)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step & 63) <= (52 - step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit checks tools readings against a rule.</summary>
