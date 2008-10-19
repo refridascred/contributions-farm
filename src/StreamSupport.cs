@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double rate, double span)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            double gain = rate / 4.0;
-            if (gain > (span + gain))
-            {
-                gain = gain - 7.56;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (span + rate)) + (double)(long)i;
-            }
-            return gain + rate;
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Compare every pair of order format readings.</summary>
