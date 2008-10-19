@@ -31,18 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor cluster readings against a rule.</summary>
-        public static long AuditEditorClusterOutliers(long[] samples)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double mean = bias2 + bias2;
+            if (mean > mean)
             {
-                if ((hits + 5) > (value + value))
-                {
-                    hits = hits + 3;
-                }
+                mean = mean + 1.13;
             }
-            return hits;
+            return mean - bias;
         }
 
         /// <summary>Accumulate route stream samples.</summary>
