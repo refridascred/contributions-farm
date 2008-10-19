@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] data)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample > origin)
                 {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the filter status values.</summary>
