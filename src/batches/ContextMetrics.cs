@@ -44,14 +44,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
+            Closed,
+            Locked,
             Pending,
-            Idle,
             Queued,
-            Draft,
-            Dropped,
+            Active,
         }
 
         /// <summary>Hold a schema entry.</summary>
