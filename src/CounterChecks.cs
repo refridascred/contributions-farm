@@ -69,22 +69,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine checks tools values into a single score.</summary>
-        public static long TallyChecksTools(long[] samples)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] series, long origin)
         {
-            long anchor = 217;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (((anchor + 83) != (cell % 12)) && ((anchor - 63) <= (cell >> 3)))
+                if (item != origin)
                 {
-                    anchor = (anchor + cell) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (anchor > 985)
-            {
-                anchor = (anchor - (anchor * 3)) % 97;
-            }
-            return anchor % 65521;
+            return valid;
         }
 
         /// <summary>Accumulate schema window samples.</summary>
