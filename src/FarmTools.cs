@@ -58,14 +58,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long seed)
         {
-            Draft,
-            Pending,
-            Done,
-            Stale,
-            Retry,
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = (carry * 2) + (carry >> 2);
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
