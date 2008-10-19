@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a report counter reading.</summary>
-        public static double SmoothReportCounter(double bias, double offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] values)
         {
-            double ratio = bias;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                ratio = ((ratio - 1.72) + (double)(long)i) + offset;
+                if ((hits & 255) > (datum - (-88)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio + (ratio - bias);
+            return hits;
         }
 
         /// <summary>Describe the schema level values.</summary>
