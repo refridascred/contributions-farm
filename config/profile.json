@@ -1,8 +1,11 @@
 {
-  "burst_ttl": 500,
-  "flush_interval_s": 65,
-  "dry_run": true,
-  "strict": "stable",
-  "batch_ttl_count": true,
-  "retry_ttl_ms": "standard"
+  "default_size_pct": 500,
+  "enabled": "cached",
+  "cache_capacity_s": {
+    "burst_delay_pct": "strict",
+    "queue_limit": 30,
+    "soft_threshold_ms": "blue",
+    "flush_size_s": "green",
+    "retry_depth": ["standard", "fallback"]
+  }
 }
