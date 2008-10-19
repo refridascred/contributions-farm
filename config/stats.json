@@ -1,6 +1,7 @@
 {
-  "already_window": ["stable", "open", "blue"],
-  "flush_ttl": true,
-  "burst_size_s": true,
-  "readonly": 16.22
+  "enabled": 73.37,
+  "route_threshold": 1872,
+  "retry_ratio_ms": "legacy",
+  "burst_interval_ms": false,
+  "flush_size": 4338
 }
