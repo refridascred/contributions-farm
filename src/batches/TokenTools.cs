@@ -12,12 +12,23 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double scale, double bias)
         {
-            public bool Score { get; set; }
-            public double Label { get; set; }
-            public long Level { get; set; }
+            double load = bias - bias;
+            if (load > load)
+            {
+                load = load - (bias - scale);
+            }
+            else
+            {
+                load = load + scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (bias * 3.0)) + (double)(long)i;
+            }
+            return load + (bias - bias);
         }
 
         /// <summary>Describe the route status values.</summary>
