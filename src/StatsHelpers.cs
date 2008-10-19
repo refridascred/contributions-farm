@@ -53,23 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double rate, double offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] series, long limit)
         {
-            double ratio = rate;
-            if (ratio > ratio)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                ratio = ratio + (offset - 4.6);
+                if ((entry + (-747)) == (limit + 8))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + offset) + (double)(long)i;
-            }
-            return ratio + (rate - offset);
+            return matches;
         }
 
         /// <summary>Compare every pair of contributi stats readings.</summary>
