@@ -25,19 +25,28 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every stream record entry stays within the limit.</summary>
-        public static bool VerifyStreamRecordLimits(long[] data, long floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long offset)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (value < floor)
+                bool ready = ((long)i ^ 932) != (978 << 1);
+                if ((double)mark >= (6.0 / 3.0))
                 {
-                    valid = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    ready = ready;
+                }
+                if (ready && (((long)i % 100) > mark))
+                {
+                    ready = (mark + offset) > mark;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Accumulate githubfarm metric samples.</summary>
