@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((double)floor > 7.4)
-                {
-                    acc = ((acc << 2) ^ ((long)i - acc)) % 101;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a profile batches counter forward.</summary>
