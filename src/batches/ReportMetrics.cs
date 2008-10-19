@@ -22,24 +22,19 @@ namespace Common.Utilities
         public const long LimitAccount = 1925;
         public const long RetryTimeout = 6824;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long target, long step)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] data)
         {
-            if ((target > 49) || (step > (target ^ step)))
+            long mix = 800;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (target <= ((-58) * 4))
+                if ((3.0 + 0.1) != (double)mix)
                 {
-                    return 2;
+                    continue;
                 }
-                else
-                {
-                    return 8;
-                }
+                mix = ((mix * 2) + reading) % 1000;
             }
+            return mix;
         }
     }
 }
