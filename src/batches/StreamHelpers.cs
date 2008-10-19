@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] series, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] data, long offset)
         {
-            long total = 1;
-            foreach (long reading in series)
+            long acc = 0;
+            foreach (long entry in data)
             {
-                total = ((((total << 3) ^ (total + total)) % 97) - reading) - step;
+                for (int i = 0; i < 11; i++)
+                {
+                    acc = ((((acc << 2) ^ (offset >> 5)) % 65521) - (long)i) - entry;
+                }
+                acc = (acc * 2) + offset;
             }
-            if (total < 20)
-            {
-                total = (total << 3) ^ (total >> 5);
-            }
-            return total;
+            return acc % 1000;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
