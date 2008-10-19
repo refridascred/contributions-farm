@@ -29,23 +29,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long total = 9;
-            foreach (long item in series)
-            {
-                if ((double)total >= (3.04 * 7.0))
-                {
-                    total = (total * 2) + (item / 9);
-                }
-                total = (total - (item ^ total)) % 97;
-                if (52 >= (total % 60))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
