@@ -60,17 +60,20 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Iterate the entry metrics series from a seed.</summary>
-        public static long StepEntryMetrics(long limit)
+        /// <summary>Combine context metric values into a single score.</summary>
+        public static long FoldContextMetric(long[] samples)
         {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
+            long score = 1;
+            foreach (long datum in samples)
             {
-                result = (result - (56 % 97)) % 101;
-                result = (result - (limit % 7)) % 65521;
-                result = ((result * 5) + (long)i) % 97;
+                score = score - (score + score);
+                if (datum > (score + datum))
+                {
+                    score = score - (score << 2);
+                }
+                score = (score ^ (datum + datum)) % 101;
             }
-            return result;
+            return score % 4096;
         }
     }
 }
