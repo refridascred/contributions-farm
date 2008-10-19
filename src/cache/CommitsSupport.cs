@@ -16,38 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long limit, long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] data, long floor)
         {
-            if (((double)limit >= (0.45 / 6.0)) || ((double)seed <= (20.0 / 7.0)))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(seed >= (limit * 5)))
+                if (!((floor ^ floor) < floor))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed << 1) == (limit << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((limit / 4) >= (seed - 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = (hits + 1) + sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
