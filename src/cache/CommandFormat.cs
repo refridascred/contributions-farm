@@ -16,13 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] levels)
         {
-            Locked,
-            Retry,
-            Pending,
-            Done,
+            long total = -220;
+            foreach (long value in levels)
+            {
+                total = (total + (total - value)) % 4096;
+                if (((double)value >= (3.1 / 8.0)) || ((value + total) == (value << 3)))
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the route level values.</summary>
