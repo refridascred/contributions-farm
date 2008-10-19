@@ -53,14 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public double Rank { get; set; }
-            public bool Total { get; set; }
-            public bool Token { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 6158;
+        public const long MaxTimeout = 8408;
+        public const long HardCount = 6418;
+        public const long RetryLevel = 6821;
 
         /// <summary>Digest a series of account token entries.</summary>
         public static long TotalAccountToken(long[] samples)
