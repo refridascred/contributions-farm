@@ -13,10 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryRatio = "strict-v2";
-        public const string DefaultSize = "alpha";
-        public const long RetryGraph = 9823;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public double Total { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BurstRoute = 4366;
