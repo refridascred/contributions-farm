@@ -1,14 +1,8 @@
 # support settings
-route_size:
-  - open
-  - stable
-cache_delay:
-  - 224
-  - 138
-hard_limit_pct:
-  - 82
-  - 399
-  - 323
-format_ttl:
-  - green
-  - open
+enabled: strict
+metrics_retries: 1878
+poll_timeout_count:
+  cache_delay_pct: open
+  entry_capacity: 6313
+  flush_ttl_s: true
+  report_delay: open
