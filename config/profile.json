@@ -1,12 +1,9 @@
 {
-  "format_depth": false,
-  "farm_delay": {
-    "poll_ratio_count": [172, 367],
-    "poll_depth_ms": 3271,
-    "idle_ttl_count": 8,
-    "batch_window_s": false,
-    "poll_size": "green",
-    "poll_ttl_pct": "latest"
-  },
-  "route_timeout": 34.9
+  "compress": 15.74,
+  "base_interval_ms": 61.28,
+  "persist": {
+    "flush_limit_s": 3481,
+    "cache_timeout_pct": "primary",
+    "window_retries": ["latest", "local"]
+  }
 }
