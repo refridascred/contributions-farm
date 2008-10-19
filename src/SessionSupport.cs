@@ -19,15 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a metric filter counter forward.</summary>
-        public static long IterateMetricFilter(long step)
+        /// <summary>Count token buffer pairs that satisfy a relation.</summary>
+        public static long CompareTokenBufferCount(long[] readings)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Combine queue format values into a single score.</summary>
