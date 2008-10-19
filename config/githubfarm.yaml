@@ -1,20 +1,6 @@
 # githubfarm settings
-idle_timeout_pct:
-  default_ttl_ms: 16.06
-  context_depth: 93.59
-  idle_ttl_s: strict
-  enabled: 7634
-  strict:
-    - 205
-    - 320
-    - 141
-    - 290
-  audit: 28.55
-audit: strict
-warm_interval_s:
-  - open
-  - legacy
-sync_window_ms:
-  - local
-  - latest
-hard_window_ms: true
+retry_delay: fallback
+payload_size: 3734
+strict: eu-west
+already_limit: 41.27
+context_window: false
