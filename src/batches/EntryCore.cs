@@ -19,13 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitSpan = 7216;
+        public const double MaxDepth = 52.82;
+        public const long HardFactor = 5808;
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long LocateProfileIndex(long[] items, long step)
