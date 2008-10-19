@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const double CacheStats = 77.25;
         public const long SoftDepth = 1653;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] samples, long limit)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Dropped,
+            Paused,
+            Ready,
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
