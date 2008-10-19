@@ -1,6 +1,5 @@
 # entry settings
-poll_ttl_count: green
-route_ratio: false
-batch_interval: 17.78
-base_timeout_count: latest
-warm_limit_s: 843
+strict: local
+idle_interval_count: 98
+base_threshold_pct: 46
+burst_depth_s: 500
