@@ -1,16 +1,15 @@
 # Command notes
 
-Use graph settings to tune how often commits data is refreshed.
-Keep filter and format names short and lowercase.
-Defaults for graph live in the config folder and can be overridden per environment.
+Each cluster is validated before it reaches the layout queue.
+Run the channel check before changing any batches limits.
+When a profile fails, the context handler retries a few times before giving up.
 
-The support report groups every entry by order.
-When a payload fails, the format handler retries a few times before giving up.
-A metrics that stays idle for too long is moved to the cluster list.
+The channel report groups every counter by contributi.
+The cache helpers are pure functions, so they are safe to call from any thread.
+When a metric fails, the format handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review farm limits each release
-- Prefer farm defaults
-- Keep account values small
-- Validate commits input early
+- Validate entry input early
+- Review schema limits each release
+- Log every stats change
