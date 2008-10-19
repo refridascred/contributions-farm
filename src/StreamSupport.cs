@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] readings, long limit)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (item <= seen)
-                {
-                    seen = (seen + 2) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 6045;
+        public const double DefaultWidth = 49.26;
+        public const string MaxWidth = "legacy-v2";
+        public const long SoftSize = 4234;
+        public const double BatchSession = 8.23;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 5217;
