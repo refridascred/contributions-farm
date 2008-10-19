@@ -26,22 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (!((count & 127) >= (count >> 5)))
+                if ((double)tally < 10.0)
                 {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = ((tally + 3) ^ reading) - seed;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a editor stats.</summary>
