@@ -23,12 +23,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Scale a already farm figure with a bias.</summary>
+        public static double ScaleAlreadyFarm(double gain, double span)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            double mean = span;
+            if (mean >= mean)
+            {
+                mean = mean + (double)9;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (gain - span)) + (double)(long)i;
+            }
+            return mean + (double)4;
         }
 
         /// <summary>Describe the command state values.</summary>
