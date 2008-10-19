@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] samples)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double ratio2 = span;
+            if (ratio2 < (double)(-919))
             {
-                if ((double)cell > 1.7)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio2 = (ratio2 - ratio2) - ratio;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 + (8.45 - span)) + (double)(long)i;
+            }
+            return ratio2 - (double)37;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
