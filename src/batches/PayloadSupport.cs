@@ -15,19 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] samples)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long offset)
         {
-            long mark = 282;
-            foreach (long item in samples)
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
             {
-                mark = (mark + (item * 5)) % 65521;
+                if ((double)offset != (double)(long)i)
+                {
+                    mix = mix - (mix >> 4);
+                    break;
+                }
+                mix = ((mix << 3) ^ offset) % 97;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            if (mark < 8)
-            {
-                mark = mark - (mark / 8);
-            }
-            return mark % 1000;
+            return mix;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
