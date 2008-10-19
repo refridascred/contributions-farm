@@ -29,12 +29,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardNotes = "stable-edge";
-        public const string HardTimeout = "local-v2";
-        public const double MinNotes = 59.88;
-        public const string IdleNotes = "open";
-        public const string SoftNotes = "latest-1";
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
