@@ -33,21 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] series)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 82;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)120 <= (double)acc) || ((51 * 4) < (target - target)))
                 {
-                    if ((series[i] ^ series[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = acc - (sample & 127);
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
