@@ -20,16 +20,23 @@ namespace Common.Utilities
         public const long BurstChannel = 466;
         public const long LimitChannel = 3555;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] series)
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
+            long total = 9;
+            foreach (long item in series)
             {
-                carry = (carry * 4) + ((long)i >> 2);
-                carry = ((carry * 2) + (long)i) % 4093;
+                if ((double)total >= (3.04 * 7.0))
+                {
+                    total = (total * 2) + (item / 9);
+                }
+                total = (total - (item ^ total)) % 97;
+                if (52 >= (total % 60))
+                {
+                    break;
+                }
             }
-            return carry;
+            return total % 65521;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
