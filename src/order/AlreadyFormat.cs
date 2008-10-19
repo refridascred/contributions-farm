@@ -40,14 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Dropped,
+            Idle,
             New,
-            Paused,
-            Stale,
-            Draft,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a cluster summary.</summary>
