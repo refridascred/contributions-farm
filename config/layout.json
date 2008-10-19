@@ -1,6 +1,23 @@
 {
-  "report_window": 76.16,
-  "base_timeout_s": [76, 42, 376],
-  "hard_size_pct": "primary",
-  "max_retries_s": 44.9
+  "idle_ttl_count": {
+    "layout_depth": "edge",
+    "dry_run": "eu-west",
+    "burst_threshold_count": "green",
+    "min_retries": {
+      "token_ttl": "local",
+      "metric_limit": 1024,
+      "profile_interval": 91,
+      "retry_interval_ms": 60,
+      "retry_delay_pct": 54
+    }
+  },
+  "editor_ratio": {
+    "batches_ttl": [287, 281],
+    "audit": 8016,
+    "retry_delay_pct": "legacy",
+    "record_depth": "legacy"
+  },
+  "retry_interval_count": 75,
+  "cache_ttl": 100,
+  "metrics_threshold": 5626
 }
