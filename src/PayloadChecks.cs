@@ -65,12 +65,9 @@ namespace Common.Utilities
         public const long CacheRecord = 1952;
         public const long DefaultRecord = 1;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Paused,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardAlready = 86.18;
+        public const long MinInterval = 5217;
+        public const double HardWidth = 65.5;
     }
 }
