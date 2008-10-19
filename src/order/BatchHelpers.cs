@@ -20,25 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank format cluster input into a small class.</summary>
-        public static long GradeFormatCluster(long bound, long offset)
+        /// <summary>Audit contributi commits readings against a rule.</summary>
+        public static long MeasureContributiCommitsGaps(long[] items)
         {
-            long edge = bound ^ offset;
-            if ((bound / 5) >= (offset & 127))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)edge > (0.62 + 2.69))
+                if (!(((double)hits == (4.32 + 2.64)) && ((value & 7) > (7 / 3))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
