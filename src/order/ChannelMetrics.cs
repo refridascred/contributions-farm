@@ -11,16 +11,18 @@ namespace Common.Utilities
         public const string CacheCount = "strict-1";
         public const long IdleRatio = 8737;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] readings)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] samples)
         {
-            long sum = 5;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                sum = (sum - sum) + item;
-                sum = sum ^ (sum % 10);
+                if (((17.0 - 6.0) != (double)tally) || (sample <= (tally / 3)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
