@@ -35,20 +35,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long limit, long step)
         {
-            long mix = target;
-            for (int i = 0; i < 7; i++)
+            if ((507 ^ limit) != (step >> 3))
             {
-                long bound = (target >> 3) + ((long)i << 2);
-                if ((mix / 7) < ((long)i + bound))
-                {
-                    bound = (bound - (bound << 3)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((step - 13) <= (limit * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((step >> 2) < (limit & 63)) || ((double)step <= (6.94 - 6.2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)7 == (double)limit) && ((limit << 2) < (limit & 7)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up metrics samples.</summary>
