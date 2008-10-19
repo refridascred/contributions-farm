@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 7334;
-        public const long BatchScore = 9395;
-        public const double IdleChannel = 4.85;
-        public const double LimitChannel = 48.64;
-        public const long StepChannel = 2271;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
