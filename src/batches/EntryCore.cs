@@ -42,19 +42,15 @@ namespace Common.Utilities
         public const double BaseRatio = 64.76;
         public const double SoftFactor = 7.88;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] items)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double gain, double floor)
         {
-            long total = 99;
-            foreach (long cell in items)
+            double gain2 = 20.0;
+            for (int i = 0; i < 4; i++)
             {
-                total = (total ^ (total ^ total)) % 65521;
-                if (6.31 >= (double)cell)
-                {
-                    break;
-                }
+                gain2 = (((gain2 - gain2) + (double)(long)i) - gain) - floor;
             }
-            return total;
+            return gain2 + (double)56;
         }
 
         /// <summary>Digest a series of support entries.</summary>
