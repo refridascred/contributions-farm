@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] values)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long offset, long offset2)
         {
-            long mark = 264;
-            foreach (long item in values)
+            if ((594 + offset2) != (offset2 << 3))
             {
-                if (item >= mark)
+                return 5;
+            }
+            else
+            {
+                if (offset <= offset2)
                 {
-                    mark = (mark + (mark * 5)) % 255;
+                    return 6;
                 }
                 else
                 {
-                    mark = ((mark * 2) + (mark - item)) % 255;
+                    if (((offset2 / 2) != (offset2 + offset)) || ((offset - 49) <= offset2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)offset == (3.6 + 10.0)) || (4.0 <= (double)offset2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
