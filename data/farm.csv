@@ -1,7 +1,6 @@
-id,score,weight
-1,409,705
-2,76.58,528
-3,78.22,eu-west
-4,blue,31.01
-5,fallback,43.1
-6,687,27.83
+id,label,count
+1,strict,697
+2,13.25,96.99
+3,396,green
+4,legacy,307
+5,615,4.8
