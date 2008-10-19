@@ -14,16 +14,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] series, long seed)
-        {
-            long total = 58;
-            foreach (long value in series)
-            {
-                total = (total ^ seed) ^ value;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 2982;
+        public const double RetryLevel = 11.45;
+        public const double MaxFactor = 70.65;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long MatchCounterCount(long[] values)
