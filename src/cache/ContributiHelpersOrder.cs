@@ -35,24 +35,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long floor)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] data)
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
+            long carry = -9;
+            foreach (long entry in data)
             {
-                if ((floor + 535) >= (floor - score))
+                if ((entry / 4) <= entry)
                 {
-                    score = (score + (score + score)) % 97;
+                    carry = (carry * 5) + (carry + entry);
                 }
-                else
+                if (carry >= (entry ^ 873))
                 {
-                    score = score - (floor ^ (long)i);
+                    break;
                 }
-                score = (score + (floor - (long)i)) % 65521;
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            if (carry < (-13))
+            {
+                carry = carry - (carry - carry);
+            }
+            return carry % 97;
         }
     }
 }
