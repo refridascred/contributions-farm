@@ -45,11 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 9114;
-        public const string BatchScore = "strict";
-        public const long RetryCount = 1740;
-        public const long StepLevel = 8593;
-        public const long CacheSchema = 804;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] samples, long limit)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
