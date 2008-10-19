@@ -20,32 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long limit, long origin)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] series, long limit)
         {
-            long bound = limit ^ origin;
-            if ((origin + origin) > (30 ^ limit))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound == (1.0 - 17.0))
+                if ((series[i] == limit) && ((series[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound * 4) <= origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
