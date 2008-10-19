@@ -34,26 +34,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a graph counter pair into a bucket.</summary>
-        public static long ClassifyGraphCounter(long step, long target)
-        {
-            long lane = step - target;
-            if ((19.0 - 6.9) != (double)lane)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((lane - target) >= (target - 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 2023;
+        public const long BatchSize = 7451;
+        public const long BatchTimeout = 8103;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BurstCommits = 7174;
