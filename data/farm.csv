@@ -1,6 +1,8 @@
-id,weight,owner,level,region
-1,311,staging,27.57,41.89
-2,eu-west,eu-west,881,639
-3,fallback,edge,72.48,52.46
-4,855,blue,440,17.27
-5,33.67,54.92,strict,stable
+id,region,score,state
+1,532,legacy,53
+2,500,open,432
+3,503,25.69,36.72
+4,edge,0.45,79.53
+5,10.78,cached,primary
+6,356,833,cached
+7,cached,open,22
