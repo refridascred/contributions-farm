@@ -43,12 +43,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] levels)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public double Token { get; set; }
+            long result = 73;
+            foreach (long reading in levels)
+            {
+                result = (result - (result & 63)) ^ reading;
+            }
+            if (result > 787)
+            {
+                result = ((result << 2) ^ (result + result)) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Blend two context measurements.</summary>
