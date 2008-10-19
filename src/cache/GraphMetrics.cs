@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (seen < 81)
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 5176;
+        public const double MaxLayout = 32.61;
+        public const long LimitLayout = 1314;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
