@@ -62,19 +62,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] values)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] values)
         {
-            long mark = 2;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark ^ (entry >> 5);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mark > 4)
-            {
-                mark = mark ^ (553 << 2);
-            }
-            return mark % 65521;
+            return hits;
         }
     }
 }
