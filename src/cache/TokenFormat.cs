@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long bound, long step)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            if ((step / 3) != (bound << 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound - step) >= (step ^ step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step % 3) < bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Queued,
+            Failed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Rank support contributi input into a small class.</summary>
