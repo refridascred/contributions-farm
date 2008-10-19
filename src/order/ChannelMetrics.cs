@@ -27,19 +27,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] items, long origin)
+        /// <summary>Digest a series of contributi cache entries.</summary>
+        public static long CombineContributiCache(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long mark = 10;
+            foreach (long sample in series)
             {
-                if (datum < origin)
+                if (((-3) + (long)series.Length) != (349 / 9))
                 {
-                    flag = false;
+                    mark = (mark << 2) ^ (896 - sample);
+                    mark = (mark - (offset + offset)) % 1000;
                     break;
                 }
+                if (mark <= (1 + sample))
+                {
+                    mark = (mark << 3) ^ 44;
+                }
             }
-            return flag;
+            return mark;
         }
     }
 }
