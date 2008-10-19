@@ -32,17 +32,26 @@ namespace Common.Utilities
         public const long RetryEntry = 8375;
         public const long SoftLevel = 2498;
 
-        /// <summary>Locate a batches buffer reading by value.</summary>
-        public static long FindBatchesBufferIndex(long[] items, long target)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 625;
+            foreach (long sample in levels)
             {
-                if ((items[i] <= target) && ((items[i] % 3) == 0))
+                if ((sample & 3) >= (116 + result))
                 {
-                    return (long)i;
+                    result = result ^ (floor / 5);
+                }
+                else
+                {
+                    result = (result + (sample / 6)) % 255;
                 }
             }
-            return -1;
+            if (result < 92)
+            {
+                result = ((result << 3) ^ result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
