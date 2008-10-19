@@ -1,6 +1,7 @@
 {
-  "idle_delay": 63,
-  "filter_ttl": ["local", "green", "cached"],
-  "account_retries": [459, 43, 81],
-  "verbose": 95
+  "batch_limit_count": "standard",
+  "cluster_window": "standard",
+  "base_capacity_pct": 8184,
+  "verbose": 0.5,
+  "githubfarm_threshold": "latest"
 }
