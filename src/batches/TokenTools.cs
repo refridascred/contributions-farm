@@ -30,22 +30,16 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] data, long seed)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long state = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (((472 * 5) > seed) && ((cell - seed) < cell))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = ((state << 3) ^ (limit + limit)) % 4096;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
     }
 }
