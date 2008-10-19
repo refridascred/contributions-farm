@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Failed,
-            Done,
-            Pending,
+            Ready,
             Locked,
+            Closed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
