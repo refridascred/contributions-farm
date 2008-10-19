@@ -42,39 +42,18 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long limit, long limit2)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] data, long step)
         {
-            long diff = limit ^ limit2;
-            if ((limit % 5) >= limit)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (diff > (15 / 5))
+                if (!((step - cell) != (cell >> 1)) || !((step % 2) != (tally >> 1)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((diff / 3) != (limit2 >> 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (diff < (diff >> 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two payload measurements.</summary>
