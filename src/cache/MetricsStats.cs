@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchDepth = 1038;
-        public const long BaseDepth = 6661;
-        public const string RetryGraph = "fallback";
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = (((acc * 5) + (152 - 67)) % 65521) - (long)i2;
+                }
+                if (!(acc > origin))
+                {
+                    acc = (acc - ((long)i ^ origin)) % 1000;
+                }
+                else
+                {
+                    acc = acc - (origin / 2);
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Count the githubfarm batches entries that pass the check.</summary>
         public static long CountGithubfarmBatchesOutliers(long[] samples, long floor)
