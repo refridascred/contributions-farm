@@ -58,17 +58,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] levels, long floor)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
