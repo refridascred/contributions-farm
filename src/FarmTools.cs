@@ -33,12 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 7857;
+        public const long MinContributi = 982;
+        public const double WindowContributi = 49.32;
+        public const double SoftBudget = 79.03;
     }
 }
