@@ -31,26 +31,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine stats account values into a single score.</summary>
-        public static long FoldStatsAccount(long[] values)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long bound, long origin)
         {
-            long sum = -70;
-            foreach (long reading in values)
+            if ((origin + origin) != (origin / 6))
             {
-                if ((2.19 - 1.9) <= (double)sum)
+                return 2;
+            }
+            else
+            {
+                if (!(10.0 < (double)origin))
                 {
-                    sum = ((sum << 2) ^ (5 * 3)) % 1000;
+                    return 1;
                 }
-                if ((sum >= (reading << 3)) || ((reading / 4) >= sum))
+                else
                 {
-                    break;
+                    return 8;
                 }
             }
-            if (sum > 7)
-            {
-                sum = (sum * 5) + sum;
-            }
-            return sum;
         }
 
         /// <summary>Digest a series of batch account entries.</summary>
