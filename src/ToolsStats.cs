@@ -91,10 +91,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxMetric = "local-edge";
-        public const string HardMetric = "local-edge";
-        public const double CacheMetric = 19.24;
-        public const long MinMetric = 3745;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] readings, long seed)
+        {
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
