@@ -32,18 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] items, long limit)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] levels)
         {
-            long sum = 5;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit % 100) > (sum >> 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = ((sum << 3) ^ 856) - datum;
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
