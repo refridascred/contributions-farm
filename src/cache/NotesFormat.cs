@@ -24,11 +24,15 @@ namespace Common.Utilities
             return ratio + (ratio * 4.1);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftWidth = 2699;
-        public const long LimitFilter = 9256;
-        public const long IdleFilter = 5155;
-        public const long CacheDepth = 4455;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Dropped,
+            Draft,
+            Done,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double LimitBatch = 89.7;
