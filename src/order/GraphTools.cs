@@ -23,18 +23,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] readings, long target)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((3 ^ 51) < datum)
-                {
-                    count = (count + 1) - target;
-                }
-            }
-            return count;
+            public double Rank { get; set; }
+            public bool Total { get; set; }
+            public bool Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
