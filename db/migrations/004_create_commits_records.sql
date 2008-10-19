@@ -1,12 +1,13 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    owner TEXT NOT NULL,
+    weight REAL,
     active INTEGER NOT NULL DEFAULT 1,
-    region TEXT
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
+CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
 
-INSERT INTO commits_records (owner, active, region) VALUES ('open', 6, 'fallback');
-INSERT INTO commits_records (owner, active, region) VALUES ('legacy', 34, 'legacy');
+INSERT INTO commits_records (weight, active, rank) VALUES (68.95, 65, 69);
+INSERT INTO commits_records (weight, active, rank) VALUES (27.68, 16, 49);
+INSERT INTO commits_records (weight, active, rank) VALUES (16.89, 4, 59);
