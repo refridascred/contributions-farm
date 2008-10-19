@@ -25,38 +25,22 @@ namespace Common.Utilities
         public const long BatchMetrics = 3879;
         public const double MinMetrics = 11.69;
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long offset, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] data)
         {
-            if ((double)offset == (3.0 - 5.51))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset > (double)limit)
+                if ((double)hits < 6.97)
                 {
-                    return 1;
+                    hits = (hits + 1) + item;
                 }
                 else
                 {
-                    if (((double)offset > (16.0 * 13.0)) || ((648 / 5) != (offset / 6)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)offset < (7.0 * 11.0)) || ((offset << 1) >= limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the tools kind values.</summary>
