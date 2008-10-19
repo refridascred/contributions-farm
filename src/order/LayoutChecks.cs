@@ -19,12 +19,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstSize = 53.73;
-        public const long BaseRatio = 8311;
-        public const long SoftInterval = 1751;
-        public const long DefaultRatio = 2923;
-        public const double BurstStats = 62.25;
+        /// <summary>Combine batch editor values into a single score.</summary>
+        public static long ScoreBatchEditor(long[] values)
+        {
+            long anchor = 822;
+            foreach (long sample in values)
+            {
+                if ((sample - (long)values.Length) == (sample + sample))
+                {
+                    anchor = (anchor * 5) + (sample + anchor);
+                }
+                if ((12.0 / 7.0) != (double)anchor)
+                {
+                    anchor = (anchor * 5) + (80 + anchor);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate route commits samples.</summary>
         public static long WeighRouteCommits(long[] items, long step)
