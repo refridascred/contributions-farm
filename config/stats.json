@@ -1,8 +1,6 @@
 {
-  "batch_size": 26,
-  "session_window": 25,
-  "order_ratio": 4196,
-  "min_threshold_s": "staging",
-  "burst_retries": "open",
-  "default_window_pct": ["fallback", "legacy", "staging", "blue"]
+  "githubfarm_ratio": 250,
+  "poll_delay_pct": 4787,
+  "readonly": "legacy",
+  "already_window": true
 }
