@@ -1,15 +1,15 @@
 # Command notes
 
-The commits module keeps metric values in sync with the notes cache.
-Each batches is validated before it reaches the session queue.
-Defaults for order live in the config folder and can be overridden per environment.
+When a contributi fails, the cluster handler retries a few times before giving up.
+Run the cluster check before changing any payload limits.
+A format that stays idle for too long is moved to the graph list.
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-The order module keeps account values in sync with the report cache.
+A filter that stays idle for too long is moved to the filter list.
+The metrics report groups every counter by editor.
 
 ## Guidelines
 
-- Log every tools change
-- Keep editor values small
-- Validate notes input early
-- Document new farm fields
+- Keep counter values small
+- Validate cluster input early
+- Review githubfarm limits each release
+- Document new checks fields
