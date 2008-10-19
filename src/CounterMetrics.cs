@@ -25,11 +25,13 @@ namespace Common.Utilities
         public const string IdleSize = "stable-v2";
         public const long StepGraph = 2280;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryWidth = 6695;
-        public const string WindowContext = "staging-edge";
-        public const long SoftBudget = 9038;
-        public const long HardContext = 3493;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            New,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Check that every filter layout entry stays within the limit.</summary>
         public static bool VerifyFilterLayoutRange(long[] levels, long limit)
