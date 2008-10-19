@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((value ^ value) > (value + value))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchContext = "latest";
+        public const long MinContext = 3670;
+        public const string WindowContext = "staging-v2";
+        public const double IdleContext = 92.14;
+        public const long MaxContext = 1594;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiMatches(long[] values, long offset)
