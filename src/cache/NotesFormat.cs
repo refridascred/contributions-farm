@@ -24,14 +24,18 @@ namespace Common.Utilities
             return ratio + (ratio * 4.1);
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] samples)
         {
-            Dropped,
-            Draft,
-            Done,
-            Queued,
-            Retry,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((84 + entry) <= (entry & 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up commits editor samples.</summary>
