@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const long LimitWidth = 8823;
         public const double LimitFactor = 88.55;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheFactor = 3958;
-        public const double BurstDepth = 86.83;
-        public const long BatchProfile = 1671;
-        public const string HardScore = "legacy-v2";
-        public const long MaxInterval = 8059;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] items)
+        {
+            long mix = 5;
+            foreach (long datum in items)
+            {
+                if (datum >= (datum & 1))
+                {
+                    mix = mix + (80 - datum);
+                }
+            }
+            if (mix < 9)
+            {
+                mix = ((mix * 4) + (mix ^ mix)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TallyTools(long[] levels, long target)
