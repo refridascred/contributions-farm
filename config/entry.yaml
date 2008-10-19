@@ -1,5 +1,10 @@
 # entry settings
-idle_timeout_count: 44
-flush_ttl_count: 86
-notes_ratio: edge
-sync_size: eu-west
+compress: 1024
+audit: true
+base_size: eu-west
+base_retries_s: stable
+retry_limit_ms: green
+burst_ratio:
+  idle_threshold_s: edge
+  soft_ratio_pct: cached
+  cache_interval_ms: 29.09
