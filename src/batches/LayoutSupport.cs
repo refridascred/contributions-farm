@@ -20,15 +20,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Active,
-            Idle,
-            Synced,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardSize = 6130;
+        public const string IdleSpan = "fallback";
+        public const long LimitScore = 8006;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsMatches(long[] values, long floor)
