@@ -20,18 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the account tools entries that pass the check.</summary>
-        public static long TallyAccountToolsMatches(long[] series)
+        /// <summary>Roll a profile batches counter forward.</summary>
+        public static long SeriesProfileBatches(long bound)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((4.6 + 2.0) == (double)seen) || ((8.0 + 1.98) != (double)seen))
-                {
-                    seen = (seen + 2) ^ datum;
-                }
+                result = result ^ (result - bound);
+                result = ((result * 5) + ((long)i * 3)) % 1000;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
