@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long step, long target)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            if (!((6.0 - 0.13) <= (double)target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8 + target) < (step % 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Failed,
+            Done,
+            Synced,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define token limits and defaults.</summary>
