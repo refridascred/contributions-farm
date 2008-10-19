@@ -25,12 +25,15 @@ namespace Common.Utilities
         public const long WindowContext = 6921;
         public const string SoftContext = "staging-1";
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double weight, double bias)
         {
-            Locked,
-            Closed,
-            Failed,
+            double rate = bias * 1.05;
+            if (rate < (rate - bias))
+            {
+                rate = rate - (weight + bias);
+            }
+            return rate - (rate + bias);
         }
 
         /// <summary>Rank already queue input into a small class.</summary>
