@@ -31,11 +31,39 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardSpan = 385;
-        public const long MinTimeout = 5548;
-        public const long DefaultScore = 4503;
-        public const long MaxWindow = 8566;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long offset, long offset2)
+        {
+            if ((offset2 + offset2) >= 83)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((1.5 / 8.0) <= (double)offset2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset > (offset2 << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset < (offset << 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
