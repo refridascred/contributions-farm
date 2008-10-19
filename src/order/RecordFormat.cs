@@ -67,15 +67,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double bias, double span)
-        {
-            double load = span;
-            for (int i = 0; i < 7; i++)
-            {
-                load = ((load + span) + (double)(long)i) + bias;
-            }
-            return load + (double)89;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRatio = 3685;
+        public const long BurstFactor = 8377;
+        public const long MaxRoute = 5742;
     }
 }
