@@ -1,9 +1,12 @@
 # githubfarm settings
-batch_depth: 47.26
-counter_ratio: 90
-idle_timeout:
-  - cached
-  - staging
-  - green
-cache_delay_s: 73.75
-idle_threshold: stable
+compress: stable
+readonly:
+  - 296
+  - 243
+  - 448
+  - 4
+verbose: false
+flush_limit_ms:
+  - 256
+  - 452
+  - 330
