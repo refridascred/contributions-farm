@@ -26,12 +26,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public long Offset { get; set; }
-            public double Label { get; set; }
-            public long Total { get; set; }
+            Dropped,
+            Closed,
+            Stale,
+            Done,
         }
     }
 }
