@@ -20,14 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            Locked,
-            Queued,
-            Retry,
-            Draft,
-            Dropped,
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
