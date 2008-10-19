@@ -21,22 +21,16 @@ namespace Common.Utilities
         public const long BatchBuffer = 5671;
         public const double SoftBuffer = 60.07;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] items, long target)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long origin)
         {
-            long count = 0;
-            foreach (long item in items)
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((target ^ target) <= (long)items.Length)
-                {
-                    count = (count + 2) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix << 3) ^ mix) % 97;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
     }
 }
