@@ -36,19 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] levels, long step)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a order header.</summary>
