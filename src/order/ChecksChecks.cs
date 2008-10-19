@@ -23,26 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] data, long floor)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long sum = 45;
-            foreach (long sample in data)
-            {
-                if ((double)floor == (6.9 * 9.2))
-                {
-                    sum = (sum * 3) + (floor - sum);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sample - floor)) % 255;
-                }
-            }
-            if (sum < (-830))
-            {
-                sum = (sum ^ (floor & 63)) % 101;
-            }
-            return sum;
+            Retry,
+            Synced,
+            Closed,
         }
 
         /// <summary>Audit payload tools readings against a rule.</summary>
