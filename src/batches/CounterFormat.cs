@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of notes channel readings.</summary>
-        public static long MatchNotesChannelCount(long[] data)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = (bias * 11.0) - (scale + bias);
+            if (drift < (bias - 5.8))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift + bias;
             }
-            return tally;
+            return drift - (5.3 * 16.0);
         }
 
         /// <summary>Check that every filter notes entry stays within the limit.</summary>
