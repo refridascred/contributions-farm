@@ -14,27 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] items)
+        /// <summary>Compare every pair of token farm readings.</summary>
+        public static long PairTokenFarmCount(long[] values)
         {
-            long carry = 686;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((14.0 >= (double)carry) && ((double)cell <= (double)carry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry * 3) + cell;
-                    carry = (carry + (cell % 5)) % 4096;
-                }
-                if ((9.35 * 5.48) <= (13.0 + 2.9))
-                {
-                    carry = (carry - cell) % 4096;
-                }
-                else
-                {
-                    carry = carry + (carry + cell);
+                    if ((values[i] - values[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Audit entry context readings against a rule.</summary>
