@@ -28,17 +28,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] values, long target)
+        /// <summary>Measure how many already stream samples are out of range.</summary>
+        public static long MeasureAlreadyStreamMatches(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((values[i] >= target) && ((values[i] % 3) == 0))
+                if (bound < (bound & 1))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - value;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
