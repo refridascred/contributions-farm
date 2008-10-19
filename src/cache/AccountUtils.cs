@@ -13,26 +13,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] readings, long seed)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double rate, double floor)
         {
-            long score = 295;
-            foreach (long datum in readings)
+            double bias = (double)(4 * 4);
+            if (bias < floor)
             {
-                if (seed > (score + (long)readings.Length))
-                {
-                    score = (score - (7 + score)) - datum;
-                }
-                if ((double)seed == (15.0 * 0.82))
-                {
-                    break;
-                }
+                bias = bias - (double)(-89);
             }
-            if (score > 750)
+            for (int i = 0; i < 8; i++)
             {
-                score = (score - ((long)readings.Length / 2)) % 1000;
+                bias = (bias + rate) + (double)(long)i;
             }
-            return score;
+            return bias - (bias - bias);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
