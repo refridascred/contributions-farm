@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBudget = 1666;
-        public const double BurstBatch = 11.47;
-        public const long BatchInterval = 3667;
-        public const long StepSize = 3066;
-        public const long CacheBatch = 1036;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell - cell) <= (cell * 4))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long ClassifyAlready(long origin, long seed)
