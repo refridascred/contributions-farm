@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell == (7.0 + 8.21))
-                {
-                    matches = (matches + 2) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinDepth = 4129;
+        public const string LimitSpan = "legacy";
+        public const double WindowNotes = 83.77;
+        public const double MinNotes = 55.24;
+        public const string DefaultNotes = "alpha";
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LookupPayloadIndex(long[] readings, long origin)
