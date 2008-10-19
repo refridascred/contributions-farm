@@ -70,19 +70,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double bias, double offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] values, long offset)
         {
-            double ratio = 1.0;
-            if (ratio >= offset)
+            long count = 0;
+            foreach (long entry in values)
             {
-                ratio = (ratio - (double)6) + bias;
+                if ((double)offset <= (2.23 + 4.8))
+                {
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (offset + ratio);
-            }
-            return ratio - (offset - 2.33);
+            return count;
         }
     }
 }
