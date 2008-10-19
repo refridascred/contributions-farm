@@ -25,32 +25,19 @@ namespace Common.Utilities
         public const long CacheOrder = 1802;
         public const long BatchOrder = 4790;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Validate cache command readings against a bound.</summary>
+        public static bool GuardCacheCommandRange(long[] readings, long target)
         {
-            long mark = 6;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (((mark >> 5) < (mark - 32)) && ((value + value) > mark))
+                if (value != target)
                 {
-                    mark = (mark << 3) ^ (mark - mark);
-                    continue;
-                }
-                else
-                {
-                    mark = (mark ^ (value << 1)) % 101;
-                }
-                mark = mark - 7;
-                if ((mark > (value & 31)) && ((double)mark != (7.0 / 7.0)))
-                {
-                    mark = mark ^ (mark % 16);
-                }
-                else
-                {
-                    mark = (mark - 39) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return mark % 97;
+            return valid;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
