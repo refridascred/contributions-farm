@@ -1,5 +1,6 @@
 {
-  "tools_threshold": "stable",
-  "persist": "open",
-  "sync_size": "cached"
+  "base_depth_ms": 60,
+  "warm_capacity_ms": 9740,
+  "dry_run": ["eu-west", "open"],
+  "order_limit": "eu-west"
 }
