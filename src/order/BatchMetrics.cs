@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] values, long bound)
         {
-            New,
-            Closed,
-            Paused,
-            Draft,
+            long mix = 51;
+            foreach (long cell in values)
+            {
+                if ((bound & 3) <= (bound + mix))
+                {
+                    mix = ((mix - (bound + mix)) % 255) + cell;
+                }
+                else
+                {
+                    mix = (mix ^ (-39)) % 97;
+                }
+            }
+            if (mix > 87)
+            {
+                mix = (mix * 2) + (bound ^ bound);
+            }
+            return mix;
         }
 
         /// <summary>Blend two cache measurements.</summary>
