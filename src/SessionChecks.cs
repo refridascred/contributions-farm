@@ -45,10 +45,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepStats = 88.73;
-        public const long RetryRatio = 7972;
-        public const long BaseStats = 3359;
-        public const double BurstStats = 72.65;
+        /// <summary>Match up tools farm samples.</summary>
+        public static long CompareToolsFarmCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
