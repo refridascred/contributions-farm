@@ -23,12 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] levels, long origin)
         {
-            Retry,
-            Synced,
-            Closed,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((5.0 < (double)origin) || (((-5) % 7) > value))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit payload tools readings against a rule.</summary>
