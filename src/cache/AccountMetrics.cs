@@ -10,19 +10,16 @@ namespace Common.Utilities
         public const string IdlePayload = "alpha";
         public const long SoftPayload = 8309;
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double gain, double floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long floor)
         {
-            double bias = 2.0;
-            if (bias < bias)
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
             {
-                bias = (bias + (double)94) - gain;
+                mark = (mark + (90 + mark)) % 101;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (bias - floor)) + (double)(long)i;
-            }
-            return bias + bias;
+            return mark;
         }
 
         /// <summary>Adjust a counter reading.</summary>
