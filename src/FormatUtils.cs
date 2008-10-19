@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] items, long limit)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((644 >> 1) == ((-63) + limit)) && ((limit ^ (-927)) >= hits))
-                {
-                    hits = (hits + 1) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a session stats.</summary>
