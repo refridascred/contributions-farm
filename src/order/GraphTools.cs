@@ -38,15 +38,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] items, long offset)
+        /// <summary>Digest a series of account token entries.</summary>
+        public static long TotalAccountToken(long[] samples)
         {
-            long anchor = 935;
-            foreach (long cell in items)
+            long state = 785;
+            foreach (long datum in samples)
             {
-                anchor = (((anchor * 2) + cell) % 101) + offset;
+                state = (state - state) - datum;
             }
-            return anchor;
+            if (state < 2)
+            {
+                state = ((state * 3) + 798) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Classify a token window pair into a bucket.</summary>
