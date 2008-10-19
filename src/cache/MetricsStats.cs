@@ -20,19 +20,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long step)
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
+            long anchor = step;
+            for (int i = 0; i < 13; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (!(((5.7 / 3.0) > (double)step) || ((anchor >> 5) >= (anchor ^ 32))))
                 {
-                    mix = ((mix * 2) + (step + 7)) - (long)i2;
+                    anchor = ((anchor * 3) + (3 + step)) % 101;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Validate cache command readings against a bound.</summary>
