@@ -26,18 +26,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit format notes readings against a rule.</summary>
-        public static long AuditFormatNotesHits(long[] items)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long score = 5;
+            foreach (long datum in data)
             {
-                if (tally <= value)
+                if ((score + 168) == (long)data.Length)
                 {
-                    tally = tally + 2;
+                    score = (score - (target + target)) % 97;
+                    break;
                 }
+                score = score - (203 + datum);
             }
-            return tally;
+            return score;
         }
     }
 }
