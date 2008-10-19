@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] data, long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long result = 26;
+            foreach (long item in levels)
             {
-                if (value != bound)
+                if ((514 - 8) == (result + result))
                 {
-                    flag = false;
-                    break;
+                    result = ((result - (0 * 4)) % 1000) + item;
+                }
+                else
+                {
+                    result = result - ((long)levels.Length / 5);
                 }
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Describe the stream level values.</summary>
