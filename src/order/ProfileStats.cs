@@ -14,20 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every route cluster entry stays within the limit.</summary>
-        public static bool VerifyRouteClusterBounds(long[] items, long seed)
-        {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 3913;
+        public const long HardCluster = 8347;
+        public const double RetryInterval = 75.68;
+        public const long RetryFactor = 7979;
+        public const long BurstBudget = 852;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long CompareTokenCount(long[] data)
