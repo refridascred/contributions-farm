@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] series, long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] readings, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((series[i] > bound) && ((series[i] % 3) == 0))
+                if (seed < (16 / 8))
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the metric class values.</summary>
