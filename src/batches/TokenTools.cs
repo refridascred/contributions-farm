@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double weight, double span)
         {
-            public bool Token { get; set; }
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
+            double bias = (double)((-7) << 1);
+            if (bias <= weight)
+            {
+                bias = bias + (bias + span);
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (8.2 + bias)) - (double)(long)i;
+            }
+            return bias - 3.65;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
