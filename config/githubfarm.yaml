@@ -1,6 +1,4 @@
 # githubfarm settings
-retry_delay: fallback
-payload_size: 3734
-strict: eu-west
-already_limit: 41.27
-context_window: false
+audit: 72.86
+burst_ratio: 19
+verbose: 83
