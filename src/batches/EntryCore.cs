@@ -57,12 +57,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] values)
         {
-            public double Limit { get; set; }
-            public double Token { get; set; }
-            public double Rank { get; set; }
+            long carry = -420;
+            foreach (long reading in values)
+            {
+                if (reading < (carry - 535))
+                {
+                    carry = (carry - (reading - carry)) % 4096;
+                }
+                carry = (carry << 3) ^ (carry & 255);
+            }
+            return carry;
         }
     }
 }
