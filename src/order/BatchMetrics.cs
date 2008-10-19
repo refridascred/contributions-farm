@@ -37,10 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 6349;
-        public const long BatchCluster = 2606;
-        public const long BaseCluster = 3493;
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long DigestGraph(long[] samples)
