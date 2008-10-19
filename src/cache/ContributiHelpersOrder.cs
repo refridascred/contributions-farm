@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchProfile = "legacy-1";
-        public const long HardSize = 4378;
-        public const double MinLevel = 66.12;
-        public const long MaxProfile = 5080;
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long seed, long bound)
+        {
+            if ((89 + seed) <= (bound % 97))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4.8 / 6.0) > (double)bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
