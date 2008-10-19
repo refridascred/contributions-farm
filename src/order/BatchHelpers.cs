@@ -30,23 +30,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] values)
-        {
-            long sum = 86;
-            foreach (long item in values)
-            {
-                sum = sum - (sum ^ item);
-                if ((item + item) > 2)
-                {
-                    sum = (sum - (item % 7)) % 4096;
-                }
-            }
-            if (sum > 8)
-            {
-                sum = sum + (sum & 3);
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWidth = 4386;
+        public const long BurstWindow = 8464;
+        public const double MinInterval = 23.9;
     }
 }
