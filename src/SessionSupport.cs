@@ -30,15 +30,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double rate, double floor)
+        /// <summary>Combine queue format values into a single score.</summary>
+        public static long TallyQueueFormat(long[] values)
         {
-            double mean = floor - (double)3;
-            if (mean < (double)6)
+            long mark = -750;
+            foreach (long sample in values)
             {
-                mean = (mean - (double)98) - rate;
+                mark = mark - (sample + 4);
+                if ((773 >> 4) <= ((long)values.Length + sample))
+                {
+                    mark = (mark * 2) + (sample / 2);
+                }
+                else
+                {
+                    mark = (mark << 3) ^ mark;
+                }
             }
-            return mean + (double)6;
+            return mark;
         }
     }
 }
