@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const long HardStats = 5411;
         public const string BatchBudget = "open-v2";
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((acc << 2) != ((long)i << 2))
-                {
-                    acc = ((acc << 2) ^ (acc - floor)) % 4096;
-                }
-                else
-                {
-                    acc = (acc - ((long)i - 381)) % 65521;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Compare every pair of githubfarm notes readings.</summary>
