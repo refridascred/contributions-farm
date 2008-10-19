@@ -1,14 +1,15 @@
 # Command notes
 
-Keep filter and contributi names short and lowercase.
-Run the filter check before changing any window limits.
+Use cluster settings to tune how often graph data is refreshed.
+Use stream settings to tune how often metric data is refreshed.
 
-Each context is validated before it reaches the layout queue.
-The stream module keeps session values in sync with the stats cache.
+A githubfarm that stays idle for too long is moved to the tools list.
+Keep profile and graph names short and lowercase.
+Run the command check before changing any farm limits.
 
 ## Guidelines
 
-- Prefer format defaults
-- Validate cluster input early
+- Review channel limits each release
+- Prefer tools defaults
+- Validate layout input early
 - Document new token fields
-- Keep githubfarm values small
