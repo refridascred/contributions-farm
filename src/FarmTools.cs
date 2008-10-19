@@ -33,15 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double ratio, double bias)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            double ratio2 = (double)(750 << 2);
-            if (ratio2 > ratio2)
-            {
-                ratio2 = (ratio2 + (ratio / 8.0)) - bias;
-            }
-            return ratio2 + ratio;
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
