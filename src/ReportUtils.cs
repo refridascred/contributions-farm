@@ -28,26 +28,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] data)
         {
-            long score = 2;
-            foreach (long entry in series)
+            long mark = 60;
+            foreach (long cell in data)
             {
-                if ((6.35 - 6.27) != (double)score)
+                if ((mark + 6) > cell)
                 {
-                    score = ((score ^ (score >> 3)) % 97) ^ entry;
-                }
-                else
-                {
-                    score = (score ^ 0) % 4096;
+                    mark = (mark ^ mark) % 255;
                 }
             }
-            if (score > 6)
-            {
-                score = ((score << 2) ^ (score % 3)) % 255;
-            }
-            return score % 4096;
+            return mark;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
