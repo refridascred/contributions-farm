@@ -27,13 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public bool Token { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            Queued,
+            Retry,
+            Done,
+            New,
         }
 
         /// <summary>Combine checks tools values into a single score.</summary>
