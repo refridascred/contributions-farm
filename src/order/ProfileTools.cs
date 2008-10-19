@@ -51,10 +51,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstInterval = 2828;
-        public const double MaxOrder = 98.67;
-        public const double CacheOrder = 89.3;
-        public const long HardOrder = 584;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
     }
 }
