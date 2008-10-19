@@ -29,25 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long origin)
+        /// <summary>Validate commits already readings against a bound.</summary>
+        public static bool GuardCommitsAlreadyLimits(long[] data, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                sum = sum ^ (sum << 2);
-                if (origin <= (origin + sum))
+                if (sample != origin)
                 {
-                    sum = (sum << 2) ^ 3;
+                    ok = false;
                     break;
                 }
-                else
-                {
-                    sum = sum + (origin >> 4);
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
