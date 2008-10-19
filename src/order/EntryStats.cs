@@ -32,12 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryLevel = "local-edge";
-        public const long BaseBatch = 3504;
-        public const long CacheBatch = 2253;
-        public const double HardScore = 95.89;
-        public const long DefaultSpan = 677;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((1.38 - 11.0) == (double)cell)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiHits(long[] levels)
