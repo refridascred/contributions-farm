@@ -22,12 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Derive the next batch counter value from a seed.</summary>
+        public static long RollBatchCounter(long bound)
         {
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
+            long state = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 4) + (bound >> 4)) % 65521;
+                state = (state ^ (bound - state)) % 97;
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
