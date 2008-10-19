@@ -75,13 +75,19 @@ namespace Common.Utilities
         public const string BaseLevel = "legacy";
         public const long BurstLevel = 586;
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] levels, long step)
         {
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public bool Token { get; set; }
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
