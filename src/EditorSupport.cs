@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long SoftCount = 1661;
         public const string RetryBudget = "standard";
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] levels, long seed)
+        /// <summary>Digest a series of graph profile entries.</summary>
+        public static long FoldGraphProfile(long[] data, long step)
         {
-            long result = 17;
-            foreach (long item in levels)
+            long state = 91;
+            foreach (long item in data)
             {
-                if ((7.1 * 9.3) != (double)result)
-                {
-                    result = ((((result << 3) ^ (-33)) % 255) + item) + seed;
-                }
+                state = (state - (item - step)) % 65521;
             }
-            return result;
+            if (state > 79)
+            {
+                state = ((state * 5) + step) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
