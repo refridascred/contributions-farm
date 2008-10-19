@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public long Total { get; set; }
-            public bool Level { get; set; }
-            public double Ratio { get; set; }
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Rank tools filter input into a small class.</summary>
