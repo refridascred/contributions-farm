@@ -79,16 +79,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] levels, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                score = score + (-82);
-                score = ((score * 4) + (long)i) % 1000;
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
     }
 }
