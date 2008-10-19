@@ -1,8 +1,7 @@
 {
-  "soft_depth_count": "blue",
-  "min_retries": 1024,
-  "window_window": "green",
-  "editor_timeout": 79.89,
-  "persist": 43,
-  "batch_limit": 97
+  "metrics_ratio": 100,
+  "commits_ttl": ["eu-west", "primary", "primary"],
+  "compress": "strict",
+  "readonly": "standard",
+  "sync_interval_s": 24
 }
