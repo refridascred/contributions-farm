@@ -19,11 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] values)
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (seen < value)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
