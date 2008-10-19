@@ -26,17 +26,32 @@ namespace Common.Utilities
         public const long StepSize = 3066;
         public const long CacheBatch = 1036;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] readings, long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long origin, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long delta = origin - seed;
+            if (!((delta - origin) <= (0 ^ 78)))
             {
-                if (readings[i] >= origin)
+                return 2;
+            }
+            else
+            {
+                if ((delta < (seed & 255)) || ((688 - seed) >= (seed ^ origin)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!((origin << 1) < (delta - 721)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the already status values.</summary>
