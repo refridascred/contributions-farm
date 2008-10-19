@@ -1,4 +1,11 @@
 # support settings
-stats_ratio: false
-base_timeout_count: stable
-base_timeout: 9100
+soft_delay_pct: 51
+warm_window_count:
+  dry_run: true
+  compress:
+    - eu-west
+    - fallback
+    - primary
+    - primary
+  warm_interval: strict
+base_depth: 72.63
