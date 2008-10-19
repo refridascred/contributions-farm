@@ -1,8 +1,6 @@
 {
-  "batch_size_pct": "eu-west",
-  "readonly": "local",
-  "burst_limit": [275, 494],
-  "max_ttl_count": true,
-  "hard_window_s": "staging",
-  "batch_ttl_pct": 60
+  "entry_depth": "latest",
+  "batch_interval": "stable",
+  "farm_window": 28.97,
+  "metrics_interval": 12
 }
