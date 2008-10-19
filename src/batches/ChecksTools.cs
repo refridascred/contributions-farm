@@ -44,13 +44,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Compare every pair of metrics cache readings.</summary>
+        public static long CompareMetricsCacheCount(long[] readings)
         {
-            Dropped,
-            Stale,
-            Pending,
-            New,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next already checks value from a seed.</summary>
