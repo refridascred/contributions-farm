@@ -42,13 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Idle,
-            Queued,
-            New,
-            Stale,
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
