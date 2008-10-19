@@ -13,22 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] levels, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (!((value >> 3) != (value - value)))
+                if ((0.8 + 3.0) > (double)origin)
                 {
-                    tally = (tally + 3) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 3) - cell;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the record class values.</summary>
