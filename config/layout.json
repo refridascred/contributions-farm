@@ -1,6 +1,19 @@
 {
-  "persist": "cached",
-  "hard_delay_s": false,
-  "window_window": ["blue", "blue", "local"],
-  "context_ttl": "strict"
+  "soft_window_count": 94.66,
+  "dry_run": true,
+  "schema_threshold": "open",
+  "max_ttl_ms": 58,
+  "support_limit": {
+    "hard_window_ms": "primary",
+    "retry_capacity_pct": "standard",
+    "session_depth": {
+      "cache_window": "staging",
+      "retry_delay": 83.48,
+      "batches_threshold": 30.56,
+      "readonly": false,
+      "soft_size_ms": "cached"
+    },
+    "burst_ttl": ["standard", "standard"],
+    "idle_size": false
+  }
 }
