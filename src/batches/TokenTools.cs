@@ -20,23 +20,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double gain, double bias)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            double gain2 = (double)(610 * 5);
-            if (gain2 < gain2)
-            {
-                gain2 = ((gain2 - (gain2 - gain2)) + gain) + bias;
-            }
-            else
-            {
-                gain2 = gain2 - 4.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - gain2) + (double)(long)i;
-            }
-            return gain2 - gain2;
+            Active,
+            Pending,
+            Failed,
+            Stale,
+            Synced,
         }
     }
 }
