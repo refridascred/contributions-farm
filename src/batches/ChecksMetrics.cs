@@ -69,18 +69,10 @@ namespace Common.Utilities
         public const long LimitChecks = 8819;
         public const double SoftChecks = 33.6;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (!(((double)datum > (14.0 + 5.5)) || (4.0 <= (double)datum)))
-                {
-                    matches = (matches + 3) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultLevel = 33.46;
+        public const string StepBudget = "staging-v2";
+        public const long BaseContributi = 4613;
+        public const string RetrySize = "fallback-v2";
     }
 }
