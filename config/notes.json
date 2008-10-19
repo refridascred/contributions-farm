@@ -1,25 +1,5 @@
 {
-  "min_ratio": 60,
-  "order_window": {
-    "tools_threshold": "legacy",
-    "queue_retries": "local",
-    "min_window": 36.25,
-    "dry_run": {
-      "retry_limit_s": 500,
-      "burst_threshold_ms": true,
-      "flush_size_ms": ["strict", "blue", "edge"]
-    },
-    "warm_ttl_ms": ["fallback", "edge", "edge", "blue"],
-    "burst_delay": "local"
-  },
-  "account_ttl": {
-    "strict": false,
-    "warm_ttl_s": "stable",
-    "retry_interval_s": false,
-    "profile_ttl": 49.48,
-    "warm_timeout_ms": false,
-    "soft_depth": 30
-  },
-  "batch_capacity_s": true,
-  "strict": false
+  "compress": "green",
+  "default_limit_count": "blue",
+  "already_ttl": "legacy"
 }
