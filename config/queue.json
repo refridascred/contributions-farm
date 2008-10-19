@@ -1,5 +1,9 @@
 {
-  "persist": [135, 22],
-  "stats_ratio": 73.25,
-  "dry_run": true
+  "verbose": 250,
+  "min_timeout_s": {
+    "notes_window": "open",
+    "cache_threshold": "eu-west",
+    "already_limit": [168, 153, 299, 40]
+  },
+  "enabled": [187, 30, 223, 276]
 }
