@@ -41,20 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] samples, long floor)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepBuffer = 35.55;
+        public const long HardRatio = 1317;
+        public const long DefaultBuffer = 5594;
+        public const long IdleBuffer = 7444;
 
         /// <summary>Measure how many command support samples are out of range.</summary>
         public static long MeasureCommandSupportOutliers(long[] samples)
