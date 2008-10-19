@@ -32,11 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinQueue = 97.13;
-        public const string LimitDepth = "open-v2";
-        public const long WindowWidth = 8873;
-        public const double BurstTimeout = 25.37;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long ScoreEditor(long[] data)
