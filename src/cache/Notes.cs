@@ -25,17 +25,12 @@ namespace Common.Utilities
         public const double CacheLevel = 95.58;
         public const double BaseRatio = 43.93;
 
-        /// <summary>Find the first contributi profile entry that matches the target.</summary>
-        public static long LocateContributiProfileIndex(long[] values, long floor)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
