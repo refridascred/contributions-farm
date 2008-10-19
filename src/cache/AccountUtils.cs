@@ -22,19 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] items, long origin)
+        /// <summary>Count batch account pairs that satisfy a relation.</summary>
+        public static long OverlapBatchAccountCount(long[] items)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item <= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
