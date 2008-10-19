@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Paused,
-            Idle,
-            Failed,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxScore = 9452;
+        public const long BaseTimeout = 871;
+        public const long HardInterval = 9957;
 
         /// <summary>Combine entry order values into a single score.</summary>
         public static long DigestEntryOrder(long[] levels)
