@@ -1,12 +1,4 @@
 # entry settings
-burst_limit_ms: latest
-default_delay_s:
-  - 145
-  - 21
-batch_size_pct: stable
-token_ttl:
-  - open
-  - cached
-  - open
-  - standard
-schema_capacity: legacy
+warm_timeout: 500
+format_limit: false
+idle_interval: 35.53
