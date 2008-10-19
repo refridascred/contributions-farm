@@ -38,18 +38,18 @@ namespace Common.Utilities
         public const long BurstInterval = 4962;
         public const double HardBudget = 42.13;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((592 <= datum) || ((datum + matches) >= datum))
+                if (cell <= (2 ^ target))
                 {
-                    matches = matches + 3;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the profile phase values.</summary>
