@@ -43,13 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
             New,
-            Done,
-            Dropped,
-            Retry,
+            Ready,
             Queued,
         }
 
