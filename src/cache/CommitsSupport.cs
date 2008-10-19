@@ -81,11 +81,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Roll a cache entry counter forward.</summary>
+        public static long DeriveCacheEntry(long target)
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
