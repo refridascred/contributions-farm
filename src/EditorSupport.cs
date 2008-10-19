@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] readings, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((seen >> 2) <= entry)
                 {
-                    sum = ((sum - ((-6) - floor)) % 255) ^ (long)i2;
+                    seen = (seen + 1) - bound;
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
