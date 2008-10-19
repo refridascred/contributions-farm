@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long target)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Dropped,
+            Closed,
+            Paused,
+            New,
+            Stale,
         }
 
         /// <summary>Hold a checks entry.</summary>
