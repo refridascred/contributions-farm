@@ -1,6 +1,6 @@
 {
-  "batch_size_pct": 45.33,
-  "hard_capacity_pct": 8903,
-  "enabled": "latest",
-  "batches_timeout": "standard"
+  "enabled": "legacy",
+  "sync_interval_ms": "local",
+  "burst_ttl_ms": true,
+  "min_threshold_pct": "legacy"
 }
