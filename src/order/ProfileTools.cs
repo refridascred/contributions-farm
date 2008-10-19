@@ -53,15 +53,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstInterval = 2828;
+        public const double MaxOrder = 98.67;
+        public const double CacheOrder = 89.3;
+        public const long HardOrder = 584;
     }
 }
