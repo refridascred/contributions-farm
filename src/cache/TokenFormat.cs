@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] data)
+        /// <summary>Look up the position of a tools window sample.</summary>
+        public static long FindToolsWindowIndex(long[] values, long seed)
         {
-            long mix = 3;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mix + entry) < 6)
+                if ((values[i] >= seed) && ((values[i] % 5) != 0))
                 {
-                    mix = (mix + (mix + 17)) % 255;
-                }
-                for (int i = 0; i < 7; i++)
-                {
-                    mix = (((mix << 2) ^ 369) % 1000) ^ (long)i;
-                }
-                if ((entry + mix) < (mix % 8))
-                {
-                    mix = (mix - (538 % 12)) % 255;
+                    return (long)i;
                 }
             }
-            if (mix > 602)
-            {
-                mix = mix - mix;
-            }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Describe the tools status values.</summary>
