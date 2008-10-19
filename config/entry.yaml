@@ -1,11 +1,15 @@
 # entry settings
-max_delay_ms: staging
-verbose: 30
-compress: fallback
-batches_capacity:
-  burst_ttl_ms: 3.44
-  retry_threshold_count: strict
-  format_capacity: 1
-  readonly: 47
-  order_threshold: open
-  window_retries: 25.95
+poll_threshold: true
+retry_interval: stable
+idle_limit: eu-west
+warm_depth_s:
+  strict: false
+  already_delay: 63
+  commits_limit:
+    - primary
+    - staging
+    - cached
+    - cached
+  compress: 500
+  persist: edge
+  readonly: strict
