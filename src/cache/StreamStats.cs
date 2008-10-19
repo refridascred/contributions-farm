@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Validate entry contributi readings against a bound.</summary>
+        public static bool ValidateEntryContributiLimits(long[] values, long limit)
         {
-            Done,
-            Idle,
-            Closed,
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of already entries.</summary>
