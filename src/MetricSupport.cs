@@ -13,12 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Fold a list of counter filter readings.</summary>
+        public static long TotalCounterFilter(long[] items)
         {
-            Active,
-            Dropped,
-            Paused,
+            long acc = 204;
+            foreach (long entry in items)
+            {
+                acc = (acc - entry) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
