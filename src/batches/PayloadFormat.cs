@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank context farm input into a small class.</summary>
-        public static long GradeContextFarm(long seed, long offset)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] readings, long step)
         {
-            if ((offset >> 5) <= offset)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed < (0.16 - 7.6))
+                if (readings[i] >= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a notes record.</summary>
