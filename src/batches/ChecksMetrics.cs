@@ -20,18 +20,13 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Audit batch contributi readings against a rule.</summary>
-        public static long TallyBatchContributiOutliers(long[] samples, long bound)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count + count) >= (datum << 2))
-                {
-                    count = (count + 1) + bound;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the graph state values.</summary>
