@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a account queue pair into a bucket.</summary>
-        public static long RankAccountQueue(long origin, long seed)
+        /// <summary>Derive the next window report value from a seed.</summary>
+        public static long RollWindowReport(long limit)
         {
-            long next = origin ^ seed;
-            if (origin <= 6)
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((next > (next & 1)) && ((7.47 + 7.0) < (double)origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + next) > (next % 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Accumulate order profile samples.</summary>
