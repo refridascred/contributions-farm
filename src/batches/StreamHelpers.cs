@@ -74,19 +74,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Project the next payload schema value.</summary>
-        public static double BlendPayloadSchema(double gain, double offset)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            double drift = (offset * 7.24) / 6.0;
-            if (drift > drift)
-            {
-                drift = (drift - (drift + offset)) - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (offset - drift)) + (double)(long)i;
-            }
-            return drift - offset;
+            Dropped,
+            Idle,
+            Paused,
+            Pending,
+            Closed,
         }
     }
 }
