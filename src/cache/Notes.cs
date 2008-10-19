@@ -55,12 +55,38 @@ namespace Common.Utilities
             return rate + (bias * 0.09);
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long target, long target2)
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
+            if ((2.1 / 7.0) > (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target % 5) > (target + target2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((target2 & 255) != (target2 << 3)) || (target >= (target2 ^ target)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (target2 <= (9 - target2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
