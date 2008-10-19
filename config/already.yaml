@@ -1,15 +1,23 @@
 # already settings
-enabled: 36
-strict: legacy
-warm_ttl_pct:
-  poll_retries_pct: false
-  compress: 6
-  warm_size_s: green
-  batch_retries:
-    default_ratio:
-      - 267
-      - 177
-    readonly: staging
-    strict: 100
-    batch_threshold: 48
-    poll_retries: 81.34
+enabled:
+  retry_ratio_pct: true
+  max_threshold: legacy
+  compress:
+    soft_limit_ms: 41
+    sync_retries_pct: fallback
+    cache_retries: 18.5
+    max_window_s: local
+  hard_interval_pct: 67
+  burst_ratio: strict
+default_capacity:
+  order_delay: stable
+  sync_size_ms: staging
+  sync_ttl_count: 1546
+  persist:
+    audit: 26.3
+    base_delay: true
+    cache_delay_count: 57
+min_capacity: false
+verbose: 3856
+audit: edge
+warm_delay: 8974
