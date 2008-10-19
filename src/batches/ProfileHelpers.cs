@@ -27,13 +27,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] items)
         {
-            public double Limit { get; set; }
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading <= (double)6)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a commits info.</summary>
