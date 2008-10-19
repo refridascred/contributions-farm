@@ -14,12 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Check that every route cluster entry stays within the limit.</summary>
+        public static bool VerifyRouteClusterBounds(long[] items, long seed)
         {
-            Synced,
-            Done,
-            New,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
