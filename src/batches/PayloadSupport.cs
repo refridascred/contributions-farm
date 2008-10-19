@@ -15,19 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate context metric samples.</summary>
-        public static long ScoreContextMetric(long[] values)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long score = 14;
-            foreach (long value in values)
-            {
-                score = (score + (value << 1)) % 65521;
-                if (((value + value) != (score / 5)) || (score < (value + 278)))
-                {
-                    score = ((score * 4) + (9 + score)) % 101;
-                }
-            }
-            return score % 1000;
+            New,
+            Idle,
+            Pending,
+            Closed,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
