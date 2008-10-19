@@ -37,39 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long origin, long offset)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long diff = origin - offset;
-            if ((4.3 * 8.0) <= (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((diff + origin) < (diff * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((9 + offset) <= (origin >> 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((8.98 - 9.8) != (double)origin) && ((diff % 60) <= (diff % 7)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
