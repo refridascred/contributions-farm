@@ -18,22 +18,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of support payload entries.</summary>
-        public static long FoldSupportPayload(long[] series)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long state = 369;
-            foreach (long cell in series)
-            {
-                if ((double)cell == (20.0 + 0.4))
-                {
-                    state = (state - cell) % 4096;
-                }
-            }
-            if (state > 594)
-            {
-                state = ((state * 3) + (state - state)) % 65521;
-            }
-            return state;
+            public bool Label { get; set; }
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
