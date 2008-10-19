@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next layout report value from a seed.</summary>
-        public static long DeriveLayoutReport(long floor)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!(((floor << 3) != (result + floor)) && (floor < (floor % 2))))
-                {
-                    result = (result * 3) + (floor * 4);
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Locate a account reading by value.</summary>
