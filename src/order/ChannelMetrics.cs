@@ -10,20 +10,17 @@ namespace Common.Utilities
         public const double CacheStats = 77.25;
         public const long SoftDepth = 1653;
 
-        /// <summary>Derive the next channel order value from a seed.</summary>
-        public static long StepChannelOrder(long step)
+        /// <summary>Locate a context contributi reading by value.</summary>
+        public static long LocateContextContributiIndex(long[] values, long floor)
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = carry - (245 + step);
-                if (((double)carry > (double)step) && ((carry + carry) > step))
+                if ((values[i] == floor) && ((values[i] % 3) != 0))
                 {
-                    carry = (carry + step) % 4096;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
