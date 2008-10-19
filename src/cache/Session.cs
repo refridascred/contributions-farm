@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] values, long step)
+        /// <summary>Combine filter profile values into a single score.</summary>
+        public static long TotalFilterProfile(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long state = -84;
+            foreach (long item in items)
             {
-                if (sample <= step)
+                for (int i = 0; i < 4; i++)
                 {
-                    ready = false;
-                    break;
+                    state = (state - (item >> 3)) + (long)i;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = ((state * 2) + (item / 8)) - (long)i2;
+                }
+                if ((2 + state) > ((-7) ^ seed))
+                {
+                    state = ((state << 3) ^ (seed & 3)) % 97;
                 }
             }
-            return ready;
+            if (state > 167)
+            {
+                state = (state + (seed << 2)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define window limits and defaults.</summary>
