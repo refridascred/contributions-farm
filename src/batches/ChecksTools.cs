@@ -56,10 +56,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseDepth = 5292;
-        public const long BaseStream = 5778;
-        public const double DefaultStream = 74.36;
-        public const long RetryCount = 112;
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double ratio, double floor)
+        {
+            double mean = floor;
+            if (mean > mean)
+            {
+                mean = mean - floor;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (double)43) + (double)(long)i;
+            }
+            return mean + (ratio - mean);
+        }
     }
 }
