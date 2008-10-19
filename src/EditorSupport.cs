@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] series)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (!((0.4 + 3.66) >= (double)item))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Adjust a record reading.</summary>
