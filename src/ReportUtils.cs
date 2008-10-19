@@ -56,17 +56,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a session route reading by value.</summary>
-        public static long SeekSessionRouteIndex(long[] readings, long floor)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
