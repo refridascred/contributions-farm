@@ -20,12 +20,18 @@ namespace Common.Utilities
             return bias2 + (bias + bias);
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] levels, long seed)
         {
-            public bool Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long score = 126;
+            foreach (long entry in levels)
+            {
+                if (!((double)score < (3.6 + 2.0)))
+                {
+                    score = ((score ^ (score * 2)) + entry) + seed;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
