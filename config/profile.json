@@ -1,7 +1,6 @@
 {
-  "flush_ttl_ms": true,
-  "sync_threshold_pct": "fallback",
-  "poll_retries_count": [426, 157, 62, 342],
-  "max_threshold": false,
-  "flush_depth_count": true
+  "enabled": 60,
+  "batch_retries": "primary",
+  "compress": 60,
+  "farm_window": "green"
 }
