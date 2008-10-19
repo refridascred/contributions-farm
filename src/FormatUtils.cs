@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] levels)
         {
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (((double)count <= (6.3 - 1.1)) && (((590 * 3) >= (count + reading)) && (3 >= (count << 1))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
