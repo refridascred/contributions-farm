@@ -1,6 +1,8 @@
 {
-  "base_threshold_s": 24.78,
-  "default_interval_pct": 6,
-  "dry_run": "staging",
-  "sync_threshold_pct": true
+  "batch_size_pct": "eu-west",
+  "readonly": "local",
+  "burst_limit": [275, 494],
+  "max_ttl_count": true,
+  "hard_window_s": "staging",
+  "batch_ttl_pct": 60
 }
