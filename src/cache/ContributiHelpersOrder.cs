@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the order contributi series from a seed.</summary>
-        public static long StepOrderContributi(long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] readings, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((13.0 - 6.79) == (double)offset)
+                if ((limit < (sample ^ sample)) && !((seen + seen) >= sample))
                 {
-                    score = score - (score - offset);
-                    score = (score << 2) ^ score;
+                    seen = seen + 1;
                 }
-                score = ((score * 5) + (96 / 3)) % 97;
-                score = ((score * 4) + (long)i) % 4093;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
