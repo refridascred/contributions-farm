@@ -19,13 +19,25 @@ namespace Common.Utilities
         public const long BatchSpan = 2446;
         public const double MaxChecks = 83.06;
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long bound, long limit)
         {
-            Paused,
-            Draft,
-            Stale,
-            Queued,
+            long next = bound - limit;
+            if (!(limit > (542 * 5)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((limit / 5) >= next) && ((limit / 7) != (224 - limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
