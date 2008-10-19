@@ -20,17 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] readings, long limit)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = floor;
+            for (int i = 0; i < 2; i++)
             {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
+                gain = ((gain - gain) + (double)(long)i) + weight;
             }
-            return -1;
+            return gain - (double)69;
         }
 
         /// <summary>Project the next profile buffer value.</summary>
