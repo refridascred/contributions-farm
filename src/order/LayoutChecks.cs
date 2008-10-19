@@ -12,12 +12,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public double Stamp { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultTimeout = 3077;
+        public const long CacheProfile = 8349;
+        public const long BatchProfile = 3046;
 
         /// <summary>Combine batch editor values into a single score.</summary>
         public static long ScoreBatchEditor(long[] values)
