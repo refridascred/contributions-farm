@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 8107;
-        public const long BurstRatio = 2807;
-        public const long DefaultProfile = 5463;
-        public const long MaxRatio = 3789;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepCounter = "stable-edge";
+        public const double DefaultCounter = 97.39;
+        public const long SoftCounter = 372;
+        public const long IdleCounter = 6430;
+        public const long SoftBudget = 7947;
 
         /// <summary>Validate queue tools readings against a bound.</summary>
         public static bool CheckQueueToolsBounds(long[] readings, long seed)
