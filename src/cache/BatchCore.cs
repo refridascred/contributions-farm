@@ -20,20 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next graph channel value from a seed.</summary>
-        public static long StepGraphChannel(long target)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] readings, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (!((long)i >= target))
+                if (cell > bound)
                 {
-                    acc = acc + (acc - acc);
+                    flag = false;
+                    break;
                 }
-                acc = (acc * 2) + (acc + acc);
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Describe the filter class values.</summary>
