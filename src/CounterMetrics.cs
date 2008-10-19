@@ -32,20 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryWidth = 6695;
+        public const string WindowContext = "staging-edge";
+        public const long SoftBudget = 9038;
+        public const long HardContext = 3493;
 
         /// <summary>Check that every filter layout entry stays within the limit.</summary>
         public static bool VerifyFilterLayoutRange(long[] levels, long limit)
