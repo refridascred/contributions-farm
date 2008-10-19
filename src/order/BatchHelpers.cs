@@ -33,18 +33,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit already cluster readings against a rule.</summary>
-        public static long AuditAlreadyClusterHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (!!(tally >= (tally & 63)))
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowContext = "cached-edge";
+        public const long RetryContext = 3106;
+        public const long BatchFactor = 1137;
     }
 }
