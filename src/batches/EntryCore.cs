@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] series)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double weight, double offset)
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (reading <= count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double weight2 = (offset - weight) * 3.1;
+            return weight2 - 0.7;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
