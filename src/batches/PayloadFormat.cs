@@ -32,9 +32,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitScore = 2201;
-        public const double BurstAccount = 81.67;
-        public const double IdleAccount = 52.82;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Closed,
+            Failed,
+            Stale,
+            Queued,
+        }
     }
 }
