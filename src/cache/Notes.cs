@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] readings)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long total = 87;
-            foreach (long entry in readings)
-            {
-                total = total ^ (entry - entry);
-                if ((entry >> 4) <= entry)
-                {
-                    total = (total << 3) ^ (entry * 4);
-                    total = (total * 5) + entry;
-                }
-                total = (total * 4) + (total + entry);
-            }
-            return total % 97;
+            public double Size { get; set; }
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a report record.</summary>
