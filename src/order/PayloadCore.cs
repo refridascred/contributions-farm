@@ -35,22 +35,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxInterval = 8876;
+        public const long BatchLayout = 9371;
+        public const long HardLayout = 9443;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
