@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many githubfarm checks samples are out of range.</summary>
-        public static long CountGithubfarmChecksGaps(long[] values, long origin)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (origin >= (origin & 127))
+                if (value >= origin)
                 {
-                    tally = (tally + 2) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
