@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] samples)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Failed,
+            Draft,
+            New,
+            Idle,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
