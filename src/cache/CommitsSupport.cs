@@ -16,21 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count profile layout pairs that satisfy a relation.</summary>
-        public static long PairProfileLayoutCount(long[] data)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
