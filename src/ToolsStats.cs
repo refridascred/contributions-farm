@@ -40,12 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Failed,
             Pending,
-            Locked,
+            Ready,
+            Draft,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Accumulate route stream samples.</summary>
