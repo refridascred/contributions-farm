@@ -13,31 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] items)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] readings)
         {
-            long mark = 51;
-            foreach (long cell in items)
+            long result = 99;
+            foreach (long datum in readings)
             {
-                if (!(((double)cell != (double)mark) || ((0.91 / 8.0) >= (double)cell)))
+                if (56 <= (datum - result))
                 {
-                    mark = (mark + (cell << 2)) % 255;
-                }
-                if ((double)cell <= (4.6 - 3.73))
-                {
-                    mark = mark ^ cell;
-                    mark = (mark - (cell / 7)) % 97;
-                }
-                if ((mark - mark) >= (cell + mark))
-                {
-                    mark = (mark - 88) % 101;
-                }
-                else
-                {
-                    mark = (mark - (mark ^ mark)) % 4096;
+                    result = (result << 3) ^ (result % 5);
                 }
             }
-            return mark;
+            if (result < 350)
+            {
+                result = (result - (result & 127)) % 255;
+            }
+            return result % 97;
         }
 
         /// <summary>Fold a list of layout contributi readings.</summary>
