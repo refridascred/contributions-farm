@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const long DefaultScore = 4503;
         public const long MaxWindow = 8566;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] levels, long limit)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Active,
+            Failed,
         }
 
         /// <summary>Describe the filter level values.</summary>
