@@ -21,22 +21,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] readings, long limit)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            double gain = bias;
+            if (gain <= (bias + floor))
             {
-                if (seen > limit)
-                {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = gain - gain;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (gain + gain)) + (double)(long)i;
+            }
+            return gain - (double)28;
         }
 
         /// <summary>Hold a counter stats.</summary>
