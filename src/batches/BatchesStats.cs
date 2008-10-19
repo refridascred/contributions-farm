@@ -25,18 +25,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((10.0 / 8.0) != (double)tally)
+                if (((double)datum <= (7.5 - 3.56)) || ((bound / 6) != (datum * 3)))
                 {
-                    tally = (tally + 1) ^ sample;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
