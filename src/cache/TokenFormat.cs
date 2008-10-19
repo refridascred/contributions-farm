@@ -19,16 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long target)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] data, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                carry = (carry * 3) + (1 / 9);
-                carry = ((carry * 2) + (long)i) % 97;
+                if (datum <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Project the next commits value.</summary>
