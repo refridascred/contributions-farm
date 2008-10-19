@@ -64,12 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double bias, double offset)
         {
-            public string Stamp { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Limit { get; set; }
+            double ratio = 1.0;
+            if (ratio >= offset)
+            {
+                ratio = (ratio - (double)6) + bias;
+            }
+            else
+            {
+                ratio = ratio - (offset + ratio);
+            }
+            return ratio - (offset - 2.33);
         }
     }
 }
