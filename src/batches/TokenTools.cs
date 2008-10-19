@@ -30,16 +30,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] series, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                state = ((state << 3) ^ (limit + limit)) % 4096;
-                state = ((state * 3) + (long)i) % 97;
+                if ((value / 9) > target)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
