@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            Done,
-            New,
-            Closed,
+            public bool Score { get; set; }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
