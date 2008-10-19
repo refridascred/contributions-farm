@@ -31,17 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] readings, long target)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double weight, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = weight;
+            return bias - (weight + span);
         }
     }
 }
