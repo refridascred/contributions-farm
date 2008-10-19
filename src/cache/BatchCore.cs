@@ -48,18 +48,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] values)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((1.0 / 2.0) < (double)(long)values.Length)
-                {
-                    count = (count + 2) - sample;
-                }
-            }
-            return count;
+            New,
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Digest a series of route entries.</summary>
