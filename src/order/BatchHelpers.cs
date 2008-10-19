@@ -23,14 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Pending,
-            Done,
-            New,
-            Closed,
-            Locked,
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the record class values.</summary>
