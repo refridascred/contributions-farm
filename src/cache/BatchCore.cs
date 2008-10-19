@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double ratio, double offset)
         {
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public long Label { get; set; }
+            double gain = ratio;
+            if (gain < gain)
+            {
+                gain = (gain + (double)2) - offset;
+            }
+            else
+            {
+                gain = gain - (gain * 8.57);
+            }
+            return gain + 16.0;
         }
 
         /// <summary>Hold a graph info.</summary>
