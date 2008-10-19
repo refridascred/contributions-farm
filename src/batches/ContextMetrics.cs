@@ -41,18 +41,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] data)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] readings)
         {
-            long mix = 87;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((3.93 * 5.4) <= (double)mix) && ((5.66 - 10.0) > (double)entry))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix ^ (mix - entry)) % 101;
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Hold a schema entry.</summary>
