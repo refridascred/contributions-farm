@@ -47,36 +47,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long bound, long limit)
+        /// <summary>Grade a graph payload value against two limits.</summary>
+        public static long RankGraphPayload(long floor, long origin)
         {
-            long lane = bound - limit;
-            if ((double)bound < (double)limit)
+            if (floor >= 808)
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if (((bound ^ limit) != (limit + lane)) || ((double)limit >= (2.49 - 13.0)))
+                if (((origin >> 3) >= (origin / 9)) && ((floor + 1) < (floor - origin)))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if ((bound + limit) <= (lane + lane))
+                    if ((-92) < (floor << 3))
                     {
                         return 7;
                     }
                     else
                     {
-                        if ((double)bound != (6.22 - 2.3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 4;
                     }
                 }
             }
