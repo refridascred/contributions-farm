@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long step, long floor)
         {
-            Failed,
-            New,
-            Dropped,
-            Pending,
+            long cur = step - floor;
+            if ((step + floor) <= (cur % 16))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)step < (0.7 / 2.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor - floor) == (step / 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4.4 - 12.0) >= (double)cur)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next profile value.</summary>
