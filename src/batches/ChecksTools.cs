@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] items, long seed)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftInterval = 89.04;
+        public const long BurstFactor = 6574;
+        public const long RetryEditor = 1293;
+        public const long DefaultDepth = 6549;
+        public const double LimitRatio = 52.44;
 
         /// <summary>Compare every pair of metrics cache readings.</summary>
         public static long CompareMetricsCacheCount(long[] readings)
