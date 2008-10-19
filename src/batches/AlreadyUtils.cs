@@ -52,15 +52,15 @@ namespace Common.Utilities
             return bias2 + (double)49;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] readings, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] series, long origin)
         {
             long tally = 0;
-            foreach (long entry in readings)
+            foreach (long datum in series)
             {
-                if (((step + step) < 8) && ((double)tally >= (double)7))
+                if (!((datum >> 3) == (tally >> 5)) && ((origin - 2) != (origin / 9)))
                 {
-                    tally = (tally + 3) ^ entry;
+                    tally = tally + 1;
                 }
             }
             return tally;
