@@ -25,18 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] items, long origin)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long offset, long offset2)
         {
-            long count = 0;
-            foreach (long item in items)
+            long cur = offset + offset2;
+            if (!((offset2 ^ offset2) > offset))
             {
-                if ((double)item >= (5.24 * 2.0))
+                return 2;
+            }
+            else
+            {
+                if ((double)cur >= 4.8)
                 {
-                    count = (count + 2) - origin;
+                    return 1;
+                }
+                else
+                {
+                    if (cur >= (offset / 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((4 ^ cur) < (75 - offset2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
