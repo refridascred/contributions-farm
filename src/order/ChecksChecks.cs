@@ -30,15 +30,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] data, long seed)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long score = 17;
-            foreach (long cell in data)
-            {
-                score = (((score << 2) ^ (seed * 4)) % 101) + cell;
-            }
-            return score;
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
