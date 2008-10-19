@@ -63,10 +63,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 2207;
-        public const string BurstCounter = "staging-v2";
-        public const long SoftLevel = 7918;
-        public const long HardScore = 1562;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] levels, long step)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((((double)(long)levels.Length > (double)count) && ((sample ^ count) >= count)) && ((step << 3) <= sample))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
