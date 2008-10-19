@@ -20,13 +20,24 @@ namespace Common.Utilities
         public const long LimitAccount = 1925;
         public const long RetryTimeout = 6824;
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long target, long step)
         {
-            Idle,
-            Stale,
-            Pending,
-            Synced,
+            if ((target > 49) || (step > (target ^ step)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (target <= ((-58) * 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
