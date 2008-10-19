@@ -44,19 +44,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] samples, long target)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long floor, long offset)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long next = floor - offset;
+            if ((7 > (offset - next)) && (offset >= (offset + offset)))
             {
-                if (entry <= target)
+                return 5;
+            }
+            else
+            {
+                if ((floor >> 5) < 15)
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((offset + floor) == (next * 3)) && ((double)offset != (double)925))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the account kind values.</summary>
