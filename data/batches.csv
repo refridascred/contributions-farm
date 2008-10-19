@@ -1,6 +1,11 @@
-id,owner,token,score
-1,817,18.66,stable
-2,27.23,58.71,92.03
-3,357,local,39.06
-4,staging,21.0,96.43
-5,edge,stable,62
+id,region,level
+1,772,865
+2,61.62,standard
+3,62,local
+4,997,366
+5,36.56,34.57
+6,398,850
+7,8.14,eu-west
+8,612,green
+9,332,local
+10,93.84,82.04
