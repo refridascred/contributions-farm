@@ -43,23 +43,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] items)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] samples)
         {
-            long acc = 5;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc << 3) ^ (acc + (long)i)) % 255;
-                    acc = ((acc * 2) + ((long)i / 4)) % 255;
-                }
-                if ((7.0 >= (double)reading) && ((reading / 7) < (28 * 3)))
-                {
-                    acc = acc ^ (acc - acc);
+                    if ((samples[i] + samples[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Project the next batches stats value.</summary>
