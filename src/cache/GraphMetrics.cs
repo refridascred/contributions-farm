@@ -35,27 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] levels)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long carry = -20;
-            foreach (long cell in levels)
-            {
-                carry = ((carry * 4) + (carry - carry)) % 1000;
-                if ((7.0 + 7.7) < (double)cell)
-                {
-                    carry = (carry * 5) + ((-3) + cell);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (cell + carry)) % 101;
-                }
-            }
-            if (carry > 4)
-            {
-                carry = (carry << 2) ^ 3;
-            }
-            return carry % 1000;
+            public bool Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
