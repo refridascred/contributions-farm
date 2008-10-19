@@ -1,10 +1,6 @@
 {
-  "warm_threshold_pct": [253, 252, 459, 230],
-  "verbose": {
-    "soft_size_pct": ["eu-west", "blue", "strict"],
-    "hard_limit_count": "staging",
-    "cache_ratio": true
-  },
-  "retry_size": "staging",
-  "command_limit": "strict"
+  "editor_limit": ["latest", "fallback"],
+  "commits_size": 810,
+  "profile_interval": ["staging", "open"],
+  "compress": ["primary", "primary", "eu-west"]
 }
