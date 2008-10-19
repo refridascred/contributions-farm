@@ -40,13 +40,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public double Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
-            public double Rank { get; set; }
+            Draft,
+            Ready,
+            Paused,
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
