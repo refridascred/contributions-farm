@@ -20,24 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long limit, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] data, long step)
         {
-            if ((limit <= 68) && ((double)limit != (2.0 - 11.0)))
+            bool ready = true;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)offset >= (double)628))
+                if (value != step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
