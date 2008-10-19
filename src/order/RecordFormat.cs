@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] items, long target)
+        /// <summary>Locate a order report reading by value.</summary>
+        public static long SeekOrderReportIndex(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((69 + hits) >= (reading % 24))
+                if (items[i] < floor)
                 {
-                    hits = (hits + 3) + target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
