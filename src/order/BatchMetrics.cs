@@ -60,20 +60,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Combine context metric values into a single score.</summary>
-        public static long FoldContextMetric(long[] samples)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long score = 1;
-            foreach (long datum in samples)
-            {
-                score = score - (score + score);
-                if (datum > (score + datum))
-                {
-                    score = score - (score << 2);
-                }
-                score = (score ^ (datum + datum)) % 101;
-            }
-            return score % 4096;
+            Active,
+            Dropped,
+            New,
         }
     }
 }
