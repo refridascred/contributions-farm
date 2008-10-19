@@ -12,20 +12,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate report cache samples.</summary>
-        public static long FoldReportCache(long[] data)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] items, long offset)
         {
-            long sum = 915;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value + 492) <= sum)
+                if ((items[i] > offset) && ((items[i] % 2) == 0))
                 {
-                    sum = ((sum * 3) + sum) % 4096;
-                    sum = (sum - 75) % 97;
+                    return (long)i;
                 }
-                sum = ((sum * 4) + value) % 255;
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
