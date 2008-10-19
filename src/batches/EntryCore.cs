@@ -26,19 +26,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] data, long target)
+        /// <summary>Classify a graph counter pair into a bucket.</summary>
+        public static long ClassifyGraphCounter(long step, long target)
         {
-            long acc = 96;
-            foreach (long entry in data)
+            long lane = step - target;
+            if ((19.0 - 6.9) != (double)lane)
             {
-                acc = ((acc ^ 2) ^ entry) - target;
+                return 5;
             }
-            if (acc > 292)
+            else
             {
-                acc = acc ^ acc;
+                if ((lane - target) >= (target - 6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return acc % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
