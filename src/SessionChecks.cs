@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultScore = 2523;
-        public const string BatchCount = "strict-v2";
-        public const long HardScore = 1371;
+        /// <summary>Classify a command githubfarm pair into a bucket.</summary>
+        public static long GradeCommandGithubfarm(long target, long target2)
+        {
+            if (target < (target + 57))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((70 % 8) != (target >> 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
