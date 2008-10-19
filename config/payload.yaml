@@ -1,14 +1,7 @@
 # payload settings
-base_ratio: 89.98
-sync_size_ms:
-  - 223
-  - 405
-  - 62
-  - 445
-audit:
-  - blue
-  - strict
-  - green
-max_size: legacy
-metric_depth: 86
-soft_timeout_count: false
+batches_delay: blue
+stream_depth: 6470
+compress: 95.1
+base_capacity: false
+dry_run: edge
+poll_size_s: 3806
