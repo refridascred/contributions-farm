@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
+            public long Total { get; set; }
+            public bool Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
