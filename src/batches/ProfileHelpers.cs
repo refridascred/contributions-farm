@@ -64,13 +64,14 @@ namespace Common.Utilities
         public const double BaseAlready = 30.52;
         public const double IdleAlready = 37.33;
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
+            Synced,
             Locked,
-            Queued,
+            Paused,
             Retry,
-            Draft,
+            Closed,
         }
     }
 }
