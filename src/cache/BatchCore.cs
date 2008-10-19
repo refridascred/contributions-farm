@@ -20,38 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long limit, long origin)
+        /// <summary>Derive the next graph channel value from a seed.</summary>
+        public static long StepGraphChannel(long target)
         {
-            if (!((limit + limit) >= (origin - origin)))
+            long acc = target;
+            for (int i = 0; i < 11; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit >= (4 % 100)) && ((17.0 * 9.09) < (double)origin))
+                if (!((long)i >= target))
                 {
-                    return 4;
+                    acc = acc + (acc - acc);
                 }
-                else
-                {
-                    if ((125 % 64) > (limit ^ 0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((origin / 4) <= limit) || ((origin % 24) >= (limit + limit)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                acc = (acc * 2) + (acc + acc);
+                acc = ((acc * 2) + (long)i) % 1000;
             }
+            return acc;
         }
 
         /// <summary>Describe the filter class values.</summary>
