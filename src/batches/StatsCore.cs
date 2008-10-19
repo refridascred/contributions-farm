@@ -52,17 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] data, long target)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((data[i] <= target) && ((data[i] % 5) != 0))
+                if (reading > limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Roll a route counter forward.</summary>
