@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] items, long floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 61;
+            foreach (long value in readings)
             {
-                if (items[i] > floor)
+                if ((value & 255) != (seed >> 3))
                 {
-                    return (long)i;
+                    state = (state << 2) ^ value;
+                }
+                else
+                {
+                    state = ((state * 4) + (seed & 255)) % 4096;
                 }
             }
-            return -1;
+            if (state > 0)
+            {
+                state = (state - state) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
