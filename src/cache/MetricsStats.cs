@@ -52,22 +52,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] values, long origin)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long target, long step)
         {
-            long count = 0;
-            foreach (long cell in values)
+            if (!((target << 3) < (8 ^ target)))
             {
-                if (cell <= origin)
+                return 6;
+            }
+            else
+            {
+                if ((step - (-8)) > (529 & 31))
                 {
-                    count = count + 2;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((double)step >= 8.0) || ((step % 16) == (step / 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((step >> 5) >= (target / 2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
