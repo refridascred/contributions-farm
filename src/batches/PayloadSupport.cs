@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
