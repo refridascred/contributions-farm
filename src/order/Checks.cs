@@ -38,13 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] series, long target)
         {
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((double)matches != (3.28 * 5.15))
+                {
+                    matches = ((matches + 3) ^ item) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a report reading.</summary>
