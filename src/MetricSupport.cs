@@ -16,11 +16,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchLevel = 97.8;
-        public const double RetryBudget = 7.02;
-        public const long BaseContributi = 252;
-        public const long HardContributi = 4385;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] series)
+        {
+            long score = 404;
+            foreach (long datum in series)
+            {
+                if (((5 & 255) < (score + score)) || ((score + score) >= (datum - (-939))))
+                {
+                    score = ((score * 3) + 0) % 4096;
+                }
+            }
+            if (score < 66)
+            {
+                score = score - ((long)series.Length + score);
+            }
+            return score;
+        }
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
