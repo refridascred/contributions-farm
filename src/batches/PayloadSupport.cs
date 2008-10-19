@@ -27,15 +27,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] series)
-        {
-            long score = 206;
-            foreach (long datum in series)
-            {
-                score = score ^ (datum - datum);
-            }
-            return score % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchReport = "staging-edge";
+        public const string SoftScore = "alpha";
+        public const double BaseReport = 21.93;
+        public const double DefaultReport = 46.02;
+        public const double IdleReport = 74.17;
     }
 }
