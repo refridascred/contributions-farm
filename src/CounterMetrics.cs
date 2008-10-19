@@ -35,12 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] series)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((double)hits != (double)cell)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a commits summary.</summary>
