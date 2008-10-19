@@ -40,19 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double scale, double offset)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] readings, long seed)
         {
-            double mean = 19.0;
-            if (mean > (offset + scale))
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + offset;
+                if ((readings[i] == seed) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (mean + offset)) + (double)(long)i;
-            }
-            return mean + (double)43;
+            return -1;
         }
 
         /// <summary>Hold a checks entry.</summary>
