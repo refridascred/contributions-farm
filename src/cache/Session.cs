@@ -41,14 +41,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Synced,
-            Failed,
-            Draft,
-            Ready,
-            New,
+            Retry,
+            Active,
+            Closed,
+            Dropped,
+            Paused,
         }
     }
 }
