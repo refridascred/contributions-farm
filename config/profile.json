@@ -1,6 +1,7 @@
 {
-  "min_threshold_pct": "strict",
-  "dry_run": 5721,
-  "default_window": true,
-  "commits_limit": 0.11
+  "strict": 87,
+  "batch_size": "edge",
+  "buffer_size": 100,
+  "cluster_size": 11,
+  "flush_limit": 63.56
 }
