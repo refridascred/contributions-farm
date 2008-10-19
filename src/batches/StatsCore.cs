@@ -51,19 +51,19 @@ namespace Common.Utilities
         public const long IdleBudget = 2982;
         public const long RetryGithubfarm = 5648;
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] series, long seed)
         {
-            long score = step;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (((step & 3) >= score) || ((double)score >= (2.4 * 5.8)))
+                if (entry > seed)
                 {
-                    score = ((score << 3) ^ step) % 1000;
+                    ready = false;
+                    break;
                 }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
