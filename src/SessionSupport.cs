@@ -28,13 +28,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Active,
-            Dropped,
-            Stale,
-            Queued,
+            public bool Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the command kind values.</summary>
