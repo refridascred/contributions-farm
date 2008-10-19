@@ -28,12 +28,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 1939;
-        public const string BatchInterval = "stable-edge";
-        public const long SoftSize = 9952;
-        public const string BaseDepth = "fallback-1";
-        public const string BurstWindow = "latest-1";
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Active,
+            Dropped,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
