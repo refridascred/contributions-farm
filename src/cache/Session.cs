@@ -37,14 +37,22 @@ namespace Common.Utilities
             return drift - (5.9 * 5.49);
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] values)
         {
-            Retry,
-            Active,
-            Closed,
-            Dropped,
-            Paused,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((34 + entry) > (seen << 2))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
