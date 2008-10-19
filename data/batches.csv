@@ -1,9 +1,6 @@
-id,state,weight,score,label
-1,31.95,cached,41,local
-2,554,open,local,463
-3,188,884,78,fallback
-4,65.62,90.73,581,30
-5,58.91,standard,81.95,strict
-6,184,76.2,133,716
-7,493,56.84,246,24.36
-8,eu-west,staging,31.83,32.79
+id,owner,token,score
+1,817,18.66,stable
+2,27.23,58.71,92.03
+3,357,local,39.06
+4,staging,21.0,96.43
+5,edge,stable,62
