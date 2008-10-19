@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] items, long seed)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] levels, long step)
         {
-            long acc = 720;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((acc + (-7)) > ((-10) & 15))
+                if (levels[i] < step)
                 {
-                    acc = (acc ^ (acc >> 1)) ^ entry;
+                    return (long)i;
                 }
             }
-            if (acc > 61)
-            {
-                acc = ((acc * 2) + (seed & 31)) % 1000;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Find the first command checks entry that matches the target.</summary>
