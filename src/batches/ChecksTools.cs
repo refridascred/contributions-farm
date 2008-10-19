@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] samples, long step)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double gain, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = (double)(7 % 24);
+            return (load + gain) + span;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
