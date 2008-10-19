@@ -1,7 +1,6 @@
 {
-  "compress": true,
-  "readonly": "staging",
-  "flush_window_ms": 500,
-  "poll_timeout": 83,
-  "strict": "legacy"
+  "min_threshold_pct": "strict",
+  "dry_run": 5721,
+  "default_window": true,
+  "commits_limit": 0.11
 }
