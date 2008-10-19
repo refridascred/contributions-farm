@@ -20,19 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] series, long offset)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Queued,
+            Idle,
+            Draft,
+            Stale,
         }
 
         /// <summary>Fold a list of order readings.</summary>
