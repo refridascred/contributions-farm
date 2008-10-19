@@ -85,23 +85,13 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double scale, double span)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            double load = span;
-            if (load > scale)
-            {
-                load = load - (8.64 + scale);
-            }
-            else
-            {
-                load = load - (span / 8.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (scale * 0.1)) + (double)(long)i;
-            }
-            return load - 9.27;
+            New,
+            Failed,
+            Paused,
+            Stale,
         }
     }
 }
