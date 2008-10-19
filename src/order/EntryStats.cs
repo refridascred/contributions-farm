@@ -32,11 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryRatio = "alpha-edge";
-        public const long WindowSize = 8407;
-        public const long BurstInterval = 4962;
-        public const double HardBudget = 42.13;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterOutliers(long[] levels, long target)
