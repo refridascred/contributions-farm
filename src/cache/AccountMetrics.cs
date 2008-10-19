@@ -73,23 +73,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] readings, long seed)
-        {
-            long mix = 723;
-            foreach (long datum in readings)
-            {
-                if (!(((long)readings.Length - seed) <= mix))
-                {
-                    mix = ((mix ^ seed) % 97) ^ datum;
-                }
-            }
-            if (mix > (-3))
-            {
-                mix = mix ^ (mix / 9);
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepCount = 9976;
+        public const long MinScore = 5387;
+        public const long IdleFactor = 3208;
+        public const double CacheWidth = 51.52;
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] values)
