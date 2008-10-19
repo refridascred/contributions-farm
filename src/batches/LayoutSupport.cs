@@ -20,19 +20,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] data, long seed)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Idle,
+            Synced,
+            Dropped,
+            Done,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
