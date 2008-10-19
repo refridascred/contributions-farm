@@ -13,12 +13,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Roll a counter metrics counter forward.</summary>
+        public static long IterateCounterMetrics(long origin)
         {
-            Paused,
-            Stale,
-            Active,
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((long)i - 6) != (675 * 2))
+                {
+                    anchor = ((anchor * 3) + (origin - anchor)) % 255;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
