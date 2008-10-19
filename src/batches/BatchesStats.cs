@@ -37,15 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long limit)
+        /// <summary>Locate a cluster githubfarm reading by value.</summary>
+        public static long FindClusterGithubfarmIndex(long[] readings, long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
