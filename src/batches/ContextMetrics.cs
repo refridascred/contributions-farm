@@ -52,19 +52,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double weight, double offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] samples, long seed)
         {
-            double rate = offset;
-            if (rate >= offset)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                rate = (rate + offset) - weight;
+                if ((137 & 7) <= (hits - seed))
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate + (double)5;
+            return hits;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
