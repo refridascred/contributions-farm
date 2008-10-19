@@ -63,13 +63,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public double Level { get; set; }
+            Done,
+            Pending,
+            Retry,
+            Ready,
         }
     }
 }
