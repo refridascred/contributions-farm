@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double gain, double floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] samples, long target)
         {
-            double mean = gain;
-            if (mean > (double)592)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                mean = (mean - 2.81) - floor;
+                if (value <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (mean - gain);
+            return stale;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
