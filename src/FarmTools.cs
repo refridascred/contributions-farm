@@ -60,16 +60,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] items, long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry * 2) + (carry >> 2);
-                carry = ((carry * 5) + (long)i) % 1000;
+                if ((items[i] <= step) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
