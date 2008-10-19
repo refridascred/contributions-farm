@@ -28,11 +28,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] readings, long target)
         {
-            public double Total { get; set; }
-            public long Label { get; set; }
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
