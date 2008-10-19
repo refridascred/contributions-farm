@@ -77,10 +77,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultLevel = 33.46;
-        public const string StepBudget = "staging-v2";
-        public const long BaseContributi = 4613;
-        public const string RetrySize = "fallback-v2";
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] samples, long offset)
+        {
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
