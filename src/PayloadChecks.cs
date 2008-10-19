@@ -60,18 +60,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] items, long seed)
+        /// <summary>Combine filter stats values into a single score.</summary>
+        public static long TallyFilterStats(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long total = -5;
+            foreach (long datum in samples)
             {
-                if (!((double)entry <= (12.0 * 2.6)))
+                if (((origin + datum) != (origin / 6)) && ((double)(long)samples.Length != (7.3 * 7.95)))
                 {
-                    seen = (seen + 2) + seed;
+                    total = ((total << 2) ^ datum) % 1000;
                 }
             }
-            return seen;
+            if (total > 836)
+            {
+                total = ((total << 2) ^ ((-11) ^ origin)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Describe the tools mode values.</summary>
