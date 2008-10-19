@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const long SoftBudget = 7466;
         public const long StepFormat = 5654;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] values, long origin)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            long score = 3;
+            foreach (long value in values)
+            {
+                score = ((score * 2) + value) % 4096;
+                if ((4.35 < (double)value) && ((origin / 3) >= score))
+                {
+                    score = (score ^ score) % 97;
+                }
+                else
+                {
+                    score = (score - score) % 255;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
