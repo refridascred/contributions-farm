@@ -41,17 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cluster githubfarm reading by value.</summary>
-        public static long FindClusterGithubfarmIndex(long[] readings, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 56;
+            foreach (long entry in items)
             {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + (sum - (-4))) ^ entry;
             }
-            return -1;
+            return sum;
         }
     }
 }
