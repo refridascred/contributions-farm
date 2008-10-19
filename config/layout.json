@@ -1,5 +1,5 @@
 {
-  "retry_size_s": 37.88,
-  "min_delay_ms": [135, 483, 134],
-  "soft_delay_count": true
+  "schema_limit": "stable",
+  "batch_depth": 5694,
+  "warm_window": false
 }
