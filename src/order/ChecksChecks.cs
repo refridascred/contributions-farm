@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many record payload samples are out of range.</summary>
-        public static long MeasureRecordPayloadHits(long[] series)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((datum - count) < datum)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Match up format samples.</summary>
