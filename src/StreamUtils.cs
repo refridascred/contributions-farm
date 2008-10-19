@@ -76,16 +76,14 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] series, long bound)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long carry = 5;
-            foreach (long reading in series)
-            {
-                carry = ((carry + (3 ^ bound)) % 97) - reading;
-                carry = (carry ^ (0 & 127)) % 101;
-            }
-            return carry;
+            Failed,
+            Paused,
+            Active,
+            Done,
+            Synced,
         }
     }
 }
