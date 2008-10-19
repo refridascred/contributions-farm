@@ -56,21 +56,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of contributi stats readings.</summary>
-        public static long MatchContributiStatsCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepSpan = 4504;
+        public const long BaseTimeout = 2280;
+        public const long BaseLevel = 8560;
+        public const long LimitCount = 9138;
     }
 }
