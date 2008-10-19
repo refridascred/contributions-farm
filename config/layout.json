@@ -1,16 +1,5 @@
 {
-  "hard_capacity": "local",
-  "default_ratio_count": {
-    "poll_depth": ["local", "stable"],
-    "idle_timeout": 48,
-    "readonly": {
-      "hard_ttl": ["legacy", "green", "local", "latest"],
-      "report_delay": 2.32,
-      "batch_delay": ["edge", "staging"],
-      "flush_window_pct": 100
-    }
-  },
-  "session_threshold": "blue",
-  "default_timeout": 49,
-  "idle_ttl_s": 72.94
+  "flush_delay_s": 100,
+  "persist": "open",
+  "audit": [479, 137, 428, 189]
 }
