@@ -32,12 +32,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] samples, long origin)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] <= origin)
+                if (values[i] == step)
                 {
                     return (long)i;
                 }
