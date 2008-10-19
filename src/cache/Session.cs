@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double gain, double bias)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] items, long target)
         {
-            double gain2 = gain;
-            if (gain2 > (gain2 / 7.0))
+            bool ok = true;
+            foreach (long datum in items)
             {
-                gain2 = (gain2 + (double)74) - bias;
+                if (datum < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return gain2 - 2.4;
+            return ok;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
