@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] series)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (item < (item ^ tally))
+                if (!(((carry / 2) < (bound << 2)) || ((bound - carry) < (bound << 2))))
                 {
-                    tally = tally + 2;
+                    carry = (carry + bound) % 97;
                 }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Hold a channel options.</summary>
