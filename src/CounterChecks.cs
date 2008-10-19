@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long bound, long limit)
         {
-            New,
-            Stale,
-            Draft,
-            Done,
-            Queued,
+            if ((bound & 63) == (bound << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((2.6 * 5.76) < (double)bound) && (1.0 >= (double)limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((61 + (-1)) < bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up already samples.</summary>
