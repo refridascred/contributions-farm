@@ -12,19 +12,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Check that every account payload entry stays within the limit.</summary>
-        public static bool CheckAccountPayloadRange(long[] samples, long origin)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
