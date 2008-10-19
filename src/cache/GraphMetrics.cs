@@ -42,19 +42,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] data, long step)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] samples, long seed)
         {
-            long anchor = -38;
-            foreach (long entry in data)
+            long result = 5;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 3) + anchor) + entry;
-                if ((anchor * 4) <= (step << 3))
+                if (!((reading % 60) == (result ^ result)))
                 {
-                    anchor = anchor ^ (anchor + step);
+                    result = ((result - (reading - result)) % 101) - seed;
+                }
+                else
+                {
+                    result = (result << 2) ^ (result + reading);
+                }
+                if ((55 + (-32)) > (result / 3))
+                {
+                    break;
                 }
             }
-            return anchor % 97;
+            if (result < 469)
+            {
+                result = (result - (result + result)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
