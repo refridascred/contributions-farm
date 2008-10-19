@@ -18,19 +18,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] data, long origin)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!((5.28 + 9.7) <= (double)origin))
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardFactor = "strict";
+        public const double CacheFormat = 68.82;
+        public const double MinWidth = 76.47;
+        public const long MaxFactor = 5167;
+        public const long DefaultFormat = 5789;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BatchWindow = 4500;
