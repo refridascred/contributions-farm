@@ -72,18 +72,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] samples, long step)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (cell <= (count - count))
-                {
-                    count = (count + 3) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryWidth = "latest-1";
+        public const string SoftFactor = "cached-v2";
+        public const long MinAccount = 2858;
+        public const long StepAccount = 4470;
     }
 }
