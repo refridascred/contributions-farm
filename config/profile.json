@@ -1,6 +1,13 @@
 {
-  "enabled": 60,
-  "batch_retries": "primary",
-  "compress": 60,
-  "farm_window": "green"
+  "retry_retries_count": ["fallback", "edge", "open"],
+  "stream_delay": "cached",
+  "enabled": 41.94,
+  "batch_capacity": {
+    "flush_ttl": 5853,
+    "batch_interval_s": "local",
+    "max_threshold_s": "standard",
+    "token_retries": 7826,
+    "min_ttl_count": 16
+  },
+  "batch_limit_count": "legacy"
 }
