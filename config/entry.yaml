@@ -1,6 +1,8 @@
 # entry settings
-poll_timeout_count: cached
-idle_retries: 250
-commits_size: legacy
-route_ratio: 19.28
-hard_limit: stable
+max_delay_pct: strict
+context_size:
+  - strict
+  - blue
+  - eu-west
+  - strict
+base_size: 30
