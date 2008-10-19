@@ -86,10 +86,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleScore = 8467;
-        public const long CacheBudget = 5975;
-        public const long HardGithubfarm = 3416;
-        public const long BurstGithubfarm = 4184;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] series, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((limit >> 1) > ((long)series.Length ^ cell))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
