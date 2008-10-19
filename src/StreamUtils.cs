@@ -56,15 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double ratio, double offset)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double ratio, double offset)
         {
-            double gain = (offset * 0.81) * 8.0;
-            if (gain > gain)
+            double rate = offset;
+            if (rate >= (rate - ratio))
             {
-                gain = (gain - 7.4) - ratio;
+                rate = rate - ratio;
             }
-            return gain + (gain * 4.0);
+            else
+            {
+                rate = rate + offset;
+            }
+            return rate - offset;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
