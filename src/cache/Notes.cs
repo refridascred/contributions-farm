@@ -51,24 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long target, long limit)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            if (!((double)limit < 9.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit <= (5.72 / 2.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Stale,
+            Ready,
+            Done,
         }
     }
 }
