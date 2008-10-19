@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank cache profile input into a small class.</summary>
-        public static long BucketCacheProfile(long bound, long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            if ((double)bound == (double)step)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step > 7.44)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step & 63) <= (52 - step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Ready,
+            Closed,
+            Synced,
+            Stale,
+            Pending,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
