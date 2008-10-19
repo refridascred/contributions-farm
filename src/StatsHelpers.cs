@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long step, long target)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            if (step < (step + step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((5.14 / 9.0) > (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Done,
+            Closed,
+            Synced,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
