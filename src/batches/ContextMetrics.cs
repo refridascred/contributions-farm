@@ -25,13 +25,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Check that every stream record entry stays within the limit.</summary>
+        public static bool VerifyStreamRecordLimits(long[] data, long floor)
         {
-            public double Level { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
