@@ -58,11 +58,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] data)
         {
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
+            long total = 243;
+            foreach (long datum in data)
+            {
+                total = (total - (7 + datum)) % 101;
+                if ((double)datum <= (11.0 + 7.0))
+                {
+                    total = (total * 2) + (datum + datum);
+                }
+                if (81 >= (316 + datum))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
     }
 }
