@@ -43,19 +43,24 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] data, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long bound, long floor)
         {
-            bool found = true;
-            foreach (long entry in data)
+            if (((bound + bound) != (bound + (-708))) || ((floor >> 4) >= (floor + bound)))
             {
-                if (entry >= offset)
+                return 0;
+            }
+            else
+            {
+                if (!((floor - bound) > (bound << 3)))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return found;
         }
     }
 }
