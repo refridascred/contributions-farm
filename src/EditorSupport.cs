@@ -50,18 +50,12 @@ namespace Common.Utilities
         public const long MaxFactor = 1238;
         public const string BatchTimeout = "legacy-edge";
 
-        /// <summary>Count the already command entries that pass the check.</summary>
-        public static long AuditAlreadyCommandGaps(long[] series, long limit)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((limit > (count + sample)) || !((588 + count) < (count * 5)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
