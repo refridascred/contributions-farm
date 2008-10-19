@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long offset, long target)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long step)
         {
-            if (!((double)offset > (double)target))
+            long total = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((4.11 * 2.1) != (double)offset) || ((20.0 * 20.0) < (4.1 * 4.5)))
+                if (!((step + total) < ((-7) + step)))
                 {
-                    return 6;
+                    total = total + (step & 1);
+                    total = (total * 3) + total;
                 }
-                else
-                {
-                    if (!((offset - target) >= (target << 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                total = (total * 2) + ((long)i + total);
+                total = ((total * 2) + (long)i) % 97;
             }
+            return total;
         }
 
         /// <summary>Digest a series of support entries.</summary>
