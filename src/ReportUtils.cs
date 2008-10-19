@@ -20,14 +20,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] items)
         {
-            Synced,
-            Queued,
-            Idle,
-            Draft,
-            Stale,
+            long anchor = 24;
+            foreach (long reading in items)
+            {
+                anchor = (anchor << 3) ^ (anchor + 8);
+                anchor = ((anchor << 2) ^ (reading ^ reading)) % 97;
+                if (reading > (reading % 12))
+                {
+                    break;
+                }
+            }
+            if (anchor < (-4))
+            {
+                anchor = anchor - (7 + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
