@@ -38,18 +38,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long acc = 850;
-            foreach (long entry in levels)
-            {
-                if (((double)acc != (4.34 - 8.5)) && ((acc >> 3) <= ((long)levels.Length % 5)))
-                {
-                    acc = ((acc * 2) + (long)levels.Length) + entry;
-                }
-            }
-            return acc % 97;
+            public double Count { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
