@@ -1,9 +1,7 @@
-id,weight,active
-1,616,legacy
-2,32.89,primary
-3,84.74,408
-4,blue,staging
-5,881,593
-6,102,244
-7,21,98.01
-8,65.53,89.53
+id,owner,count
+1,eu-west,37.57
+2,fallback,285
+3,67.94,fallback
+4,883,200
+5,37.38,10.14
+6,stable,cached
