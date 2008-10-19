@@ -1,5 +1,16 @@
 {
-  "batch_ratio": 1024,
-  "batches_capacity": false,
-  "githubfarm_timeout": 52
+  "strict": "edge",
+  "schema_ratio": 2.75,
+  "githubfarm_limit": {
+    "counter_window": "primary",
+    "default_capacity": "strict",
+    "burst_ttl_count": {
+      "base_retries_s": "staging",
+      "counter_ttl": true,
+      "verbose": "blue"
+    }
+  },
+  "farm_depth": ["fallback", "edge", "stable", "blue"],
+  "sync_depth_ms": 29,
+  "sync_window_pct": [293, 37]
 }
