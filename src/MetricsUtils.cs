@@ -43,19 +43,21 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double rate, double span)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] items)
         {
-            double scale = span;
-            if (scale > (18.0 - scale))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale - (1.82 * 1.78);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale + rate;
+            return count;
         }
 
         /// <summary>Iterate the route order series from a seed.</summary>
