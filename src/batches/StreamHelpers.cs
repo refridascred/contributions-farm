@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit notes commits readings against a rule.</summary>
-        public static long CountNotesCommitsOutliers(long[] data)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long total = 238;
+            foreach (long value in items)
             {
-                if (seen > (seen * 3))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
+                total = ((total << 2) ^ (value ^ 34)) % 97;
+                total = ((total * 2) + value) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
