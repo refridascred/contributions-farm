@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double scale, double floor)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            double mean = floor + (5.8 / 9.0);
-            if (mean < mean)
-            {
-                mean = (mean - (double)137) - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - 3.0) + (double)(long)i;
-            }
-            return mean + (double)41;
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
