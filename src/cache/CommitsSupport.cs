@@ -66,15 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache entry counter forward.</summary>
-        public static long DeriveCacheEntry(long target)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double rate, double bias)
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
+            double ratio = rate + (5.0 * 15.0);
+            if (ratio >= (3.0 - bias))
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                ratio = ratio + rate;
             }
-            return anchor;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - (20.0 + ratio);
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
