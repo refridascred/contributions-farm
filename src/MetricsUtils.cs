@@ -35,11 +35,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftInterval = 99;
-        public const double RetryCommand = 87.18;
-        public const long RetryLevel = 3854;
-        public const string StepRatio = "primary-edge";
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Failed,
+            Locked,
+            Closed,
+            Idle,
+            New,
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
