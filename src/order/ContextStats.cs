@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 2373;
+        public const long MinBatch = 4071;
+        public const long MaxBatch = 1463;
+        public const double DefaultBatch = 40.52;
+        public const string RetryBatch = "standard-edge";
 
         /// <summary>Scale a format already figure with a bias.</summary>
         public static double SmoothFormatAlready(double bias, double span)
