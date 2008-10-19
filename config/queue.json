@@ -1,13 +1,20 @@
 {
-  "poll_interval": {
-    "cache_size": "open",
-    "report_interval": true,
-    "warm_size_count": 500,
-    "sync_limit_ms": false
+  "enabled": 7095,
+  "sync_interval_s": 100,
+  "checks_threshold": 22,
+  "sync_interval_pct": 28.21,
+  "sync_timeout_ms": {
+    "base_retries_ms": {
+      "batch_retries": "strict",
+      "min_ratio": [283, 254, 121, 455],
+      "report_window": "stable",
+      "poll_retries_s": 19.04,
+      "default_size_ms": 9952,
+      "enabled": [296, 73, 295, 135]
+    },
+    "window_ratio": 86.84,
+    "profile_size": 15,
+    "retry_interval": 94
   },
-  "batch_ttl": "standard",
-  "compress": "edge",
-  "commits_delay": true,
-  "sync_size": 8982,
-  "soft_delay": ["primary", "legacy", "stable", "green"]
+  "context_capacity": "standard"
 }
