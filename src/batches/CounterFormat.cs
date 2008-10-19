@@ -30,15 +30,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] samples, long limit)
-        {
-            long total = 505;
-            foreach (long entry in samples)
-            {
-                total = (total * 5) + (limit + entry);
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 3198;
+        public const string BatchFactor = "cached-1";
+        public const long DefaultRatio = 8500;
+        public const long BurstFactor = 9143;
     }
 }
