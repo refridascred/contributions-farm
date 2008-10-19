@@ -1,11 +1,14 @@
 # support settings
-warm_timeout_ms: 30
-githubfarm_size:
-  sync_limit_pct:
-    - green
-    - local
-    - fallback
-  hard_depth_ms: 56.54
-  audit: true
-compress: open
-cache_threshold: eu-west
+route_size:
+  - open
+  - stable
+cache_delay:
+  - 224
+  - 138
+hard_limit_pct:
+  - 82
+  - 399
+  - 323
+format_ttl:
+  - green
+  - open
