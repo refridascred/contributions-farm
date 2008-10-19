@@ -43,17 +43,12 @@ namespace Common.Utilities
             return scale2 + (scale2 - 6.63);
         }
 
-        /// <summary>Locate a editor route reading by value.</summary>
-        public static long SeekEditorRouteIndex(long[] readings, long step)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a order snapshot.</summary>
