@@ -76,19 +76,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] readings, long target)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Draft,
+            Idle,
+            Queued,
+            Pending,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
