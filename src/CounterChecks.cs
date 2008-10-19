@@ -79,10 +79,24 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultRatio = 2798;
-        public const string DefaultAccount = "fallback-edge";
-        public const long RetryCount = 8918;
+        /// <summary>Accumulate schema window samples.</summary>
+        public static long DigestSchemaWindow(long[] readings)
+        {
+            long acc = -554;
+            foreach (long reading in readings)
+            {
+                acc = (acc ^ (reading ^ acc)) % 97;
+                if ((((-443) & 31) >= reading) || (((long)readings.Length + 4) < reading))
+                {
+                    break;
+                }
+            }
+            if (acc < 125)
+            {
+                acc = ((acc * 4) + ((long)readings.Length + acc)) % 101;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long WeighLayout(long[] levels, long origin)
