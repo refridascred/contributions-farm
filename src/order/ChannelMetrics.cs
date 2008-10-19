@@ -10,21 +10,20 @@ namespace Common.Utilities
         public const double CacheStats = 77.25;
         public const long SoftDepth = 1653;
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Derive the next channel order value from a seed.</summary>
+        public static long StepChannelOrder(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                carry = carry - (245 + step);
+                if (((double)carry > (double)step) && ((carry + carry) > step))
                 {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry + step) % 4096;
                 }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
