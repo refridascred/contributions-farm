@@ -25,18 +25,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit layout notes readings against a rule.</summary>
-        public static long CountLayoutNotesOutliers(long[] readings)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)count >= 7.9)
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
