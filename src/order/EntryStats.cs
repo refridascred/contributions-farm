@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)values.Length - seen) != ((-530) ^ seen))
                 {
-                    if ((values[i] ^ values[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = ((seen + 2) + datum) - target;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
