@@ -38,38 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter report value against two limits.</summary>
-        public static long BucketFilterReport(long origin, long origin2)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] levels, long seed)
         {
-            if ((origin >> 3) >= origin)
+            long state = 67;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((0.61 / 9.0) != (double)origin))
+                if ((entry - 69) <= entry)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (origin <= (402 / 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((8.7 * 2.92) == (double)origin) && (origin < (526 + 733)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = ((state << 2) ^ (seed % 8)) % 255;
                 }
             }
+            return state;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
