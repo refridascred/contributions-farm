@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const long RetrySpan = 5019;
         public const double RetryCache = 21.03;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 5479;
-        public const long BatchTools = 7201;
-        public const long RetrySize = 5820;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseMetrics = "latest-1";
+        public const long RetryDepth = 7526;
+        public const double StepTimeout = 77.47;
+        public const double WindowBudget = 89.63;
+        public const long BatchMetrics = 822;
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
