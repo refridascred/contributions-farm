@@ -1,13 +1,10 @@
 # Command notes
 
-When a order fails, the stats handler retries a few times before giving up.
-The token report groups every stats by farm.
-
-Keep metric and stream names short and lowercase.
-Use record settings to tune how often format data is refreshed.
+A graph that stays idle for too long is moved to the stats list.
+Run the window check before changing any batches limits.
 
 ## Guidelines
 
-- Document new route fields
-- Review commits limits each release
-- Validate batch input early
+- Keep graph values small
+- Validate cluster input early
+- Prefer contributi defaults
