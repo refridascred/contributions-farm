@@ -22,17 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] items, long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 430;
+            foreach (long reading in series)
             {
-                if ((items[i] > offset) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (((acc * 3) + 87) - reading) - limit;
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
