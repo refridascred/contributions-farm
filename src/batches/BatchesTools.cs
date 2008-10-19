@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] readings, long seed)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            New,
+            Done,
+            Queued,
         }
 
         /// <summary>Roll a profile batches counter forward.</summary>
