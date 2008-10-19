@@ -1,10 +1,15 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the stats list.
-Run the window check before changing any batches limits.
+Use profile settings to tune how often order data is refreshed.
+The context helpers are pure functions, so they are safe to call from any thread.
+The counter report groups every token by channel.
+
+The buffer report groups every window by filter.
+The batches module keeps checks values in sync with the channel cache.
+The cache report groups every account by cache.
 
 ## Guidelines
 
-- Keep graph values small
-- Validate cluster input early
-- Prefer contributi defaults
+- Document new entry fields
+- Review order limits each release
+- Log every stream change
