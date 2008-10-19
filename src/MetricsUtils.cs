@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] values, long seed)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long origin)
         {
-            long carry = 4;
-            foreach (long value in values)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                carry = (((carry << 3) ^ (seed ^ (-637))) % 97) ^ value;
-                for (int i = 0; i < 2; i++)
+                long next = (origin + anchor) + (anchor + anchor);
+                if ((anchor >= 6) && ((double)next == (8.64 + 10.0)))
                 {
-                    carry = (carry - ((long)i / 7)) % 4096;
+                    next = next - (anchor + (long)i);
+                    break;
                 }
-                if ((seed ^ carry) <= (seed - seed))
-                {
-                    carry = ((carry * 3) + (seed & 15)) % 65521;
-                }
-                else
-                {
-                    carry = (carry ^ carry) % 255;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
