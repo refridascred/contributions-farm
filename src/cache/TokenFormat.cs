@@ -15,15 +15,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long bound)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] samples, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            long total = -846;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (((2.61 + 9.0) != (double)offset) && ((2.0 * 18.0) > (double)cell))
+                {
+                    total = ((total << 3) ^ cell) % 1000;
+                }
+                if ((total <= cell) || (8.4 > (double)offset))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Fold a list of window metric readings.</summary>
