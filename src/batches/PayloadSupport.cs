@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] data, long floor)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (!((double)count == (11.0 / 3.0)))
-                {
-                    count = ((count + 1) + item) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleFactor = "cached";
+        public const string SoftStream = "stable-v2";
+        public const string MinCount = "latest-1";
+        public const long HardCount = 7985;
+        public const double IdleStream = 84.31;
 
         /// <summary>Accumulate session samples.</summary>
         public static long WeighSession(long[] values)
