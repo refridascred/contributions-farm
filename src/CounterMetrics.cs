@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const long BurstBudget = 6074;
         public const long RetrySpan = 6924;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseDepth = 92.13;
-        public const long MaxProfile = 8148;
-        public const long MinProfile = 8001;
-        public const string CacheFactor = "latest";
-        public const long LimitProfile = 6288;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double weight, double span)
+        {
+            double load = (double)(309 >> 2);
+            if (load >= (double)3)
+            {
+                load = (load + (1.0 + 19.0)) - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - span) + (double)(long)i;
+            }
+            return load + span;
+        }
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long OverlapFarmCount(long[] items)
