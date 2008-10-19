@@ -34,22 +34,11 @@ namespace Common.Utilities
         public const long RetryEntry = 8375;
         public const long SoftLevel = 2498;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] levels)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double scale, double offset)
         {
-            long state = -864;
-            foreach (long cell in levels)
-            {
-                if (((cell % 16) > (state << 1)) || (((long)levels.Length + state) != (state % 60)))
-                {
-                    state = (state + 275) % 4096;
-                }
-                else
-                {
-                    state = (state + (815 % 10)) % 65521;
-                }
-            }
-            return state;
+            double bias = offset * 7.5;
+            return (bias - (double)611) + scale;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
