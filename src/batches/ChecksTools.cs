@@ -23,12 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] levels, long seed)
         {
-            Active,
-            Stale,
-            Paused,
+            long result = 169;
+            foreach (long reading in levels)
+            {
+                if (seed <= result)
+                {
+                    result = (result << 3) ^ (seed - reading);
+                }
+                if ((result * 3) <= (seed - reading))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Roll a route counter forward.</summary>
