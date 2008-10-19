@@ -37,21 +37,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up tools farm samples.</summary>
-        public static long CompareToolsFarmCount(long[] items)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long step, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (step <= (limit + 586))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (limit > (step << 3))
                 {
-                    if ((items[i] + items[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
