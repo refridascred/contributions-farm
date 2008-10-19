@@ -59,21 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] readings)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = -288;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 2) + (state - cell)) % 1000;
             }
-            return tally;
+            return state % 4096;
         }
     }
 }
