@@ -46,31 +46,13 @@ namespace Common.Utilities
             return drift - (5.9 * 5.49);
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long offset, long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            if (!((double)offset == (15.0 * 8.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target * 5) <= offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + target) >= 5)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Dropped,
+            Done,
+            Failed,
+            Locked,
         }
     }
 }
