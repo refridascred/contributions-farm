@@ -1,8 +1,9 @@
-id,active,weight
-1,eu-west,42
-2,35,77.88
-3,552,legacy
-4,80.83,918
-5,34.07,480
-6,401,open
-7,550,blue
+id,weight,active
+1,616,legacy
+2,32.89,primary
+3,84.74,408
+4,blue,staging
+5,881,593
+6,102,244
+7,21,98.01
+8,65.53,89.53
