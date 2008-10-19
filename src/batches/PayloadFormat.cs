@@ -19,11 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstSize = 5517;
-        public const long CacheCommand = 7067;
-        public const string RetryTimeout = "latest";
-        public const long DefaultDepth = 4275;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
