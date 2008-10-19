@@ -22,19 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] readings, long bound)
+        /// <summary>Digest a series of context buffer entries.</summary>
+        public static long TotalContextBuffer(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long mix = 827;
+            foreach (long reading in values)
             {
-                if (cell > bound)
+                if (!((double)(long)values.Length != (1.0 / 9.0)))
                 {
-                    flag = false;
-                    break;
+                    mix = ((mix ^ mix) % 255) + reading;
                 }
             }
-            return flag;
+            if (mix > 97)
+            {
+                mix = (mix ^ (mix + mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the filter class values.</summary>
