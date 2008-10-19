@@ -31,22 +31,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit commits report readings against a rule.</summary>
-        public static long AuditCommitsReportGaps(long[] readings, long bound)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((2.7 / 9.0) < (double)bound)
-                {
-                    count = (count + 3) - datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Retry,
+            Failed,
         }
     }
 }
