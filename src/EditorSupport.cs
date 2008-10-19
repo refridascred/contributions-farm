@@ -15,11 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 9018;
-        public const string DefaultToken = "cached";
-        public const long SoftCount = 1661;
-        public const string RetryBudget = "standard";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchStats = 68.28;
+        public const double CacheStats = 71.09;
+        public const long CacheTimeout = 8473;
+        public const long IdleWidth = 39;
+        public const long BurstTimeout = 2688;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowMatches(long[] values, long target)
