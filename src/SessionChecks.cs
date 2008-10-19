@@ -42,13 +42,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Audit commits report readings against a rule.</summary>
+        public static long AuditCommitsReportGaps(long[] readings, long bound)
         {
-            public double Stamp { get; set; }
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((2.7 / 9.0) < (double)bound)
+                {
+                    count = (count + 3) - datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
