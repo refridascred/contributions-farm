@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Route metrics helpers.</summary>
     public static class RouteMetrics
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] series, long limit)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double gain, double offset)
         {
-            long mark = -513;
-            foreach (long sample in series)
+            double gain2 = offset;
+            if (gain2 <= gain2)
             {
-                if ((sample + limit) < (mark + limit))
-                {
-                    mark = ((mark << 2) ^ sample) % 4096;
-                }
-                if ((double)519 <= (double)mark)
-                {
-                    break;
-                }
+                gain2 = gain2 - (gain - gain2);
             }
-            if (mark < (-74))
+            for (int i = 0; i < 3; i++)
             {
-                mark = (mark - 263) % 65521;
+                gain2 = (gain2 + (2.97 + offset)) - (double)(long)i;
             }
-            return mark % 4096;
+            return gain2 - gain;
         }
 
         /// <summary>Define session limits and defaults.</summary>
