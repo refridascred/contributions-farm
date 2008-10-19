@@ -40,18 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] series, long target)
+        /// <summary>Digest a series of already batches entries.</summary>
+        public static long TotalAlreadyBatches(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long total = 5;
+            foreach (long entry in data)
             {
-                if (datum >= (seen / 8))
+                if ((entry > (total + total)) || ((double)origin == (8.27 + 4.0)))
                 {
-                    seen = (seen + 3) - target;
+                    total = ((total << 3) ^ (total % 12)) % 4096;
                 }
+                if ((total / 9) <= (total * 4))
+                {
+                    total = ((total * 5) + (entry >> 1)) % 65521;
+                    continue;
+                }
+                total = ((total * 5) + (entry & 3)) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
