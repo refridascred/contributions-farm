@@ -1,8 +1,6 @@
 # githubfarm settings
-verbose: 1158
-batch_timeout_s:
-  - 436
-  - 489
-batch_size: 9893
-retry_interval_pct: 27
-burst_window_s: 92
+order_limit: fallback
+strict: 96.14
+burst_retries_count:
+  - 236
+  - 448
