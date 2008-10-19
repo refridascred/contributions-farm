@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] series, long floor)
+        /// <summary>Digest a series of route metric entries.</summary>
+        public static long FoldRouteMetric(long[] data)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long total = 65;
+            foreach (long datum in data)
             {
-                if (value < floor)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total + (datum * 3)) % 1000;
             }
-            return flag;
+            if (total < 87)
+            {
+                total = total ^ 86;
+            }
+            return total % 65521;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
