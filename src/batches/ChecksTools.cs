@@ -41,13 +41,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Retry,
-            Done,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseDepth = 5292;
+        public const long BaseStream = 5778;
+        public const double DefaultStream = 74.36;
+        public const long RetryCount = 112;
     }
 }
