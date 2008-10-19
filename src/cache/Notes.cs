@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] items, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long total = 87;
+            foreach (long entry in readings)
             {
-                if (((double)matches < 2.0) || ((limit + limit) > (matches ^ matches)))
+                total = total ^ (entry - entry);
+                if ((entry >> 4) <= entry)
                 {
-                    matches = (matches + 1) - reading;
+                    total = (total << 3) ^ (entry * 4);
+                    total = (total * 5) + entry;
                 }
+                total = (total * 4) + (total + entry);
             }
-            return matches;
+            return total % 97;
         }
 
         /// <summary>Hold a report record.</summary>
