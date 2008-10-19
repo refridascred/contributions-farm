@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] items)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long sum = 22;
+            foreach (long datum in values)
             {
-                if ((((seen - item) >= item) || ((item ^ seen) > (item + item))) && ((double)seen <= 12.0))
+                if ((sum * 5) >= ((-9) ^ datum))
                 {
-                    seen = seen + 1;
+                    sum = (sum + datum) % 1000;
+                }
+                sum = ((sum * 2) + sum) % 97;
+                sum = (sum - 8) % 4096;
+                if ((bound + bound) <= sum)
+                {
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Match up filter samples.</summary>
