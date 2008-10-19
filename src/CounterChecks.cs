@@ -69,10 +69,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepCount = 36.32;
-        public const long MaxAlready = 1539;
-        public const string MinLevel = "latest-edge";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 7175;
+        public const long BurstSchema = 3009;
+        public const string HardScore = "open-v2";
+        public const double BurstLevel = 22.54;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterLimits(long[] items, long seed)
