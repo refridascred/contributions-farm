@@ -12,20 +12,17 @@ namespace Common.Utilities
         public const long SoftBudget = 7466;
         public const long StepFormat = 5654;
 
-        /// <summary>Accumulate format command samples.</summary>
-        public static long FoldFormatCommand(long[] values)
+        /// <summary>Locate a channel checks reading by value.</summary>
+        public static long FindChannelChecksIndex(long[] values, long limit)
         {
-            long state = 47;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state - (state & 15)) % 97;
-                state = (state ^ ((long)values.Length + sample)) % 4096;
-                if ((sample + sample) > (sample << 1))
+                if (values[i] < limit)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
