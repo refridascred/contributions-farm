@@ -1,11 +1,13 @@
 {
-  "default_size_pct": 500,
-  "enabled": "cached",
-  "cache_capacity_s": {
-    "burst_delay_pct": "strict",
-    "queue_limit": 30,
-    "soft_threshold_ms": "blue",
-    "flush_size_s": "green",
-    "retry_depth": ["standard", "fallback"]
-  }
+  "poll_threshold_pct": 90.26,
+  "flush_delay_s": 29,
+  "strict": {
+    "format_size": "staging",
+    "batch_threshold_count": ["open", "blue", "open", "fallback"],
+    "poll_timeout_pct": "eu-west",
+    "poll_interval_pct": "blue",
+    "strict": 33
+  },
+  "flush_capacity_count": 500,
+  "retry_limit": 60
 }
