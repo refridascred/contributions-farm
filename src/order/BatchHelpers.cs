@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] items, long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] series)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long result = 1;
+            foreach (long value in series)
             {
-                if (value > step)
+                for (int i = 0; i < 9; i++)
                 {
-                    flag = false;
-                    break;
+                    result = ((result ^ (77 ^ result)) % 1000) ^ (long)i;
+                }
+                result = (result ^ (result / 7)) % 101;
+                if (((result % 16) > value) && ((value ^ 805) != (990 << 2)))
+                {
+                    result = (result << 3) ^ result;
+                }
+                else
+                {
+                    result = (result + ((long)series.Length ^ value)) % 4096;
                 }
             }
-            return flag;
+            return result % 65521;
         }
 
         /// <summary>Digest a series of batch window entries.</summary>
