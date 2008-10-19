@@ -76,15 +76,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Paused,
-            Draft,
-            Idle,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultRatio = 2798;
+        public const string DefaultAccount = "fallback-edge";
+        public const long RetryCount = 8918;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long WeighLayout(long[] levels, long origin)
