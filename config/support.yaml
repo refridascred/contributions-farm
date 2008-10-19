@@ -1,38 +1,12 @@
 # support settings
-sync_window_ms: 19.71
-flush_depth: 4662
-command_capacity: 60
-idle_retries_count:
-  channel_delay: 60
-  default_ratio: 4979
-  verbose:
-    - 24
-    - 231
-    - 487
-  base_delay: 84
-  burst_limit_count:
-    soft_depth_pct: green
-    layout_ratio:
-      - 275
-      - 82
-    cache_limit_s:
-      - latest
-      - green
-      - edge
-      - edge
-    enabled: latest
-    hard_interval_pct:
-      - 181
-      - 168
-      - 459
-  hard_delay_ms:
-    - stable
-    - edge
-    - blue
-    - fallback
-flush_timeout_ms: stable
-dry_run:
-  - 88
-  - 273
-  - 268
-  - 119
+poll_delay_ms:
+  - 404
+  - 357
+account_interval:
+  - 482
+  - 377
+notes_interval:
+  cluster_limit: true
+  cache_limit_pct: false
+  cache_threshold_ms: 89.68
+base_depth_count: stable
