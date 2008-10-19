@@ -27,12 +27,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] readings)
         {
-            Paused,
-            Idle,
-            Synced,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((0 ^ hits) == (hits + cell))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
