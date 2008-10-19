@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] readings)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (7.87 > (double)seen)
+                if ((reading - matches) <= 954)
                 {
-                    seen = (seen + 1) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a channel options.</summary>
