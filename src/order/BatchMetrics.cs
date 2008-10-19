@@ -67,21 +67,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Match up githubfarm farm samples.</summary>
-        public static long CompareGithubfarmFarmCount(long[] readings)
+        /// <summary>Accumulate commits channel samples.</summary>
+        public static long ScoreCommitsChannel(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix - (mix & 63)) % 4096) + limit;
+                mix = ((mix << 2) ^ (sample - mix)) % 255;
+                mix = (mix ^ mix) % 1000;
             }
-            return count;
+            if (mix < 808)
+            {
+                mix = ((mix * 3) + mix) % 255;
+            }
+            return mix;
         }
     }
 }
