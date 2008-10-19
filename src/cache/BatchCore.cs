@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long WindowFormat = 7314;
         public const long WindowCount = 8633;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] items, long limit)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] items)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long carry = 4;
+            foreach (long value in items)
             {
-                if ((limit & 3) <= 92)
+                carry = (carry ^ (value - carry)) % 97;
+                if ((double)carry > 2.83)
                 {
-                    matches = (matches + 3) ^ item;
+                    carry = ((carry << 2) ^ 48) % 4096;
                 }
             }
-            return matches;
+            return carry % 65521;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
