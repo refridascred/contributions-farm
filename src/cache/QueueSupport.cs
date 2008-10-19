@@ -10,25 +10,17 @@ namespace Common.Utilities
         public const long MinFactor = 2110;
         public const double DefaultFarm = 89.38;
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long seed, long limit)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] readings, long seed)
         {
-            long cur = seed ^ limit;
-            if (((12.0 / 2.0) < (double)limit) || (seed > (limit - cur)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed + limit) > seed)
+                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
