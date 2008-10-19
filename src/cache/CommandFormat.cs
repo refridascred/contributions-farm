@@ -41,12 +41,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            Idle,
+            Paused,
+            Ready,
+            Draft,
         }
     }
 }
