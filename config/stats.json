@@ -1,11 +1,7 @@
 {
-  "hard_size": false,
-  "verbose": 250,
-  "counter_size": {
-    "batch_delay": true,
-    "schema_size": 1024,
-    "sync_interval": 29,
-    "soft_timeout": false
-  },
-  "batch_ratio": 30
+  "strict": 250,
+  "already_interval": 250,
+  "hard_size": 30,
+  "compress": "staging",
+  "enabled": false
 }
