@@ -48,13 +48,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] items)
         {
-            Stale,
-            Closed,
-            Retry,
-            Pending,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of route entries.</summary>
