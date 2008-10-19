@@ -28,32 +28,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Rank tools filter input into a small class.</summary>
-        public static long ClassifyToolsFilter(long offset, long bound)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] data, long seed)
         {
-            long bound2 = offset + bound;
-            if ((offset & 63) > (offset / 8))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((10.0 - 8.8) != (double)bound2) && ((offset << 2) < bound2))
+                if (((472 * 5) > seed) && ((cell - seed) < cell))
                 {
-                    return 6;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if (((1 >> 5) >= bound) && ((bound2 % 64) > bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
