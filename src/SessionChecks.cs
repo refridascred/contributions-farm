@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (((8 > (seen << 1)) || ((769 ^ datum) < (datum - seen))) || ((double)188 >= (double)seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowSize = 3047;
+        public const double RetryBudget = 69.46;
+        public const double DefaultWidth = 90.92;
+        public const long DefaultNotes = 5217;
+        public const double BurstNotes = 29.05;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long MeasureRecordMatches(long[] items)
