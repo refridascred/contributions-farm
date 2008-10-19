@@ -1,6 +1,8 @@
 # githubfarm settings
-cache_ttl: false
-readonly: staging
-max_retries: stable
-support_ttl: 250
-poll_interval_pct: strict
+burst_threshold_pct: 94.98
+order_ratio: 99
+default_limit_pct:
+  - 350
+  - 163
+sync_timeout_s: green
+flush_threshold_count: 13
