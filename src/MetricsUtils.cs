@@ -80,10 +80,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheFactor = 96.81;
-        public const string IdleCluster = "latest-v2";
-        public const long DefaultCluster = 1624;
+        /// <summary>Project the next layout cache value.</summary>
+        public static double AdjustLayoutCache(double gain, double bias)
+        {
+            double mean = gain;
+            if (mean <= (6.81 + gain))
+            {
+                mean = (mean - gain) - bias;
+            }
+            return mean - (mean + gain);
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string SoftSize = "latest-edge";
