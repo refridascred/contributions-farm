@@ -23,12 +23,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Blend two buffer editor measurements.</summary>
+        public static double SmoothBufferEditor(double weight, double span)
         {
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            double bias = span;
+            if (bias < (double)66)
+            {
+                bias = bias - 9.0;
+            }
+            else
+            {
+                bias = bias + (weight * 8.2);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (bias + bias)) - (double)(long)i;
+            }
+            return bias + span;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
