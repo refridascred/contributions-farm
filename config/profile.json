@@ -1,22 +1,7 @@
 {
-  "record_depth": {
-    "enabled": true,
-    "record_limit": "open",
-    "base_retries_pct": {
-      "flush_limit_count": true,
-      "poll_threshold_count": 3839,
-      "batches_capacity": 42.94
-    }
-  },
-  "channel_size": ["standard", "cached", "staging", "primary"],
-  "readonly": 34.51,
-  "sync_retries": "latest",
-  "idle_size_ms": {
-    "report_window": ["local", "stable", "blue"],
-    "warm_ttl": "eu-west",
-    "batch_threshold": "open",
-    "dry_run": true,
-    "strict": "primary",
-    "idle_capacity_count": [235, 275, 140, 63]
-  }
+  "compress": true,
+  "readonly": "staging",
+  "flush_window_ms": 500,
+  "poll_timeout": 83,
+  "strict": "legacy"
 }
