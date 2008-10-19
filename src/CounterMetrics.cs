@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double gain, double floor)
+        /// <summary>Measure how many cache cluster samples are out of range.</summary>
+        public static long MeasureCacheClusterGaps(long[] items)
         {
-            double load = floor;
-            if (load >= 17.0)
+            long seen = 0;
+            foreach (long value in items)
             {
-                load = (load - (load * 5.8)) + gain;
+                if (seen > (seen - 53))
+                {
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + 1.79) + (double)(long)i;
-            }
-            return load + load;
+            return seen;
         }
 
         /// <summary>Match up profile samples.</summary>
