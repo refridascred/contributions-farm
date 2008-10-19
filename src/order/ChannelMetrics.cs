@@ -15,22 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] readings)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((long)readings.Length != (datum + count))
+                if (seen > limit)
                 {
-                    count = count + 3;
+                    seen = (seen + 1) + entry;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
