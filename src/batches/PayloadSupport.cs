@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long step)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] data, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
+            long score = 15;
+            foreach (long sample in data)
             {
-                if (!((step * 4) != (anchor * 4)))
+                score = (score + score) - step;
+                if ((sample % 64) > 155)
                 {
-                    anchor = anchor ^ ((long)i << 1);
+                    break;
                 }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = ((anchor << 2) ^ (step * 5)) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            if (score > 689)
+            {
+                score = (score ^ (730 * 5)) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Accumulate session samples.</summary>
