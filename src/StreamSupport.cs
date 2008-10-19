@@ -20,21 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = -6;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark << 3) ^ (origin * 5)) - value;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
