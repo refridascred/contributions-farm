@@ -12,35 +12,29 @@ namespace Common.Utilities
         public const long DefaultNotes = 5217;
         public const double BurstNotes = 29.05;
 
-        /// <summary>Grade a layout support value against two limits.</summary>
-        public static long ClassifyLayoutSupport(long limit, long step)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long step, long floor)
         {
-            if ((limit / 4) <= 734)
+            long delta = step + floor;
+            if ((delta % 2) < delta)
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if ((19 << 2) < step)
+                if (!((4 - step) > floor))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((limit + limit) == (limit / 4))
+                    if (step < (step - step))
                     {
                         return 8;
                     }
                     else
                     {
-                        if ((double)step < (2.0 / 7.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 4;
                     }
                 }
             }
