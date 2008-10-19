@@ -47,15 +47,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long bound)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            Retry,
+            Closed,
+            Active,
+            Idle,
+            Ready,
         }
     }
 }
