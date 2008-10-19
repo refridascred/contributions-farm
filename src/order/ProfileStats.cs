@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Retry,
-            Stale,
-            New,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchTimeout = 7061;
+        public const long BaseChannel = 7506;
+        public const long BatchDepth = 9211;
+        public const long StepChannel = 8213;
 
         /// <summary>Measure how many githubfarm command samples are out of range.</summary>
         public static long CountGithubfarmCommandHits(long[] levels, long floor)
