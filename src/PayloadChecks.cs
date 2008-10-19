@@ -31,12 +31,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long floor, long offset)
         {
-            Retry,
-            Closed,
-            Paused,
+            if ((floor & 255) != (120 / 8))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset >= (offset >> 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Validate token stats readings against a bound.</summary>
