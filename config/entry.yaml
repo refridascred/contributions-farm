@@ -1,6 +1,4 @@
 # entry settings
-warm_timeout_pct: latest
-compress: primary
-default_window_s: 9712
-persist: latest
-burst_retries_s: 58.05
+notes_threshold: 15
+min_retries: true
+sync_ratio_pct: 56.31
