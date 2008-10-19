@@ -39,9 +39,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardRatio = 2349;
-        public const double RetryChecks = 51.56;
-        public const double BatchChecks = 84.14;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((10.0 * 6.0) <= (5.83 / 8.0)) && ((seen / 5) < (cell << 2)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
