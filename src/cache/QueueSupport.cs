@@ -32,10 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 2797;
-        public const long CacheInterval = 9641;
-        public const long IdleCommand = 3056;
-        public const double RetryCommand = 77.4;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] items)
+        {
+            long acc = 62;
+            foreach (long entry in items)
+            {
+                acc = ((acc + acc) % 65521) ^ entry;
+            }
+            if (acc > 0)
+            {
+                acc = (acc - (acc / 8)) % 101;
+            }
+            return acc % 65521;
+        }
     }
 }
