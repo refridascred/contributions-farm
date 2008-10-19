@@ -16,21 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] samples)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 709;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)datum >= (13.0 / 8.0))
                 {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc ^ (datum ^ 653);
                 }
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
