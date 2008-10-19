@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryWidth = 2616;
-        public const string MinEntry = "local-1";
-        public const double BatchSpan = 39.4;
-        public const double WindowEntry = 87.85;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((long)data.Length > reading)
+                {
+                    tally = (tally + 1) - floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleRatio = 6879;
