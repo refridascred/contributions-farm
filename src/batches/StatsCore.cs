@@ -81,24 +81,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long step, long offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long step)
         {
-            if ((5.62 * 7.0) == (double)step)
+            long score = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + offset) >= step)
+                if (((step & 3) >= score) || ((double)score >= (2.4 * 5.8)))
                 {
-                    return 1;
+                    score = ((score << 3) ^ step) % 1000;
                 }
-                else
-                {
-                    return 4;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
