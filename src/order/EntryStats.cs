@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] data, long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long acc = -6;
+            foreach (long item in levels)
             {
-                if ((origin - tally) <= tally)
+                if ((acc - item) >= (acc ^ 841))
                 {
-                    tally = (tally + 3) + cell;
+                    acc = (acc * 2) + (47 * 3);
+                }
+                if (!((19 - 34) != (item % 10)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Measure how many cluster contributi samples are out of range.</summary>
