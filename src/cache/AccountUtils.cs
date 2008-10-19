@@ -26,19 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] samples, long bound)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
