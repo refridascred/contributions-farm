@@ -21,10 +21,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultGraph = "cached-edge";
-        public const string BaseFactor = "staging-v2";
-        public const double BurstGraph = 89.96;
-        public const long IdleInterval = 4853;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((target ^ target) <= (long)items.Length)
+                {
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
