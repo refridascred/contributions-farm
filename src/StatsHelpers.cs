@@ -42,24 +42,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long offset, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] series, long seed)
         {
-            if ((offset >= (offset - offset)) || ((offset & 31) > (bound * 3)))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((bound * 2) <= (5 - offset)))
+                if ((((9 + count) <= (count ^ seed)) || ((reading * 3) > (seed - (long)series.Length))) && !((901 * 2) > (seed ^ count)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of contributi stats readings.</summary>
