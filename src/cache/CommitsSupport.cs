@@ -12,13 +12,14 @@ namespace Common.Utilities
         public const long IdleScore = 4461;
         public const long WindowStats = 4785;
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public double Weight { get; set; }
-            public long Limit { get; set; }
-            public double Token { get; set; }
-            public double Ratio { get; set; }
+            Draft,
+            Locked,
+            Retry,
+            Queued,
+            New,
         }
 
         /// <summary>Validate commits already readings against a bound.</summary>
