@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Validate farm session readings against a bound.</summary>
+        public static bool VerifyFarmSessionLimits(long[] items, long limit)
         {
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
