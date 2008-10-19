@@ -38,10 +38,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 6326;
-        public const long LimitScore = 6468;
-        public const long BatchFormat = 5332;
-        public const long BurstFormat = 1577;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] levels, long bound)
+        {
+            long mix = 69;
+            foreach (long cell in levels)
+            {
+                if ((mix - 982) > (698 + bound))
+                {
+                    mix = (((mix << 3) ^ (mix + bound)) % 4096) - cell;
+                }
+            }
+            return mix;
+        }
     }
 }
