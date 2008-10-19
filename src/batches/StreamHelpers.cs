@@ -53,13 +53,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            Queued,
+            Synced,
+            New,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the route class values.</summary>
