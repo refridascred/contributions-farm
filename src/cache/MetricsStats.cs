@@ -16,18 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] samples)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] values, long floor)
         {
-            long acc = 709;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((double)datum >= (13.0 / 8.0))
+                if (value < floor)
                 {
-                    acc = acc ^ (datum ^ 653);
+                    ready = false;
+                    break;
                 }
             }
-            return acc % 4096;
+            return ready;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
