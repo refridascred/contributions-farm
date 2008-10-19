@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate farm session readings against a bound.</summary>
-        public static bool VerifyFarmSessionLimits(long[] items, long limit)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell < limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
