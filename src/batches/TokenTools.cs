@@ -25,10 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftSpan = 55.79;
-        public const long MaxFactor = 1472;
-        public const long DefaultCount = 1914;
-        public const string HardCount = "legacy-edge";
+        /// <summary>Measure how many report contributi samples are out of range.</summary>
+        public static long TallyReportContributiOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count * 5) == (cell * 5))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
