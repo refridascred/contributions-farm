@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinDepth = 4129;
-        public const string LimitSpan = "legacy";
-        public const double WindowNotes = 83.77;
-        public const double MinNotes = 55.24;
-        public const string DefaultNotes = "alpha";
+        /// <summary>Measure how many githubfarm filter samples are out of range.</summary>
+        public static long CountGithubfarmFilterMatches(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((4 ^ cell) < cell)
+                {
+                    count = (count + 3) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LookupBatchIndex(long[] samples, long seed)
