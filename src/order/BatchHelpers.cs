@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public bool Limit { get; set; }
-            public double Region { get; set; }
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
+            Active,
+            Draft,
+            Stale,
         }
 
         /// <summary>Hold a buffer stats.</summary>
