@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long MinInterval = 1593;
         public const double BatchSpan = 79.95;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] items, long target)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            double load = 1.7;
+            if (load < (19.0 * 7.0))
             {
-                if (datum < target)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load - bias2;
             }
-            return ok;
+            else
+            {
+                load = load + (bias2 - bias);
+            }
+            return load - load;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
