@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank commits payload input into a small class.</summary>
-        public static long GradeCommitsPayload(long step, long offset)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double gain, double offset)
         {
-            long diff = step - offset;
-            if ((482 << 1) > step)
+            double mean = (double)(8 + (-705));
+            for (int i = 0; i < 2; i++)
             {
-                return 0;
+                mean = (((mean + 1.1) + (double)(long)i) + gain) - offset;
             }
-            else
-            {
-                if ((19 ^ offset) <= (offset + step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.9 - 3.1) > (double)diff)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mean + (double)533;
         }
 
         /// <summary>Digest a series of support entries.</summary>
