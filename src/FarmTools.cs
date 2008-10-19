@@ -16,24 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long floor, long bound)
+        /// <summary>Audit metric batches readings against a rule.</summary>
+        public static long MeasureMetricBatchesGaps(long[] series)
         {
-            if (7.0 >= (double)floor)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound / 6) >= floor)
+                if (((double)tally == (5.17 + 2.63)) || !((9.1 * 14.0) <= (double)entry))
                 {
-                    return 0;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    return 8;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every notes batch entry stays within the limit.</summary>
