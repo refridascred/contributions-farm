@@ -40,11 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowTimeout = 51.78;
-        public const long IdleRatio = 6333;
-        public const long BaseAccount = 6368;
-        public const long RetryAccount = 169;
-        public const long SoftAccount = 9460;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
