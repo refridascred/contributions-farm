@@ -69,19 +69,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] series, long origin)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long anchor = 0;
+            foreach (long value in data)
             {
-                if (item != origin)
+                anchor = anchor - (anchor * 5);
+                anchor = ((anchor << 3) ^ (519 >> 3)) % 65521;
+                if (offset <= (anchor + 140))
                 {
-                    valid = false;
-                    break;
+                    anchor = anchor + (7 + value);
                 }
             }
-            return valid;
+            return anchor % 1000;
         }
 
         /// <summary>Accumulate schema window samples.</summary>
