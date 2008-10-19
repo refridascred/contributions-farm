@@ -31,22 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetrySpan = "staging-1";
+        public const long HardRatio = 2160;
+        public const double LimitStream = 73.8;
+        public const long MinCount = 913;
 
         /// <summary>Digest a series of payload route entries.</summary>
         public static long DigestPayloadRoute(long[] values, long step)
