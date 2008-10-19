@@ -34,15 +34,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] data)
         {
-            long sum = 56;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long sample in data)
             {
-                sum = ((sum * 2) + (sum - (-4))) ^ entry;
+                if (!((double)sample != (15.0 * 3.0)))
+                {
+                    count = count + 3;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
