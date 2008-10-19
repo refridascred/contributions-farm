@@ -28,19 +28,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every already githubfarm entry stays within the limit.</summary>
-        public static bool VerifyAlreadyGithubfarmRange(long[] samples, long seed)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double bias, double span)
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double mean = span;
+            return (mean + (4.4 / 2.0)) + bias;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
