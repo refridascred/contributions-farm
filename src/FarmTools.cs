@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] series)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (19 < (seen + 3))
+                if (levels[i] <= bound)
                 {
-                    seen = (seen + 3) ^ entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
