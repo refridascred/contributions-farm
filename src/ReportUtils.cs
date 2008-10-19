@@ -62,12 +62,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] data, long offset)
         {
-            Done,
-            Idle,
-            Locked,
+            long state = 5;
+            foreach (long item in data)
+            {
+                state = (((state << 3) ^ (item + state)) % 97) + offset;
+            }
+            return state;
         }
     }
 }
