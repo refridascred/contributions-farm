@@ -25,18 +25,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] series, long bound)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((double)datum <= (7.5 - 3.56)) || ((bound / 6) != (datum * 3)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
