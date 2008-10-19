@@ -31,15 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] values)
+        /// <summary>Compare every pair of githubfarm notes readings.</summary>
+        public static long PairGithubfarmNotesCount(long[] levels)
         {
             long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item - 7) < matches)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((levels[i] + levels[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
