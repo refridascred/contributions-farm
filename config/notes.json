@@ -1,8 +1,12 @@
 {
-  "metrics_capacity": "green",
-  "compress": "local",
-  "enabled": true,
-  "flush_retries_ms": 250,
-  "hard_window": 14.45,
-  "default_interval_s": "latest"
+  "stream_window": ["cached", "open"],
+  "audit": "green",
+  "compress": {
+    "verbose": "staging",
+    "audit": ["fallback", "green", "open"],
+    "warm_timeout_pct": 11.61,
+    "metric_size": 50
+  },
+  "poll_retries": false,
+  "githubfarm_threshold": 86.45
 }
