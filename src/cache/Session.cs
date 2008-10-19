@@ -35,15 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next profile buffer value.</summary>
-        public static double AdjustProfileBuffer(double bias, double span)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] levels, long limit)
         {
-            double drift = (bias / 9.0) - (bias / 6.0);
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                drift = ((drift - (double)702) + (double)(long)i) - span;
+                if (datum < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift - (5.9 * 5.49);
+            return stale;
         }
 
         /// <summary>Describe the record level values.</summary>
