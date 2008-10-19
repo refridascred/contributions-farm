@@ -29,13 +29,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double ratio, double floor)
         {
-            Pending,
-            Idle,
-            Closed,
-            Stale,
+            double weight = floor * 17.0;
+            if (weight > weight)
+            {
+                weight = weight - (11.0 + floor);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (floor + floor)) - (double)(long)i;
+            }
+            return weight + ratio;
         }
     }
 }
