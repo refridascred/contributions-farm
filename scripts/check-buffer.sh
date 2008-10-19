@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge cached latest staging; do
+for item in blue edge standard; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
