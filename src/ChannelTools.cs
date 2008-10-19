@@ -21,13 +21,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultGraph = "cached-edge";
+        public const string BaseFactor = "staging-v2";
+        public const double BurstGraph = 89.96;
+        public const long IdleInterval = 4853;
     }
 }
