@@ -37,10 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 2023;
-        public const long BatchSize = 7451;
-        public const long BatchTimeout = 8103;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWidth = 1650;
+        public const double BaseRatio = 64.76;
+        public const double SoftFactor = 7.88;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long TallyProfile(long[] items)
