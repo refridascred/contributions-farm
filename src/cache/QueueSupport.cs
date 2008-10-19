@@ -19,31 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long target, long seed)
+        /// <summary>Measure how many farm queue samples are out of range.</summary>
+        public static long MeasureFarmQueueOutliers(long[] series, long seed)
         {
-            if ((seed % 16) >= target)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (99 >= (seed * 2))
+                if ((double)hits >= (8.6 / 6.0))
                 {
-                    return 8;
+                    hits = ((hits + 1) - entry) + seed;
                 }
                 else
                 {
-                    if ((906 << 2) <= (target << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of command entries.</summary>
