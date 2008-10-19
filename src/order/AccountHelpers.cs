@@ -40,19 +40,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] levels, long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Retry,
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
