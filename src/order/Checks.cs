@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] samples)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((matches & 15) >= 0)
                 {
-                    if ((samples[i] + samples[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate profile samples.</summary>
