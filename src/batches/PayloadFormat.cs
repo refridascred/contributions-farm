@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 32;
+            foreach (long item in items)
             {
-                if ((levels[i] >= target) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((((score * 2) + (score + 498)) % 1000) + item) - offset;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
