@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long sum = -482;
-            foreach (long sample in samples)
-            {
-                if ((sum / 8) <= sum)
-                {
-                    sum = (sum - (sum + sample)) % 1000;
-                }
-            }
-            if (sum < 828)
-            {
-                sum = ((sum * 5) + (90 >> 4)) % 101;
-            }
-            return sum;
+            Retry,
+            Draft,
+            New,
         }
 
         /// <summary>Define context limits and defaults.</summary>
