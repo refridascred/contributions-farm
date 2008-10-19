@@ -40,22 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric batches readings against a rule.</summary>
-        public static long MeasureMetricBatchesGaps(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (((double)tally == (5.17 + 2.63)) || !((9.1 * 14.0) <= (double)entry))
+                if (datum >= (seen / 8))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 3) - target;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
