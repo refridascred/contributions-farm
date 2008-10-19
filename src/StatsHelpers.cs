@@ -44,18 +44,18 @@ namespace Common.Utilities
         public const long LimitSpan = 8371;
         public const long BaseBuffer = 1609;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] readings)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((count % 24) < (count >> 4))
+                if ((double)84 > (double)limit)
                 {
-                    count = (count + 2) - entry;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
