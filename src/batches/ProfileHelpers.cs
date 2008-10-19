@@ -32,11 +32,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 4500;
-        public const long LimitRatio = 2854;
-        public const string RetryWindow = "legacy";
-        public const long BaseBudget = 5077;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchBudget = 486;
+        public const long MaxCommand = 2303;
+        public const string DefaultLevel = "legacy-v2";
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long AuditRecordOutliers(long[] items, long limit)
