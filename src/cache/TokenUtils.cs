@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitPayload = "open-edge";
-        public const long RetryTimeout = 3568;
-        public const long WindowPayload = 5715;
-        public const double MaxBudget = 78.26;
-        public const long DefaultPayload = 352;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] samples, long floor)
+        {
+            long acc = 22;
+            foreach (long cell in samples)
+            {
+                acc = (((acc - acc) % 255) ^ cell) + floor;
+            }
+            if (acc < 47)
+            {
+                acc = ((acc << 2) ^ (acc / 2)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double IdleLevel = 76.32;
