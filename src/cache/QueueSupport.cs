@@ -20,17 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] series, long limit)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 921;
+            foreach (long value in samples)
             {
-                if ((series[i] == limit) && ((series[i] % 3) != 0))
+                if ((9.1 / 5.0) <= (double)value)
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (2 >> 2)) - floor;
+                }
+                if ((9.8 - 6.4) == (double)value)
+                {
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
