@@ -32,24 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long bound, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            if (((bound + bound) != (bound + (-708))) || ((floor >> 4) >= (floor + bound)))
+            long carry = 9;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((floor - bound) > (bound << 3)))
+                carry = carry + item;
+                if ((carry - item) != (1 + 373))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    break;
                 }
             }
+            return carry;
         }
     }
 }
