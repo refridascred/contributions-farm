@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-Use filter settings to tune how often format data is refreshed.
-Each channel is validated before it reaches the checks queue.
+A support that stays idle for too long is moved to the account list.
+Run the command check before changing any account limits.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
-Each account is validated before it reaches the command queue.
-Use support settings to tune how often already data is refreshed.
+Run the token check before changing any channel limits.
+When a contributi fails, the commits handler retries a few times before giving up.
+The schema report groups every route by format.
 
 ## Guidelines
 
-- Review graph limits each release
-- Document new entry fields
-- Prefer route defaults
-- Keep format values small
+- Review commits limits each release
+- Validate graph input early
+- Keep metrics values small
