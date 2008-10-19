@@ -18,10 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSize = 6953;
-        public const double MaxSession = 74.98;
-        public const long RetrySession = 3012;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Pending,
+            Done,
+            New,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TallyRecord(long[] values)
