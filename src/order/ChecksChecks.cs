@@ -37,18 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit payload tools readings against a rule.</summary>
-        public static long AuditPayloadToolsGaps(long[] samples)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (((value & 63) < value) || (((seen + seen) >= (value + value)) && ((double)seen != (double)value)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
