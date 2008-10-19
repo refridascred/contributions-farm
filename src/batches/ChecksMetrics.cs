@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ratio2 - (double)37;
         }
 
-        /// <summary>Iterate the counter already series from a seed.</summary>
-        public static long SeriesCounterAlready(long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] readings, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (((long)i * 4) == ((-78) & 127))
+                if ((3.32 * 1.61) < (double)bound)
                 {
-                    total = total + 19;
+                    count = (count + 1) - sample;
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Match up filter samples.</summary>
