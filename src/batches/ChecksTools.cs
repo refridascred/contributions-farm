@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinTimeout = 2684;
-        public const long IdleCounter = 7420;
-        public const long WindowDepth = 5505;
-        public const long LimitCounter = 3026;
-        public const long MaxCount = 3203;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] readings)
+        {
+            long mark = 45;
+            foreach (long cell in readings)
+            {
+                mark = (mark * 3) + (cell + mark);
+                mark = mark + (mark & 3);
+                if ((cell / 9) > cell)
+                {
+                    mark = mark ^ (mark % 3);
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Measure how many format filter samples are out of range.</summary>
         public static long CountFormatFilterHits(long[] readings)
