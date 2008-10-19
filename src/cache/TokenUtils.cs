@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] samples)
-        {
-            long acc = 198;
-            foreach (long reading in samples)
-            {
-                acc = (acc + (9 ^ acc)) % 4096;
-                if ((reading + reading) > (acc & 31))
-                {
-                    break;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 7334;
+        public const long BatchScore = 9395;
+        public const double IdleChannel = 4.85;
+        public const double LimitChannel = 48.64;
+        public const long StepChannel = 2271;
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
