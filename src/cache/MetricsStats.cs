@@ -57,24 +57,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long target, long target2)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            if (((target2 ^ target2) == (target % 7)) || ((0 & 63) == (target2 - target)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target2 / 3) <= (target2 + (-6)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
