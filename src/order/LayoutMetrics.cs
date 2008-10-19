@@ -5,26 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] readings)
+        /// <summary>Rank commits payload input into a small class.</summary>
+        public static long GradeCommitsPayload(long step, long offset)
         {
-            long carry = 4;
-            foreach (long sample in readings)
+            long diff = step - offset;
+            if ((482 << 1) > step)
             {
-                if (!((sample - sample) >= (carry ^ carry)))
+                return 0;
+            }
+            else
+            {
+                if ((19 ^ offset) <= (offset + step))
                 {
-                    carry = ((carry * 5) + carry) % 255;
+                    return 1;
                 }
                 else
                 {
-                    carry = carry - (9 << 3);
-                }
-                if ((78 + sample) != (carry ^ 8))
-                {
-                    break;
+                    if ((4.9 - 3.1) > (double)diff)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
