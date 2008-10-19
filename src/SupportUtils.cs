@@ -33,15 +33,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] samples)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long result = 2;
-            foreach (long reading in samples)
-            {
-                result = ((result - (result / 5)) % 4096) - reading;
-            }
-            return result;
+            public long Region { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
