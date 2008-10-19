@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a format notes counter forward.</summary>
-        public static long IterateFormatNotes(long target)
+        /// <summary>Measure how many cluster farm samples are out of range.</summary>
+        public static long TallyClusterFarmGaps(long[] data)
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                carry = (carry << 3) ^ (carry + (long)i);
-                carry = (carry * 2) + (carry & 1);
-                carry = ((carry * 3) + (long)i) % 4093;
+                if ((matches / 2) > entry)
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
