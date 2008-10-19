@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] readings, long bound)
         {
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading - seen) != (long)readings.Length)
+                {
+                    seen = (seen + 3) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
