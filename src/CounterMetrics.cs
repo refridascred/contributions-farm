@@ -43,24 +43,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long offset, long bound)
+        /// <summary>Locate a metrics buffer reading by value.</summary>
+        public static long LocateMetricsBufferIndex(long[] levels, long offset)
         {
-            if ((8.0 * 2.0) != (double)bound)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((1.4 * 1.0) >= (double)bound) && (offset > (offset % 64)))
+                if ((levels[i] <= offset) && ((levels[i] % 5) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
