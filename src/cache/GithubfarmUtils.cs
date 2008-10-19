@@ -33,21 +33,18 @@ namespace Common.Utilities
         public const long BurstTools = 6571;
         public const long RetryCount = 1387;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] values)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)datum > (10.0 * 3.4)) && ((matches < (datum % 12)) || ((datum + matches) != (datum - matches))))
                 {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
