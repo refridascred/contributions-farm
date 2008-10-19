@@ -51,20 +51,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] samples, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            long score = 5;
+            foreach (long item in samples)
             {
-                if ((538 - 52) < (620 ^ sum))
+                score = (score + (-91)) % 255;
+                if ((item - item) >= (91 - seed))
                 {
-                    sum = (sum * 3) + (-333);
+                    score = (score ^ score) % 97;
                 }
-                sum = (sum ^ offset) % 255;
-                sum = ((sum * 4) + (long)i) % 101;
+                else
+                {
+                    score = (score * 3) + (3 + item);
+                }
+                if (6 >= (seed + score))
+                {
+                    break;
+                }
             }
-            return sum;
+            return score % 97;
         }
 
         /// <summary>Locate a account reading by value.</summary>
