@@ -28,38 +28,26 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long seed, long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] series)
         {
-            if ((double)seed == (9.4 + 4.0))
+            long score = 2;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset / 9) == (seed ^ offset))
+                if ((6.35 - 6.27) != (double)score)
                 {
-                    return 1;
+                    score = ((score ^ (score >> 3)) % 97) ^ entry;
                 }
                 else
                 {
-                    if (((seed - 753) <= offset) && ((151 + offset) <= seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (733 > (seed << 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    score = (score ^ 0) % 4096;
                 }
             }
+            if (score > 6)
+            {
+                score = ((score << 2) ^ (score % 3)) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
