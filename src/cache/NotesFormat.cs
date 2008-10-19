@@ -34,10 +34,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitBatch = 89.7;
-        public const long HardInterval = 6473;
-        public const long MaxTimeout = 5211;
-        public const long MinBatch = 9120;
+        /// <summary>Match up commits editor samples.</summary>
+        public static long OverlapCommitsEditorCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
