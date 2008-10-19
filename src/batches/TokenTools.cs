@@ -24,12 +24,15 @@ namespace Common.Utilities
             return bias - 3.65;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 4517;
-        public const string LimitFactor = "staging";
-        public const long IdleCluster = 3318;
-        public const double CacheBudget = 24.72;
-        public const long SoftCluster = 6180;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Stale,
+            Done,
+            Idle,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long StepLayout = 5367;
