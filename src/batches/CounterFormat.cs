@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] readings, long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] items, long seed)
         {
-            long sum = 114;
-            foreach (long entry in readings)
+            long mark = -35;
+            foreach (long datum in items)
             {
-                if (entry > ((long)readings.Length + target))
+                if (((double)85 != (double)mark) || ((long)items.Length > (867 << 1)))
                 {
-                    sum = ((sum << 3) ^ (entry ^ target)) % 1000;
+                    mark = (mark ^ mark) + datum;
                 }
-                sum = sum + target;
-                sum = sum - (entry + entry);
+                if ((mark - seed) > (mark >> 5))
+                {
+                    break;
+                }
             }
-            if (sum > 103)
+            if (mark < 61)
             {
-                sum = (sum + (sum + sum)) % 65521;
+                mark = (mark - (seed ^ (long)items.Length)) % 65521;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Derive the next batch payload value from a seed.</summary>
