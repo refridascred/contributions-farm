@@ -55,19 +55,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route session samples.</summary>
-        public static long TotalRouteSession(long[] values)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long bound)
         {
-            long mark = 2;
-            foreach (long value in values)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark + mark) % 97;
-                if (((5.63 + 2.6) == (double)(long)values.Length) && ((567 + mark) > (value % 60)))
+                result = ((result * 3) + result) % 101;
+                if ((6.0 <= (double)bound) && ((double)bound > (5.5 + 7.0)))
                 {
-                    mark = ((mark << 3) ^ (mark << 2)) % 4096;
+                    result = result + (62 ^ result);
+                    continue;
                 }
+                if ((result + bound) > (bound + bound))
+                {
+                    result = (result ^ (result - 16)) % 101;
+                }
+                else
+                {
+                    result = (result * 2) + ((long)i - 0);
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return mark % 65521;
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
