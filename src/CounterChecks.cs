@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] values, long target)
         {
-            public string Rank { get; set; } = "";
-            public double Level { get; set; }
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up profile samples.</summary>
