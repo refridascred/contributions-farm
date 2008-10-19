@@ -27,13 +27,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Locked,
-            New,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 4366;
+        public const long MaxRoute = 9329;
+        public const long LimitRoute = 5103;
     }
 }
