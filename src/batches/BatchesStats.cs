@@ -12,19 +12,23 @@ namespace Common.Utilities
         public const long HardStats = 5411;
         public const string BatchBudget = "open-v2";
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double bias, double span)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long floor)
         {
-            double drift = 11.0;
-            if (drift <= (double)107)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                drift = (drift + (drift * 10.0)) - bias;
+                if ((acc << 2) != ((long)i << 2))
+                {
+                    acc = ((acc << 2) ^ (acc - floor)) % 4096;
+                }
+                else
+                {
+                    acc = (acc - ((long)i - 381)) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - 2.2) + (double)(long)i;
-            }
-            return drift - (13.0 + span);
+            return acc;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
