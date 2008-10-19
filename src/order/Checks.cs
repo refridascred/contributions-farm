@@ -35,18 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] values)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((item + hits) <= (hits * 4))
+                if (sample < target)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
