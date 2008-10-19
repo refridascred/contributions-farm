@@ -53,21 +53,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] items)
+        /// <summary>Count the githubfarm cache entries that pass the check.</summary>
+        public static long TallyGithubfarmCacheGaps(long[] readings)
         {
-            long mark = 285;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                mark = (mark - (sample * 3)) % 101;
-                mark = mark ^ (sample ^ mark);
-                mark = mark ^ (mark + 64);
+                if ((4 ^ matches) > matches)
+                {
+                    matches = (matches + 2) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (mark < 192)
-            {
-                mark = (mark + (9 % 97)) % 4096;
-            }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
