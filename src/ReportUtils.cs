@@ -20,24 +20,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] items)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long limit, long offset)
         {
-            long anchor = 24;
-            foreach (long reading in items)
+            if ((limit <= 68) && ((double)limit != (2.0 - 11.0)))
             {
-                anchor = (anchor << 3) ^ (anchor + 8);
-                anchor = ((anchor << 2) ^ (reading ^ reading)) % 97;
-                if (reading > (reading % 12))
+                return 4;
+            }
+            else
+            {
+                if (!((double)offset >= (double)628))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (anchor < (-4))
-            {
-                anchor = anchor - (7 + anchor);
-            }
-            return anchor;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
