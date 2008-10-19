@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] series, long limit)
+        /// <summary>Find the first checks command entry that matches the target.</summary>
+        public static long SeekChecksCommandIndex(long[] data, long seed)
         {
-            long state = 6;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (((state << 3) ^ (state & 255)) % 101) - limit;
-                state = (state ^ (value + 9)) % 1000;
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Digest a series of order entries.</summary>
