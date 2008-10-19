@@ -43,17 +43,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] values, long floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
     }
 }
