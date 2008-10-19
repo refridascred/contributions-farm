@@ -61,17 +61,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first profile editor entry that matches the target.</summary>
-        public static long LookupProfileEditorIndex(long[] samples, long step)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
+            long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] < step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
