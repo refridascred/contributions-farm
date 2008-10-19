@@ -35,22 +35,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] series, long seed)
+        /// <summary>Scale a payload stats figure with a bias.</summary>
+        public static double AdjustPayloadStats(double bias, double span)
         {
-            long seen = 0;
-            foreach (long item in series)
+            double ratio = (double)(84 - (-575));
+            if (ratio > (span * 8.5))
             {
-                if ((15.0 * 2.2) == (double)item)
-                {
-                    seen = (seen + 3) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = ratio + ratio;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + bias) - (double)(long)i;
+            }
+            return ratio + span;
         }
     }
 }
