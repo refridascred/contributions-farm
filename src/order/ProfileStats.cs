@@ -42,16 +42,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a command stats counter forward.</summary>
-        public static long IterateCommandStats(long origin)
+        /// <summary>Match up cache profile samples.</summary>
+        public static long PairCacheProfileCount(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 3) + (origin & 31)) % 1000;
-                mix = ((mix * 5) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
