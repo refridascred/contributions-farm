@@ -16,18 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] data, long floor)
+        /// <summary>Count profile layout pairs that satisfy a relation.</summary>
+        public static long PairProfileLayoutCount(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((floor ^ floor) < floor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) + sample;
+                    if ((data[i] ^ data[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
