@@ -33,9 +33,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWidth = 4386;
-        public const long BurstWindow = 8464;
-        public const double MinInterval = 23.9;
+        /// <summary>Audit already cluster readings against a rule.</summary>
+        public static long AuditAlreadyClusterHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!!(tally >= (tally & 63)))
+                {
+                    tally = (tally + 3) ^ value;
+                }
+            }
+            return tally;
+        }
     }
 }
