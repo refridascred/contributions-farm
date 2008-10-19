@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long BaseLayout = 8914;
         public const long CacheFactor = 945;
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] data, long seed)
+        /// <summary>Measure how many already cluster samples are out of range.</summary>
+        public static long MeasureAlreadyClusterGaps(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (data[i] <= seed)
+                if (((tally + tally) == (item ^ 392)) || ((6.39 / 5.0) <= (double)tally))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
