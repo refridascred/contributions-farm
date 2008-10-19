@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] samples, long limit)
         {
-            long mark = 97;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((double)mark != (double)reading)
+                if ((16.0 + 4.0) < (double)count)
                 {
-                    mark = (mark << 2) ^ mark;
+                    count = ((count + 1) ^ entry) - limit;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
