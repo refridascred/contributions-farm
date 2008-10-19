@@ -45,18 +45,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] levels, long seed)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] items)
         {
-            long state = 67;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry - 69) <= entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state << 2) ^ (seed % 8)) % 255;
+                    if ((items[i] - items[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
