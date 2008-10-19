@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Done,
-            Closed,
-            Synced,
+            Pending,
+            Paused,
+            Idle,
         }
 
         /// <summary>Count window layout pairs that satisfy a relation.</summary>
