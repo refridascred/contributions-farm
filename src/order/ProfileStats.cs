@@ -42,31 +42,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long step, long floor)
+        /// <summary>Roll a command stats counter forward.</summary>
+        public static long IterateCommandStats(long origin)
         {
-            if ((double)step <= (double)floor)
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
+                mix = ((mix * 3) + (origin & 31)) % 1000;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((floor + step) > floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((2 << 2) != (floor / 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
