@@ -33,15 +33,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Pending,
-            Ready,
-            Draft,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowLevel = 6813;
+        public const long IdleSpan = 4133;
+        public const string WindowBudget = "fallback";
+        public const long RetrySchema = 3435;
+        public const double SoftSchema = 4.37;
 
         /// <summary>Accumulate route stream samples.</summary>
         public static long ScoreRouteStream(long[] samples)
