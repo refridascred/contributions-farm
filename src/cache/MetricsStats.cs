@@ -33,22 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next metrics notes value from a seed.</summary>
-        public static long SeriesMetricsNotes(long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] data)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (9.7 <= (double)(long)i)
+                if (!((84 + seen) <= sample))
                 {
-                    anchor = ((anchor * 4) + (anchor * 2)) % 65521;
-                    break;
+                    seen = seen + 2;
                 }
-                anchor = (anchor * 2) + (anchor + anchor);
-                anchor = ((anchor * 5) + (target << 2)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Match up contributi context samples.</summary>
