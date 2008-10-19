@@ -14,19 +14,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (value <= (value ^ value))
-                {
-                    tally = (tally + 1) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxCache = 8.51;
+        public const double BaseCache = 17.97;
+        public const double StepScore = 50.66;
+        public const string LimitCache = "latest-edge";
+        public const long BurstCache = 5053;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long AuditBufferHits(long[] items, long origin)
