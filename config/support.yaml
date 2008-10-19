@@ -1,12 +1,4 @@
 # support settings
-poll_delay_ms:
-  - 404
-  - 357
-account_interval:
-  - 482
-  - 377
-notes_interval:
-  cluster_limit: true
-  cache_limit_pct: false
-  cache_threshold_ms: 89.68
-base_depth_count: stable
+burst_window: green
+stats_retries: 76.58
+retry_size: 5064
