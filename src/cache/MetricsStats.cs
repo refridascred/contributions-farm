@@ -53,11 +53,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] values, long origin)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (cell <= origin)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
