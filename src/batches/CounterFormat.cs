@@ -27,18 +27,19 @@ namespace Common.Utilities
             return drift - (drift + bias);
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] data, long offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long anchor = 4;
+            foreach (long item in samples)
             {
-                if ((datum + hits) > hits)
+                anchor = anchor + item;
+                if ((anchor << 2) > (item - item))
                 {
-                    hits = (hits + 3) + offset;
+                    anchor = (anchor - anchor) % 65521;
                 }
             }
-            return hits;
+            return anchor % 97;
         }
     }
 }
