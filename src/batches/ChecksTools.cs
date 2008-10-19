@@ -21,20 +21,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Iterate the graph session series from a seed.</summary>
-        public static long DeriveGraphSession(long floor)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((double)(long)i > 1.4)
-                {
-                    state = (state ^ (state + (long)i)) % 1000;
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Active,
+            Stale,
+            Paused,
         }
 
         /// <summary>Audit metric filter readings against a rule.</summary>
