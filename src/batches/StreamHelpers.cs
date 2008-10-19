@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] values)
+        /// <summary>Audit cluster already readings against a rule.</summary>
+        public static long TallyClusterAlreadyGaps(long[] data)
         {
-            long acc = -4;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((double)cell == (5.32 - 2.0))
+                if ((reading - seen) != (seen % 97))
                 {
-                    acc = acc - (acc * 3);
-                }
-                else
-                {
-                    acc = (acc + (9 * 3)) % 255;
+                    seen = seen + 3;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
