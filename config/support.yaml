@@ -1,13 +1,6 @@
 # support settings
-warm_timeout: local
-persist:
-  tools_retries: latest
-  base_interval: cached
-  persist:
-    sync_size_pct: true
-    window_capacity: strict
-    farm_capacity: 100
-    compress: primary
-  payload_depth: eu-west
-contributi_depth: green
-batch_ratio_s: 2014
+min_retries: 7842
+default_size_ms: green
+hard_depth_count: 5.71
+min_interval: false
+enabled: legacy
