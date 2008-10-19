@@ -34,12 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
