@@ -27,12 +27,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 8688;
+        public const long BurstDepth = 2312;
+        public const string RetryFilter = "latest-1";
+        public const long DefaultTimeout = 1330;
+        public const long MaxFilter = 8290;
     }
 }
