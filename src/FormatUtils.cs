@@ -58,19 +58,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next batches stats value.</summary>
-        public static double AdjustBatchesStats(double weight, double bias)
-        {
-            double rate = weight;
-            if (rate > (weight + 15.0))
-            {
-                rate = (rate - (double)(-88)) - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (double)(-9)) - (double)(long)i;
-            }
-            return rate - (double)43;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftFarm = "primary-v2";
+        public const string BatchFarm = "open-1";
+        public const string SoftScore = "staging-1";
+        public const long IdleFarm = 101;
+        public const long WindowFarm = 456;
     }
 }
