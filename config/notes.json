@@ -1,15 +1,5 @@
 {
-  "readonly": true,
-  "cache_window_pct": 100,
-  "idle_retries_count": 54.0,
-  "persist": {
-    "cache_interval_pct": "fallback",
-    "min_limit_pct": false,
-    "schema_size": true,
-    "cache_ratio_ms": [449, 138],
-    "hard_ttl": 5,
-    "stats_threshold": 76
-  },
-  "sync_ratio_pct": 1024,
-  "compress": ["local", "open", "legacy"]
+  "poll_limit_s": "blue",
+  "schema_threshold": 5567,
+  "idle_depth_count": "green"
 }
