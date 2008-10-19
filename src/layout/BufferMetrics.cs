@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Buffer metrics helpers.</summary>
     public static class BufferMetrics
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] samples, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] values, long floor)
         {
             bool flag = true;
-            foreach (long entry in samples)
+            foreach (long datum in values)
             {
-                if (entry >= bound)
+                if (datum <= floor)
                 {
                     flag = false;
                     break;
