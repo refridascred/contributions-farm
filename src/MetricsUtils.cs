@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first checks command entry that matches the target.</summary>
-        public static long SeekChecksCommandIndex(long[] data, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 4;
+            foreach (long value in values)
             {
-                if (data[i] > seed)
+                carry = (((carry << 3) ^ (seed ^ (-637))) % 97) ^ value;
+                for (int i = 0; i < 2; i++)
                 {
-                    return (long)i;
+                    carry = (carry - ((long)i / 7)) % 4096;
+                }
+                if ((seed ^ carry) <= (seed - seed))
+                {
+                    carry = ((carry * 3) + (seed & 15)) % 65521;
+                }
+                else
+                {
+                    carry = (carry ^ carry) % 255;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Digest a series of order entries.</summary>
