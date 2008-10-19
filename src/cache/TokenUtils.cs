@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] items, long origin)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (value >= origin)
+                if (value != bound)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Describe the stream level values.</summary>
