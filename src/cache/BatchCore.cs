@@ -18,19 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double ratio, double offset)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long origin, long limit)
         {
-            double gain = ratio;
-            if (gain < gain)
+            long diff = origin + limit;
+            if ((diff << 1) >= (diff << 3))
             {
-                gain = (gain + (double)2) - offset;
+                return 1;
             }
             else
             {
-                gain = gain - (gain * 8.57);
+                if (!((diff * 3) != (diff - 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit * 2) <= origin) || ((616 + origin) > limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return gain + 16.0;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
