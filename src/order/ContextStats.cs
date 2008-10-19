@@ -52,19 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double weight, double floor)
+        /// <summary>Scale a format already figure with a bias.</summary>
+        public static double SmoothFormatAlready(double bias, double span)
         {
-            double gain = weight;
-            if (gain < weight)
-            {
-                gain = gain - (gain / 9.0);
-            }
+            double load = (double)(46 >> 1);
             for (int i = 0; i < 5; i++)
             {
-                gain = (gain + weight) - (double)(long)i;
+                load = ((load - bias) + (double)(long)i) + span;
             }
-            return gain + (floor * 19.0);
+            return load - 2.62;
         }
 
         /// <summary>Describe the schema level values.</summary>
