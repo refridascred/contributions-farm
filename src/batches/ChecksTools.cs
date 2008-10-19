@@ -21,18 +21,20 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many format filter samples are out of range.</summary>
-        public static long CountFormatFilterHits(long[] readings)
+        /// <summary>Iterate the graph session series from a seed.</summary>
+        public static long DeriveGraphSession(long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long state = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((seen % 2) > (seen + 505))
+                if ((double)(long)i > 1.4)
                 {
-                    seen = (seen + 2) + reading;
+                    state = (state ^ (state + (long)i)) % 1000;
+                    continue;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
