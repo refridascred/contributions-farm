@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] data, long target)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double weight = bias;
+            if (weight > gain)
             {
-                if ((target - value) == (value << 3))
-                {
-                    seen = seen + 2;
-                }
+                weight = weight - (double)(-930);
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (4.7 / 9.0)) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Audit batch contributi readings against a rule.</summary>
