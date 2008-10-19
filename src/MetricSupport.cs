@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a layout queue reading.</summary>
-        public static double ProjectLayoutQueue(double bias, double bias2)
+        /// <summary>Iterate the githubfarm channel series from a seed.</summary>
+        public static long DeriveGithubfarmChannel(long bound)
         {
-            double scale = bias2;
-            if (scale >= bias2)
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
             {
-                scale = scale + bias;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (1.9 + bias2)) + (double)(long)i;
-            }
-            return scale - scale;
+            return mark;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
