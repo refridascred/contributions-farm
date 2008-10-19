@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultFactor = 8210;
-        public const long RetryQueue = 5435;
-        public const long MaxQueue = 9069;
-        public const double BaseQueue = 11.16;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (((644 >> 1) == ((-63) + limit)) && ((limit ^ (-927)) >= hits))
+                {
+                    hits = (hits + 1) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
