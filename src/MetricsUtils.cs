@@ -28,32 +28,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a editor buffer value against two limits.</summary>
-        public static long GradeEditorBuffer(long seed, long offset)
-        {
-            if ((seed & 127) != (offset / 7))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset + 8) > (seed / 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((6 / 5) >= seed) && ((double)offset > (1.63 - 16.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxSpan = 76.78;
+        public const double RetryBudget = 36.83;
+        public const long MinFactor = 3765;
 
         /// <summary>Fold a list of session layout readings.</summary>
         public static long TotalSessionLayout(long[] items)
