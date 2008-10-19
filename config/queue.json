@@ -1,8 +1,19 @@
 {
-  "idle_retries_count": "eu-west",
-  "verbose": "fallback",
-  "cache_interval_ms": 6533,
-  "editor_window": "cached",
-  "batch_ratio": "staging",
-  "dry_run": ["cached", "edge"]
+  "readonly": 9012,
+  "default_limit_ms": 73,
+  "batch_ratio": "edge",
+  "editor_ttl": {
+    "editor_ratio": "fallback",
+    "default_ratio_count": "primary",
+    "flush_capacity_pct": [2, 470],
+    "profile_retries": {
+      "dry_run": true,
+      "poll_window_pct": 38,
+      "soft_window": 2393,
+      "min_size_count": 30,
+      "readonly": "primary"
+    },
+    "format_window": ["blue", "stable", "green"]
+  },
+  "idle_ttl_pct": true
 }
