@@ -44,19 +44,17 @@ namespace Common.Utilities
         public const long LimitSpan = 8371;
         public const long BaseBuffer = 1609;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] values, long seed)
+        /// <summary>Look up the position of a layout command sample.</summary>
+        public static long LookupLayoutCommandIndex(long[] items, long limit)
         {
-            bool found = true;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < seed)
+                if ((items[i] > limit) && ((items[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
