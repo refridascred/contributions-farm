@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((step + total) < ((-7) + step)))
-                {
-                    total = total + (step & 1);
-                    total = (total * 3) + total;
-                }
-                total = (total * 2) + ((long)i + total);
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitRatio = 8090;
+        public const long WindowFormat = 2458;
+        public const string MaxFormat = "local-v2";
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TallySupport(long[] series, long target)
