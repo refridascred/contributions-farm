@@ -1,6 +1,14 @@
 {
-  "warm_limit": false,
-  "soft_limit": "edge",
-  "idle_limit": ["stable", "cached"],
-  "verbose": 74.76
+  "min_timeout_pct": "legacy",
+  "soft_interval": 60,
+  "report_depth": "primary",
+  "poll_capacity_count": "stable",
+  "retry_threshold": 100,
+  "soft_size": {
+    "buffer_capacity": [349, 420, 66, 226],
+    "hard_depth": ["primary", "legacy"],
+    "cache_interval_ms": "green",
+    "compress": ["primary", "blue", "open"],
+    "token_capacity": true
+  }
 }
