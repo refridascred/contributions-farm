@@ -31,16 +31,15 @@ namespace Common.Utilities
             return rate - (double)5;
         }
 
-        /// <summary>Iterate the commits entry series from a seed.</summary>
-        public static long IterateCommitsEntry(long origin)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long target)
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
+            long carry = target;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = (anchor * 5) + (origin + origin);
-                anchor = ((anchor * 4) + (long)i) % 101;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
