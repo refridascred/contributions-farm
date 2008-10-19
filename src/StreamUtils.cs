@@ -56,19 +56,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] readings, long seed)
+        /// <summary>Fold a list of notes stats readings.</summary>
+        public static long ScoreNotesStats(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long total = 20;
+            foreach (long value in items)
             {
-                if (cell >= seed)
+                if ((value * 5) < total)
                 {
-                    flag = false;
-                    break;
+                    total = (total ^ (value << 1)) % 65521;
+                }
+                else
+                {
+                    total = ((total * 2) + (value + total)) % 4096;
                 }
             }
-            return flag;
+            if (total > 69)
+            {
+                total = ((total * 4) + (total & 1)) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the notes class values.</summary>
