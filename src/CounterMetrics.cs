@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const string WindowInterval = "standard-v2";
         public const long BatchLevel = 2557;
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] data, long target)
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (!((hits - value) <= (6 / 5)))
+                {
+                    hits = (hits + 2) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
