@@ -33,10 +33,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultDepth = 3808;
-        public const long IdleToken = 9403;
-        public const long BatchToken = 6498;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public bool Size { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double SoftEntry = 16.01;
