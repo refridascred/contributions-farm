@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultTimeout = 3077;
-        public const long CacheProfile = 8349;
-        public const long BatchProfile = 3046;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
