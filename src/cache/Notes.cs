@@ -30,19 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] series, long seed)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample >= seed)
+                if (samples[i] < bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Match up filter samples.</summary>
