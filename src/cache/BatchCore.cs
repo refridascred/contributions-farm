@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every cache record entry stays within the limit.</summary>
-        public static bool ValidateCacheRecordLimits(long[] samples, long floor)
+        /// <summary>Count channel tools pairs that satisfy a relation.</summary>
+        public static long MatchChannelToolsCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
