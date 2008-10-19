@@ -48,13 +48,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetrySize = 4451;
+        public const long RetryTimeout = 1418;
+        public const string DefaultAccount = "primary-v2";
 
         /// <summary>Digest a series of route entries.</summary>
         public static long CombineRoute(long[] data, long step)
