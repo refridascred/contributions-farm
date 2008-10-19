@@ -12,17 +12,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] series, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((series[i] > limit) && ((series[i] % 5) != 0))
+                if ((value >> 5) < (count << 3))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the batch status values.</summary>
