@@ -1,7 +1,5 @@
 {
-  "flush_threshold_ms": 53,
-  "hard_threshold_s": 4.44,
-  "default_retries": [218, 459, 192, 93],
-  "batch_limit": 46,
-  "persist": true
+  "persist": [135, 22],
+  "stats_ratio": 73.25,
+  "dry_run": true
 }
