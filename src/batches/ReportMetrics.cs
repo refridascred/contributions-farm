@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 4334;
-        public const long MaxChannel = 4722;
-        public const long LimitChannel = 2003;
-        public const long WindowChannel = 8115;
-        public const long IdleChannel = 9860;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long bound, long target)
+        {
+            if ((bound * 3) < bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)target >= (3.91 + 1.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound >= (163 * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long DefaultSize = 3334;
