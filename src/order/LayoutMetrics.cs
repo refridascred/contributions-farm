@@ -17,14 +17,14 @@ namespace Common.Utilities
         public const double WindowBudget = 89.63;
         public const long BatchMetrics = 822;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Active,
-            Dropped,
+            Retry,
             Done,
-            Queued,
-            Draft,
+            Closed,
+            Pending,
+            Failed,
         }
     }
 }
