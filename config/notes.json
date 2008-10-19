@@ -1,19 +1,8 @@
 {
-  "cache_delay_s": {
-    "account_delay": {
-      "hard_limit": "staging",
-      "editor_capacity": ["cached", "open", "cached", "open"],
-      "batch_interval": 250,
-      "base_size": 51,
-      "sync_timeout_count": true
-    },
-    "cache_ratio": 92.55,
-    "min_ratio_s": "local",
-    "notes_retries": 250,
-    "already_ttl": "latest"
-  },
-  "idle_size_s": "eu-west",
-  "base_window": "primary",
-  "retry_depth_count": 250,
-  "default_ratio_pct": 100
+  "metrics_capacity": "green",
+  "compress": "local",
+  "enabled": true,
+  "flush_retries_ms": 250,
+  "hard_window": 14.45,
+  "default_interval_s": "latest"
 }
