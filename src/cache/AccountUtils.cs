@@ -37,23 +37,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double bias, double bias2)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] samples, long bound)
         {
-            double rate = bias2;
-            if (rate >= (bias2 + bias2))
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                rate = (rate + (double)838) - bias;
+                if (reading >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (rate - bias2);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (double)7) + (double)(long)i;
-            }
-            return rate - (double)566;
+            return ok;
         }
     }
 }
