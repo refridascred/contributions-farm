@@ -46,19 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] samples, long seed)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] series)
         {
             long seen = 0;
-            foreach (long item in samples)
+            foreach (long cell in series)
             {
-                if (((item + item) < (449 ^ seen)) && !(seen < (seed << 3)))
+                if (!(((seen + cell) != (seen - cell)) || (cell > (cell & 7))))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
