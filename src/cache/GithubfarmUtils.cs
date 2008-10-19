@@ -59,12 +59,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Measure how many session command samples are out of range.</summary>
+        public static long TallySessionCommandGaps(long[] readings)
         {
-            Idle,
-            Ready,
-            Paused,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum & 31) >= (seen / 8))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
