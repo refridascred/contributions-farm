@@ -22,17 +22,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] values, long origin)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long floor, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((limit + floor) >= (limit % 60))
             {
-                if ((values[i] < origin) && ((values[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((limit ^ floor) > limit)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((721 + limit) <= (limit + 6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor - limit) != (limit - floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
