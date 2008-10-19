@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] data, long bound)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((7.7 / 4.0) != (double)sample)
-                {
-                    matches = (matches + 3) - bound;
-                }
-            }
-            return matches;
+            New,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the batch class values.</summary>
