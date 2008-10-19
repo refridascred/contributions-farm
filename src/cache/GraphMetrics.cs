@@ -13,19 +13,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] series, long offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] data)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long score = 88;
+            foreach (long datum in data)
             {
-                if (entry >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score + (score * 3)) % 97) + datum;
             }
-            return ok;
+            return score % 65521;
         }
 
         /// <summary>Match up format samples.</summary>
