@@ -16,15 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine profile cluster values into a single score.</summary>
-        public static long TallyProfileCluster(long[] values, long seed)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long mix = 181;
-            foreach (long entry in values)
-            {
-                mix = (mix + (seed << 1)) ^ entry;
-            }
-            return mix % 1000;
+            Locked,
+            Retry,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the route level values.</summary>
