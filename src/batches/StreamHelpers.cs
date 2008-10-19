@@ -13,12 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseSpan = 8010;
-        public const long BatchSize = 6176;
-        public const long DefaultLevel = 4987;
-        public const long RetryInterval = 5629;
-        public const double MaxBudget = 6.86;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepReport = "latest-v2";
+        public const long BurstSpan = 3789;
+        public const long BurstWidth = 8925;
+        public const long LimitBudget = 6704;
+        public const double HardReport = 16.27;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long FoldPayload(long[] levels)
