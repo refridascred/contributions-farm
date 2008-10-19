@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] samples, long seed)
+        /// <summary>Blend two counter context measurements.</summary>
+        public static double BlendCounterContext(double weight, double bias)
         {
-            long acc = 4;
-            foreach (long item in samples)
+            double ratio = (weight * 0.33) / 6.0;
+            if (ratio < (3.96 * 19.0))
             {
-                acc = acc ^ (seed - seed);
-                if (((acc + item) > ((long)samples.Length - acc)) && ((868 % 12) == (acc % 10)))
-                {
-                    acc = (acc << 3) ^ (seed + acc);
-                    acc = acc ^ seed;
-                    break;
-                }
-                acc = ((acc << 2) ^ item) % 255;
+                ratio = (ratio + (double)25) + bias;
             }
-            return acc;
+            else
+            {
+                ratio = ratio - 2.56;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (3.44 * 2.3)) - (double)(long)i;
+            }
+            return ratio + (ratio * 4.1);
         }
 
         /// <summary>Describe the stream class values.</summary>
