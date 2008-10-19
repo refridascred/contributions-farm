@@ -12,26 +12,19 @@ namespace Common.Utilities
         public const long HardCount = 7985;
         public const double IdleStream = 84.31;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] values)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] values, long seed)
         {
-            long acc = 624;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if ((((-79) - reading) >= (acc << 2)) && ((acc * 4) < 778))
+                if (sample <= seed)
                 {
-                    acc = acc - (251 << 1);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (reading + 424)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (acc > 582)
-            {
-                acc = acc - (acc - acc);
-            }
-            return acc % 1000;
+            return valid;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
