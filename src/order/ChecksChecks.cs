@@ -15,15 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] levels)
+        /// <summary>Measure how many token cache samples are out of range.</summary>
+        public static long TallyTokenCacheGaps(long[] items)
         {
-            long mark = 53;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                mark = (mark - sample) % 101;
+                if (!!((count << 2) >= 816))
+                {
+                    count = (count + 3) + cell;
+                }
             }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
