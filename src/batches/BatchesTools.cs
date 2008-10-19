@@ -34,16 +34,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = (sum << 2) ^ 6;
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 7289;
+        public const string MinQueue = "primary-edge";
+        public const long CacheQueue = 7470;
+        public const string CacheSize = "open-v2";
     }
 }
