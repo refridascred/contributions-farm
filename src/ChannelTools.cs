@@ -18,13 +18,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
