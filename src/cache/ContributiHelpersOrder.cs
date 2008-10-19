@@ -25,12 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double weight, double bias)
-        {
-            double scale = weight;
-            return (scale + (double)70) + bias;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCount = 2319;
+        public const long StepCount = 9271;
+        public const long WindowCluster = 6180;
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long IterateQueue(long floor)
