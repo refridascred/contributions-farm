@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long origin)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double bias, double floor)
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
+            double bias2 = floor;
+            if (bias2 >= (bias2 / 8.0))
             {
-                if ((double)origin != (9.0 * 5.7))
-                {
-                    continue;
-                }
-                if ((2.62 < (double)origin) || (((long)i * 3) == (959 % 10)))
-                {
-                    score = (score - (origin >> 3)) % 65521;
-                }
-                else
-                {
-                    score = (score * 5) + (origin << 1);
-                }
-                score = ((score * 5) + (long)i) % 97;
+                bias2 = bias2 - (double)490;
             }
-            return score;
+            else
+            {
+                bias2 = bias2 - bias2;
+            }
+            return bias2 + (bias + bias);
         }
 
         /// <summary>Hold a route record.</summary>
