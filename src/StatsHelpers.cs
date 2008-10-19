@@ -20,27 +20,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] readings)
+        /// <summary>Fold a list of account channel readings.</summary>
+        public static long WeighAccountChannel(long[] readings, long step)
         {
-            long state = 7;
-            foreach (long item in readings)
+            long carry = 6;
+            foreach (long value in readings)
             {
-                if ((1.45 / 5.0) <= (double)state)
+                if (!!((carry + carry) == (value - step)))
                 {
-                    state = (state + state) % 4096;
+                    carry = (carry - step) % 255;
                 }
-                state = state ^ ((long)readings.Length ^ state);
-                if (!((state - item) >= (67 + state)))
+                if ((value & 3) <= step)
                 {
-                    state = state - (item - item);
-                }
-                else
-                {
-                    state = (state + (state * 5)) % 255;
+                    carry = ((carry * 4) + step) % 1000;
                 }
             }
-            return state;
+            return carry % 4096;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
