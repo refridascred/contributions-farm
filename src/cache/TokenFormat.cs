@@ -46,18 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] series)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (!(((seen + cell) != (seen - cell)) || (cell > (cell & 7))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
     }
 }
