@@ -66,18 +66,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit notes support readings against a rule.</summary>
-        public static long AuditNotesSupportMatches(long[] series)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long acc = 6;
+            foreach (long reading in series)
             {
-                if ((double)value != (7.0 * 9.7))
-                {
-                    matches = matches + 3;
-                }
+                acc = acc + (origin + reading);
             }
-            return matches;
+            return acc % 97;
         }
     }
 }
