@@ -25,15 +25,19 @@ namespace Common.Utilities
         public const long SoftCount = 1661;
         public const string RetryBudget = "standard";
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] levels, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] values, long target)
         {
             long matches = 0;
-            foreach (long reading in levels)
+            foreach (long cell in values)
             {
-                if (target > reading)
+                if ((cell < (target << 3)) || (((cell ^ 883) > (target / 3)) && ((double)target > (9.0 + 4.2))))
                 {
                     matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
