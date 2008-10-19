@@ -59,14 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] samples, long target)
         {
-            Ready,
-            Closed,
-            Retry,
-            Pending,
-            Synced,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
