@@ -24,9 +24,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxInterval = 7.57;
-        public const long LimitRatio = 2663;
-        public const long BurstBatch = 7847;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Paused,
+            Stale,
+            Dropped,
+            Synced,
+        }
     }
 }
