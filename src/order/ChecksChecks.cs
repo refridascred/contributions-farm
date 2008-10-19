@@ -45,15 +45,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a tools command counter forward.</summary>
-        public static long IterateToolsCommand(long step)
+        /// <summary>Audit payload tools readings against a rule.</summary>
+        public static long AuditPayloadToolsGaps(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (((value & 63) < value) || (((seen + seen) >= (value + value)) && ((double)seen != (double)value)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
