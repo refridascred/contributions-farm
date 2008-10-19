@@ -56,18 +56,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the stream buffer entries that pass the check.</summary>
-        public static long CountStreamBufferMatches(long[] values)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] series)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (313 <= (item - item))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((series[i] ^ series[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Project the next report value.</summary>
