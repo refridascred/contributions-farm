@@ -1,23 +1,20 @@
 # githubfarm settings
-enabled: 60
-warm_threshold:
-  sync_threshold_ms:
-    compress: 82
-    max_limit:
-      - 309
-      - 305
-      - 58
-      - 72
-    strict: 30
-    readonly:
-      - 488
-      - 200
-    audit: edge
-    burst_capacity_s: strict
-  session_timeout: 1.88
-  hard_ttl_s: 44.3
-  retry_size_ms: 30
-  support_ttl: legacy
-audit: legacy
-soft_retries_pct: strict
-burst_retries_pct: latest
+idle_timeout_pct:
+  default_ttl_ms: 16.06
+  context_depth: 93.59
+  idle_ttl_s: strict
+  enabled: 7634
+  strict:
+    - 205
+    - 320
+    - 141
+    - 290
+  audit: 28.55
+audit: strict
+warm_interval_s:
+  - open
+  - legacy
+sync_window_ms:
+  - local
+  - latest
+hard_window_ms: true
