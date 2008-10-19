@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] samples, long seed)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((value <= count) && ((double)count < (1.21 + 1.91))) && !((seed ^ 5) > (value >> 1)))
+                if (items[i] > floor)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
