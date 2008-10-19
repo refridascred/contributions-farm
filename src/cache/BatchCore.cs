@@ -50,22 +50,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] series, long floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long floor, long step)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if (((floor / 9) > (step >> 1)) || ((double)step < (double)82))
             {
-                if ((floor + floor) >= sample)
+                return 8;
+            }
+            else
+            {
+                if (floor >= step)
                 {
-                    hits = hits + 1;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)step <= 2.9)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
