@@ -14,22 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] samples, long target)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] samples, long target)
         {
-            long mix = 444;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (mix <= (mix ^ entry))
+                if (datum > target)
                 {
-                    mix = (mix << 2) ^ (7 << 3);
-                }
-                else
-                {
-                    mix = mix + target;
+                    found = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return found;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
