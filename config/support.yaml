@@ -1,4 +1,4 @@
 # support settings
-burst_window: green
-stats_retries: 76.58
-retry_size: 5064
+readonly: legacy
+batch_window_pct: 250
+metric_interval: cached
