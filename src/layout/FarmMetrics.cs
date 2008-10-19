@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 4762;
-        public const long BurstAlready = 3680;
-        public const double DefaultAlready = 4.1;
-        public const long WindowLevel = 2919;
-        public const string MaxSize = "open-1";
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double ratio, double bias)
+        {
+            double bias2 = ratio;
+            if (bias2 <= (6.15 + ratio))
+            {
+                bias2 = bias2 + 16.0;
+            }
+            else
+            {
+                bias2 = bias2 + (double)20;
+            }
+            return bias2 - (bias * 0.5);
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TallyEntry(long[] data)
