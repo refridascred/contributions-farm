@@ -56,15 +56,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Count checks account pairs that satisfy a relation.</summary>
+        public static long CompareChecksAccountCount(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) != 7)
+                    if ((data[i] - data[j]) == 10)
                     {
                         count = count + 1;
                     }
