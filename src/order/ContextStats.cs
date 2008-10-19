@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] series)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((reading / 8) > reading)
+                if (entry <= (hits / 6))
                 {
-                    count = count + 1;
+                    hits = (hits + 2) - seed;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Project the next profile value.</summary>
