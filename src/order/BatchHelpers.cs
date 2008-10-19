@@ -28,11 +28,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] samples, long origin)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            long score = 6;
+            foreach (long cell in samples)
+            {
+                score = ((score + (score + origin)) % 101) - cell;
+                score = ((score * 2) + (origin >> 4)) % 101;
+            }
+            return score;
         }
     }
 }
