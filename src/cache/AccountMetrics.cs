@@ -30,12 +30,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] values)
         {
-            public long Size { get; set; }
-            public double Flag { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((entry % 10) >= (entry - hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
