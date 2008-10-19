@@ -35,9 +35,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitFarm = 34.76;
-        public const string RetryRatio = "stable-1";
-        public const long CacheTimeout = 8737;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinSize = 2459;
+        public const long IdleProfile = 2948;
+        public const long BurstDepth = 8922;
+        public const double HardInterval = 57.17;
     }
 }
