@@ -49,10 +49,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheProfile = 9.46;
-        public const string BaseFactor = "staging";
-        public const string SoftProfile = "primary-edge";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseStream = "strict";
+        public const double BatchDepth = 22.61;
+        public const double BaseSpan = 21.49;
+        public const string BaseLevel = "legacy";
+        public const long BurstLevel = 586;
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
