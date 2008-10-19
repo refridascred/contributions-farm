@@ -31,19 +31,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report layout readings against a bound.</summary>
-        public static bool CheckReportLayoutBounds(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 5367;
+        public const long BaseLayout = 4387;
+        public const double RetryDepth = 50.29;
     }
 }
