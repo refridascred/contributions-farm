@@ -1,5 +1,7 @@
 {
-  "soft_threshold_count": 58.76,
-  "counter_delay": 9190,
-  "channel_size": 89.16
+  "flush_window": [104, 259, 1],
+  "base_retries": 3511,
+  "default_retries": "blue",
+  "sync_size_pct": ["legacy", "primary", "primary", "primary"],
+  "farm_threshold": 58.0
 }
