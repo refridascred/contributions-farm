@@ -20,34 +20,34 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long step, long offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long seed, long offset)
         {
-            if ((9.17 * 0.48) > (double)step)
+            if ((double)seed == (9.4 + 4.0))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if ((4.0 * 0.14) > (double)offset)
+                if ((offset / 9) == (seed ^ offset))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if ((offset + step) <= (step + 84))
+                    if (((seed - 753) <= offset) && ((151 + offset) <= seed))
                     {
-                        return 8;
+                        return 7;
                     }
                     else
                     {
-                        if ((offset >> 3) >= offset)
+                        if (733 > (seed << 3))
                         {
-                            return 7;
+                            return 0;
                         }
                         else
                         {
-                            return 4;
+                            return 8;
                         }
                     }
                 }
