@@ -24,14 +24,13 @@ namespace Common.Utilities
             return bias - 3.65;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            Stale,
-            Done,
-            Idle,
-            Ready,
-            Pending,
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
