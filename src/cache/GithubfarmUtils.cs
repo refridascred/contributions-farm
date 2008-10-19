@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of account editor entries.</summary>
-        public static long ScoreAccountEditor(long[] series, long floor)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long total = 156;
-            foreach (long value in series)
-            {
-                total = (((total - ((-8) & 63)) % 255) + value) + floor;
-            }
-            return total % 4096;
+            Paused,
+            Draft,
+            New,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
