@@ -34,15 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            Dropped,
+            New,
+            Paused,
+            Stale,
+            Draft,
         }
 
         /// <summary>Hold a cluster summary.</summary>
