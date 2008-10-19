@@ -1,11 +1,10 @@
 {
-  "default_ttl": {
-    "default_window_pct": true,
-    "idle_timeout_pct": 250,
-    "batch_window_s": [280, 233, 443, 428],
-    "sync_capacity_s": 86
-  },
-  "base_limit_pct": 88.92,
-  "compress": ["local", "eu-west", "standard", "latest"],
-  "burst_capacity": "eu-west"
+  "idle_window_count": 31.88,
+  "min_interval_s": false,
+  "compress": 250,
+  "audit": {
+    "flush_ttl": 89,
+    "queue_timeout": 39,
+    "dry_run": 100
+  }
 }
