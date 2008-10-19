@@ -22,15 +22,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate notes route samples.</summary>
-        public static long TallyNotesRoute(long[] samples)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] data)
         {
-            long result = -49;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 4) + (28 & 7)) - value;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
