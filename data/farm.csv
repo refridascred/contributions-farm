@@ -1,8 +1,7 @@
-id,state,rank,count
-1,54.99,859,7.15
-2,stable,48.29,fallback
-3,700,stable,legacy
-4,fallback,6.48,780
-5,open,68.66,green
-6,69.0,665,95.78
-7,962,65.11,67.16
+id,weight,state,token
+1,staging,453,653
+2,30.69,blue,352
+3,922,legacy,931
+4,33.21,22.27,53.56
+5,legacy,64,90.84
+6,593,2.36,85.65
