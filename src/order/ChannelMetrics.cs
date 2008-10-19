@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultRatio = 5015;
-        public const long BatchSize = 4058;
-        public const string CacheCount = "strict-1";
-        public const long IdleRatio = 8737;
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmMatches(long[] samples)
