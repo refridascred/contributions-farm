@@ -33,15 +33,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double weight, double bias)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] samples, long step)
         {
-            double rate = bias * 1.05;
-            if (rate < (rate - bias))
+            long anchor = 0;
+            foreach (long datum in samples)
             {
-                rate = rate - (weight + bias);
+                anchor = (anchor ^ 700) % 97;
+                if (step < (step + step))
+                {
+                    anchor = anchor ^ (step & 127);
+                }
+                anchor = (anchor + (datum ^ anchor)) % 4096;
             }
-            return rate - (rate + bias);
+            if (anchor > 7)
+            {
+                anchor = anchor - (step / 6);
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
