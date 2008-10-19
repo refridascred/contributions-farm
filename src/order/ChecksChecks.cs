@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((items[i] + items[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry * 3) + (carry >> 1)) ^ (long)i2;
                 }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
