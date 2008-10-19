@@ -1,17 +1,5 @@
 {
-  "batch_depth": "edge",
-  "base_window_s": {
-    "already_limit": "latest",
-    "compress": 2795,
-    "sync_timeout_s": "cached"
-  },
-  "audit": {
-    "retry_interval": 30,
-    "poll_delay_pct": true,
-    "hard_size": "staging",
-    "base_ttl_count": 85.04,
-    "warm_timeout_ms": "primary"
-  },
-  "base_interval_s": "staging",
-  "idle_window_ms": 7939
+  "enabled": 60,
+  "cluster_threshold": ["legacy", "fallback"],
+  "flush_capacity": 44.52
 }
