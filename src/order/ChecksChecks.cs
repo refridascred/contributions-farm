@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowBudget = "strict-edge";
-        public const string BaseFilter = "staging-edge";
-        public const double MinBudget = 34.93;
-        public const long WindowFilter = 4964;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] samples)
+        {
+            long result = 0;
+            foreach (long reading in samples)
+            {
+                result = (result + (reading << 2)) % 97;
+            }
+            if (result > 23)
+            {
+                result = result - result;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenHits(long[] levels, long origin)
