@@ -37,11 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 8645;
-        public const double WindowCommits = 14.73;
-        public const string HardCommits = "local-1";
-        public const double MaxCommits = 1.52;
-        public const long WindowLevel = 5985;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
