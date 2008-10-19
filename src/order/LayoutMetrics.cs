@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultTimeout = 4290;
+        public const double BurstProfile = 15.83;
+        public const long HardProfile = 2094;
+        public const long RetryLevel = 5474;
+        public const long StepProfile = 5203;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BaseTools = 5479;
