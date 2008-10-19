@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] data, long seed)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
