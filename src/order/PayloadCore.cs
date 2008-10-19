@@ -31,19 +31,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] samples, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (datum > target)
+                if (item <= origin)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
