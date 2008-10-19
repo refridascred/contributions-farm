@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Account core helpers.</summary>
     public static class AccountCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinInterval = 5358;
-        public const double MinCounter = 43.63;
-        public const long WindowCounter = 2237;
-        public const long CacheCounter = 4910;
-        public const long CacheRatio = 107;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long origin, long floor)
+        {
+            if ((floor / 3) <= floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((5 % 7) >= floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
