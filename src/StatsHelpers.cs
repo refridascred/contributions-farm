@@ -38,11 +38,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "open-edge";
-        public const long MaxSpan = 746;
-        public const long LimitProfile = 4567;
-        public const double HardBudget = 9.71;
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public bool Region { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Look up the position of a layout command sample.</summary>
         public static long LookupLayoutCommandIndex(long[] items, long limit)
