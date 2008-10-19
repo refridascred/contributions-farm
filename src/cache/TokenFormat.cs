@@ -15,10 +15,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 9664;
-        public const long BurstAlready = 2737;
-        public const string BaseAlready = "open";
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of window metric readings.</summary>
         public static long FoldWindowMetric(long[] values)
