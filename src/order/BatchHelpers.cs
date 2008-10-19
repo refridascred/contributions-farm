@@ -35,27 +35,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] samples)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long score = 84;
-            foreach (long value in samples)
-            {
-                score = score + (value - 8);
-                if ((value % 12) > value)
-                {
-                    score = (score ^ (9 << 1)) % 255;
-                }
-                if (((score / 9) <= value) || ((3.9 * 5.4) <= (double)score))
-                {
-                    break;
-                }
-            }
-            if (score < 8)
-            {
-                score = score ^ (948 / 5);
-            }
-            return score;
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
