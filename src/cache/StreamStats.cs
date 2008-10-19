@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next entry support value.</summary>
-        public static double BlendEntrySupport(double scale, double bias)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] samples, long target)
         {
-            double load = scale;
-            if (load <= (scale * 6.0))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                load = load + (double)22;
+                if (tally >= (sample << 2))
+                {
+                    tally = (tally + 3) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (double)7) - (double)(long)i;
-            }
-            return load - bias;
+            return tally;
         }
 
         /// <summary>Hold a window stats.</summary>
