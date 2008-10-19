@@ -27,9 +27,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 5367;
-        public const long BaseLayout = 4387;
-        public const double RetryDepth = 50.29;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Stale,
+            Paused,
+            Ready,
+        }
     }
 }
