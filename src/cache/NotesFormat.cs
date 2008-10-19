@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Draft,
-            Locked,
-            Active,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseInterval = 94.47;
+        public const double BurstSession = 32.08;
+        public const long StepSession = 8079;
+        public const double LimitScore = 53.21;
+        public const long StepDepth = 1016;
 
         /// <summary>Measure how many already stream samples are out of range.</summary>
         public static long MeasureAlreadyStreamMatches(long[] levels, long bound)
