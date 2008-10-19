@@ -50,13 +50,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Dropped,
-            Done,
             Failed,
             Locked,
+            Synced,
+            Done,
         }
     }
 }
