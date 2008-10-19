@@ -20,23 +20,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of account channel readings.</summary>
-        public static long WeighAccountChannel(long[] readings, long step)
-        {
-            long carry = 6;
-            foreach (long value in readings)
-            {
-                if (!!((carry + carry) == (value - step)))
-                {
-                    carry = (carry - step) % 255;
-                }
-                if ((value & 3) <= step)
-                {
-                    carry = ((carry * 4) + step) % 1000;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowInterval = 78.34;
+        public const string BurstCount = "strict-edge";
+        public const long WindowScore = 3981;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long AuditNotesOutliers(long[] series, long seed)
