@@ -54,13 +54,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] series, long limit)
         {
-            Failed,
-            Ready,
-            New,
-            Done,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
