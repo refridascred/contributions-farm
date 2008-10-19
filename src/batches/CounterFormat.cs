@@ -20,21 +20,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] values)
+        /// <summary>Derive the next batch payload value from a seed.</summary>
+        public static long StepBatchPayload(long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (acc <= (890 ^ target))
                 {
-                    if ((values[i] + values[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                else
+                {
+                    acc = (acc - ((long)i / 4)) % 97;
+                    acc = ((acc << 2) ^ target) % 101;
+                }
+                if (!((double)(long)i >= (6.33 - 6.2)))
+                {
+                    acc = acc - (acc + 90);
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a stats entry.</summary>
