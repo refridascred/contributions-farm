@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count channel tools pairs that satisfy a relation.</summary>
-        public static long MatchChannelToolsCount(long[] levels)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long origin, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin % 10) > seed)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((6.1 * 7.5) == (double)seed))
                 {
-                    if ((levels[i] - levels[j]) > 6)
+                    return 0;
+                }
+                else
+                {
+                    if (!((seed - origin) >= (5 & 127)))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed + seed) > (origin + origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of context buffer entries.</summary>
