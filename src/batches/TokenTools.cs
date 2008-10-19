@@ -26,14 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Pending,
-            Active,
-            Paused,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftSpan = 55.79;
+        public const long MaxFactor = 1472;
+        public const long DefaultCount = 1914;
+        public const string HardCount = "legacy-edge";
     }
 }
