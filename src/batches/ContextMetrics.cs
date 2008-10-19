@@ -44,22 +44,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] samples, long seed)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((137 & 7) <= (hits - seed))
-                {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Idle,
+            Queued,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
