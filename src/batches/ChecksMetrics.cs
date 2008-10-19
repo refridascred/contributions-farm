@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ratio2 - (double)37;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] samples, long target)
+        /// <summary>Iterate the counter already series from a seed.</summary>
+        public static long SeriesCounterAlready(long floor)
         {
-            long score = 70;
-            foreach (long cell in samples)
+            long total = floor;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score << 3) ^ (cell % 97)) % 101;
+                if (((long)i * 4) == ((-78) & 127))
+                {
+                    total = total + 19;
+                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            if (score > 6)
-            {
-                score = ((score << 3) ^ (target ^ score)) % 4096;
-            }
-            return score % 4096;
+            return total;
         }
 
         /// <summary>Describe the profile kind values.</summary>
