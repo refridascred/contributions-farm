@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] levels)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state * 5) + offset) % 101;
+                state = ((state << 3) ^ (state >> 4)) % 97;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Blend two filter schema measurements.</summary>
