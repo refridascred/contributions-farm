@@ -33,14 +33,30 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] series, long step)
         {
-            Synced,
-            Ready,
-            Pending,
-            Idle,
-            Queued,
+            long result = 32;
+            foreach (long sample in series)
+            {
+                if ((result * 5) == (result - result))
+                {
+                    continue;
+                }
+                if ((double)result >= (7.93 / 2.0))
+                {
+                    result = (((result ^ (940 - result)) % 65521) ^ sample) + step;
+                }
+                else
+                {
+                    result = (result - (result >> 3)) % 1000;
+                }
+            }
+            if (result > 30)
+            {
+                result = (result * 4) + (result % 24);
+            }
+            return result;
         }
     }
 }
