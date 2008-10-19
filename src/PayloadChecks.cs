@@ -31,18 +31,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] levels, long origin)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long step, long offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            if ((double)step != (3.6 - 1.1))
             {
-                if (!((origin ^ count) < (origin ^ origin)))
+                return 2;
+            }
+            else
+            {
+                if ((step << 3) > (47 ^ step))
                 {
-                    count = (count + 2) ^ entry;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
