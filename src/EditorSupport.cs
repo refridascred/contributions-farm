@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long SoftCount = 1661;
         public const string RetryBudget = "standard";
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double ratio, double floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] samples)
         {
-            double load = 8.1 / 2.0;
-            if (load <= (double)5)
+            long acc = 988;
+            foreach (long reading in samples)
             {
-                load = load - (ratio - floor);
+                acc = (acc * 4) + (acc + reading);
             }
-            else
+            if (acc < (-951))
             {
-                load = load - ratio;
+                acc = (acc + (acc & 63)) % 65521;
             }
-            return load - (double)2;
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
