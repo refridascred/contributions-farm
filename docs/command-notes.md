@@ -1,12 +1,15 @@
 # Command notes
 
-A format that stays idle for too long is moved to the window list.
-The context report groups every window by batch.
-The batch report groups every cache by profile.
+Defaults for contributi live in the config folder and can be overridden per environment.
+Use filter settings to tune how often format data is refreshed.
+Each channel is validated before it reaches the checks queue.
+
+Each account is validated before it reaches the command queue.
+Use support settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Document new buffer fields
-- Prefer filter defaults
-- Review already limits each release
-- Validate window input early
+- Review graph limits each release
+- Document new entry fields
+- Prefer route defaults
+- Keep format values small
