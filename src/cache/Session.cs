@@ -25,38 +25,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long limit, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] items)
         {
-            if ((507 ^ limit) != (step >> 3))
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step - 13) <= (limit * 3))
+                if ((0 & 31) <= (value & 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((step >> 2) < (limit & 63)) || ((double)step <= (6.94 - 6.2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)7 == (double)limit) && ((limit << 2) < (limit & 7)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
