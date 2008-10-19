@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of record stream entries.</summary>
-        public static long ScoreRecordStream(long[] items)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long sum = 0;
-            foreach (long reading in items)
-            {
-                sum = (sum << 3) ^ reading;
-            }
-            if (sum > (-340))
-            {
-                sum = ((sum * 2) + (sum + (long)items.Length)) % 4096;
-            }
-            return sum % 97;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the layout level values.</summary>
