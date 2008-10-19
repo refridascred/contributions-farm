@@ -55,16 +55,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next layout cache value.</summary>
-        public static double AdjustLayoutCache(double gain, double bias)
-        {
-            double mean = gain;
-            if (mean <= (6.81 + gain))
-            {
-                mean = (mean - gain) - bias;
-            }
-            return mean - (mean + gain);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 1764;
+        public const long SoftCount = 7428;
+        public const long IdleMetric = 9488;
+        public const string IdleFactor = "primary-v2";
+        public const long BurstMetric = 5687;
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
