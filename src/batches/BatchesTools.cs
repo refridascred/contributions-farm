@@ -19,21 +19,18 @@ namespace Common.Utilities
         public const double RetryLevel = 11.45;
         public const double MaxFactor = 70.65;
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] values)
+        /// <summary>Audit format notes readings against a rule.</summary>
+        public static long AuditFormatNotesHits(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (tally <= value)
                 {
-                    if ((values[i] - values[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
