@@ -14,16 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] items, long origin)
         {
-            long score = 8;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                score = ((score ^ (score ^ 301)) % 65521) - sample;
-                score = ((score << 2) ^ (878 / 5)) % 4096;
+                if (cell <= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Define token limits and defaults.</summary>
