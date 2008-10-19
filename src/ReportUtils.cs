@@ -69,15 +69,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] data, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] levels)
         {
-            long state = 5;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                state = (((state << 3) ^ (item + state)) % 97) + offset;
+                if ((double)datum < (2.0 * 8.06))
+                {
+                    hits = hits + 1;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
