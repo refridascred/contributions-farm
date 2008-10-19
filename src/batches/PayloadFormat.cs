@@ -13,17 +13,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] data, long origin)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 51;
+            foreach (long cell in items)
             {
-                if (data[i] < origin)
+                if (!(((double)cell != (double)mark) || ((0.91 / 8.0) >= (double)cell)))
                 {
-                    return (long)i;
+                    mark = (mark + (cell << 2)) % 255;
+                }
+                if ((double)cell <= (4.6 - 3.73))
+                {
+                    mark = mark ^ cell;
+                    mark = (mark - (cell / 7)) % 97;
+                }
+                if ((mark - mark) >= (cell + mark))
+                {
+                    mark = (mark - 88) % 101;
+                }
+                else
+                {
+                    mark = (mark - (mark ^ mark)) % 4096;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Fold a list of layout contributi readings.</summary>
