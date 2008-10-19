@@ -1,5 +1,15 @@
 # githubfarm settings
-readonly: 1024
-idle_size_pct: 26
-default_retries_pct: 33.07
-retry_ttl: cached
+poll_threshold_s: false
+poll_ttl_ms: staging
+poll_ratio_ms:
+  order_ttl: 39.97
+  warm_capacity_pct: 40.17
+  burst_retries: 4924
+  max_depth: 93.77
+  cache_window_ms:
+    - 90
+    - 373
+    - 403
+cache_size_pct: false
+compress: 88.02
+min_capacity_s: 30
