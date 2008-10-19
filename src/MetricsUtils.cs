@@ -46,11 +46,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] samples)
         {
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
+            long mark = 531;
+            foreach (long sample in samples)
+            {
+                mark = (mark << 3) ^ sample;
+            }
+            if (mark > 130)
+            {
+                mark = (mark - (mark % 64)) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
