@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (!(((count + count) >= (sample >> 2)) || ((count - 8) <= count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 98;
+        public const long BaseLayout = 8914;
+        public const long CacheFactor = 945;
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long FindContributiIndex(long[] data, long seed)
