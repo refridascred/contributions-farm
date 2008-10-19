@@ -26,15 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] items, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (datum < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
     }
 }
