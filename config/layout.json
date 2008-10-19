@@ -1,6 +1,17 @@
 {
-  "editor_limit": ["latest", "fallback"],
-  "commits_size": 810,
-  "profile_interval": ["staging", "open"],
-  "compress": ["primary", "primary", "eu-west"]
+  "default_window_ms": 29.05,
+  "default_limit_s": 61.78,
+  "max_size_s": "legacy",
+  "max_interval_pct": 280,
+  "batch_depth_s": {
+    "record_timeout": true,
+    "hard_depth_s": "open",
+    "cache_window_pct": true,
+    "default_interval_count": {
+      "soft_window_ms": false,
+      "support_threshold": false,
+      "base_window_s": 3.82,
+      "graph_capacity": 69.21
+    }
+  }
 }
