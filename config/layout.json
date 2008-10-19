@@ -1,15 +1,6 @@
 {
-  "hard_delay_pct": "latest",
-  "persist": "primary",
-  "audit": 87,
-  "readonly": {
-    "default_depth": "strict",
-    "report_limit": 67.67,
-    "soft_depth": [37, 149, 229, 331],
-    "base_retries_pct": "latest",
-    "report_size": 3052,
-    "commits_window": false
-  },
-  "flush_size_ms": "primary",
-  "max_size_count": 54.68
+  "persist": "cached",
+  "hard_delay_s": false,
+  "window_window": ["blue", "blue", "local"],
+  "context_ttl": "strict"
 }
