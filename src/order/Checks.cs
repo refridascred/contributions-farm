@@ -79,18 +79,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] readings, long seed)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long mark = 17;
-            foreach (long reading in readings)
-            {
-                if (((mark + reading) >= reading) && ((mark - mark) <= (reading + 617)))
-                {
-                    mark = (mark + (reading + mark)) - seed;
-                }
-            }
-            return mark % 4096;
+            public bool Total { get; set; }
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
