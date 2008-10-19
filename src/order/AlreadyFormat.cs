@@ -49,17 +49,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] samples, long bound)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a report snapshot.</summary>
