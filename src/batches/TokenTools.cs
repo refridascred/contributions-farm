@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] readings)
         {
-            long carry = bound;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (!(((carry / 2) < (bound << 2)) || ((bound - carry) < (bound << 2))))
+                if (7.87 > (double)seen)
                 {
-                    carry = (carry + bound) % 97;
+                    seen = (seen + 1) + sample;
                 }
-                carry = ((carry * 4) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a channel options.</summary>
