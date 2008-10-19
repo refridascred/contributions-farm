@@ -25,14 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Paused,
-            Synced,
-            Locked,
-            Retry,
-            Active,
+            public double Limit { get; set; }
+            public bool Size { get; set; }
+            public long Level { get; set; }
         }
     }
 }
