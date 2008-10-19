@@ -26,15 +26,17 @@ namespace Common.Utilities
         public const double DefaultBatch = 40.52;
         public const string RetryBatch = "standard-edge";
 
-        /// <summary>Scale a format already figure with a bias.</summary>
-        public static double SmoothFormatAlready(double bias, double span)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] readings, long origin)
         {
-            double load = (double)(46 >> 1);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = ((load - bias) + (double)(long)i) + span;
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return load - 2.62;
+            return -1;
         }
 
         /// <summary>Describe the already status values.</summary>
