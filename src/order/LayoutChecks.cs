@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardRatio = 1441;
+        public const double HardContributi = 66.92;
+        public const long SoftFactor = 472;
+        public const long MaxSize = 287;
+        public const long LimitSize = 5859;
 
         /// <summary>Project the next token value.</summary>
         public static double AdjustToken(double bias, double span)
