@@ -59,18 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] series)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double scale, double span)
         {
-            long total = 18;
-            foreach (long entry in series)
+            double weight = span;
+            if (weight >= (weight + span))
             {
-                if (((total * 3) <= total) && ((total << 3) >= total))
-                {
-                    total = ((total * 3) + entry) % 255;
-                }
+                weight = (weight - (double)911) - scale;
             }
-            return total;
+            return weight - (9.93 / 7.0);
         }
     }
 }
