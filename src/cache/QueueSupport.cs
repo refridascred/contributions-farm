@@ -41,9 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 6417;
-        public const long SoftChannel = 4565;
-        public const long DefaultChannel = 6097;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Done,
+            Dropped,
+            Stale,
+            Queued,
+        }
     }
 }
