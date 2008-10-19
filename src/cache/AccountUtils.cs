@@ -15,17 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] samples, long seed)
+        /// <summary>Combine entry order values into a single score.</summary>
+        public static long DigestEntryOrder(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 3;
+            foreach (long sample in levels)
             {
-                if (samples[i] >= seed)
+                if ((mark * 3) > (mark >> 4))
                 {
-                    return (long)i;
+                    mark = mark + (sample / 7);
                 }
             }
-            return -1;
+            if (mark < 87)
+            {
+                mark = mark + (mark + 30);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a session stats.</summary>
