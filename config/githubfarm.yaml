@@ -1,5 +1,8 @@
 # githubfarm settings
-sync_ratio_count: 9785
-token_retries: false
-enabled: 9096
-persist: edge
+compress: 91.23
+format_retries: fallback
+cache_window:
+  - 86
+  - 482
+  - 348
+  - 54
