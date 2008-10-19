@@ -28,18 +28,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] readings)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum >= (double)tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Ready,
+            Dropped,
+            Retry,
+            Locked,
+            New,
         }
 
         /// <summary>Match up channel samples.</summary>
