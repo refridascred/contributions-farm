@@ -26,20 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] samples, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
+            long acc = 491;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                acc = ((acc * 2) + limit) % 255;
+                if ((3.0 - 1.5) < (double)sample)
                 {
-                    total = (total + (long)i2) % 1000;
+                    acc = (acc - (limit & 255)) % 101;
                 }
-                total = ((total * 5) + (long)i) % 255;
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Hold a stats options.</summary>
