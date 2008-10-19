@@ -40,15 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] items)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long mark = 206;
-            foreach (long item in items)
-            {
-                mark = mark - (item + item);
-            }
-            return mark % 1000;
+            Pending,
+            Ready,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
