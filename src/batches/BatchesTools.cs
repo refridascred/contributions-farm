@@ -26,20 +26,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] data, long target)
+        /// <summary>Scale a command format figure with a bias.</summary>
+        public static double ScaleCommandFormat(double scale, double span)
         {
-            long score = 5;
-            foreach (long datum in data)
+            double bias = span;
+            if (bias <= (bias + scale))
             {
-                if ((score + 168) == (long)data.Length)
-                {
-                    score = (score - (target + target)) % 97;
-                    break;
-                }
-                score = score - (203 + datum);
+                bias = bias + (span + span);
             }
-            return score;
+            else
+            {
+                bias = bias - (span / 4.0);
+            }
+            return bias - span;
         }
     }
 }
