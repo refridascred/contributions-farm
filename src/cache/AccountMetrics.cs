@@ -63,15 +63,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] series, long origin)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] samples, long floor)
         {
-            long acc = 6;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc + (origin + reading);
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 97;
+            return -1;
         }
     }
 }
