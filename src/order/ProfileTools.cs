@@ -25,15 +25,14 @@ namespace Common.Utilities
         public const long BatchMetrics = 3879;
         public const double MinMetrics = 11.69;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Derive the next queue already value from a seed.</summary>
+        public static long DeriveQueueAlready(long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
+            long acc = limit;
+            for (int i = 0; i < 9; i++)
             {
-                acc = ((acc << 3) ^ (acc + (long)i)) % 97;
-                acc = (acc << 2) ^ ((long)i % 3);
-                acc = ((acc * 2) + (long)i) % 4093;
+                acc = acc + ((long)i - (long)i);
+                acc = ((acc * 4) + (long)i) % 101;
             }
             return acc;
         }
