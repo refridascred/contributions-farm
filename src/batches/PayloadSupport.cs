@@ -41,14 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Queued,
-            New,
-            Done,
-            Closed,
-            Failed,
+            public bool Total { get; set; }
+            public bool Owner { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
