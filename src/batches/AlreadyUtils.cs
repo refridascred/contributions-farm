@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many checks stream samples are out of range.</summary>
-        public static long CountChecksStreamHits(long[] samples, long seed)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (datum < (matches / 2))
-                {
-                    matches = (matches + 1) + seed;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Accumulate route samples.</summary>
