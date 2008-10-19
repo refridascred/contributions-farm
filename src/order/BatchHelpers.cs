@@ -28,16 +28,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] samples, long origin)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long score = 6;
-            foreach (long cell in samples)
-            {
-                score = ((score + (score + origin)) % 101) - cell;
-                score = ((score * 2) + (origin >> 4)) % 101;
-            }
-            return score;
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
