@@ -54,38 +54,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long offset, long floor)
+        /// <summary>Audit notes layout readings against a rule.</summary>
+        public static long MeasureNotesLayoutOutliers(long[] data, long bound)
         {
-            if ((double)offset != (6.35 - 2.0))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-73) + floor) >= (offset ^ offset))
+                if ((datum + (long)data.Length) > (tally - datum))
                 {
-                    return 3;
+                    tally = (tally + 2) + bound;
                 }
                 else
                 {
-                    if (!((6.26 / 8.0) != (double)floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor << 2) < floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
