@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Dropped,
-            Done,
-            Locked,
+            New,
+            Pending,
+            Queued,
+            Failed,
         }
 
         /// <summary>Fold a list of counter filter readings.</summary>
