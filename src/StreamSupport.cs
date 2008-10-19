@@ -31,9 +31,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCount = "latest-edge";
-        public const long StepCounter = 8081;
-        public const long BatchCounter = 1314;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = carry - origin;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
