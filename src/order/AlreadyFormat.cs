@@ -24,20 +24,10 @@ namespace Common.Utilities
         public const string HardChannel = "latest";
         public const long RetryChannel = 8402;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] data, long offset)
-        {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 8809;
+        public const long LimitEntry = 8327;
+        public const string WindowEntry = "alpha-v2";
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
