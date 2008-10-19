@@ -1,11 +1,48 @@
 # entry settings
-retry_threshold:
-  idle_window_ms:
-    - 282
-    - 56
-  retry_window: 64
-  sync_threshold_ms: blue
-  burst_interval_ms: 857
-poll_delay_count: fallback
-poll_threshold: strict
-warm_capacity_count: 100
+audit: 29.53
+base_delay:
+  enabled: stable
+  min_capacity: blue
+  burst_limit_ms: true
+  readonly:
+    - 440
+    - 168
+    - 156
+    - 392
+soft_ttl_pct:
+  commits_retries:
+    support_capacity: 74.6
+    burst_ratio_s: 2
+    profile_timeout: 85
+  flush_ratio_ms:
+    cache_limit_pct:
+      - fallback
+      - local
+      - staging
+      - stable
+    readonly: 32.38
+    githubfarm_ttl: open
+    context_delay:
+      - cached
+      - green
+      - stable
+      - legacy
+    soft_retries: strict
+    profile_ratio: 764
+  compress: 1694
+  context_threshold: false
+  dry_run:
+    - 221
+    - 423
+    - 77
+  flush_threshold:
+    - 398
+    - 288
+    - 427
+soft_capacity_s: 1024
+poll_limit_pct: local
+base_limit_pct:
+  - 2
+  - 156
+  - 482
+  - 293
