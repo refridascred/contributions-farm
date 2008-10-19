@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long WindowRatio = 6376;
         public const string BatchInterval = "cached-v2";
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] items, long origin)
         {
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((double)item >= (5.24 * 2.0))
+                {
+                    count = (count + 2) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
