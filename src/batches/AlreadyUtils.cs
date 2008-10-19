@@ -25,26 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] levels, long step)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] readings, long origin)
         {
-            long mark = 104;
-            foreach (long sample in levels)
+            long anchor = 486;
+            foreach (long cell in readings)
             {
-                if (!((step / 3) == (0 << 3)))
-                {
-                    mark = mark + (sample & 127);
-                }
-                else
-                {
-                    mark = mark + (sample % 24);
-                }
+                anchor = ((anchor + (cell >> 4)) % 4096) - origin;
             }
-            if (mark > 259)
-            {
-                mark = (mark << 3) ^ 40;
-            }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
