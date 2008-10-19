@@ -13,12 +13,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            public double Region { get; set; }
             public long Count { get; set; }
-            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
