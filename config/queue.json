@@ -1,5 +1,14 @@
 {
-  "cache_window": 37.65,
-  "queue_limit": 75.8,
-  "verbose": [39, 80]
+  "readonly": ["strict", "edge", "stable", "blue"],
+  "verbose": 1024,
+  "audit": 0.2,
+  "token_limit": [100, 439],
+  "enabled": "fallback",
+  "counter_delay": {
+    "dry_run": "local",
+    "flush_depth": 1024,
+    "cache_limit_s": 69.89,
+    "min_limit_pct": "eu-west",
+    "enabled": ["open", "stable", "fallback", "fallback"]
+  }
 }
