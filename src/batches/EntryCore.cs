@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ratio - (7.1 / 8.0);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowLevel = 56.9;
-        public const string WindowDepth = "latest";
-        public const long BaseStats = 5392;
-        public const double CacheStats = 47.72;
-        public const double RetrySpan = 76.51;
+        /// <summary>Match up profile report samples.</summary>
+        public static long CompareProfileReportCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long StepWidth = 1650;
