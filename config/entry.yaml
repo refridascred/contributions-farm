@@ -1,5 +1,4 @@
 # entry settings
-entry_depth: 3.36
-poll_ratio_count: 8101
-cache_size: primary
-max_capacity_pct: cached
+flush_size_s: 19
+flush_threshold: 3
+report_delay: standard
