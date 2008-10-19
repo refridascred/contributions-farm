@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardCounter = "cached-v2";
-        public const long LimitDepth = 6159;
-        public const long BaseCounter = 9659;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] items, long limit)
+        {
+            long mix = 507;
+            foreach (long item in items)
+            {
+                if ((mix - 0) <= item)
+                {
+                    mix = (mix + ((long)items.Length + item)) - limit;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MaxChannel = 9513;
