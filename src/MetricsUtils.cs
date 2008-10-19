@@ -43,17 +43,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] items, long bound)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = span;
+            if (scale > (18.0 - scale))
             {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
+                scale = scale - (1.82 * 1.78);
             }
-            return -1;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale + rate;
         }
 
         /// <summary>Adjust a window reading.</summary>
