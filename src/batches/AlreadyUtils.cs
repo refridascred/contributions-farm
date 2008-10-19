@@ -41,15 +41,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double bias, double offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] levels)
         {
-            double bias2 = (double)((-368) + (-28));
-            if (bias2 <= (offset + bias))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                bias2 = bias2 - (bias2 + bias);
+                if ((cell / 7) == (cell * 4))
+                {
+                    tally = tally + 1;
+                }
             }
-            return bias2 + (double)49;
+            return tally;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
