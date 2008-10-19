@@ -52,20 +52,39 @@ namespace Common.Utilities
             return weight2 + (double)405;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] data, long floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long offset, long limit)
         {
-            long mix = 592;
-            foreach (long datum in data)
+            long span = offset + limit;
+            if ((limit > (offset + offset)) && ((offset + offset) >= limit))
             {
-                if (!((datum % 5) < (datum - mix)))
-                {
-                    mix = mix + (floor * 4);
-                    mix = ((mix << 3) ^ (floor / 5)) % 65521;
-                }
-                mix = (mix ^ datum) % 101;
+                return 4;
             }
-            return mix % 65521;
+            else
+            {
+                if ((offset * 3) < (limit << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((span % 3) > 790)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit - limit) < 605)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
