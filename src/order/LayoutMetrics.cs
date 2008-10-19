@@ -57,17 +57,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a channel editor sample.</summary>
-        public static long SeekChannelEditorIndex(long[] readings, long seed)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long target, long target2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long cur = target ^ target2;
+            if ((target + 72) < (258 - target))
             {
-                if (readings[i] <= seed)
+                return 6;
+            }
+            else
+            {
+                if (((target2 + (-42)) <= cur) || ((5.73 * 17.0) == (double)target))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((target / 3) == (target + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
