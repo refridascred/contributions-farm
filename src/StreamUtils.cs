@@ -84,13 +84,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] items)
         {
-            New,
-            Failed,
-            Paused,
-            Stale,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((tally + cell) <= (tally % 97))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
