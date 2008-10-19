@@ -57,12 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Queued,
-            Failed,
-            Paused,
+            public double Label { get; set; }
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Combine record values into a single score.</summary>
