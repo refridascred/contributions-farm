@@ -51,19 +51,39 @@ namespace Common.Utilities
         public const long IdleBudget = 2982;
         public const long RetryGithubfarm = 5648;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] series, long seed)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long seed, long limit)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long edge = seed + limit;
+            if (((seed - limit) <= limit) || ((seed << 3) <= (seed ^ edge)))
             {
-                if (entry > seed)
+                return 8;
+            }
+            else
+            {
+                if ((edge + limit) == (277 - edge))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((limit + (-6)) != (seed % 64)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed % 97) >= (edge ^ 8))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
