@@ -38,22 +38,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] levels)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double rate, double floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double drift = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((7.0 <= (double)sample) && (count >= (sample + sample)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = ((drift - (drift + 8.85)) - (double)(long)i) - rate;
             }
-            return count;
+            return drift + (drift * 3.0);
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
