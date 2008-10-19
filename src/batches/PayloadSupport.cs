@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepBudget = 31.15;
-        public const double SoftCluster = 91.09;
-        public const long HardInterval = 6259;
-        public const long IdleBudget = 8673;
-        public const long IdleCluster = 6646;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((step * 4) != (anchor * 4)))
+                {
+                    anchor = anchor ^ ((long)i << 1);
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    anchor = ((anchor << 2) ^ (step * 5)) ^ (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long WeighSession(long[] values)
