@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowCommand = 93.22;
-        public const long MinCount = 9255;
-        public const string HardCommand = "latest-1";
-        public const long LimitCommand = 536;
+        /// <summary>Measure how many format entry samples are out of range.</summary>
+        public static long AuditFormatEntryMatches(long[] series, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((11 < (seed + hits)) || ((seed + (-4)) <= (seed & 127)))
+                {
+                    hits = (hits + 1) - cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorMatches(long[] readings)
