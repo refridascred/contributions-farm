@@ -43,13 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] items, long limit)
         {
-            public double Level { get; set; }
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
