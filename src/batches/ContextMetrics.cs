@@ -92,24 +92,18 @@ namespace Common.Utilities
             return rate + (double)5;
         }
 
-        /// <summary>Grade a queue token value against two limits.</summary>
-        public static long GradeQueueToken(long bound, long bound2)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] samples, long target)
         {
-            if ((bound >> 4) > (bound2 / 5))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound <= (7 + bound))
+                if ((double)(long)samples.Length < (double)target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    tally = (tally + 1) - reading;
                 }
             }
+            return tally;
         }
     }
 }
