@@ -32,14 +32,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double bias, double offset)
         {
-            Done,
-            Retry,
-            Idle,
-            Paused,
-            Queued,
+            double bias2 = (double)((-368) + (-28));
+            if (bias2 <= (offset + bias))
+            {
+                bias2 = bias2 - (bias2 + bias);
+            }
+            return bias2 + (double)49;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
