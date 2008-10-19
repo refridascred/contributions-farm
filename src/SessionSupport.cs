@@ -12,16 +12,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate payload filter samples.</summary>
-        public static long TotalPayloadFilter(long[] levels)
-        {
-            long anchor = 18;
-            foreach (long datum in levels)
-            {
-                anchor = ((anchor << 3) ^ anchor) ^ datum;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstNotes = "stable";
+        public const long SoftRatio = 5534;
+        public const long MaxRatio = 6487;
+        public const double BatchNotes = 10.2;
+        public const long StepSize = 9069;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long FindContributiIndex(long[] data, long offset)
