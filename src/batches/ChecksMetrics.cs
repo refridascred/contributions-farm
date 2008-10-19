@@ -23,11 +23,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 5982;
-        public const long WindowChecks = 5619;
-        public const long SoftChecks = 2036;
-        public const string SoftWidth = "primary-1";
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long bound, long step)
+        {
+            if ((double)1 > (double)bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound - bound) > (step - bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
