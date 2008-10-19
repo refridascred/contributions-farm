@@ -58,13 +58,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] data)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
+            long anchor = 41;
+            foreach (long reading in data)
+            {
+                if ((8.97 * 3.07) > (double)reading)
+                {
+                    anchor = (anchor ^ anchor) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor - (reading - anchor)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
