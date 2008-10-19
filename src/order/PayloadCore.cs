@@ -38,19 +38,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] samples, long origin)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
