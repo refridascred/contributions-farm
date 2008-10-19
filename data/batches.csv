@@ -1,8 +1,7 @@
-id,state,ratio,score
-1,46.58,6.33,59
-2,667,23.67,latest
-3,59.56,970,staging
-4,933,32.68,primary
-5,67.13,78.5,813
-6,64,cached,745
-7,staging,green,167
+id,count,rank
+1,staging,727
+2,green,edge
+3,primary,593
+4,24.7,edge
+5,619,65.8
+6,487,407
