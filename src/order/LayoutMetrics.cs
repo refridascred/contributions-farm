@@ -33,38 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long origin, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] samples, long origin)
         {
-            if ((double)origin < (double)bound)
+            long sum = -912;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound & 31) <= bound)
+                if ((double)sum < (2.2 / 7.0))
                 {
-                    return 8;
+                    sum = ((sum << 2) ^ origin) - cell;
                 }
                 else
                 {
-                    if (((origin & 1) < (origin + bound)) && ((bound - 0) <= ((-668) - origin)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin + origin) > (origin / 9))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    sum = (sum * 3) + (9 & 7);
                 }
             }
+            if (sum < 508)
+            {
+                sum = ((sum << 3) ^ sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Count the graph checks entries that pass the check.</summary>
