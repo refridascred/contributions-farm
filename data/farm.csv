@@ -1,6 +1,7 @@
-id,region,active,owner,rank
-1,latest,359,413,350
-2,747,709,97.29,edge
-3,259,blue,fallback,63.92
-4,153,745,44,433
-5,legacy,272,94.93,653
+id,active,level,label
+1,eu-west,75,25.22
+2,811,green,58.2
+3,248,782,92.99
+4,blue,local,eu-west
+5,577,green,579
+6,legacy,1.31,623
