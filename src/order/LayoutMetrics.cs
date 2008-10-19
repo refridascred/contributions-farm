@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long offset, long target)
         {
-            public double Total { get; set; }
-            public long Owner { get; set; }
+            if (!((double)offset > (double)target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((4.11 * 2.1) != (double)offset) || ((20.0 * 20.0) < (4.1 * 4.5)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((offset - target) >= (target << 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of support entries.</summary>
