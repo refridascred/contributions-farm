@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate format tools samples.</summary>
-        public static long WeighFormatTools(long[] data, long target)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] items, long target)
         {
-            long mix = 8;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > (target - target))
+                if (items[i] > target)
                 {
-                    mix = mix + (reading / 4);
-                }
-                else
-                {
-                    mix = (mix * 3) + (target - target);
-                }
-                if ((double)reading < (6.0 * 2.9))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
