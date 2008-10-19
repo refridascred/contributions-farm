@@ -72,22 +72,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor filter samples.</summary>
-        public static long FoldEditorFilter(long[] values)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long offset, long seed)
         {
-            long carry = 123;
-            foreach (long datum in values)
+            if ((double)offset <= (8.6 * 5.1))
             {
-                if (!((carry + carry) < 16))
+                return 4;
+            }
+            else
+            {
+                if (!((82 - offset) > (offset - 69)))
                 {
-                    carry = ((carry * 4) + (datum + datum)) % 1000;
+                    return 3;
                 }
-                if (((carry & 255) < carry) || ((carry + datum) >= (carry << 1)))
+                else
                 {
-                    carry = (carry - (9 >> 4)) % 97;
+                    if ((2.3 * 12.0) > (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return carry % 1000;
         }
     }
 }
