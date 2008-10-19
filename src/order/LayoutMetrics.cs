@@ -26,12 +26,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 7575;
-        public const long HardFormat = 783;
-        public const long WindowLevel = 4008;
-        public const long CacheSize = 2955;
-        public const string RetryFormat = "cached-v2";
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long origin, long bound)
+        {
+            if ((double)origin < (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound & 31) <= bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((origin & 1) < (origin + bound)) && ((bound - 0) <= ((-668) - origin)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin + origin) > (origin / 9))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a channel editor sample.</summary>
         public static long SeekChannelEditorIndex(long[] readings, long seed)
