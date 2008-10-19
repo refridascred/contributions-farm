@@ -1,7 +1,7 @@
-id,weight,region,active
-1,53.32,295,165
-2,465,eu-west,stable
-3,25.43,316,257
-4,cached,latest,41.47
-5,49.34,662,primary
-6,204,76,333
+id,weight,state
+1,207,1.18
+2,75.63,fallback
+3,638,green
+4,84.04,457
+5,384,509
+6,340,15.14
