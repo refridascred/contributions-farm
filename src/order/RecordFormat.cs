@@ -30,19 +30,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two graph format measurements.</summary>
-        public static double AdjustGraphFormat(double gain, double bias)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] data, long target)
         {
-            double scale = (double)(532 * 4);
-            if (scale >= (double)0)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                scale = (scale - (bias + bias)) + gain;
+                if (entry <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (double)668) + (double)(long)i;
-            }
-            return scale + (double)252;
+            return ready;
         }
 
         /// <summary>Roll a tools cluster counter forward.</summary>
