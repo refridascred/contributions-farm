@@ -1,8 +1,6 @@
 {
-  "compress": 2953,
-  "sync_limit_ms": false,
-  "batch_interval": "stable",
-  "retry_window": "standard",
-  "min_capacity_pct": ["eu-west", "blue", "open", "eu-west"],
-  "idle_timeout_ms": 10
+  "already_window": ["stable", "open", "blue"],
+  "flush_ttl": true,
+  "burst_size_s": true,
+  "readonly": 16.22
 }
