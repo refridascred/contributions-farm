@@ -35,12 +35,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
-            public long Count { get; set; }
+            Pending,
+            Idle,
+            Ready,
+            Synced,
+            Paused,
         }
     }
 }
