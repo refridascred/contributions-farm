@@ -27,18 +27,11 @@ namespace Common.Utilities
             return drift - (13.0 + span);
         }
 
-        /// <summary>Audit batch checks readings against a rule.</summary>
-        public static long MeasureBatchChecksOutliers(long[] readings, long limit)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading == (double)limit)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
