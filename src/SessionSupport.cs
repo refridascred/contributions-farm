@@ -36,23 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine queue format values into a single score.</summary>
-        public static long TallyQueueFormat(long[] values)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long mark = -750;
-            foreach (long sample in values)
-            {
-                mark = mark - (sample + 4);
-                if ((773 >> 4) <= ((long)values.Length + sample))
-                {
-                    mark = (mark * 2) + (sample / 2);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ mark;
-                }
-            }
-            return mark;
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
