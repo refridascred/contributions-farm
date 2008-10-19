@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long limit, long offset)
-        {
-            long offset2 = limit + offset;
-            if (((offset2 + offset2) < offset) || ((double)offset2 >= (double)limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset2 - offset2) == (offset2 + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardDepth = 7564;
+        public const double BatchFormat = 47.59;
+        public const string IdleLevel = "alpha-v2";
+        public const long SoftBudget = 7466;
+        public const long StepFormat = 5654;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
