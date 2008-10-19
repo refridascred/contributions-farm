@@ -16,12 +16,14 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstNotes = "stable";
-        public const long SoftRatio = 5534;
-        public const long MaxRatio = 6487;
-        public const double BatchNotes = 10.2;
-        public const long StepSize = 9069;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Synced,
+            Failed,
+            New,
+            Done,
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
