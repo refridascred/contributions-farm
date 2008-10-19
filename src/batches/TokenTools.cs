@@ -13,18 +13,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 4517;
+        public const string LimitFactor = "staging";
+        public const long IdleCluster = 3318;
+        public const double CacheBudget = 24.72;
+        public const long SoftCluster = 6180;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long StepLayout = 5367;
