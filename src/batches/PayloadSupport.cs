@@ -41,12 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] data, long offset)
         {
-            public bool Total { get; set; }
-            public bool Owner { get; set; }
-            public string Region { get; set; } = "";
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
