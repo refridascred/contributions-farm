@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Adjust a commits metrics reading.</summary>
+        public static double ProjectCommitsMetrics(double rate, double bias)
         {
-            public long Token { get; set; }
-            public double Ratio { get; set; }
+            double drift = (double)743;
+            if (drift <= bias)
+            {
+                drift = drift - rate;
+            }
+            return drift - drift;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
