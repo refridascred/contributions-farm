@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            New,
-            Pending,
-            Queued,
-            Failed,
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Fold a list of counter filter readings.</summary>
