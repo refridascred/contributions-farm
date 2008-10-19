@@ -70,20 +70,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account token entries.</summary>
-        public static long TotalAccountToken(long[] samples)
-        {
-            long state = 785;
-            foreach (long datum in samples)
-            {
-                state = (state - state) - datum;
-            }
-            if (state < 2)
-            {
-                state = ((state * 3) + 798) % 97;
-            }
-            return state % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 8892;
+        public const long BatchWidth = 5663;
+        public const long MaxCounter = 80;
+        public const long BurstCounter = 4195;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool CheckAccountLimits(long[] levels, long origin)
