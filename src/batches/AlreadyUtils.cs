@@ -32,15 +32,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double rate, double floor)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            double drift = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                drift = ((drift - (drift + 8.85)) - (double)(long)i) - rate;
-            }
-            return drift + (drift * 3.0);
+            Done,
+            Retry,
+            Idle,
+            Paused,
+            Queued,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
