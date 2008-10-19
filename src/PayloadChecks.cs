@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] values, long bound)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((((hits << 1) < (bound + hits)) && (73 > (bound & 255))) || ((double)bound == (6.2 - 9.0)))
+                if (reading >= bound)
                 {
-                    hits = (hits + 1) - item;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
