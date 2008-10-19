@@ -52,13 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Digest a series of editor githubfarm entries.</summary>
+        public static long ScoreEditorGithubfarm(long[] readings)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public long Flag { get; set; }
+            long state = 268;
+            foreach (long datum in readings)
+            {
+                state = state + (datum + 44);
+                if (((state >> 4) > state) || ((-59) >= (datum * 4)))
+                {
+                    state = (state - (69 + datum)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
