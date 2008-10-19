@@ -26,12 +26,23 @@ namespace Common.Utilities
         public const long RetryInterval = 5629;
         public const double MaxBudget = 6.86;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 1164;
-        public const double HardWidth = 5.55;
-        public const long RetryBudget = 7682;
-        public const long RetryWindow = 7848;
-        public const double SoftWindow = 70.35;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] levels)
+        {
+            long state = -864;
+            foreach (long cell in levels)
+            {
+                if (((cell % 16) > (state << 1)) || (((long)levels.Length + state) != (state % 60)))
+                {
+                    state = (state + 275) % 4096;
+                }
+                else
+                {
+                    state = (state + (815 % 10)) % 65521;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long FoldBatches(long[] items)
