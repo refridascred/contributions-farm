@@ -1,13 +1,12 @@
 {
-  "poll_threshold_pct": 90.26,
-  "flush_delay_s": 29,
-  "strict": {
-    "format_size": "staging",
-    "batch_threshold_count": ["open", "blue", "open", "fallback"],
-    "poll_timeout_pct": "eu-west",
-    "poll_interval_pct": "blue",
-    "strict": 33
+  "enabled": false,
+  "already_window": {
+    "base_size": [15, 252, 363, 64],
+    "retry_interval_ms": 34,
+    "poll_delay_ms": true,
+    "account_window": "strict"
   },
-  "flush_capacity_count": 500,
-  "retry_limit": 60
+  "warm_delay_pct": "blue",
+  "warm_size_count": "cached",
+  "soft_interval": "strict"
 }
