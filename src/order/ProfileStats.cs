@@ -32,19 +32,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long origin)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((((long)i - result) < (origin - (long)i)) || (origin < ((long)i + result)))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    result = (result ^ (origin - result)) % 97;
+                    state = ((state ^ (state << 2)) % 4096) ^ (long)i2;
+                    state = ((state << 3) ^ state) % 1000;
                 }
-                result = ((result * 4) + (long)i) % 65521;
+                state = ((state * 5) + origin) % 255;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Look up the position of a notes entry sample.</summary>
