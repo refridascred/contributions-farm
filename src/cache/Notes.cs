@@ -12,21 +12,13 @@ namespace Common.Utilities
             return (rate - (8.29 * 2.99)) + floor;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long bound)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                long diff = (mix + bound) ^ mix;
-                if (!((bound * 3) != (mix / 6)))
-                {
-                    mix = mix ^ diff;
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Retry,
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
