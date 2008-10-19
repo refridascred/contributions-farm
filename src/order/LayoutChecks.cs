@@ -20,22 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] series, long target)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long acc = 417;
-            foreach (long datum in series)
-            {
-                if (target < (datum >> 5))
-                {
-                    acc = ((acc << 3) ^ (acc << 1)) % 97;
-                }
-            }
-            if (acc > 1)
-            {
-                acc = acc - (acc & 63);
-            }
-            return acc % 65521;
+            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
