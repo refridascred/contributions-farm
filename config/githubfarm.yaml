@@ -1,4 +1,11 @@
 # githubfarm settings
-retry_window_ms: fallback
-audit: 31.03
-strict: eu-west
+warm_timeout: 30
+sync_depth_pct: 68.75
+profile_delay: 2
+cache_ratio_count: 60
+dry_run:
+  - green
+  - edge
+  - open
+  - fallback
+batch_depth: 25
