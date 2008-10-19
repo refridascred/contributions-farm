@@ -40,16 +40,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next window farm value.</summary>
-        public static double BlendWindowFarm(double ratio, double offset)
-        {
-            double ratio2 = ratio;
-            if (ratio2 < ratio)
-            {
-                ratio2 = ratio2 + offset;
-            }
-            return ratio2 - (ratio + ratio2);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 6349;
+        public const long BatchCluster = 2606;
+        public const long BaseCluster = 3493;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long DigestGraph(long[] samples)
