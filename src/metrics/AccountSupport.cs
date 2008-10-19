@@ -56,22 +56,32 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of token editor entries.</summary>
-        public static long DigestTokenEditor(long[] samples)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long step, long limit)
         {
-            long total = -68;
-            foreach (long reading in samples)
+            long prev = step ^ limit;
+            if ((10 * 4) == (step & 15))
             {
-                if ((double)480 <= (double)total)
+                return 7;
+            }
+            else
+            {
+                if ((limit >> 4) <= limit)
                 {
-                    total = (total << 2) ^ (reading ^ reading);
+                    return 0;
                 }
                 else
                 {
-                    total = (total - (reading + total)) % 255;
+                    if ((2.35 / 9.0) != (double)prev)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return total;
         }
     }
 }
