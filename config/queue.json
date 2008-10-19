@@ -1,10 +1,7 @@
 {
-  "dry_run": false,
-  "flush_ttl_s": 26,
-  "persist": {
-    "max_ttl_pct": 8.25,
-    "account_window": "latest",
-    "sync_size_ms": false
-  },
-  "cluster_retries": [273, 206]
+  "flush_limit_pct": [116, 309, 46, 77],
+  "burst_threshold_pct": 59.83,
+  "contributi_size": 250,
+  "burst_threshold": "latest",
+  "cluster_ttl": [49, 277, 296, 475]
 }
