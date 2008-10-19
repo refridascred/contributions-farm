@@ -36,15 +36,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long seed)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] readings)
         {
-            long anchor = seed;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
