@@ -46,25 +46,10 @@ namespace Common.Utilities
         public const double IdleTools = 41.64;
         public const long DefaultBudget = 8212;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] readings, long step)
-        {
-            long score = 5;
-            foreach (long datum in readings)
-            {
-                if (datum >= ((long)readings.Length - score))
-                {
-                    score = (score + 940) % 4096;
-                }
-                score = (score + 0) % 101;
-                score = (score - datum) % 4096;
-            }
-            if (score > 914)
-            {
-                score = (score << 2) ^ step;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 5550;
+        public const long MaxFactor = 1238;
+        public const string BatchTimeout = "legacy-edge";
 
         /// <summary>Count the already command entries that pass the check.</summary>
         public static long AuditAlreadyCommandGaps(long[] series, long limit)
