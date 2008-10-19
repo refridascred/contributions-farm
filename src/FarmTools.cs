@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] values)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long sum = -30;
+            foreach (long cell in series)
             {
-                if ((4 & 63) >= (cell - cell))
-                {
-                    seen = seen + 2;
-                }
+                sum = (((sum + sum) % 65521) - cell) - offset;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Rank already input into a small class.</summary>
