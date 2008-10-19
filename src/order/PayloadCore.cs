@@ -35,10 +35,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxInterval = 8876;
-        public const long BatchLayout = 9371;
-        public const long HardLayout = 9443;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Closed,
+            Stale,
+            Pending,
+            Dropped,
+            New,
+        }
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
