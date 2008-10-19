@@ -27,12 +27,40 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 9064;
-        public const string CacheCluster = "primary-1";
-        public const double LimitSize = 96.88;
-        public const long SoftCluster = 7407;
-        public const long MaxSize = 3004;
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long bound, long limit)
+        {
+            long diff = bound ^ limit;
+            if (!(diff > (bound % 100)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)5 >= (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((diff - limit) != (bound - bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((diff - diff) != (limit >> 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteMatches(long[] levels)
