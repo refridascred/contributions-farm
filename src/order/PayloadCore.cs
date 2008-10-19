@@ -13,13 +13,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            public string Score { get; set; } = "";
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
