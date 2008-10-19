@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowSize = 3047;
-        public const double RetryBudget = 69.46;
-        public const double DefaultWidth = 90.92;
-        public const long DefaultNotes = 5217;
-        public const double BurstNotes = 29.05;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long ClassifyLayout(long step, long floor)
