@@ -28,15 +28,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double bias, double floor)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long seed)
         {
-            double bias2 = (double)(866 - 56);
-            for (int i = 0; i < 8; i++)
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
             {
-                bias2 = ((bias2 + bias) + (double)(long)i) + floor;
+                long tally = (long)i * 3;
+                if (((mark ^ (long)i) < (tally % 2)) && ((0.94 - 2.6) >= (double)mark))
+                {
+                    tally = tally ^ ((long)i / 7);
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return bias2 - bias2;
+            return mark;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
