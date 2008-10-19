@@ -1,43 +1,7 @@
 # entry settings
-warm_window:
-  support_capacity:
-    - blue
-    - fallback
-    - cached
-    - standard
-  burst_limit_pct: 91
-  stats_timeout:
-    sync_ttl_ms:
-      - local
-      - staging
-      - local
-      - stable
-    metric_threshold: fallback
-    idle_timeout: legacy
-    readonly: green
-    max_timeout:
-      - blue
-      - primary
-    checks_depth:
-      - standard
-      - blue
-  contributi_limit: open
-hard_limit_count:
-  flush_size_pct: primary
-  record_interval: 6989
-  enabled: true
-  warm_threshold:
-    poll_timeout: 6842
-    base_size_pct: true
-    format_interval:
-      - standard
-      - stable
-      - open
-    base_ttl_ms: 86.58
-    batch_depth: true
-  flush_interval:
-    - 328
-    - 99
-    - 221
-  persist: blue
-stats_window: latest
+metric_window: 76.68
+schema_delay: 95
+layout_capacity: edge
+enabled: false
+schema_threshold: blue
+idle_window: latest
