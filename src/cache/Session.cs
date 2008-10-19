@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] items, long origin)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardSpan = 385;
+        public const long MinTimeout = 5548;
+        public const long DefaultScore = 4503;
+        public const long MaxWindow = 8566;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheRange(long[] levels, long limit)
