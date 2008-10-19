@@ -33,12 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Pending,
-            Synced,
-            Dropped,
+            Retry,
+            Failed,
+            Locked,
+            Active,
+            Closed,
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
