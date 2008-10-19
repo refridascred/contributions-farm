@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 1375;
-        public const string BurstSpan = "alpha";
-        public const double StepDepth = 96.22;
-        public const long CacheStats = 5539;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Retry,
+            Paused,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] series, long limit)
