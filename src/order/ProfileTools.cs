@@ -25,16 +25,38 @@ namespace Common.Utilities
         public const long BatchMetrics = 3879;
         public const double MinMetrics = 11.69;
 
-        /// <summary>Derive the next queue already value from a seed.</summary>
-        public static long DeriveQueueAlready(long limit)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long offset, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
+            if ((double)offset == (3.0 - 5.51))
             {
-                acc = acc + ((long)i - (long)i);
-                acc = ((acc * 4) + (long)i) % 101;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((double)offset > (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)offset > (16.0 * 13.0)) || ((648 / 5) != (offset / 6)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)offset < (7.0 * 11.0)) || ((offset << 1) >= limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools kind values.</summary>
