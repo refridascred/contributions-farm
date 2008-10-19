@@ -1,5 +1,5 @@
 {
-  "poll_timeout_count": "stable",
-  "max_interval_ms": true,
-  "hard_window_s": [293, 113, 464, 311]
+  "tools_ratio": ["legacy", "stable", "stable", "cached"],
+  "profile_limit": 58.91,
+  "default_size": 459
 }
