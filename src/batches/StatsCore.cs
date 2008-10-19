@@ -51,39 +51,19 @@ namespace Common.Utilities
         public const long IdleBudget = 2982;
         public const long RetryGithubfarm = 5648;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long seed, long limit)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] samples, long target)
         {
-            long edge = seed + limit;
-            if (((seed - limit) <= limit) || ((seed << 3) <= (seed ^ edge)))
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((edge + limit) == (277 - edge))
+                if (sample != target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((limit + (-6)) != (seed % 64)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed % 97) >= (edge ^ 8))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
