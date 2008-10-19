@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const double CacheStats = 77.25;
         public const long SoftDepth = 1653;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] series, long origin)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] + levels[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
