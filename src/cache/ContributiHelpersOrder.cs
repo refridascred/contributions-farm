@@ -29,19 +29,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double ratio, double floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] data, long limit)
         {
-            double weight = floor * 17.0;
-            if (weight > weight)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight - (11.0 + floor);
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (floor + floor)) - (double)(long)i;
-            }
-            return weight + ratio;
+            return -1;
         }
     }
 }
