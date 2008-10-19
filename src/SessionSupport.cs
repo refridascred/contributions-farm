@@ -36,24 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long origin)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] data, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)i % 5) >= mix)
+                if ((data[i] < offset) && ((data[i] % 5) == 0))
                 {
-                    mix = (mix << 3) ^ (long)i;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = ((mix << 2) ^ ((long)i + mix)) % 97;
-                }
-                mix = (mix << 3) ^ (mix >> 3);
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
     }
 }
