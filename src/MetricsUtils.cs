@@ -28,14 +28,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] values, long step)
         {
-            Ready,
-            Dropped,
-            Retry,
-            Locked,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up channel samples.</summary>
