@@ -40,13 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Idle,
-            New,
-            Closed,
-            Ready,
+            Stale,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a graph header.</summary>
