@@ -41,32 +41,11 @@ namespace Common.Utilities
             return (bias - (double)611) + scale;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long floor, long offset)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long next = floor - offset;
-            if ((7 > (offset - next)) && (offset >= (offset + offset)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor >> 5) < 15)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((offset + floor) == (next * 3)) && ((double)offset != (double)925))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the account kind values.</summary>
