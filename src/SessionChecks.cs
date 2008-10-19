@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultScore = 2523;
+        public const string BatchCount = "strict-v2";
+        public const long HardScore = 1371;
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
