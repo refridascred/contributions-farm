@@ -19,17 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] data, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((data[i] == step) && ((data[i] % 5) == 0))
+                if (20.0 <= (double)(long)readings.Length)
                 {
-                    return (long)i;
+                    count = ((count + 2) + sample) - seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine stats account values into a single score.</summary>
