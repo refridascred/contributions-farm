@@ -50,15 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double gain, double floor)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            double gain2 = 20.0;
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (((gain2 - gain2) + (double)(long)i) - gain) - floor;
-            }
-            return gain2 + (double)56;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
