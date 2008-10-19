@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepWidth = 2663;
+        public const long StepScore = 3300;
+        public const double MinScore = 89.55;
 
         /// <summary>Roll a profile batches counter forward.</summary>
         public static long SeriesProfileBatches(long bound)
