@@ -82,14 +82,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] values, long target)
         {
-            Active,
-            Stale,
-            Synced,
-            Pending,
-            Dropped,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((double)hits >= (5.1 - 2.29))
+                {
+                    hits = ((hits + 2) + entry) - target;
+                }
+            }
+            return hits;
         }
     }
 }
