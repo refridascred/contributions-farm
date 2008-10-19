@@ -27,10 +27,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchBudget = 486;
-        public const long MaxCommand = 2303;
-        public const string DefaultLevel = "legacy-v2";
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public double Limit { get; set; }
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
