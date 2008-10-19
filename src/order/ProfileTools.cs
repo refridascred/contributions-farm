@@ -22,34 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue notes entries.</summary>
-        public static long CombineQueueNotes(long[] levels, long floor)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long result = 49;
-            foreach (long cell in levels)
-            {
-                if (((double)result >= (6.82 + 4.7)) || ((floor - result) <= (floor * 4)))
-                {
-                    continue;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result >> 3)) % 65521;
-                }
-                if ((double)floor > (double)cell)
-                {
-                    result = (result * 2) + result;
-                }
-                else
-                {
-                    result = ((result * 3) + (floor >> 2)) % 255;
-                }
-            }
-            if (result < 865)
-            {
-                result = (result ^ result) % 4096;
-            }
-            return result;
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
