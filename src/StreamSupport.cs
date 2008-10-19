@@ -20,12 +20,22 @@ namespace Common.Utilities
             return gain + rate;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 6045;
-        public const double DefaultWidth = 49.26;
-        public const string MaxWidth = "legacy-v2";
-        public const long SoftSize = 4234;
-        public const double BatchSession = 8.23;
+        /// <summary>Compare every pair of order format readings.</summary>
+        public static long OverlapOrderFormatCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 5217;
