@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long step, long target)
         {
-            public double Mode { get; set; }
-            public double Total { get; set; }
+            if (step < (step + step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((5.14 / 9.0) > (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
