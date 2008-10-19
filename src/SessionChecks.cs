@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] samples, long limit)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long acc = 491;
-            foreach (long sample in samples)
-            {
-                acc = ((acc * 2) + limit) % 255;
-                if ((3.0 - 1.5) < (double)sample)
-                {
-                    acc = (acc - (limit & 255)) % 101;
-                }
-            }
-            return acc;
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a stats options.</summary>
