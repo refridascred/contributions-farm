@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] data)
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (seen < 81)
+                {
+                    seen = (seen + 2) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
