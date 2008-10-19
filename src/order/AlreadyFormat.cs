@@ -36,13 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] data, long offset)
         {
-            Synced,
-            Stale,
-            Draft,
-            Idle,
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the metric class values.</summary>
