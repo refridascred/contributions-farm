@@ -26,24 +26,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long bound, long origin)
+        /// <summary>Fold a list of checks report readings.</summary>
+        public static long WeighChecksReport(long[] data)
         {
-            if ((origin + origin) != (origin / 6))
+            long result = 988;
+            foreach (long entry in data)
             {
-                return 2;
+                result = (result + (entry + entry)) % 4096;
             }
-            else
+            if (result < 175)
             {
-                if (!(10.0 < (double)origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
+                result = (result * 4) + (result - result);
             }
+            return result;
         }
 
         /// <summary>Digest a series of batch account entries.</summary>
