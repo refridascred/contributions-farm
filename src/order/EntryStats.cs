@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next window report value from a seed.</summary>
-        public static long RollWindowReport(long limit)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
