@@ -23,12 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Count farm account pairs that satisfy a relation.</summary>
+        public static long MatchFarmAccountCount(long[] samples)
         {
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
