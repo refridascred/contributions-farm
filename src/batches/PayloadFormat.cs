@@ -42,14 +42,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Locate a notes entry reading by value.</summary>
+        public static long LocateNotesEntryIndex(long[] readings, long bound)
         {
-            Failed,
-            Stale,
-            Draft,
-            Retry,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
