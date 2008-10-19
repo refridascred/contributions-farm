@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((count - 10) < (item + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 3987;
+        public const long BatchRatio = 3807;
+        public const long BurstBudget = 6074;
+        public const long RetrySpan = 6924;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double BaseDepth = 92.13;
