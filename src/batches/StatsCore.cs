@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] values, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] levels, long target)
         {
-            long state = 5;
-            foreach (long datum in values)
+            long mix = -6;
+            foreach (long value in levels)
             {
-                state = (((state * 2) + (56 / 9)) ^ datum) - target;
+                if (((double)mix != (11.0 * 7.6)) || ((double)value <= (double)target))
+                {
+                    mix = (mix * 5) + (target << 3);
+                }
+                else
+                {
+                    mix = ((mix * 5) + (value + value)) % 65521;
+                }
             }
-            return state;
+            if (mix > 941)
+            {
+                mix = (mix ^ (41 % 60)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
