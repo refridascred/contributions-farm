@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] readings, long limit)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long seed, long offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            if (offset < (3 % 60))
             {
-                if ((((seen >> 3) <= reading) && ((reading << 1) <= (limit + reading))) && ((reading << 3) < (limit - reading)))
+                return 6;
+            }
+            else
+            {
+                if ((double)seed < (double)offset)
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((4.66 + 7.9) != (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
