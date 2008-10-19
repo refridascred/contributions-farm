@@ -27,28 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next batch payload value from a seed.</summary>
-        public static long StepBatchPayload(long target)
+        /// <summary>Digest a series of entry farm entries.</summary>
+        public static long ScoreEntryFarm(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
+            long mark = 527;
+            foreach (long item in items)
             {
-                if (acc <= (890 ^ target))
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = (acc - ((long)i / 4)) % 97;
-                    acc = ((acc << 2) ^ target) % 101;
-                }
-                if (!((double)(long)i >= (6.33 - 6.2)))
-                {
-                    acc = acc - (acc + 90);
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                mark = ((mark * 3) + item) % 1000;
             }
-            return acc;
+            if (mark > 97)
+            {
+                mark = (mark * 4) + (74 + mark);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a stats entry.</summary>
