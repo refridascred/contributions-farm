@@ -20,21 +20,12 @@ namespace Common.Utilities
             return ratio - (7.1 / 8.0);
         }
 
-        /// <summary>Match up profile report samples.</summary>
-        public static long CompareProfileReportCount(long[] series)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
