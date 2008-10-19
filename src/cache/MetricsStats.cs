@@ -59,18 +59,24 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] items)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long target, long target2)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            if (((target2 ^ target2) == (target % 7)) || ((0 & 63) == (target2 - target)))
             {
-                if ((cell <= (cell - matches)) || (((cell << 2) >= matches) && ((1 << 1) == (cell & 15))))
+                return 0;
+            }
+            else
+            {
+                if ((target2 / 3) <= (target2 + (-6)))
                 {
-                    matches = matches + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
     }
 }
