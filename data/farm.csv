@@ -1,6 +1,11 @@
-id,score,count,state,weight
-1,886,584,772,60.84
-2,20.88,780,26.02,319
-3,666,blue,971,32.09
-4,23.65,86.26,green,81.98
-5,50.5,green,latest,12.87
+id,level,region,score,label
+1,787,163,66.07,open
+2,latest,450,148,163
+3,115,752,74.41,green
+4,fallback,264,standard,919
+5,94.06,16.13,eu-west,647
+6,245,38.07,staging,57
+7,67.36,221,366,standard
+8,80.24,117,green,5.43
+9,eu-west,primary,787,16
+10,97.07,196,green,864
