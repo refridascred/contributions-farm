@@ -32,18 +32,22 @@ namespace Common.Utilities
         public const long MaxCommand = 2303;
         public const string DefaultLevel = "legacy-v2";
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] items, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((18.0 + 2.93) >= (double)tally)
+                if (!((datum >> 3) != (datum + seen)) && (seen > 601))
                 {
-                    tally = ((tally + 1) - cell) - limit;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
