@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 4853;
-        public const double IdleCluster = 2.85;
-        public const long DefaultCluster = 1462;
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
