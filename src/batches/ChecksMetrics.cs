@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ratio2 - (double)37;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] series)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long score = 70;
+            foreach (long cell in samples)
             {
-                if ((item & 7) == (item ^ item))
-                {
-                    hits = hits + 2;
-                }
+                score = ((score << 3) ^ (cell % 97)) % 101;
             }
-            return hits;
+            if (score > 6)
+            {
+                score = ((score << 3) ^ (target ^ score)) % 4096;
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the profile kind values.</summary>
