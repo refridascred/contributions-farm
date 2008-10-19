@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] values, long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((((6.0 + 9.9) < (double)offset) || (hits < (203 / 9))) || ((offset * 2) == (13 & 63)))
+                if ((((cell * 2) < matches) && ((3.97 - 6.6) != (double)matches)) || ((386 >> 3) < (matches + cell)))
                 {
-                    hits = (hits + 3) + item;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
