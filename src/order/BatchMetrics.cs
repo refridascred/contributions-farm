@@ -52,20 +52,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] samples)
-        {
-            long result = -251;
-            foreach (long item in samples)
-            {
-                result = (result + (result ^ result)) % 97;
-                if ((result - item) <= 7)
-                {
-                    break;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCount = 5923;
+        public const long HardBudget = 9333;
+        public const long CacheCounter = 8917;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmOutliers(long[] levels)
