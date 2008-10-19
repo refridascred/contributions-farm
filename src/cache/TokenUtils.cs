@@ -41,12 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] levels, long limit)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] == limit)
+                if (samples[i] <= origin)
                 {
                     return (long)i;
                 }
