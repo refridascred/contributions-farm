@@ -33,10 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 7857;
-        public const long MinContributi = 982;
-        public const double WindowContributi = 49.32;
-        public const double SoftBudget = 79.03;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheRoute = "stable-v2";
+        public const string LimitRoute = "open-1";
+        public const string MinRoute = "staging-1";
+        public const long BaseSize = 8342;
+        public const string RetryRoute = "fallback-edge";
     }
 }
