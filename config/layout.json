@@ -1,5 +1,7 @@
 {
-  "cache_delay_count": "eu-west",
-  "flush_depth_pct": 85.41,
-  "flush_interval_s": true
+  "compress": [37, 266, 9, 13],
+  "report_delay": "staging",
+  "batch_size_ms": [114, 154, 292],
+  "strict": false,
+  "batch_window_s": "strict"
 }
