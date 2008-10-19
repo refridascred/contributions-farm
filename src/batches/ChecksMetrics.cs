@@ -70,19 +70,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] samples, long offset)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double weight, double bias)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            double bias2 = weight;
+            if (bias2 < (double)194)
             {
-                if (sample < offset)
-                {
-                    found = false;
-                    break;
-                }
+                bias2 = bias2 + weight;
             }
-            return found;
+            return bias2 + bias;
         }
     }
 }
