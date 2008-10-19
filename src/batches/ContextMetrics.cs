@@ -44,11 +44,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardLevel = "local-edge";
-        public const long DefaultBudget = 5198;
-        public const long StepSession = 1609;
-        public const double WindowSize = 41.08;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] data)
+        {
+            long mix = 87;
+            foreach (long entry in data)
+            {
+                if (((3.93 * 5.4) <= (double)mix) && ((5.66 - 10.0) > (double)entry))
+                {
+                    mix = (mix ^ (mix - entry)) % 101;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
