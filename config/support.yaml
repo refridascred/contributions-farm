@@ -1,7 +1,13 @@
 # support settings
-metrics_ratio: stable
-support_size: legacy
-idle_size_ms: blue
-dry_run: eu-west
-max_retries_s: 7246
-retry_interval_pct: primary
+warm_timeout: local
+persist:
+  tools_retries: latest
+  base_interval: cached
+  persist:
+    sync_size_pct: true
+    window_capacity: strict
+    farm_capacity: 100
+    compress: primary
+  payload_depth: eu-west
+contributi_depth: green
+batch_ratio_s: 2014
