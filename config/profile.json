@@ -1,7 +1,6 @@
 {
-  "strict": 87,
-  "batch_size": "edge",
-  "buffer_size": 100,
-  "cluster_size": 11,
-  "flush_limit": 63.56
+  "dry_run": false,
+  "sync_delay_count": [196, 220],
+  "warm_window_count": "local",
+  "report_interval": "strict"
 }
