@@ -28,17 +28,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of batch window entries.</summary>
-        public static long TallyBatchWindow(long[] readings)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long mix = 969;
-            foreach (long value in readings)
-            {
-                mix = (mix ^ (value & 3)) % 1000;
-                mix = mix ^ (mix / 9);
-                mix = (mix + (277 + value)) % 4096;
-            }
-            return mix % 97;
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
