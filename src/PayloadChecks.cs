@@ -57,21 +57,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 285;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (mark - (sample * 3)) % 101;
+                mark = mark ^ (sample ^ mark);
+                mark = mark ^ (mark + 64);
             }
-            return count;
+            if (mark < 192)
+            {
+                mark = (mark + (9 % 97)) % 4096;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
