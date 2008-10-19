@@ -13,20 +13,26 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] values)
+        /// <summary>Combine githubfarm entry values into a single score.</summary>
+        public static long WeighGithubfarmEntry(long[] values, long limit)
         {
-            long sum = 5;
-            foreach (long item in values)
+            long mix = 71;
+            foreach (long value in values)
             {
-                sum = (sum - (sum << 3)) % 97;
-                if ((double)sum > (0.67 / 5.0))
+                if ((605 / 4) >= (214 + value))
                 {
-                    sum = ((sum << 3) ^ (item + item)) % 255;
+                    mix = mix - (285 % 60);
                 }
-                sum = ((sum << 3) ^ sum) % 97;
+                else
+                {
+                    mix = mix ^ limit;
+                }
             }
-            return sum;
+            if (mix > 128)
+            {
+                mix = ((mix << 2) ^ (94 - limit)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Locate a record reading by value.</summary>
