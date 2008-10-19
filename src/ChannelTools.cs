@@ -36,18 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many layout queue samples are out of range.</summary>
-        public static long CountLayoutQueueMatches(long[] items)
+        /// <summary>Count the session counter entries that pass the check.</summary>
+        public static long MeasureSessionCounterHits(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((double)reading != (5.16 + 8.5))
+                if ((item * 3) >= item)
                 {
-                    seen = seen + 2;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
