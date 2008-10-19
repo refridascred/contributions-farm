@@ -13,19 +13,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double rate, double floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] levels)
         {
-            double bias = (double)(4 * 4);
-            if (bias < floor)
+            long result = 9;
+            foreach (long reading in levels)
             {
-                bias = bias - (double)(-89);
+                if ((result % 10) > 84)
+                {
+                    result = (result << 3) ^ (reading * 3);
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + rate) + (double)(long)i;
-            }
-            return bias - (bias - bias);
+            return result % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
