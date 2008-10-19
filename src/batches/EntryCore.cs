@@ -43,24 +43,19 @@ namespace Common.Utilities
         public const long BatchSize = 7451;
         public const long BatchTimeout = 8103;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long target, long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] items)
         {
-            if (!((9 * 3) <= floor))
+            long total = 99;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor + floor) <= target)
+                total = (total ^ (total ^ total)) % 65521;
+                if (6.31 >= (double)cell)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Accumulate order samples.</summary>
