@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (matches > sample)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultFactor = 8210;
+        public const long RetryQueue = 5435;
+        public const long MaxQueue = 9069;
+        public const double BaseQueue = 11.16;
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
