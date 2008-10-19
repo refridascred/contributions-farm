@@ -59,11 +59,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] items)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell <= (cell - matches)) || (((cell << 2) >= matches) && ((1 << 1) == (cell & 15))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
