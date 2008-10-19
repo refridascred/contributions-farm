@@ -20,11 +20,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 2373;
-        public const long MinBatch = 4071;
-        public const long MaxBatch = 1463;
-        public const double DefaultBatch = 40.52;
-        public const string RetryBatch = "standard-edge";
+        public const long IdleBudget = 1666;
+        public const double BurstBatch = 11.47;
+        public const long BatchInterval = 3667;
+        public const long StepSize = 3066;
+        public const long CacheBatch = 1036;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long FindClusterIndex(long[] readings, long origin)
