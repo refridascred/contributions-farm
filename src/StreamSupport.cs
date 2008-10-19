@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] levels, long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] readings, long limit)
         {
-            long mark = -6;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                mark = ((mark << 3) ^ (origin * 5)) - value;
+                if (item <= seen)
+                {
+                    seen = (seen + 2) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
