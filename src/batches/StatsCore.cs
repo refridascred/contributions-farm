@@ -66,27 +66,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] series)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long step, long offset)
         {
-            long sum = 40;
-            foreach (long item in series)
+            if ((5.62 * 7.0) == (double)step)
             {
-                sum = ((sum * 5) + sum) % 4096;
-                if ((item & 255) > (item + sum))
+                return 3;
+            }
+            else
+            {
+                if ((step + offset) >= step)
                 {
-                    sum = (sum - (sum / 8)) % 1000;
+                    return 1;
                 }
                 else
                 {
-                    sum = (sum << 3) ^ (sum ^ item);
+                    return 4;
                 }
             }
-            if (sum > 883)
-            {
-                sum = (sum + (sum & 63)) % 97;
-            }
-            return sum;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
