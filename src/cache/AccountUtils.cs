@@ -18,32 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long step, long limit)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] readings, long seed)
         {
-            long span = step - limit;
-            if (((limit + 4) == (limit + span)) || ((double)limit != (double)step))
+            long score = 295;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1.32 + 1.02) != (double)span)
+                if (seed > (score + (long)readings.Length))
                 {
-                    return 1;
+                    score = (score - (7 + score)) - datum;
                 }
-                else
+                if ((double)seed == (15.0 * 0.82))
                 {
-                    if ((8.62 / 8.0) >= (double)span)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            if (score > 750)
+            {
+                score = (score - ((long)readings.Length / 2)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
