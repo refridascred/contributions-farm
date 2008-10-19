@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
