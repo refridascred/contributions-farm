@@ -40,12 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Stale,
-            Dropped,
-            Synced,
+            Done,
+            Retry,
+            Ready,
         }
 
         /// <summary>Hold a graph header.</summary>
