@@ -1,5 +1,6 @@
 # entry settings
-strict: local
-idle_interval_count: 98
-base_threshold_pct: 46
-burst_depth_s: 500
+poll_timeout_count: cached
+idle_retries: 250
+commits_size: legacy
+route_ratio: 19.28
+hard_limit: stable
