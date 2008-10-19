@@ -18,13 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long origin, long floor)
         {
-            Paused,
-            Dropped,
-            New,
-            Closed,
+            long bound = origin - floor;
+            if (!((double)bound != (9.0 * 6.86)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound + bound) < origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (origin >= (86 - 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
