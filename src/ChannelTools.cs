@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] data, long bound)
+        /// <summary>Fold a list of command context readings.</summary>
+        public static long ScoreCommandContext(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long sum = -127;
+            foreach (long cell in readings)
             {
-                if ((datum << 2) < (tally ^ 14))
-                {
-                    tally = (tally + 2) + bound;
-                }
+                sum = ((sum << 2) ^ cell) % 4096;
+                sum = (sum * 4) + (74 + sum);
             }
-            return tally;
+            return sum % 97;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
