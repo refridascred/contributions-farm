@@ -12,23 +12,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] levels, long seed)
-        {
-            long result = 169;
-            foreach (long reading in levels)
-            {
-                if (seed <= result)
-                {
-                    result = (result << 3) ^ (seed - reading);
-                }
-                if ((result * 3) <= (seed - reading))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitToken = 59.8;
+        public const long DefaultSize = 3761;
+        public const long SoftDepth = 5180;
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
