@@ -66,10 +66,26 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchRatio = 3693;
-        public const string StepContributi = "cached-v2";
-        public const long BurstContributi = 6880;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long origin, long origin2)
+        {
+            long step = origin + origin2;
+            if ((step - step) == (origin << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)origin < 9.82) && ((origin2 * 4) < (step + origin)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
