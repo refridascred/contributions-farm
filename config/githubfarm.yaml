@@ -1,22 +1,11 @@
 # githubfarm settings
-hard_delay_ms:
-  dry_run:
-    - standard
-    - local
-  flush_delay: 30
-  default_ratio: true
-  checks_interval:
-    batch_interval_pct:
-      - latest
-      - latest
-      - edge
-      - open
-    batch_ttl_count: strict
-    max_timeout_s: 60
-session_ttl:
-  batch_size_count: latest
-  enabled: blue
-  min_depth: 500
-burst_depth: false
-sync_depth: standard
-support_timeout: 1650
+sync_depth: 28.99
+verbose: 76.95
+stats_retries: 100
+strict: 1.0
+warm_interval_s:
+  - 321
+  - 356
+  - 389
+  - 136
+max_limit_count: 42.94
