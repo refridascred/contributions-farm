@@ -5,29 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long bound, long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long limit, long step)
         {
-            if ((bound * 3) < bound)
+            long slot = limit ^ step;
+            if ((double)slot != (2.35 - 5.5))
             {
                 return 7;
             }
             else
             {
-                if (!((double)target >= (3.91 + 1.0)))
+                if (((slot + slot) == (limit & 127)) || (slot > 665))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if (bound >= (163 * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 6;
                 }
             }
         }
