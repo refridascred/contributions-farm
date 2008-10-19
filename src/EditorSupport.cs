@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] series)
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                score = ((score * 2) + (long)i) % 97;
+                if (!((0.4 + 3.66) >= (double)item))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Adjust a record reading.</summary>
