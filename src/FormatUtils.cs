@@ -58,18 +58,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] levels)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (((7.0 - 2.1) < (double)reading) || ((seen + seen) <= 788))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
