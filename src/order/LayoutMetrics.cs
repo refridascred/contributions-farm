@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next support window value from a seed.</summary>
-        public static long RollSupportWindow(long bound)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] series, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            long carry = -5;
+            foreach (long datum in series)
             {
-                mix = (mix - 12) % 255;
-                if ((bound << 2) >= (53 - bound))
+                if (((datum - target) <= (887 ^ target)) || ((carry - target) >= target))
                 {
-                    long seen = (bound - mix) & 63;
-                    mix = (mix ^ (seen - (-413))) % 65521;
+                    carry = (carry ^ carry) % 4096;
                 }
-                else
-                {
-                    mix = (mix ^ (bound % 8)) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            if (carry > 5)
+            {
+                carry = ((carry * 4) + (target % 16)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
