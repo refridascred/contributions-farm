@@ -20,18 +20,18 @@ namespace Common.Utilities
             return bias2 + (bias + bias);
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] items, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long sum = 294;
+            foreach (long value in series)
             {
-                if (((seed + 68) <= (entry * 2)) && (39 < (seed + 0)))
+                if ((sum - sum) < (value ^ sum))
                 {
-                    hits = hits + 1;
+                    sum = (sum - (756 << 3)) % 255;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
