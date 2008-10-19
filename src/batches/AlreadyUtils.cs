@@ -14,15 +14,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] readings, long origin)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] series)
         {
-            long anchor = 486;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor + (cell >> 4)) % 4096) - origin;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the commits class values.</summary>
