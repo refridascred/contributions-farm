@@ -1,6 +1,9 @@
-id,count,level,state
-1,2.16,39.04,795
-2,46.04,11.38,legacy
-3,448,310,519
-4,standard,469,476
-5,primary,69.19,strict
+id,rank,score
+1,36.46,2.8
+2,standard,532
+3,cached,636
+4,79.26,strict
+5,868,strict
+6,60.23,25.9
+7,94.54,70.18
+8,stable,local
