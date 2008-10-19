@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long BatchDepth = 9211;
         public const long StepChannel = 8213;
 
-        /// <summary>Measure how many githubfarm command samples are out of range.</summary>
-        public static long CountGithubfarmCommandHits(long[] levels, long floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long acc = -513;
+            foreach (long entry in values)
             {
-                if ((tally - floor) > (floor % 97))
+                if ((2.6 * 2.59) != (double)step)
                 {
-                    tally = (tally + 1) ^ reading;
+                    acc = (acc - entry) % 65521;
+                }
+                if (entry <= (acc - entry))
+                {
+                    break;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
