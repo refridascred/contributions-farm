@@ -32,18 +32,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] readings, long bound)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long acc = 97;
+            foreach (long item in levels)
             {
-                if ((hits * 3) != (hits + bound))
-                {
-                    hits = (hits + 3) + item;
-                }
+                acc = ((acc - target) % 101) ^ item;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
