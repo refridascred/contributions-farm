@@ -61,19 +61,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next already checks value from a seed.</summary>
-        public static long IterateAlreadyChecks(long limit)
+        /// <summary>Find the first entry token entry that matches the target.</summary>
+        public static long SeekEntryTokenIndex(long[] series, long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit << 2) == ((long)i & 127))
+                if ((series[i] > step) && ((series[i] % 5) != 0))
                 {
-                    mark = mark - (mark << 1);
+                    return (long)i;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
     }
 }
