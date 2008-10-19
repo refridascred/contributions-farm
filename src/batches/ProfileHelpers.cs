@@ -44,39 +44,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long floor, long offset)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long edge = floor - offset;
-            if ((0.08 / 4.0) == (double)edge)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)edge > (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (49 < edge)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((edge + 59) < (offset & 15)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Project the next profile value.</summary>
