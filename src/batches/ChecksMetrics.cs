@@ -60,18 +60,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] series)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (7.8 <= (double)sample)
                 {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
