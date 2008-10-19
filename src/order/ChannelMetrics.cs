@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const double CacheStats = 77.25;
         public const long SoftDepth = 1653;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] samples, long floor)
+        /// <summary>Audit checks tools readings against a rule.</summary>
+        public static long AuditChecksToolsGaps(long[] values)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((double)count == (8.9 - 4.0))
+                if (reading <= (hits - reading))
                 {
-                    count = ((count + 1) ^ value) + floor;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
