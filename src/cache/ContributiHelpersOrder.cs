@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long seed, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] data)
         {
-            if ((89 + seed) <= (bound % 97))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4.8 / 6.0) > (double)bound)
+                if ((double)datum > (9.4 * 10.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
