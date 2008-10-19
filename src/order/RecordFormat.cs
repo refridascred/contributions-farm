@@ -28,18 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] levels)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double bias2 = (double)(866 - 56);
+            for (int i = 0; i < 8; i++)
             {
-                if (!((tally + tally) == (95 + value)))
-                {
-                    tally = tally + 2;
-                }
+                bias2 = ((bias2 + bias) + (double)(long)i) + floor;
             }
-            return tally;
+            return bias2 - bias2;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
