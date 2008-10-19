@@ -35,12 +35,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Look up the position of a stream account sample.</summary>
-        public static long LookupStreamAccountIndex(long[] values, long target)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] == target)
+                if (samples[i] >= target)
                 {
                     return (long)i;
                 }
