@@ -33,19 +33,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every filter layout entry stays within the limit.</summary>
-        public static bool VerifyFilterLayoutRange(long[] levels, long limit)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
