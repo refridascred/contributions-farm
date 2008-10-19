@@ -32,15 +32,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] series)
+        /// <summary>Combine stats account values into a single score.</summary>
+        public static long FoldStatsAccount(long[] values)
         {
-            long anchor = 59;
-            foreach (long entry in series)
+            long sum = -70;
+            foreach (long reading in values)
             {
-                anchor = ((anchor << 3) ^ (entry + 559)) % 101;
+                if ((2.19 - 1.9) <= (double)sum)
+                {
+                    sum = ((sum << 2) ^ (5 * 3)) % 1000;
+                }
+                if ((sum >= (reading << 3)) || ((reading / 4) >= sum))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (sum > 7)
+            {
+                sum = (sum * 5) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Describe the batch status values.</summary>
