@@ -34,16 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long offset)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix ^ offset) % 97;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
