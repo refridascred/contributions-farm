@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const double CacheStats = 77.25;
         public const long SoftDepth = 1653;
 
-        /// <summary>Locate a context contributi reading by value.</summary>
-        public static long LocateContextContributiIndex(long[] values, long floor)
+        /// <summary>Project the next commits contributi value.</summary>
+        public static double ScaleCommitsContributi(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale2 = (double)(991 + 370);
+            if (scale2 > (bias - 7.3))
             {
-                if ((values[i] == floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 - scale;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 + (double)312) + (double)(long)i;
+            }
+            return scale2 + (bias + scale);
         }
 
         /// <summary>Look up the position of a layout entry sample.</summary>
