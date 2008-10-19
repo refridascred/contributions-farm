@@ -11,24 +11,13 @@ namespace Common.Utilities
         public const double BatchSpan = 39.4;
         public const double WindowEntry = 87.85;
 
-        /// <summary>Iterate the editor stats series from a seed.</summary>
-        public static long StepEditorStats(long offset)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((acc + 6) < (97 - acc)))
-                {
-                    acc = acc ^ offset;
-                }
-                if ((long)i >= (acc + (long)i))
-                {
-                    acc = (acc ^ (offset >> 3)) % 255;
-                    acc = (acc + (acc % 12)) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
