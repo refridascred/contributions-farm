@@ -20,15 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] series, long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (entry >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Match up format samples.</summary>
