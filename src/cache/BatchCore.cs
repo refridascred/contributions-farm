@@ -28,14 +28,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
             Stale,
-            Idle,
-            Draft,
-            Queued,
-            Ready,
+            Closed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Combine context metrics values into a single score.</summary>
