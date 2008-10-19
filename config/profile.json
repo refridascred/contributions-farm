@@ -1,15 +1,5 @@
 {
-  "account_retries": 5941,
-  "warm_ttl_pct": {
-    "poll_depth_count": 1024,
-    "tools_limit": ["stable", "stable", "blue"],
-    "strict": {
-      "retry_limit_pct": "fallback",
-      "tools_delay": 60,
-      "default_delay_count": ["green", "standard", "staging"]
-    },
-    "cluster_limit": 73.42,
-    "cache_size": 33.99
-  },
-  "queue_size": 7080
+  "batch_ratio": 1024,
+  "batches_capacity": false,
+  "githubfarm_timeout": 52
 }
