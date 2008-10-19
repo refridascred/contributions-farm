@@ -74,20 +74,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long limit)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] series)
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((4.45 + 4.7) == (double)limit) && (limit > (mix ^ limit)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix ^ (mix + limit)) % 255;
-                    mix = ((mix * 3) + mix) % 65521;
+                    if ((series[i] - series[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
     }
 }
