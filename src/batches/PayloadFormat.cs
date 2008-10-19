@@ -19,18 +19,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] items)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((15 + item) >= item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
