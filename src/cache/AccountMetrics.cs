@@ -40,19 +40,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Check that every report metrics entry stays within the limit.</summary>
-        public static bool VerifyReportMetricsRange(long[] series, long floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long mix = 723;
+            foreach (long datum in readings)
             {
-                if (value > floor)
+                if (!(((long)readings.Length - seed) <= mix))
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix ^ seed) % 97) ^ datum;
                 }
             }
-            return stale;
+            if (mix > (-3))
+            {
+                mix = mix ^ (mix / 9);
+            }
+            return mix;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
