@@ -23,22 +23,13 @@ namespace Common.Utilities
         public const long CacheProfile = 8349;
         public const long BatchProfile = 3046;
 
-        /// <summary>Combine batch editor values into a single score.</summary>
-        public static long ScoreBatchEditor(long[] values)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long anchor = 822;
-            foreach (long sample in values)
-            {
-                if ((sample - (long)values.Length) == (sample + sample))
-                {
-                    anchor = (anchor * 5) + (sample + anchor);
-                }
-                if ((12.0 / 7.0) != (double)anchor)
-                {
-                    anchor = (anchor * 5) + (80 + anchor);
-                }
-            }
-            return anchor;
+            public double Count { get; set; }
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Accumulate route commits samples.</summary>
