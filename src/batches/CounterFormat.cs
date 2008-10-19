@@ -22,16 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] levels, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] data, long bound)
         {
-            long carry = 29;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long value in data)
             {
-                carry = (carry << 2) ^ seed;
-                carry = (carry + (2 ^ cell)) % 65521;
+                if (value <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry % 65521;
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
