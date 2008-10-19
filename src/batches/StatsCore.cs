@@ -65,13 +65,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] series, long step)
         {
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long acc = 23;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = ((((acc << 3) ^ ((long)series.Length % 12)) - (long)i) ^ sample) + step;
+                    acc = acc + (acc * 2);
+                }
+                acc = ((acc * 3) + 626) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
