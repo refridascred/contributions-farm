@@ -54,22 +54,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] series)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((reading + count) >= (count >> 4))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Done,
+            Closed,
+            Ready,
         }
     }
 }
