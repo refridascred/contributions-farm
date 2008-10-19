@@ -29,19 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((1.38 - 11.0) == (double)cell)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryRatio = "alpha-edge";
+        public const long WindowSize = 8407;
+        public const long BurstInterval = 4962;
+        public const double HardBudget = 42.13;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiHits(long[] levels)
