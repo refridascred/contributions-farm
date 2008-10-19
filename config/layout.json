@@ -1,12 +1,8 @@
 {
-  "sync_limit_pct": 500,
-  "sync_ttl_pct": {
-    "idle_interval_count": ["primary", "edge", "staging", "legacy"],
-    "hard_ttl_ms": 1,
-    "soft_window": [140, 384, 88],
-    "base_capacity_s": "legacy",
-    "hard_window_s": "primary"
-  },
-  "retry_limit_s": 5430,
-  "retry_interval_pct": "stable"
+  "sync_ratio": "stable",
+  "report_capacity": 40.4,
+  "audit": ["primary", "edge", "local", "cached"],
+  "retry_window_s": 54,
+  "soft_ratio_s": [131, 327],
+  "max_interval": 500
 }
