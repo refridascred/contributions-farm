@@ -40,17 +40,22 @@ namespace Common.Utilities
         public const double SoftWidth = 17.71;
         public const long MinSpan = 5918;
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] readings, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (readings[i] >= origin)
+                if ((double)(-514) == (double)step)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
