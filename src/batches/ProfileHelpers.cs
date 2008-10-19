@@ -74,18 +74,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchRatio = 3693;
+        public const string StepContributi = "cached-v2";
+        public const long BurstContributi = 6880;
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
