@@ -19,22 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryFactor = 1762;
+        public const string BaseGraph = "primary-edge";
+        public const string IdleSize = "stable-v2";
+        public const long StepGraph = 2280;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long RetryWidth = 6695;
