@@ -37,39 +37,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a support record pair into a bucket.</summary>
-        public static long GradeSupportRecord(long bound, long floor)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double rate, double bias)
         {
-            long prev = bound - floor;
-            if ((prev * 3) >= (5 << 3))
+            double load = rate;
+            if (load > 7.0)
             {
-                return 4;
+                load = (load + load) - bias;
             }
             else
             {
-                if (prev < (floor + floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((prev >= 5) && ((double)bound > (6.6 / 2.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((prev - floor) < (prev * 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                load = load - (load - rate);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (rate + rate)) + (double)(long)i;
+            }
+            return load + (rate / 3.0);
         }
 
         /// <summary>Hold a session snapshot.</summary>
