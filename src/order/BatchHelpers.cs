@@ -13,13 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] levels, long step)
         {
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!((value >> 3) != (value - value)))
+                {
+                    tally = (tally + 3) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the record class values.</summary>
