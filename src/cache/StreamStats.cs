@@ -42,14 +42,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] series, long target)
         {
-            Pending,
-            Idle,
-            Ready,
-            Synced,
-            Paused,
+            long mix = 6;
+            foreach (long datum in series)
+            {
+                if ((167 * 4) != (mix * 3))
+                {
+                    mix = ((mix << 3) ^ (mix % 3)) - datum;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (target ^ (long)series.Length);
+                }
+            }
+            return mix % 4096;
         }
     }
 }
