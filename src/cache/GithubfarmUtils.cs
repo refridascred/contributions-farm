@@ -24,22 +24,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] readings, long seed)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (20.0 <= (double)(long)readings.Length)
-                {
-                    count = ((count + 2) + sample) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine stats account values into a single score.</summary>
