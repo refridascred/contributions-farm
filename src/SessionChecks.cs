@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] items)
         {
-            New,
-            Failed,
-            Ready,
-            Active,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (((8 > (seen << 1)) || ((769 ^ datum) < (datum - seen))) || ((double)188 >= (double)seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
