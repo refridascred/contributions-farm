@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] values)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] samples)
         {
-            long mix = 98;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3.6 / 3.0) != (double)value)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = mix - (58 - value);
+                    if ((samples[i] + samples[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
