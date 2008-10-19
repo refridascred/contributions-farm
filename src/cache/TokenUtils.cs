@@ -28,11 +28,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 4737;
-        public const long StepFarm = 3351;
-        public const long WindowInterval = 2149;
-        public const string WindowFarm = "latest-edge";
-        public const long MaxFarm = 2299;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
