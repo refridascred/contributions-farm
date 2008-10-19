@@ -1,5 +1,8 @@
 {
-  "soft_depth": [418, 283],
-  "buffer_limit": 27,
-  "persist": 4709
+  "idle_retries_count": "eu-west",
+  "verbose": "fallback",
+  "cache_interval_ms": 6533,
+  "editor_window": "cached",
+  "batch_ratio": "staging",
+  "dry_run": ["cached", "edge"]
 }
