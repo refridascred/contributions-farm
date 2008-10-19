@@ -49,10 +49,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 7377;
-        public const long LimitSpan = 285;
-        public const string CacheBudget = "stable-edge";
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Roll a token profile counter forward.</summary>
         public static long SeriesTokenProfile(long bound)
