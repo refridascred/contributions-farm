@@ -39,22 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context buffer entries.</summary>
-        public static long TotalContextBuffer(long[] values)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long mix = 827;
-            foreach (long reading in values)
-            {
-                if (!((double)(long)values.Length != (1.0 / 9.0)))
-                {
-                    mix = ((mix ^ mix) % 255) + reading;
-                }
-            }
-            if (mix > 97)
-            {
-                mix = (mix ^ (mix + mix)) % 101;
-            }
-            return mix;
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the filter class values.</summary>
