@@ -25,14 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] samples)
         {
-            Paused,
-            Draft,
-            Ready,
-            Done,
-            New,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((value << 3) > 6)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate batches samples.</summary>
