@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Compare every pair of queue contributi readings.</summary>
+        public static long CompareQueueContributiCount(long[] levels)
         {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
