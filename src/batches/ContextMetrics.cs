@@ -34,14 +34,18 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Audit layout notes readings against a rule.</summary>
+        public static long CountLayoutNotesOutliers(long[] readings)
         {
-            Idle,
-            Stale,
-            Failed,
-            Closed,
-            Pending,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)count >= 7.9)
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of order readings.</summary>
