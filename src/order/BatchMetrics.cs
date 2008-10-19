@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardCounter = "cached-v2";
+        public const long LimitDepth = 6159;
+        public const long BaseCounter = 9659;
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long SeekLayoutIndex(long[] data, long seed)
