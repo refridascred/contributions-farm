@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowCommand = 93.22;
+        public const long MinCount = 9255;
+        public const string HardCommand = "latest-1";
+        public const long LimitCommand = 536;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorMatches(long[] readings)
