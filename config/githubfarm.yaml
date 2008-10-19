@@ -1,8 +1,17 @@
 # githubfarm settings
-compress: 91.23
-format_retries: fallback
-cache_window:
-  - 86
-  - 482
-  - 348
-  - 54
+strict:
+  record_limit: 2290
+  profile_timeout: 54.99
+  batch_delay: cached
+max_interval_count: stable
+compress:
+  default_retries_ms: 6314
+  max_timeout: blue
+  enabled:
+    - standard
+    - staging
+    - staging
+  cluster_interval: stable
+max_threshold: 30
+poll_delay_pct: staging
+tools_interval: latest
