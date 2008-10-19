@@ -39,19 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double gain, double span)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            double bias = (double)(992 ^ (-886));
-            if (bias <= (3.0 + bias))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = (bias + (9.76 / 9.0)) - span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + gain) + (double)(long)i;
-            }
-            return bias + bias;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
