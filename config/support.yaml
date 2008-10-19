@@ -1,15 +1,8 @@
 # support settings
-sync_retries_count:
-  stats_threshold:
-    - latest
-    - local
-    - latest
-    - latest
-  hard_window_s: 8196
-  base_window_pct: 27.42
-  persist: local
-  layout_threshold: eu-west
-  filter_timeout: true
-window_window: local
-strict: 41.49
-max_interval: 1414
+warm_window_count: 6721
+persist:
+  - blue
+  - cached
+counter_capacity: false
+min_limit_s: 9171
+record_interval: staging
