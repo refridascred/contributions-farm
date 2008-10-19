@@ -18,23 +18,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two filter schema measurements.</summary>
-        public static double SmoothFilterSchema(double bias, double floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] data, long origin)
         {
-            double gain = (double)(4 + 13);
-            if (gain <= (gain + bias))
+            long tally = 0;
+            foreach (long item in data)
             {
-                gain = (gain - (bias / 2.0)) - floor;
+                if (!((5.28 + 9.7) <= (double)origin))
+                {
+                    tally = (tally + 3) + item;
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - gain) - (double)(long)i;
-            }
-            return gain + (bias - 10.0);
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
