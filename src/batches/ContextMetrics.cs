@@ -40,21 +40,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Accumulate githubfarm metric samples.</summary>
+        public static long ScoreGithubfarmMetric(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 191;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((score - 8) >= (score + (-135))) && ((double)reading < (4.6 - 1.0)))
                 {
-                    if ((readings[i] - readings[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score + score) % 255;
+                }
+                else
+                {
+                    score = (score << 3) ^ ((-3) << 1);
+                }
+                if ((score + reading) <= score)
+                {
+                    break;
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
