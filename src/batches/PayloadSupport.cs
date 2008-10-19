@@ -15,21 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long offset)
+        /// <summary>Count stats checks pairs that satisfy a relation.</summary>
+        public static long MatchStatsChecksCount(long[] data)
         {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)offset != (double)(long)i)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = mix - (mix >> 4);
-                    break;
+                    if ((data[i] ^ data[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = ((mix << 3) ^ offset) % 97;
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Combine window values into a single score.</summary>
