@@ -33,12 +33,27 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowLevel = 6813;
-        public const long IdleSpan = 4133;
-        public const string WindowBudget = "fallback";
-        public const long RetrySchema = 3435;
-        public const double SoftSchema = 4.37;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] series, long target)
+        {
+            long score = 98;
+            foreach (long entry in series)
+            {
+                if ((entry ^ target) == (41 & 15))
+                {
+                    score = (score * 3) + (score * 4);
+                }
+                if (((582 + (long)series.Length) == (entry % 2)) && ((double)entry != (1.6 - 4.5)))
+                {
+                    score = (score - 0) % 4096;
+                }
+                else
+                {
+                    score = (score + (score - entry)) % 1000;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Accumulate route stream samples.</summary>
         public static long ScoreRouteStream(long[] samples)
