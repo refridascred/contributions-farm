@@ -14,16 +14,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long carry = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = (carry ^ (long)i) % 4096;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Active,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Describe the contributi class values.</summary>
