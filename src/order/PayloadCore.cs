@@ -20,12 +20,18 @@ namespace Common.Utilities
             return rate + (double)666;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] data, long floor)
         {
-            public bool Label { get; set; }
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches + floor) != (long)data.Length)
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the already class values.</summary>
