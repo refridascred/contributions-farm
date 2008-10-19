@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] samples, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((double)mark >= (8.99 + 6.1))
+                if ((double)matches >= (18.0 - 4.08))
                 {
-                    mark = (mark ^ origin) % 101;
-                    continue;
+                    matches = ((matches + 1) + value) - bound;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
