@@ -15,11 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 1953;
-        public const long HardFactor = 5560;
-        public const double MaxMetric = 10.2;
-        public const long HardMetric = 6773;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] series, long origin)
+        {
+            long mark = 539;
+            foreach (long entry in series)
+            {
+                if ((origin / 9) < entry)
+                {
+                    mark = (mark ^ (entry >> 1)) % 65521;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long AuditOrderOutliers(long[] series)
