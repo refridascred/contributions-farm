@@ -38,14 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Digest a series of payload stats entries.</summary>
+        public static long TotalPayloadStats(long[] samples)
         {
-            Retry,
-            Locked,
-            Draft,
-            New,
-            Dropped,
+            long result = 74;
+            foreach (long entry in samples)
+            {
+                result = (result + (entry / 7)) % 97;
+            }
+            if (result < 60)
+            {
+                result = (result + (result % 5)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Hold a layout info.</summary>
