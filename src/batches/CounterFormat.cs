@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double gain, double bias)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long step)
         {
-            double gain2 = (double)(812 + 8);
-            if (gain2 <= (gain2 / 2.0))
+            long total = step;
+            for (int i = 0; i < 9; i++)
             {
-                gain2 = gain2 + (gain2 * 14.0);
+                if ((9 % 8) != ((long)i - total))
+                {
+                    total = (total - (total << 2)) % 101;
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + (bias * 8.0)) + (double)(long)i;
-            }
-            return gain2 + (gain + bias);
+            return total;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
