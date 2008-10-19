@@ -1,6 +1,6 @@
 {
-  "enabled": "stable",
-  "notes_ratio": true,
-  "editor_timeout": 5660,
-  "warm_capacity_ms": ["strict", "edge", "cached"]
+  "layout_threshold": 9,
+  "tools_ttl": "strict",
+  "min_limit_ms": "fallback",
+  "stream_ttl": 40.14
 }
