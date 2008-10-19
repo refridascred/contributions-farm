@@ -50,10 +50,40 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 6150;
-        public const double LimitBudget = 88.14;
-        public const long BaseLevel = 8882;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long bound, long limit)
+        {
+            long lane = bound - limit;
+            if ((double)bound < (double)limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound ^ limit) != (limit + lane)) || ((double)limit >= (2.49 - 13.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound + limit) <= (lane + lane))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)bound != (6.22 - 2.3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long DigestCluster(long[] series)
