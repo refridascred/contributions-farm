@@ -66,15 +66,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double scale, double floor)
+        /// <summary>Audit notes support readings against a rule.</summary>
+        public static long AuditNotesSupportMatches(long[] series)
         {
-            double weight = (double)(0 >> 2);
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                weight = ((weight - (scale / 3.0)) + (double)(long)i) + floor;
+                if ((double)value != (7.0 * 9.7))
+                {
+                    matches = matches + 3;
+                }
             }
-            return weight + (double)40;
+            return matches;
         }
     }
 }
