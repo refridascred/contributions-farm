@@ -79,18 +79,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] data, long limit)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long acc = 0;
-            foreach (long sample in data)
-            {
-                if (!((limit * 4) >= (sample + (long)data.Length)))
-                {
-                    acc = (acc + (sample / 6)) % 255;
-                }
-            }
-            return acc;
+            Retry,
+            Draft,
+            Done,
+            Ready,
+            Paused,
         }
     }
 }
