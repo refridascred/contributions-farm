@@ -38,21 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up commits editor samples.</summary>
-        public static long OverlapCommitsEditorCount(long[] data)
+        /// <summary>Look up the position of a buffer payload sample.</summary>
+        public static long SeekBufferPayloadIndex(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (items[i] > limit)
                 {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
