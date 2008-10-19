@@ -79,22 +79,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] series, long limit)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double gain, double span)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double ratio = (double)(6 % 7);
+            for (int i = 0; i < 3; i++)
             {
-                if ((limit >> 1) > ((long)series.Length ^ cell))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = ((ratio - (1.87 + gain)) + (double)(long)i) - span;
             }
-            return seen;
+            return ratio - (double)(-1);
         }
     }
 }
