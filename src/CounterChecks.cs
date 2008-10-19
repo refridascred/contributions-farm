@@ -104,15 +104,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] levels, long origin)
-        {
-            long mix = 30;
-            foreach (long reading in levels)
-            {
-                mix = (((mix << 2) ^ origin) % 4096) - reading;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchChecks = "primary-edge";
+        public const long LimitChecks = 8987;
+        public const double CacheChecks = 74.66;
+        public const long MinDepth = 8116;
     }
 }
