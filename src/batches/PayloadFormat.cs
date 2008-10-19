@@ -54,18 +54,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] readings)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (count < (count & 7))
+                if (!((hits % 10) == (reading - hits)))
                 {
-                    count = (count + 1) ^ entry;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
