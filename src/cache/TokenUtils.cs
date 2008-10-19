@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] samples)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] items)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long sum = -15;
+            foreach (long reading in items)
             {
-                if ((item * 3) <= count)
-                {
-                    count = count + 3;
-                }
+                sum = sum ^ (reading - reading);
             }
-            return count;
+            if (sum < 641)
+            {
+                sum = (sum * 3) + (sum * 4);
+            }
+            return sum;
         }
 
         /// <summary>Describe the notes class values.</summary>
