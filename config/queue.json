@@ -1,14 +1,5 @@
 {
-  "retry_size": 6882,
-  "verbose": false,
-  "sync_window_count": "latest",
-  "soft_capacity_count": [49, 402],
-  "cache_size": {
-    "sync_limit_ms": "local",
-    "enabled": 3260,
-    "contributi_depth": ["edge", "edge", "cached", "legacy"],
-    "cache_limit_s": 8837,
-    "sync_size_count": true,
-    "warm_limit": 500
-  }
+  "cache_window": 37.65,
+  "queue_limit": 75.8,
+  "verbose": [39, 80]
 }
