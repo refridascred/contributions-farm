@@ -14,10 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 2982;
-        public const double RetryLevel = 11.45;
-        public const double MaxFactor = 70.65;
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] values)
+        {
+            long score = 8;
+            foreach (long sample in values)
+            {
+                score = ((score ^ (score ^ 301)) % 65521) - sample;
+                score = ((score << 2) ^ (878 / 5)) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Audit format notes readings against a rule.</summary>
         public static long AuditFormatNotesHits(long[] items)
