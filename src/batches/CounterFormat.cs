@@ -16,14 +16,21 @@ namespace Common.Utilities
             return drift - (5.3 * 16.0);
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] values)
         {
-            Pending,
-            Done,
-            Synced,
-            Closed,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
