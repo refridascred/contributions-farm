@@ -20,19 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] series, long target)
+        /// <summary>Audit commits support readings against a rule.</summary>
+        public static long MeasureCommitsSupportGaps(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (datum >= target)
+                if (!(((0.7 * 6.0) < (double)item) || ((hits ^ item) == (item % 97))))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a checks options.</summary>
