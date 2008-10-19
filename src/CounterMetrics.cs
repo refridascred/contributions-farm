@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 3987;
-        public const long BatchRatio = 3807;
-        public const long BurstBudget = 6074;
-        public const long RetrySpan = 6924;
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double AdjustMetrics(double weight, double span)
