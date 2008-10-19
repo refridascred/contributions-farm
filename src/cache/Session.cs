@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every commits payload entry stays within the limit.</summary>
-        public static bool ValidateCommitsPayloadRange(long[] items, long step)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 927;
+        public const long MinInterval = 1593;
+        public const double BatchSpan = 79.95;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamBounds(long[] items, long target)
