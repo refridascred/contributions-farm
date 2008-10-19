@@ -20,12 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-            public bool Rank { get; set; }
+            Locked,
+            Queued,
+            Retry,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
