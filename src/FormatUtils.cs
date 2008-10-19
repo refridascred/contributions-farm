@@ -19,12 +19,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long origin)
         {
-            Pending,
-            Idle,
-            Draft,
+            long total = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Accumulate session samples.</summary>
