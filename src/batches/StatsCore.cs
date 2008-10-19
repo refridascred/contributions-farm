@@ -51,19 +51,22 @@ namespace Common.Utilities
         public const long IdleBudget = 2982;
         public const long RetryGithubfarm = 5648;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] samples, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (sample != target)
+                if (seed > (reading + reading))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
