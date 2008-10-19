@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Done,
-            Dropped,
+            Paused,
             New,
+            Idle,
+            Draft,
+            Pending,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
