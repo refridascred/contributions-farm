@@ -31,14 +31,24 @@ namespace Common.Utilities
         public const long LimitEntry = 8327;
         public const string WindowEntry = "alpha-v2";
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] series)
         {
-            Pending,
-            Locked,
-            Stale,
-            Paused,
-            Retry,
+            long state = 66;
+            foreach (long datum in series)
+            {
+                if ((double)state > (4.2 / 4.0))
+                {
+                    state = state ^ (state / 3);
+                }
+                else
+                {
+                    state = state ^ (datum << 1);
+                    state = state - (datum - state);
+                }
+                state = (state * 5) + (state ^ state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a editor options.</summary>
