@@ -37,21 +37,24 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] items)
+        /// <summary>Digest a series of githubfarm already entries.</summary>
+        public static long TotalGithubfarmAlready(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 3;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                mix = mix + (entry + mix);
+                mix = (mix + entry) % 255;
+                if (!(((long)levels.Length ^ entry) <= (mix + entry)))
                 {
-                    if ((items[i] - items[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (mix < 5)
+            {
+                mix = (mix + mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a commits summary.</summary>
