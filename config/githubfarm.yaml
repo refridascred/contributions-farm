@@ -1,9 +1,4 @@
 # githubfarm settings
-cache_limit_ms: edge
-graph_limit: 6781
-idle_threshold_ms: true
-counter_limit:
-  - local
-  - standard
-  - edge
-  - cached
+max_interval: 1401
+flush_depth: 500
+notes_limit: false
