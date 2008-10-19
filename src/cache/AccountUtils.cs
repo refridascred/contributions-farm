@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double bias, double bias2)
         {
-            New,
-            Locked,
-            Queued,
+            double mean = 3.0;
+            if (mean < 4.84)
+            {
+                mean = mean + (bias + bias);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (mean - mean)) - (double)(long)i;
+            }
+            return mean - bias2;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
