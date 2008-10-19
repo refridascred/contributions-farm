@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const long BaseDepth = 6661;
         public const string RetryGraph = "fallback";
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Count the githubfarm batches entries that pass the check.</summary>
+        public static long CountGithubfarmBatchesOutliers(long[] samples, long floor)
         {
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (9.0 < (2.4 / 2.0))
+                {
+                    count = ((count + 1) - entry) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the profile class values.</summary>
