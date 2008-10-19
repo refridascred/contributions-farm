@@ -58,11 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public double Flag { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultSize = 3264;
+        public const string LimitLevel = "standard-edge";
+        public const long MaxAlready = 8692;
+        public const long RetryAlready = 8352;
+        public const string BurstAlready = "standard";
     }
 }
