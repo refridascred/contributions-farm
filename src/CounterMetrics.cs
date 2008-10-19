@@ -49,12 +49,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long target, long bound)
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public bool Limit { get; set; }
+            long next = target ^ bound;
+            if ((bound ^ target) <= (target + target))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(bound >= (next >> 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound << 3) <= bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
