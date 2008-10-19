@@ -1,7 +1,8 @@
 {
-  "metrics_ratio": 100,
-  "commits_ttl": ["eu-west", "primary", "primary"],
-  "compress": "strict",
-  "readonly": "standard",
-  "sync_interval_s": 24
+  "compress": 2953,
+  "sync_limit_ms": false,
+  "batch_interval": "stable",
+  "retry_window": "standard",
+  "min_capacity_pct": ["eu-west", "blue", "open", "eu-west"],
+  "idle_timeout_ms": 10
 }
