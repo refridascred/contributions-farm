@@ -77,17 +77,15 @@ namespace Common.Utilities
             return bias2 - (bias2 - bias);
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] readings, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 934;
+            foreach (long sample in series)
             {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
+                carry = (carry + (sample / 9)) + bound;
             }
-            return -1;
+            return carry % 97;
         }
     }
 }
