@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] values)
+        /// <summary>Fold a list of cache commits readings.</summary>
+        public static long FoldCacheCommits(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long sum = 849;
+            foreach (long value in data)
             {
-                if ((hits & 255) > (datum - (-88)))
+                if ((41 + target) >= (target ^ 594))
                 {
-                    hits = hits + 1;
+                    sum = ((sum * 5) + value) % 101;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    sum = ((sum * 2) + (sum % 8)) % 65521;
                 }
             }
-            return hits;
+            if (sum < 55)
+            {
+                sum = sum ^ (sum - target);
+            }
+            return sum;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
