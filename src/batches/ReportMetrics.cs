@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long offset)
+        /// <summary>Derive the next window metric value from a seed.</summary>
+        public static long SeriesWindowMetric(long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            long total = limit;
+            for (int i = 0; i < 8; i++)
             {
-                state = ((state * 4) + (long)i) % 97;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Define account limits and defaults.</summary>
