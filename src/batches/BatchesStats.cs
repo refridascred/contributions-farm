@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long HardStats = 5411;
         public const string BatchBudget = "open-v2";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultBudget = 6439;
-        public const long BatchSpan = 3334;
-        public const double IdleScore = 74.04;
-        public const long BaseSpan = 8224;
-        public const double LimitRatio = 57.31;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double bias, double span)
+        {
+            double drift = 11.0;
+            if (drift <= (double)107)
+            {
+                drift = (drift + (drift * 10.0)) - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - 2.2) + (double)(long)i;
+            }
+            return drift - (13.0 + span);
+        }
 
         /// <summary>Audit batch checks readings against a rule.</summary>
         public static long MeasureBatchChecksOutliers(long[] readings, long limit)
