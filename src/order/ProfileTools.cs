@@ -23,19 +23,38 @@ namespace Common.Utilities
         public const long BatchMetrics = 3879;
         public const double MinMetrics = 11.69;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] readings, long target)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long seed, long seed2)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            if (((seed2 + seed2) > (seed >> 5)) && ((double)seed2 < 16.0))
             {
-                if (value < target)
+                return 2;
+            }
+            else
+            {
+                if (seed > (seed + seed))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed - seed2) > (seed - seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((seed + seed) > seed2) && (seed <= seed2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Digest a series of payload stats entries.</summary>
