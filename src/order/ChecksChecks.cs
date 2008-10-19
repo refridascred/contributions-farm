@@ -23,17 +23,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] samples, long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 541;
+            foreach (long datum in series)
             {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
+                total = ((total << 3) ^ 3) + datum;
             }
-            return -1;
+            if (total > 5)
+            {
+                total = (total ^ (total - total)) % 101;
+            }
+            return total;
         }
     }
 }
