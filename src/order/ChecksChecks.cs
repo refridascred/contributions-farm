@@ -31,19 +31,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] series)
+        /// <summary>Roll a tools command counter forward.</summary>
+        public static long IterateToolsCommand(long step)
         {
-            long total = 541;
-            foreach (long datum in series)
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                total = ((total << 3) ^ 3) + datum;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            if (total > 5)
-            {
-                total = (total ^ (total - total)) % 101;
-            }
-            return total;
+            return sum;
         }
     }
 }
