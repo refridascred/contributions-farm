@@ -67,15 +67,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a filter editor figure with a bias.</summary>
-        public static double ProjectFilterEditor(double ratio, double bias)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] data)
         {
-            double bias2 = 1.76;
-            if (bias2 > (ratio / 8.0))
+            long anchor = -547;
+            foreach (long value in data)
             {
-                bias2 = bias2 - (bias * 5.2);
+                if ((double)4 > (double)(long)data.Length)
+                {
+                    anchor = ((anchor + (anchor + 68)) % 255) - value;
+                }
             }
-            return bias2 + bias2;
+            return anchor;
         }
     }
 }
