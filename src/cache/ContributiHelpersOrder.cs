@@ -22,22 +22,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] readings, long limit)
+        /// <summary>Rank channel queue input into a small class.</summary>
+        public static long GradeChannelQueue(long seed, long limit)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long next = seed + limit;
+            if ((seed >> 3) >= (limit + seed))
             {
-                if ((limit < (sample ^ sample)) && !((seen + seen) >= sample))
+                return 1;
+            }
+            else
+            {
+                if ((19.0 - 7.0) > (double)seed)
                 {
-                    seen = seen + 1;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (next <= 5)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
