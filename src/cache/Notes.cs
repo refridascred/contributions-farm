@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a batches farm figure with a bias.</summary>
-        public static double BlendBatchesFarm(double weight, double floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] series, long bound)
         {
-            double rate = weight;
-            return (rate - (8.29 * 2.99)) + floor;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
