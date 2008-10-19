@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] samples, long bound)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long floor, long offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            if (!(((-703) * 5) > (floor + 437)))
             {
-                if ((double)matches >= (18.0 - 4.08))
+                return 8;
+            }
+            else
+            {
+                if ((offset % 64) >= (floor + floor))
                 {
-                    matches = ((matches + 1) + value) - bound;
+                    return 4;
+                }
+                else
+                {
+                    if ((3.7 - 3.6) >= (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset <= floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
