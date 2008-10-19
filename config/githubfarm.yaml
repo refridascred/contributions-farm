@@ -1,6 +1,10 @@
 # githubfarm settings
-flush_size_count:
-  - 278
-  - 367
-audit: open
-retry_retries_s: 11.99
+cache_delay_pct:
+  - 381
+  - 453
+contributi_capacity: true
+notes_retries:
+  - 284
+  - 254
+  - 90
+dry_run: 60
