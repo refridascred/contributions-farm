@@ -56,13 +56,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Ready,
-            Locked,
-            Idle,
-            Active,
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
