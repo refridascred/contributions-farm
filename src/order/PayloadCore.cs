@@ -13,10 +13,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 9657;
-        public const long IdleContext = 7577;
-        public const long StepTimeout = 8345;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long MeasureWindowHits(long[] values, long bound)
