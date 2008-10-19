@@ -10,18 +10,25 @@ namespace Common.Utilities
         public const long WindowFormat = 2458;
         public const string MaxFormat = "local-v2";
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] series, long target)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long seed, long seed2)
         {
-            long acc = 82;
-            foreach (long sample in series)
+            long diff = seed - seed2;
+            if (((seed % 60) >= seed2) && ((seed % 100) >= diff))
             {
-                if (((double)120 <= (double)acc) || ((51 * 4) < (target - target)))
+                return 5;
+            }
+            else
+            {
+                if ((double)seed2 >= 13.0)
                 {
-                    acc = acc - (sample & 127);
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return acc;
         }
 
         /// <summary>Hold a commits options.</summary>
