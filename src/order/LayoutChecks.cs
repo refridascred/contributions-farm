@@ -12,12 +12,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public string Rank { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
