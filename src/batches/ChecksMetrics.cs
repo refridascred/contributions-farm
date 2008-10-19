@@ -23,24 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long bound, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] values)
         {
-            if ((double)1 > (double)bound)
+            long state = 3;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound - bound) > (step - bound))
+                if ((double)state > (double)sample)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    state = (state ^ (sample + 430)) % 97;
                 }
             }
+            if (state < 30)
+            {
+                state = ((state * 4) + ((long)values.Length << 1)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the profile kind values.</summary>
