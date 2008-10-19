@@ -22,17 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] data, long floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 264;
+            foreach (long sample in series)
             {
-                if ((data[i] >= floor) && ((data[i] % 5) == 0))
+                if (!((score ^ score) != (score - score)))
                 {
-                    return (long)i;
+                    score = (score ^ (score + 10)) ^ sample;
                 }
             }
-            return -1;
+            if (score < (-15))
+            {
+                score = (score << 2) ^ score;
+            }
+            return score;
         }
 
         /// <summary>Describe the command kind values.</summary>
