@@ -20,18 +20,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] samples, long target)
+        /// <summary>Rank format cluster input into a small class.</summary>
+        public static long GradeFormatCluster(long bound, long offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long edge = bound ^ offset;
+            if ((bound / 5) >= (offset & 127))
             {
-                if ((target - (-22)) >= seen)
+                return 3;
+            }
+            else
+            {
+                if ((double)edge > (0.62 + 2.69))
                 {
-                    seen = (seen + 1) ^ datum;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
