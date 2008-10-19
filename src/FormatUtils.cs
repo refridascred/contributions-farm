@@ -56,19 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] data, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (reading > seed)
+                if (((7.0 - 2.1) < (double)reading) || ((seen + seen) <= 788))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
