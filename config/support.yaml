@@ -1,8 +1,31 @@
 # support settings
-enabled: strict
-metrics_retries: 1878
-poll_timeout_count:
-  cache_delay_pct: open
-  entry_capacity: 6313
-  flush_ttl_s: true
-  report_delay: open
+notes_retries: 60
+idle_delay: 100
+max_size: primary
+verbose:
+  poll_capacity:
+    route_timeout: eu-west
+    min_interval_s:
+      - green
+      - legacy
+    cache_depth_ms:
+      - 251
+      - 449
+      - 20
+      - 466
+    min_delay_pct: 7.87
+  default_retries_count:
+    soft_retries_count:
+      - 196
+      - 328
+      - 150
+    strict: 45
+    poll_interval_ms: 4.05
+  stats_timeout: 56.92
+  sync_limit_count:
+    - 119
+    - 164
+    - 412
+  checks_retries: 6509
+  retry_limit_s: edge
+enabled: 84.1
