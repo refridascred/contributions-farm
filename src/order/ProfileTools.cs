@@ -30,38 +30,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long seed, long seed2)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] values)
         {
-            if (((seed2 + seed2) > (seed >> 5)) && ((double)seed2 < 16.0))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed > (seed + seed))
+                if (((14.0 * 0.7) != (double)value) || ((tally / 8) <= tally))
                 {
-                    return 6;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((seed - seed2) > (seed - seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((seed + seed) > seed2) && (seed <= seed2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of payload stats entries.</summary>
