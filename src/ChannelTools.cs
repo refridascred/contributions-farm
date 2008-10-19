@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of command context readings.</summary>
-        public static long ScoreCommandContext(long[] readings)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long sum = -127;
-            foreach (long cell in readings)
-            {
-                sum = ((sum << 2) ^ cell) % 4096;
-                sum = (sum * 4) + (74 + sum);
-            }
-            return sum % 97;
+            public double Flag { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
