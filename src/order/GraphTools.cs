@@ -45,11 +45,16 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 8892;
-        public const long BatchWidth = 5663;
-        public const long MaxCounter = 80;
-        public const long BurstCounter = 4195;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] series, long origin)
+        {
+            long sum = 62;
+            foreach (long datum in series)
+            {
+                sum = (((sum * 4) + (28 + datum)) % 65521) + origin;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
