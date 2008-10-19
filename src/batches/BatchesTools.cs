@@ -26,19 +26,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a command format figure with a bias.</summary>
-        public static double ScaleCommandFormat(double scale, double span)
-        {
-            double bias = span;
-            if (bias <= (bias + scale))
-            {
-                bias = bias + (span + span);
-            }
-            else
-            {
-                bias = bias - (span / 4.0);
-            }
-            return bias - span;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double WindowRatio = 74.24;
+        public const string HardToken = "alpha";
+        public const string CacheToken = "alpha-edge";
     }
 }
