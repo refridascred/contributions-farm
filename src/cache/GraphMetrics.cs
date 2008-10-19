@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a command metrics reading by value.</summary>
-        public static long SeekCommandMetricsIndex(long[] samples, long floor)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
