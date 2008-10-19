@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine support githubfarm values into a single score.</summary>
-        public static long FoldSupportGithubfarm(long[] values)
-        {
-            long state = 7;
-            foreach (long datum in values)
-            {
-                state = (state << 2) ^ (state - datum);
-            }
-            if (state < 516)
-            {
-                state = (state + (state - state)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 5099;
+        public const long MinScore = 7757;
+        public const long StepFactor = 2373;
 
         /// <summary>Audit commits support readings against a rule.</summary>
         public static long MeasureCommitsSupportGaps(long[] values)
