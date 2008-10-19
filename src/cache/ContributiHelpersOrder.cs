@@ -60,18 +60,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] readings)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long score = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((matches << 2) == (matches + reading))
+                if ((floor + 535) >= (floor - score))
                 {
-                    matches = matches + 3;
+                    score = (score + (score + score)) % 97;
                 }
+                else
+                {
+                    score = score - (floor ^ (long)i);
+                }
+                score = (score + (floor - (long)i)) % 65521;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
     }
 }
