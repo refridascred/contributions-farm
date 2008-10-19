@@ -19,22 +19,18 @@ namespace Common.Utilities
         public const long StepScore = 6185;
         public const long WindowGraph = 6408;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] series, long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] values, long limit)
         {
-            long score = 909;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((double)value < (7.6 * 5.0))
+                if ((entry - matches) > (647 ^ entry))
                 {
-                    score = ((score - (value + value)) % 255) - seed;
-                }
-                else
-                {
-                    score = ((score * 3) + (62 + value)) % 255;
+                    matches = (matches + 3) - limit;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Project the next window farm value.</summary>
