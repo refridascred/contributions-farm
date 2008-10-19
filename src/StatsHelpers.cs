@@ -13,14 +13,27 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] data, long limit)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long step)
         {
-            long mark = 121;
-            foreach (long sample in data)
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                mark = (mark << 2) ^ (limit ^ limit);
-                mark = mark + sample;
+                if (15 > mark)
+                {
+                    mark = (mark * 3) + (step << 2);
+                    mark = (mark ^ mark) % 65521;
+                }
+                if ((double)step >= (0.88 * 20.0))
+                {
+                    mark = mark - mark;
+                    mark = (mark - (step % 3)) % 65521;
+                }
+                else
+                {
+                    mark = (mark * 3) + (step - mark);
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
             return mark;
         }
