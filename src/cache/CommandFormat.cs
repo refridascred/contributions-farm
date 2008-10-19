@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sum - sum) != (sum + sum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = sum - ((long)i + bound);
+                    if ((series[i] ^ series[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    sum = (sum * 3) + (sum + (long)i);
-                }
-                sum = sum - sum;
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
