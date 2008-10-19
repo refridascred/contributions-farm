@@ -46,24 +46,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long step, long limit)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            if (step <= (limit + 586))
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit > (step << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Idle,
+            Ready,
+            New,
         }
     }
 }
