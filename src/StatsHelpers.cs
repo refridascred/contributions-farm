@@ -44,18 +44,19 @@ namespace Common.Utilities
         public const long LimitSpan = 8371;
         public const long BaseBuffer = 1609;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] values, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((double)84 > (double)limit)
+                if (cell < seed)
                 {
-                    hits = (hits + 2) + entry;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
