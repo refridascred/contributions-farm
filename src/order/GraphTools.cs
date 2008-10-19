@@ -85,21 +85,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] series)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry > floor)
                 {
-                    if ((series[i] - series[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
