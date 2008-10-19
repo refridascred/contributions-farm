@@ -34,19 +34,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of layout contributi readings.</summary>
-        public static long WeighLayoutContributi(long[] data)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long mix = 7;
-            foreach (long reading in data)
-            {
-                mix = mix - (reading / 8);
-                if (((double)mix < (2.88 + 5.0)) && (17.0 > (double)reading))
-                {
-                    mix = (mix - 97) % 97;
-                }
-            }
-            return mix % 65521;
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
