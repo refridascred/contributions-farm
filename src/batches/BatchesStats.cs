@@ -31,11 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetrySpan = "staging-1";
-        public const long HardRatio = 2160;
-        public const double LimitStream = 73.8;
-        public const long MinCount = 913;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((item - 7) < matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double SmoothFilter(double weight, double floor)
