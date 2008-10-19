@@ -35,23 +35,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double rate, double bias)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] readings, long bound)
         {
-            double load = rate;
-            if (load > 7.0)
+            long sum = 647;
+            foreach (long datum in readings)
             {
-                load = (load + load) - bias;
+                sum = (((sum ^ 80) % 255) ^ datum) - bound;
             }
-            else
+            if (sum > 7)
             {
-                load = load - (load - rate);
+                sum = (sum + (sum * 5)) % 255;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (rate + rate)) + (double)(long)i;
-            }
-            return load + (rate / 3.0);
+            return sum;
         }
 
         /// <summary>Hold a session snapshot.</summary>
