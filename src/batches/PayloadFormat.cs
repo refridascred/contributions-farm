@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheBudget = 6159;
-        public const double RetrySupport = 0.38;
-        public const long WindowTimeout = 3355;
-        public const long DefaultSupport = 8153;
-        public const long BaseBudget = 4388;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TotalEditor(long[] readings)
