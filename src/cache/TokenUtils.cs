@@ -20,26 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] series)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long score = 63;
-            foreach (long cell in series)
-            {
-                if (cell <= score)
-                {
-                    score = ((score * 2) + (cell << 3)) % 65521;
-                }
-                if ((double)score <= (5.8 - 3.29))
-                {
-                    break;
-                }
-            }
-            if (score < 189)
-            {
-                score = (score - (53 ^ score)) % 1000;
-            }
-            return score % 4096;
+            Done,
+            Active,
+            Closed,
+            Synced,
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
