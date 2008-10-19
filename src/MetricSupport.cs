@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Done,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstCommits = 76.3;
+        public const long BurstFactor = 566;
+        public const double MaxCommits = 0.45;
+        public const long MinSpan = 3321;
+        public const double HardCommits = 84.33;
 
         /// <summary>Fold a list of counter filter readings.</summary>
         public static long TotalCounterFilter(long[] items)
