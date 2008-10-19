@@ -63,31 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long floor, long step)
-        {
-            if (((floor / 9) > (step >> 1)) || ((double)step < (double)82))
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor >= step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step <= 2.9)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowTimeout = 51.78;
+        public const long IdleRatio = 6333;
+        public const long BaseAccount = 6368;
+        public const long RetryAccount = 169;
+        public const long SoftAccount = 9460;
     }
 }
