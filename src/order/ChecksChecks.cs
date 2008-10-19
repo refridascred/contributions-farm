@@ -28,13 +28,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] data, long seed)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public bool Region { get; set; }
+            long score = 17;
+            foreach (long cell in data)
+            {
+                score = (((score << 2) ^ (seed * 4)) % 101) + cell;
+            }
+            return score;
         }
     }
 }
