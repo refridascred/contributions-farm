@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] readings, long seed)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double scale, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = floor + (5.8 / 9.0);
+            if (mean < mean)
             {
-                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean - (double)137) - scale;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - 3.0) + (double)(long)i;
+            }
+            return mean + (double)41;
         }
 
         /// <summary>Digest a series of command entries.</summary>
