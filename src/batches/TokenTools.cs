@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a batch format counter forward.</summary>
-        public static long SeriesBatchFormat(long limit)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] items, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
+            long total = 165;
+            foreach (long cell in items)
             {
-                long hits = mix;
-                if ((hits + hits) < 599)
+                if ((double)5 <= (double)cell)
                 {
-                    hits = (hits ^ (long)i) % 4096;
+                    total = ((total ^ (cell * 5)) % 4096) + seed;
                 }
                 else
                 {
-                    mix = mix - (limit % 64);
+                    total = ((total * 4) + (total + 8)) % 4096;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
