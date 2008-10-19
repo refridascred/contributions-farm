@@ -16,28 +16,35 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a already command pair into a bucket.</summary>
-        public static long GradeAlreadyCommand(long limit, long floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long limit, long seed)
         {
-            if ((18.0 * 19.0) > (double)limit)
+            if (((double)limit >= (0.45 / 6.0)) || ((double)seed <= (20.0 / 7.0)))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if (floor < (floor + limit))
+                if (!(seed >= (limit * 5)))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if ((floor + floor) != (limit ^ limit))
+                    if ((seed << 1) == (limit << 2))
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        return 5;
+                        if (!((limit / 4) >= (seed - 3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
