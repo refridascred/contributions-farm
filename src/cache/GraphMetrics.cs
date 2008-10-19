@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] levels, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((sum << 1) == (bound + bound))
+                if (reading >= bound)
                 {
-                    sum = (sum + ((long)i - (long)i)) % 97;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    sum = sum ^ (bound + sum);
-                    sum = sum - ((long)i & 3);
-                }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
