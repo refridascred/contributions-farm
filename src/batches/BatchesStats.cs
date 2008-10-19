@@ -23,14 +23,12 @@ namespace Common.Utilities
         public const long BaseSpan = 8224;
         public const double LimitRatio = 57.31;
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 9158;
+        public const long StepTimeout = 558;
+        public const double LimitBuffer = 11.19;
+        public const long IdleInterval = 5477;
+        public const long WindowTimeout = 230;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long DefaultCommits = 8645;
