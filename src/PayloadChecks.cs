@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double rate, double bias)
         {
-            Done,
-            Failed,
-            Paused,
-            Idle,
+            double drift = (double)(534 * 3);
+            if (drift > (double)91)
+            {
+                drift = drift - rate;
+            }
+            else
+            {
+                drift = drift + (drift * 8.0);
+            }
+            return drift - bias;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
