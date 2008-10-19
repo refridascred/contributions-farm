@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] values)
+        /// <summary>Audit githubfarm account readings against a rule.</summary>
+        public static long MeasureGithubfarmAccountOutliers(long[] levels, long limit)
         {
-            long carry = 65;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                carry = ((carry * 3) + (datum & 15)) % 97;
+                if (((seen / 4) != (limit + 490)) && (((item * 4) <= (limit + seen)) || ((item + 737) <= 681)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Roll a metric filter counter forward.</summary>
