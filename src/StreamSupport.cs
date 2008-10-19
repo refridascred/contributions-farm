@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] items, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((bound << 1) < (0 << 2))
+                if ((8.9 * 8.7) > (double)seed)
                 {
-                    matches = (matches + 2) ^ datum;
+                    hits = (hits + 2) + value;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the contributi checks entries that pass the check.</summary>
