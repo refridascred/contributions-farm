@@ -74,17 +74,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] items, long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (items[i] >= origin)
+                if ((double)count > (0.88 / 7.0))
                 {
-                    return (long)i;
+                    count = ((count + 3) + datum) + bound;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
