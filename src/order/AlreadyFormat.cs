@@ -20,18 +20,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] levels)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((tally / 8) > (sample >> 4))
+                if (value <= floor)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
