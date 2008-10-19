@@ -60,18 +60,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a token profile counter forward.</summary>
-        public static long SeriesTokenProfile(long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] items, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                state = (state ^ (-4)) % 101;
-                state = state - ((long)i + bound);
-                state = state + (bound + (long)i);
-                state = ((state * 4) + (long)i) % 65521;
+                if (!((double)entry <= (12.0 * 2.6)))
+                {
+                    seen = (seen + 2) + seed;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the tools mode values.</summary>
