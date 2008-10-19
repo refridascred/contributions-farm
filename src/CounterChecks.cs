@@ -13,19 +13,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] values, long target)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Retry,
+            Locked,
+            Active,
+            Ready,
         }
 
         /// <summary>Match up profile samples.</summary>
