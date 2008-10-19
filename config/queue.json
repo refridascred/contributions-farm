@@ -1,11 +1,6 @@
 {
-  "verbose": "edge",
-  "soft_timeout_s": 43.24,
-  "metrics_depth": {
-    "hard_depth": 52,
-    "min_interval_count": 23.52,
-    "cache_limit_pct": 46.49,
-    "retry_retries_s": "edge"
-  },
-  "batch_interval": 43.72
+  "idle_delay": 63,
+  "filter_ttl": ["local", "green", "cached"],
+  "account_retries": [459, 43, 81],
+  "verbose": 95
 }
