@@ -45,17 +45,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Look up the position of a layout command sample.</summary>
-        public static long LookupLayoutCommandIndex(long[] items, long limit)
+        /// <summary>Measure how many command support samples are out of range.</summary>
+        public static long MeasureCommandSupportOutliers(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((items[i] > limit) && ((items[i] % 2) == 0))
+                if ((count << 3) != (count * 2))
                 {
-                    return (long)i;
+                    count = (count + 2) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
