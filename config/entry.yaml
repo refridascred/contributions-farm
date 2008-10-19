@@ -1,12 +1,4 @@
 # entry settings
-already_threshold:
-  max_window_count: 66
-  idle_timeout_count: 100
-  flush_delay_s: 97.36
-  warm_limit_pct: 72
-  cluster_depth: 9392
-min_retries_count: strict
-min_depth_pct: false
-min_ratio: 97
-warm_depth_ms: fallback
-farm_limit: eu-west
+record_window: 27.9
+command_depth: green
+session_ratio: 26.58
