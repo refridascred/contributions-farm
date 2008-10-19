@@ -18,39 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long bound, long limit)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long diff = bound ^ limit;
-            if (!(diff > (bound % 100)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)5 >= (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((diff - limit) != (bound - bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((diff - diff) != (limit >> 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Audit route readings against a rule.</summary>
