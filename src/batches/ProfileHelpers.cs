@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] data, long seed)
+        /// <summary>Measure how many cache batches samples are out of range.</summary>
+        public static long AuditCacheBatchesMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((seed > hits) || (((6.0 - 3.4) < (double)hits) && (seed <= (item % 60))))
+                if ((tally * 5) == (tally + tally))
                 {
-                    hits = hits + 1;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
