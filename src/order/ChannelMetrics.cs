@@ -26,18 +26,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] readings)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long step)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((datum ^ seen) >= 2))
-                {
-                    seen = seen + 1;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
     }
 }
