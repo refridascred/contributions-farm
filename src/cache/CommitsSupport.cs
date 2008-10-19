@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinDepth = 5046;
-        public const long StepTimeout = 1800;
-        public const double SoftStats = 57.15;
-        public const long IdleScore = 4461;
-        public const long WindowStats = 4785;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string StepContext = "legacy-edge";
+        public const long SoftSize = 1527;
+        public const long MinContext = 1634;
+        public const long WindowContext = 8501;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
