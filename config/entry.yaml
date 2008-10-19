@@ -1,18 +1,5 @@
 # entry settings
-min_retries_count: fallback
-order_window: staging
-base_timeout_pct: true
-hard_retries_ms: 55
-max_size_count:
-  base_ttl: 1024
-  retry_retries_s:
-    - 304
-    - 5
-    - 82
-  default_ttl: 5223
-  min_window_s: latest
-  warm_depth: latest
-dry_run:
-  - 282
-  - 493
-  - 248
+verbose: 44.01
+batch_limit: 30
+cache_retries_pct: 8380
+soft_timeout_s: 6576
