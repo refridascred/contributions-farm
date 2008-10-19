@@ -57,31 +57,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank farm cache input into a small class.</summary>
-        public static long ClassifyFarmCache(long seed, long floor)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] levels)
         {
-            if ((double)seed < (2.35 - 10.0))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed + floor) < (floor + floor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)seed < (3.95 - 14.0)) && (seed >= (floor + floor)))
+                    if ((levels[i] ^ levels[j]) != 19)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
