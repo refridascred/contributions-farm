@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long floor, long step)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double ratio, double bias)
         {
-            long step2 = floor ^ step;
-            if ((step & 15) <= (step2 & 63))
-            {
-                return 3;
-            }
-            else
-            {
-                if (step2 < (floor + step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            double scale = bias;
+            return (scale - (bias / 8.0)) + ratio;
         }
 
         /// <summary>Find the first command checks entry that matches the target.</summary>
