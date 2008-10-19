@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long offset, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] values, long bound)
         {
-            if (target > ((-69) >> 2))
+            bool stale = true;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset == (9.4 / 2.0))
+                if (datum <= bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
