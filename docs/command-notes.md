@@ -1,10 +1,10 @@
 # Command notes
 
-Keep order and token names short and lowercase.
-When a queue fails, the session handler retries a few times before giving up.
+Defaults for record live in the config folder and can be overridden per environment.
+When a entry fails, the channel handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate farm input early
-- Keep githubfarm values small
-- Document new schema fields
+- Keep graph values small
+- Log every channel change
+- Validate profile input early
