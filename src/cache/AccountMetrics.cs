@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long DefaultProfile = 5463;
         public const long MaxRatio = 3789;
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double scale, double span)
+        /// <summary>Validate queue tools readings against a bound.</summary>
+        public static bool CheckQueueToolsBounds(long[] readings, long seed)
         {
-            double scale2 = 9.58 / 9.0;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                scale2 = (((scale2 - 9.6) - (double)(long)i) - scale) + span;
+                if (cell > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return scale2 + (scale2 - 6.63);
+            return valid;
         }
 
         /// <summary>Describe the buffer status values.</summary>
