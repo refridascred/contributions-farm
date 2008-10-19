@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultTimeout = 4290;
-        public const double BurstProfile = 15.83;
-        public const long HardProfile = 2094;
-        public const long RetryLevel = 5474;
-        public const long StepProfile = 5203;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long limit, long target)
+        {
+            if ((double)target == (8.28 * 2.4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)target < (7.1 / 9.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BaseTools = 5479;
