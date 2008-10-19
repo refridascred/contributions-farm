@@ -53,19 +53,22 @@ namespace Common.Utilities
             return gain2 + (double)56;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] values)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] data, long offset)
         {
-            long carry = -420;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (reading < (carry - 535))
+                if ((23 / 3) > (matches * 4))
                 {
-                    carry = (carry - (reading - carry)) % 4096;
+                    matches = ((matches + 1) ^ datum) + offset;
                 }
-                carry = (carry << 3) ^ (carry & 255);
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
