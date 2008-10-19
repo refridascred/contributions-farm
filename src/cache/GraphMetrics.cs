@@ -24,12 +24,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchWidth = 9289;
-        public const double BaseBudget = 87.84;
-        public const long MaxReport = 4614;
-        public const long DefaultReport = 3217;
-        public const double RetryTimeout = 54.29;
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long CombineQueue(long[] items)
