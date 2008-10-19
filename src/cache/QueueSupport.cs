@@ -31,11 +31,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double rate, double offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] values, long origin)
         {
-            double load = rate - (double)5;
-            return (load + load) + offset;
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
