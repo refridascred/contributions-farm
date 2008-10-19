@@ -57,12 +57,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] samples, long offset)
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
