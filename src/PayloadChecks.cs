@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] values, long bound)
         {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((((hits << 1) < (bound + hits)) && (73 > (bound & 255))) || ((double)bound == (6.2 - 9.0)))
+                {
+                    hits = (hits + 1) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
