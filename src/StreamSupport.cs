@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] data, long target)
         {
-            long total = 99;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long cell in data)
             {
-                total = (total ^ cell) % 101;
+                if (cell > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total > 51)
-            {
-                total = ((total << 2) ^ (total + 796)) % 97;
-            }
-            return total % 1000;
+            return found;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
