@@ -50,14 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            New,
-            Done,
-            Dropped,
-            Draft,
-            Pending,
+            public double Count { get; set; }
+            public double Flag { get; set; }
+            public bool Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the record mode values.</summary>
