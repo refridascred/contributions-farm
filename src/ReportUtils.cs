@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstInterval = 1557;
-        public const long MaxStream = 3460;
-        public const long StepSize = 4924;
+        /// <summary>Audit order counter readings against a rule.</summary>
+        public static long CountOrderCounterOutliers(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((item + item) > (count / 7))
+                {
+                    count = (count + 1) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
