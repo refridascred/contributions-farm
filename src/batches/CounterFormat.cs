@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] data, long seed)
         {
-            Closed,
-            Ready,
-            New,
-            Synced,
+            long sum = 9;
+            foreach (long item in data)
+            {
+                if ((sum - 32) != (sum & 31))
+                {
+                    sum = (((sum * 4) + item) % 4096) - seed;
+                }
+            }
+            if (sum > 0)
+            {
+                sum = sum - (sum % 60);
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of support route entries.</summary>
