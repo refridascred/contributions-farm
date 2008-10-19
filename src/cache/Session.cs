@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const long MinInterval = 1593;
         public const double BatchSpan = 79.95;
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double bias, double bias2)
-        {
-            double load = 1.7;
-            if (load < (19.0 * 7.0))
-            {
-                load = load - bias2;
-            }
-            else
-            {
-                load = load + (bias2 - bias);
-            }
-            return load - load;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardChecks = "primary-1";
+        public const double RetryChecks = 4.2;
+        public const long BurstWidth = 9019;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheOutliers(long[] items)
