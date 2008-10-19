@@ -1,10 +1,6 @@
 {
-  "idle_window_count": 31.88,
-  "min_interval_s": false,
-  "compress": 250,
-  "audit": {
-    "flush_ttl": 89,
-    "queue_timeout": 39,
-    "dry_run": 100
-  }
+  "soft_ratio_s": [476, 144],
+  "hard_timeout": 8393,
+  "farm_window": "legacy",
+  "flush_depth_count": 92
 }
