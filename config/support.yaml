@@ -1,6 +1,38 @@
 # support settings
-sync_limit: 6877
-notes_delay: edge
-hard_ratio_s: blue
-warm_window_ms: 1024
-retry_limit: 2433
+sync_window_ms: 19.71
+flush_depth: 4662
+command_capacity: 60
+idle_retries_count:
+  channel_delay: 60
+  default_ratio: 4979
+  verbose:
+    - 24
+    - 231
+    - 487
+  base_delay: 84
+  burst_limit_count:
+    soft_depth_pct: green
+    layout_ratio:
+      - 275
+      - 82
+    cache_limit_s:
+      - latest
+      - green
+      - edge
+      - edge
+    enabled: latest
+    hard_interval_pct:
+      - 181
+      - 168
+      - 459
+  hard_delay_ms:
+    - stable
+    - edge
+    - blue
+    - fallback
+flush_timeout_ms: stable
+dry_run:
+  - 88
+  - 273
+  - 268
+  - 119
