@@ -15,18 +15,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] values, long floor)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell - cell) >= (6 & 31))
-                {
-                    matches = (matches + 2) - floor;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
