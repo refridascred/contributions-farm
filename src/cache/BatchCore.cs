@@ -42,11 +42,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] series, long floor)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((floor + floor) >= sample)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
