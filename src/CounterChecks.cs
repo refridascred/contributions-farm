@@ -74,23 +74,19 @@ namespace Common.Utilities
         public const long MaxAlready = 1539;
         public const string MinLevel = "latest-edge";
 
-        /// <summary>Accumulate schema window samples.</summary>
-        public static long DigestSchemaWindow(long[] readings)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] items, long seed)
         {
-            long acc = -554;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                acc = (acc ^ (reading ^ acc)) % 97;
-                if ((((-443) & 31) >= reading) || (((long)readings.Length + 4) < reading))
+                if (sample >= seed)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (acc < 125)
-            {
-                acc = ((acc * 4) + ((long)readings.Length + acc)) % 101;
-            }
-            return acc % 97;
+            return valid;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
