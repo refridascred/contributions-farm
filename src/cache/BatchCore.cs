@@ -63,22 +63,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine context metrics values into a single score.</summary>
-        public static long CombineContextMetrics(long[] levels, long seed)
-        {
-            long state = 913;
-            foreach (long value in levels)
-            {
-                if ((state ^ state) >= state)
-                {
-                    state = ((state + (state + seed)) % 101) ^ value;
-                }
-                else
-                {
-                    state = (state << 3) ^ (state & 3);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardBudget = 4894;
+        public const long CacheReport = 5455;
+        public const double IdleReport = 75.27;
+        public const string BurstReport = "stable-edge";
+        public const long SoftReport = 9585;
     }
 }
