@@ -1,7 +1,4 @@
 # entry settings
-metric_window: 76.68
-schema_delay: 95
-layout_capacity: edge
-enabled: false
-schema_threshold: blue
-idle_window: latest
+idle_threshold_pct: 14
+soft_retries_count: 66
+dry_run: 30
