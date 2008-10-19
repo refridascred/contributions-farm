@@ -1,14 +1,12 @@
 # Command notes
 
-Run the batches check before changing any buffer limits.
-The farm module keeps layout values in sync with the order cache.
-
-Use report settings to tune how often metrics data is refreshed.
-Defaults for notes live in the config folder and can be overridden per environment.
+The route helpers are pure functions, so they are safe to call from any thread.
+The metrics module keeps entry values in sync with the batches cache.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new format fields
-- Log every stats change
-- Keep format values small
-- Review metrics limits each release
+- Log every report change
+- Review checks limits each release
+- Keep githubfarm values small
+- Prefer metric defaults
