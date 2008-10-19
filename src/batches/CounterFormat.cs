@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate stats buffer samples.</summary>
-        public static long WeighStatsBuffer(long[] values)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long mix = 4;
-            foreach (long sample in values)
-            {
-                if ((mix & 15) <= (sample >> 4))
-                {
-                    mix = (mix ^ (mix << 1)) % 101;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (sample * 2)) % 97;
-                }
-            }
-            return mix;
+            Pending,
+            Draft,
+            New,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
