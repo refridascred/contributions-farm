@@ -42,20 +42,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long target)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] levels)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                long seen = sum + target;
-                if ((double)target <= 8.0)
+                if ((592 <= datum) || ((datum + matches) >= datum))
                 {
-                    sum = (sum * 3) + (sum - seen);
+                    matches = matches + 3;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
