@@ -46,11 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 7445;
-        public const long MaxLevel = 4709;
-        public const long SoftLevel = 6345;
-        public const long DefaultEntry = 2396;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] levels, long step)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((9.24 - 16.0) != (double)step)
+                {
+                    count = (count + 1) - item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchBuffer = 7877;
