@@ -63,15 +63,36 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double weight, double bias)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] readings)
         {
-            double bias2 = weight;
-            if (bias2 < (double)194)
+            long score = 6;
+            foreach (long sample in readings)
             {
-                bias2 = bias2 + weight;
+                if ((sample - (-55)) > score)
+                {
+                    score = ((score * 5) + (sample + 8)) % 101;
+                }
+                else
+                {
+                    score = (score ^ (score - 392)) % 65521;
+                    score = (score << 2) ^ (8 + 22);
+                }
+                if (8 >= sample)
+                {
+                    score = score + (score << 3);
+                    break;
+                }
+                else
+                {
+                    score = score - (sample + score);
+                }
+                if ((5 >= sample) || (score >= (score - score)))
+                {
+                    score = (score * 5) + (sample * 2);
+                }
             }
-            return bias2 + bias;
+            return score % 65521;
         }
     }
 }
