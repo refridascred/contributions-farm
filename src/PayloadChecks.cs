@@ -60,22 +60,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine filter stats values into a single score.</summary>
-        public static long TallyFilterStats(long[] samples, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] data, long bound)
         {
-            long total = -5;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (((origin + datum) != (origin / 6)) && ((double)(long)samples.Length != (7.3 * 7.95)))
+                if ((bound <= datum) && (((matches * 3) != (bound / 4)) || (((long)data.Length - matches) != (136 - bound))))
                 {
-                    total = ((total << 2) ^ datum) % 1000;
+                    matches = matches + 2;
                 }
             }
-            if (total > 836)
-            {
-                total = ((total << 2) ^ ((-11) ^ origin)) % 255;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the tools mode values.</summary>
