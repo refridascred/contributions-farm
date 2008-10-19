@@ -21,16 +21,19 @@ namespace Common.Utilities
         public const string StepBudget = "standard-1";
         public const string HardRatio = "primary-v2";
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long origin)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] data, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
+            long carry = 199;
+            foreach (long cell in data)
             {
-                mix = ((mix << 3) ^ mix) % 97;
-                mix = ((mix * 2) + (long)i) % 4093;
+                carry = ((carry - (cell + carry)) % 101) + step;
             }
-            return mix;
+            if (carry < 54)
+            {
+                carry = ((carry * 2) + (201 + carry)) % 1000;
+            }
+            return carry;
         }
     }
 }
