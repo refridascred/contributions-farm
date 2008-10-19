@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long origin, long seed)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] series, long step)
         {
-            if ((origin % 10) > seed)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((6.1 * 7.5) == (double)seed))
+                if (series[i] >= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((seed - origin) >= (5 & 127)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed + seed) > (origin + origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two session measurements.</summary>
