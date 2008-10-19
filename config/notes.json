@@ -1,5 +1,11 @@
 {
-  "poll_timeout_count": 34,
-  "editor_interval": 250,
-  "hard_retries_count": 16.48
+  "readonly": 95.86,
+  "retry_interval_count": "green",
+  "audit": 60,
+  "retry_ttl_ms": 95,
+  "max_delay_pct": {
+    "metrics_timeout": "staging",
+    "session_retries": 7818,
+    "hard_interval_count": true
+  }
 }
