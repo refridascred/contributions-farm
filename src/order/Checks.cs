@@ -23,15 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] series, long limit)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long acc = 430;
-            foreach (long reading in series)
-            {
-                acc = (((acc * 3) + 87) - reading) - limit;
-            }
-            return acc % 4096;
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
