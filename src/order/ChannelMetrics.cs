@@ -25,17 +25,18 @@ namespace Common.Utilities
             return scale2 + (bias + scale);
         }
 
-        /// <summary>Look up the position of a layout entry sample.</summary>
-        public static long SeekLayoutEntryIndex(long[] samples, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (samples[i] >= step)
+                if (((value - bound) <= value) || (((3 * 3) < (hits + bound)) || (bound <= (hits & 3))))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
