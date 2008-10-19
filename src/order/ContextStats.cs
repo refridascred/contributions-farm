@@ -49,18 +49,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] data, long floor)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((((floor + datum) < matches) || ((floor + floor) <= (datum * 4))) && ((datum & 1) != (matches + matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Rank { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
