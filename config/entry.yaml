@@ -1,4 +1,24 @@
 # entry settings
-warm_timeout: 500
-format_limit: false
-idle_interval: 35.53
+persist: 8154
+audit:
+  - 237
+  - 95
+account_delay:
+  soft_limit: 2423
+  cache_size: primary
+  idle_delay_pct: local
+warm_size_pct: 2625
+profile_size:
+  - 33
+  - 104
+command_size:
+  flush_size_s: cached
+  max_timeout: 22.11
+  dry_run:
+    - 384
+    - 151
+  warm_ratio_ms:
+    tools_threshold: fallback
+    cluster_delay: 60
+    audit: 3059
+    poll_delay_count: stable
