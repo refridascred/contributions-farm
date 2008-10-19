@@ -1,13 +1,5 @@
 {
-  "channel_interval": 35.46,
-  "base_size_s": {
-    "strict": "local",
-    "burst_depth": ["eu-west", "primary", "green"],
-    "min_threshold": 43,
-    "readonly": true
-  },
-  "soft_ratio": 14,
-  "soft_interval": false,
-  "compress": ["local", "fallback", "green"],
-  "batch_interval_ms": 41
+  "audit": "standard",
+  "warm_interval_count": true,
+  "githubfarm_timeout": "legacy"
 }
