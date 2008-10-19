@@ -28,18 +28,19 @@ namespace Common.Utilities
         public const string BurstCount = "strict-edge";
         public const long WindowScore = 3981;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] series, long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if ((((9 + count) <= (count ^ seed)) || ((reading * 3) > (seed - (long)series.Length))) && !((901 * 2) > (seed ^ count)))
+                if (datum != seed)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Compare every pair of contributi stats readings.</summary>
