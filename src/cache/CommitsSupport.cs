@@ -95,38 +95,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long offset, long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] levels, long step)
         {
-            if (!(((-54) * 2) < offset))
+            long score = 325;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset + offset) >= (offset + 21))
+                if ((8.0 + 1.7) == (double)item)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((55 + 133) < (offset % 24)) || (step < (offset % 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((13.0 - 7.63) >= (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    score = score + step;
                 }
             }
+            return score % 4096;
         }
     }
 }
