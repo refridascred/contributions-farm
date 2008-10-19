@@ -42,11 +42,31 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long origin, long floor)
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            if ((double)origin > 4.0)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor - floor) > origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)origin <= (double)floor) && ((origin & 31) == (floor + floor)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
