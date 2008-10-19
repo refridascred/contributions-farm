@@ -20,22 +20,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] readings, long floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long bound = limit ^ origin;
+            if ((origin + origin) > (30 ^ limit))
             {
-                if ((cell + floor) <= (tally + 113))
+                return 4;
+            }
+            else
+            {
+                if ((double)bound == (1.0 - 17.0))
                 {
-                    tally = tally + 1;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((bound * 4) <= origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
