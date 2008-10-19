@@ -16,12 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Stale,
             Queued,
-            Draft,
+            Paused,
+            Locked,
         }
 
         /// <summary>Validate commits already readings against a bound.</summary>
