@@ -59,18 +59,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] series, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long score = 576;
+            foreach (long value in levels)
             {
-                if (cell >= (count - 3))
+                if (141 < (target + (-579)))
                 {
-                    count = (count + 3) + target;
+                    score = (score - (target % 7)) ^ value;
                 }
             }
-            return count;
+            return score % 97;
         }
     }
 }
