@@ -31,11 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 1449;
-        public const string StepWidth = "alpha-v2";
-        public const string SoftRoute = "stable";
-        public const long StepRoute = 3224;
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
+        {
+            Retry,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Validate token stats readings against a bound.</summary>
         public static bool CheckTokenStatsRange(long[] samples, long floor)
