@@ -18,38 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long offset, long offset2)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            if ((double)offset > (1.8 + 7.3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset & 127) >= (65 - offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset2 <= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset2 >= offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
