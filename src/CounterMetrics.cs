@@ -57,24 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm already entries.</summary>
-        public static long TotalGithubfarmAlready(long[] levels)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long mix = 3;
-            foreach (long entry in levels)
-            {
-                mix = mix + (entry + mix);
-                mix = (mix + entry) % 255;
-                if (!(((long)levels.Length ^ entry) <= (mix + entry)))
-                {
-                    break;
-                }
-            }
-            if (mix < 5)
-            {
-                mix = (mix + mix) % 97;
-            }
-            return mix;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a commits summary.</summary>
