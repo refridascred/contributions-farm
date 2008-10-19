@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] readings)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] data, long origin)
         {
-            long total = 941;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((6 / 6) > total)
+                if ((origin - tally) <= tally)
                 {
-                    total = (total + (entry % 24)) % 255;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Check that every metric checks entry stays within the limit.</summary>
