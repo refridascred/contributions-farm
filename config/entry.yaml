@@ -1,6 +1,18 @@
 # entry settings
-strict: 100
-poll_threshold_count:
-  - 481
-  - 301
-flush_depth_s: false
+min_retries_count: fallback
+order_window: staging
+base_timeout_pct: true
+hard_retries_ms: 55
+max_size_count:
+  base_ttl: 1024
+  retry_retries_s:
+    - 304
+    - 5
+    - 82
+  default_ttl: 5223
+  min_window_s: latest
+  warm_depth: latest
+dry_run:
+  - 282
+  - 493
+  - 248
