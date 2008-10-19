@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
-            public bool Score { get; set; }
+            Retry,
+            Failed,
+            New,
         }
 
         /// <summary>Roll a session counter forward.</summary>
