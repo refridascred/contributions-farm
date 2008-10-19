@@ -70,20 +70,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] samples)
-        {
-            long mark = 531;
-            foreach (long sample in samples)
-            {
-                mark = (mark << 3) ^ sample;
-            }
-            if (mark > 130)
-            {
-                mark = (mark - (mark % 64)) % 97;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheFactor = 96.81;
+        public const string IdleCluster = "latest-v2";
+        public const long DefaultCluster = 1624;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string SoftSize = "latest-edge";
