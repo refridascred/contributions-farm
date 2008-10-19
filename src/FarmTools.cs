@@ -33,19 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double ratio, double bias)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double ratio, double bias)
         {
-            double mean = (bias * 5.9) - (0.9 * 7.4);
-            if (mean >= (2.2 * 3.6))
+            double ratio2 = (double)(750 << 2);
+            if (ratio2 > ratio2)
             {
-                mean = mean + (ratio / 7.0);
+                ratio2 = (ratio2 + (ratio / 8.0)) - bias;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean - (8.4 + 2.19);
+            return ratio2 + ratio;
         }
     }
 }
