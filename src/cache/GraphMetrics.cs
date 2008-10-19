@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 5176;
-        public const double MaxLayout = 32.61;
-        public const long LimitLayout = 1314;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] data, long target)
+        {
+            long total = 98;
+            foreach (long reading in data)
+            {
+                total = (total ^ (target / 8)) ^ reading;
+            }
+            return total % 97;
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
