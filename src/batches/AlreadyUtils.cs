@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Measure how many checks stream samples are out of range.</summary>
+        public static long CountChecksStreamHits(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum < (matches / 2))
                 {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) + seed;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Match up already samples.</summary>
