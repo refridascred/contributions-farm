@@ -27,22 +27,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] readings)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long total = 179;
+            foreach (long datum in series)
             {
-                if ((0 ^ hits) == (hits + cell))
+                total = (total + (datum + total)) % 65521;
+                if (!((total - datum) <= (datum + datum)))
                 {
-                    hits = hits + 1;
+                    total = (total - (datum - total)) % 65521;
                 }
-                else
+                if ((total + total) < (datum << 3))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (total > (-7))
+            {
+                total = total ^ (total / 4);
+            }
+            return total;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
