@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+mode="${1:-local}"
 case "${mode}" in
-    standard)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -22,5 +22,6 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-RECORD_LIMIT=22
-log "limit is ${RECORD_LIMIT}"
+for item in fallback legacy; do
+    log "checking ${item}"
+done
