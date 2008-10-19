@@ -62,31 +62,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long floor, long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] samples)
         {
-            if (((step * 3) <= (step * 4)) || ((double)floor >= 0.34))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor * 3) == (step - step))
+                if ((15.0 + 8.0) > (double)entry)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor << 2) > (step ^ floor)) || ((floor & 1) == (step - step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a metric entry.</summary>
