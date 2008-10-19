@@ -29,12 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double rate, double bias)
         {
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
+            double mean = 9.75;
+            if (mean > 16.0)
+            {
+                mean = (mean - (double)746) - bias;
+            }
+            else
+            {
+                mean = mean - (rate - rate);
+            }
+            return mean + (double)25;
         }
     }
 }
