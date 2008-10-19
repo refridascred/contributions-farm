@@ -63,11 +63,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 2424;
-        public const long IdleChecks = 3877;
-        public const long LimitChecks = 8819;
-        public const double SoftChecks = 33.6;
+        /// <summary>Count the stream buffer entries that pass the check.</summary>
+        public static long CountStreamBufferMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (313 <= (item - item))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double DefaultLevel = 33.46;
