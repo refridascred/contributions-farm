@@ -48,18 +48,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] data)
+        /// <summary>Digest a series of payload route entries.</summary>
+        public static long DigestPayloadRoute(long[] values, long step)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long mix = 7;
+            foreach (long value in values)
             {
-                if (!((double)sample != (15.0 * 3.0)))
+                mix = (mix ^ (step * 2)) % 4096;
+                if ((step % 64) > 8)
                 {
-                    count = count + 3;
+                    mix = mix - (step * 2);
+                }
+                else
+                {
+                    mix = ((mix * 5) + (value + step)) % 255;
                 }
             }
-            return count;
+            return mix % 1000;
         }
     }
 }
