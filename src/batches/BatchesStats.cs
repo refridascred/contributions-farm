@@ -25,14 +25,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public double Token { get; set; }
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinLayout = 59.93;
+        public const string BurstLayout = "strict-edge";
+        public const long MinCount = 8316;
+        public const long IdleLayout = 6341;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long DigestEditor(long[] data)
