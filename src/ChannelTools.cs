@@ -23,17 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a checks token reading by value.</summary>
-        public static long SeekChecksTokenIndex(long[] samples, long offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 2;
+            foreach (long sample in readings)
             {
-                if (samples[i] < offset)
+                if (mark > (mark - mark))
                 {
-                    return (long)i;
+                    mark = mark + (sample * 3);
                 }
             }
-            return -1;
+            if (mark < 99)
+            {
+                mark = mark ^ (mark % 5);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
