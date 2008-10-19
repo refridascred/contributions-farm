@@ -23,22 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] samples, long offset)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long total = -846;
-            foreach (long cell in samples)
-            {
-                if (((2.61 + 9.0) != (double)offset) && ((2.0 * 18.0) > (double)cell))
-                {
-                    total = ((total << 3) ^ cell) % 1000;
-                }
-                if ((total <= cell) || (8.4 > (double)offset))
-                {
-                    break;
-                }
-            }
-            return total;
+            Paused,
+            Dropped,
+            New,
+            Closed,
         }
 
         /// <summary>Locate a context metrics reading by value.</summary>
