@@ -26,24 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long offset, long target)
+        /// <summary>Fold a list of layout contributi readings.</summary>
+        public static long WeighLayoutContributi(long[] data)
         {
-            if ((3.82 + 6.8) <= (double)target)
+            long mix = 7;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset + target) >= offset)
+                mix = mix - (reading / 8);
+                if (((double)mix < (2.88 + 5.0)) && (17.0 > (double)reading))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    mix = (mix - 97) % 97;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
