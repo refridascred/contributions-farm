@@ -63,18 +63,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > limit) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 7174;
+        public const long MaxTimeout = 8626;
+        public const long CacheCommits = 6842;
+        public const long MinCommits = 1268;
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] levels, long limit)
