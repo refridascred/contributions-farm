@@ -28,18 +28,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] data, long origin)
+        /// <summary>Match up notes format samples.</summary>
+        public static long CompareNotesFormatCount(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((origin / 3) != ((-3) % 10)) || ((tally - reading) < (origin + origin)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((items[i] - items[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
