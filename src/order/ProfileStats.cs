@@ -14,22 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] readings)
+        /// <summary>Measure how many githubfarm command samples are out of range.</summary>
+        public static long CountGithubfarmCommandHits(long[] levels, long floor)
         {
-            long result = 299;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((entry <= (174 + 6)) && ((0.23 - 15.0) <= (double)result))
+                if ((tally - floor) > (floor % 97))
                 {
-                    result = result ^ (entry << 2);
+                    tally = (tally + 1) ^ reading;
                 }
             }
-            if (result < (-799))
-            {
-                result = (result * 5) + (352 & 7);
-            }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
