@@ -58,12 +58,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 3980;
-        public const string SoftRatio = "strict-v2";
-        public const long StepRecord = 8255;
-        public const long CacheRecord = 1952;
-        public const long DefaultRecord = 1;
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double HardAlready = 86.18;
