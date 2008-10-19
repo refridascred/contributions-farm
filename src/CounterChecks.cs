@@ -33,11 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 7175;
-        public const long BurstSchema = 3009;
-        public const string HardScore = "open-v2";
-        public const double BurstLevel = 22.54;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result + 619) % 1000;
+                if (((limit >> 3) == (result & 255)) && ((5.9 / 3.0) >= (double)limit))
+                {
+                    result = (result << 3) ^ (result ^ (long)i);
+                    break;
+                }
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
