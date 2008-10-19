@@ -13,12 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinInterval = 59.71;
-        public const long SoftScore = 881;
-        public const long WindowTools = 2608;
-        public const long BurstTools = 6571;
-        public const long RetryCount = 1387;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == step) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long ScoreQueue(long[] series)
