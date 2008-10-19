@@ -53,23 +53,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double gain, double floor)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            double ratio = gain;
-            if (ratio >= floor)
-            {
-                ratio = ratio + (ratio + 5.58);
-            }
-            else
-            {
-                ratio = ratio + (gain * 9.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (double)590) + (double)(long)i;
-            }
-            return ratio + (ratio + gain);
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
