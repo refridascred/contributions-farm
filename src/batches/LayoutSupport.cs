@@ -35,21 +35,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] values, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((8.5 / 3.0) > (double)hits)
                 {
-                    if ((series[i] ^ series[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    hits = ((hits + 2) + sample) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of editor githubfarm entries.</summary>
