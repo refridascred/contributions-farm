@@ -1,5 +1,6 @@
 {
-  "default_interval_ms": ["staging", "stable", "fallback", "legacy"],
-  "verbose": "stable",
-  "compress": "latest"
+  "sync_window_pct": 1024,
+  "burst_threshold_count": 30.21,
+  "idle_threshold_s": 3636,
+  "channel_delay": ["eu-west", "staging", "staging", "edge"]
 }
