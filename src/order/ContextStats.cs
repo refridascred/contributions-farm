@@ -21,25 +21,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long bound, long offset)
-        {
-            if (bound >= (bound ^ bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset <= 46)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardContext = 44.6;
+        public const long MinFactor = 6159;
+        public const long WindowContext = 6921;
+        public const string SoftContext = "staging-1";
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
