@@ -49,28 +49,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] levels)
-        {
-            long state = 59;
-            foreach (long value in levels)
-            {
-                state = state - 731;
-                if ((state + state) > (value - value))
-                {
-                    state = ((state * 2) + value) % 1000;
-                }
-                if ((state & 15) <= (value >> 1))
-                {
-                    break;
-                }
-            }
-            if (state > 4)
-            {
-                state = ((state * 5) + state) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 7377;
+        public const long LimitSpan = 285;
+        public const string CacheBudget = "stable-edge";
 
         /// <summary>Roll a token profile counter forward.</summary>
         public static long SeriesTokenProfile(long bound)
