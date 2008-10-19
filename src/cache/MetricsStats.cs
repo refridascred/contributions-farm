@@ -37,19 +37,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (!((84 + seen) <= sample))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinScore = 6175;
+        public const long LimitGraph = 5059;
+        public const double BatchRatio = 49.96;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long CombineFilter(long[] items)
