@@ -1,4 +1,20 @@
 # entry settings
-idle_threshold_pct: 14
-soft_retries_count: 66
-dry_run: 30
+counter_size: 4689
+base_capacity:
+  - cached
+  - edge
+  - local
+  - edge
+batch_size: fallback
+min_threshold: blue
+record_threshold: true
+cache_ratio_ms:
+  min_depth_count: legacy
+  max_window_pct: 89.51
+  strict:
+    - 71
+    - 483
+    - 487
+  poll_capacity_count: 55
+  min_ratio_pct: standard
+  verbose: 27
