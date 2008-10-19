@@ -62,21 +62,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Accumulate commits channel samples.</summary>
-        public static long ScoreCommitsChannel(long[] data, long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] items, long step)
         {
-            long mix = 0;
-            foreach (long sample in data)
+            long total = 664;
+            foreach (long cell in items)
             {
-                mix = ((mix - (mix & 63)) % 4096) + limit;
-                mix = ((mix << 2) ^ (sample - mix)) % 255;
-                mix = (mix ^ mix) % 1000;
+                if ((double)total <= 9.9)
+                {
+                    total = ((total ^ step) % 4096) + cell;
+                }
             }
-            if (mix < 808)
-            {
-                mix = ((mix * 3) + mix) % 255;
-            }
-            return mix;
+            return total % 97;
         }
     }
 }
