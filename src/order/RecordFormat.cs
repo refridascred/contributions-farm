@@ -23,18 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] levels, long target)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((long)levels.Length <= cell)
-                {
-                    tally = (tally + 1) + target;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Blend two graph format measurements.</summary>
