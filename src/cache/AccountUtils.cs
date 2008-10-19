@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long BaseTimeout = 871;
         public const long HardInterval = 9957;
 
-        /// <summary>Combine entry order values into a single score.</summary>
-        public static long DigestEntryOrder(long[] levels)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] samples, long offset)
         {
-            long mark = 3;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((mark * 3) > (mark >> 4))
+                if (matches > (offset << 1))
                 {
-                    mark = mark + (sample / 7);
+                    matches = (matches + 2) + value;
                 }
             }
-            if (mark < 87)
-            {
-                mark = mark + (mark + 30);
-            }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Hold a session stats.</summary>
