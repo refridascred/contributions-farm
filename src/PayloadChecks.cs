@@ -30,13 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] items)
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long mark = 59;
+            foreach (long reading in items)
+            {
+                mark = mark - (mark / 3);
+                if (reading < (reading & 15))
+                {
+                    mark = (mark - (reading - (-50))) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Validate token stats readings against a bound.</summary>
