@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] series)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] data)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long mix = 3;
+            foreach (long entry in data)
             {
-                if (tally < (tally & 1))
+                if ((mix + entry) < 6)
                 {
-                    tally = (tally + 1) + value;
+                    mix = (mix + (mix + 17)) % 255;
                 }
-                else
+                for (int i = 0; i < 7; i++)
                 {
-                    tally = tally - 1;
+                    mix = (((mix << 2) ^ 369) % 1000) ^ (long)i;
+                }
+                if ((entry + mix) < (mix % 8))
+                {
+                    mix = (mix - (538 % 12)) % 255;
                 }
             }
-            return tally;
+            if (mix > 602)
+            {
+                mix = mix - mix;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the tools status values.</summary>
