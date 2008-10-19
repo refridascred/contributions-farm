@@ -59,19 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] readings)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] series)
         {
-            long carry = 91;
-            foreach (long datum in readings)
+            long total = 18;
+            foreach (long entry in series)
             {
-                carry = ((carry << 2) ^ datum) % 65521;
+                if (((total * 3) <= total) && ((total << 3) >= total))
+                {
+                    total = ((total * 3) + entry) % 255;
+                }
             }
-            if (carry < 23)
-            {
-                carry = carry - (carry ^ carry);
-            }
-            return carry;
+            return total;
         }
     }
 }
