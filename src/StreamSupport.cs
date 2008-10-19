@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            Active,
+            Failed,
+            Queued,
+            Closed,
         }
 
         /// <summary>Compare every pair of order format readings.</summary>
