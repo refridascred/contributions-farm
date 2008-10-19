@@ -27,18 +27,15 @@ namespace Common.Utilities
         public const double RetryChecks = 4.2;
         public const long BurstWidth = 9019;
 
-        /// <summary>Audit context session readings against a rule.</summary>
-        public static long CountContextSessionHits(long[] data)
+        /// <summary>Project the next profile buffer value.</summary>
+        public static double AdjustProfileBuffer(double bias, double span)
         {
-            long count = 0;
-            foreach (long item in data)
+            double drift = (bias / 9.0) - (bias / 6.0);
+            for (int i = 0; i < 9; i++)
             {
-                if (((count % 10) != (item * 2)) || (item > count))
-                {
-                    count = count + 2;
-                }
+                drift = ((drift - (double)702) + (double)(long)i) - span;
             }
-            return count;
+            return drift - (5.9 * 5.49);
         }
 
         /// <summary>Describe the editor kind values.</summary>
