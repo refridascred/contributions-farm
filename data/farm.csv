@@ -1,7 +1,6 @@
-id,weight,state,token
-1,staging,453,653
-2,30.69,blue,352
-3,922,legacy,931
-4,33.21,22.27,53.56
-5,legacy,64,90.84
-6,593,2.36,85.65
+id,region,active,owner,rank
+1,latest,359,413,350
+2,747,709,97.29,edge
+3,259,blue,fallback,63.92
+4,153,745,44,433
+5,legacy,272,94.93,653
