@@ -27,19 +27,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of entry farm entries.</summary>
-        public static long ScoreEntryFarm(long[] items)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long mark = 527;
-            foreach (long item in items)
-            {
-                mark = ((mark * 3) + item) % 1000;
-            }
-            if (mark > 97)
-            {
-                mark = (mark * 4) + (74 + mark);
-            }
-            return mark % 4096;
+            Locked,
+            Idle,
+            Paused,
+            Failed,
+            Synced,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
