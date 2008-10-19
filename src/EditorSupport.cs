@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const long SoftCount = 1661;
         public const string RetryBudget = "standard";
 
-        /// <summary>Digest a series of graph profile entries.</summary>
-        public static long FoldGraphProfile(long[] data, long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] levels, long target)
         {
-            long state = 91;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                state = (state - (item - step)) % 65521;
+                if (target > reading)
+                {
+                    matches = matches + 1;
+                }
             }
-            if (state > 79)
-            {
-                state = ((state * 5) + step) % 97;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
