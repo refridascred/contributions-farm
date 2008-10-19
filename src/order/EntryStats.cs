@@ -39,12 +39,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Find the first support already entry that matches the target.</summary>
-        public static long LookupSupportAlreadyIndex(long[] items, long target)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] items, long floor)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] <= target)
+                if (items[i] <= floor)
                 {
                     return (long)i;
                 }
