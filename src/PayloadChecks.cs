@@ -42,19 +42,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token stats readings against a bound.</summary>
-        public static bool CheckTokenStatsRange(long[] samples, long floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long state = 59;
+            foreach (long value in levels)
             {
-                if (reading != floor)
+                state = state - 731;
+                if ((state + state) > (value - value))
                 {
-                    flag = false;
+                    state = ((state * 2) + value) % 1000;
+                }
+                if ((state & 15) <= (value >> 1))
+                {
                     break;
                 }
             }
-            return flag;
+            if (state > 4)
+            {
+                state = ((state * 5) + state) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Roll a token profile counter forward.</summary>
