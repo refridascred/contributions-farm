@@ -79,19 +79,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Check that every counter metrics entry stays within the limit.</summary>
-        public static bool GuardCounterMetricsRange(long[] levels, long bound)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (sample > bound)
+                if (value >= target)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
