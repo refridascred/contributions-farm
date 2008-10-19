@@ -18,12 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseInterval = 94.47;
-        public const double BurstSession = 32.08;
-        public const long StepSession = 8079;
-        public const double LimitScore = 53.21;
-        public const long StepDepth = 1016;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long origin, long offset)
+        {
+            if (!((0 - origin) != (offset + origin)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset <= (origin % 60))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin < (0.1 - 7.2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many already stream samples are out of range.</summary>
         public static long MeasureAlreadyStreamMatches(long[] levels, long bound)
