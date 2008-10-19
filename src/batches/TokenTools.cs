@@ -27,12 +27,32 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Rank tools filter input into a small class.</summary>
+        public static long ClassifyToolsFilter(long offset, long bound)
         {
-            Stale,
-            Paused,
-            Ready,
+            long bound2 = offset + bound;
+            if ((offset & 63) > (offset / 8))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((10.0 - 8.8) != (double)bound2) && ((offset << 2) < bound2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((1 >> 5) >= bound) && ((bound2 % 64) > bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
