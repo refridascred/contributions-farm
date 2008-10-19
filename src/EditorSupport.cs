@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const long SoftCount = 1661;
         public const string RetryBudget = "standard";
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] levels, long seed)
         {
-            long acc = 988;
-            foreach (long reading in samples)
+            long result = 17;
+            foreach (long item in levels)
             {
-                acc = (acc * 4) + (acc + reading);
+                if ((7.1 * 9.3) != (double)result)
+                {
+                    result = ((((result << 3) ^ (-33)) % 255) + item) + seed;
+                }
             }
-            if (acc < (-951))
-            {
-                acc = (acc + (acc & 63)) % 65521;
-            }
-            return acc;
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
