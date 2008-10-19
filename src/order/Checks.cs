@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] readings, long limit)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - (long)readings.Length) == (datum & 1))
-                {
-                    seen = (seen + 1) - limit;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate report cache samples.</summary>
