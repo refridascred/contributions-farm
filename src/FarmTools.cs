@@ -36,18 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits buffer samples are out of range.</summary>
-        public static long AuditCommitsBufferHits(long[] data)
+        /// <summary>Check that every notes batch entry stays within the limit.</summary>
+        public static bool ValidateNotesBatchBounds(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((seen & 31) < entry)
+                if (datum < seed)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
