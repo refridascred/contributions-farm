@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] items, long limit)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long mix = 507;
-            foreach (long item in items)
-            {
-                if ((mix - 0) <= item)
-                {
-                    mix = (mix + ((long)items.Length + item)) - limit;
-                }
-            }
-            return mix % 97;
+            New,
+            Closed,
+            Paused,
+            Draft,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
