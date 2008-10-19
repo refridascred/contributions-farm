@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Window format helpers.</summary>
     public static class WindowFormat
     {
-        /// <summary>Measure how many token channel samples are out of range.</summary>
-        public static long CountTokenChannelHits(long[] samples, long seed)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((count + seed) <= (count - count))
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many tools schema samples are out of range.</summary>
