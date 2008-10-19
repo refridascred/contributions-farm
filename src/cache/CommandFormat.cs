@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double scale, double span)
+        /// <summary>Derive the next checks graph value from a seed.</summary>
+        public static long StepChecksGraph(long limit)
         {
-            double rate = scale;
-            return (rate + 4.12) + span;
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = (acc * 3) + limit;
+                if (((long)i + 5) < acc)
+                {
+                    acc = acc + acc;
+                    acc = (acc + (acc - 6)) % 101;
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (148 << 3)) % 255;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Combine profile cluster values into a single score.</summary>
