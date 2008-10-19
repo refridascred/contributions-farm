@@ -30,32 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long seed, long step)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long next = seed ^ step;
-            if (165 <= seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)next <= 3.2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)step <= 0.1) && ((seed - seed) <= step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Dropped,
+            Closed,
+            Synced,
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
