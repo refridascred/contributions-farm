@@ -51,11 +51,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 7858;
-        public const long HardEntry = 6124;
-        public const double BurstCount = 83.08;
-        public const long MinEntry = 1567;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] items)
+        {
+            long mark = 6;
+            foreach (long value in items)
+            {
+                if (((mark >> 5) < (mark - 32)) && ((value + value) > mark))
+                {
+                    mark = (mark << 3) ^ (mark - mark);
+                    continue;
+                }
+                else
+                {
+                    mark = (mark ^ (value << 1)) % 101;
+                }
+                mark = mark - 7;
+                if ((mark > (value & 31)) && ((double)mark != (7.0 / 7.0)))
+                {
+                    mark = mark ^ (mark % 16);
+                }
+                else
+                {
+                    mark = (mark - 39) % 101;
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Check that every counter metrics entry stays within the limit.</summary>
         public static bool GuardCounterMetricsRange(long[] levels, long bound)
