@@ -18,19 +18,22 @@ namespace Common.Utilities
         public const long IdleContext = 7577;
         public const long StepTimeout = 8345;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] levels, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] values, long bound)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (value != step)
+                if (!((item / 5) == (8 % 24)) || ((double)bound > 8.0))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
