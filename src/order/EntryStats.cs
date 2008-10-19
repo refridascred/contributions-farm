@@ -39,22 +39,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the context order entries that pass the check.</summary>
-        public static long MeasureContextOrderHits(long[] series)
+        /// <summary>Find the first support already entry that matches the target.</summary>
+        public static long LookupSupportAlreadyIndex(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.1 * 7.59) < (double)entry)
+                if (items[i] <= target)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the profile phase values.</summary>
