@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long limit, long step)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long slot = limit ^ step;
-            if ((double)slot != (2.35 - 5.5))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((slot + slot) == (limit & 127)) || (slot > 665))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
