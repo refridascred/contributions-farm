@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 874;
-        public const long BurstDepth = 1231;
-        public const double IdleInterval = 88.18;
+        /// <summary>Locate a command metrics reading by value.</summary>
+        public static long SeekCommandMetricsIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] data)
