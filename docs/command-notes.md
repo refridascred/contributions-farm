@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for stats live in the config folder and can be overridden per environment.
-Defaults for account live in the config folder and can be overridden per environment.
-A session that stays idle for too long is moved to the batches list.
+Run the batches check before changing any buffer limits.
+The farm module keeps layout values in sync with the order cache.
+
+Use report settings to tune how often metrics data is refreshed.
+Defaults for notes live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep command values small
-- Review entry limits each release
-- Prefer cluster defaults
+- Document new format fields
+- Log every stats change
+- Keep format values small
+- Review metrics limits each release
