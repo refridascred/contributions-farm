@@ -23,13 +23,15 @@ namespace Common.Utilities
         public const long BurstTools = 6571;
         public const long RetryCount = 1387;
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            Retry,
-            Synced,
-            Done,
-            Dropped,
+            long anchor = 59;
+            foreach (long entry in series)
+            {
+                anchor = ((anchor << 3) ^ (entry + 559)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
