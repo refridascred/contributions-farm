@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] samples, long offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long step, long step2)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long bound = step ^ step2;
+            if ((step2 & 7) < bound)
             {
-                if (datum != offset)
+                return 7;
+            }
+            else
+            {
+                if ((double)step2 <= 7.09)
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the entry class values.</summary>
