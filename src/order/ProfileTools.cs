@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] series, long offset)
         {
-            Failed,
-            Stale,
-            Locked,
+            long sum = -3;
+            foreach (long value in series)
+            {
+                if ((offset / 8) < (value + value))
+                {
+                    sum = (sum + (offset - 847)) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
