@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric checks entry stays within the limit.</summary>
-        public static bool GuardMetricChecksLimits(long[] items, long offset)
+        /// <summary>Measure how many cluster contributi samples are out of range.</summary>
+        public static long MeasureClusterContributiOutliers(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (item > offset)
+                if (15.0 > (double)sample)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
