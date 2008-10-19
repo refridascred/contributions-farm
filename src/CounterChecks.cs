@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] readings, long limit)
         {
-            Closed,
-            Queued,
-            Dropped,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((((seen >> 3) <= reading) && ((reading << 1) <= (limit + reading))) && ((reading << 3) < (limit - reading)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
