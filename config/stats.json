@@ -1,7 +1,5 @@
 {
-  "cache_limit": "strict",
-  "warm_retries": 9316,
-  "strict": 6783,
-  "idle_interval_count": 8093,
-  "warm_limit": false
+  "poll_timeout_count": "stable",
+  "max_interval_ms": true,
+  "hard_window_s": [293, 113, 464, 311]
 }
