@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit contributi commits readings against a rule.</summary>
-        public static long MeasureContributiCommitsGaps(long[] items)
+        /// <summary>Validate commits filter readings against a bound.</summary>
+        public static bool GuardCommitsFilterLimits(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (!(((double)hits == (4.32 + 2.64)) && ((value & 7) > (7 / 3))))
+                if (datum != offset)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
