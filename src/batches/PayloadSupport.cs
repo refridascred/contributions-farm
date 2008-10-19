@@ -34,10 +34,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheTimeout = 4848;
-        public const long StepProfile = 1001;
-        public const long MaxCount = 4578;
-        public const long StepBudget = 1522;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitBudget = 76.78;
+        public const long RetryTimeout = 9218;
+        public const long CacheCounter = 7405;
+        public const long BatchCounter = 2832;
+        public const double StepFactor = 26.48;
     }
 }
