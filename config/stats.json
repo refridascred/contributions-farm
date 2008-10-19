@@ -1,10 +1,6 @@
 {
-  "sync_depth_ms": 8378,
-  "max_limit_pct": "staging",
-  "persist": {
-    "dry_run": 79.16,
-    "persist": 11,
-    "hard_depth": ["green", "cached", "strict", "cached"]
-  },
-  "poll_retries": 6646
+  "contributi_capacity": false,
+  "poll_ratio_count": 41,
+  "stats_limit": "local",
+  "sync_retries_ms": 66
 }
