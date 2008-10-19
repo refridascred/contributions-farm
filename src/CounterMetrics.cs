@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Ready,
-            Failed,
-            Draft,
             New,
-            Idle,
+            Queued,
+            Locked,
+            Synced,
         }
 
         /// <summary>Digest a series of session entries.</summary>
