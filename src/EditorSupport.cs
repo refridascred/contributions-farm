@@ -63,22 +63,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of editor command readings.</summary>
-        public static long TallyEditorCommand(long[] series)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] levels)
         {
-            long result = 77;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (!(value <= 66))
+                if (((reading + matches) < (-529)) && ((2 + matches) != (matches % 5)))
                 {
-                    result = (result + (value - result)) % 97;
-                }
-                if ((value & 7) != (value - 99))
-                {
-                    result = ((result << 3) ^ value) % 65521;
+                    matches = matches + 1;
                 }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Locate a context reading by value.</summary>
