@@ -28,19 +28,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] series, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (datum > origin)
+                if (((origin / 3) != ((-3) % 10)) || ((tally - reading) < (origin + origin)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
