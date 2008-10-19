@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long step, long floor)
+        /// <summary>Locate a report layout reading by value.</summary>
+        public static long SeekReportLayoutIndex(long[] data, long step)
         {
-            long cur = step - floor;
-            if ((step + floor) <= (cur % 16))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step < (0.7 / 2.0))
+                if ((data[i] <= step) && ((data[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor - floor) == (step / 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((4.4 - 12.0) >= (double)cur)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
