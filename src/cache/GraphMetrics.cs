@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long bound)
         {
-            public bool Count { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((sum << 1) == (bound + bound))
+                {
+                    sum = (sum + ((long)i - (long)i)) % 97;
+                }
+                else
+                {
+                    sum = sum ^ (bound + sum);
+                    sum = sum - ((long)i & 3);
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
