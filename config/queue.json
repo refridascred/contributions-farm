@@ -1,20 +1,7 @@
 {
-  "enabled": 7095,
-  "sync_interval_s": 100,
-  "checks_threshold": 22,
-  "sync_interval_pct": 28.21,
-  "sync_timeout_ms": {
-    "base_retries_ms": {
-      "batch_retries": "strict",
-      "min_ratio": [283, 254, 121, 455],
-      "report_window": "stable",
-      "poll_retries_s": 19.04,
-      "default_size_ms": 9952,
-      "enabled": [296, 73, 295, 135]
-    },
-    "window_ratio": 86.84,
-    "profile_size": 15,
-    "retry_interval": 94
-  },
-  "context_capacity": "standard"
+  "retry_delay_count": 88.88,
+  "soft_ttl_count": 60,
+  "readonly": 2,
+  "farm_ratio": ["primary", "strict", "legacy"],
+  "soft_timeout": false
 }
