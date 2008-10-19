@@ -14,12 +14,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] values, long limit)
         {
-            New,
-            Locked,
-            Failed,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (value <= (value ^ value))
+                {
+                    tally = (tally + 1) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
