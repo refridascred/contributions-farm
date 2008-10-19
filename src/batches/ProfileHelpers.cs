@@ -18,23 +18,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (8.64 > (double)step)
-                {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardSpan = 1742;
+        public const long MaxRecord = 427;
+        public const long LimitTimeout = 3584;
+        public const long MinFactor = 2973;
+        public const string RetryRecord = "legacy-edge";
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BatchWindow = 4500;
