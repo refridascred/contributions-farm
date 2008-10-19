@@ -61,19 +61,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] levels, long bound)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            double rate2 = 8.6;
+            if (rate2 <= (double)2)
             {
-                if (reading < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                rate2 = (rate2 - (8.3 - rate)) - bias;
             }
-            return flag;
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 + (rate2 * 9.3)) + (double)(long)i;
+            }
+            return rate2 - (double)87;
         }
     }
 }
