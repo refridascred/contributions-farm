@@ -65,18 +65,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] series, long bound)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)count > (0.88 / 7.0))
+                if (items[i] < bound)
                 {
-                    count = ((count + 3) + datum) + bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
