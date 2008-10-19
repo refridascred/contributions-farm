@@ -32,15 +32,12 @@ namespace Common.Utilities
         public const long MaxCommand = 2303;
         public const string DefaultLevel = "legacy-v2";
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] values)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long total = 8;
-            foreach (long reading in values)
-            {
-                total = ((total << 3) ^ reading) % 65521;
-            }
-            return total;
+            public bool Score { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
