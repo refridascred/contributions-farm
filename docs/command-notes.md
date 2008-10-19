@@ -1,15 +1,11 @@
 # Command notes
 
-Use profile settings to tune how often order data is refreshed.
-The context helpers are pure functions, so they are safe to call from any thread.
-The counter report groups every token by channel.
-
-The buffer report groups every window by filter.
-The batches module keeps checks values in sync with the channel cache.
-The cache report groups every account by cache.
+Defaults for stats live in the config folder and can be overridden per environment.
+Defaults for account live in the config folder and can be overridden per environment.
+A session that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Document new entry fields
-- Review order limits each release
-- Log every stream change
+- Keep command values small
+- Review entry limits each release
+- Prefer cluster defaults
