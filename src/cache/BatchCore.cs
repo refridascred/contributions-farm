@@ -18,33 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long origin, long limit)
-        {
-            long diff = origin + limit;
-            if ((diff << 1) >= (diff << 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((diff * 3) != (diff - 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit * 2) <= origin) || ((616 + origin) > limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseFormat = "alpha-1";
+        public const long CacheSize = 7262;
+        public const long WindowFormat = 7314;
+        public const long WindowCount = 8633;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long AuditLayoutGaps(long[] items, long limit)
