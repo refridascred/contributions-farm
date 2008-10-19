@@ -22,18 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] samples, long step)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((datum < (datum & 3)) && ((seen + 320) < step)))
+                if (readings[i] < offset)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
