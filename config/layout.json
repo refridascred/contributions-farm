@@ -1,20 +1,15 @@
 {
-  "enabled": false,
-  "tools_size": 72,
-  "record_interval": "fallback",
-  "dry_run": {
-    "cache_limit_count": {
-      "retry_window_pct": 15,
-      "max_threshold_count": 98,
-      "order_delay": false,
-      "default_threshold": 7721,
-      "soft_window": 20.77,
-      "batch_ttl": 8873
-    },
-    "poll_ttl": 6459,
-    "max_delay": "green",
-    "compress": "stable",
-    "commits_retries": true
+  "hard_delay_pct": "latest",
+  "persist": "primary",
+  "audit": 87,
+  "readonly": {
+    "default_depth": "strict",
+    "report_limit": 67.67,
+    "soft_depth": [37, 149, 229, 331],
+    "base_retries_pct": "latest",
+    "report_size": 3052,
+    "commits_window": false
   },
-  "verbose": "latest"
+  "flush_size_ms": "primary",
+  "max_size_count": 54.68
 }
