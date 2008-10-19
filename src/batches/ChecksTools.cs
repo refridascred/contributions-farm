@@ -37,18 +37,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] samples, long seed)
+        /// <summary>Audit metric filter readings against a rule.</summary>
+        public static long TallyMetricFilterHits(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((double)entry < (double)seed)
+                if (cell >= (long)samples.Length)
                 {
-                    tally = tally + 1;
+                    seen = (seen + 3) - offset;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a layout info.</summary>
