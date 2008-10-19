@@ -20,13 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] series, long offset)
         {
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of order readings.</summary>
