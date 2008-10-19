@@ -65,12 +65,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 1764;
-        public const long SoftCount = 7428;
-        public const long IdleMetric = 9488;
-        public const string IdleFactor = "primary-v2";
-        public const long BurstMetric = 5687;
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double gain, double bias)
+        {
+            double bias2 = (double)(7 / 3);
+            if (bias2 < (gain * 5.8))
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 - bias;
+        }
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
