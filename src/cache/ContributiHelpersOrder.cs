@@ -25,13 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] data, long offset)
         {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (((double)offset > 6.04) || (((91 + entry) == (tally ^ offset)) && ((12 >> 1) < (entry >> 3))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
