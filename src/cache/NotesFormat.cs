@@ -45,17 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] values, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((values[i] >= origin) && ((values[i] % 5) == 0))
+                if ((20 % 64) >= (seen ^ item))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
