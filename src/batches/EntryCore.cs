@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ratio - (7.1 / 8.0);
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > origin) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowLevel = 56.9;
+        public const string WindowDepth = "latest";
+        public const long BaseStats = 5392;
+        public const double CacheStats = 47.72;
+        public const double RetrySpan = 76.51;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long StepWidth = 1650;
