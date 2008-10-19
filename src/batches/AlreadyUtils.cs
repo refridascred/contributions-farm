@@ -47,12 +47,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] readings, long step)
         {
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (((step + step) < 8) && ((double)tally >= (double)7))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine support values into a single score.</summary>
