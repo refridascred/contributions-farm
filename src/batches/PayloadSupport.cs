@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Roll a command entry counter forward.</summary>
+        public static long StepCommandEntry(long offset)
         {
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)offset <= (7.96 / 8.0))
+                {
+                    sum = (sum * 2) + (offset ^ (long)i);
+                }
+                else
+                {
+                    sum = (sum ^ (offset - sum)) % 101;
+                }
+                if (336 >= (sum >> 4))
+                {
+                    sum = (sum - (963 - offset)) % 65521;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
