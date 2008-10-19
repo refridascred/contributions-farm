@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] data, long bound)
         {
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum << 2) < (tally ^ 14))
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
