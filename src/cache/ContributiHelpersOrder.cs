@@ -25,10 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCount = 2319;
-        public const long StepCount = 9271;
-        public const long WindowCluster = 6180;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Paused,
+            Draft,
+            Ready,
+            Done,
+            New,
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long IterateQueue(long floor)
