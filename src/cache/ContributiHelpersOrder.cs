@@ -49,9 +49,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowSupport = "legacy";
-        public const long MinFactor = 1613;
-        public const long MaxCount = 9064;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] data)
+        {
+            long mix = 92;
+            foreach (long sample in data)
+            {
+                mix = (((mix << 2) ^ (mix % 100)) % 101) ^ sample;
+            }
+            return mix;
+        }
     }
 }
