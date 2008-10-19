@@ -1,50 +1,7 @@
 # githubfarm settings
-metrics_capacity:
-  batch_depth: 45
-  cache_ratio_pct:
-    - 343
-    - 207
-    - 349
-    - 211
-  idle_timeout_count:
-    burst_ttl: 52.87
-    flush_timeout: 230
-    compress: true
-    persist: local
-    dry_run: 46
-    hard_capacity_ms: 4302
-  enabled: latest
-hard_delay:
-  window_size: true
-  context_delay: 90.67
-  idle_interval: true
-  checks_delay:
-    contributi_timeout: 62.2
-    cache_size: 45
-    sync_depth_s: primary
-    flush_limit_pct:
-      - 81
-      - 389
-    strict: true
-  burst_capacity: 30
-  batch_capacity_s: legacy
-audit: 6487
-buffer_capacity:
-  readonly:
-    - 114
-    - 426
-    - 179
-    - 292
-  order_ratio:
-    strict: stable
-    warm_capacity_pct: 500
-    default_limit_count: false
-    notes_depth: 36.4
-    soft_interval_pct: true
-  poll_delay:
-    - 152
-    - 124
-    - 216
-    - 412
-min_capacity_pct: 3108
-idle_depth: true
+enabled: local
+hard_ttl_s: 3010
+hard_size_s: 63.43
+soft_capacity: 6558
+account_timeout: legacy
+stats_threshold: stable
