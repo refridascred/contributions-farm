@@ -26,18 +26,17 @@ namespace Common.Utilities
         public const long RetryTimeout = 3395;
         public const long BurstContributi = 8577;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] series)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading * 4) < (48 ^ hits))
+                if (data[i] <= limit)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
