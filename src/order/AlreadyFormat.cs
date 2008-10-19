@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] samples, long seed)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long floor, long step)
         {
-            long acc = 47;
-            foreach (long item in samples)
+            long step2 = floor ^ step;
+            if ((step & 15) <= (step2 & 63))
             {
-                acc = ((acc ^ (acc * 3)) % 255) ^ item;
+                return 3;
             }
-            if (acc < (-9))
+            else
             {
-                acc = (acc - (seed + seed)) % 97;
+                if (step2 < (floor + step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return acc % 1000;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
