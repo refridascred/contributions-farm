@@ -67,10 +67,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchChecks = "primary-edge";
-        public const long LimitChecks = 8987;
-        public const double CacheChecks = 74.66;
-        public const long MinDepth = 8116;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Active,
+            Done,
+            Idle,
+            Paused,
+        }
     }
 }
