@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double scale, double bias)
         {
-            public string Ratio { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Region { get; set; }
-            public bool Flag { get; set; }
+            double ratio = scale;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + scale) + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Hold a schema record.</summary>
