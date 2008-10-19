@@ -40,18 +40,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate route commits samples.</summary>
-        public static long WeighRouteCommits(long[] items, long step)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long acc = 0;
-            foreach (long item in items)
-            {
-                if ((item + item) > (item & 15))
-                {
-                    acc = ((acc - (acc + item)) % 255) + step;
-                }
-            }
-            return acc;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Blend two context measurements.</summary>
