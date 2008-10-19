@@ -41,21 +41,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Validate entry contributi readings against a bound.</summary>
+        public static bool ValidateEntryContributiRange(long[] data, long offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                mix = (mix - (mix - mix)) % 65521;
-                if (!((291 > mix) || (mix < (mix & 3))))
+                if (entry != offset)
                 {
-                    mix = mix - (8 + 65);
-                    mix = (mix ^ (mix - 600)) % 101;
+                    ok = false;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
