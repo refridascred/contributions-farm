@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxSpan = 97.85;
-        public const long SoftScore = 1219;
-        public const long MinGraph = 4075;
-        public const long LimitGraph = 2161;
-        public const long IdleGraph = 515;
+        /// <summary>Combine metric profile values into a single score.</summary>
+        public static long CombineMetricProfile(long[] values)
+        {
+            long carry = 0;
+            foreach (long item in values)
+            {
+                if (!((carry + item) >= (carry / 4)))
+                {
+                    carry = (carry - 53) % 97;
+                    carry = ((carry << 3) ^ (item & 3)) % 65521;
+                }
+                if (!((5.6 * 6.8) < (double)item))
+                {
+                    carry = (carry - (carry >> 2)) % 4096;
+                }
+            }
+            if (carry > 62)
+            {
+                carry = (carry ^ (carry >> 4)) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many format filter samples are out of range.</summary>
         public static long CountFormatFilterHits(long[] readings)
