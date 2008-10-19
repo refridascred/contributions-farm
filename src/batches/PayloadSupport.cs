@@ -28,18 +28,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] data)
+        /// <summary>Look up the position of a githubfarm window sample.</summary>
+        public static long FindGithubfarmWindowIndex(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value >> 5) < (count << 3))
+                if (readings[i] >= bound)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the batch status values.</summary>
