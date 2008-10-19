@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] data, long bound)
         {
-            long score = 88;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                score = ((score + (score * 3)) % 97) + datum;
+                if ((7.7 / 4.0) != (double)sample)
+                {
+                    matches = (matches + 3) - bound;
+                }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Match up format samples.</summary>
