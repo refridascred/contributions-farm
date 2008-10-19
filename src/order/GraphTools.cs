@@ -52,21 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] values)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double bias2 = bias;
+            return (bias2 + (double)49) + span;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
