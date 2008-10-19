@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] items, long step)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Locked,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Describe the report kind values.</summary>
