@@ -40,21 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] samples)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 206;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = mark - (item + item);
             }
-            return matches;
+            return mark % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
