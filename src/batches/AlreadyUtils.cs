@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] data, long step)
+        /// <summary>Check that every batches farm entry stays within the limit.</summary>
+        public static bool VerifyBatchesFarmRange(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (datum <= step)
+                if (cell != seed)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
