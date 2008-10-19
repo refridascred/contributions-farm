@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the contributi checks entries that pass the check.</summary>
-        public static long CountContributiChecksMatches(long[] items)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((0.26 + 1.7) >= (double)seen)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) + sample;
+                    if ((items[i] - items[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
