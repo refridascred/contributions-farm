@@ -53,18 +53,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] readings, long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long mix = 592;
+            foreach (long datum in data)
             {
-                if (entry >= (tally - tally))
+                if (!((datum % 5) < (datum - mix)))
                 {
-                    tally = (tally + 2) - offset;
+                    mix = mix + (floor * 4);
+                    mix = ((mix << 3) ^ (floor / 5)) % 65521;
                 }
+                mix = (mix ^ datum) % 101;
             }
-            return tally;
+            return mix % 65521;
         }
 
         /// <summary>Define route limits and defaults.</summary>
