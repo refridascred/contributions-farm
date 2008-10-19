@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] data, long bound)
+        /// <summary>Check that every filter notes entry stays within the limit.</summary>
+        public static bool CheckFilterNotesRange(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (value <= bound)
+                if (entry <= offset)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
