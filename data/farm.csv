@@ -1,10 +1,6 @@
-id,owner,weight
-1,501,293
-2,stable,standard
-3,staging,fallback
-4,30.31,edge
-5,776,blue
-6,946,eu-west
-7,local,64.99
-8,edge,strict
-9,standard,483
+id,rank,weight
+1,edge,51.08
+2,13.69,green
+3,348,383
+4,standard,466
+5,19.07,28.2
