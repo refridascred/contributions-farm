@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] series, long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long sum = -3;
-            foreach (long value in series)
-            {
-                if ((offset / 8) < (value + value))
-                {
-                    sum = (sum + (offset - 847)) % 65521;
-                }
-            }
-            return sum;
+            Closed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Compare every pair of notes stream readings.</summary>
