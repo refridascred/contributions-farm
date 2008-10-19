@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] values)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long offset, long step)
         {
-            long score = 435;
-            foreach (long reading in values)
+            if (9.6 > (double)step)
             {
-                score = (score - reading) % 65521;
+                return 6;
             }
-            if (score > 37)
+            else
             {
-                score = (score - score) % 4096;
+                if (offset < (step + 15))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((6.95 + 14.0) != (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
