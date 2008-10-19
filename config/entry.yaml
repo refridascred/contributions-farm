@@ -1,14 +1,4 @@
 # entry settings
-layout_ratio:
-  - latest
-  - legacy
-  - green
-  - eu-west
-retry_threshold_pct:
-  - latest
-  - local
-retry_window_pct:
-  - 421
-  - 258
-  - 2
-poll_timeout_pct: eu-west
+audit: eu-west
+token_retries: false
+poll_size: false
