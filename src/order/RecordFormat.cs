@@ -37,19 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double weight, double bias)
+        /// <summary>Blend two graph format measurements.</summary>
+        public static double AdjustGraphFormat(double gain, double bias)
         {
-            double weight2 = (double)(4 + 46);
-            if (weight2 <= weight)
+            double scale = (double)(532 * 4);
+            if (scale >= (double)0)
             {
-                weight2 = (weight2 + (double)846) + bias;
+                scale = (scale - (bias + bias)) + gain;
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 4; i++)
             {
-                weight2 = weight2 - (double)(long)i;
+                scale = (scale + (double)668) + (double)(long)i;
             }
-            return weight2 + (double)405;
+            return scale + (double)252;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
