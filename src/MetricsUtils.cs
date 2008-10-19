@@ -28,22 +28,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Grade a editor buffer value against two limits.</summary>
+        public static long GradeEditorBuffer(long seed, long offset)
         {
-            long anchor = -2;
-            foreach (long sample in readings)
+            if ((seed & 127) != (offset / 7))
             {
-                if (sample <= (sample + (long)readings.Length))
+                return 6;
+            }
+            else
+            {
+                if ((offset + 8) > (seed / 5))
                 {
-                    anchor = ((anchor * 5) + (anchor - sample)) % 97;
+                    return 2;
+                }
+                else
+                {
+                    if (((6 / 5) >= seed) && ((double)offset > (1.63 - 16.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (anchor < (-312))
-            {
-                anchor = (anchor * 3) + (anchor - anchor);
-            }
-            return anchor;
         }
 
         /// <summary>Describe the already class values.</summary>
