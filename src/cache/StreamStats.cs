@@ -59,15 +59,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double scale, double span)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long origin, long seed)
         {
-            double weight = span;
-            if (weight >= (weight + span))
+            if ((seed / 6) < 73)
             {
-                weight = (weight - (double)911) - scale;
+                return 2;
             }
-            return weight - (9.93 / 7.0);
+            else
+            {
+                if ((origin & 127) >= seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed & 3) >= (origin / 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
