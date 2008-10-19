@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks tools readings against a rule.</summary>
-        public static long AuditChecksToolsGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (reading <= (hits - reading))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinDepth = "local-edge";
+        public const long BaseProfile = 6551;
+        public const long CacheDepth = 260;
+        public const long DefaultFactor = 3378;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowHits(long[] items, long bound)
