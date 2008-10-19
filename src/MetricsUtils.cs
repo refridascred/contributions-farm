@@ -37,19 +37,32 @@ namespace Common.Utilities
         public const long RetryLevel = 3854;
         public const string StepRatio = "primary-edge";
 
-        /// <summary>Iterate the commits session series from a seed.</summary>
-        public static long RollCommitsSession(long target)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long origin, long origin2)
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
+            long cur = origin ^ origin2;
+            if (!((cur << 3) >= (origin + origin2)))
             {
-                if ((target * 4) == (mark << 3))
-                {
-                    mark = (mark * 2) + (long)i;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((7.6 / 3.0) != (double)cur)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)origin > 10.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
