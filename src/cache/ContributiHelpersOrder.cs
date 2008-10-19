@@ -32,21 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] data)
+        /// <summary>Iterate the order contributi series from a seed.</summary>
+        public static long StepOrderContributi(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((13.0 - 6.79) == (double)offset)
                 {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score - (score - offset);
+                    score = (score << 2) ^ score;
                 }
+                score = ((score * 5) + (96 / 3)) % 97;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
