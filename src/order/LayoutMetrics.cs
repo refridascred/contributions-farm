@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double gain, double offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] samples, long limit)
         {
-            double mean = (double)(8 + (-705));
-            for (int i = 0; i < 2; i++)
+            long sum = 4;
+            foreach (long item in samples)
             {
-                mean = (((mean + 1.1) + (double)(long)i) + gain) - offset;
+                if (limit < (item * 4))
+                {
+                    sum = ((sum << 3) ^ (sum * 3)) % 1000;
+                }
             }
-            return mean + (double)533;
+            return sum;
         }
 
         /// <summary>Digest a series of support entries.</summary>
