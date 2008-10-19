@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a buffer profile sample.</summary>
-        public static long SeekBufferProfileIndex(long[] samples, long offset)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = rate / 4.0;
+            if (gain > (span + gain))
             {
-                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - 7.56;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (span + rate)) + (double)(long)i;
+            }
+            return gain + rate;
         }
 
         /// <summary>Define session limits and defaults.</summary>
