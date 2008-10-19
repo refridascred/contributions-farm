@@ -16,13 +16,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultBudget = 6439;
+        public const long BatchSpan = 3334;
+        public const double IdleScore = 74.04;
+        public const long BaseSpan = 8224;
+        public const double LimitRatio = 57.31;
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
