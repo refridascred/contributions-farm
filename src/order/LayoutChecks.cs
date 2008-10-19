@@ -42,19 +42,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] readings, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (value > origin)
+                if ((hits / 7) < item)
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Accumulate order samples.</summary>
