@@ -73,14 +73,11 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Failed,
-            Paused,
-            Active,
-            Done,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultInterval = "latest-edge";
+        public const long MinCluster = 5804;
+        public const long BaseCluster = 1668;
+        public const long IdleCluster = 5016;
+        public const long IdleRatio = 2825;
     }
 }
