@@ -22,23 +22,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double weight, double floor)
+        /// <summary>Iterate the checks notes series from a seed.</summary>
+        public static long RollChecksNotes(long seed)
         {
-            double scale = weight;
-            if (scale <= weight)
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
             {
-                scale = scale + (scale * 3.39);
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            else
-            {
-                scale = scale - (weight / 5.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + floor) - (double)(long)i;
-            }
-            return scale - weight;
+            return mix;
         }
 
         /// <summary>Adjust a graph reading.</summary>
