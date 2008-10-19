@@ -40,32 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long offset, long offset2)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] data, long offset)
         {
-            long prev = offset - offset2;
-            if ((prev > (offset << 2)) && (offset <= prev))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((44 - prev) > (prev * 2))
+                if (data[i] == offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((755 - 18) < (offset2 * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
