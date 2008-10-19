@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next account notes value.</summary>
-        public static double AdjustAccountNotes(double scale, double bias)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            double scale2 = (double)(5 - 14);
-            if (scale2 > (scale - 1.0))
-            {
-                scale2 = (scale2 + (double)(-49)) - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 + (scale2 * 8.0)) - (double)(long)i;
-            }
-            return scale2 - scale2;
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
