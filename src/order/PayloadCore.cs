@@ -24,23 +24,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] values, long bound)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (!((item / 5) == (8 % 24)) || ((double)bound > 8.0))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultDepth = 3808;
+        public const long IdleToken = 9403;
+        public const long BatchToken = 6498;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double SoftEntry = 16.01;
