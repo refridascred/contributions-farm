@@ -38,12 +38,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public string Token { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
+            Paused,
+            Failed,
+            New,
         }
     }
 }
