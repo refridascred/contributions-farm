@@ -20,17 +20,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] series, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if ((series[i] <= target) && ((series[i] % 5) != 0))
+                if (datum > origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
