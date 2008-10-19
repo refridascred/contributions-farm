@@ -25,23 +25,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double ratio, double floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            double mean = floor;
-            if (mean > mean)
-            {
-                mean = mean - floor;
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (double)43) + (double)(long)i;
-            }
-            return mean + (ratio - mean);
+            Idle,
+            Paused,
+            Queued,
+            Locked,
         }
     }
 }
