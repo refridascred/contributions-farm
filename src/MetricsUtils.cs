@@ -66,10 +66,14 @@ namespace Common.Utilities
             return mean - (mean + gain);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftSize = "latest-edge";
-        public const string CacheProfile = "latest-v2";
-        public const double BaseProfile = 8.75;
-        public const string LimitFactor = "legacy";
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Draft,
+            Done,
+            Retry,
+            Idle,
+            Pending,
+        }
     }
 }
