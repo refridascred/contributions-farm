@@ -41,15 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double rate, double offset)
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
+            double bias = offset;
+            if (bias < rate)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                bias = bias + bias;
             }
-            return score;
+            else
+            {
+                bias = bias + (rate + rate);
+            }
+            return bias - bias;
         }
     }
 }
