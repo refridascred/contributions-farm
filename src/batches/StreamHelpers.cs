@@ -82,14 +82,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            Dropped,
-            Idle,
-            Paused,
-            Pending,
-            Closed,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
