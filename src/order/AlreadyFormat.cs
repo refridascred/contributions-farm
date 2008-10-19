@@ -53,10 +53,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 5109;
-        public const long CacheChannel = 4284;
-        public const double BurstChannel = 39.52;
-        public const long BaseChannel = 3064;
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double rate, double offset)
+        {
+            double weight = rate;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - offset) + (double)(long)i;
+            }
+            return weight - (19.0 - weight);
+        }
     }
 }
