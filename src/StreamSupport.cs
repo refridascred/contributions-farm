@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Stale,
-            Idle,
-            Locked,
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
