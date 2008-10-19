@@ -30,36 +30,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long bound, long floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long seed, long step)
         {
-            long lane = bound ^ floor;
-            if (lane > floor)
+            long next = seed ^ step;
+            if (165 <= seed)
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((double)bound == (2.89 + 4.3))
+                if ((double)next <= 3.2)
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    if ((bound % 7) < (floor ^ bound))
+                    if (((double)step <= 0.1) && ((seed - seed) <= step))
                     {
-                        return 6;
+                        return 4;
                     }
                     else
                     {
-                        if (bound < (lane % 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 5;
                     }
                 }
             }
