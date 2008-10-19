@@ -67,11 +67,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheLevel = "cached-1";
-        public const long SoftRecord = 444;
-        public const double RetrySize = 25.29;
-        public const long DefaultRecord = 9105;
-        public const string IdleRecord = "latest-1";
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > bound) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
