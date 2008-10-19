@@ -33,18 +33,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Rank already queue input into a small class.</summary>
+        public static long GradeAlreadyQueue(long floor, long origin)
         {
-            long acc = 60;
-            foreach (long value in levels)
+            long step = floor + origin;
+            if ((origin % 100) > (origin + origin))
             {
-                if ((double)value > (11.0 / 5.0))
+                return 8;
+            }
+            else
+            {
+                if (((double)step != (1.33 - 1.0)) || ((origin + step) == (207 / 8)))
                 {
-                    acc = ((acc << 3) ^ acc) % 255;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return acc % 1000;
         }
     }
 }
