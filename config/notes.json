@@ -1,8 +1,8 @@
 {
-  "idle_size_count": "stable",
-  "sync_window": false,
-  "context_interval": true,
-  "base_limit": 28.84,
-  "flush_delay_s": 80,
-  "hard_delay": ["edge", "latest"]
+  "strict": "legacy",
+  "cache_depth": [165, 177],
+  "idle_size_ms": "local",
+  "profile_window": "latest",
+  "max_depth_ms": "open",
+  "farm_ratio": [344, 261, 117]
 }
