@@ -56,24 +56,18 @@ namespace Common.Utilities
         public const string BaseFactor = "staging";
         public const string SoftProfile = "primary-edge";
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] levels, long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] readings)
         {
-            long score = 40;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                long tally = (limit + limit) % 60;
-                if (!((limit / 3) >= (entry % 24)))
+                if ((item & 255) >= hits)
                 {
-                    tally = (tally << 2) ^ (-29);
+                    hits = hits + 3;
                 }
-                else
-                {
-                    score = (score + tally) % 255;
-                }
-                score = score - limit;
             }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
