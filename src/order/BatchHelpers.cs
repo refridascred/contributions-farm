@@ -34,11 +34,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleQueue = "standard";
-        public const double BaseSize = 69.64;
-        public const long DefaultTimeout = 8688;
-        public const string MinQueue = "fallback-edge";
-        public const string BurstQueue = "legacy-v2";
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] samples)
+        {
+            long score = 84;
+            foreach (long value in samples)
+            {
+                score = score + (value - 8);
+                if ((value % 12) > value)
+                {
+                    score = (score ^ (9 << 1)) % 255;
+                }
+                if (((score / 9) <= value) || ((3.9 * 5.4) <= (double)score))
+                {
+                    break;
+                }
+            }
+            if (score < 8)
+            {
+                score = score ^ (948 / 5);
+            }
+            return score;
+        }
     }
 }
