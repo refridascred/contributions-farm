@@ -26,19 +26,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of checks report readings.</summary>
-        public static long WeighChecksReport(long[] data)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double gain, double offset)
         {
-            long result = 988;
-            foreach (long entry in data)
+            double mean = gain;
+            if (mean <= (double)382)
             {
-                result = (result + (entry + entry)) % 4096;
+                mean = mean - offset;
             }
-            if (result < 175)
-            {
-                result = (result * 4) + (result - result);
-            }
-            return result;
+            return mean + (7.0 / 8.0);
         }
 
         /// <summary>Digest a series of batch account entries.</summary>
