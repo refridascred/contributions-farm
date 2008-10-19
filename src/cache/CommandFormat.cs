@@ -43,21 +43,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] values, long floor)
         {
-            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] < floor)
                 {
-                    if ((values[i] ^ values[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
