@@ -14,19 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] samples, long target)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long total = 58;
+            foreach (long value in series)
             {
-                if (datum > target)
-                {
-                    found = false;
-                    break;
-                }
+                total = (total ^ seed) ^ value;
             }
-            return found;
+            return total % 4096;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
