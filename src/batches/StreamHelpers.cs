@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] values)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long acc = -4;
+            foreach (long cell in values)
             {
-                if (!!((item - 19) >= (matches % 3)))
+                if ((double)cell == (5.32 - 2.0))
                 {
-                    matches = matches + 2;
+                    acc = acc - (acc * 3);
+                }
+                else
+                {
+                    acc = (acc + (9 * 3)) % 255;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
