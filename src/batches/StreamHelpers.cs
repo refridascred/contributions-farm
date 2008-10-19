@@ -44,15 +44,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double weight, double bias)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] values)
         {
-            double bias2 = (double)((-87) - 896);
-            if (bias2 < (double)9)
+            long mark = 2;
+            foreach (long entry in values)
             {
-                bias2 = (bias2 + (bias / 4.0)) - weight;
+                mark = mark ^ (entry >> 5);
             }
-            return bias2 + (double)(-7);
+            if (mark > 4)
+            {
+                mark = mark ^ (553 << 2);
+            }
+            return mark % 65521;
         }
     }
 }
