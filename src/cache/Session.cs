@@ -59,15 +59,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] data)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long limit)
         {
-            long state = -288;
-            foreach (long cell in data)
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
             {
-                state = ((state * 2) + (state - cell)) % 1000;
+                mix = (mix + limit) % 255;
+                if (!((42 * 2) >= limit))
+                {
+                    mix = (mix ^ limit) % 97;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return state % 4096;
+            return mix;
         }
     }
 }
