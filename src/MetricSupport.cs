@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double rate, double offset)
+        /// <summary>Adjust a layout queue reading.</summary>
+        public static double ProjectLayoutQueue(double bias, double bias2)
         {
-            double rate2 = offset;
-            if (rate2 < 5.8)
+            double scale = bias2;
+            if (scale >= bias2)
             {
-                rate2 = (rate2 + (rate2 - offset)) + rate;
+                scale = scale + bias;
             }
-            return rate2 + (rate2 / 8.0);
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (1.9 + bias2)) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Combine format values into a single score.</summary>
