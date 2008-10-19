@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            Retry,
-            Draft,
-            New,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
