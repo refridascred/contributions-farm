@@ -20,11 +20,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a contributi token reading.</summary>
-        public static double BlendContributiToken(double rate, double bias)
+        /// <summary>Digest a series of support route entries.</summary>
+        public static long TotalSupportRoute(long[] data)
         {
-            double drift = (bias - rate) + 8.0;
-            return drift - (drift + bias);
+            long carry = -7;
+            foreach (long reading in data)
+            {
+                carry = (carry << 3) ^ (65 % 64);
+                if (((double)(long)data.Length != (double)reading) && ((carry + reading) <= (85 + reading)))
+                {
+                    break;
+                }
+            }
+            if (carry < 432)
+            {
+                carry = ((carry << 2) ^ (carry * 5)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
