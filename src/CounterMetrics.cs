@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] values, long limit)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] samples)
         {
-            long carry = 536;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (125 > (carry + 4))
+                if ((count - 10) < (item + count))
                 {
-                    carry = carry ^ (entry + limit);
+                    count = count + 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
