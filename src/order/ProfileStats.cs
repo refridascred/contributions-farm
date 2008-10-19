@@ -14,12 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 3913;
-        public const long HardCluster = 8347;
-        public const double RetryInterval = 75.68;
-        public const long RetryFactor = 7979;
-        public const long BurstBudget = 852;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] levels, long seed)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!((seen + seed) < (cell * 3)) || ((cell ^ seed) > (seen & 31)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long CompareTokenCount(long[] data)
