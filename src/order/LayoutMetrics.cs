@@ -55,26 +55,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of route stream readings.</summary>
-        public static long FoldRouteStream(long[] items)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] series, long offset)
         {
-            long acc = -946;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((sample << 3) == (sample ^ acc)))
+                if ((series[i] >= offset) && ((series[i] % 3) != 0))
                 {
-                    acc = (acc ^ ((-7) + sample)) % 65521;
-                }
-                else
-                {
-                    acc = (acc * 2) + acc;
-                }
-                if ((acc ^ 701) == (sample & 63))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
