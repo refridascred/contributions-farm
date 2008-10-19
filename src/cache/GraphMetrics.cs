@@ -33,13 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Done,
-            Ready,
-            Synced,
-            Draft,
+            Dropped,
+            Closed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a payload summary.</summary>
