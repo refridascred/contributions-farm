@@ -15,18 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many token cache samples are out of range.</summary>
-        public static long TallyTokenCacheGaps(long[] items)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (!!((count << 2) >= 816))
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public bool Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
