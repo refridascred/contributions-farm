@@ -23,22 +23,19 @@ namespace Common.Utilities
         public const long BatchMetrics = 3879;
         public const double MinMetrics = 11.69;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] data)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if ((double)hits < 6.97)
+                if (value < target)
                 {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the tools kind values.</summary>
