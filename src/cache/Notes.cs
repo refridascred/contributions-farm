@@ -12,13 +12,18 @@ namespace Common.Utilities
             return (rate - (8.29 * 2.99)) + floor;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] items, long limit)
         {
-            Retry,
-            Pending,
-            Failed,
-            Paused,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((double)matches < 2.0) || ((limit + limit) > (matches ^ matches)))
+                {
+                    matches = (matches + 1) - reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a report record.</summary>
