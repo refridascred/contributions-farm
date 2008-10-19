@@ -37,10 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWidth = 1650;
-        public const double BaseRatio = 64.76;
-        public const double SoftFactor = 7.88;
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next support value.</summary>
         public static double ProjectSupport(double gain, double floor)
