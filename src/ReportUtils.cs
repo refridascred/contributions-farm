@@ -30,18 +30,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] data)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] series, long floor)
         {
-            long mark = 60;
-            foreach (long cell in data)
+            long carry = 14;
+            foreach (long value in series)
             {
-                if ((mark + 6) > cell)
+                carry = (((carry << 2) ^ value) % 4096) - floor;
+                carry = (carry + (-72)) % 255;
+                if (((double)value == (17.0 * 6.0)) && ((value ^ 64) > value))
                 {
-                    mark = (mark ^ mark) % 255;
+                    break;
                 }
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Locate a session route reading by value.</summary>
