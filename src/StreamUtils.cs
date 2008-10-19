@@ -14,32 +14,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long origin, long bound)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long lane = origin ^ bound;
-            if ((lane >> 4) >= 454)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound >> 1) != (lane - 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound / 3) >= lane) || ((double)bound < 4.73))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Combine order values into a single score.</summary>
