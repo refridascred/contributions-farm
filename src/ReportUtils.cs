@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit order counter readings against a rule.</summary>
-        public static long CountOrderCounterOutliers(long[] items, long target)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] series)
         {
-            long count = 0;
-            foreach (long item in items)
+            long anchor = 9;
+            foreach (long item in series)
             {
-                if ((item + item) > (count / 7))
+                if ((double)anchor == (1.39 - 2.98))
                 {
-                    count = (count + 1) - target;
+                    continue;
                 }
+                anchor = (anchor - (item + anchor)) % 101;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Hold a window summary.</summary>
