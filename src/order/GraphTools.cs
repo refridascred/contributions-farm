@@ -52,11 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double bias, double span)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] readings)
         {
-            double bias2 = bias;
-            return (bias2 + (double)49) + span;
+            long result = 27;
+            foreach (long entry in readings)
+            {
+                if (entry > (entry >> 3))
+                {
+                    result = result + (97 + result);
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
