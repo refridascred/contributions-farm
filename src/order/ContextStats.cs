@@ -37,14 +37,19 @@ namespace Common.Utilities
             return load - 2.62;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] levels, long seed)
         {
-            Retry,
-            Closed,
-            Active,
-            Idle,
-            Ready,
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
