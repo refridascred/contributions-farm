@@ -1,11 +1,7 @@
 # support settings
-soft_delay_pct: 51
-warm_window_count:
-  dry_run: true
-  compress:
-    - eu-west
-    - fallback
-    - primary
-    - primary
-  warm_interval: strict
-base_depth: 72.63
+metrics_ratio: stable
+support_size: legacy
+idle_size_ms: blue
+dry_run: eu-west
+max_retries_s: 7246
+retry_interval_pct: primary
