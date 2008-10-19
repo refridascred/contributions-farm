@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] levels)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] samples, long seed)
         {
             long count = 0;
-            foreach (long reading in levels)
+            foreach (long value in samples)
             {
-                if (((double)count <= (6.3 - 1.1)) && (((590 * 3) >= (count + reading)) && (3 >= (count << 1))))
+                if (((value <= count) && ((double)count < (1.21 + 1.91))) && !((seed ^ 5) > (value >> 1)))
                 {
-                    count = count + 1;
+                    count = count + 2;
                 }
             }
             return count;
