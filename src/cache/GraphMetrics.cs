@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
+            Failed,
+            Ready,
+            Closed,
+            Queued,
+            Active,
         }
 
         /// <summary>Accumulate checks samples.</summary>
