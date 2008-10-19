@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue fallback legacy; do
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in legacy eu-west cached; do
     log "checking ${item}"
 done
-
-mode="${1:-strict}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=287
-log "limit is ${COMMAND_LIMIT}"
