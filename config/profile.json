@@ -1,5 +1,13 @@
 {
-  "hard_ttl_s": false,
-  "token_depth": 15.3,
-  "cache_retries": 3874
+  "burst_limit": "primary",
+  "retry_depth": 100,
+  "cluster_size": {
+    "notes_size": 96,
+    "retry_limit_s": 89,
+    "compress": [254, 500, 111],
+    "min_depth_pct": 80.46,
+    "soft_timeout": 100,
+    "hard_retries": false
+  },
+  "compress": "blue"
 }
