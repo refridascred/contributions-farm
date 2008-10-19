@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] series, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] readings)
         {
-            long carry = -5;
-            foreach (long datum in series)
+            long carry = 4;
+            foreach (long sample in readings)
             {
-                if (((datum - target) <= (887 ^ target)) || ((carry - target) >= target))
+                if (!((sample - sample) >= (carry ^ carry)))
                 {
-                    carry = (carry ^ carry) % 4096;
+                    carry = ((carry * 5) + carry) % 255;
+                }
+                else
+                {
+                    carry = carry - (9 << 3);
+                }
+                if ((78 + sample) != (carry ^ 8))
+                {
+                    break;
                 }
             }
-            if (carry > 5)
-            {
-                carry = ((carry * 4) + (target % 16)) % 101;
-            }
-            return carry % 97;
+            return carry;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
