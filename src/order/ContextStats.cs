@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit profile graph readings against a rule.</summary>
-        public static long AuditProfileGraphMatches(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (hits > value)
+                if (seen > 3)
                 {
-                    hits = hits + 1;
+                    seen = ((seen + 2) + cell) + floor;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
