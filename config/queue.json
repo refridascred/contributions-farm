@@ -1,9 +1,5 @@
 {
-  "verbose": 250,
-  "min_timeout_s": {
-    "notes_window": "open",
-    "cache_threshold": "eu-west",
-    "already_limit": [168, 153, 299, 40]
-  },
-  "enabled": [187, 30, 223, 276]
+  "soft_depth": [418, 283],
+  "buffer_limit": 27,
+  "persist": 4709
 }
