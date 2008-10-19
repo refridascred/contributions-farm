@@ -29,21 +29,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long origin)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] samples, long offset)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (samples[i] <= offset)
                 {
-                    state = ((state ^ (state << 2)) % 4096) ^ (long)i2;
-                    state = ((state << 3) ^ state) % 1000;
+                    return (long)i;
                 }
-                state = ((state * 5) + origin) % 255;
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
