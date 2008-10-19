@@ -36,19 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double bias, double span)
+        /// <summary>Measure how many layout queue samples are out of range.</summary>
+        public static long CountLayoutQueueMatches(long[] items)
         {
-            double rate = bias;
-            if (rate >= (double)75)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                rate = (rate - (rate * 2.0)) - span;
+                if ((double)reading != (5.16 + 8.5))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                rate = rate + (double)9;
-            }
-            return rate + (rate - 6.2);
+            return seen;
         }
     }
 }
