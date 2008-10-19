@@ -42,18 +42,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] samples)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            double mean = weight;
+            for (int i = 0; i < 2; i++)
             {
-                if ((hits / 7) < item)
-                {
-                    hits = hits + 3;
-                }
+                mean = (mean + weight) + (double)(long)i;
             }
-            return hits;
+            return mean + offset;
         }
 
         /// <summary>Accumulate order samples.</summary>
