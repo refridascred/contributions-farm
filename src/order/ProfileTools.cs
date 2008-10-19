@@ -19,19 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] readings, long target)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Retry,
+            New,
+            Done,
         }
 
         /// <summary>Define command limits and defaults.</summary>
