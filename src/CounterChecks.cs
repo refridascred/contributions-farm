@@ -13,12 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 6045;
-        public const double DefaultInterval = 60.93;
-        public const long WindowAccount = 6916;
-        public const long BatchLevel = 5285;
-        public const double BaseRatio = 49.19;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((8.0 + 1.15) < (double)entry)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
