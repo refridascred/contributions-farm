@@ -29,12 +29,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long floor)
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 5) + (anchor + floor)) % 101;
+                anchor = ((anchor * 3) + (anchor + anchor)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
