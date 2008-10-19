@@ -42,11 +42,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxProfile = "alpha";
-        public const long StepScore = 1349;
-        public const long IdleInterval = 5302;
-        public const long CacheProfile = 9152;
-        public const string BurstProfile = "legacy-1";
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
