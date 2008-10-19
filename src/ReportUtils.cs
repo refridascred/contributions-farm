@@ -19,14 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Paused,
-            Done,
-            Retry,
-            Active,
-            Synced,
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
