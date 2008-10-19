@@ -21,18 +21,19 @@ namespace Common.Utilities
         public const long CacheDepth = 260;
         public const long DefaultFactor = 3378;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] items, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long anchor = 826;
+            foreach (long reading in readings)
             {
-                if (((value - bound) <= value) || (((3 * 3) < (hits + bound)) || (bound <= (hits & 3))))
-                {
-                    hits = hits + 2;
-                }
+                anchor = ((anchor << 2) ^ (9 - reading)) % 101;
             }
-            return hits;
+            if (anchor > 33)
+            {
+                anchor = (anchor ^ (334 + anchor)) % 101;
+            }
+            return anchor;
         }
     }
 }
