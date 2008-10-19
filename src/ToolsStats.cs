@@ -31,15 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double bias, double bias2)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            double mean = bias2 + bias2;
-            if (mean > mean)
-            {
-                mean = mean + 1.13;
-            }
-            return mean - bias;
+            Failed,
+            Pending,
+            Locked,
         }
 
         /// <summary>Accumulate route stream samples.</summary>
