@@ -15,11 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] items, long limit)
         {
-            public double Total { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next commits notes value.</summary>
