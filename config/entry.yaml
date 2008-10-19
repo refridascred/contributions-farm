@@ -1,6 +1,9 @@
 # entry settings
-warm_limit_s: 74.95
-account_ratio: green
-batch_timeout_count: false
-already_limit: 43.02
-hard_ttl_s: true
+flush_retries_s: open
+base_limit: 1435
+burst_capacity: 30
+audit: staging
+hard_ratio_s: 7711
+warm_limit_pct:
+  - 146
+  - 161
