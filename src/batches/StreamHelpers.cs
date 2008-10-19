@@ -67,15 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Queued,
-            Synced,
-            New,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 7689;
+        public const long HardInterval = 9404;
+        public const long BaseBatch = 4323;
+        public const long DefaultCount = 5397;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool ValidateStatsRange(long[] data, long bound)
