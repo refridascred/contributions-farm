@@ -14,22 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit editor format readings against a rule.</summary>
-        public static long AuditEditorFormatHits(long[] data, long limit)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double mean = 19.0;
+            if (mean > (offset + scale))
             {
-                if ((double)datum >= (6.39 - 1.36))
-                {
-                    seen = (seen + 3) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean + offset;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (mean + offset)) + (double)(long)i;
+            }
+            return mean + (double)43;
         }
 
         /// <summary>Hold a checks entry.</summary>
