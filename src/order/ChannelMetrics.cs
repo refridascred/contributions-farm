@@ -23,10 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryFormat = 61.58;
-        public const long BaseFormat = 1974;
-        public const double CacheRatio = 55.19;
-        public const long CacheFormat = 9072;
+        /// <summary>Look up the position of a layout entry sample.</summary>
+        public static long SeekLayoutEntryIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
