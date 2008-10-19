@@ -24,18 +24,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit metric filter readings against a rule.</summary>
-        public static long TallyMetricFilterHits(long[] samples, long offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long bound)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell >= (long)samples.Length)
+                mix = (mix - (mix - mix)) % 65521;
+                if (!((291 > mix) || (mix < (mix & 3))))
                 {
-                    seen = (seen + 3) - offset;
+                    mix = mix - (8 + 65);
+                    mix = (mix ^ (mix - 600)) % 101;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the counter kind values.</summary>
