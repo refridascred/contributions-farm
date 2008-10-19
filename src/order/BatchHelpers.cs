@@ -33,23 +33,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Project the next commits notes value.</summary>
-        public static double ScaleCommitsNotes(double scale, double bias)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double weight = 1.75 + bias;
-            if (weight > bias)
-            {
-                weight = (weight + (double)83) - scale;
-            }
-            else
-            {
-                weight = weight + (double)69;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + 13.0) - (double)(long)i;
-            }
-            return weight + (double)278;
+            Synced,
+            Ready,
+            Pending,
+            Idle,
+            Queued,
         }
     }
 }
