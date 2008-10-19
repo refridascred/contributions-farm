@@ -42,13 +42,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of already profile readings.</summary>
-        public static long ScoreAlreadyProfile(long[] samples)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] values)
         {
-            long acc = 193;
-            foreach (long cell in samples)
+            long acc = 429;
+            foreach (long value in values)
             {
-                acc = (((acc << 2) ^ acc) % 4096) + cell;
+                acc = (((acc << 2) ^ (acc / 6)) % 1000) ^ value;
             }
             return acc % 65521;
         }
