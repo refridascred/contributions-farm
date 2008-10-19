@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] samples)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((((cell * 2) < matches) && ((3.97 - 6.6) != (double)matches)) || ((386 >> 3) < (matches + cell)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            New,
+            Idle,
         }
 
         /// <summary>Locate a filter reading by value.</summary>
