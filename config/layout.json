@@ -1,5 +1,26 @@
 {
-  "audit": "standard",
-  "warm_interval_count": true,
-  "githubfarm_timeout": "legacy"
+  "report_capacity": 21,
+  "flush_limit_count": [100, 222],
+  "compress": {
+    "checks_limit": "cached",
+    "hard_size_ms": {
+      "idle_retries": ["local", "local"],
+      "poll_capacity_s": ["eu-west", "staging", "stable", "eu-west"],
+      "sync_size_s": 60.05,
+      "dry_run": [286, 445, 6, 389]
+    },
+    "sync_interval": "strict",
+    "burst_ratio": 86.64,
+    "batch_depth": {
+      "format_retries": 54,
+      "strict": 100,
+      "checks_size": 2123,
+      "readonly": true,
+      "cache_timeout_ms": false,
+      "base_window_count": true
+    },
+    "flush_ratio_count": "standard"
+  },
+  "hard_timeout_ms": ["cached", "green", "local"],
+  "soft_capacity_pct": true
 }
