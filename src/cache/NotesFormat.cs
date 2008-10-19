@@ -28,12 +28,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a buffer payload sample.</summary>
-        public static long SeekBufferPayloadIndex(long[] items, long limit)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] values, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] > limit)
+                if ((values[i] >= target) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
