@@ -49,11 +49,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            public bool Rank { get; set; }
-            public bool Level { get; set; }
+            long acc = 60;
+            foreach (long value in levels)
+            {
+                if ((double)value > (11.0 / 5.0))
+                {
+                    acc = ((acc << 3) ^ acc) % 255;
+                }
+            }
+            return acc % 1000;
         }
     }
 }
