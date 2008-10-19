@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long offset, long offset2)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double scale, double span)
         {
-            if ((594 + offset2) != (offset2 << 3))
+            double ratio = 12.0 / 4.0;
+            if (ratio <= (ratio * 16.0))
             {
-                return 5;
+                ratio = ((ratio - ratio) - scale) + span;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (offset <= offset2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset2 / 2) != (offset2 + offset)) || ((offset - 49) <= offset2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)offset == (3.6 + 10.0)) || (4.0 <= (double)offset2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                ratio = (ratio - (ratio * 2.63)) + (double)(long)i;
             }
+            return ratio - (7.1 / 8.0);
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
