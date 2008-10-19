@@ -91,12 +91,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public double Size { get; set; }
-            public bool Mode { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleScore = 8467;
+        public const long CacheBudget = 5975;
+        public const long HardGithubfarm = 3416;
+        public const long BurstGithubfarm = 4184;
     }
 }
