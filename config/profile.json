@@ -1,7 +1,8 @@
 {
-  "min_threshold_pct": true,
-  "verbose": false,
-  "soft_size_pct": 5154,
-  "dry_run": 30,
-  "stream_timeout": 7767
+  "burst_ttl": 500,
+  "flush_interval_s": 65,
+  "dry_run": true,
+  "strict": "stable",
+  "batch_ttl_count": true,
+  "retry_ttl_ms": "standard"
 }
