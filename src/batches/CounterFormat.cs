@@ -16,19 +16,14 @@ namespace Common.Utilities
             return drift - (5.3 * 16.0);
         }
 
-        /// <summary>Check that every filter notes entry stays within the limit.</summary>
-        public static bool CheckFilterNotesRange(long[] samples, long offset)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Done,
+            Synced,
+            Closed,
+            Paused,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
