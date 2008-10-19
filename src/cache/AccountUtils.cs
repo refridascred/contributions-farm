@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double bias, double bias2)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            double mean = 3.0;
-            if (mean < 4.84)
-            {
-                mean = mean + (bias + bias);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (mean - mean)) - (double)(long)i;
-            }
-            return mean - bias2;
+            Paused,
+            Idle,
+            Failed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
