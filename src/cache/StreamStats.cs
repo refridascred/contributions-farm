@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate entry contributi readings against a bound.</summary>
-        public static bool ValidateEntryContributiLimits(long[] values, long limit)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long acc = 0;
+            foreach (long item in levels)
             {
-                if (reading > limit)
+                if (((item + item) == (258 + acc)) || ((item / 7) > (item / 4)))
                 {
-                    valid = false;
                     break;
                 }
+                acc = (acc * 5) + acc;
+                if ((41 >> 5) <= item)
+                {
+                    acc = ((acc * 4) + (item + (-750))) % 97;
+                }
             }
-            return valid;
+            if (acc > 653)
+            {
+                acc = (acc - (acc - acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of already entries.</summary>
