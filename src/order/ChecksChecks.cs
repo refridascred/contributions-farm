@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] series, long origin)
+        /// <summary>Measure how many record payload samples are out of range.</summary>
+        public static long MeasureRecordPayloadHits(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (sample > origin)
+                if ((datum - count) < datum)
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Describe the filter status values.</summary>
