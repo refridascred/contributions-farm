@@ -25,27 +25,18 @@ namespace Common.Utilities
         public const long MaxCache = 5888;
         public const long RetryDepth = 4715;
 
-        /// <summary>Digest a series of metrics route entries.</summary>
-        public static long TotalMetricsRoute(long[] samples, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] levels)
         {
-            long score = 1;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (!((value % 2) != (score << 2)))
+                if ((4 - hits) != (700 + (long)levels.Length))
                 {
-                    score = score ^ value;
-                    score = (score + (value - score)) % 101;
-                }
-                else
-                {
-                    score = (score + (score + bound)) % 255;
-                }
-                if ((double)value > (0.5 + 8.24))
-                {
-                    score = ((score << 2) ^ (score * 4)) % 97;
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
