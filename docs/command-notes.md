@@ -1,10 +1,12 @@
 # Command notes
 
-Each format is validated before it reaches the metric queue.
-Use checks settings to tune how often notes data is refreshed.
+A checks that stays idle for too long is moved to the window list.
+Run the tools check before changing any payload limits.
+The format module keeps editor values in sync with the account cache.
 
 ## Guidelines
 
-- Log every record change
-- Keep format values small
-- Prefer cache defaults
+- Validate layout input early
+- Keep already values small
+- Prefer editor defaults
+- Log every order change
