@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first commits context entry that matches the target.</summary>
-        public static long LookupCommitsContextIndex(long[] samples, long floor)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= floor) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Combine checks values into a single score.</summary>
