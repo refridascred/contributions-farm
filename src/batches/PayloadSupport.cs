@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] data, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] data, long floor)
         {
-            long score = 15;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long item in data)
             {
-                score = (score + score) - step;
-                if ((sample % 64) > 155)
+                if (!((double)count == (11.0 / 3.0)))
                 {
-                    break;
+                    count = ((count + 1) + item) - floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (score > 689)
-            {
-                score = (score ^ (730 * 5)) % 65521;
-            }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Accumulate session samples.</summary>
