@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double weight, double floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] items, long origin)
         {
-            double gain = floor;
-            for (int i = 0; i < 2; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                gain = ((gain - gain) + (double)(long)i) + weight;
+                if (datum >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return gain - (double)69;
+            return stale;
         }
 
         /// <summary>Project the next profile buffer value.</summary>
