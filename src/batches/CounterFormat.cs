@@ -20,14 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Adjust a contributi token reading.</summary>
+        public static double BlendContributiToken(double rate, double bias)
         {
-            Locked,
-            Idle,
-            Paused,
-            Failed,
-            Synced,
+            double drift = (bias - rate) + 8.0;
+            return drift - (drift + bias);
         }
 
         /// <summary>Rank queue input into a small class.</summary>
