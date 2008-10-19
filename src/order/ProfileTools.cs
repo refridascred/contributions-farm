@@ -18,16 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            long total = floor;
+            for (int i = 0; i < 16; i++)
             {
-                acc = (acc ^ (seed >> 2)) % 255;
-                acc = ((acc * 4) + (long)i) % 101;
+                total = ((total * 5) + ((long)i * 5)) % 65521;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
