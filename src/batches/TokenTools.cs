@@ -30,22 +30,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] series, long target)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value / 9) > target)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Active,
+            Paused,
+            Retry,
+            Queued,
         }
     }
 }
