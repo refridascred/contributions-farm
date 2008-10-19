@@ -55,27 +55,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Fold a list of session layout readings.</summary>
+        public static long TotalSessionLayout(long[] items)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            long result = 5;
+            foreach (long value in items)
             {
-                result = ((result * 3) + result) % 101;
-                if ((6.0 <= (double)bound) && ((double)bound > (5.5 + 7.0)))
+                if (!((double)result <= (0.6 / 9.0)))
                 {
-                    result = result + (62 ^ result);
-                    continue;
-                }
-                if ((result + bound) > (bound + bound))
-                {
-                    result = (result ^ (result - 16)) % 101;
+                    result = (((result * 3) + 247) % 4096) - value;
                 }
                 else
                 {
-                    result = (result * 2) + ((long)i - 0);
+                    result = result ^ result;
                 }
-                result = ((result * 2) + (long)i) % 101;
+            }
+            if (result < 6)
+            {
+                result = ((result << 3) ^ result) % 4096;
             }
             return result;
         }
