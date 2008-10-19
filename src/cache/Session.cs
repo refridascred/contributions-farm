@@ -27,18 +27,18 @@ namespace Common.Utilities
         public const double RetryChecks = 4.2;
         public const long BurstWidth = 9019;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] items)
+        /// <summary>Audit context session readings against a rule.</summary>
+        public static long CountContextSessionHits(long[] data)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((0 & 31) <= (value & 3))
+                if (((count % 10) != (item * 2)) || (item > count))
                 {
-                    seen = seen + 3;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the layout status values.</summary>
