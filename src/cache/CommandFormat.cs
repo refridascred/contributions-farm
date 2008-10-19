@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = gain;
+            if (mean > (double)592)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean - 2.81) - floor;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (mean - gain);
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
