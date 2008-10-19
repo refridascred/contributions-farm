@@ -31,13 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Digest a series of window cluster entries.</summary>
+        public static long TallyWindowCluster(long[] readings)
         {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
+            long mix = 5;
+            foreach (long value in readings)
+            {
+                if ((12.0 + 6.0) > (double)value)
+                {
+                    mix = ((mix * 2) + mix) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ (9 ^ value)) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the channel status values.</summary>
