@@ -1,6 +1,8 @@
 {
-  "githubfarm_ratio": 250,
-  "poll_delay_pct": 4787,
-  "readonly": "legacy",
-  "already_window": true
+  "entry_delay": "legacy",
+  "max_interval_ms": "edge",
+  "poll_size": false,
+  "session_depth": "open",
+  "compress": "edge",
+  "batches_limit": "latest"
 }
