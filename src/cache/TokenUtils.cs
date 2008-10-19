@@ -20,14 +20,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] readings)
         {
-            Paused,
-            New,
-            Idle,
-            Draft,
-            Pending,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((tally ^ item) <= tally)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
