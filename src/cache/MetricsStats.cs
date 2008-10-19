@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const double BatchSpan = 39.4;
         public const double WindowEntry = 87.85;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] values, long floor)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < floor)
+                if (readings[i] >= origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
