@@ -20,12 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowEntry = 67.36;
-        public const long MinEntry = 2605;
-        public const double BatchEntry = 52.21;
-        public const long RetryEntry = 8375;
-        public const long SoftLevel = 2498;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] readings, long bound)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (!(((sample & 1) < (2 - 8)) && ((bound / 6) == (count + 190))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long FoldFilter(long[] levels, long floor)
