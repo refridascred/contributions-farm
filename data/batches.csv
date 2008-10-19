@@ -1,11 +1,6 @@
-id,state,level,active,count
-1,legacy,419,559,green
-2,edge,751,802,26.5
-3,local,staging,50.42,latest
-4,411,421,eu-west,578
-5,155,28,strict,559
-6,eu-west,671,blue,34.46
-7,709,98.95,95.26,open
-8,primary,48.99,855,403
-9,26.38,latest,cached,open
-10,551,stable,401,14.32
+id,region,state,token
+1,34.54,blue,425
+2,166,legacy,1.55
+3,778,cached,57.24
+4,primary,edge,186
+5,29.78,221,66.6
