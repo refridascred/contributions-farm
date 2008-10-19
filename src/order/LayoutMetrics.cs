@@ -33,26 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] samples, long origin)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] series)
         {
-            long sum = -912;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)sum < (2.2 / 7.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum << 2) ^ origin) - cell;
-                }
-                else
-                {
-                    sum = (sum * 3) + (9 & 7);
+                    if ((series[i] ^ series[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum < 508)
-            {
-                sum = ((sum << 3) ^ sum) % 101;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the checks mode values.</summary>
