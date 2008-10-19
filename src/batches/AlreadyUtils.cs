@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardFactor = 91.18;
+        public const string WindowPayload = "fallback-v2";
+        public const long LimitFactor = 9906;
+        public const string IdlePayload = "fallback-edge";
+        public const string MaxPayload = "fallback-1";
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
