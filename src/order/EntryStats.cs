@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] samples, long limit)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((16.0 + 4.0) < (double)count)
-                {
-                    count = ((count + 1) ^ entry) - limit;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
+            public double Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
