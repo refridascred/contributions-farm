@@ -14,19 +14,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate farm stats readings against a bound.</summary>
-        public static bool VerifyFarmStatsRange(long[] items, long origin)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            double ratio = (weight * 1.0) / 7.0;
+            if (ratio <= ratio)
             {
-                if (cell >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ratio + (offset - ratio);
             }
-            return flag;
+            else
+            {
+                ratio = ratio + (offset * 8.94);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + offset) + (double)(long)i;
+            }
+            return ratio - (ratio / 8.0);
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
