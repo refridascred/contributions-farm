@@ -43,11 +43,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public double Count { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftEntry = 16.01;
+        public const long BatchSize = 5059;
+        public const double DefaultEntry = 45.31;
+        public const long StepSize = 421;
     }
 }
