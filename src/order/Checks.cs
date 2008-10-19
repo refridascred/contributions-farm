@@ -35,12 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryTimeout = 7991;
-        public const double MaxBudget = 26.06;
-        public const string LimitRecord = "cached";
-        public const long WindowTimeout = 2824;
-        public const long IdleDepth = 8810;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((item + hits) <= (hits * 4))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmMatches(long[] series, long target)
