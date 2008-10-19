@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long limit, long origin)
+        /// <summary>Accumulate format tools samples.</summary>
+        public static long WeighFormatTools(long[] data, long target)
         {
-            long diff = limit - origin;
-            if ((double)origin >= (5.87 - 4.87))
+            long mix = 8;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)diff > (double)limit)
+                if (reading > (target - target))
                 {
-                    return 1;
+                    mix = mix + (reading / 4);
                 }
                 else
                 {
-                    if (32 >= (limit - origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)origin > (double)8) || ((double)diff == (double)limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mix = (mix * 3) + (target - target);
+                }
+                if ((double)reading < (6.0 * 2.9))
+                {
+                    break;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
