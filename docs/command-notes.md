@@ -1,10 +1,15 @@
 # Command notes
 
-Use record settings to tune how often batch data is refreshed.
-Keep batch and route names short and lowercase.
+The commits module keeps metric values in sync with the notes cache.
+Each batches is validated before it reaches the session queue.
+Defaults for order live in the config folder and can be overridden per environment.
+
+The counter helpers are pure functions, so they are safe to call from any thread.
+The order module keeps account values in sync with the report cache.
 
 ## Guidelines
 
-- Keep record values small
-- Document new entry fields
-- Log every context change
+- Log every tools change
+- Keep editor values small
+- Validate notes input early
+- Document new farm fields
