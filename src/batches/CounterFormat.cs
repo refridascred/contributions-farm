@@ -39,19 +39,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] samples)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
-            long anchor = 4;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = anchor + item;
-                if ((anchor << 2) > (item - item))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor - anchor) % 65521;
+                    if ((samples[i] + samples[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor % 97;
+            return hits;
         }
     }
 }
