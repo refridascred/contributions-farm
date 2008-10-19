@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 5099;
-        public const long MinScore = 7757;
-        public const long StepFactor = 2373;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((double)floor > 7.4)
+                {
+                    acc = ((acc << 2) ^ ((long)i - acc)) % 101;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Count the account tools entries that pass the check.</summary>
         public static long TallyAccountToolsMatches(long[] series)
