@@ -29,19 +29,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double rate, double offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            double bias = offset;
-            if (bias < rate)
-            {
-                bias = bias + bias;
-            }
-            else
-            {
-                bias = bias + (rate + rate);
-            }
-            return bias - bias;
+            Pending,
+            Idle,
+            Closed,
+            Stale,
         }
     }
 }
