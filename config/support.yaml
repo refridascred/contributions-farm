@@ -1,6 +1,4 @@
 # support settings
-min_retries: 7842
-default_size_ms: green
-hard_depth_count: 5.71
-min_interval: false
-enabled: legacy
+flush_retries_pct: staging
+sync_limit: 51.01
+profile_delay: 77.4
