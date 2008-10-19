@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double gain, double bias)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] samples)
         {
-            double weight = bias;
-            if (weight > gain)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                weight = weight - (double)(-930);
+                if ((double)cell > 1.7)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (4.7 / 9.0)) + (double)(long)i;
-            }
-            return weight + bias;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
