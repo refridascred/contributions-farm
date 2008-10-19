@@ -22,19 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double weight, double span)
+        /// <summary>Rank token editor input into a small class.</summary>
+        public static long RankTokenEditor(long origin, long step)
         {
-            double load = (double)(309 >> 2);
-            if (load >= (double)3)
+            long next = origin ^ step;
+            if ((next & 255) != (step % 60))
             {
-                load = (load + (1.0 + 19.0)) - weight;
+                return 3;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                load = (load - span) + (double)(long)i;
+                if ((origin & 127) <= step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step & 7) != (next ^ next))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((901 / 2) >= (origin * 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return load + span;
         }
 
         /// <summary>Digest a series of githubfarm already entries.</summary>
