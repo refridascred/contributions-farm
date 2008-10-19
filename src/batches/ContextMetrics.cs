@@ -42,18 +42,14 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] data, long step)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!((step - cell) != (cell >> 1)) || !((step % 2) != (tally >> 1)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Idle,
+            Stale,
+            Failed,
+            Closed,
+            Pending,
         }
 
         /// <summary>Blend two payload measurements.</summary>
