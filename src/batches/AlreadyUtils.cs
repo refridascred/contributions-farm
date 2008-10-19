@@ -34,12 +34,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] levels)
         {
-            Closed,
-            Locked,
-            Active,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((7.0 <= (double)sample) && (count >= (sample + sample)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
