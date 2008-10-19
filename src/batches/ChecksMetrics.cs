@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ratio2 - (double)37;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] values)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] series)
         {
-            long state = 3;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((double)state > (double)sample)
+                if ((item & 7) == (item ^ item))
                 {
-                    state = (state ^ (sample + 430)) % 97;
+                    hits = hits + 2;
                 }
             }
-            if (state < 30)
-            {
-                state = ((state * 4) + ((long)values.Length << 1)) % 65521;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the profile kind values.</summary>
