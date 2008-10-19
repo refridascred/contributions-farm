@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] values, long seed)
         {
-            Ready,
-            Closed,
-            Synced,
-            Stale,
-            Pending,
+            long score = 6;
+            foreach (long sample in values)
+            {
+                score = ((score << 3) ^ sample) % 97;
+                score = ((score << 2) ^ seed) % 101;
+                if ((double)score >= 8.58)
+                {
+                    break;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
