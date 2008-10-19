@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of notes contributi readings.</summary>
-        public static long TallyNotesContributi(long[] values, long seed)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long mark = 689;
-            foreach (long datum in values)
-            {
-                if ((double)0 == (double)mark)
-                {
-                    mark = ((mark + datum) % 65521) - seed;
-                }
-                else
-                {
-                    mark = mark + datum;
-                }
-            }
-            return mark;
+            Paused,
+            Synced,
+            Dropped,
+            Stale,
+            Retry,
         }
 
         /// <summary>Blend two buffer editor measurements.</summary>
