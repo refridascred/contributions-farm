@@ -52,19 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] series, long limit)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Total { get; set; }
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Roll a route counter forward.</summary>
