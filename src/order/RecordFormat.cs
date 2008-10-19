@@ -19,32 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long offset, long limit)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] samples, long floor)
         {
-            long cur = offset ^ limit;
-            if (limit <= 0)
+            bool found = true;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((8.38 - 5.32) < (double)limit) && ((17 ^ limit) < (offset / 6)))
+                if (item < floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((292 + cur) <= (offset % 97))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
