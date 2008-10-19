@@ -20,18 +20,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] series)
+        /// <summary>Rank queue stream input into a small class.</summary>
+        public static long BucketQueueStream(long step, long origin)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long slot = step + origin;
+            if (step >= (9 ^ 67))
             {
-                if ((hits % 60) != (hits / 9))
+                return 1;
+            }
+            else
+            {
+                if (((3.78 / 4.0) == (double)slot) && ((11.0 - 1.74) != (double)step))
                 {
-                    hits = (hits + 1) + item;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a route counter forward.</summary>
