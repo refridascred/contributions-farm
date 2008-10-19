@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] data, long target)
+        /// <summary>Digest a series of record stream entries.</summary>
+        public static long ScoreRecordStream(long[] items)
         {
-            long total = 98;
-            foreach (long reading in data)
+            long sum = 0;
+            foreach (long reading in items)
             {
-                total = (total ^ (target / 8)) ^ reading;
+                sum = (sum << 3) ^ reading;
             }
-            return total % 97;
+            if (sum > (-340))
+            {
+                sum = ((sum * 2) + (sum + (long)items.Length)) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the layout level values.</summary>
