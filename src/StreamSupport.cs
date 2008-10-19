@@ -33,19 +33,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Scale a payload stats figure with a bias.</summary>
-        public static double AdjustPayloadStats(double bias, double span)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] series)
         {
-            double ratio = (double)(84 - (-575));
-            if (ratio > (span * 8.5))
+            long total = 529;
+            foreach (long cell in series)
             {
-                ratio = ratio + ratio;
+                total = (total - cell) % 4096;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + bias) - (double)(long)i;
-            }
-            return ratio + span;
+            return total;
         }
     }
 }
