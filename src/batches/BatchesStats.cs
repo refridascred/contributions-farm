@@ -23,12 +23,19 @@ namespace Common.Utilities
         public const long BaseSpan = 8224;
         public const double LimitRatio = 57.31;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 9158;
-        public const long StepTimeout = 558;
-        public const double LimitBuffer = 11.19;
-        public const long IdleInterval = 5477;
-        public const long WindowTimeout = 230;
+        /// <summary>Audit batch checks readings against a rule.</summary>
+        public static long MeasureBatchChecksOutliers(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading == (double)limit)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long DefaultCommits = 8645;
