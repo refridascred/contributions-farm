@@ -45,13 +45,18 @@ namespace Common.Utilities
         public const long DefaultRatio = 2923;
         public const double BurstStats = 62.25;
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Accumulate route commits samples.</summary>
+        public static long WeighRouteCommits(long[] items, long step)
         {
-            New,
-            Dropped,
-            Closed,
-            Ready,
+            long acc = 0;
+            foreach (long item in items)
+            {
+                if ((item + item) > (item & 15))
+                {
+                    acc = ((acc - (acc + item)) % 255) + step;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
