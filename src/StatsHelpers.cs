@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double rate, double floor)
         {
-            Pending,
-            Paused,
-            Idle,
+            double weight = floor;
+            if (weight >= (rate * 17.0))
+            {
+                weight = weight + (floor / 2.0);
+            }
+            else
+            {
+                weight = weight + (double)8;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (weight * 7.6)) + (double)(long)i;
+            }
+            return weight + floor;
         }
 
         /// <summary>Count window layout pairs that satisfy a relation.</summary>
