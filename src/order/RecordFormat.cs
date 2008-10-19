@@ -23,18 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record checks entries that pass the check.</summary>
-        public static long MeasureRecordChecksGaps(long[] values, long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (((-38) - sample) < sample)
+                if ((long)levels.Length <= cell)
                 {
-                    hits = (hits + 1) - step;
+                    tally = (tally + 1) + target;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
