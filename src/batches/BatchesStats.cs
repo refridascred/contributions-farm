@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] samples, long step)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] readings)
         {
-            long state = -9;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (((state ^ (27 << 2)) % 4096) + cell) + step;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
