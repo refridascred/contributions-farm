@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchDepth = 7605;
-        public const double CacheWidth = 25.37;
-        public const string LimitReport = "latest";
-        public const long WindowRatio = 6376;
-        public const string BatchInterval = "cached-v2";
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long offset, long target)
+        {
+            if (target > ((-69) >> 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset == (9.4 / 2.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowMatches(long[] items, long origin)
