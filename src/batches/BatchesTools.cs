@@ -24,17 +24,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxInterval = 7.57;
+        public const long LimitRatio = 2663;
+        public const long BurstBatch = 7847;
     }
 }
