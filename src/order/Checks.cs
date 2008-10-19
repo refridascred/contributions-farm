@@ -60,10 +60,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 7877;
-        public const long WindowSpan = 5407;
-        public const long IdleInterval = 8134;
-        public const long LimitBuffer = 5681;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = (total ^ 250) ^ (long)i2;
+                    total = (total + (step & 15)) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
