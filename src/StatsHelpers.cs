@@ -53,19 +53,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] data, long seed)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double rate, double offset)
         {
-            bool found = true;
-            foreach (long datum in data)
+            double ratio = rate;
+            if (ratio > ratio)
             {
-                if (datum != seed)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio + (offset - 4.6);
             }
-            return found;
+            else
+            {
+                ratio = ratio + (double)0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + offset) + (double)(long)i;
+            }
+            return ratio + (rate - offset);
         }
 
         /// <summary>Compare every pair of contributi stats readings.</summary>
