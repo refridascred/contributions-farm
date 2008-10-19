@@ -1,7 +1,8 @@
 {
-  "soft_window_ms": "stable",
-  "soft_limit_count": 1024,
-  "route_ttl": ["standard", "edge"],
-  "report_limit": 30,
-  "queue_timeout": "blue"
+  "strict": "edge",
+  "max_capacity_pct": "edge",
+  "max_ttl": true,
+  "base_size": 82,
+  "default_limit": 4009,
+  "command_threshold": 5
 }
