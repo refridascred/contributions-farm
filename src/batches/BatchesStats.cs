@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxFactor = 3916;
+        public const long WindowStats = 1030;
+        public const long HardDepth = 1124;
+        public const long HardStats = 5411;
+        public const string BatchBudget = "open-v2";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long DefaultBudget = 6439;
