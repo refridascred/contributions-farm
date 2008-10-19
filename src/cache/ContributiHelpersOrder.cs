@@ -12,24 +12,11 @@ namespace Common.Utilities
         public const long WindowRatio = 6376;
         public const string BatchInterval = "cached-v2";
 
-        /// <summary>Grade a cache payload value against two limits.</summary>
-        public static long GradeCachePayload(long floor, long offset)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            if ((floor & 3) < (offset << 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(floor < (offset + floor)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
