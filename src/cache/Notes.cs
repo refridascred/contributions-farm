@@ -25,21 +25,17 @@ namespace Common.Utilities
         public const double CacheLevel = 95.58;
         public const double BaseRatio = 43.93;
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] readings)
+        /// <summary>Find the first contributi profile entry that matches the target.</summary>
+        public static long LocateContributiProfileIndex(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (values[i] == floor)
                 {
-                    if ((readings[i] ^ readings[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Grade a filter report value against two limits.</summary>
