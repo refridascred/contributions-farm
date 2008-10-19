@@ -34,23 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (((14.0 * 0.7) != (double)value) || ((tally / 8) <= tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "stable";
+        public const double IdleInterval = 71.5;
+        public const double SoftWidth = 17.71;
+        public const long MinSpan = 5918;
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long LocateCounterIndex(long[] readings, long origin)
