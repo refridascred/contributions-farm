@@ -43,26 +43,17 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Fold a list of session layout readings.</summary>
-        public static long TotalSessionLayout(long[] items)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] items, long bound)
         {
-            long result = 5;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)result <= (0.6 / 9.0)))
+                if (items[i] < bound)
                 {
-                    result = (((result * 3) + 247) % 4096) - value;
-                }
-                else
-                {
-                    result = result ^ result;
+                    return (long)i;
                 }
             }
-            if (result < 6)
-            {
-                result = ((result << 3) ^ result) % 4096;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Adjust a window reading.</summary>
