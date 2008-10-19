@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long offset, long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] samples, long step)
         {
-            long edge = offset - origin;
-            if ((offset % 10) <= (offset - offset))
+            long mix = 9;
+            foreach (long entry in samples)
             {
-                return 5;
+                mix = ((mix ^ (entry ^ entry)) % 101) + step;
             }
-            else
-            {
-                if (edge < (13 % 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((-9) * 4) == (270 - edge))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)offset > (5.1 / 9.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mix % 1000;
         }
 
         /// <summary>Digest a series of already batches entries.</summary>
