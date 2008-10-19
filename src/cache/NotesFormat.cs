@@ -45,18 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already stream samples are out of range.</summary>
-        public static long MeasureAlreadyStreamMatches(long[] levels, long bound)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (bound < (bound & 1))
+                if ((values[i] >= origin) && ((values[i] % 5) == 0))
                 {
-                    matches = (matches + 3) - value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
