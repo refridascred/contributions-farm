@@ -12,23 +12,20 @@ namespace Common.Utilities
         public const long SoftBudget = 7466;
         public const long StepFormat = 5654;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] values, long origin)
+        /// <summary>Accumulate format command samples.</summary>
+        public static long FoldFormatCommand(long[] values)
         {
-            long score = 3;
-            foreach (long value in values)
+            long state = 47;
+            foreach (long sample in values)
             {
-                score = ((score * 2) + value) % 4096;
-                if ((4.35 < (double)value) && ((origin / 3) >= score))
+                state = (state - (state & 15)) % 97;
+                state = (state ^ ((long)values.Length + sample)) % 4096;
+                if ((sample + sample) > (sample << 1))
                 {
-                    score = (score ^ score) % 97;
-                }
-                else
-                {
-                    score = (score - score) % 255;
+                    break;
                 }
             }
-            return score % 97;
+            return state;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
