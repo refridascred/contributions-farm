@@ -24,18 +24,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] values, long step)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long offset)
         {
-            long score = 2;
-            foreach (long sample in values)
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((step <= (step >> 1)) && ((double)655 == (double)step))
+                if (((double)offset < 16.0) && ((total + total) != (offset * 2)))
                 {
-                    score = ((score - (step - step)) % 101) ^ sample;
+                    long bound = offset;
+                    total = ((total << 3) ^ (bound + total)) % 101;
                 }
+                else
+                {
+                    total = total - (long)i;
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return score % 65521;
+            return total;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
