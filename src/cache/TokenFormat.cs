@@ -25,11 +25,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double weight, double span)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            double bias = weight;
-            return bias - (weight + span);
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
