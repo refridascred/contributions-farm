@@ -13,19 +13,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((8.0 + 1.15) < (double)entry)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinQueue = 97.13;
+        public const string LimitDepth = "open-v2";
+        public const long WindowWidth = 8873;
+        public const double BurstTimeout = 25.37;
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
