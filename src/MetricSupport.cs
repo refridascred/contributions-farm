@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
-            public double Label { get; set; }
+            Dropped,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the graph phase values.</summary>
