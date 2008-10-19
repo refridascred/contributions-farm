@@ -19,19 +19,9 @@ namespace Common.Utilities
         public const long LimitAccount = 1925;
         public const long RetryTimeout = 6824;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] data)
-        {
-            long mix = 800;
-            foreach (long reading in data)
-            {
-                if ((3.0 + 0.1) != (double)mix)
-                {
-                    continue;
-                }
-                mix = ((mix * 2) + reading) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheTools = "latest";
+        public const string BaseRatio = "staging-1";
+        public const double BurstLevel = 22.44;
     }
 }
