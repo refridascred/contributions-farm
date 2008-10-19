@@ -58,11 +58,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double rate, double bias)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long limit)
         {
-            double load = rate;
-            return (load - (rate + rate)) + bias;
+            long result = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((long)i > ((long)i / 4))
+                {
+                    result = ((result << 3) ^ ((long)i / 3)) % 1000;
+                    result = (result * 5) + ((long)i + result);
+                }
+                if ((result + 391) < (result + (long)i))
+                {
+                    result = result ^ result;
+                }
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Describe the tools mode values.</summary>
