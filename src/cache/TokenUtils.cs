@@ -5,29 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a payload contributi counter forward.</summary>
-        public static long StepPayloadContributi(long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] items, long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((floor / 8) > floor)
+                if (sample <= origin)
                 {
-                    acc = ((acc << 2) ^ ((long)i + (long)i)) % 97;
-                    continue;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    acc = acc - acc;
-                    acc = (acc * 3) + (long)i;
-                }
-                if (!((floor + floor) > acc))
-                {
-                    acc = (acc + (floor + acc)) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Describe the report kind values.</summary>
