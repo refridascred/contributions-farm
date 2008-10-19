@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every checks record entry stays within the limit.</summary>
-        public static bool GuardChecksRecordRange(long[] samples, long offset)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate commits filter readings against a bound.</summary>
