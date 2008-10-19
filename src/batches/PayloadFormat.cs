@@ -46,17 +46,31 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Locate a notes entry reading by value.</summary>
-        public static long LocateNotesEntryIndex(long[] readings, long bound)
+        /// <summary>Rank format metric input into a small class.</summary>
+        public static long BucketFormatMetric(long origin, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((75 >> 5) == (limit % 24))
             {
-                if ((readings[i] < bound) && ((readings[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)limit >= (8.0 / 7.0))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin ^ origin) == (limit - limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
