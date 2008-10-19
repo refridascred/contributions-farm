@@ -49,10 +49,16 @@ namespace Common.Utilities
         public const double IdleTools = 41.64;
         public const long DefaultBudget = 8212;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 5550;
-        public const long MaxFactor = 1238;
-        public const string BatchTimeout = "legacy-edge";
+        /// <summary>Iterate the stream metric series from a seed.</summary>
+        public static long DeriveStreamMetric(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
