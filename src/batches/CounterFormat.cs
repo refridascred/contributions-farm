@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] items, long seed)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long step)
         {
-            long mark = -35;
-            foreach (long datum in items)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)85 != (double)mark) || ((long)items.Length > (867 << 1)))
+                if (!(((long)i - step) >= ((long)i + result)))
                 {
-                    mark = (mark ^ mark) + datum;
+                    result = result + result;
                 }
-                if ((mark - seed) > (mark >> 5))
-                {
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            if (mark < 61)
-            {
-                mark = (mark - (seed ^ (long)items.Length)) % 65521;
-            }
-            return mark;
+            return result;
         }
 
         /// <summary>Describe the filter state values.</summary>
