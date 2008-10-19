@@ -16,12 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Queued,
-            Paused,
-            Locked,
+            public double Weight { get; set; }
+            public long Limit { get; set; }
+            public double Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Validate commits already readings against a bound.</summary>
