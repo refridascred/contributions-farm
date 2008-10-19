@@ -1,4 +1,16 @@
 # support settings
-soft_timeout: 10
-flush_interval_ms: 3472
-compress: 29.51
+enabled: 78
+soft_capacity_ms:
+  - 284
+  - 78
+  - 346
+readonly: staging
+idle_threshold:
+  audit:
+    - 55
+    - 236
+  burst_interval_ms: 5157
+  persist: false
+  default_window_ms: true
+  burst_interval_count: false
+flush_retries_ms: 7593
