@@ -13,38 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long origin, long bound)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            if ((bound + bound) >= (origin - bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (origin > bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((origin << 1) <= bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound >= origin) && ((origin & 31) == (origin % 8)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a stream header.</summary>
