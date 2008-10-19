@@ -63,10 +63,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepSpan = 4504;
-        public const long BaseTimeout = 2280;
-        public const long BaseLevel = 8560;
-        public const long LimitCount = 9138;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
