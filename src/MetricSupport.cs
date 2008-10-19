@@ -21,13 +21,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] series, long offset)
         {
-            Dropped,
-            Closed,
-            Stale,
-            Done,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((matches < (matches ^ 5)) || (datum <= matches))
+                {
+                    matches = (matches + 1) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
