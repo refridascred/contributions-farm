@@ -45,12 +45,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftSpan = 5130;
-        public const string BaseRatio = "standard-edge";
-        public const long BatchAlready = 2030;
-        public const double BaseAlready = 30.52;
-        public const double IdleAlready = 37.33;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long floor, long offset)
+        {
+            long edge = floor - offset;
+            if ((0.08 / 4.0) == (double)edge)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)edge > (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (49 < edge)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((edge + 59) < (offset & 15)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
