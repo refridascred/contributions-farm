@@ -98,11 +98,32 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftFarm = "primary-v2";
-        public const string BatchFarm = "open-1";
-        public const string SoftScore = "staging-1";
-        public const long IdleFarm = 101;
-        public const long WindowFarm = 456;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] values)
+        {
+            long total = 86;
+            foreach (long reading in values)
+            {
+                if (total >= (reading << 1))
+                {
+                    total = (total * 3) + (reading + 766);
+                    break;
+                }
+                else
+                {
+                    total = (total ^ 325) % 65521;
+                    total = (total + (reading + total)) % 101;
+                }
+                if ((reading + reading) >= (total + reading))
+                {
+                    total = total + (reading ^ total);
+                }
+                else
+                {
+                    total = (total ^ reading) % 255;
+                }
+            }
+            return total % 65521;
+        }
     }
 }
