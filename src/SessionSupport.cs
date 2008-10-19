@@ -19,20 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            long score = 264;
-            foreach (long sample in series)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((score ^ score) != (score - score)))
-                {
-                    score = (score ^ (score + 10)) ^ sample;
-                }
-            }
-            if (score < (-15))
-            {
-                score = (score << 2) ^ score;
+                score = ((score * 5) + (long)i) % 65521;
             }
             return score;
         }
