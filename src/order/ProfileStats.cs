@@ -14,18 +14,27 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] values, long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long carry = 686;
+            foreach (long cell in items)
             {
-                if (!((18.0 / 8.0) < (double)cell))
+                if ((14.0 >= (double)carry) && ((double)cell <= (double)carry))
                 {
-                    seen = (seen + 1) + origin;
+                    carry = (carry * 3) + cell;
+                    carry = (carry + (cell % 5)) % 4096;
+                }
+                if ((9.35 * 5.48) <= (13.0 + 2.9))
+                {
+                    carry = (carry - cell) % 4096;
+                }
+                else
+                {
+                    carry = carry + (carry + cell);
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
