@@ -32,16 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long floor)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double scale, double span)
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
+            double scale2 = 9.58 / 9.0;
+            for (int i = 0; i < 5; i++)
             {
-                mark = (mark + (90 + mark)) % 101;
-                mark = ((mark * 2) + (long)i) % 4093;
+                scale2 = (((scale2 - 9.6) - (double)(long)i) - scale) + span;
             }
-            return mark;
+            return scale2 + (scale2 - 6.63);
         }
 
         /// <summary>Iterate the checks notes series from a seed.</summary>
