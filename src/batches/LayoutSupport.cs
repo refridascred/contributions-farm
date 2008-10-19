@@ -67,31 +67,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] series)
+        /// <summary>Rank farm cache input into a small class.</summary>
+        public static long ClassifyFarmCache(long seed, long floor)
         {
-            long total = 3;
-            foreach (long sample in series)
+            if ((double)seed < (2.35 - 10.0))
             {
-                total = (total + total) % 65521;
-                if ((36 ^ 0) > (total << 1))
+                return 2;
+            }
+            else
+            {
+                if ((seed + floor) < (floor + floor))
                 {
-                    total = ((total << 3) ^ (79 + total)) % 4096;
-                }
-                if (((double)sample == (double)total) || ((double)sample > (0.45 / 5.0)))
-                {
-                    total = ((total * 2) + total) % 4096;
+                    return 4;
                 }
                 else
                 {
-                    total = total + (sample % 16);
+                    if (((double)seed < (3.95 - 14.0)) && (seed >= (floor + floor)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (total > 95)
-            {
-                total = total ^ total;
-            }
-            return total;
         }
     }
 }
