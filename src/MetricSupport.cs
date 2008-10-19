@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] levels, long limit)
         {
-            public double Count { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of counter filter readings.</summary>
