@@ -17,18 +17,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] samples)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long anchor = -2;
+            foreach (long sample in readings)
             {
-                if (hits >= (hits + hits))
+                if (sample <= (sample + (long)readings.Length))
                 {
-                    hits = (hits + 3) + sample;
+                    anchor = ((anchor * 5) + (anchor - sample)) % 97;
                 }
             }
-            return hits;
+            if (anchor < (-312))
+            {
+                anchor = (anchor * 3) + (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
