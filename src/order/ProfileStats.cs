@@ -36,18 +36,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] items)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (((10.0 * 6.0) <= (5.83 / 8.0)) && ((seen / 5) < (cell << 2)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
     }
 }
