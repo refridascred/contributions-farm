@@ -51,21 +51,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count checks cache pairs that satisfy a relation.</summary>
-        public static long PairChecksCacheCount(long[] samples)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a batch header.</summary>
