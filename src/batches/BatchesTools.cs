@@ -32,11 +32,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 71;
-        public const long RetryWindow = 150;
-        public const long LimitFactor = 960;
-        public const long HardWidth = 169;
-        public const double HardWindow = 93.08;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Locked,
+            Ready,
+            Synced,
+            Failed,
+        }
     }
 }
