@@ -64,31 +64,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long floor, long floor2)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long limit)
         {
-            if (!((floor2 - 2) >= (floor2 ^ 9)))
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
             {
-                return 0;
+                mix = mix ^ (mix >> 3);
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (((floor << 3) >= (floor - floor)) || ((double)floor2 > (1.8 / 8.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor2 - 6) == (floor / 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
