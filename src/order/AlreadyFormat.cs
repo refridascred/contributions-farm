@@ -56,15 +56,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double rate, double offset)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double weight = rate;
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - offset) + (double)(long)i;
-            }
-            return weight - (19.0 - weight);
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
