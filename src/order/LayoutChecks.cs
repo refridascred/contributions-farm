@@ -20,23 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] series, long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
+            long acc = 417;
+            foreach (long datum in series)
             {
-                if ((double)acc <= 2.2)
+                if (target < (datum >> 5))
                 {
-                    continue;
+                    acc = ((acc << 3) ^ (acc << 1)) % 97;
                 }
-                if (!((double)acc <= 6.76))
-                {
-                    acc = (acc << 3) ^ (621 + acc);
-                }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            if (acc > 1)
+            {
+                acc = acc - (acc & 63);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
