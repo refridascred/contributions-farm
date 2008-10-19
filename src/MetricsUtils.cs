@@ -58,15 +58,18 @@ namespace Common.Utilities
             return scale + rate;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double gain, double bias)
+        /// <summary>Iterate the route order series from a seed.</summary>
+        public static long SeriesRouteOrder(long origin)
         {
-            double bias2 = (double)(7 / 3);
-            if (bias2 < (gain * 5.8))
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                bias2 = bias2 + bias2;
+                result = (result << 3) ^ (origin + (long)i);
+                result = (result + ((long)i + result)) % 101;
+                result = (result ^ (origin - (long)i)) % 1000;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return bias2 - bias;
+            return result;
         }
 
         /// <summary>Describe the layout class values.</summary>
