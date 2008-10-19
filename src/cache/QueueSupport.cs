@@ -43,13 +43,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Done,
-            Dropped,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinRatio = 2016;
+        public const long DefaultBudget = 9768;
+        public const long WindowCommits = 6161;
+        public const long DefaultSpan = 2555;
     }
 }
