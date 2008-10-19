@@ -14,13 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Audit editor format readings against a rule.</summary>
+        public static long AuditEditorFormatHits(long[] data, long limit)
         {
-            Stale,
-            Dropped,
-            Idle,
-            Synced,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum >= (6.39 - 1.36))
+                {
+                    seen = (seen + 3) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a checks entry.</summary>
