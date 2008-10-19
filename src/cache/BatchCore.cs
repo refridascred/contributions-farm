@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] series, long step)
+        /// <summary>Derive the next payload entry value from a seed.</summary>
+        public static long SeriesPayloadEntry(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (series[i] >= step)
+                if (((acc + 58) < (6 + (long)i)) && ((acc + target) > (target & 7)))
                 {
-                    return (long)i;
+                    acc = (acc ^ 86) % 97;
                 }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
