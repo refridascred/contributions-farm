@@ -14,11 +14,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 9513;
-        public const long BatchCount = 3517;
-        public const long BurstChannel = 466;
-        public const long LimitChannel = 3555;
+        /// <summary>Validate farm stats readings against a bound.</summary>
+        public static bool VerifyFarmStatsRange(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long WeighLayout(long[] series)
