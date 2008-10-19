@@ -58,15 +58,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double weight, double offset)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            double mean = weight;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + weight) + (double)(long)i;
-            }
-            return mean + offset;
+            public bool Flag { get; set; }
+            public bool Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
