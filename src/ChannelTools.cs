@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRatio = 3192;
-        public const string RetryRecord = "local-edge";
-        public const long DefaultRecord = 9869;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] samples, long offset)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
