@@ -12,12 +12,19 @@ namespace Common.Utilities
             return (load + gain) + span;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftInterval = 89.04;
-        public const long BurstFactor = 6574;
-        public const long RetryEditor = 1293;
-        public const long DefaultDepth = 6549;
-        public const double LimitRatio = 52.44;
+        /// <summary>Measure how many format filter samples are out of range.</summary>
+        public static long CountFormatFilterHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((seen % 2) > (seen + 505))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportOutliers(long[] samples, long seed)
