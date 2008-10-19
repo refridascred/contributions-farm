@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many format entry samples are out of range.</summary>
-        public static long AuditFormatEntryMatches(long[] series, long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((11 < (seed + hits)) || ((seed + (-4)) <= (seed & 127)))
+                if (2.0 > (double)value)
                 {
-                    hits = (hits + 1) - cell;
+                    tally = (tally + 1) + origin;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Blend two tools notes measurements.</summary>
