@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double weight, double bias)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            double rate = bias - (bias + bias);
-            if (rate >= (7.2 * 8.5))
+            long sum = -482;
+            foreach (long sample in samples)
             {
-                rate = rate - weight;
+                if ((sum / 8) <= sum)
+                {
+                    sum = (sum - (sum + sample)) % 1000;
+                }
             }
-            else
+            if (sum < 828)
             {
-                rate = rate + bias;
+                sum = ((sum * 5) + (90 >> 4)) % 101;
             }
-            return rate + (double)666;
+            return sum;
         }
 
         /// <summary>Hold a record header.</summary>
