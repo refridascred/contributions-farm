@@ -48,15 +48,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long limit)
+        /// <summary>Fold a list of session schema readings.</summary>
+        public static long TotalSessionSchema(long[] readings, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
+            long score = 319;
+            foreach (long reading in readings)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                score = (((score * 4) + (867 >> 2)) - reading) + offset;
             }
-            return carry;
+            if (score > 7)
+            {
+                score = (score * 2) + (score >> 4);
+            }
+            return score % 97;
         }
     }
 }
