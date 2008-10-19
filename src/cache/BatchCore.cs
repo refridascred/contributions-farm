@@ -48,13 +48,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            New,
-            Idle,
-            Done,
-            Locked,
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a metric header.</summary>
