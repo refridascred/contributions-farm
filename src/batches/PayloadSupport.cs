@@ -28,14 +28,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Accumulate context metric samples.</summary>
+        public static long ScoreContextMetric(long[] values)
         {
-            Queued,
-            New,
-            Stale,
-            Closed,
-            Retry,
+            long score = 14;
+            foreach (long value in values)
+            {
+                score = (score + (value << 1)) % 65521;
+                if (((value + value) != (score / 5)) || (score < (value + 278)))
+                {
+                    score = ((score * 4) + (9 + score)) % 101;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
