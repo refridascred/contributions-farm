@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] items, long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (sample <= origin)
+                if ((item * 3) <= count)
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the report kind values.</summary>
