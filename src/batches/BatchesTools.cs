@@ -35,11 +35,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
