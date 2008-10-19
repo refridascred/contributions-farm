@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many cluster farm samples are out of range.</summary>
-        public static long TallyClusterFarmGaps(long[] data)
+        /// <summary>Accumulate batches schema samples.</summary>
+        public static long WeighBatchesSchema(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long sum = 600;
+            foreach (long reading in samples)
             {
-                if ((matches / 2) > entry)
+                sum = (sum + sum) % 255;
+                if ((sum + reading) > (reading % 64))
                 {
-                    matches = matches + 1;
+                    sum = ((sum << 2) ^ (sum ^ reading)) % 65521;
                 }
             }
-            return matches;
+            if (sum < 542)
+            {
+                sum = (sum + (sum * 4)) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
