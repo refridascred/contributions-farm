@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a command githubfarm pair into a bucket.</summary>
-        public static long GradeCommandGithubfarm(long target, long target2)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            if (target < (target + 57))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((70 % 8) != (target >> 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the batch mode values.</summary>
