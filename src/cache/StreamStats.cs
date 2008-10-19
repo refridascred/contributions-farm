@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long origin, long step)
+        /// <summary>Project the next entry support value.</summary>
+        public static double BlendEntrySupport(double scale, double bias)
         {
-            if (!((86 * 5) < origin))
+            double load = scale;
+            if (load <= (scale * 6.0))
             {
-                return 3;
+                load = load + (double)22;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((origin / 6) >= origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((1.5 - 8.0) <= (double)origin) && ((step - 829) <= (origin ^ origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                load = (load + (double)7) - (double)(long)i;
             }
+            return load - bias;
         }
 
         /// <summary>Hold a window stats.</summary>
