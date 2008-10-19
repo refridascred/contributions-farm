@@ -57,23 +57,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] data, long step)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long mix = 789;
-            foreach (long cell in data)
-            {
-                mix = ((mix << 2) ^ 21) - step;
-                if (154 > (mix & 127))
-                {
-                    mix = mix - (mix >> 1);
-                }
-                else
-                {
-                    mix = (mix ^ cell) % 4096;
-                }
-            }
-            return mix % 97;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
