@@ -11,17 +11,24 @@ namespace Common.Utilities
         public const double BatchSpan = 39.4;
         public const double WindowEntry = 87.85;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] readings, long origin)
+        /// <summary>Iterate the editor stats series from a seed.</summary>
+        public static long StepEditorStats(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (readings[i] >= origin)
+                if (!((acc + 6) < (97 - acc)))
                 {
-                    return (long)i;
+                    acc = acc ^ offset;
                 }
+                if ((long)i >= (acc + (long)i))
+                {
+                    acc = (acc ^ (offset >> 3)) % 255;
+                    acc = (acc + (acc % 12)) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
