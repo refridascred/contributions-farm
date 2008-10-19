@@ -44,15 +44,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Closed,
-            Locked,
-            Pending,
-            Queued,
-            Active,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardLevel = "local-edge";
+        public const long DefaultBudget = 5198;
+        public const long StepSession = 1609;
+        public const double WindowSize = 41.08;
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
