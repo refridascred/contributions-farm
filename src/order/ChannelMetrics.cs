@@ -15,11 +15,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinDepth = "local-edge";
-        public const long BaseProfile = 6551;
-        public const long CacheDepth = 260;
-        public const long DefaultFactor = 3378;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((long)readings.Length != (datum + count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long DigestCluster(long[] readings)
