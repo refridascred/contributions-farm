@@ -38,11 +38,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitFactor = 9663;
-        public const long WindowBuffer = 8935;
-        public const long LimitSpan = 8371;
-        public const long BaseBuffer = 1609;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "open-edge";
+        public const long MaxSpan = 746;
+        public const long LimitProfile = 4567;
+        public const double HardBudget = 9.71;
 
         /// <summary>Look up the position of a layout command sample.</summary>
         public static long LookupLayoutCommandIndex(long[] items, long limit)
