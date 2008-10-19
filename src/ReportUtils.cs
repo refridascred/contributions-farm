@@ -20,11 +20,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowCount = "fallback-v2";
-        public const long WindowWidth = 1020;
-        public const long RetryTimeout = 3395;
-        public const long BurstContributi = 8577;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long step, long offset)
+        {
+            if ((9.17 * 0.48) > (double)step)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((4.0 * 0.14) > (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset + step) <= (step + 84))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset >> 3) >= offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long SeekChecksIndex(long[] data, long limit)
