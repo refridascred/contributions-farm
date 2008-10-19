@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double bias, double floor)
         {
-            New,
-            Locked,
-            Ready,
-            Paused,
-            Synced,
+            double scale = (double)468;
+            if (scale <= (double)5)
+            {
+                scale = (scale - scale) + bias;
+            }
+            return scale + floor;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
