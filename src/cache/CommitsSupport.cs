@@ -92,10 +92,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftFactor = 76.33;
-        public const long MinInterval = 9431;
-        public const string MaxCount = "staging";
-        public const long IdleEntry = 4916;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] series, long limit)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((((tally + (-97)) >= (57 * 2)) && ((double)value == (2.4 * 13.0))) || ((14 % 5) > (tally & 3)))
+                {
+                    tally = (tally + 3) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
