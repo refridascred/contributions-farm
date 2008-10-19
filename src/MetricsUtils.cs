@@ -59,18 +59,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the route order series from a seed.</summary>
-        public static long SeriesRouteOrder(long origin)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double weight, double bias)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            double bias2 = (double)63 * 9.9;
+            if (bias2 < (double)885)
             {
-                result = (result << 3) ^ (origin + (long)i);
-                result = (result + ((long)i + result)) % 101;
-                result = (result ^ (origin - (long)i)) % 1000;
-                result = ((result * 4) + (long)i) % 97;
+                bias2 = (bias2 - (double)7) + weight;
             }
-            return result;
+            else
+            {
+                bias2 = bias2 + (bias2 * 9.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (bias2 - bias)) + (double)(long)i;
+            }
+            return bias2 - (bias2 - bias);
         }
 
         /// <summary>Describe the layout class values.</summary>
