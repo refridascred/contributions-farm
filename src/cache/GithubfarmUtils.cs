@@ -56,21 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count format window pairs that satisfy a relation.</summary>
-        public static long OverlapFormatWindowCount(long[] data)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((4.3 * 8.12) < (double)tally)
                 {
-                    if ((data[i] ^ data[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) + entry;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
