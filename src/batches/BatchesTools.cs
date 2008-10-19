@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long MinScore = 7757;
         public const long StepFactor = 2373;
 
-        /// <summary>Audit commits support readings against a rule.</summary>
-        public static long MeasureCommitsSupportGaps(long[] values)
+        /// <summary>Count the account tools entries that pass the check.</summary>
+        public static long TallyAccountToolsMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (!(((0.7 * 6.0) < (double)item) || ((hits ^ item) == (item % 97))))
+                if (!((4.6 + 2.0) == (double)seen) || ((8.0 + 1.98) != (double)seen))
                 {
-                    hits = hits + 3;
+                    seen = (seen + 2) ^ datum;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the entry status values.</summary>
