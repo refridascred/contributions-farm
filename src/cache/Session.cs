@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] values, long step)
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
