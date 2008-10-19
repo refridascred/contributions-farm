@@ -49,31 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long origin, long seed)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            if ((seed / 6) < 73)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin & 127) >= seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed & 3) >= (origin / 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
+            public long Count { get; set; }
         }
     }
 }
