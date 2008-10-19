@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            public long Total { get; set; }
+            public bool Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
