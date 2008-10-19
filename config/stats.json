@@ -1,7 +1,5 @@
 {
-  "strict": 250,
-  "already_interval": 250,
-  "hard_size": 30,
-  "compress": "staging",
-  "enabled": false
+  "idle_ratio": [340, 479, 309],
+  "flush_window": true,
+  "cache_delay_s": "cached"
 }
