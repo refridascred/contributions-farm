@@ -24,17 +24,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] series, long target)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public double Count { get; set; }
         }
     }
 }
