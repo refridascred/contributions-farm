@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many context route samples are out of range.</summary>
-        public static long MeasureContextRouteHits(long[] series, long origin)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long origin, long step)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long diff = origin ^ step;
+            if ((origin % 16) == (step & 7))
             {
-                if ((item - origin) <= (hits + hits))
+                return 0;
+            }
+            else
+            {
+                if (step >= diff)
                 {
-                    hits = hits + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((469 % 97) < (origin + 27))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
