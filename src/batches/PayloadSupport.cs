@@ -27,11 +27,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitBudget = 76.78;
-        public const long RetryTimeout = 9218;
-        public const long CacheCounter = 7405;
-        public const long BatchCounter = 2832;
-        public const double StepFactor = 26.48;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] series)
+        {
+            long score = 206;
+            foreach (long datum in series)
+            {
+                score = score ^ (datum - datum);
+            }
+            return score % 65521;
+        }
     }
 }
