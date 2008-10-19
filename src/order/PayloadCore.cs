@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Check that every stats entry entry stays within the limit.</summary>
+        public static bool VerifyStatsEntryLimits(long[] readings, long origin)
         {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a editor info.</summary>
