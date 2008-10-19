@@ -1,5 +1,30 @@
 # support settings
-readonly: 54
-audit: 1024
-base_capacity_count: true
-dry_run: 21
+batch_timeout_pct: true
+min_ttl_count: fallback
+base_limit_s:
+  cache_ratio_s:
+    - local
+    - blue
+    - staging
+  warm_window_s: 30
+  min_delay_pct:
+    - primary
+    - open
+  poll_delay_ms:
+    audit:
+      - 272
+      - 268
+    min_timeout_count: green
+    persist: legacy
+    base_retries_s: 100
+  soft_ttl: blue
+strict: true
+cache_ratio_pct:
+  persist: stable
+  format_size: true
+  hard_interval_pct:
+    - stable
+    - strict
+    - edge
+  warm_size_s: 37.95
+batch_ttl: true
