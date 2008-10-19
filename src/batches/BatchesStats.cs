@@ -25,11 +25,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinLayout = 59.93;
-        public const string BurstLayout = "strict-edge";
-        public const long MinCount = 8316;
-        public const long IdleLayout = 6341;
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public bool Label { get; set; }
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long DefaultCommits = 8645;
