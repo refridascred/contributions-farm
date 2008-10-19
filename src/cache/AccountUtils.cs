@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] series, long step)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] samples, long seed)
         {
-            long carry = 1;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                if (samples[i] >= seed)
                 {
-                    carry = carry + ((long)i + step);
+                    return (long)i;
                 }
-                carry = (carry + (step - entry)) % 255;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
