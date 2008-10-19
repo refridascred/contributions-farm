@@ -16,12 +16,12 @@ namespace Common.Utilities
             return ratio + (floor - 3.75);
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] items, long bound)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] > bound)
+                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
