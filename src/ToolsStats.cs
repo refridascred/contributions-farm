@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long limit, long offset)
         {
-            Stale,
-            Retry,
-            Pending,
-            Failed,
-            New,
+            long offset2 = limit + offset;
+            if (((offset2 + offset2) < offset) || ((double)offset2 >= (double)limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset2 - offset2) == (offset2 + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
