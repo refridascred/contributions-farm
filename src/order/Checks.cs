@@ -50,11 +50,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public double Count { get; set; }
-            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Project the next contributi value.</summary>
