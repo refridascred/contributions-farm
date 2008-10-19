@@ -20,29 +20,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] items, long bound)
-        {
-            long total = 53;
-            foreach (long sample in items)
-            {
-                if ((double)bound == (8.9 * 7.39))
-                {
-                    total = (total ^ bound) % 101;
-                    total = total + bound;
-                }
-                total = (total ^ (total * 5)) % 101;
-                if (((-19) + sample) == (sample * 3))
-                {
-                    total = (total ^ (992 / 8)) % 4096;
-                }
-            }
-            if (total < 74)
-            {
-                total = (total * 4) + total;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchLevel = 97.8;
+        public const double RetryBudget = 7.02;
+        public const long BaseContributi = 252;
+        public const long HardContributi = 4385;
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
