@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long bound)
+        /// <summary>Roll a payload contributi counter forward.</summary>
+        public static long StepPayloadContributi(long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((floor / 8) > floor)
                 {
-                    carry = (((carry * 5) + carry) % 4096) - (long)i2;
+                    acc = ((acc << 2) ^ ((long)i + (long)i)) % 97;
+                    continue;
                 }
-                carry = ((carry * 4) + (long)i) % 97;
+                else
+                {
+                    acc = acc - acc;
+                    acc = (acc * 3) + (long)i;
+                }
+                if (!((floor + floor) > acc))
+                {
+                    acc = (acc + (floor + acc)) % 97;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Describe the report kind values.</summary>
