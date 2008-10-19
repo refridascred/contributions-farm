@@ -36,12 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Done,
-            Retry,
-            Ready,
+            Synced,
+            Stale,
+            Draft,
+            Idle,
         }
 
         /// <summary>Describe the metric class values.</summary>
