@@ -65,19 +65,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Validate format account readings against a bound.</summary>
-        public static bool VerifyFormatAccountRange(long[] readings, long origin)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value >= origin)
+                if (readings[i] > bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
