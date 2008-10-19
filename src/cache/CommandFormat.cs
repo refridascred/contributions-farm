@@ -16,17 +16,15 @@ namespace Common.Utilities
             return ratio + (floor - 3.75);
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] levels, long limit)
+        /// <summary>Combine profile cluster values into a single score.</summary>
+        public static long TallyProfileCluster(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 181;
+            foreach (long entry in values)
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix + (seed << 1)) ^ entry;
             }
-            return -1;
+            return mix % 1000;
         }
 
         /// <summary>Describe the route level values.</summary>
