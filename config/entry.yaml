@@ -1,11 +1,11 @@
 # entry settings
-min_window_ms: 100
-cache_limit:
-  audit: primary
-  default_ratio: stable
-  default_ttl:
-    - open
-    - local
-  cache_retries: 70
-buffer_capacity: stable
-soft_size: 42
+max_delay_ms: staging
+verbose: 30
+compress: fallback
+batches_capacity:
+  burst_ttl_ms: 3.44
+  retry_threshold_count: strict
+  format_capacity: 1
+  readonly: 47
+  order_threshold: open
+  window_retries: 25.95
