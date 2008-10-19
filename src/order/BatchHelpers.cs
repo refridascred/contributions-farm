@@ -13,15 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] samples, long origin)
+        /// <summary>Measure how many batches cluster samples are out of range.</summary>
+        public static long MeasureBatchesClusterMatches(long[] readings, long floor)
         {
             long seen = 0;
-            foreach (long cell in samples)
+            foreach (long value in readings)
             {
-                if ((0.8 + 3.0) > (double)origin)
+                if ((value + value) <= floor)
                 {
-                    seen = (seen + 3) - cell;
+                    seen = seen + 3;
                 }
             }
             return seen;
