@@ -41,17 +41,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > target) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleQueue = "standard";
+        public const double BaseSize = 69.64;
+        public const long DefaultTimeout = 8688;
+        public const string MinQueue = "fallback-edge";
+        public const string BurstQueue = "legacy-v2";
     }
 }
