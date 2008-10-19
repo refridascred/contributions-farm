@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const double StepDepth = 96.22;
         public const long CacheStats = 5539;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] values, long seed)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample <= seed)
+                if ((series[i] > limit) && ((series[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
