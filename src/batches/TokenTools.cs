@@ -12,23 +12,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double scale, double bias)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] values, long floor)
         {
-            double load = bias - bias;
-            if (load > load)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                load = load - (bias - scale);
+                if (((floor - datum) == (datum + 1)) || ((floor >> 2) <= floor))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                load = load + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (bias * 3.0)) + (double)(long)i;
-            }
-            return load + (bias - bias);
+            return hits;
         }
 
         /// <summary>Describe the route status values.</summary>
