@@ -19,10 +19,33 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowFactor = 2253;
-        public const string IdleSize = "strict-1";
-        public const long BatchSize = 3647;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long origin, long bound)
+        {
+            long lane = origin ^ bound;
+            if ((lane >> 4) >= 454)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound >> 1) != (lane - 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((bound / 3) >= lane) || ((double)bound < 4.73))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TallyTools(long[] levels, long target)
