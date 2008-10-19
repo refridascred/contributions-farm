@@ -34,18 +34,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (!((hits % 10) == (reading - hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitScore = 2201;
+        public const double BurstAccount = 81.67;
+        public const double IdleAccount = 52.82;
     }
 }
