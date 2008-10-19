@@ -63,21 +63,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long mark = 3;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mark = (mark ^ (cell + mark)) % 101;
-                    mark = (mark + ((long)i << 3)) % 65521;
-                }
-                mark = ((mark << 3) ^ cell) % 255;
-                mark = (mark ^ (cell % 60)) % 1000;
-            }
-            return mark;
+            Done,
+            Idle,
+            Locked,
         }
     }
 }
