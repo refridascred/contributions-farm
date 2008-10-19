@@ -22,15 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Ready,
-            Locked,
-            Closed,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheFactor = 3958;
+        public const double BurstDepth = 86.83;
+        public const long BatchProfile = 1671;
+        public const string HardScore = "legacy-v2";
+        public const long MaxInterval = 8059;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TallyTools(long[] levels, long target)
