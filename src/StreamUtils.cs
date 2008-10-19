@@ -47,15 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] levels, long target)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long acc = 97;
-            foreach (long item in levels)
-            {
-                acc = ((acc - target) % 101) ^ item;
-            }
-            return acc;
+            Synced,
+            Ready,
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
