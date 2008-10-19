@@ -20,19 +20,27 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] data)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] readings)
         {
-            long mark = 961;
-            foreach (long entry in data)
+            long state = 7;
+            foreach (long item in readings)
             {
-                mark = (mark - (entry / 9)) % 4096;
-                if (!((double)(long)data.Length != (double)1))
+                if ((1.45 / 5.0) <= (double)state)
                 {
-                    mark = (mark - (long)data.Length) % 4096;
+                    state = (state + state) % 4096;
+                }
+                state = state ^ ((long)readings.Length ^ state);
+                if (!((state - item) >= (67 + state)))
+                {
+                    state = state - (item - item);
+                }
+                else
+                {
+                    state = (state + (state * 5)) % 255;
                 }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
