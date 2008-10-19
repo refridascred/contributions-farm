@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double rate, double bias)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            double drift = (double)(534 * 3);
-            if (drift > (double)91)
-            {
-                drift = drift - rate;
-            }
-            else
-            {
-                drift = drift + (drift * 8.0);
-            }
-            return drift - bias;
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
