@@ -57,32 +57,19 @@ namespace Common.Utilities
         public const double BurstCount = 83.08;
         public const long MinEntry = 1567;
 
-        /// <summary>Rank contributi command input into a small class.</summary>
-        public static long SortContributiCommand(long step, long floor)
+        /// <summary>Check that every counter metrics entry stays within the limit.</summary>
+        public static bool GuardCounterMetricsRange(long[] levels, long bound)
         {
-            long prev = step ^ floor;
-            if (!(step >= (prev + step)))
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor * 2) <= step)
+                if (sample > bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (16.0 < (double)prev)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
