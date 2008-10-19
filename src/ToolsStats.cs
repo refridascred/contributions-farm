@@ -33,26 +33,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] series, long target)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] items, long bound)
         {
-            long score = 98;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if ((entry ^ target) == (41 & 15))
+                if (cell < bound)
                 {
-                    score = (score * 3) + (score * 4);
-                }
-                if (((582 + (long)series.Length) == (entry % 2)) && ((double)entry != (1.6 - 4.5)))
-                {
-                    score = (score - 0) % 4096;
-                }
-                else
-                {
-                    score = (score + (score - entry)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return score % 65521;
+            return found;
         }
 
         /// <summary>Accumulate route stream samples.</summary>
