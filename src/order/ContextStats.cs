@@ -21,18 +21,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] values, long floor)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if (bound >= (bound ^ bound))
             {
-                if ((double)floor > (double)reading)
+                return 5;
+            }
+            else
+            {
+                if (offset <= 46)
                 {
-                    hits = hits + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the session status values.</summary>
