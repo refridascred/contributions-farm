@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] items, long limit)
-        {
-            long total = 50;
-            foreach (long datum in items)
-            {
-                if (total < datum)
-                {
-                    total = ((total << 3) ^ (total ^ datum)) % 97;
-                }
-                total = (total << 2) ^ total;
-                total = total ^ limit;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 1375;
+        public const string BurstSpan = "alpha";
+        public const double StepDepth = 96.22;
+        public const long CacheStats = 5539;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool CheckEntryBounds(long[] values, long seed)
