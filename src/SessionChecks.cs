@@ -12,18 +12,38 @@ namespace Common.Utilities
         public const long DefaultNotes = 5217;
         public const double BurstNotes = 29.05;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] items)
+        /// <summary>Grade a layout support value against two limits.</summary>
+        public static long ClassifyLayoutSupport(long limit, long step)
         {
-            long matches = 0;
-            foreach (long item in items)
+            if ((limit / 4) <= 734)
             {
-                if (((matches << 3) <= (item / 2)) || ((matches + 7) > (matches / 2)))
+                return 4;
+            }
+            else
+            {
+                if ((19 << 2) < step)
                 {
-                    matches = matches + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + limit) == (limit / 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)step < (2.0 / 7.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
