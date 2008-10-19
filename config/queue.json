@@ -1,8 +1,23 @@
 {
-  "channel_retries": [429, 122, 486],
-  "flush_threshold_s": [316, 383],
-  "checks_window": 6.41,
-  "order_capacity": true,
-  "readonly": 4342,
-  "persist": "local"
+  "retry_interval": {
+    "burst_capacity_s": "legacy",
+    "poll_size": {
+      "dry_run": 30,
+      "base_ratio_s": 30,
+      "burst_delay_s": 68.17,
+      "base_ttl": [378, 127, 500, 475],
+      "session_capacity": "fallback"
+    },
+    "dry_run": 38.88,
+    "flush_depth": [346, 56, 71, 165]
+  },
+  "batch_threshold": "fallback",
+  "notes_limit": 28,
+  "base_delay_s": 60,
+  "poll_limit": {
+    "strict": 22.26,
+    "command_retries": "standard",
+    "enabled": false,
+    "hard_limit": 28
+  }
 }
