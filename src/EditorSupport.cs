@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] readings, long bound)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long step, long target)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            if (!((6.0 - 0.13) <= (double)target))
             {
-                if ((seen >> 2) <= entry)
+                return 0;
+            }
+            else
+            {
+                if ((8 + target) < (step % 5))
                 {
-                    seen = (seen + 1) - bound;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
