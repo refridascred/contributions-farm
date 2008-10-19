@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] readings, long seed)
+        /// <summary>Project the next profile batch value.</summary>
+        public static double BlendProfileBatch(double rate, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (floor * 10.0) / 2.0;
+            if (drift < drift)
             {
-                if ((readings[i] == seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + floor;
             }
-            return -1;
+            else
+            {
+                drift = drift + floor;
+            }
+            return drift + rate;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
