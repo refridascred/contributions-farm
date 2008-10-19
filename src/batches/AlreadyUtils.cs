@@ -39,22 +39,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] series, long limit)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long score = -5;
-            foreach (long item in series)
-            {
-                if ((limit <= ((long)series.Length & 15)) && ((long)series.Length >= (score << 2)))
-                {
-                    score = (score ^ (limit + item)) % 1000;
-                }
-                else
-                {
-                    score = (score ^ (9 >> 2)) % 1000;
-                }
-            }
-            return score;
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
