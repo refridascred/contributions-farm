@@ -15,30 +15,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long origin, long floor)
+        /// <summary>Rank support contributi input into a small class.</summary>
+        public static long RankSupportContributi(long step, long target)
         {
-            long bound = origin - floor;
-            if (!((double)bound != (9.0 * 6.86)))
+            if (step >= (64 >> 3))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((bound + bound) < origin)
+                if ((double)target != (2.78 + 1.2))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if (origin >= (86 - 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 3;
                 }
             }
         }
