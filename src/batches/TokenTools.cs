@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] items, long seed)
+        /// <summary>Count commits schema pairs that satisfy a relation.</summary>
+        public static long PairCommitsSchemaCount(long[] samples)
         {
-            long total = 165;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)5 <= (double)cell)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total ^ (cell * 5)) % 4096) + seed;
-                }
-                else
-                {
-                    total = ((total * 4) + (total + 8)) % 4096;
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a filter entry.</summary>
