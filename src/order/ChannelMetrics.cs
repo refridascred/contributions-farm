@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const double CacheStats = 77.25;
         public const long SoftDepth = 1653;
 
-        /// <summary>Project the next commits contributi value.</summary>
-        public static double ScaleCommitsContributi(double scale, double bias)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] samples, long floor)
         {
-            double scale2 = (double)(991 + 370);
-            if (scale2 > (bias - 7.3))
+            long count = 0;
+            foreach (long value in samples)
             {
-                scale2 = scale2 - scale;
+                if ((double)count == (8.9 - 4.0))
+                {
+                    count = ((count + 1) ^ value) + floor;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 + (double)312) + (double)(long)i;
-            }
-            return scale2 + (bias + scale);
+            return count;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
