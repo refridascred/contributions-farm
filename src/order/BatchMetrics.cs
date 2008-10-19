@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long LimitDepth = 6159;
         public const long BaseCounter = 9659;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 9513;
+        public const long BatchCount = 3517;
+        public const long BurstChannel = 466;
+        public const long LimitChannel = 3555;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowHits(long[] values, long limit)
