@@ -52,17 +52,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first account buffer entry that matches the target.</summary>
-        public static long SeekAccountBufferIndex(long[] levels, long step)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Closed,
+            Retry,
+            Pending,
+            Synced,
         }
     }
 }
