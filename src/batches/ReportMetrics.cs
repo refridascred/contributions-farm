@@ -14,13 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Paused,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultSize = 3334;
+        public const long MaxAccount = 9034;
+        public const long LimitAccount = 1925;
+        public const long RetryTimeout = 6824;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
