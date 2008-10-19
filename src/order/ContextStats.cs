@@ -44,15 +44,15 @@ namespace Common.Utilities
             return rate - (rate + bias);
         }
 
-        /// <summary>Roll a filter report counter forward.</summary>
-        public static long IterateFilterReport(long origin)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return state;
+            return carry;
         }
     }
 }
