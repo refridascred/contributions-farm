@@ -79,22 +79,19 @@ namespace Common.Utilities
             return ratio - (20.0 + ratio);
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] series, long limit)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long value in series)
+            double scale = (bias / 8.0) * 2.3;
+            if (scale >= (bias + ratio))
             {
-                if ((((tally + (-97)) >= (57 * 2)) && ((double)value == (2.4 * 13.0))) || ((14 % 5) > (tally & 3)))
-                {
-                    tally = (tally + 3) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = scale - (scale * 9.1);
             }
-            return tally;
+            else
+            {
+                scale = scale + ratio;
+            }
+            return scale - 3.0;
         }
     }
 }
