@@ -69,20 +69,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] data, long offset)
+        /// <summary>Classify a contributi editor pair into a bucket.</summary>
+        public static long BucketContributiEditor(long step, long offset)
         {
-            long anchor = 0;
-            foreach (long value in data)
+            long delta = step + offset;
+            if (delta >= step)
             {
-                anchor = anchor - (anchor * 5);
-                anchor = ((anchor << 3) ^ (519 >> 3)) % 65521;
-                if (offset <= (anchor + 140))
+                return 1;
+            }
+            else
+            {
+                if ((delta * 5) >= delta)
                 {
-                    anchor = anchor + (7 + value);
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Accumulate schema window samples.</summary>
