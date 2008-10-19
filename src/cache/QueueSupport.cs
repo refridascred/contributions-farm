@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 8014;
-        public const long MinFactor = 2110;
-        public const double DefaultFarm = 89.38;
+        /// <summary>Count the schema report entries that pass the check.</summary>
+        public static long MeasureSchemaReportGaps(long[] data, long seed)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count >> 3) < entry)
+                {
+                    count = (count + 1) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long FindTokenIndex(long[] readings, long seed)
