@@ -70,19 +70,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double ratio, double offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] readings, long seed)
         {
-            double rate = offset;
-            if (rate >= (rate - ratio))
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                rate = rate - ratio;
+                if (cell >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + offset;
-            }
-            return rate - offset;
+            return flag;
         }
 
         /// <summary>Describe the notes class values.</summary>
