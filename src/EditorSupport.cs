@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long origin)
         {
-            Failed,
-            Done,
-            Synced,
-            Queued,
-            Dropped,
+            long score = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
