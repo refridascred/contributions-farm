@@ -27,31 +27,18 @@ namespace Common.Utilities
             return drift - (drift + bias);
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long origin, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] data, long offset)
         {
-            if ((double)origin > 4.0)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor - floor) > origin)
+                if ((datum + hits) > hits)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)origin <= (double)floor) && ((origin & 31) == (floor + floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = (hits + 3) + offset;
                 }
             }
+            return hits;
         }
     }
 }
