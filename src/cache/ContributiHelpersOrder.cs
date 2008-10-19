@@ -20,25 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank queue stream input into a small class.</summary>
-        public static long BucketQueueStream(long step, long origin)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long slot = step + origin;
-            if (step >= (9 ^ 67))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((3.78 / 4.0) == (double)slot) && ((11.0 - 1.74) != (double)step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Project the next graph value.</summary>
