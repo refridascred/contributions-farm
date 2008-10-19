@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Find the first metric checks entry that matches the target.</summary>
+        public static long LocateMetricChecksIndex(long[] data, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((4.6 / 7.0) > (double)(long)i)
+                if (data[i] <= bound)
                 {
-                    score = score + (seed & 63);
-                    break;
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
