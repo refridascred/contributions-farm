@@ -85,17 +85,23 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] levels, long seed)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = span;
+            if (load > scale)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                load = load - (8.64 + scale);
             }
-            return -1;
+            else
+            {
+                load = load - (span / 8.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (scale * 0.1)) + (double)(long)i;
+            }
+            return load - 9.27;
         }
     }
 }
