@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long SoftBudget = 7466;
         public const long StepFormat = 5654;
 
-        /// <summary>Locate a channel checks reading by value.</summary>
-        public static long FindChannelChecksIndex(long[] values, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (values[i] < limit)
+                if ((double)sample <= (4.11 * 15.0))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up contributi samples.</summary>
