@@ -28,16 +28,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] data)
-        {
-            long result = 874;
-            foreach (long cell in data)
-            {
-                result = ((result << 2) ^ (cell * 2)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitWidth = 59.97;
+        public const double WindowInterval = 88.68;
+        public const string StepNotes = "fallback";
+        public const double LimitNotes = 91.99;
+        public const long MaxRatio = 9787;
 
         /// <summary>Locate a session reading by value.</summary>
         public static long FindSessionIndex(long[] levels, long target)
