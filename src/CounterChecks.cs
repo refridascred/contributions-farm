@@ -39,19 +39,14 @@ namespace Common.Utilities
         public const string HardScore = "open-v2";
         public const double BurstLevel = 22.54;
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] items, long seed)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Stale,
+            Synced,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the cluster status values.</summary>
