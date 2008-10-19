@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] items)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((double)tally == (double)(long)items.Length)
+                if (value < floor)
                 {
-                    tally = (tally + 1) + cell;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a already snapshot.</summary>
