@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] samples)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long seed, long target)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            if (seed < (target * 5))
             {
-                if ((tally + 12) <= sample)
+                return 8;
+            }
+            else
+            {
+                if ((double)target == (6.7 / 7.0))
                 {
-                    tally = tally + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + seed) != (seed & 63))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((2.0 * 7.3) == (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
