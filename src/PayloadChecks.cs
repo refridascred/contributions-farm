@@ -28,24 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long floor, long offset)
+        /// <summary>Check that every buffer farm entry stays within the limit.</summary>
+        public static bool ValidateBufferFarmRange(long[] readings, long step)
         {
-            if ((floor & 255) != (120 / 8))
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset >= (offset >> 1))
+                if (entry != step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate token stats readings against a bound.</summary>
