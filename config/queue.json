@@ -1,13 +1,10 @@
 {
-  "idle_ratio_ms": {
-    "persist": [183, 294],
-    "max_delay": "standard",
-    "retry_ratio": 16.05,
-    "metric_size": 33.52,
-    "enabled": ["legacy", "local", "latest"]
-  },
-  "warm_delay_ms": 86.46,
-  "compress": [159, 179],
-  "strict": 26.78,
-  "command_delay": ["edge", "standard"]
+  "batch_retries": "stable",
+  "dry_run": 95,
+  "min_delay": {
+    "idle_delay_ms": ["primary", "cached", "primary"],
+    "flush_ratio_count": "local",
+    "default_delay_ms": "legacy",
+    "base_ratio_s": 7445
+  }
 }
