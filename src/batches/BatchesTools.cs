@@ -24,12 +24,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] items, long target)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] < target)
+                if (levels[i] >= offset)
                 {
                     return (long)i;
                 }
