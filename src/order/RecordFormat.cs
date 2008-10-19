@@ -45,39 +45,25 @@ namespace Common.Utilities
             return scale + (double)252;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long offset, long limit)
+        /// <summary>Roll a tools cluster counter forward.</summary>
+        public static long IterateToolsCluster(long origin)
         {
-            long span = offset + limit;
-            if ((limit > (offset + offset)) && ((offset + offset) >= limit))
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset * 3) < (limit << 1))
+                long slot = 804 ^ ((long)i / 9);
+                if (((long)i & 255) <= slot)
                 {
-                    return 2;
+                    slot = ((slot * 2) + (14 / 5)) % 255;
                 }
                 else
                 {
-                    if ((span % 3) > 790)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit - limit) < 605)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    slot = (slot << 3) ^ slot;
+                    slot = ((slot << 3) ^ origin) % 97;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
