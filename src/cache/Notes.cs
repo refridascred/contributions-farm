@@ -44,15 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long seed)
+        /// <summary>Blend two stream account measurements.</summary>
+        public static double SmoothStreamAccount(double bias, double floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
+            double rate = (bias * 4.6) + floor;
+            if (rate > floor)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                rate = rate + (double)70;
             }
-            return carry;
+            return rate + (bias * 0.09);
         }
 
         /// <summary>Hold a support entry.</summary>
