@@ -56,11 +56,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 5.55;
-        public const double MinTimeout = 9.38;
-        public const double LimitCommand = 40.59;
-        public const long MaxSize = 2094;
-        public const long MinBudget = 8053;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 7877;
+        public const long WindowSpan = 5407;
+        public const long IdleInterval = 8134;
+        public const long LimitBuffer = 5681;
     }
 }
