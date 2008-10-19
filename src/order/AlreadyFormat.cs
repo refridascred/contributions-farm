@@ -48,17 +48,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] samples, long offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 2) ^ (bound - mark)) % 101;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
     }
 }
