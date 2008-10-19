@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count commits schema pairs that satisfy a relation.</summary>
-        public static long PairCommitsSchemaCount(long[] samples)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a filter entry.</summary>
