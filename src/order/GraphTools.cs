@@ -85,19 +85,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] data, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (entry > floor)
+                if ((value % 3) < matches)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) - bound;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
