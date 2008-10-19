@@ -13,19 +13,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] levels, long bound)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long offset)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long result = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
