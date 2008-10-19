@@ -36,16 +36,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = carry - origin;
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 5217;
+        public const double IdleDepth = 38.77;
+        public const long BurstContributi = 6547;
     }
 }
