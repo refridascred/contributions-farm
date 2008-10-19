@@ -36,11 +36,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 3292;
-        public const double HardWindow = 53.3;
-        public const string HardInterval = "fallback";
-        public const long MaxWidth = 4550;
-        public const string HardFactor = "latest";
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
