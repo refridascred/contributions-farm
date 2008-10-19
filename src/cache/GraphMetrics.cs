@@ -45,24 +45,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long offset, long seed)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            if (193 < (offset + seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset > seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            New,
+            Done,
+            Dropped,
+            Draft,
+            Pending,
         }
 
         /// <summary>Compare every pair of route readings.</summary>
