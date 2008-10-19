@@ -55,18 +55,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the graph checks entries that pass the check.</summary>
-        public static long CountGraphChecksGaps(long[] levels)
+        /// <summary>Fold a list of route stream readings.</summary>
+        public static long FoldRouteStream(long[] items)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long acc = -946;
+            foreach (long sample in items)
             {
-                if ((matches >> 1) < (matches + value))
+                if (!((sample << 3) == (sample ^ acc)))
                 {
-                    matches = matches + 1;
+                    acc = (acc ^ ((-7) + sample)) % 65521;
+                }
+                else
+                {
+                    acc = (acc * 2) + acc;
+                }
+                if ((acc ^ 701) == (sample & 63))
+                {
+                    break;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
