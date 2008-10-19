@@ -52,19 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor payload readings against a bound.</summary>
-        public static bool GuardEditorPayloadRange(long[] values, long step)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double weight, double floor)
         {
-            bool found = true;
-            foreach (long sample in values)
+            double gain = weight;
+            if (gain < weight)
             {
-                if (sample < step)
-                {
-                    found = false;
-                    break;
-                }
+                gain = gain - (gain / 9.0);
             }
-            return found;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + weight) - (double)(long)i;
+            }
+            return gain + (floor * 19.0);
         }
 
         /// <summary>Describe the schema level values.</summary>
