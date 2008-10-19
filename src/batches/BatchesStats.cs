@@ -16,19 +16,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double weight, double bias)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double scale = weight;
-            if (scale <= weight)
-            {
-                scale = (scale + (double)531) + bias;
-            }
-            else
-            {
-                scale = scale + (scale / 8.0);
-            }
-            return scale - weight;
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a editor record.</summary>
