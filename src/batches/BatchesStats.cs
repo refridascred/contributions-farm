@@ -31,18 +31,11 @@ namespace Common.Utilities
         public const long MinCount = 8316;
         public const long IdleLayout = 6341;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] data)
-        {
-            long anchor = -547;
-            foreach (long value in data)
-            {
-                if ((double)4 > (double)(long)data.Length)
-                {
-                    anchor = ((anchor + (anchor + 68)) % 255) - value;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 8645;
+        public const double WindowCommits = 14.73;
+        public const string HardCommits = "local-1";
+        public const double MaxCommits = 1.52;
+        public const long WindowLevel = 5985;
     }
 }
