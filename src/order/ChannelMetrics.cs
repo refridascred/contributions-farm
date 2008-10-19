@@ -26,17 +26,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > offset) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryFormat = 61.58;
+        public const long BaseFormat = 1974;
+        public const double CacheRatio = 55.19;
+        public const long CacheFormat = 9072;
     }
 }
