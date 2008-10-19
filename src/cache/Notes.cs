@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long seed)
         {
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
+            long total = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
