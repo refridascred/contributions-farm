@@ -23,13 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
+            Stale,
+            Active,
+            Queued,
+            Paused,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
