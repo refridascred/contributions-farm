@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache batches samples are out of range.</summary>
-        public static long AuditCacheBatchesMatches(long[] levels)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally * 5) == (tally + tally))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
