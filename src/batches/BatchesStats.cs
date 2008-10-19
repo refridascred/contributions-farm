@@ -45,15 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double weight, double floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] series)
         {
-            double drift = (double)169 - floor;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                drift = (drift - 3.7) + (double)(long)i;
+                if ((count / 4) >= (datum - 66))
+                {
+                    count = count + 1;
+                }
             }
-            return drift + (weight / 7.0);
+            return count;
         }
     }
 }
