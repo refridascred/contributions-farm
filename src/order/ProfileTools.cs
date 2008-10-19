@@ -63,14 +63,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Retry,
-            Draft,
-            Done,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 2207;
+        public const string BurstCounter = "staging-v2";
+        public const long SoftLevel = 7918;
+        public const long HardScore = 1562;
     }
 }
