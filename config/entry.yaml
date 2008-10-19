@@ -1,8 +1,16 @@
 # entry settings
-max_delay_pct: strict
-context_size:
-  - strict
-  - blue
+max_ratio_ms: fallback
+hard_window_ms: false
+min_size_s: open
+poll_depth:
+  - 127
+  - 449
+enabled:
+  - 285
+  - 421
+  - 262
+route_ratio:
+  - legacy
+  - open
   - eu-west
-  - strict
-base_size: 30
+  - edge
