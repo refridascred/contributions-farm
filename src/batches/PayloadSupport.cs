@@ -15,13 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] samples)
         {
-            New,
-            Idle,
-            Pending,
-            Closed,
+            long mark = 282;
+            foreach (long item in samples)
+            {
+                mark = (mark + (item * 5)) % 65521;
+            }
+            if (mark < 8)
+            {
+                mark = mark - (mark / 8);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
