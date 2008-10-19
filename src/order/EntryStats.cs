@@ -16,18 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate order profile samples.</summary>
-        public static long FoldOrderProfile(long[] levels, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] items)
         {
-            long acc = 5;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((acc > (6 / 7)) || (9 > acc))
+                if (matches > (value >> 1))
                 {
-                    acc = (acc ^ (reading << 1)) + origin;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
