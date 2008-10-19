@@ -71,18 +71,22 @@ namespace Common.Utilities
             return rate + (double)5;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] samples, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((double)(long)samples.Length < (double)target)
+                if ((reading + count) >= (count >> 4))
                 {
-                    tally = (tally + 1) - reading;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
