@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Failed,
+            Done,
+            Dropped,
             New,
-            Idle,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
