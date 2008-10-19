@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Audit notes commits readings against a rule.</summary>
+        public static long CountNotesCommitsOutliers(long[] data)
         {
-            Queued,
-            Active,
-            New,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (seen > (seen * 3))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
