@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Roll a format notes counter forward.</summary>
+        public static long IterateFormatNotes(long target)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            long carry = target;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = (carry << 3) ^ (carry + (long)i);
+                carry = (carry * 2) + (carry & 1);
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
