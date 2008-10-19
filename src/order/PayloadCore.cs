@@ -31,12 +31,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] samples, long target)
         {
-            New,
-            Closed,
-            Active,
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
