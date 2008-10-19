@@ -42,17 +42,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a notes entry sample.</summary>
-        public static long SeekNotesEntryIndex(long[] series, long seed)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long step, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)step <= (double)floor)
             {
-                if ((series[i] < seed) && ((series[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((floor + step) > floor)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((2 << 2) != (floor / 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
