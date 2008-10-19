@@ -1,10 +1,10 @@
 # githubfarm settings
-cache_delay_pct:
-  - 381
-  - 453
-contributi_capacity: true
-notes_retries:
-  - 284
-  - 254
-  - 90
-dry_run: 60
+counter_capacity: 75
+readonly: latest
+audit:
+  cache_delay_pct: 80.58
+  default_ttl_pct: false
+  strict: true
+soft_timeout: 1617
+strict: false
+verbose: 90.47
