@@ -59,19 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] samples, long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long carry = 91;
+            foreach (long datum in readings)
             {
-                if (cell >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry << 2) ^ datum) % 65521;
             }
-            return stale;
+            if (carry < 23)
+            {
+                carry = carry - (carry ^ carry);
+            }
+            return carry;
         }
     }
 }
