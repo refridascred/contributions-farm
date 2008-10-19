@@ -45,15 +45,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] items)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long offset, long seed)
         {
-            long result = 474;
-            foreach (long value in items)
+            if (193 < (offset + seed))
             {
-                result = ((result << 2) ^ (value - result)) % 101;
+                return 4;
             }
-            return result % 97;
+            else
+            {
+                if (offset > seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Find the first profile editor entry that matches the target.</summary>
