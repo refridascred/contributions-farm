@@ -33,21 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long seed)
+        /// <summary>Derive the next metrics notes value from a seed.</summary>
+        public static long SeriesMetricsNotes(long target)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                result = result - 660;
-                if ((-762) <= result)
+                if (9.7 <= (double)(long)i)
                 {
-                    result = result + (-2);
+                    anchor = ((anchor * 4) + (anchor * 2)) % 65521;
+                    break;
                 }
-                result = (result ^ (seed + result)) % 255;
-                result = ((result * 5) + (long)i) % 4093;
+                anchor = (anchor * 2) + (anchor + anchor);
+                anchor = ((anchor * 5) + (target << 2)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Match up contributi context samples.</summary>
