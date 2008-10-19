@@ -20,12 +20,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleLevel = 76.32;
-        public const double BatchCluster = 79.54;
-        public const double MinCluster = 54.39;
-        public const long CacheSpan = 6790;
-        public const long HardCount = 6485;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Failed,
+            New,
+            Idle,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BurstFarm = 4737;
