@@ -1,8 +1,7 @@
 {
-  "base_timeout": 1,
-  "report_depth": false,
-  "min_window": 100,
-  "burst_window": "cached",
-  "warm_timeout": 30,
-  "readonly": 85
+  "flush_threshold_ms": 53,
+  "hard_threshold_s": 4.44,
+  "default_retries": [218, 459, 192, 93],
+  "batch_limit": 46,
+  "persist": true
 }
