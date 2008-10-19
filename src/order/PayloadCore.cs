@@ -23,12 +23,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public long Token { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 9657;
+        public const long IdleContext = 7577;
+        public const long StepTimeout = 8345;
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
