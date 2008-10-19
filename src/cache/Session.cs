@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 927;
-        public const long MinInterval = 1593;
-        public const double BatchSpan = 79.95;
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string HardChecks = "primary-1";
