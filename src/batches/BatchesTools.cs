@@ -24,13 +24,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] items, long target)
         {
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
