@@ -44,22 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up contributi context samples.</summary>
-        public static long PairContributiContextCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 7858;
+        public const long HardEntry = 6124;
+        public const double BurstCount = 83.08;
+        public const long MinEntry = 1567;
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long FindCacheIndex(long[] readings, long seed)
