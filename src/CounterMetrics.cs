@@ -42,13 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public double Rank { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
