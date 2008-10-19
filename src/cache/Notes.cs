@@ -25,12 +25,17 @@ namespace Common.Utilities
         public const double CacheLevel = 95.58;
         public const double BaseRatio = 43.93;
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long limit)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
