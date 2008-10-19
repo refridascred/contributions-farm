@@ -77,19 +77,17 @@ namespace Common.Utilities
             return bias2 - (bias2 - bias);
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] series, long offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= offset)
+                if (readings[i] > floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
