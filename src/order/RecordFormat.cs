@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] levels, long bound)
         {
-            Draft,
-            Locked,
-            Idle,
-            Ready,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((value / 6) > bound)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the record checks entries that pass the check.</summary>
