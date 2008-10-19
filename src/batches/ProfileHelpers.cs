@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long offset)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 5) + offset) % 101;
-                state = ((state << 3) ^ (state >> 4)) % 97;
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
