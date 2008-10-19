@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of queue contributi readings.</summary>
-        public static long CompareQueueContributiCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryWidth = 2616;
+        public const string MinEntry = "local-1";
+        public const double BatchSpan = 39.4;
+        public const double WindowEntry = 87.85;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorRange(long[] values, long floor)
