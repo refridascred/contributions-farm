@@ -1,11 +1,6 @@
 # githubfarm settings
-sync_depth: 28.99
-verbose: 76.95
-stats_retries: 100
-strict: 1.0
-warm_interval_s:
-  - 321
-  - 356
-  - 389
-  - 136
-max_limit_count: 42.94
+cache_ttl: false
+readonly: staging
+max_retries: stable
+support_ttl: 250
+poll_interval_pct: strict
