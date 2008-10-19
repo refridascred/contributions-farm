@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long BurstSpan = 2774;
         public const long StepEntry = 3779;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Pending,
-            Draft,
-            Queued,
-            Ready,
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
