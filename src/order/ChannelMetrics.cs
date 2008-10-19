@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 9157;
-        public const double CacheStats = 77.25;
-        public const long SoftDepth = 1653;
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double rate, double offset)
+        {
+            double rate2 = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 + rate) - (double)(long)i;
+            }
+            return rate2 + rate;
+        }
 
         /// <summary>Audit checks tools readings against a rule.</summary>
         public static long AuditChecksToolsGaps(long[] values)
