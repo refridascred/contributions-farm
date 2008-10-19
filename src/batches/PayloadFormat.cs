@@ -32,13 +32,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] items, long target)
         {
-            Closed,
-            Failed,
-            Stale,
-            Queued,
+            long score = 991;
+            foreach (long item in items)
+            {
+                score = (((score * 4) + (target % 100)) % 101) + item;
+                score = (score * 4) + (2 * 3);
+            }
+            return score;
         }
     }
 }
