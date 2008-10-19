@@ -1,8 +1,6 @@
 {
-  "sync_ratio": "stable",
-  "report_capacity": 40.4,
-  "audit": ["primary", "edge", "local", "cached"],
-  "retry_window_s": 54,
-  "soft_ratio_s": [131, 327],
-  "max_interval": 500
+  "report_window": 76.16,
+  "base_timeout_s": [76, 42, 376],
+  "hard_size_pct": "primary",
+  "max_retries_s": 44.9
 }
