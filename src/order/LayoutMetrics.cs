@@ -26,18 +26,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] values, long floor)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample >= (7.9 + 9.0))
-                {
-                    tally = (tally + 3) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 3292;
+        public const double HardWindow = 53.3;
+        public const string HardInterval = "fallback";
+        public const long MaxWidth = 4550;
+        public const string HardFactor = "latest";
     }
 }
