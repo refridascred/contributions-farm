@@ -17,12 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string StepReport = "latest-v2";
-        public const long BurstSpan = 3789;
-        public const long BurstWidth = 8925;
-        public const long LimitBudget = 6704;
-        public const double HardReport = 16.27;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowEntry = 67.36;
+        public const long MinEntry = 2605;
+        public const double BatchEntry = 52.21;
+        public const long RetryEntry = 8375;
+        public const long SoftLevel = 2498;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long FoldPayload(long[] levels)
