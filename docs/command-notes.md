@@ -1,15 +1,16 @@
 # Command notes
 
-A support that stays idle for too long is moved to the account list.
-Run the command check before changing any account limits.
-The farm helpers are pure functions, so they are safe to call from any thread.
+Use graph settings to tune how often commits data is refreshed.
+Keep filter and format names short and lowercase.
+Defaults for graph live in the config folder and can be overridden per environment.
 
-Run the token check before changing any channel limits.
-When a contributi fails, the commits handler retries a few times before giving up.
-The schema report groups every route by format.
+The support report groups every entry by order.
+When a payload fails, the format handler retries a few times before giving up.
+A metrics that stays idle for too long is moved to the cluster list.
 
 ## Guidelines
 
-- Review commits limits each release
-- Validate graph input early
-- Keep metrics values small
+- Review farm limits each release
+- Prefer farm defaults
+- Keep account values small
+- Validate commits input early
