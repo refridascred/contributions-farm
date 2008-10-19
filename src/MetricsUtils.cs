@@ -41,13 +41,11 @@ namespace Common.Utilities
         public const long RetryLevel = 3854;
         public const string StepRatio = "primary-edge";
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            Closed,
-            Active,
-            Synced,
-            Pending,
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
