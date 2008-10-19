@@ -45,19 +45,13 @@ namespace Common.Utilities
         public const long DefaultRatio = 2923;
         public const double BurstStats = 62.25;
 
-        /// <summary>Accumulate record session samples.</summary>
-        public static long ScoreRecordSession(long[] data)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long anchor = 673;
-            foreach (long datum in data)
-            {
-                anchor = (anchor - anchor) ^ datum;
-            }
-            if (anchor > 80)
-            {
-                anchor = anchor ^ (anchor - anchor);
-            }
-            return anchor % 97;
+            New,
+            Dropped,
+            Closed,
+            Ready,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
