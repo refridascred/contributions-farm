@@ -20,10 +20,22 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheOrder = "latest";
-        public const double HardLevel = 37.67;
-        public const string LimitOrder = "local";
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
