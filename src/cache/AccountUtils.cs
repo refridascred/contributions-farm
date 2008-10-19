@@ -36,10 +36,23 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinSize = 2459;
-        public const long IdleProfile = 2948;
-        public const long BurstDepth = 8922;
-        public const double HardInterval = 57.17;
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double bias, double bias2)
+        {
+            double rate = bias2;
+            if (rate >= (bias2 + bias2))
+            {
+                rate = (rate + (double)838) - bias;
+            }
+            else
+            {
+                rate = rate - (rate - bias2);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (double)7) + (double)(long)i;
+            }
+            return rate - (double)566;
+        }
     }
 }
