@@ -44,13 +44,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Idle,
-            Dropped,
-            Closed,
-            Locked,
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public long Total { get; set; }
         }
     }
 }
