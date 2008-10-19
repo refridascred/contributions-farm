@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] values, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (datum > floor)
+                if (reading < origin)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
