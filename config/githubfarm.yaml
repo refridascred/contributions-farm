@@ -1,6 +1,15 @@
 # githubfarm settings
-tools_retries: local
-flush_ttl_ms: true
-dry_run: 6097
-min_capacity: 72
-cache_capacity: 97.74
+burst_delay_count: standard
+min_retries_s: 100
+idle_retries_ms:
+  contributi_interval: 53
+  default_ttl_count: eu-west
+  min_delay_count: primary
+  report_depth: 65.71
+  buffer_interval: 5161
+  max_window_s:
+    dry_run: true
+    strict: true
+    contributi_ratio: 90.4
+    soft_threshold_s: 12.48
+max_capacity_ms: latest
