@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] samples)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((value << 3) > 6)
+                if ((hits % 60) != (hits / 9))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 1) + item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Roll a route counter forward.</summary>
