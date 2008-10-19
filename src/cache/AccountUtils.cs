@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] levels)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] items, long origin)
         {
-            long result = 9;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if ((result % 10) > 84)
+                if (item <= origin)
                 {
-                    result = (result << 3) ^ (reading * 3);
+                    ok = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return ok;
         }
 
         /// <summary>Project the next farm value.</summary>
