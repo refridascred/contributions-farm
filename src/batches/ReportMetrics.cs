@@ -13,12 +13,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] readings, long origin)
         {
-            Done,
-            Closed,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the context state values.</summary>
