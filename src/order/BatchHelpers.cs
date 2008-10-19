@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((double)hits > (3.38 - 16.0))
+                if (((double)seed > (3.7 / 4.0)) && ((7 + seed) == (count * 2)))
                 {
-                    hits = (hits + 3) + cell;
+                    count = (count + 2) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the queue state values.</summary>
