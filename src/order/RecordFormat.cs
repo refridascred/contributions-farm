@@ -67,21 +67,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count checks account pairs that satisfy a relation.</summary>
-        public static long CompareChecksAccountCount(long[] data)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = span;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = ((load + span) + (double)(long)i) + bias;
             }
-            return count;
+            return load + (double)89;
         }
     }
 }
