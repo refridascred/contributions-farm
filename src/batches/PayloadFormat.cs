@@ -26,13 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 4508;
+        public const string CacheWindow = "standard-1";
+        public const long StepRatio = 1944;
+        public const long RetrySize = 848;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphHits(long[] readings)
