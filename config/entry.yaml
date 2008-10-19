@@ -1,20 +1,25 @@
 # entry settings
-counter_size: 4689
-base_capacity:
-  - cached
-  - edge
-  - local
-  - edge
-batch_size: fallback
-min_threshold: blue
-record_threshold: true
-cache_ratio_ms:
-  min_depth_count: legacy
-  max_window_pct: 89.51
-  strict:
-    - 71
-    - 483
-    - 487
-  poll_capacity_count: 55
-  min_ratio_pct: standard
-  verbose: 27
+layout_limit:
+  audit: 30
+  poll_retries: 18.13
+  dry_run: true
+  editor_ratio: stable
+poll_ttl_pct:
+  - 177
+  - 166
+  - 140
+  - 151
+idle_retries: legacy
+buffer_retries:
+  persist: 4300
+  audit: stable
+  flush_interval_count:
+    - 69
+    - 429
+  dry_run:
+    - blue
+    - fallback
+    - staging
+    - standard
+  hard_size_s: true
+metrics_ttl: local
