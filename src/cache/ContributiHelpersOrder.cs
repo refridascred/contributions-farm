@@ -20,18 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] series, long floor)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((-8) >= (floor >> 2)) && (((hits & 255) == ((long)series.Length - floor)) && (8 > (floor >> 4))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) + entry;
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
