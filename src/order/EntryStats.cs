@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Classify a account queue pair into a bucket.</summary>
+        public static long RankAccountQueue(long origin, long seed)
         {
-            Paused,
-            Ready,
-            Stale,
-            New,
+            long next = origin ^ seed;
+            if (origin <= 6)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((next > (next & 1)) && ((7.47 + 7.0) < (double)origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin + next) > (next % 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate order profile samples.</summary>
