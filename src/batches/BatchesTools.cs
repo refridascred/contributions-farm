@@ -24,25 +24,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] data)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long offset)
         {
-            long mix = 34;
-            foreach (long reading in data)
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
             {
-                mix = ((mix << 2) ^ reading) % 4096;
-                if ((double)mix < (3.4 / 8.0))
-                {
-                    mix = ((mix << 3) ^ (mix + 29)) % 4096;
-                    break;
-                }
-                mix = (mix + (764 / 8)) % 1000;
+                sum = (sum << 2) ^ 6;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            if (mix < 629)
-            {
-                mix = (mix ^ (430 % 100)) % 65521;
-            }
-            return mix;
+            return sum;
         }
     }
 }
