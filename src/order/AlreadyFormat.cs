@@ -26,10 +26,14 @@ namespace Common.Utilities
         public const string HardChannel = "latest";
         public const long RetryChannel = 8402;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 8809;
-        public const long LimitEntry = 8327;
-        public const string WindowEntry = "alpha-v2";
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
+        {
+            Queued,
+            Stale,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long FoldTools(long[] series)
