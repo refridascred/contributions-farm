@@ -50,18 +50,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] series, long target)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((double)matches != (3.28 * 5.15))
+                if (entry != seed)
                 {
-                    matches = ((matches + 3) ^ item) + target;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
