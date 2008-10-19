@@ -18,12 +18,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardFactor = "strict";
-        public const double CacheFormat = 68.82;
-        public const double MinWidth = 76.47;
-        public const long MaxFactor = 5167;
-        public const long DefaultFormat = 5789;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (8.64 > (double)step)
+                {
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BatchWindow = 4500;
