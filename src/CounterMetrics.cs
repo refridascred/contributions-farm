@@ -22,39 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long floor, long limit)
-        {
-            if ((limit + floor) >= (limit % 60))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit ^ floor) > limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((721 + limit) <= (limit + 6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor - limit) != (limit - floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 1953;
+        public const long HardFactor = 5560;
+        public const double MaxMetric = 10.2;
+        public const long HardMetric = 6773;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long AuditOrderOutliers(long[] series)
