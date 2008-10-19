@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] items)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((((datum + datum) < (datum / 2)) && ((count - count) != (count * 5))) || ((double)count != (4.6 / 2.0)))
+                if ((double)reading >= (16.0 - 7.0))
                 {
-                    count = count + 3;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the window phase values.</summary>
