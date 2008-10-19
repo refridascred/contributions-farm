@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double weight, double floor)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double scale, double span)
         {
-            double ratio = weight;
-            if (ratio < (double)52)
-            {
-                ratio = ratio - (double)2;
-            }
-            return ratio + (floor - 3.75);
+            double rate = scale;
+            return (rate + 4.12) + span;
         }
 
         /// <summary>Combine profile cluster values into a single score.</summary>
