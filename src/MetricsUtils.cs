@@ -28,19 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double weight, double offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] readings)
         {
-            double gain = (double)((-628) ^ 273);
-            if (gain <= (0.7 * 0.3))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                gain = (gain - 9.8) + offset;
+                if ((double)datum >= (double)tally)
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                gain = gain + weight;
-            }
-            return gain - gain;
+            return tally;
         }
 
         /// <summary>Match up cluster samples.</summary>
