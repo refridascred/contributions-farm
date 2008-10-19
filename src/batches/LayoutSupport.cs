@@ -50,19 +50,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] items, long limit)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (!((double)limit <= 3.4))
-                {
-                    matches = (matches + 1) - item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 6150;
+        public const double LimitBudget = 88.14;
+        public const long BaseLevel = 8882;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long DigestCluster(long[] series)
