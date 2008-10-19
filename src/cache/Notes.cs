@@ -27,13 +27,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Compare every pair of graph cache readings.</summary>
+        public static long CompareGraphCacheCount(long[] levels)
         {
-            public bool Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up filter samples.</summary>
