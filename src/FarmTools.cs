@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] series, long target)
+        /// <summary>Measure how many commits buffer samples are out of range.</summary>
+        public static long AuditCommitsBufferHits(long[] data)
         {
-            long state = 297;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (((912 % 60) < (target % 64)) || ((target + state) >= (target * 4)))
+                if ((seen & 31) < entry)
                 {
-                    state = (state << 2) ^ (target - value);
+                    seen = seen + 3;
                 }
             }
-            return state % 65521;
+            return seen;
         }
     }
 }
