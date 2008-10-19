@@ -20,22 +20,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] readings)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] series)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long score = 63;
+            foreach (long cell in series)
             {
-                if ((tally ^ item) <= tally)
+                if (cell <= score)
                 {
-                    tally = tally + 3;
+                    score = ((score * 2) + (cell << 3)) % 65521;
                 }
-                else
+                if ((double)score <= (5.8 - 3.29))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (score < 189)
+            {
+                score = (score - (53 ^ score)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
