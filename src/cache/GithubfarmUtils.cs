@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Find the first counter already entry that matches the target.</summary>
+        public static long LocateCounterAlreadyIndex(long[] samples, long target)
         {
-            Paused,
-            Draft,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
