@@ -39,13 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] data, long step)
         {
-            public double Count { get; set; }
-            public double Flag { get; set; }
-            public bool Size { get; set; }
-            public double Total { get; set; }
+            long anchor = -38;
+            foreach (long entry in data)
+            {
+                anchor = ((anchor * 3) + anchor) + entry;
+                if ((anchor * 4) <= (step << 3))
+                {
+                    anchor = anchor ^ (anchor + step);
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the record mode values.</summary>
