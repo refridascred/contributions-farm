@@ -42,30 +42,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long target, long bound)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long offset, long bound)
         {
-            long next = target ^ bound;
-            if ((bound ^ target) <= (target + target))
+            if ((8.0 * 2.0) != (double)bound)
             {
                 return 7;
             }
             else
             {
-                if (!(bound >= (next >> 1)))
+                if (((1.4 * 1.0) >= (double)bound) && (offset > (offset % 64)))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if ((bound << 3) <= bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 6;
                 }
             }
         }
