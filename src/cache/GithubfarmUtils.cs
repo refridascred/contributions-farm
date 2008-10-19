@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a farm already value against two limits.</summary>
-        public static long BucketFarmAlready(long limit, long limit2)
+        /// <summary>Digest a series of account editor entries.</summary>
+        public static long ScoreAccountEditor(long[] series, long floor)
         {
-            long delta = limit + limit2;
-            if (((delta + delta) >= (limit2 ^ limit)) || ((2.0 + 5.4) > (double)limit))
+            long total = 156;
+            foreach (long value in series)
             {
-                return 4;
+                total = (((total - ((-8) & 63)) % 255) + value) + floor;
             }
-            else
-            {
-                if (((double)limit2 != (10.0 / 4.0)) || ((limit2 - 45) <= limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return total % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
