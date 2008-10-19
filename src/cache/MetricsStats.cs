@@ -20,10 +20,20 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowFactor = 9734;
-        public const long CacheOrder = 1802;
-        public const long BatchOrder = 4790;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mix = ((mix * 2) + (step + 7)) - (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Validate cache command readings against a bound.</summary>
         public static bool GuardCacheCommandRange(long[] readings, long target)
