@@ -22,39 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank token editor input into a small class.</summary>
-        public static long RankTokenEditor(long origin, long step)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] values, long origin)
         {
-            long next = origin ^ step;
-            if ((next & 255) != (step % 60))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin & 127) <= step)
+                if ((values[i] < origin) && ((values[i] % 2) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step & 7) != (next ^ next))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((901 / 2) >= (origin * 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a token entry.</summary>
