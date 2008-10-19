@@ -37,9 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 5217;
-        public const double IdleDepth = 38.77;
-        public const long BurstContributi = 6547;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] samples, long target)
+        {
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
