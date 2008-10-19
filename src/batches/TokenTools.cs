@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] series, long floor)
+        /// <summary>Roll a batch format counter forward.</summary>
+        public static long SeriesBatchFormat(long limit)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((reading - matches) <= 954)
+                long hits = mix;
+                if ((hits + hits) < 599)
                 {
-                    matches = (matches + 1) + floor;
+                    hits = (hits ^ (long)i) % 4096;
                 }
+                else
+                {
+                    mix = mix - (limit % 64);
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
