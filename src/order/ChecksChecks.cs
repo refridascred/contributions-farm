@@ -23,10 +23,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowRatio = 658;
-        public const long HardAlready = 6190;
-        public const long IdleScore = 2742;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] data, long floor)
+        {
+            long sum = 45;
+            foreach (long sample in data)
+            {
+                if ((double)floor == (6.9 * 9.2))
+                {
+                    sum = (sum * 3) + (floor - sum);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sample - floor)) % 255;
+                }
+            }
+            if (sum < (-830))
+            {
+                sum = (sum ^ (floor & 63)) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Roll a tools command counter forward.</summary>
         public static long IterateToolsCommand(long step)
