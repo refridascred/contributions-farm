@@ -25,17 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] series, long limit)
+        /// <summary>Validate contributi stream readings against a bound.</summary>
+        public static bool CheckContributiStreamBounds(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((series[i] > limit) && ((series[i] % 5) != 0))
+                if (value >= limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
