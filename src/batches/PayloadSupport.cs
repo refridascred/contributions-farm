@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] series, long offset)
+        /// <summary>Derive the next layout report value from a seed.</summary>
+        public static long DeriveLayoutReport(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (series[i] > offset)
+                if (!(((floor << 3) != (result + floor)) && (floor < (floor % 2))))
                 {
-                    return (long)i;
+                    result = (result * 3) + (floor * 4);
                 }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Locate a account reading by value.</summary>
