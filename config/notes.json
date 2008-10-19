@@ -1,5 +1,5 @@
 {
-  "poll_window_pct": 87.89,
-  "batch_timeout": 7571,
-  "warm_window_count": "staging"
+  "hard_capacity_count": 49.97,
+  "checks_size": [314, 298, 429, 7],
+  "max_capacity_count": true
 }
