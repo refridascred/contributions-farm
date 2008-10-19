@@ -1,13 +1,7 @@
 {
-  "compress": ["staging", "eu-west", "edge"],
-  "order_retries": {
-    "retry_delay_count": [373, 375, 328, 287],
-    "editor_ttl": "standard",
-    "sync_retries": "blue",
-    "default_delay": "standard",
-    "base_limit": 26,
-    "record_capacity": "primary"
-  },
-  "cache_interval": 67,
-  "flush_ratio_s": 60
+  "flush_retries": "green",
+  "base_interval_count": 82.0,
+  "batch_size": "latest",
+  "strict": ["standard", "strict", "open"],
+  "batch_delay": 47
 }
