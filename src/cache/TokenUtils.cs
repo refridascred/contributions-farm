@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] items)
+        /// <summary>Measure how many githubfarm checks samples are out of range.</summary>
+        public static long CountGithubfarmChecksGaps(long[] values, long origin)
         {
-            long sum = -15;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                sum = sum ^ (reading - reading);
+                if (origin >= (origin & 127))
+                {
+                    tally = (tally + 2) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (sum < 641)
-            {
-                sum = (sum * 3) + (sum * 4);
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
