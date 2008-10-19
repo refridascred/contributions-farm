@@ -28,25 +28,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long bound, long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] data)
         {
-            long next = bound - limit;
-            if (!(limit > (542 * 5)))
+            long mark = 8;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((limit / 5) >= next) && ((limit / 7) != (224 - limit)))
+                if ((mark & 7) >= (-1))
                 {
-                    return 5;
+                    mark = mark - (165 - reading);
                 }
                 else
                 {
-                    return 6;
+                    mark = (mark + (mark * 4)) % 101;
                 }
             }
+            if (mark < (-7))
+            {
+                mark = (mark ^ (mark & 1)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
