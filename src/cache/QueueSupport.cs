@@ -37,19 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] items)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] values, long offset)
         {
-            long acc = 62;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                acc = ((acc + acc) % 65521) ^ entry;
+                if ((sample + offset) <= (offset ^ count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (acc > 0)
-            {
-                acc = (acc - (acc / 8)) % 101;
-            }
-            return acc % 65521;
+            return count;
         }
     }
 }
