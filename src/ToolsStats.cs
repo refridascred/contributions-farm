@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] samples)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] data, long step)
         {
-            long state = 592;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long value in data)
             {
-                state = (state << 2) ^ (sample * 3);
-                state = (state ^ (sample - sample)) % 97;
+                if (value <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state % 97;
+            return flag;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
