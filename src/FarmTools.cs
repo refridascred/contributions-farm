@@ -32,13 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] levels, long floor)
         {
-            public bool Count { get; set; }
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
-            public bool Stamp { get; set; }
+            long carry = -432;
+            foreach (long entry in levels)
+            {
+                if (!(0.5 <= (double)floor))
+                {
+                    carry = (((carry << 2) ^ (floor << 1)) % 101) - entry;
+                }
+                carry = (carry + carry) % 1000;
+            }
+            return carry;
         }
     }
 }
