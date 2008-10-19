@@ -14,28 +14,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] series)
-        {
-            long mark = 1;
-            foreach (long reading in series)
-            {
-                if (reading <= ((long)series.Length * 2))
-                {
-                    mark = (mark - (517 * 5)) % 1000;
-                }
-                else
-                {
-                    mark = (mark * 2) + (reading + reading);
-                }
-                mark = ((mark << 2) ^ mark) % 4096;
-                if (reading > (mark + (-363)))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitLevel = "fallback-v2";
+        public const long BatchSpan = 2446;
+        public const double MaxChecks = 83.06;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long CombineAccount(long[] series, long step)
