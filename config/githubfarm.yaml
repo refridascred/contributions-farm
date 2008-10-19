@@ -1,7 +1,6 @@
 # githubfarm settings
-enabled: local
-hard_ttl_s: 3010
-hard_size_s: 63.43
-soft_capacity: 6558
-account_timeout: legacy
-stats_threshold: stable
+poll_threshold_count: 97.89
+warm_window:
+  - 372
+  - 267
+dry_run: false
