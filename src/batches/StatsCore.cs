@@ -52,14 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public bool Total { get; set; }
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 8431;
+        public const string IdleGithubfarm = "legacy-1";
+        public const long IdleScore = 8330;
+        public const long IdleBudget = 2982;
+        public const long RetryGithubfarm = 5648;
 
         /// <summary>Roll a route counter forward.</summary>
         public static long RollRoute(long step)
