@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 8379;
-        public const string BurstWidth = "primary-edge";
-        public const string WindowEntry = "staging-v2";
-        public const string StepEntry = "latest-1";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseSpan = 8010;
+        public const long BatchSize = 6176;
+        public const long DefaultLevel = 4987;
+        public const long RetryInterval = 5629;
+        public const double MaxBudget = 6.86;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BurstWindow = 1164;
