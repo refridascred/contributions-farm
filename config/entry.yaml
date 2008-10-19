@@ -1,7 +1,5 @@
 # entry settings
-farm_window: fallback
-commits_capacity: 35.38
-token_delay: 4000
-support_threshold: 45.02
-max_size: true
-batches_interval: true
+poll_retries: true
+dry_run: latest
+min_delay: 100
+default_delay_ms: true
