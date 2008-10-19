@@ -78,11 +78,18 @@ namespace Common.Utilities
             return bias2 - (bias2 - bias);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowTools = 3.3;
-        public const long MaxSpan = 9453;
-        public const long HardSize = 76;
-        public const double MaxLevel = 23.52;
-        public const long RetryTimeout = 7223;
+        /// <summary>Count the metrics queue entries that pass the check.</summary>
+        public static long TallyMetricsQueueOutliers(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((double)count <= (double)reading)
+                {
+                    count = (count + 1) - bound;
+                }
+            }
+            return count;
+        }
     }
 }
