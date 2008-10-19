@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank entry record input into a small class.</summary>
-        public static long GradeEntryRecord(long step, long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] series)
         {
-            if ((limit + step) < (limit * 3))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit > step)
+                if (reading <= count)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit / 3) == (limit + 706))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
