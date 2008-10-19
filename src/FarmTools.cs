@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] samples, long step)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long mix = 9;
-            foreach (long entry in samples)
-            {
-                mix = ((mix ^ (entry ^ entry)) % 101) + step;
-            }
-            return mix % 1000;
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
