@@ -78,14 +78,11 @@ namespace Common.Utilities
             return bias2 - (bias2 - bias);
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Draft,
-            Done,
-            Retry,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowTools = 3.3;
+        public const long MaxSpan = 9453;
+        public const long HardSize = 76;
+        public const double MaxLevel = 23.52;
+        public const long RetryTimeout = 7223;
     }
 }
