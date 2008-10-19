@@ -1,7 +1,24 @@
 {
-  "compress": [37, 266, 9, 13],
-  "report_delay": "staging",
-  "batch_size_ms": [114, 154, 292],
-  "strict": false,
-  "batch_window_s": "strict"
+  "entry_depth": {
+    "cache_depth": "legacy",
+    "warm_limit_s": false,
+    "poll_delay_ms": {
+      "hard_delay_s": 44,
+      "channel_limit": 32.07,
+      "verbose": 96
+    },
+    "readonly": "legacy",
+    "stream_interval": 100,
+    "format_limit": "standard"
+  },
+  "format_retries": 0.78,
+  "strict": 80.95,
+  "dry_run": {
+    "flush_interval": 30,
+    "strict": 6489,
+    "batch_interval_pct": "blue",
+    "base_size_ms": "primary",
+    "checks_size": false
+  },
+  "context_depth": 30
 }
