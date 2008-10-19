@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] series)
+        /// <summary>Check that every checks record entry stays within the limit.</summary>
+        public static bool GuardChecksRecordRange(long[] samples, long offset)
         {
-            long result = 1;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                for (int i = 0; i < 9; i++)
+                if (datum > offset)
                 {
-                    result = ((result ^ (77 ^ result)) % 1000) ^ (long)i;
-                }
-                result = (result ^ (result / 7)) % 101;
-                if (((result % 16) > value) && ((value ^ 805) != (990 << 2)))
-                {
-                    result = (result << 3) ^ result;
-                }
-                else
-                {
-                    result = (result + ((long)series.Length ^ value)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return flag;
         }
 
         /// <summary>Describe the metrics status values.</summary>
