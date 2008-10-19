@@ -1,7 +1,8 @@
-id,owner,count
-1,eu-west,37.57
-2,fallback,285
-3,67.94,fallback
-4,883,200
-5,37.38,10.14
-6,stable,cached
+id,state,ratio,score
+1,46.58,6.33,59
+2,667,23.67,latest
+3,59.56,970,staging
+4,933,32.68,primary
+5,67.13,78.5,813
+6,64,cached,745
+7,staging,green,167
