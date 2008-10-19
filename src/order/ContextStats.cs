@@ -33,24 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] samples, long step)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long anchor = 0;
-            foreach (long datum in samples)
-            {
-                anchor = (anchor ^ 700) % 97;
-                if (step < (step + step))
-                {
-                    anchor = anchor ^ (step & 127);
-                }
-                anchor = (anchor + (datum ^ anchor)) % 4096;
-            }
-            if (anchor > 7)
-            {
-                anchor = anchor - (step / 6);
-            }
-            return anchor;
+            public double Token { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
