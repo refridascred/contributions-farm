@@ -52,15 +52,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] series)
-        {
-            long total = 529;
-            foreach (long cell in series)
-            {
-                total = (total - cell) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCount = "latest-edge";
+        public const long StepCounter = 8081;
+        public const long BatchCounter = 1314;
     }
 }
