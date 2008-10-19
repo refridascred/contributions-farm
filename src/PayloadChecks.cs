@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] readings, long bound)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Failed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
