@@ -24,14 +24,11 @@ namespace Common.Utilities
             return ratio + (ratio * 4.1);
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Stale,
-            Active,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftWidth = 2699;
+        public const long LimitFilter = 9256;
+        public const long IdleFilter = 5155;
+        public const long CacheDepth = 4455;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double LimitBatch = 89.7;
