@@ -1,5 +1,14 @@
 {
-  "poll_interval_s": ["blue", "latest"],
-  "metrics_ttl": 83.41,
-  "retry_delay_count": 11.46
+  "readonly": {
+    "retry_window_ms": false,
+    "default_timeout_ms": 71.34,
+    "burst_delay": [404, 32, 41],
+    "sync_ratio_count": "blue"
+  },
+  "min_window_count": {
+    "compress": "fallback",
+    "hard_size_count": "cached",
+    "base_timeout_pct": false
+  },
+  "default_size": false
 }
