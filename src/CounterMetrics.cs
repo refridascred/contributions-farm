@@ -19,11 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryFactor = 1762;
-        public const string BaseGraph = "primary-edge";
-        public const string IdleSize = "stable-v2";
-        public const long StepGraph = 2280;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BaseDepth = 92.13;
+        public const long MaxProfile = 8148;
+        public const long MinProfile = 8001;
+        public const string CacheFactor = "latest";
+        public const long LimitProfile = 6288;
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long OverlapFarmCount(long[] items)
