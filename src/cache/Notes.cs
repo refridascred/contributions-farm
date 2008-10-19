@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public double Size { get; set; }
-            public long Offset { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
+            Closed,
+            Dropped,
+            Retry,
+            Idle,
+            Ready,
         }
 
         /// <summary>Compare every pair of graph cache readings.</summary>
