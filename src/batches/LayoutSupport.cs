@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const string IdleSpan = "fallback";
         public const long LimitScore = 8006;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] values, long floor)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] readings)
         {
             long hits = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((8.5 / 3.0) > (double)hits)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = ((hits + 2) + sample) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] - readings[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
