@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first farm checks entry that matches the target.</summary>
-        public static long FindFarmChecksIndex(long[] series, long origin)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = -9;
+            foreach (long cell in samples)
             {
-                if ((series[i] > origin) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = (((state ^ (27 << 2)) % 4096) + cell) + step;
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Hold a cluster info.</summary>
