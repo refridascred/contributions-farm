@@ -65,22 +65,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] values, long offset)
+        /// <summary>Validate format account readings against a bound.</summary>
+        public static bool VerifyFormatAccountRange(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if ((double)offset <= (2.23 + 4.8))
+                if (value >= origin)
                 {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
