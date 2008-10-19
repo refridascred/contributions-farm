@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long step)
         {
-            long result = 7;
-            foreach (long entry in values)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                result = (result + (0 & 63)) + entry;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Combine profile cluster values into a single score.</summary>
