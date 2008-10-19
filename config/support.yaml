@@ -1,4 +1,4 @@
 # support settings
-flush_retries_pct: staging
-sync_limit: 51.01
-profile_delay: 77.4
+flush_ttl: standard
+githubfarm_window: true
+entry_retries: fallback
