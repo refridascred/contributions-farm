@@ -53,11 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 6158;
-        public const long MaxTimeout = 8408;
-        public const long HardCount = 6418;
-        public const long RetryLevel = 6821;
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of account token entries.</summary>
         public static long TotalAccountToken(long[] samples)
