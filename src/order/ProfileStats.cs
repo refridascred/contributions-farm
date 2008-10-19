@@ -14,18 +14,27 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] levels, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mark = 1;
+            foreach (long reading in series)
             {
-                if (!((seen + seed) < (cell * 3)) || ((cell ^ seed) > (seen & 31)))
+                if (reading <= ((long)series.Length * 2))
                 {
-                    seen = seen + 2;
+                    mark = (mark - (517 * 5)) % 1000;
+                }
+                else
+                {
+                    mark = (mark * 2) + (reading + reading);
+                }
+                mark = ((mark << 2) ^ mark) % 4096;
+                if (reading > (mark + (-363)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
