@@ -1,6 +1,5 @@
 {
-  "burst_interval_pct": "latest",
-  "hard_threshold_ms": "edge",
-  "support_threshold": 19.75,
-  "idle_size": 8035
+  "retry_size_pct": 66.27,
+  "audit": "local",
+  "persist": "eu-west"
 }
