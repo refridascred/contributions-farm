@@ -33,19 +33,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] values, long target)
+        /// <summary>Look up the position of a buffer token sample.</summary>
+        public static long FindBufferTokenIndex(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample < target)
+                if ((data[i] == target) && ((data[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
