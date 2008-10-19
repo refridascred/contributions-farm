@@ -22,10 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardChecks = "primary-1";
-        public const double RetryChecks = 4.2;
-        public const long BurstWidth = 9019;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next profile buffer value.</summary>
         public static double AdjustProfileBuffer(double bias, double span)
