@@ -77,18 +77,19 @@ namespace Common.Utilities
             return bias2 - (bias2 - bias);
         }
 
-        /// <summary>Count the metrics queue entries that pass the check.</summary>
-        public static long TallyMetricsQueueOutliers(long[] values, long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((double)count <= (double)reading)
+                if (entry >= offset)
                 {
-                    count = (count + 1) - bound;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
