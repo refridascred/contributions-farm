@@ -43,32 +43,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank tools context input into a small class.</summary>
-        public static long SortToolsContext(long bound, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] data, long floor)
         {
-            long next = bound - seed;
-            if ((double)next < (4.0 - 8.3))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound - next) > (bound >> 4))
+                if ((((floor + datum) < matches) || ((floor + floor) <= (datum * 4))) && ((datum & 1) != (matches + matches)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((-363) % 5) >= seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
