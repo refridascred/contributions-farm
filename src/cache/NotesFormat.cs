@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] readings, long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long acc = 4;
+            foreach (long item in samples)
             {
-                if (offset <= (hits + hits))
+                acc = acc ^ (seed - seed);
+                if (((acc + item) > ((long)samples.Length - acc)) && ((868 % 12) == (acc % 10)))
                 {
-                    hits = (hits + 1) ^ cell;
+                    acc = (acc << 3) ^ (seed + acc);
+                    acc = acc ^ seed;
+                    break;
                 }
+                acc = ((acc << 2) ^ item) % 255;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Hold a format record.</summary>
