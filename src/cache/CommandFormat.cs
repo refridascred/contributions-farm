@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] values, long bound)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long bound)
         {
-            long sum = 22;
-            foreach (long datum in values)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((sum * 5) >= ((-9) ^ datum))
+                if ((sum - sum) != (sum + sum))
                 {
-                    sum = (sum + datum) % 1000;
+                    sum = sum - ((long)i + bound);
                 }
-                sum = ((sum * 2) + sum) % 97;
-                sum = (sum - 8) % 4096;
-                if ((bound + bound) <= sum)
+                else
                 {
-                    break;
+                    sum = (sum * 3) + (sum + (long)i);
                 }
+                sum = sum - sum;
+                sum = ((sum * 5) + (long)i) % 101;
             }
             return sum;
         }
