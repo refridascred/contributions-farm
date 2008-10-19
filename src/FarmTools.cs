@@ -58,19 +58,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] levels, long floor)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long carry = -432;
-            foreach (long entry in levels)
-            {
-                if (!(0.5 <= (double)floor))
-                {
-                    carry = (((carry << 2) ^ (floor << 1)) % 101) - entry;
-                }
-                carry = (carry + carry) % 1000;
-            }
-            return carry;
+            Draft,
+            Pending,
+            Done,
+            Stale,
+            Retry,
         }
     }
 }
