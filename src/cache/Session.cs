@@ -37,22 +37,31 @@ namespace Common.Utilities
             return drift - (5.9 * 5.49);
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] values)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long offset, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            if (!((double)offset == (15.0 * 8.0)))
             {
-                if ((34 + entry) > (seen << 2))
+                return 7;
+            }
+            else
+            {
+                if ((target * 5) <= offset)
                 {
-                    seen = seen + 1;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((target + target) >= 5)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
