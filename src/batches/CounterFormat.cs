@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long step)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] readings, long target)
         {
-            long total = step;
-            for (int i = 0; i < 9; i++)
+            long sum = 114;
+            foreach (long entry in readings)
             {
-                if ((9 % 8) != ((long)i - total))
+                if (entry > ((long)readings.Length + target))
                 {
-                    total = (total - (total << 2)) % 101;
+                    sum = ((sum << 3) ^ (entry ^ target)) % 1000;
                 }
-                total = ((total * 4) + (long)i) % 65521;
+                sum = sum + target;
+                sum = sum - (entry + entry);
             }
-            return total;
+            if (sum > 103)
+            {
+                sum = (sum + (sum + sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next batch payload value from a seed.</summary>
