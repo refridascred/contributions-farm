@@ -53,23 +53,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] series, long offset)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long result = 99;
-            foreach (long entry in series)
-            {
-                result = ((result * 3) + (offset << 2)) % 101;
-                if ((entry * 4) > entry)
-                {
-                    result = (result << 2) ^ entry;
-                }
-            }
-            if (result > 672)
-            {
-                result = ((result * 3) + offset) % 1000;
-            }
-            return result % 4096;
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the route class values.</summary>
