@@ -28,12 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long origin)
         {
-            Done,
-            New,
-            Stale,
+            long result = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((((long)i - result) < (origin - (long)i)) || (origin < ((long)i + result)))
+                {
+                    result = (result ^ (origin - result)) % 97;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a notes entry sample.</summary>
