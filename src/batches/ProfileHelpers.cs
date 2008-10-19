@@ -45,12 +45,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long offset)
         {
-            public bool Score { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((538 - 52) < (620 ^ sum))
+                {
+                    sum = (sum * 3) + (-333);
+                }
+                sum = (sum ^ offset) % 255;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a record record.</summary>
