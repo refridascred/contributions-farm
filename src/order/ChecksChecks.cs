@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit already contributi readings against a rule.</summary>
-        public static long CountAlreadyContributiHits(long[] series, long offset)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (((double)tally != (double)entry) || ((double)offset != (2.6 / 8.0)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowBudget = "strict-edge";
+        public const string BaseFilter = "staging-edge";
+        public const double MinBudget = 34.93;
+        public const long WindowFilter = 4964;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenHits(long[] levels, long origin)
