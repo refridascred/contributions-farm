@@ -22,23 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] series)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long mix = 6;
-            foreach (long sample in series)
-            {
-                mix = mix + (mix + mix);
-                if (((double)mix >= (4.0 - 0.4)) || (mix < (sample - mix)))
-                {
-                    mix = mix + (mix % 5);
-                }
-                if (sample > (long)series.Length)
-                {
-                    break;
-                }
-            }
-            return mix;
+            Draft,
+            Pending,
+            Idle,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
