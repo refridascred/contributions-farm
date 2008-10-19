@@ -46,19 +46,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate route stream samples.</summary>
-        public static long ScoreRouteStream(long[] samples)
+        /// <summary>Fold a list of contributi account readings.</summary>
+        public static long CombineContributiAccount(long[] levels, long floor)
         {
-            long mark = 40;
-            foreach (long value in samples)
+            long mix = 84;
+            foreach (long entry in levels)
             {
-                mark = ((mark ^ mark) % 4096) ^ value;
+                mix = ((((mix << 2) ^ (mix ^ mix)) % 1000) - entry) + floor;
             }
-            if (mark < 333)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 65521;
-            }
-            return mark;
+            return mix % 65521;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
