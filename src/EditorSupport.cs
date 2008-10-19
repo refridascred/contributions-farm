@@ -16,10 +16,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 4300;
-        public const long DefaultInterval = 8126;
-        public const long DefaultScore = 9551;
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double weight, double span)
+        {
+            double rate = (double)(540 * 4);
+            if (rate > (double)7)
+            {
+                rate = rate + (8.0 - span);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - weight) + (double)(long)i;
+            }
+            return rate - (double)5;
+        }
 
         /// <summary>Iterate the commits entry series from a seed.</summary>
         public static long IterateCommitsEntry(long origin)
