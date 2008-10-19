@@ -1,9 +1,6 @@
-id,rank,owner
-1,legacy,open
-2,58.11,528
-3,78.61,blue
-4,937,blue
-5,730,726
-6,green,55.15
-7,286,standard
-8,599,39.86
+id,count,level,state
+1,2.16,39.04,795
+2,46.04,11.38,legacy
+3,448,310,519
+4,standard,469,476
+5,primary,69.19,strict
