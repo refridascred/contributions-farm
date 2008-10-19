@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit cluster already readings against a rule.</summary>
-        public static long TallyClusterAlreadyGaps(long[] data)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((reading - seen) != (seen % 97))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Queued,
+            Active,
+            New,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
