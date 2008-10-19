@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long offset, long step)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] values, long origin)
         {
-            if (9.6 > (double)step)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset < (step + 15))
+                if ((values[i] == origin) && ((values[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((6.95 + 14.0) != (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the order contributi series from a seed.</summary>
