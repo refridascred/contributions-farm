@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 8014;
+        public const long MinFactor = 2110;
+        public const double DefaultFarm = 89.38;
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long ClassifyToken(long seed, long limit)
