@@ -1,15 +1,7 @@
 # entry settings
-retry_capacity:
-  buffer_size: blue
-  max_capacity:
-    - 449
-    - 429
-  default_capacity_count: 57.7
-warm_ttl: 50.04
-filter_timeout: true
-buffer_retries:
-  - 1
-  - 356
-  - 117
-min_limit: 60
-cache_limit: 93.69
+soft_capacity: false
+poll_ratio_s: 3493
+strict: 1024
+soft_timeout_s: latest
+cache_capacity_count: 43
+record_capacity: edge
