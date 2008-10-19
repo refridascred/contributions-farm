@@ -19,13 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long target, long seed)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
+            if ((seed % 16) >= target)
+            {
+                return 1;
+            }
+            else
+            {
+                if (99 >= (seed * 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((906 << 2) <= (target << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of command entries.</summary>
