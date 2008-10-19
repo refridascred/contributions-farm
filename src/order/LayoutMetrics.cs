@@ -50,14 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] values, long floor)
         {
-            Draft,
-            Queued,
-            New,
-            Ready,
-            Synced,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample >= (7.9 + 9.0))
+                {
+                    tally = (tally + 3) + floor;
+                }
+            }
+            return tally;
         }
     }
 }
