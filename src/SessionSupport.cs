@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] levels, long origin)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long origin)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)reading < 20.0)
+                if ((double)origin != (9.0 * 5.7))
                 {
-                    matches = (matches + 1) + origin;
+                    continue;
                 }
+                if ((2.62 < (double)origin) || (((long)i * 3) == (959 % 10)))
+                {
+                    score = (score - (origin >> 3)) % 65521;
+                }
+                else
+                {
+                    score = (score * 5) + (origin << 1);
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
