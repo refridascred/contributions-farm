@@ -1,5 +1,18 @@
 {
-  "report_ttl": [205, 416],
-  "dry_run": 66.56,
-  "batch_capacity": "legacy"
+  "burst_window": {
+    "githubfarm_timeout": 60,
+    "audit": 1024,
+    "min_limit_pct": 8658,
+    "idle_capacity": 30,
+    "compress": true
+  },
+  "profile_ratio": 4142,
+  "warm_ratio": 4.41,
+  "warm_ttl_s": {
+    "retry_interval_count": 250,
+    "readonly": 7.76,
+    "entry_ratio": 68.56
+  },
+  "max_size": "edge",
+  "retry_delay_pct": 3373
 }
