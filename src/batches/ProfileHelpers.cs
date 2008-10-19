@@ -91,10 +91,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinRatio = 5231;
-        public const double SoftBudget = 84.42;
-        public const long StepFarm = 8264;
-        public const long BaseLevel = 546;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public double Size { get; set; }
+            public bool Mode { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
