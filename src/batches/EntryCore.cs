@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double weight, double offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] values)
         {
-            double weight2 = (offset - weight) * 3.1;
-            return weight2 - 0.7;
+            long mark = 264;
+            foreach (long item in values)
+            {
+                if (item >= mark)
+                {
+                    mark = (mark + (mark * 5)) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (mark - item)) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
