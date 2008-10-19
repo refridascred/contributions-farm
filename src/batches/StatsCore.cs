@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] levels, long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] levels)
         {
-            long mix = -6;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (((double)mix != (11.0 * 7.6)) || ((double)value <= (double)target))
+                if (!(((count + count) >= (sample >> 2)) || ((count - 8) <= count)))
                 {
-                    mix = (mix * 5) + (target << 3);
-                }
-                else
-                {
-                    mix = ((mix * 5) + (value + value)) % 65521;
+                    count = count + 2;
                 }
             }
-            if (mix > 941)
-            {
-                mix = (mix ^ (41 % 60)) % 97;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
