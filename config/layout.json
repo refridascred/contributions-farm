@@ -1,6 +1,17 @@
 {
-  "base_timeout": true,
-  "max_depth_pct": 75,
-  "window_size": ["primary", "edge", "edge", "eu-west"],
-  "strict": 79.16
+  "githubfarm_size": "strict",
+  "warm_ratio_count": {
+    "default_ratio": {
+      "window_ratio": "open",
+      "default_delay": 60,
+      "strict": "standard",
+      "batch_delay_pct": [413, 83, 260, 48],
+      "soft_delay": 1.38
+    },
+    "flush_threshold_pct": "local",
+    "warm_capacity_ms": false,
+    "batch_ttl_s": true
+  },
+  "burst_size_pct": 0.53,
+  "batch_timeout": 25
 }
