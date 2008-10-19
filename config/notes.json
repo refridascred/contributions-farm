@@ -1,5 +1,8 @@
 {
-  "poll_limit_s": "blue",
-  "schema_threshold": 5567,
-  "idle_depth_count": "green"
+  "idle_size_count": "stable",
+  "sync_window": false,
+  "context_interval": true,
+  "base_limit": 28.84,
+  "flush_delay_s": 80,
+  "hard_delay": ["edge", "latest"]
 }
