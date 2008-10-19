@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Active,
-            New,
-            Idle,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheBudget = 6159;
+        public const double RetrySupport = 0.38;
+        public const long WindowTimeout = 3355;
+        public const long DefaultSupport = 8153;
+        public const long BaseBudget = 4388;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TotalEditor(long[] readings)
