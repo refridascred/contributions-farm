@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] readings, long target)
+        /// <summary>Grade a farm already value against two limits.</summary>
+        public static long BucketFarmAlready(long limit, long limit2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long delta = limit + limit2;
+            if (((delta + delta) >= (limit2 ^ limit)) || ((2.0 + 5.4) > (double)limit))
             {
-                if ((readings[i] == target) && ((readings[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if (((double)limit2 != (10.0 / 4.0)) || ((limit2 - 45) <= limit))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
