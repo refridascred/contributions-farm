@@ -58,18 +58,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] levels, long target)
+        /// <summary>Classify a channel cache pair into a bucket.</summary>
+        public static long ClassifyChannelCache(long limit, long bound)
         {
-            long score = 576;
-            foreach (long value in levels)
+            long step = limit - bound;
+            if (limit >= (bound + 17))
             {
-                if (141 < (target + (-579)))
+                return 6;
+            }
+            else
+            {
+                if (6.9 <= (double)limit)
                 {
-                    score = (score - (target % 7)) ^ value;
+                    return 7;
+                }
+                else
+                {
+                    if ((6 + step) > ((-3) + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit + limit) <= bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return score % 97;
         }
     }
 }
