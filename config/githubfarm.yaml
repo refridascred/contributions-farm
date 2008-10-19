@@ -1,12 +1,6 @@
 # githubfarm settings
-compress: stable
-readonly:
-  - 296
-  - 243
-  - 448
-  - 4
-verbose: false
-flush_limit_ms:
-  - 256
-  - 452
-  - 330
+flush_size_count:
+  - 278
+  - 367
+audit: open
+retry_retries_s: 11.99
