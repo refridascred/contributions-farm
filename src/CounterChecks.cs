@@ -25,13 +25,24 @@ namespace Common.Utilities
         public const long WindowWidth = 8873;
         public const double BurstTimeout = 25.37;
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] data)
         {
-            Queued,
-            Retry,
-            Done,
-            New,
+            long mix = 350;
+            foreach (long item in data)
+            {
+                if ((double)(long)data.Length == (16.0 + 1.0))
+                {
+                    mix = mix - (item + mix);
+                }
+                mix = (mix ^ (mix + mix)) % 4096;
+                mix = mix + (item + mix);
+                if (((5.1 / 7.0) == (double)item) && ((mix - item) >= mix))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Combine checks tools values into a single score.</summary>
