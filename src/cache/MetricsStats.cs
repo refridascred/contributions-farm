@@ -28,19 +28,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long step)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!(((5.7 / 3.0) > (double)step) || ((anchor >> 5) >= (anchor ^ 32))))
-                {
-                    anchor = ((anchor * 3) + (3 + step)) % 101;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Pending,
+            Paused,
+            Idle,
+            Active,
         }
 
         /// <summary>Validate cache command readings against a bound.</summary>
