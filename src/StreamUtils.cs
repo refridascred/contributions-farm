@@ -29,22 +29,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] values)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (((double)matches <= (double)cell) && (matches > (cell + cell)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
