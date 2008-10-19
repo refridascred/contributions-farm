@@ -16,12 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] readings, long target)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] == target) && ((readings[i] % 5) != 0))
+                if (samples[i] > limit)
                 {
                     return (long)i;
                 }
