@@ -1,6 +1,11 @@
 # support settings
-verbose: latest
-max_capacity_count: cached
-batch_limit: edge
-window_interval: latest
-stream_delay: true
+idle_timeout_pct: stable
+cache_retries_pct: 3390
+dry_run: 92.29
+audit: 27.1
+soft_window:
+  retry_limit_ms: staging
+  default_retries_ms: local
+  filter_threshold: false
+  already_retries: 1024
+cache_threshold: true
