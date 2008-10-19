@@ -82,11 +82,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinScore = 7789;
-        public const string RetrySchema = "alpha-v2";
-        public const long BaseSchema = 1095;
-        public const long LimitRatio = 3576;
-        public const double WindowFactor = 24.4;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Active,
+            Stale,
+            Synced,
+            Pending,
+            Dropped,
+        }
     }
 }
