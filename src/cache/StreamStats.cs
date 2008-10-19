@@ -28,22 +28,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] levels, long target)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((0 + item) <= (target / 8))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Locate a session reading by value.</summary>
