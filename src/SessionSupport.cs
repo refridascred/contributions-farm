@@ -36,13 +36,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long origin)
         {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((long)i % 5) >= mix)
+                {
+                    mix = (mix << 3) ^ (long)i;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ ((long)i + mix)) % 97;
+                }
+                mix = (mix << 3) ^ (mix >> 3);
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
