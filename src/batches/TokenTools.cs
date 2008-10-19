@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first metric checks entry that matches the target.</summary>
-        public static long LocateMetricChecksIndex(long[] data, long bound)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
