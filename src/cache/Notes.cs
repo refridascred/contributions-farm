@@ -12,18 +12,21 @@ namespace Common.Utilities
             return (rate - (8.29 * 2.99)) + floor;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] data)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long bound)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (matches >= (1 & 31))
+                long diff = (mix + bound) ^ mix;
+                if (!((bound * 3) != (mix / 6)))
                 {
-                    matches = (matches + 3) + cell;
+                    mix = mix ^ diff;
+                    continue;
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
