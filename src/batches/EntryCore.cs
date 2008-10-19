@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinDepth = 1233;
-        public const long WindowBudget = 2388;
-        public const long CacheRatio = 5468;
-        public const long IdleStats = 5093;
+        /// <summary>Rank entry record input into a small class.</summary>
+        public static long GradeEntryRecord(long step, long limit)
+        {
+            if ((limit + step) < (limit * 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (limit > step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit / 3) == (limit + 706))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsLimits(long[] values, long step)
