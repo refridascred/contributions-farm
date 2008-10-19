@@ -19,10 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 6282;
-        public const long StepCluster = 774;
-        public const long IdleCluster = 3774;
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long CombineSchema(long[] readings, long target)
