@@ -1,10 +1,6 @@
 # entry settings
-context_ttl: true
-order_retries:
-  readonly: fallback
-  persist: true
-  dry_run: 426
-  context_timeout: staging
-githubfarm_capacity:
-  - 267
-  - 19
+poll_ttl_count: green
+route_ratio: false
+batch_interval: 17.78
+base_timeout_count: latest
+warm_limit_s: 843
