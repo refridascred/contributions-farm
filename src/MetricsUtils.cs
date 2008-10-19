@@ -28,10 +28,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxSpan = 76.78;
-        public const double RetryBudget = 36.83;
-        public const long MinFactor = 3765;
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double weight, double offset)
+        {
+            double gain = (double)((-628) ^ 273);
+            if (gain <= (0.7 * 0.3))
+            {
+                gain = (gain - 9.8) + offset;
+            }
+            else
+            {
+                gain = gain + weight;
+            }
+            return gain - gain;
+        }
 
         /// <summary>Fold a list of session layout readings.</summary>
         public static long TotalSessionLayout(long[] items)
