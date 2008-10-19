@@ -61,32 +61,19 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Rank buffer queue input into a small class.</summary>
-        public static long ClassifyBufferQueue(long floor, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] levels, long origin)
         {
-            long cur = floor + origin;
-            if ((cur % 3) > origin)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((floor - (-804)) >= (floor << 3)))
+                if (reading <= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((30 & 1) >= (origin >> 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
