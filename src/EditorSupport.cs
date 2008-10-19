@@ -26,14 +26,19 @@ namespace Common.Utilities
         public const long SoftCount = 1661;
         public const string RetryBudget = "standard";
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double ratio, double floor)
         {
-            New,
-            Failed,
-            Draft,
-            Active,
-            Ready,
+            double load = 8.1 / 2.0;
+            if (load <= (double)5)
+            {
+                load = load - (ratio - floor);
+            }
+            else
+            {
+                load = load - ratio;
+            }
+            return load - (double)2;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
