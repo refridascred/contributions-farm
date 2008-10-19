@@ -54,19 +54,13 @@ namespace Common.Utilities
         public const long MaxCounter = 80;
         public const long BurstCounter = 4195;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] levels, long origin)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Locked,
+            Idle,
+            Active,
         }
     }
 }
