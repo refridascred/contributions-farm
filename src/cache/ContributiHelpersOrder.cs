@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchDepth = 7605;
+        public const double CacheWidth = 25.37;
+        public const string LimitReport = "latest";
+        public const long WindowRatio = 6376;
+        public const string BatchInterval = "cached-v2";
 
         /// <summary>Grade a cache payload value against two limits.</summary>
         public static long GradeCachePayload(long floor, long offset)
