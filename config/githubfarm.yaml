@@ -1,23 +1,9 @@
 # githubfarm settings
-idle_capacity_count: 500
-already_limit:
-  readonly: false
-  audit:
-    session_window: latest
-    hard_interval_count: 11.18
-    queue_window: fallback
-  flush_threshold_s:
-    - blue
-    - blue
-  min_ttl: latest
-  strict: strict
-  burst_retries_ms:
-    - 17
-    - 103
-    - 151
-default_ratio_count: 81
-batch_interval:
-  - 236
-  - 113
-  - 23
-  - 68
+batch_depth: 47.26
+counter_ratio: 90
+idle_timeout:
+  - cached
+  - staging
+  - green
+cache_delay_s: 73.75
+idle_threshold: stable
