@@ -48,16 +48,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark << 2) ^ (bound - mark)) % 101;
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 5109;
+        public const long CacheChannel = 4284;
+        public const double BurstChannel = 39.52;
+        public const long BaseChannel = 3064;
     }
 }
