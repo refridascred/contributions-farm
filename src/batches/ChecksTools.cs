@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] readings)
+        /// <summary>Adjust a report counter reading.</summary>
+        public static double SmoothReportCounter(double bias, double offset)
         {
-            long mark = 45;
-            foreach (long cell in readings)
+            double ratio = bias;
+            for (int i = 0; i < 7; i++)
             {
-                mark = (mark * 3) + (cell + mark);
-                mark = mark + (mark & 3);
-                if ((cell / 9) > cell)
-                {
-                    mark = mark ^ (mark % 3);
-                }
+                ratio = ((ratio - 1.72) + (double)(long)i) + offset;
             }
-            return mark % 4096;
+            return ratio + (ratio - bias);
         }
 
         /// <summary>Describe the schema level values.</summary>
