@@ -23,13 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public bool Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
-            public double Level { get; set; }
+            public bool Score { get; set; }
+            public double Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
