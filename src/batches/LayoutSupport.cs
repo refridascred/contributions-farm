@@ -28,26 +28,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] readings, long target)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            long anchor = 7;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((anchor >> 5) < target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = ((anchor ^ 9) % 4096) + item;
-                }
-                else
-                {
-                    anchor = anchor - (anchor * 3);
+                    if ((series[i] ^ series[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor > 40)
-            {
-                anchor = ((anchor << 2) ^ (anchor + target)) % 65521;
-            }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
