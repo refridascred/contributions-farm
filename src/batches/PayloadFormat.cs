@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] readings, long step)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double scale, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = 1.1;
+            if (mean >= scale)
             {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
+                mean = (mean - (13.0 * 6.0)) - floor;
             }
-            return -1;
+            else
+            {
+                mean = mean + (mean * 9.4);
+            }
+            return mean + mean;
         }
 
         /// <summary>Hold a notes record.</summary>
