@@ -1,6 +1,7 @@
 {
-  "entry_depth": "latest",
-  "batch_interval": "stable",
-  "farm_window": 28.97,
-  "metrics_interval": 12
+  "cache_limit": "strict",
+  "warm_retries": 9316,
+  "strict": 6783,
+  "idle_interval_count": 8093,
+  "warm_limit": false
 }
