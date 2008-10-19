@@ -14,21 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of token farm readings.</summary>
-        public static long PairTokenFarmCount(long[] values)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((floor > (seen / 5)) && ((double)2 <= (double)seen)) || (((sample - sample) <= seen) || ((sample + seen) < sample)))
                 {
-                    if ((values[i] - values[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the tools mode values.</summary>
