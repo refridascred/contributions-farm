@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowScore = 87.62;
-        public const long HardSize = 3594;
-        public const long RetryEntry = 7169;
-        public const long BurstSpan = 2774;
-        public const long StepEntry = 3779;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long origin, long step)
+        {
+            if (!((86 * 5) < origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin / 6) >= origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((1.5 - 8.0) <= (double)origin) && ((step - 829) <= (origin ^ origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
