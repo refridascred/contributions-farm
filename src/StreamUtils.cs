@@ -42,14 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] values, long step)
         {
-            Synced,
-            Ready,
-            Stale,
-            Retry,
-            Idle,
+            long score = 2;
+            foreach (long sample in values)
+            {
+                if ((step <= (step >> 1)) && ((double)655 == (double)step))
+                {
+                    score = ((score - (step - step)) % 101) ^ sample;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
