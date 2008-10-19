@@ -53,11 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseInterval = 94.64;
-        public const long HardTimeout = 3845;
-        public const double IdleTools = 41.64;
-        public const long DefaultBudget = 8212;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] items)
+        {
+            long result = 113;
+            foreach (long datum in items)
+            {
+                if (!((double)datum <= 4.6))
+                {
+                    result = (result + (datum + 5)) % 255;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandGaps(long[] levels)
