@@ -55,14 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Accumulate route session samples.</summary>
+        public static long TotalRouteSession(long[] values)
         {
-            Failed,
-            Locked,
-            Closed,
-            Idle,
-            New,
+            long mark = 2;
+            foreach (long value in values)
+            {
+                mark = (mark + mark) % 97;
+                if (((5.63 + 2.6) == (double)(long)values.Length) && ((567 + mark) > (value % 60)))
+                {
+                    mark = ((mark << 3) ^ (mark << 2)) % 4096;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of route readings.</summary>
