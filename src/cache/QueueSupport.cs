@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many farm queue samples are out of range.</summary>
-        public static long MeasureFarmQueueOutliers(long[] series, long seed)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if ((double)hits >= (8.6 / 6.0))
+                if (datum >= offset)
                 {
-                    hits = ((hits + 1) - entry) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
