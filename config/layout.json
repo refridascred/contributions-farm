@@ -1,6 +1,20 @@
 {
-  "layout_threshold": 9,
-  "tools_ttl": "strict",
-  "min_limit_ms": "fallback",
-  "stream_ttl": 40.14
+  "enabled": false,
+  "tools_size": 72,
+  "record_interval": "fallback",
+  "dry_run": {
+    "cache_limit_count": {
+      "retry_window_pct": 15,
+      "max_threshold_count": 98,
+      "order_delay": false,
+      "default_threshold": 7721,
+      "soft_window": 20.77,
+      "batch_ttl": 8873
+    },
+    "poll_ttl": 6459,
+    "max_delay": "green",
+    "compress": "stable",
+    "commits_retries": true
+  },
+  "verbose": "latest"
 }
