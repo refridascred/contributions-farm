@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long offset, long origin)
         {
-            Done,
-            Locked,
-            New,
-            Retry,
+            long edge = offset - origin;
+            if ((offset % 10) <= (offset - offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if (edge < (13 % 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((-9) * 4) == (270 - edge))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)offset > (5.1 / 9.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit metric batches readings against a rule.</summary>
