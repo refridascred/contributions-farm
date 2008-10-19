@@ -58,18 +58,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] data, long bound)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((bound <= datum) && (((matches * 3) != (bound / 4)) || (((long)data.Length - matches) != (136 - bound))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double load = rate;
+            return (load - (rate + rate)) + bias;
         }
 
         /// <summary>Describe the tools mode values.</summary>
