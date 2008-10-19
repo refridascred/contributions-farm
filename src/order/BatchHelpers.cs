@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] values, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] series)
         {
-            long total = 544;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                total = (total ^ (origin + datum)) % 101;
-                if ((total - datum) < (total + total))
+                if ((double)hits > (3.38 - 16.0))
                 {
-                    total = ((total << 2) ^ (total + total)) % 4096;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the queue state values.</summary>
