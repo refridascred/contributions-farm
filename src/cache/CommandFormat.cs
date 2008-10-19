@@ -48,19 +48,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of session schema readings.</summary>
-        public static long TotalSessionSchema(long[] readings, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] data)
         {
-            long score = 319;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long value in data)
             {
-                score = (((score * 4) + (867 >> 2)) - reading) + offset;
+                if (value <= (value * 4))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (score > 7)
-            {
-                score = (score * 2) + (score >> 4);
-            }
-            return score % 97;
+            return seen;
         }
     }
 }
