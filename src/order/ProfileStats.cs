@@ -31,18 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry context readings against a rule.</summary>
-        public static long MeasureEntryContextMatches(long[] series)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + matches) == (3 * 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Done,
+            New,
+            Stale,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
