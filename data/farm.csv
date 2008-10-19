@@ -1,6 +1,6 @@
-id,rank,token
-1,standard,local
-2,326,strict
-3,local,blue
-4,724,842
-5,21.27,256
+id,score,region,label
+1,158,54.1,177
+2,97.15,685,160
+3,877,80.25,legacy
+4,local,66.16,914
+5,50.91,861,680
