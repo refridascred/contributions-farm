@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] readings, long offset)
         {
-            New,
-            Draft,
-            Done,
-            Locked,
-            Synced,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (offset <= (hits + hits))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a format record.</summary>
