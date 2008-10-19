@@ -28,10 +28,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxSize = 1884;
-        public const double CacheCounter = 3.57;
-        public const long MaxCounter = 6382;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Queued,
+            New,
+            Stale,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool CheckCommandLimits(long[] data, long offset)
