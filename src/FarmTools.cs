@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] readings)
+        /// <summary>Blend two tools notes measurements.</summary>
+        public static double ScaleToolsNotes(double gain, double span)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            double drift = gain;
+            if (drift <= (span * 3.59))
             {
-                if ((cell + 4) < 1)
-                {
-                    tally = tally + 2;
-                }
+                drift = drift - drift;
             }
-            return tally;
+            else
+            {
+                drift = drift - gain;
+            }
+            return drift + (double)75;
         }
 
         /// <summary>Define route limits and defaults.</summary>
