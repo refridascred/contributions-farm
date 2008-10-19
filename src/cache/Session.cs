@@ -33,12 +33,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Pending,
-            Draft,
-            Active,
+            public double Region { get; set; }
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
