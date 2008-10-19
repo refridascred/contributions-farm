@@ -1,53 +1,5 @@
 # githubfarm settings
-enabled:
-  order_delay: 39
-  idle_delay_count: 74
-  layout_interval:
-    warm_window_count: fallback
-    warm_delay_count: legacy
-    support_window: 96.8
-    retry_timeout:
-      - 51
-      - 148
-      - 488
-      - 409
-    hard_capacity_ms:
-      - edge
-      - strict
-      - green
-      - open
-    audit: 60.57
-  poll_ttl: 3632
-window_timeout:
-  sync_window_pct: fallback
-  compress: 22
-  default_size_count:
-    channel_interval: local
-    retry_depth: strict
-    hard_retries_ms: 500
-  burst_timeout: 6.8
-  batch_limit: local
-  stream_limit: true
-report_threshold:
-  poll_interval: false
-  burst_window_count: 42
-  githubfarm_timeout:
-    min_window: standard
-    flush_retries_s: staging
-    command_timeout:
-      - eu-west
-      - eu-west
-      - green
-      - green
-    warm_limit_pct: 5699
-  min_delay_count: 85
-  route_retries: 250
-  poll_ratio_pct:
-    idle_limit_pct: 13.47
-    batch_ratio_count: primary
-    session_interval: open
-    githubfarm_delay: 11
-    hard_depth_count: 250
-base_delay_ms: 11.48
-idle_threshold_pct: green
-sync_ttl: 87.61
+sync_ratio_count: 9785
+token_retries: false
+enabled: 9096
+persist: edge
