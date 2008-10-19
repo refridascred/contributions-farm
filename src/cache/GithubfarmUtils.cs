@@ -36,12 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Token { get; set; }
+            Idle,
+            Ready,
+            Paused,
         }
     }
 }
