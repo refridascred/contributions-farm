@@ -56,12 +56,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] values)
         {
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long mark = 839;
+            foreach (long value in values)
+            {
+                if ((value * 3) > 3)
+                {
+                    mark = (mark + (mark - mark)) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (value - 547)) % 1000;
+                }
+            }
+            return mark % 1000;
         }
     }
 }
