@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard green; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 2))
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=264
-log "limit is ${BUFFER_LIMIT}"
+for item in edge green strict; do
+    log "checking ${item}"
+done
