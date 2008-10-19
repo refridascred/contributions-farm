@@ -24,32 +24,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long target, long target2)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] items)
         {
-            long slot = target ^ target2;
-            if ((target - 39) >= (6 - 16))
+            long state = 322;
+            foreach (long entry in items)
             {
-                return 0;
+                if ((state - state) >= state)
+                {
+                    state = (state ^ (state % 5)) % 101;
+                }
+                state = ((state * 2) + (entry - 42)) % 4096;
+                state = ((state << 2) ^ (entry << 3)) % 97;
             }
-            else
+            if (state > 808)
             {
-                if (((target + target) <= ((-65) % 60)) || ((slot - 98) >= (target2 % 10)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((7.0 + 8.0) <= (double)slot)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                state = ((state * 5) + ((-45) << 3)) % 65521;
             }
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
