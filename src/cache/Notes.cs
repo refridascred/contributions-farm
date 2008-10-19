@@ -59,31 +59,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long offset, long seed)
-        {
-            if ((double)offset <= (8.6 * 5.1))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((82 - offset) > (offset - 69)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((2.3 * 12.0) > (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseWidth = "primary";
+        public const long DefaultToken = 6368;
+        public const long DefaultDepth = 6292;
+        public const string LimitRatio = "open-v2";
     }
 }
