@@ -43,21 +43,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading > seed)
                 {
-                    if ((samples[i] + samples[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Project the next batches stats value.</summary>
