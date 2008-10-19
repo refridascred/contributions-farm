@@ -1,7 +1,11 @@
 {
-  "flush_window": [104, 259, 1],
-  "base_retries": 3511,
-  "default_retries": "blue",
-  "sync_size_pct": ["legacy", "primary", "primary", "primary"],
-  "farm_threshold": 58.0
+  "graph_delay": {
+    "warm_limit_count": 13.86,
+    "contributi_retries": "blue",
+    "queue_retries": "primary",
+    "sync_retries_ms": 87,
+    "soft_window_ms": [61, 19, 407]
+  },
+  "schema_delay": 36,
+  "cache_size_pct": "green"
 }
