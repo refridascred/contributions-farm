@@ -58,22 +58,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] levels, long limit)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] levels, long floor)
         {
-            long mix = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mix * 3) != (mix ^ (-57)))
+                if (levels[i] <= floor)
                 {
-                    mix = ((mix ^ (item & 255)) % 101) - limit;
+                    return (long)i;
                 }
             }
-            if (mix > 530)
-            {
-                mix = mix + (mix - 8);
-            }
-            return mix % 4096;
+            return -1;
         }
     }
 }
