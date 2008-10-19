@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double scale, double bias)
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
+            double load = bias;
+            if (load >= (double)4)
+            {
+                load = (load - load) - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load + (double)32;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
