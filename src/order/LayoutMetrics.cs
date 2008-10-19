@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] samples, long limit)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long sum = 4;
-            foreach (long item in samples)
-            {
-                if (limit < (item * 4))
-                {
-                    sum = ((sum << 3) ^ (sum * 3)) % 1000;
-                }
-            }
-            return sum;
+            public double Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
