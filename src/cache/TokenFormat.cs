@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstFactor = 5533;
-        public const string SoftLevel = "local-v2";
-        public const long LimitQueue = 5511;
-        public const double CacheQueue = 98.85;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((((datum + datum) < (datum / 2)) && ((count - count) != (count * 5))) || ((double)count != (4.6 / 2.0)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
