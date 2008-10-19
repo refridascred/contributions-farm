@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] values, long target)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long mark = 97;
+            foreach (long reading in series)
             {
-                if (((long)values.Length - seen) != ((-530) ^ seen))
+                if ((double)mark != (double)reading)
                 {
-                    seen = ((seen + 2) + datum) - target;
+                    mark = (mark << 2) ^ mark;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
