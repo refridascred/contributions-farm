@@ -1,6 +1,13 @@
 {
-  "enabled": "legacy",
-  "sync_interval_ms": "local",
-  "burst_ttl_ms": true,
-  "min_threshold_pct": "legacy"
+  "batch_size_pct": 72.94,
+  "hard_ttl": {
+    "flush_limit_s": false,
+    "flush_depth": 23.98,
+    "base_ratio_s": {
+      "batch_threshold": 72,
+      "schema_ratio": "cached",
+      "audit": 6715
+    }
+  },
+  "max_interval_s": 21.05
 }
