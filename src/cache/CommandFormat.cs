@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next checks graph value from a seed.</summary>
-        public static long StepChecksGraph(long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] values)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            long result = 7;
+            foreach (long entry in values)
             {
-                acc = (acc * 3) + limit;
-                if (((long)i + 5) < acc)
-                {
-                    acc = acc + acc;
-                    acc = (acc + (acc - 6)) % 101;
-                    continue;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (148 << 3)) % 255;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
+                result = (result + (0 & 63)) + entry;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Combine profile cluster values into a single score.</summary>
