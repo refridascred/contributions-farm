@@ -20,11 +20,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] items)
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((15 + item) >= item)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
