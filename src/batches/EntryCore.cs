@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double scale, double span)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] readings, long seed)
         {
-            double ratio = 12.0 / 4.0;
-            if (ratio <= (ratio * 16.0))
+            long count = 0;
+            foreach (long item in readings)
             {
-                ratio = ((ratio - ratio) - scale) + span;
+                if ((double)item >= (0.08 + 3.7))
+                {
+                    count = (count + 1) + seed;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (ratio * 2.63)) + (double)(long)i;
-            }
-            return ratio - (7.1 / 8.0);
+            return count;
         }
 
         /// <summary>Hold a command entry.</summary>
