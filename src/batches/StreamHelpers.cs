@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Fold a list of cluster channel readings.</summary>
+        public static long ScoreClusterChannel(long[] data)
         {
-            New,
-            Failed,
-            Active,
+            long sum = 869;
+            foreach (long cell in data)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    long matches = (667 * 4) - ((long)i & 127);
+                    sum = (((sum << 3) ^ (matches & 15)) % 4096) + cell;
+                }
+                sum = (sum ^ (5 % 10)) % 255;
+            }
+            if (sum < 99)
+            {
+                sum = (sum - (sum % 16)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
