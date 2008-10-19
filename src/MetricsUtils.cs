@@ -41,32 +41,13 @@ namespace Common.Utilities
         public const long RetryLevel = 3854;
         public const string StepRatio = "primary-edge";
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long origin, long origin2)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long cur = origin ^ origin2;
-            if (!((cur << 3) >= (origin + origin2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((7.6 / 3.0) != (double)cur)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)origin > 10.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Closed,
+            Active,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
