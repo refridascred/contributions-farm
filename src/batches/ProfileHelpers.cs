@@ -28,22 +28,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] items)
+        /// <summary>Check that every already githubfarm entry stays within the limit.</summary>
+        public static bool VerifyAlreadyGithubfarmRange(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if ((double)reading <= (double)6)
+                if (cell >= seed)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
