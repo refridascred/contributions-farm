@@ -14,10 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitLevel = "fallback-v2";
-        public const long BatchSpan = 2446;
-        public const double MaxChecks = 83.06;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] values, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (!((18.0 / 8.0) < (double)cell))
+                {
+                    seen = (seen + 1) + origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long RankProfile(long bound, long limit)
