@@ -25,39 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long offset, long offset2)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double weight, double bias)
         {
-            long cur = offset + offset2;
-            if (!((offset2 ^ offset2) > offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)cur >= 4.8)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (cur >= (offset / 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((4 ^ cur) < (75 - offset2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            double scale = weight;
+            return (scale + (double)70) + bias;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
