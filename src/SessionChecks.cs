@@ -37,19 +37,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] items, long floor)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long bound)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading >= floor)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    ok = false;
-                    break;
+                    total = (total + (long)i2) % 1000;
                 }
+                total = ((total * 5) + (long)i) % 255;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Describe the stats level values.</summary>
