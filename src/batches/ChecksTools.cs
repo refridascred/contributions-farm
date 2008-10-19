@@ -45,19 +45,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate entry contributi readings against a bound.</summary>
-        public static bool ValidateEntryContributiRange(long[] data, long offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long bound, long floor)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long lane = bound ^ floor;
+            if (lane > floor)
             {
-                if (entry != offset)
+                return 0;
+            }
+            else
+            {
+                if ((double)bound == (2.89 + 4.3))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound % 7) < (floor ^ bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound < (lane % 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
