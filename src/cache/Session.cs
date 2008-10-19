@@ -26,12 +26,17 @@ namespace Common.Utilities
         public const long DefaultScore = 4503;
         public const long MaxWindow = 8566;
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] levels, long limit)
         {
-            Locked,
-            Active,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the filter level values.</summary>
