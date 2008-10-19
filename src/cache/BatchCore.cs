@@ -33,13 +33,12 @@ namespace Common.Utilities
             return gain + 16.0;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Total { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
