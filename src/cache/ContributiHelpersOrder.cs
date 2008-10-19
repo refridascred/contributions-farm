@@ -39,17 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] data, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 4;
+            foreach (long sample in items)
             {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
+                sum = ((sum - sample) % 97) + seed;
             }
-            return -1;
+            return sum;
         }
     }
 }
