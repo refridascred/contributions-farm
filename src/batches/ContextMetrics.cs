@@ -54,13 +54,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Stale,
-            Done,
-            Closed,
-            Ready,
+            public double Flag { get; set; }
+            public double Label { get; set; }
         }
     }
 }
