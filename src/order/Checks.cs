@@ -25,18 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxBatches = "cached";
+        public const string RetryInterval = "strict-1";
+        public const long CacheBatches = 3128;
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
