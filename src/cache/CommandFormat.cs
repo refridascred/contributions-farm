@@ -25,21 +25,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] values)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (items[i] > bound)
                 {
-                    if ((values[i] + values[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
