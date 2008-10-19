@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((long)data.Length > reading)
-                {
-                    tally = (tally + 1) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchDepth = 1038;
+        public const long BaseDepth = 6661;
+        public const string RetryGraph = "fallback";
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
