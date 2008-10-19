@@ -1,11 +1,22 @@
 # githubfarm settings
-warm_timeout: 30
-sync_depth_pct: 68.75
-profile_delay: 2
-cache_ratio_count: 60
-dry_run:
-  - green
-  - edge
-  - open
-  - fallback
-batch_depth: 25
+hard_delay_ms:
+  dry_run:
+    - standard
+    - local
+  flush_delay: 30
+  default_ratio: true
+  checks_interval:
+    batch_interval_pct:
+      - latest
+      - latest
+      - edge
+      - open
+    batch_ttl_count: strict
+    max_timeout_s: 60
+session_ttl:
+  batch_size_count: latest
+  enabled: blue
+  min_depth: 500
+burst_depth: false
+sync_depth: standard
+support_timeout: 1650
