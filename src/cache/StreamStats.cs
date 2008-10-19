@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long BurstSpan = 2774;
         public const long StepEntry = 3779;
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] items)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (!(((tally - value) <= 885) && ((value + (long)items.Length) <= (tally - 56))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
