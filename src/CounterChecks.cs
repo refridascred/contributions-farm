@@ -20,24 +20,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] data)
+        /// <summary>Look up the position of a cache report sample.</summary>
+        public static long SeekCacheReportIndex(long[] levels, long step)
         {
-            long mix = 350;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)(long)data.Length == (16.0 + 1.0))
+                if (levels[i] > step)
                 {
-                    mix = mix - (item + mix);
-                }
-                mix = (mix ^ (mix + mix)) % 4096;
-                mix = mix + (item + mix);
-                if (((5.1 / 7.0) == (double)item) && ((mix - item) >= mix))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
