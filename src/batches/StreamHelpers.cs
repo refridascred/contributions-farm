@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] items)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] series)
         {
-            long total = 238;
-            foreach (long value in items)
+            long state = 844;
+            foreach (long value in series)
             {
-                total = ((total << 2) ^ (value ^ 34)) % 97;
-                total = ((total * 2) + value) % 65521;
+                if (!((value + 944) != (value + value)))
+                {
+                    state = (state ^ (value - value)) % 65521;
+                }
+                if ((63 << 1) <= (state * 3))
+                {
+                    break;
+                }
             }
-            return total;
+            if (state < 6)
+            {
+                state = (state - (state - 48)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
