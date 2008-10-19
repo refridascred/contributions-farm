@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] samples)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (((17.0 - 6.0) != (double)tally) || (sample <= (tally / 3)))
+                if (item >= limit)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
