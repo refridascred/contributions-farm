@@ -32,22 +32,15 @@ namespace Common.Utilities
         public const long MaxCommand = 2303;
         public const string DefaultLevel = "legacy-v2";
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] data)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long total = 8;
+            foreach (long reading in values)
             {
-                if (!((datum >> 3) != (datum + seen)) && (seen > 601))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total << 3) ^ reading) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
