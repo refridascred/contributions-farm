@@ -1,15 +1,12 @@
 # Command notes
 
-Use cluster settings to tune how often graph data is refreshed.
-Use stream settings to tune how often metric data is refreshed.
-
-A githubfarm that stays idle for too long is moved to the tools list.
-Keep profile and graph names short and lowercase.
-Run the command check before changing any farm limits.
+The command report groups every notes by queue.
+The record helpers are pure functions, so they are safe to call from any thread.
+Run the graph check before changing any entry limits.
 
 ## Guidelines
 
-- Review channel limits each release
-- Prefer tools defaults
-- Validate layout input early
-- Document new token fields
+- Log every contributi change
+- Prefer command defaults
+- Validate notes input early
+- Keep checks values small
