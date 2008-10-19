@@ -1,6 +1,8 @@
-id,region,state,token
-1,34.54,blue,425
-2,166,legacy,1.55
-3,778,cached,57.24
-4,primary,edge,186
-5,29.78,221,66.6
+id,active,weight
+1,eu-west,42
+2,35,77.88
+3,552,legacy
+4,80.83,918
+5,34.07,480
+6,401,open
+7,550,blue
