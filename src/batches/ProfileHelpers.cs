@@ -18,12 +18,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardSpan = 1742;
-        public const long MaxRecord = 427;
-        public const long LimitTimeout = 3584;
-        public const long MinFactor = 2973;
-        public const string RetryRecord = "legacy-edge";
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] data, long seed)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((seed > hits) || (((6.0 - 3.4) < (double)hits) && (seed <= (item % 60))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BatchWindow = 4500;
