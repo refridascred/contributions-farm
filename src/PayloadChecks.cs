@@ -13,22 +13,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] data)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (item > (count - item))
+                if (item > bound)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
