@@ -58,25 +58,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((long)i > ((long)i / 4))
-                {
-                    result = ((result << 3) ^ ((long)i / 3)) % 1000;
-                    result = (result * 5) + ((long)i + result);
-                }
-                if ((result + 391) < (result + (long)i))
-                {
-                    result = result ^ result;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 3980;
+        public const string SoftRatio = "strict-v2";
+        public const long StepRecord = 8255;
+        public const long CacheRecord = 1952;
+        public const long DefaultRecord = 1;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
