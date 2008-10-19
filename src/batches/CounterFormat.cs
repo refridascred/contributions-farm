@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Accumulate stats buffer samples.</summary>
+        public static long WeighStatsBuffer(long[] values)
         {
-            Failed,
-            Ready,
-            Queued,
+            long mix = 4;
+            foreach (long sample in values)
+            {
+                if ((mix & 15) <= (sample >> 4))
+                {
+                    mix = (mix ^ (mix << 1)) % 101;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (sample * 2)) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
