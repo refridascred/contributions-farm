@@ -85,18 +85,21 @@ namespace Common.Utilities
         public const long HardBudget = 9333;
         public const long CacheCounter = 8917;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] levels)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((94 >> 2) < datum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((data[i] + data[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
