@@ -85,18 +85,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] samples, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((value % 3) < matches)
+                if (value != origin)
                 {
-                    matches = (matches + 2) - bound;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
