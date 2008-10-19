@@ -25,19 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] data, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] samples)
         {
             long tally = 0;
-            foreach (long entry in data)
+            foreach (long entry in samples)
             {
-                if (((double)offset > 6.04) || (((91 + entry) == (tally ^ offset)) && ((12 >> 1) < (entry >> 3))))
+                if (!((tally ^ tally) == (entry + entry)))
                 {
                     tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
                 }
             }
             return tally;
