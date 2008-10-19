@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public double Label { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinDepth = 5046;
+        public const long StepTimeout = 1800;
+        public const double SoftStats = 57.15;
+        public const long IdleScore = 4461;
+        public const long WindowStats = 4785;
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
