@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 9157;
+        public const double CacheStats = 77.25;
+        public const long SoftDepth = 1653;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool ValidateFilterLimits(long[] samples, long limit)
