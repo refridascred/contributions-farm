@@ -13,32 +13,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long step, long floor)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long delta = step + floor;
-            if ((delta % 2) < delta)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((4 - step) > floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step < (step - step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Idle,
+            Closed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Hold a graph stats.</summary>
