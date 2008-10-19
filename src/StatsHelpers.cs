@@ -12,12 +12,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double ratio, double offset)
         {
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            double ratio2 = 3.39;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = ((ratio2 + (offset - ratio2)) + (double)(long)i) - ratio;
+            }
+            return ratio2 + (double)52;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
