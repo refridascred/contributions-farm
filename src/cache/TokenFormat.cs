@@ -52,13 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public double Owner { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
