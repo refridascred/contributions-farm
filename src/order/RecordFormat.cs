@@ -64,16 +64,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix ^ (mix >> 3);
-                mix = ((mix * 4) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
