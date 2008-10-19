@@ -26,11 +26,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 4508;
-        public const string CacheWindow = "standard-1";
-        public const long StepRatio = 1944;
-        public const long RetrySize = 848;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long offset, long target)
+        {
+            if ((3.82 + 6.8) <= (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset + target) >= offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphHits(long[] readings)
