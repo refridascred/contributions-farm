@@ -42,12 +42,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] data, long limit)
+        /// <summary>Locate a session route reading by value.</summary>
+        public static long SeekSessionRouteIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] <= limit)
+                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
