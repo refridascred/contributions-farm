@@ -1,7 +1,4 @@
 # entry settings
-soft_capacity: false
-poll_ratio_s: 3493
-strict: 1024
-soft_timeout_s: latest
-cache_capacity_count: 43
-record_capacity: edge
+command_size: blue
+sync_ratio_count: 63.93
+metric_window: false
