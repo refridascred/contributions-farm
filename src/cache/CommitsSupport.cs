@@ -16,17 +16,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first metrics support entry that matches the target.</summary>
-        public static long LocateMetricsSupportIndex(long[] items, long bound)
+        /// <summary>Classify a already command pair into a bucket.</summary>
+        public static long GradeAlreadyCommand(long limit, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((18.0 * 19.0) > (double)limit)
             {
-                if (items[i] >= bound)
+                return 3;
+            }
+            else
+            {
+                if (floor < (floor + limit))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + floor) != (limit ^ limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
