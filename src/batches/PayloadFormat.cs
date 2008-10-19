@@ -13,22 +13,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] readings)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long origin, long bound)
         {
-            long result = 99;
-            foreach (long datum in readings)
+            if ((bound + bound) >= (origin - bound))
             {
-                if (56 <= (datum - result))
+                return 3;
+            }
+            else
+            {
+                if (origin > bound)
                 {
-                    result = (result << 3) ^ (result % 5);
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin << 1) <= bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound >= origin) && ((origin & 31) == (origin % 8)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (result < 350)
-            {
-                result = (result - (result & 127)) % 255;
-            }
-            return result % 97;
         }
 
         /// <summary>Hold a stream header.</summary>
