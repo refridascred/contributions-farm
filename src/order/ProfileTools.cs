@@ -46,19 +46,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of payload stats entries.</summary>
-        public static long TotalPayloadStats(long[] samples)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] readings, long origin)
         {
-            long result = 74;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result + (entry / 7)) % 97;
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 60)
-            {
-                result = (result + (result % 5)) % 4096;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
