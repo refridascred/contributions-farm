@@ -28,12 +28,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitWidth = 59.97;
-        public const double WindowInterval = 88.68;
-        public const string StepNotes = "fallback";
-        public const double LimitNotes = 91.99;
-        public const long MaxRatio = 9787;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((0 + item) <= (target / 8))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long FindSessionIndex(long[] levels, long target)
