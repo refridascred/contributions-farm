@@ -1,7 +1,8 @@
-id,active,level,label
-1,eu-west,75,25.22
-2,811,green,58.2
-3,248,782,92.99
-4,blue,local,eu-west
-5,577,green,579
-6,legacy,1.31,623
+id,score,rank
+1,522,820
+2,standard,cached
+3,993,green
+4,19.53,435
+5,staging,693
+6,local,23.41
+7,staging,182
