@@ -23,18 +23,13 @@ namespace Common.Utilities
         public const long BurstTools = 6571;
         public const long RetryCount = 1387;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] levels)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (((double)datum > (10.0 * 3.4)) && ((matches < (datum % 12)) || ((datum + matches) != (datum - matches))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Synced,
+            Done,
+            Dropped,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
