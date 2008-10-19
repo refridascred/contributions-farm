@@ -1,14 +1,7 @@
 # support settings
-base_limit_s: 1024
-max_ratio: true
-soft_ratio: legacy
-report_window: 6188
-sync_size_pct:
-  audit:
-    enabled: 3999
-    hard_retries_pct: staging
-    max_interval: 1257
-    entry_threshold: stable
-  window_capacity: open
-  idle_ratio_pct: stable
-token_retries: 500
+flush_ratio_s: 47.81
+contributi_interval:
+  - blue
+  - blue
+  - staging
+soft_size_ms: false
