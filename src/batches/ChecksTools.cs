@@ -49,24 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank schema route input into a small class.</summary>
-        public static long ClassifySchemaRoute(long step, long offset)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            if (offset >= (-7))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step + 590) < offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Level { get; set; }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
