@@ -16,20 +16,10 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] readings, long floor)
-        {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowRatio = 658;
+        public const long HardAlready = 6190;
+        public const long IdleScore = 2742;
 
         /// <summary>Roll a tools command counter forward.</summary>
         public static long IterateToolsCommand(long step)
