@@ -13,26 +13,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine githubfarm entry values into a single score.</summary>
-        public static long WeighGithubfarmEntry(long[] values, long limit)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long mix = 71;
-            foreach (long value in values)
-            {
-                if ((605 / 4) >= (214 + value))
-                {
-                    mix = mix - (285 % 60);
-                }
-                else
-                {
-                    mix = mix ^ limit;
-                }
-            }
-            if (mix > 128)
-            {
-                mix = ((mix << 2) ^ (94 - limit)) % 255;
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
