@@ -49,19 +49,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double rate, double bias)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double bias, double offset)
         {
-            double rate2 = 8.6;
-            if (rate2 <= (double)2)
+            double gain = bias;
+            if (gain > gain)
             {
-                rate2 = (rate2 - (8.3 - rate)) - bias;
+                gain = (gain + (double)7) + offset;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                rate2 = (rate2 + (rate2 * 9.3)) + (double)(long)i;
+                gain = gain + (double)292;
             }
-            return rate2 - (double)87;
+            return gain + (5.0 * 1.7);
         }
     }
 }
