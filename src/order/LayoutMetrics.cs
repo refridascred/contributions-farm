@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long limit, long target)
-        {
-            if ((double)target == (8.28 * 2.4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target < (7.1 / 9.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardLevel = 35.75;
+        public const long RetrySpan = 5019;
+        public const double RetryCache = 21.03;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BaseTools = 5479;
