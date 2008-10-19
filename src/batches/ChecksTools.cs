@@ -18,30 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] samples)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] items, long seed)
         {
-            long result = 215;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((result % 60) > (item - item))
+                if (item <= seed)
                 {
-                    result = (result - (result + result)) % 4096;
-                }
-                else
-                {
-                    result = ((result * 3) + (result & 7)) % 101;
-                }
-                if ((double)item >= (3.96 * 0.27))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (result < 606)
-            {
-                result = ((result * 5) + (result & 7)) % 65521;
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Compare every pair of metrics cache readings.</summary>
