@@ -1,11 +1,8 @@
 {
-  "warm_delay_s": [135, 379],
-  "readonly": {
-    "sync_timeout_count": "green",
-    "metric_delay": 30,
-    "poll_ttl": "legacy",
-    "checks_ttl": "staging"
-  },
-  "farm_window": 60,
-  "audit": [406, 418, 293, 95]
+  "base_timeout": 1,
+  "report_depth": false,
+  "min_window": 100,
+  "burst_window": "cached",
+  "warm_timeout": 30,
+  "readonly": 85
 }
