@@ -41,12 +41,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Locate a context metrics reading by value.</summary>
+        public static long LookupContextMetricsIndex(long[] readings, long origin)
         {
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
