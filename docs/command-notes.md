@@ -1,12 +1,12 @@
 # Command notes
 
-The queue report groups every githubfarm by token.
-Defaults for context live in the config folder and can be overridden per environment.
-The batch report groups every format by farm.
+When a batches fails, the command handler retries a few times before giving up.
+A stats that stays idle for too long is moved to the entry list.
+Keep command and channel names short and lowercase.
 
 ## Guidelines
 
-- Keep contributi values small
-- Prefer buffer defaults
-- Document new session fields
-- Validate cache input early
+- Log every profile change
+- Keep farm values small
+- Review stats limits each release
+- Validate counter input early
