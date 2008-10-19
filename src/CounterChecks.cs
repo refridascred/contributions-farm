@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long bound, long limit)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            if ((bound & 63) == (bound << 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((2.6 * 5.76) < (double)bound) && (1.0 >= (double)limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((61 + (-1)) < bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public double Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
