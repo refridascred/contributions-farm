@@ -62,10 +62,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseWidth = "primary";
-        public const long DefaultToken = 6368;
-        public const long DefaultDepth = 6292;
-        public const string LimitRatio = "open-v2";
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long target, long limit)
+        {
+            if (!((double)limit < 9.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit <= (5.72 / 2.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
