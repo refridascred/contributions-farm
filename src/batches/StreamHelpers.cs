@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of cluster channel readings.</summary>
-        public static long ScoreClusterChannel(long[] data)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] series, long step)
         {
-            long sum = 869;
-            foreach (long cell in data)
+            long total = 1;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    long matches = (667 * 4) - ((long)i & 127);
-                    sum = (((sum << 3) ^ (matches & 15)) % 4096) + cell;
-                }
-                sum = (sum ^ (5 % 10)) % 255;
+                total = ((((total << 3) ^ (total + total)) % 97) - reading) - step;
             }
-            if (sum < 99)
+            if (total < 20)
             {
-                sum = (sum - (sum % 16)) % 101;
+                total = (total << 3) ^ (total >> 5);
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
