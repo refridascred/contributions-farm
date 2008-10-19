@@ -36,25 +36,15 @@ namespace Common.Utilities
             return rate - (rate + bias);
         }
 
-        /// <summary>Rank already queue input into a small class.</summary>
-        public static long GradeAlreadyQueue(long floor, long origin)
+        /// <summary>Roll a filter report counter forward.</summary>
+        public static long IterateFilterReport(long origin)
         {
-            long step = floor + origin;
-            if ((origin % 100) > (origin + origin))
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 8;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (((double)step != (1.33 - 1.0)) || ((origin + step) == (207 / 8)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return state;
         }
     }
 }
