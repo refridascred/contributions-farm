@@ -24,22 +24,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] series, long offset)
+        /// <summary>Grade a command support value against two limits.</summary>
+        public static long RankCommandSupport(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            if (((double)29 != (double)seed) || ((double)55 != (double)offset))
             {
-                if ((matches < (matches ^ 5)) || (datum <= matches))
+                return 4;
+            }
+            else
+            {
+                if (seed >= (offset / 4))
                 {
-                    matches = (matches + 1) - offset;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
