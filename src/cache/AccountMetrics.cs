@@ -33,11 +33,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double bias, double offset)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            double load = (double)(-759) - offset;
-            return (load + load) + bias;
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Check that every report metrics entry stays within the limit.</summary>
