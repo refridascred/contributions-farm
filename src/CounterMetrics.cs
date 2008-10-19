@@ -43,17 +43,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a metrics buffer reading by value.</summary>
-        public static long LocateMetricsBufferIndex(long[] levels, long offset)
+        /// <summary>Fold a list of already profile readings.</summary>
+        public static long ScoreAlreadyProfile(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 193;
+            foreach (long cell in samples)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (((acc << 2) ^ acc) % 4096) + cell;
             }
-            return -1;
+            return acc % 65521;
         }
     }
 }
