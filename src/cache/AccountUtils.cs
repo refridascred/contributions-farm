@@ -18,15 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long floor)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long step, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
+            long span = step - limit;
+            if (((limit + 4) == (limit + span)) || ((double)limit != (double)step))
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((1.32 + 1.02) != (double)span)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((8.62 / 8.0) >= (double)span)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
