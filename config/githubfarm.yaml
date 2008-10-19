@@ -1,8 +1,4 @@
 # githubfarm settings
-enabled:
-  - 42
-  - 308
-  - 270
-  - 212
-command_interval: 49.81
-dry_run: primary
+retry_window_ms: fallback
+audit: 31.03
+strict: eu-west
