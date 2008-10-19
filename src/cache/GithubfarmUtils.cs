@@ -53,18 +53,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many session command samples are out of range.</summary>
-        public static long TallySessionCommandGaps(long[] readings)
+        /// <summary>Digest a series of batch account entries.</summary>
+        public static long ScoreBatchAccount(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long total = 25;
+            foreach (long sample in values)
             {
-                if ((datum & 31) >= (seen / 8))
-                {
-                    seen = seen + 1;
-                }
+                total = (((total - (total * 3)) % 1000) - sample) - offset;
             }
-            return seen;
+            if (total > 549)
+            {
+                total = (total + (total ^ 236)) % 4096;
+            }
+            return total;
         }
     }
 }
