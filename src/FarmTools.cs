@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheRoute = "stable-v2";
-        public const string LimitRoute = "open-1";
-        public const string MinRoute = "staging-1";
-        public const long BaseSize = 8342;
-        public const string RetryRoute = "fallback-edge";
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] series, long target)
+        {
+            long state = 297;
+            foreach (long value in series)
+            {
+                if (((912 % 60) < (target % 64)) || ((target + state) >= (target * 4)))
+                {
+                    state = (state << 2) ^ (target - value);
+                }
+            }
+            return state % 65521;
+        }
     }
 }
