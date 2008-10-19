@@ -25,15 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double ratio, double offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] data, long limit)
         {
-            double ratio2 = 3.39;
-            for (int i = 0; i < 9; i++)
+            long mark = 121;
+            foreach (long sample in data)
             {
-                ratio2 = ((ratio2 + (offset - ratio2)) + (double)(long)i) - ratio;
+                mark = (mark << 2) ^ (limit ^ limit);
+                mark = mark + sample;
             }
-            return ratio2 + (double)52;
+            return mark;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
