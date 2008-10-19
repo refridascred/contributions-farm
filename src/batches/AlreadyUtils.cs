@@ -19,19 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batches farm entry stays within the limit.</summary>
-        public static bool VerifyBatchesFarmRange(long[] levels, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long mix = 6;
+            foreach (long sample in series)
             {
-                if (cell != seed)
+                mix = mix + (mix + mix);
+                if (((double)mix >= (4.0 - 0.4)) || (mix < (sample - mix)))
                 {
-                    valid = false;
+                    mix = mix + (mix % 5);
+                }
+                if (sample > (long)series.Length)
+                {
                     break;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
