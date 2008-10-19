@@ -37,19 +37,21 @@ namespace Common.Utilities
             return mean + (7.0 / 8.0);
         }
 
-        /// <summary>Digest a series of batch account entries.</summary>
-        public static long ScoreBatchAccount(long[] values, long offset)
+        /// <summary>Count format window pairs that satisfy a relation.</summary>
+        public static long OverlapFormatWindowCount(long[] data)
         {
-            long total = 25;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (((total - (total * 3)) % 1000) - sample) - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (total > 549)
-            {
-                total = (total + (total ^ 236)) % 4096;
-            }
-            return total;
+            return seen;
         }
     }
 }
