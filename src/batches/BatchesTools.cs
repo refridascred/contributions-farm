@@ -32,10 +32,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 7289;
-        public const string MinQueue = "primary-edge";
-        public const long CacheQueue = 7470;
-        public const string CacheSize = "open-v2";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 71;
+        public const long RetryWindow = 150;
+        public const long LimitFactor = 960;
+        public const long HardWidth = 169;
+        public const double HardWindow = 93.08;
     }
 }
