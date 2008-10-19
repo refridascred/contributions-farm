@@ -50,17 +50,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first entry token entry that matches the target.</summary>
-        public static long SeekEntryTokenIndex(long[] series, long step)
+        /// <summary>Rank schema route input into a small class.</summary>
+        public static long ClassifySchemaRoute(long step, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (offset >= (-7))
             {
-                if ((series[i] > step) && ((series[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((step + 590) < offset)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
