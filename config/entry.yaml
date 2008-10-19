@@ -1,5 +1,14 @@
 # entry settings
-verbose: 44.01
-batch_limit: 30
-cache_retries_pct: 8380
-soft_timeout_s: 6576
+layout_ratio:
+  - latest
+  - legacy
+  - green
+  - eu-west
+retry_threshold_pct:
+  - latest
+  - local
+retry_window_pct:
+  - 421
+  - 258
+  - 2
+poll_timeout_pct: eu-west
