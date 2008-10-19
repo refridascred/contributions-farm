@@ -1,7 +1,10 @@
 {
-  "enabled": 73.37,
-  "route_threshold": 1872,
-  "retry_ratio_ms": "legacy",
-  "burst_interval_ms": false,
-  "flush_size": 4338
+  "sync_depth_ms": 8378,
+  "max_limit_pct": "staging",
+  "persist": {
+    "dry_run": 79.16,
+    "persist": 11,
+    "hard_depth": ["green", "cached", "strict", "cached"]
+  },
+  "poll_retries": 6646
 }
