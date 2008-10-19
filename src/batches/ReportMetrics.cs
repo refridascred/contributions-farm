@@ -36,9 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 5494;
-        public const double IdleLevel = 5.99;
-        public const long IdleDepth = 4203;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Idle,
+            Stale,
+            Pending,
+            Synced,
+        }
     }
 }
