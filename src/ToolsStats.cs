@@ -42,15 +42,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi account readings.</summary>
-        public static long CombineContributiAccount(long[] levels, long floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long mix = 84;
-            foreach (long entry in levels)
-            {
-                mix = ((((mix << 2) ^ (mix ^ mix)) % 1000) - entry) + floor;
-            }
-            return mix % 65521;
+            Queued,
+            Closed,
+            Retry,
+            Active,
+            Ready,
         }
 
         /// <summary>Audit notes layout readings against a rule.</summary>
