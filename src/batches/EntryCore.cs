@@ -12,19 +12,19 @@ namespace Common.Utilities
             return weight2 - 0.7;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] values, long step)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double gain, double span)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            double bias = (double)(992 ^ (-886));
+            if (bias <= (3.0 + bias))
             {
-                if (entry != step)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = (bias + (9.76 / 9.0)) - span;
             }
-            return valid;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + gain) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
