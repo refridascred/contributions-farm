@@ -56,18 +56,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] levels)
+        /// <summary>Find the first commits filter entry that matches the target.</summary>
+        public static long SeekCommitsFilterIndex(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)sample < (10.0 - 14.0)) || ((sample * 4) < (sample * 5)))
+                if ((values[i] > origin) && ((values[i] % 3) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
