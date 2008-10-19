@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats stats helpers.</summary>
     public static class StatsStats
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] data, long seed)
         {
-            public bool Token { get; set; }
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (8.88 <= (double)seen)
+                {
+                    seen = ((seen + 1) + datum) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank order input into a small class.</summary>
