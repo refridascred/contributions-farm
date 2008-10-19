@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] readings)
         {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
+            long total = 6;
+            foreach (long datum in readings)
+            {
+                total = (total * 5) + (datum + total);
+            }
+            return total % 4096;
         }
 
         /// <summary>Validate commits filter readings against a bound.</summary>
