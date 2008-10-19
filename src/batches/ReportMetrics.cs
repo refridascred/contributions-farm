@@ -23,17 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] samples, long seed)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Ready,
+            Stale,
         }
 
         /// <summary>Describe the farm class values.</summary>
