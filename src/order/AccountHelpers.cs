@@ -54,10 +54,14 @@ namespace Common.Utilities
         public const string BaseFactor = "staging";
         public const string SoftProfile = "primary-edge";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstBudget = 6886;
-        public const double MaxWidth = 64.81;
-        public const double BaseCount = 26.32;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportOutliers(long[] readings, long seed)
