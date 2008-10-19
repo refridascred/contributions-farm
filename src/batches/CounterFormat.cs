@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!(((long)i - step) >= ((long)i + result)))
-                {
-                    result = result + result;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            Closed,
+            Ready,
+            New,
+            Synced,
         }
 
         /// <summary>Digest a series of support route entries.</summary>
