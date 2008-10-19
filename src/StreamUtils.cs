@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
+            long mix = 98;
+            foreach (long value in values)
+            {
+                if ((3.6 / 3.0) != (double)value)
+                {
+                    mix = mix - (58 - value);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of support entries.</summary>
