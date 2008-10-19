@@ -1,13 +1,11 @@
 {
-  "retry_retries_count": ["fallback", "edge", "open"],
-  "stream_delay": "cached",
-  "enabled": 41.94,
-  "batch_capacity": {
-    "flush_ttl": 5853,
-    "batch_interval_s": "local",
-    "max_threshold_s": "standard",
-    "token_retries": 7826,
-    "min_ttl_count": 16
+  "retry_window": {
+    "min_limit_ms": true,
+    "min_ratio_pct": 1664,
+    "batches_retries": "blue",
+    "base_timeout_pct": false
   },
-  "batch_limit_count": "legacy"
+  "hard_retries_pct": [170, 126, 160, 41],
+  "cache_capacity_s": 80,
+  "warm_window": [113, 268, 62]
 }
