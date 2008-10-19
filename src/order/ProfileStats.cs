@@ -14,18 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] values, long floor)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long result = 299;
+            foreach (long entry in readings)
             {
-                if (((floor > (seen / 5)) && ((double)2 <= (double)seen)) || (((sample - sample) <= seen) || ((sample + seen) < sample)))
+                if ((entry <= (174 + 6)) && ((0.23 - 15.0) <= (double)result))
                 {
-                    seen = seen + 1;
+                    result = result ^ (entry << 2);
                 }
             }
-            return seen;
+            if (result < (-799))
+            {
+                result = (result * 5) + (352 & 7);
+            }
+            return result % 1000;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
