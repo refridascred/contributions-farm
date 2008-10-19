@@ -32,11 +32,17 @@ namespace Common.Utilities
         public const long RetryEntry = 8375;
         public const long SoftLevel = 2498;
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double scale, double offset)
+        /// <summary>Locate a batches buffer reading by value.</summary>
+        public static long FindBatchesBufferIndex(long[] items, long target)
         {
-            double bias = offset * 7.5;
-            return (bias - (double)611) + scale;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
