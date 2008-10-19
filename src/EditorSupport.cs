@@ -52,22 +52,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] levels)
+        /// <summary>Fold a list of editor command readings.</summary>
+        public static long TallyEditorCommand(long[] series)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long result = 77;
+            foreach (long value in series)
             {
-                if (((long)levels.Length ^ value) < (value % 12))
+                if (!(value <= 66))
                 {
-                    count = count + 2;
+                    result = (result + (value - result)) % 97;
                 }
-                else
+                if ((value & 7) != (value - 99))
                 {
-                    count = count - 1;
+                    result = ((result << 3) ^ value) % 65521;
                 }
             }
-            return count;
+            return result % 1000;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
