@@ -57,11 +57,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchDepth = 8694;
-        public const string CacheTimeout = "open";
-        public const long CacheSchema = 6733;
-        public const long MaxSchema = 5118;
-        public const double WindowSchema = 21.16;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public double Limit { get; set; }
+            public double Token { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
