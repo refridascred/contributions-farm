@@ -47,12 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 685;
-        public const string MinToken = "open";
-        public const long IdleWidth = 5110;
-        public const long HardToken = 722;
-        public const long WindowDepth = 8565;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!((tally + tally) == (95 + value)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count tools layout pairs that satisfy a relation.</summary>
         public static long OverlapToolsLayoutCount(long[] items)
