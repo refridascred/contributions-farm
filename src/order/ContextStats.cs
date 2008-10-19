@@ -32,13 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Validate editor payload readings against a bound.</summary>
+        public static bool GuardEditorPayloadRange(long[] values, long step)
         {
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
