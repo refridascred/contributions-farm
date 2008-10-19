@@ -23,17 +23,14 @@ namespace Common.Utilities
         public const double BatchNotes = 10.2;
         public const long StepSize = 9069;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] data, long offset)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < offset) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Synced,
+            New,
+            Ready,
+            Active,
         }
     }
 }
