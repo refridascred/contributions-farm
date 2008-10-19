@@ -41,11 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double rate, double span)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            double weight = span * 9.0;
-            return (weight - (span - weight)) + rate;
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public double Token { get; set; }
         }
     }
 }
