@@ -26,15 +26,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double gain, double offset)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long target, long offset)
         {
-            double mean = gain;
-            if (mean <= (double)382)
+            if ((offset + (-565)) <= (target - offset))
             {
-                mean = mean - offset;
+                return 8;
             }
-            return mean + (7.0 / 8.0);
+            else
+            {
+                if (!((1.46 / 6.0) > (double)target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (target < (offset >> 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count format window pairs that satisfy a relation.</summary>
