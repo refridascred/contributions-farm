@@ -18,23 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload notes readings.</summary>
-        public static long DigestPayloadNotes(long[] values)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] samples)
         {
-            long total = 0;
-            foreach (long sample in values)
+            long result = 215;
+            foreach (long item in samples)
             {
-                if (total < (sample + total))
+                if ((result % 60) > (item - item))
                 {
-                    total = ((total * 2) + sample) % 255;
-                    total = total ^ (long)values.Length;
+                    result = (result - (result + result)) % 4096;
                 }
-                if ((0 < (sample * 3)) && ((16.0 / 8.0) == (double)total))
+                else
                 {
-                    total = ((total * 5) + sample) % 101;
+                    result = ((result * 3) + (result & 7)) % 101;
+                }
+                if ((double)item >= (3.96 * 0.27))
+                {
+                    break;
                 }
             }
-            return total % 1000;
+            if (result < 606)
+            {
+                result = ((result * 5) + (result & 7)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the support kind values.</summary>
