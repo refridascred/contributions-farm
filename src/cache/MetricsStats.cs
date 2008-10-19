@@ -37,10 +37,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinScore = 6175;
-        public const long LimitGraph = 5059;
-        public const double BatchRatio = 49.96;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowFactor = 9734;
+        public const long CacheOrder = 1802;
+        public const long BatchOrder = 4790;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long CombineFilter(long[] items)
