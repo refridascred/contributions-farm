@@ -1,6 +1,15 @@
 {
-  "soft_ratio_s": [476, 144],
-  "hard_timeout": 8393,
-  "farm_window": "legacy",
-  "flush_depth_count": 92
+  "readonly": true,
+  "cache_window_pct": 100,
+  "idle_retries_count": 54.0,
+  "persist": {
+    "cache_interval_pct": "fallback",
+    "min_limit_pct": false,
+    "schema_size": true,
+    "cache_ratio_ms": [449, 138],
+    "hard_ttl": 5,
+    "stats_threshold": 76
+  },
+  "sync_ratio_pct": 1024,
+  "compress": ["local", "open", "legacy"]
 }
