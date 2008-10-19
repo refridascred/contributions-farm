@@ -42,12 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            New,
+            Closed,
+            Active,
         }
     }
 }
