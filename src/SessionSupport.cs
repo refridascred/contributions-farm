@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] levels)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (!((double)tally < (double)entry))
+                if ((double)reading < 20.0)
                 {
-                    tally = tally + 2;
+                    matches = (matches + 1) + origin;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
