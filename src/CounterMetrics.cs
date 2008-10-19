@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many cache cluster samples are out of range.</summary>
-        public static long MeasureCacheClusterGaps(long[] items)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long carry = 536;
+            foreach (long entry in values)
             {
-                if (seen > (seen - 53))
+                if (125 > (carry + 4))
                 {
-                    seen = (seen + 2) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = carry ^ (entry + limit);
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Match up profile samples.</summary>
