@@ -32,21 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] samples)
+        /// <summary>Check that every metrics support entry stays within the limit.</summary>
+        public static bool GuardMetricsSupportBounds(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value != target)
                 {
-                    if ((samples[i] ^ samples[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
