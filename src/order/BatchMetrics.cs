@@ -27,23 +27,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double weight, double offset)
+        /// <summary>Classify a already editor pair into a bucket.</summary>
+        public static long SortAlreadyEditor(long bound, long target)
         {
-            double ratio = (weight * 1.0) / 7.0;
-            if (ratio <= ratio)
+            if ((4.0 + 1.0) != (double)bound)
             {
-                ratio = ratio + (offset - ratio);
+                return 3;
             }
             else
             {
-                ratio = ratio + (offset * 8.94);
+                if (((3.51 - 1.9) <= (double)bound) || ((23 % 5) < (bound - target)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target >> 2) >= (target - bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + offset) + (double)(long)i;
-            }
-            return ratio - (ratio / 8.0);
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
