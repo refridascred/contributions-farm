@@ -1,8 +1,7 @@
 {
-  "strict": "edge",
-  "max_capacity_pct": "edge",
-  "max_ttl": true,
-  "base_size": 82,
-  "default_limit": 4009,
-  "command_threshold": 5
+  "min_threshold_pct": true,
+  "verbose": false,
+  "soft_size_pct": 5154,
+  "dry_run": 30,
+  "stream_timeout": 7767
 }
