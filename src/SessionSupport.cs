@@ -19,16 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 1939;
+        public const string BatchInterval = "stable-edge";
+        public const long SoftSize = 9952;
+        public const string BaseDepth = "fallback-1";
+        public const string BurstWindow = "latest-1";
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
