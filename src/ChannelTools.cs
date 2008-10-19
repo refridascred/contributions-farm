@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] series)
         {
-            public double Flag { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (count > (item << 3))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
