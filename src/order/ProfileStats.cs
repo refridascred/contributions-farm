@@ -19,19 +19,13 @@ namespace Common.Utilities
         public const long BatchSpan = 2446;
         public const double MaxChecks = 83.06;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] series, long step)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long total = 1;
-            foreach (long value in series)
-            {
-                total = (total * 2) + value;
-            }
-            if (total < 59)
-            {
-                total = ((total << 2) ^ (step - step)) % 4096;
-            }
-            return total;
+            Paused,
+            Draft,
+            Stale,
+            Queued,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
