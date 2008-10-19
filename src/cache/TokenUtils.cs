@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] samples, long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            long acc = 22;
-            foreach (long cell in samples)
+            long acc = 198;
+            foreach (long reading in samples)
             {
-                acc = (((acc - acc) % 255) ^ cell) + floor;
+                acc = (acc + (9 ^ acc)) % 4096;
+                if ((reading + reading) > (acc & 31))
+                {
+                    break;
+                }
             }
-            if (acc < 47)
-            {
-                acc = ((acc << 2) ^ (acc / 2)) % 4096;
-            }
-            return acc;
+            return acc % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
