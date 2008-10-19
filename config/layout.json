@@ -1,7 +1,13 @@
 {
-  "githubfarm_retries": true,
-  "audit": 69.35,
-  "strict": "primary",
-  "retry_limit_pct": "legacy",
-  "burst_threshold": 18
+  "compress": ["staging", "eu-west", "edge"],
+  "order_retries": {
+    "retry_delay_count": [373, 375, 328, 287],
+    "editor_ttl": "standard",
+    "sync_retries": "blue",
+    "default_delay": "standard",
+    "base_limit": 26,
+    "record_capacity": "primary"
+  },
+  "cache_interval": 67,
+  "flush_ratio_s": 60
 }
