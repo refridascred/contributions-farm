@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long seed, long offset)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            if (offset < (3 % 60))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed < (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((4.66 + 7.9) != (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            New,
+            Stale,
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Hold a schema info.</summary>
