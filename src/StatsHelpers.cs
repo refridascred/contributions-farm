@@ -30,11 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] samples, long floor)
         {
-            public bool Region { get; set; }
-            public bool Label { get; set; }
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many command support samples are out of range.</summary>
