@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] items, long offset)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long score = 32;
-            foreach (long item in items)
-            {
-                score = ((((score * 2) + (score + 498)) % 1000) + item) - offset;
-            }
-            return score;
+            Dropped,
+            Paused,
+            Pending,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
