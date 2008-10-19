@@ -33,13 +33,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public bool Region { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
+            public double Rank { get; set; }
             public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
     }
 }
