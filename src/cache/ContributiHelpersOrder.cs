@@ -34,26 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] data)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long seed)
         {
-            long carry = -9;
-            foreach (long entry in data)
+            long score = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((entry / 4) <= entry)
-                {
-                    carry = (carry * 5) + (carry + entry);
-                }
-                if (carry >= (entry ^ 873))
-                {
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            if (carry < (-13))
-            {
-                carry = carry - (carry - carry);
-            }
-            return carry % 97;
+            return score;
         }
     }
 }
