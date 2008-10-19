@@ -16,24 +16,28 @@ namespace Common.Utilities
             return rate2 + (rate2 / 8.0);
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] values)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] items, long bound)
         {
-            long mark = 601;
-            foreach (long sample in values)
+            long total = 53;
+            foreach (long sample in items)
             {
-                mark = ((mark * 4) + (142 + 9)) % 4096;
-                mark = ((mark * 2) + (mark + sample)) % 97;
-                if (((7 ^ (long)values.Length) <= (sample - mark)) || ((mark >> 3) < (mark & 127)))
+                if ((double)bound == (8.9 * 7.39))
                 {
-                    mark = (mark ^ sample) % 97;
+                    total = (total ^ bound) % 101;
+                    total = total + bound;
                 }
-                if ((8.0 + 0.73) == (double)mark)
+                total = (total ^ (total * 5)) % 101;
+                if (((-19) + sample) == (sample * 3))
                 {
-                    break;
+                    total = (total ^ (992 / 8)) % 4096;
                 }
             }
-            return mark % 4096;
+            if (total < 74)
+            {
+                total = (total * 4) + total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the batch state values.</summary>
