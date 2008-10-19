@@ -11,14 +11,10 @@ namespace Common.Utilities
         public const double BatchSpan = 39.4;
         public const double WindowEntry = 87.85;
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleRatio = 6879;
+        public const long BaseScore = 4563;
+        public const long CacheRatio = 4353;
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long DeriveBatch(long step)
