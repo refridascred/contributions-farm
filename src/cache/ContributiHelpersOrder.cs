@@ -35,22 +35,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] readings, long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] readings)
         {
-            long score = -447;
+            long matches = 0;
             foreach (long reading in readings)
             {
-                if (((score ^ score) != (reading << 2)) && ((17.0 - 7.5) <= (4.0 + 0.84)))
+                if ((matches << 2) == (matches + reading))
                 {
-                    score = score + (score + step);
-                }
-                else
-                {
-                    score = (score ^ reading) % 65521;
+                    matches = matches + 3;
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
