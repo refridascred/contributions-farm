@@ -19,19 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two tools notes measurements.</summary>
-        public static double ScaleToolsNotes(double gain, double span)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long floor, long bound)
         {
-            double drift = gain;
-            if (drift <= (span * 3.59))
+            if (7.0 >= (double)floor)
             {
-                drift = drift - drift;
+                return 2;
             }
             else
             {
-                drift = drift - gain;
+                if ((bound / 6) >= floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return drift + (double)75;
         }
 
         /// <summary>Define route limits and defaults.</summary>
