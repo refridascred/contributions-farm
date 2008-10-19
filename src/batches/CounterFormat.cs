@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double scale, double bias)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double gain, double bias)
         {
-            double drift = (bias * 11.0) - (scale + bias);
-            if (drift < (bias - 5.8))
+            double gain2 = (double)(812 + 8);
+            if (gain2 <= (gain2 / 2.0))
             {
-                drift = drift + bias;
+                gain2 = gain2 + (gain2 * 14.0);
             }
-            return drift - (5.3 * 16.0);
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + (bias * 8.0)) + (double)(long)i;
+            }
+            return gain2 + (gain + bias);
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
