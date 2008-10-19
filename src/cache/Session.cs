@@ -41,20 +41,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long limit)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = (mix + limit) % 255;
-                if (!((42 * 2) >= limit))
-                {
-                    mix = (mix ^ limit) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Synced,
+            Failed,
+            Draft,
+            Ready,
+            New,
         }
     }
 }
