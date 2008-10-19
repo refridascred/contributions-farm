@@ -57,32 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long target, long target2)
+        /// <summary>Count the graph checks entries that pass the check.</summary>
+        public static long CountGraphChecksGaps(long[] levels)
         {
-            long cur = target ^ target2;
-            if ((target + 72) < (258 - target))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((target2 + (-42)) <= cur) || ((5.73 * 17.0) == (double)target))
+                if ((matches >> 1) < (matches + value))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target / 3) == (target + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
