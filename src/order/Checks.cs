@@ -33,17 +33,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Look up the position of a buffer token sample.</summary>
-        public static long FindBufferTokenIndex(long[] data, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((data[i] == target) && ((data[i] % 5) != 0))
+                if ((item << 2) < (92 ^ 3))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
