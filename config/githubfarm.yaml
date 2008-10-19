@@ -1,10 +1,8 @@
 # githubfarm settings
-counter_capacity: 75
-readonly: latest
-audit:
-  cache_delay_pct: 80.58
-  default_ttl_pct: false
-  strict: true
-soft_timeout: 1617
-strict: false
-verbose: 90.47
+enabled:
+  - 42
+  - 308
+  - 270
+  - 212
+command_interval: 49.81
+dry_run: primary
