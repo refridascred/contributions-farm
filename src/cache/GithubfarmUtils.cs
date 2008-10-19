@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate batches schema samples.</summary>
-        public static long WeighBatchesSchema(long[] samples)
+        /// <summary>Measure how many context route samples are out of range.</summary>
+        public static long MeasureContextRouteHits(long[] series, long origin)
         {
-            long sum = 600;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long item in series)
             {
-                sum = (sum + sum) % 255;
-                if ((sum + reading) > (reading % 64))
+                if ((item - origin) <= (hits + hits))
                 {
-                    sum = ((sum << 2) ^ (sum ^ reading)) % 65521;
+                    hits = hits + 2;
                 }
             }
-            if (sum < 542)
-            {
-                sum = (sum + (sum * 4)) % 1000;
-            }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Hold a route info.</summary>
