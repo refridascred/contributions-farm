@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample - (long)readings.Length) < (sample + sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinInterval = 59.71;
+        public const long SoftScore = 881;
+        public const long WindowTools = 2608;
+        public const long BurstTools = 6571;
+        public const long RetryCount = 1387;
 
         /// <summary>Match up checks samples.</summary>
         public static long OverlapChecksCount(long[] values)
