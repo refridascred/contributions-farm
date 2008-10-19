@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] samples)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] data)
         {
-            long result = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result + (reading << 2)) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (result > 23)
-            {
-                result = result - result;
-            }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Describe the filter status values.</summary>
