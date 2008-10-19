@@ -1,10 +1,12 @@
 # Command notes
 
-The layout report groups every metrics by cache.
-The route module keeps graph values in sync with the profile cache.
+The queue report groups every githubfarm by token.
+Defaults for context live in the config folder and can be overridden per environment.
+The batch report groups every format by farm.
 
 ## Guidelines
 
-- Keep farm values small
-- Document new record fields
-- Review cache limits each release
+- Keep contributi values small
+- Prefer buffer defaults
+- Document new session fields
+- Validate cache input early
