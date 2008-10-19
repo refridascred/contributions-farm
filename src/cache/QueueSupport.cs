@@ -20,22 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] samples, long floor)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long seed, long limit)
         {
-            long state = 921;
-            foreach (long value in samples)
+            long cur = seed ^ limit;
+            if (((12.0 / 2.0) < (double)limit) || (seed > (limit - cur)))
             {
-                if ((9.1 / 5.0) <= (double)value)
+                return 4;
+            }
+            else
+            {
+                if ((seed + limit) > seed)
                 {
-                    state = ((state << 2) ^ (2 >> 2)) - floor;
+                    return 8;
                 }
-                if ((9.8 - 6.4) == (double)value)
+                else
                 {
-                    break;
+                    return 1;
                 }
             }
-            return state;
         }
 
         /// <summary>Accumulate queue samples.</summary>
