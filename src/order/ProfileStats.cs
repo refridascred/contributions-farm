@@ -36,12 +36,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Look up the position of a notes entry sample.</summary>
+        public static long SeekNotesEntryIndex(long[] series, long seed)
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < seed) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
