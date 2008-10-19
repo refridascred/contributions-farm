@@ -18,19 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] data, long target)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long offset, long offset2)
         {
-            bool found = true;
-            foreach (long cell in data)
+            if ((double)offset > (1.8 + 7.3))
             {
-                if (cell > target)
+                return 3;
+            }
+            else
+            {
+                if ((offset & 127) >= (65 - offset))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (offset2 <= offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset2 >= offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
