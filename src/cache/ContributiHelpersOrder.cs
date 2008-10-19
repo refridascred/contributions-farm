@@ -49,15 +49,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] data)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] readings, long step)
         {
-            long mix = 92;
-            foreach (long sample in data)
+            long score = -447;
+            foreach (long reading in readings)
             {
-                mix = (((mix << 2) ^ (mix % 100)) % 101) ^ sample;
+                if (((score ^ score) != (reading << 2)) && ((17.0 - 7.5) <= (4.0 + 0.84)))
+                {
+                    score = score + (score + step);
+                }
+                else
+                {
+                    score = (score ^ reading) % 65521;
+                }
             }
-            return mix;
+            return score;
         }
     }
 }
