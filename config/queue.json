@@ -1,8 +1,18 @@
 {
-  "editor_ttl": 4566,
-  "channel_ratio": 44.78,
-  "hard_delay": 46,
-  "schema_timeout": "edge",
-  "commits_size": "local",
-  "counter_delay": true
+  "base_ratio": "edge",
+  "soft_window": 8655,
+  "idle_retries_pct": {
+    "metric_timeout": 6178,
+    "batch_retries": {
+      "readonly": "staging",
+      "verbose": 96.58,
+      "burst_limit_count": 4.74,
+      "base_limit_ms": "local"
+    },
+    "burst_window_s": 57.94,
+    "soft_retries_s": false,
+    "poll_ttl_pct": 76
+  },
+  "report_timeout": false,
+  "enabled": "staging"
 }
