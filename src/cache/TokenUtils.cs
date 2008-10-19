@@ -29,22 +29,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] items)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (tally > (835 / 6))
+                if (levels[i] == limit)
                 {
-                    tally = (tally + 2) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
