@@ -80,15 +80,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double gain, double span)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double ratio = (double)(6 % 7);
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ((ratio - (1.87 + gain)) + (double)(long)i) - span;
-            }
-            return ratio - (double)(-1);
+            Idle,
+            New,
+            Done,
+            Dropped,
         }
     }
 }
