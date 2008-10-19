@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] samples, long target)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long origin, long seed)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            if ((origin + 382) >= origin)
             {
-                if (reading > target)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed > (double)origin)
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
