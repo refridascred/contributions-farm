@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] samples, long target)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            double ratio = weight;
+            if (ratio < (double)52)
             {
-                if (value <= target)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio - (double)2;
             }
-            return stale;
+            return ratio + (floor - 3.75);
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
