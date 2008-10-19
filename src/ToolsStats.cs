@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] data, long step)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Retry,
+            Pending,
+            Failed,
+            New,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
