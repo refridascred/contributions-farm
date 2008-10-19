@@ -91,13 +91,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Validate metric editor readings against a bound.</summary>
+        public static bool CheckMetricEditorBounds(long[] values, long step)
         {
-            public string Mode { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
