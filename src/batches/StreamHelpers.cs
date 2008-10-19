@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double bias, double offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] series)
         {
-            double gain = bias * 1.1;
-            if (gain <= 10.0)
+            long matches = 0;
+            foreach (long item in series)
             {
-                gain = (gain - gain) - offset;
+                if (!!((item - 19) >= (matches % 3)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return gain + (gain / 9.0);
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
