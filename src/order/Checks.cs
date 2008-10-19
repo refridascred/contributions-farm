@@ -64,19 +64,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double bias, double offset)
-        {
-            double gain = bias;
-            if (gain > gain)
-            {
-                gain = (gain + (double)7) + offset;
-            }
-            else
-            {
-                gain = gain + (double)292;
-            }
-            return gain + (5.0 * 1.7);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 5.55;
+        public const double MinTimeout = 9.38;
+        public const double LimitCommand = 40.59;
+        public const long MaxSize = 2094;
+        public const long MinBudget = 8053;
     }
 }
