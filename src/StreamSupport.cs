@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] items)
         {
-            Retry,
-            Ready,
-            Queued,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value ^ value) > (value + value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
