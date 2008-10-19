@@ -1,4 +1,6 @@
 # support settings
-flush_ttl: standard
-githubfarm_window: true
-entry_retries: fallback
+verbose: latest
+max_capacity_count: cached
+batch_limit: edge
+window_interval: latest
+stream_delay: true
