@@ -42,22 +42,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] samples)
+        /// <summary>Find the first profile editor entry that matches the target.</summary>
+        public static long LookupProfileEditorIndex(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count % 16) == (155 % 3))
+                if (samples[i] < step)
                 {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
