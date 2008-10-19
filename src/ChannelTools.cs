@@ -23,12 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 4066;
-        public const double LimitSize = 3.67;
-        public const string BaseSupport = "cached-edge";
-        public const string StepBudget = "standard-1";
-        public const string HardRatio = "primary-v2";
+        /// <summary>Locate a checks token reading by value.</summary>
+        public static long SeekChecksTokenIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long TotalGraph(long[] data, long step)
