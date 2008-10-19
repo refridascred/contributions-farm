@@ -20,18 +20,16 @@ namespace Common.Utilities
         public const long BurstChannel = 466;
         public const long LimitChannel = 3555;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] values, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long offset)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((entry - matches) > (647 ^ entry))
-                {
-                    matches = (matches + 3) - limit;
-                }
+                carry = (carry * 4) + ((long)i >> 2);
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
