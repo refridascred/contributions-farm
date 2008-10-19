@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two counter context measurements.</summary>
-        public static double BlendCounterContext(double weight, double bias)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] levels, long floor)
         {
-            double ratio = (weight * 0.33) / 6.0;
-            if (ratio < (3.96 * 19.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio + (double)25) + bias;
+                if ((levels[i] < floor) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - 2.56;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (3.44 * 2.3)) - (double)(long)i;
-            }
-            return ratio + (ratio * 4.1);
+            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
