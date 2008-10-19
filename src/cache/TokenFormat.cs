@@ -19,14 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long target)
         {
-            New,
-            Closed,
-            Locked,
-            Retry,
-            Draft,
+            long carry = target;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = (carry * 3) + (1 / 9);
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
