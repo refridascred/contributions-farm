@@ -25,10 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxBatches = "cached";
-        public const string RetryInterval = "strict-1";
-        public const long CacheBatches = 3128;
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
