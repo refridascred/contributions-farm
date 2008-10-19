@@ -40,19 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next profile batch value.</summary>
-        public static double BlendProfileBatch(double rate, double floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] levels, long floor)
         {
-            double drift = (floor * 10.0) / 2.0;
-            if (drift < drift)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + floor;
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + floor;
-            }
-            return drift + rate;
+            return -1;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
