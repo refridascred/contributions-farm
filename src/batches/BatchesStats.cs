@@ -16,11 +16,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double weight, double bias)
         {
-            public string Rank { get; set; } = "";
-            public string Limit { get; set; } = "";
+            double scale = weight;
+            if (scale <= weight)
+            {
+                scale = (scale + (double)531) + bias;
+            }
+            else
+            {
+                scale = scale + (scale / 8.0);
+            }
+            return scale - weight;
         }
 
         /// <summary>Hold a editor record.</summary>
