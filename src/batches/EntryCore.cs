@@ -57,23 +57,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] data)
-        {
-            long total = 243;
-            foreach (long datum in data)
-            {
-                total = (total - (7 + datum)) % 101;
-                if ((double)datum <= (11.0 + 7.0))
-                {
-                    total = (total * 2) + (datum + datum);
-                }
-                if (81 >= (316 + datum))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchDepth = 8694;
+        public const string CacheTimeout = "open";
+        public const long CacheSchema = 6733;
+        public const long MaxSchema = 5118;
+        public const double WindowSchema = 21.16;
     }
 }
