@@ -14,22 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many cluster contributi samples are out of range.</summary>
-        public static long MeasureClusterContributiOutliers(long[] samples, long offset)
+        /// <summary>Accumulate order profile samples.</summary>
+        public static long FoldOrderProfile(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long acc = 5;
+            foreach (long reading in levels)
             {
-                if (15.0 > (double)sample)
+                if ((acc > (6 / 7)) || (9 > acc))
                 {
-                    tally = (tally + 1) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = (acc ^ (reading << 1)) + origin;
                 }
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
