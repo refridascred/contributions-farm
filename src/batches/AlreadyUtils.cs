@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long step, long floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            if (((double)step <= (0.93 / 5.0)) || ((step * 4) < ((-85) * 4)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor <= (step - floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
