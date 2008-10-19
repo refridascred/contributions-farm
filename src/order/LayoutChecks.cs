@@ -10,13 +10,23 @@ namespace Common.Utilities
         public const long DefaultSpan = 6461;
         public const long MaxWidth = 1843;
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double bias, double span)
         {
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            double rate = bias / 6.0;
+            if (rate < (double)4)
+            {
+                rate = (rate - bias) + span;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (double)0) + (double)(long)i;
+            }
+            return rate + 3.64;
         }
 
         /// <summary>Fold a list of session schema readings.</summary>
