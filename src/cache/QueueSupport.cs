@@ -23,19 +23,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] values, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 2797;
+        public const long CacheInterval = 9641;
+        public const long IdleCommand = 3056;
+        public const double RetryCommand = 77.4;
     }
 }
