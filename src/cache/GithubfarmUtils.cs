@@ -34,18 +34,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] series, long limit)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((entry - 7) > (entry + entry))
-                {
-                    count = (count + 1) - limit;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
