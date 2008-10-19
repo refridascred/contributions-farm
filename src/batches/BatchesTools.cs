@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] samples, long limit)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long bound)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (((limit - limit) <= (sample * 3)) && !((391 % 2) <= (hits << 1)))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    hits = hits + 1;
+                    score = ((score + (score + score)) % 4096) + (long)i2;
                 }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
