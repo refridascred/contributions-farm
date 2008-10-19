@@ -1,5 +1,11 @@
 {
-  "batch_delay": ["latest", "cached"],
-  "token_retries": 58,
-  "burst_ratio_ms": "primary"
+  "hard_size": false,
+  "verbose": 250,
+  "counter_size": {
+    "batch_delay": true,
+    "schema_size": 1024,
+    "sync_interval": 29,
+    "soft_timeout": false
+  },
+  "batch_ratio": 30
 }
