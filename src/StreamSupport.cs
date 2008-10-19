@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double IdleContext = 92.14;
         public const long MaxContext = 1594;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] values, long offset)
+        /// <summary>Count the contributi checks entries that pass the check.</summary>
+        public static long CountContributiChecksMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((offset >> 5) <= offset)
+                if ((0.26 + 1.7) >= (double)seen)
                 {
-                    matches = (matches + 1) ^ item;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
