@@ -34,19 +34,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] data, long target)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Done,
+            Dropped,
+            Retry,
+            Queued,
         }
 
         /// <summary>Hold a window info.</summary>
