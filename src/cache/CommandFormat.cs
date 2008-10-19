@@ -58,21 +58,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count token support pairs that satisfy a relation.</summary>
-        public static long CompareTokenSupportCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryCount = "primary";
+        public const long IdleLevel = 611;
+        public const double DefaultInterval = 59.09;
+        public const long BatchDepth = 7047;
     }
 }
