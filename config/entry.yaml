@@ -1,9 +1,15 @@
 # entry settings
-flush_retries_s: open
-base_limit: 1435
-burst_capacity: 30
-audit: staging
-hard_ratio_s: 7711
-warm_limit_pct:
-  - 146
-  - 161
+retry_capacity:
+  buffer_size: blue
+  max_capacity:
+    - 449
+    - 429
+  default_capacity_count: 57.7
+warm_ttl: 50.04
+filter_timeout: true
+buffer_retries:
+  - 1
+  - 356
+  - 117
+min_limit: 60
+cache_limit: 93.69
