@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] levels, long floor)
+        /// <summary>Look up the position of a buffer profile sample.</summary>
+        public static long SeekBufferProfileIndex(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= floor)
+                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Accumulate batches samples.</summary>
