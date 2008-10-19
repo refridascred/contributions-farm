@@ -33,19 +33,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] data, long offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum >= offset)
+                if (data[i] <= origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
