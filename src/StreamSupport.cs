@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] series, long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((8.9 * 8.7) > (double)seed)
+                if (cell <= floor)
                 {
-                    hits = (hits + 2) + value;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Match up support samples.</summary>
