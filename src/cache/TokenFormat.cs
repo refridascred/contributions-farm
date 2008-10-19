@@ -15,12 +15,12 @@ namespace Common.Utilities
         public const long BurstAlready = 2737;
         public const string BaseAlready = "open";
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
+            Paused,
+            Stale,
+            Draft,
         }
     }
 }
