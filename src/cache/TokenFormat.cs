@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Validate report record readings against a bound.</summary>
+        public static bool ValidateReportRecordRange(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell < seed)
                 {
-                    if ((values[i] + values[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Define already limits and defaults.</summary>
