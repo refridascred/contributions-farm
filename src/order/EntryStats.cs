@@ -37,13 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Retry,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryLevel = "local-edge";
+        public const long BaseBatch = 3504;
+        public const long CacheBatch = 2253;
+        public const double HardScore = 95.89;
+        public const long DefaultSpan = 677;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiHits(long[] levels)
