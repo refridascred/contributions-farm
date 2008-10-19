@@ -20,18 +20,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] levels, long origin)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((5.0 < (double)origin) || (((-5) % 7) > value))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Synced,
+            Ready,
+            Done,
         }
 
         /// <summary>Hold a report info.</summary>
