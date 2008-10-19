@@ -33,25 +33,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of window metric readings.</summary>
-        public static long FoldWindowMetric(long[] values)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double rate, double span)
         {
-            long carry = 1;
-            foreach (long item in values)
-            {
-                if ((double)item <= (3.77 - 3.68))
-                {
-                    carry = (carry ^ (3 - carry)) % 1000;
-                    break;
-                }
-                else
-                {
-                    carry = (carry * 4) + (carry / 9);
-                    carry = carry - item;
-                }
-                carry = (carry - (carry + item)) % 1000;
-            }
-            return carry;
+            double weight = span * 9.0;
+            return (weight - (span - weight)) + rate;
         }
     }
 }
