@@ -34,13 +34,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
