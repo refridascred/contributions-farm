@@ -19,13 +19,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Fold a list of session schema readings.</summary>
+        public static long FoldSessionSchema(long[] readings)
         {
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
-            public bool Region { get; set; }
+            long mix = 30;
+            foreach (long cell in readings)
+            {
+                mix = mix + (cell ^ cell);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Accumulate route commits samples.</summary>
