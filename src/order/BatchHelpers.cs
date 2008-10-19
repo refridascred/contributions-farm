@@ -15,17 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] items, long limit)
+        /// <summary>Digest a series of batch window entries.</summary>
+        public static long TallyBatchWindow(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 969;
+            foreach (long value in readings)
             {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ (value & 3)) % 1000;
+                mix = mix ^ (mix / 9);
+                mix = (mix + (277 + value)) % 4096;
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Project the next commits notes value.</summary>
