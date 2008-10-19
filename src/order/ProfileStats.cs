@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Synced,
-            Ready,
-            Done,
-            Closed,
+            Retry,
+            Stale,
+            New,
         }
 
         /// <summary>Measure how many githubfarm command samples are out of range.</summary>
