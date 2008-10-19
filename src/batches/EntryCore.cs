@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank already entry input into a small class.</summary>
-        public static long RankAlreadyEntry(long bound, long origin)
-        {
-            long step = bound + origin;
-            if ((89 - 496) > (3 - step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin >= (bound << 1)) && ((origin & 255) >= step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step * 5) >= 81)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinDepth = 1233;
+        public const long WindowBudget = 2388;
+        public const long CacheRatio = 5468;
+        public const long IdleStats = 5093;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsLimits(long[] values, long step)
