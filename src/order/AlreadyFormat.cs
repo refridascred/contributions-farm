@@ -51,12 +51,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Draft,
-            Ready,
+            Pending,
+            Locked,
+            Stale,
             Paused,
+            Retry,
         }
 
         /// <summary>Project the next metrics value.</summary>
