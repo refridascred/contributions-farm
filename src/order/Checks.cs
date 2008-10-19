@@ -35,10 +35,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSpan = 2226;
-        public const long CacheSize = 6716;
-        public const double BatchWidth = 36.36;
+        /// <summary>Look up the position of a stream account sample.</summary>
+        public static long LookupStreamAccountIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
