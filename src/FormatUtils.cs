@@ -42,12 +42,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long floor, long step)
         {
-            Queued,
-            Closed,
-            Draft,
+            if (((step * 3) <= (step * 4)) || ((double)floor >= 0.34))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor * 3) == (step - step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((floor << 2) > (step ^ floor)) || ((floor & 1) == (step - step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric entry.</summary>
