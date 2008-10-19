@@ -58,21 +58,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = (double)((-87) - 896);
+            if (bias2 < (double)9)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = (bias2 + (bias / 4.0)) - weight;
             }
-            return hits;
+            return bias2 + (double)(-7);
         }
     }
 }
