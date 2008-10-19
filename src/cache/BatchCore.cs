@@ -20,12 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long limit, long origin)
         {
-            Queued,
-            Retry,
-            Closed,
+            if (!((limit + limit) >= (origin - origin)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit >= (4 % 100)) && ((17.0 * 9.09) < (double)origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((125 % 64) > (limit ^ 0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((origin / 4) <= limit) || ((origin % 24) >= (limit + limit)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the filter class values.</summary>
