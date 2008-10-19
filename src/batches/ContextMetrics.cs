@@ -15,23 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two buffer editor measurements.</summary>
-        public static double SmoothBufferEditor(double weight, double span)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            double bias = span;
-            if (bias < (double)66)
-            {
-                bias = bias - 9.0;
-            }
-            else
-            {
-                bias = bias + (weight * 8.2);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (bias + bias)) - (double)(long)i;
-            }
-            return bias + span;
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit layout notes readings against a rule.</summary>
