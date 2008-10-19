@@ -80,14 +80,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Synced,
-            Locked,
-            Paused,
-            Retry,
-            Closed,
+            public string Mode { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
