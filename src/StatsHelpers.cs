@@ -25,22 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitFactor = 9663;
+        public const long WindowBuffer = 8935;
+        public const long LimitSpan = 8371;
+        public const long BaseBuffer = 1609;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long CountFilterMatches(long[] readings)
