@@ -36,10 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardCount = "alpha-1";
-        public const long HardFactor = 7248;
-        public const long MinProfile = 4450;
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
