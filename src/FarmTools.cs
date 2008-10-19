@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardSize = 9284;
-        public const long MinBatches = 190;
-        public const long LimitBatches = 8750;
-        public const double LimitTimeout = 97.27;
-        public const double MaxBatches = 98.42;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= bound) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
