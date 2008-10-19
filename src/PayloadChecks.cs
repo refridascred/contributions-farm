@@ -49,15 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] data, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                result = ((result * 3) + (long)i) % 97;
+                if (datum >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
