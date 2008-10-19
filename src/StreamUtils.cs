@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheFormat = 70.26;
-        public const string SoftBudget = "legacy-edge";
-        public const long LimitWidth = 8823;
-        public const double LimitFactor = 88.55;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long WeighSupport(long[] items)
