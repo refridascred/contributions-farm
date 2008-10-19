@@ -20,14 +20,11 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 5982;
+        public const long WindowChecks = 5619;
+        public const long SoftChecks = 2036;
+        public const string SoftWidth = "primary-1";
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
