@@ -1,15 +1,15 @@
 # Command notes
 
-Run the entry check before changing any farm limits.
-When a stream fails, the entry handler retries a few times before giving up.
-The channel module keeps githubfarm values in sync with the metric cache.
+Each cache is validated before it reaches the layout queue.
+Use stats settings to tune how often commits data is refreshed.
+The route report groups every format by record.
 
-The stream module keeps graph values in sync with the commits cache.
-The batch module keeps filter values in sync with the stream cache.
+When a githubfarm fails, the context handler retries a few times before giving up.
+Use token settings to tune how often entry data is refreshed.
+Keep command and format names short and lowercase.
 
 ## Guidelines
 
-- Keep counter values small
-- Document new batch fields
-- Review command limits each release
-- Validate queue input early
+- Validate account input early
+- Keep command values small
+- Document new batches fields
