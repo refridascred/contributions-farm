@@ -1,4 +1,21 @@
 # entry settings
-audit: eu-west
-token_retries: false
-poll_size: false
+hard_limit: strict
+poll_capacity_count: green
+compress:
+  session_capacity:
+    - 278
+    - 431
+    - 313
+  idle_ratio: true
+  batch_ratio_pct: 11
+  session_depth: cached
+  command_timeout: 2948
+soft_capacity:
+  - 36
+  - 271
+  - 190
+enabled:
+  - standard
+  - legacy
+  - open
+batches_capacity: stable
