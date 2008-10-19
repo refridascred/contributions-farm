@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long floor, long offset)
+        /// <summary>Audit profile graph readings against a rule.</summary>
+        public static long AuditProfileGraphMatches(long[] readings)
         {
-            if (!(((-703) * 5) > (floor + 437)))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset % 64) >= (floor + floor))
+                if (hits > value)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((3.7 - 3.6) >= (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset <= floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
