@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleCount = 6526;
-        public const string BurstChecks = "primary-1";
-        public const double DefaultDepth = 73.03;
-        public const long StepWidth = 8045;
-        public const long MaxChecks = 9408;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum - (long)readings.Length) == (datum & 1))
+                {
+                    seen = (seen + 1) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TallyAccount(long[] items, long floor)
