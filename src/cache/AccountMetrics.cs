@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinSpan = 5227;
-        public const string IdlePayload = "alpha";
-        public const long SoftPayload = 8309;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long target, long seed)
+        {
+            if (((seed & 15) <= (51 + target)) || ((2 + target) == (target - target)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target < (5.93 + 4.3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target - 354) < (target - 98))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long SeriesCommits(long floor)
