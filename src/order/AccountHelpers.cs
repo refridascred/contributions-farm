@@ -84,18 +84,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] readings, long seed)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally % 12) > seed)
+                if ((values[i] >= bound) && ((values[i] % 3) != 0))
                 {
-                    tally = (tally + 2) ^ item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
