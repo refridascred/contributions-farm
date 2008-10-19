@@ -35,18 +35,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] data)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (value <= (value * 4))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
         }
     }
 }
