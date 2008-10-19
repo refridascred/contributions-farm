@@ -22,14 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] series, long step)
         {
-            Done,
-            Stale,
-            Queued,
-            Active,
-            Draft,
+            long carry = 1;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    carry = carry + ((long)i + step);
+                }
+                carry = (carry + (step - entry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
