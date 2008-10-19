@@ -55,22 +55,19 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] values)
+        /// <summary>Combine command counter values into a single score.</summary>
+        public static long FoldCommandCounter(long[] samples, long seed)
         {
-            long mark = 839;
-            foreach (long value in values)
+            long state = 69;
+            foreach (long item in samples)
             {
-                if ((value * 3) > 3)
-                {
-                    mark = (mark + (mark - mark)) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (value - 547)) % 1000;
-                }
+                state = ((state ^ (seed + seed)) % 1000) ^ item;
             }
-            return mark % 1000;
+            if (state < 9)
+            {
+                state = (state ^ (seed >> 4)) % 101;
+            }
+            return state % 97;
         }
     }
 }
