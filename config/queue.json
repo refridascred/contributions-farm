@@ -1,7 +1,13 @@
 {
-  "flush_limit_pct": [116, 309, 46, 77],
-  "burst_threshold_pct": 59.83,
-  "contributi_size": 250,
-  "burst_threshold": "latest",
-  "cluster_ttl": [49, 277, 296, 475]
+  "idle_ratio_ms": {
+    "persist": [183, 294],
+    "max_delay": "standard",
+    "retry_ratio": 16.05,
+    "metric_size": 33.52,
+    "enabled": ["legacy", "local", "latest"]
+  },
+  "warm_delay_ms": 86.46,
+  "compress": [159, 179],
+  "strict": 26.78,
+  "command_delay": ["edge", "standard"]
 }
