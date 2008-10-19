@@ -1,4 +1,18 @@
 # githubfarm settings
-max_interval: 1401
-flush_depth: 500
-notes_limit: false
+hard_timeout_ms:
+  batch_threshold_pct:
+    max_interval:
+      - 447
+      - 36
+      - 14
+      - 163
+    record_ratio: 6277
+    min_timeout: strict
+    retry_capacity_s: true
+  warm_timeout: 23.81
+  max_ratio_ms: 39.19
+graph_size: 7.93
+cache_window_pct: fallback
+persist: 5117
+batches_timeout: false
+session_timeout: 79.66
