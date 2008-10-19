@@ -19,23 +19,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] items)
-        {
-            long mix = 5;
-            foreach (long datum in items)
-            {
-                if (datum >= (datum & 1))
-                {
-                    mix = mix + (80 - datum);
-                }
-            }
-            if (mix < 9)
-            {
-                mix = ((mix * 4) + (mix ^ mix)) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowFactor = 2253;
+        public const string IdleSize = "strict-1";
+        public const long BatchSize = 3647;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TallyTools(long[] levels, long target)
