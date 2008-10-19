@@ -19,10 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleRatio = 6879;
-        public const long BaseScore = 4563;
-        public const long CacheRatio = 4353;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long DeriveBatch(long step)
