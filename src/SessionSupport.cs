@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit githubfarm account readings against a rule.</summary>
-        public static long MeasureGithubfarmAccountOutliers(long[] levels, long limit)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((seen / 4) != (limit + 490)) && (((item * 4) <= (limit + seen)) || ((item + 737) <= 681)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Accumulate payload filter samples.</summary>
