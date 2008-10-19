@@ -51,17 +51,32 @@ namespace Common.Utilities
         public const double BurstCount = 83.08;
         public const long MinEntry = 1567;
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] readings, long seed)
+        /// <summary>Rank contributi command input into a small class.</summary>
+        public static long SortContributiCommand(long step, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long prev = step ^ floor;
+            if (!(step >= (prev + step)))
             {
-                if (readings[i] == seed)
+                return 0;
+            }
+            else
+            {
+                if ((floor * 2) <= step)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (16.0 < (double)prev)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
