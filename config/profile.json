@@ -1,9 +1,7 @@
 {
-  "compress": 15.74,
-  "base_interval_ms": 61.28,
-  "persist": {
-    "flush_limit_s": 3481,
-    "cache_timeout_pct": "primary",
-    "window_retries": ["latest", "local"]
-  }
+  "soft_window_ms": "stable",
+  "soft_limit_count": 1024,
+  "route_ttl": ["standard", "edge"],
+  "report_limit": 30,
+  "queue_timeout": "blue"
 }
