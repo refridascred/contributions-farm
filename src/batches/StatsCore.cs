@@ -13,12 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long offset)
         {
-            Synced,
-            Draft,
-            Failed,
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Blend two stats measurements.</summary>
