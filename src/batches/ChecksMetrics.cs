@@ -51,11 +51,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] samples, long offset)
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a farm options.</summary>
