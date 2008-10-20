@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 5000;
-        public const long BaseContext = 3137;
-        public const long BatchContext = 2269;
-        public const long WindowDepth = 7034;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits << 1) > 358)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
