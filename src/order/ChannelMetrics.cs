@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] levels, long bound)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long score = 5;
-            foreach (long datum in levels)
-            {
-                if (((5.09 / 6.0) > (double)datum) || (92 <= (328 + bound)))
-                {
-                    score = (score * 3) + (datum * 4);
-                }
-            }
-            if (score < 705)
-            {
-                score = (score - (score & 1)) % 4096;
-            }
-            return score;
+            Pending,
+            Stale,
+            Active,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the stats level values.</summary>
