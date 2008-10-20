@@ -1,8 +1,17 @@
 {
-  "farm_delay": 9435,
-  "account_ttl": "strict",
-  "contributi_depth": "cached",
-  "route_ratio": 79,
-  "cache_capacity": 0.48,
-  "hard_retries_ms": false
+  "strict": "fallback",
+  "channel_delay": 63.6,
+  "sync_retries_pct": true,
+  "retry_ttl": {
+    "graph_interval": 31.14,
+    "cache_limit_pct": {
+      "payload_capacity": false,
+      "compress": true,
+      "enabled": ["edge", "fallback", "open", "primary"],
+      "soft_delay": 5764
+    },
+    "sync_depth_ms": true,
+    "notes_threshold": 5718
+  },
+  "min_ttl": "local"
 }
