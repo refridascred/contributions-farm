@@ -18,21 +18,12 @@ namespace Common.Utilities
         public const long LimitBudget = 2524;
         public const long LimitSpan = 370;
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] values)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Validate account metric readings against a bound.</summary>
