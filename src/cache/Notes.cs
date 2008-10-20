@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            Closed,
-            Dropped,
-            Retry,
-            Idle,
-            Ready,
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
