@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BaseContributi = "fallback-edge";
-        public const double WindowScore = 88.67;
-        public const long SoftScore = 5785;
-        public const long IdleContributi = 6941;
-        public const double StepTimeout = 44.24;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchFilter = "latest-v2";
+        public const double BurstFilter = 63.23;
+        public const long BatchTimeout = 5462;
+        public const long IdleRatio = 1204;
+        public const long CacheFilter = 5070;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
