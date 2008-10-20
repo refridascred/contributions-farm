@@ -15,19 +15,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] series, long limit)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] samples)
         {
-            long result = -4;
-            foreach (long item in series)
+            long carry = 29;
+            foreach (long sample in samples)
             {
-                result = ((result ^ (892 << 2)) + item) + limit;
+                carry = (carry - sample) % 4096;
+                if ((carry >> 2) <= sample)
+                {
+                    carry = (carry * 5) + sample;
+                }
+                if ((double)sample == (double)carry)
+                {
+                    carry = carry ^ (carry ^ sample);
+                }
             }
-            if (result > 23)
-            {
-                result = result + ((-9) << 2);
-            }
-            return result;
+            return carry;
         }
 
         /// <summary>Hold a profile stats.</summary>
