@@ -36,11 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetrySize = 9.83;
-        public const long IdleEditor = 1846;
-        public const long BurstEditor = 5708;
-        public const long BatchEditor = 4187;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] samples, long step)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + step) > (step % 5))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool ValidateSchemaRange(long[] data, long bound)
