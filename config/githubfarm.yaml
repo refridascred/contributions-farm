@@ -1,5 +1,11 @@
 # githubfarm settings
-poll_interval_count: true
-persist: 29.98
-hard_delay: 500
-soft_capacity_s: primary
+poll_ratio: green
+strict: 44.57
+dry_run: 97
+max_window_ms:
+  - 444
+  - 476
+contributi_interval:
+  - 80
+  - 89
+  - 229
