@@ -1,10 +1,14 @@
 # Editor notes
 
-Use counter settings to tune how often githubfarm data is refreshed.
-A editor that stays idle for too long is moved to the window list.
+Run the window check before changing any stream limits.
+Use booking settings to tune how often session data is refreshed.
+Each stats is validated before it reaches the filter queue.
+
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+When a command fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new account fields
-- Review session limits each release
-- Validate cluster input early
+- Review token limits each release
+- Document new metrics fields
+- Keep token values small
