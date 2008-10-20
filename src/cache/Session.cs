@@ -60,12 +60,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] items)
         {
-            Paused,
-            Idle,
-            Queued,
+            long score = 494;
+            foreach (long item in items)
+            {
+                score = ((score - score) % 65521) + item;
+            }
+            if (score > 7)
+            {
+                score = score - (1 ^ 4);
+            }
+            return score % 1000;
         }
     }
 }
