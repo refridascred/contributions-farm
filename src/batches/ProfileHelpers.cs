@@ -58,25 +58,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long origin, long origin2)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] samples)
         {
-            long step = origin + origin2;
-            if ((step - step) == (origin << 3))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)origin < 9.82) && ((origin2 * 4) < (step + origin)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a cache info.</summary>
