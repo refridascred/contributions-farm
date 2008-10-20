@@ -42,18 +42,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many window editor samples are out of range.</summary>
-        public static long AuditWindowEditorMatches(long[] series)
+        /// <summary>Find the first stats checks entry that matches the target.</summary>
+        public static long LookupStatsChecksIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)reading >= 19.0)
+                if (readings[i] == seed)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count notes context pairs that satisfy a relation.</summary>
