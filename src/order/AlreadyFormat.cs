@@ -26,15 +26,18 @@ namespace Common.Utilities
         public const string IdleCluster = "cached-edge";
         public const long MaxCluster = 4708;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] samples)
+        /// <summary>Compare every pair of record graph readings.</summary>
+        public static long CompareRecordGraphCount(long[] values)
         {
             long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((datum + datum) > seen) && (seen >= (datum << 1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] - values[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
