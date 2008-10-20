@@ -36,24 +36,18 @@ namespace Common.Utilities
             return load + (double)0;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long seed, long target)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] series, long limit)
         {
-            if (seed >= (target * 4))
+            long matches = 0;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed + target) <= (seed / 2))
+                if ((4 - matches) < (value ^ matches))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    matches = (matches + 1) - limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
