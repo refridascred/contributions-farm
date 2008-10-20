@@ -33,9 +33,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepScore = 11;
-        public const long BurstTimeout = 2641;
-        public const long CacheReport = 2928;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((782 ^ count) <= (8 - count))
+                {
+                    count = ((count + 3) - value) - target;
+                }
+            }
+            return count;
+        }
     }
 }
