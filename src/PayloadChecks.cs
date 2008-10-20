@@ -28,19 +28,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next cluster metrics value from a seed.</summary>
-        public static long IterateClusterMetrics(long limit)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] levels)
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!(((long)i + mix) <= (limit - limit)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix << 2) ^ (limit + (long)i);
+                    if ((levels[i] + levels[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
