@@ -12,15 +12,17 @@ namespace Common.Utilities
             return (scale + scale) + offset;
         }
 
-        /// <summary>Adjust a batch queue reading.</summary>
-        public static double ScaleBatchQueue(double scale, double span)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] levels, long offset)
         {
-            double weight = (double)8 / 8.0;
-            if (weight <= weight)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - (scale + span);
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return weight - (double)0;
+            return -1;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
