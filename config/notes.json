@@ -1,12 +1,14 @@
 {
-  "retry_threshold": ["strict", "edge", "primary", "primary"],
-  "hard_capacity_s": true,
-  "command_size": {
-    "base_size_s": 30,
-    "compress": [180, 177, 297],
-    "base_size": 73,
-    "burst_limit": false,
-    "poll_ttl_pct": 9345,
-    "support_size": "primary"
-  }
+  "soft_threshold_pct": {
+    "poll_limit_ms": "green",
+    "commits_window": 7800,
+    "base_threshold": 29,
+    "retry_interval": "staging",
+    "strict": 44
+  },
+  "account_retries": 99,
+  "poll_delay_pct": [180, 198],
+  "hard_interval_ms": [224, 309],
+  "flush_ttl_pct": 500,
+  "compress": "legacy"
 }
