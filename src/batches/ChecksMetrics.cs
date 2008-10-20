@@ -64,19 +64,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] items, long offset)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Closed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
