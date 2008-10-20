@@ -13,12 +13,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] samples, long offset)
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (((offset ^ matches) != (11 - offset)) && ((8.2 - 8.0) >= (double)matches))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
