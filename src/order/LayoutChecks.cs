@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long target, long target2)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            if (target2 > target)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if ((target2 + target2) < (target2 >> 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)target2 <= 9.92))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next order value.</summary>
