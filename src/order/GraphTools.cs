@@ -41,19 +41,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] data, long bound)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Synced,
+            Active,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
