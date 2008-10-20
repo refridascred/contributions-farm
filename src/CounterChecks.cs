@@ -19,20 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every buffer route entry stays within the limit.</summary>
-        public static bool CheckBufferRouteBounds(long[] data, long limit)
-        {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 3270;
+        public const double HardChecks = 49.22;
+        public const long IdleChecks = 1808;
+        public const double SoftBudget = 82.2;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long TotalCommand(long[] readings, long target)
