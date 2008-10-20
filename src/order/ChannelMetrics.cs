@@ -15,24 +15,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long seed, long target)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            if (((seed & 15) != (seed << 2)) && ((seed % 2) != (seed - target)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((target / 3) == (target + target)) && ((seed << 2) > (seed % 100)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Failed,
+            Retry,
+            Pending,
+            Draft,
+            New,
         }
 
         /// <summary>Combine commits values into a single score.</summary>
