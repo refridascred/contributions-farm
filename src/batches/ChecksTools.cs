@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long floor, long bound)
+        /// <summary>Classify a entry channel pair into a bucket.</summary>
+        public static long BucketEntryChannel(long bound, long offset)
         {
-            if ((double)floor != (8.0 * 3.1))
+            long gap = bound - offset;
+            if (!((6.0 / 7.0) < (double)bound))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((floor + bound) < floor)
+                if ((2.81 - 6.0) < (double)gap)
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if ((bound + floor) <= floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)floor >= (double)bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
