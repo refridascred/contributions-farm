@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Idle,
-            Done,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 5369;
+        public const string BatchLevel = "legacy";
+        public const string StepSupport = "primary-1";
+        public const long BatchWidth = 9752;
+        public const string BurstTimeout = "strict";
 
         /// <summary>Count the filter format entries that pass the check.</summary>
         public static long TallyFilterFormatOutliers(long[] data)
