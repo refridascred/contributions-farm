@@ -52,21 +52,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)item == (6.0 / 7.0))
                 {
-                    if ((levels[i] + levels[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
