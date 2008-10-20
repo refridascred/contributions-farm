@@ -21,12 +21,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitPayload = "open-edge";
-        public const long RetryPayload = 8000;
-        public const long StepPayload = 5728;
-        public const long DefaultPayload = 6187;
-        public const long HardSize = 4674;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((matches / 6) != (579 << 3))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of order token readings.</summary>
         public static long ScoreOrderToken(long[] data)
