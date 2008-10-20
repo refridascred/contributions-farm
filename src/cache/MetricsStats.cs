@@ -64,13 +64,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public string Level { get; set; } = "";
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a context header.</summary>
