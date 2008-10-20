@@ -1,5 +1,5 @@
 # support settings
-verbose: 15.92
-persist: false
-stream_delay: local
-strict: blue
+dry_run: 89.49
+min_capacity: 5418
+burst_delay_count: 98
+enabled: 36.57
