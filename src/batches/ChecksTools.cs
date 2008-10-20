@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit session commits readings against a rule.</summary>
-        public static long CountSessionCommitsMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (!(hits <= (81 + 8)))
-                {
-                    hits = (hits + 1) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BaseContributi = "fallback-edge";
+        public const double WindowScore = 88.67;
+        public const long SoftScore = 5785;
+        public const long IdleContributi = 6941;
+        public const double StepTimeout = 44.24;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
