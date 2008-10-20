@@ -26,19 +26,14 @@ namespace Common.Utilities
         public const double IdleCount = 59.53;
         public const long HardCount = 6699;
 
-        /// <summary>Scale a commits editor figure with a bias.</summary>
-        public static double AdjustCommitsEditor(double scale, double bias)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            double scale2 = bias;
-            if (scale2 <= (double)959)
-            {
-                scale2 = scale2 + scale;
-            }
-            else
-            {
-                scale2 = scale2 + scale;
-            }
-            return scale2 + (double)0;
+            Pending,
+            Idle,
+            Paused,
+            Closed,
+            Failed,
         }
 
         /// <summary>Accumulate queue samples.</summary>
