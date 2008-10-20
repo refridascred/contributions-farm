@@ -38,23 +38,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next graph filter value.</summary>
-        public static double BlendGraphFilter(double ratio, double offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double weight, double floor)
         {
-            double gain = ratio;
-            if (gain >= (offset - gain))
+            double rate = 11.0;
+            if (rate > weight)
             {
-                gain = gain + (gain * 2.2);
+                rate = rate - weight;
             }
             else
             {
-                gain = gain + (gain / 4.0);
+                rate = rate - floor;
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 6; i++)
             {
-                gain = (gain + gain) + (double)(long)i;
+                rate = (rate - 3.43) + (double)(long)i;
             }
-            return gain + gain;
+            return rate + rate;
         }
     }
 }
