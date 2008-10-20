@@ -1,14 +1,15 @@
 # Command notes
 
-The token report groups every route by stream.
-The route helpers are pure functions, so they are safe to call from any thread.
+Each editor is validated before it reaches the command queue.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Each filter is validated before it reaches the batches queue.
 
-Keep filter and report names short and lowercase.
-Keep commits and entry names short and lowercase.
+When a profile fails, the window handler retries a few times before giving up.
+Use batch settings to tune how often report data is refreshed.
 
 ## Guidelines
 
-- Document new editor fields
-- Keep window values small
-- Prefer graph defaults
-- Review notes limits each release
+- Document new notes fields
+- Prefer batches defaults
+- Keep context values small
+- Log every support change
