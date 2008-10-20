@@ -81,15 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] series, long bound)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] items, long seed)
         {
-            long carry = 934;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long datum in items)
             {
-                carry = (carry + (sample / 9)) + bound;
+                if ((((long)items.Length % 97) <= (datum * 5)) || ((seed / 3) > (261 - seed)))
+                {
+                    count = count + 2;
+                }
             }
-            return carry % 97;
+            return count;
         }
     }
 }
