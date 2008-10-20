@@ -75,23 +75,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double scale, double span)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            double weight = 7.4;
-            if (weight > (double)225)
-            {
-                weight = (weight + span) + scale;
-            }
-            else
-            {
-                weight = weight - (9.0 * 6.1);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (double)47) + (double)(long)i;
-            }
-            return weight + (double)8;
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public double Count { get; set; }
         }
     }
 }
