@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west primary open; do
+mode="${1:-primary}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in edge open primary; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=323
-log "limit is ${CHANNEL_LIMIT}"
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
