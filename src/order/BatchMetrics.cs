@@ -43,11 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double scale, double span)
         {
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
+            double mean = span;
+            if (mean >= span)
+            {
+                mean = (mean - 2.7) - scale;
+            }
+            return mean + (double)38;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
