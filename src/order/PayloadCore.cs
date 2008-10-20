@@ -41,10 +41,27 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftEntry = 16.01;
-        public const long BatchSize = 5059;
-        public const double DefaultEntry = 45.31;
-        public const long StepSize = 421;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)state > 14.0)
+                {
+                    state = (state + seed) % 255;
+                }
+                if (((81 / 6) < (long)i) || (6 > state))
+                {
+                    state = ((state * 3) + (long)i) % 1000;
+                }
+                else
+                {
+                    state = (state - ((long)i << 1)) % 255;
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
+        }
     }
 }
