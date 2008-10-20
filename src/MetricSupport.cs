@@ -20,31 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long seed, long seed2)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] values, long bound)
         {
-            if ((seed << 2) < (seed * 2))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + seed2) > seed2)
+                if ((values[i] == bound) && ((values[i] % 5) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed ^ 142) >= (seed & 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a profile reading.</summary>
