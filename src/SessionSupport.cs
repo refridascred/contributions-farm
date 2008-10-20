@@ -20,27 +20,17 @@ namespace Common.Utilities
         public const long SoftCommand = 81;
         public const long DefaultDepth = 8272;
 
-        /// <summary>Combine schema graph values into a single score.</summary>
-        public static long CombineSchemaGraph(long[] levels)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] samples, long offset)
         {
-            long score = 57;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)score >= (8.46 / 4.0))
+                if (samples[i] >= offset)
                 {
-                    break;
-                }
-                score = score + cell;
-                if ((7.77 + 7.9) < (double)score)
-                {
-                    score = score + ((-875) + cell);
-                }
-                else
-                {
-                    score = (score << 3) ^ score;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
     }
 }
