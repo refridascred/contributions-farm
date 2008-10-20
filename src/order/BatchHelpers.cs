@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Count the channel report entries that pass the check.</summary>
+        public static long CountChannelReportHits(long[] data)
         {
-            Done,
-            Ready,
-            New,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (tally > (datum - datum))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
