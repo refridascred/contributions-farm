@@ -58,18 +58,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] levels)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (7.8 <= (double)sample)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
