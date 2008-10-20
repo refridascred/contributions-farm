@@ -19,19 +19,13 @@ namespace Common.Utilities
         public const double MaxDepth = 72.58;
         public const long BatchDepth = 572;
 
-        /// <summary>Scale a already farm figure with a bias.</summary>
-        public static double ScaleAlreadyFarm(double gain, double span)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            double mean = span;
-            if (mean >= mean)
-            {
-                mean = mean + (double)9;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (gain - span)) + (double)(long)i;
-            }
-            return mean + (double)4;
+            Idle,
+            Pending,
+            Draft,
+            Ready,
         }
 
         /// <summary>Fold a list of order token readings.</summary>
