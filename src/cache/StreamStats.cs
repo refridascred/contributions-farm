@@ -39,19 +39,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every buffer channel entry stays within the limit.</summary>
-        public static bool VerifyBufferChannelBounds(long[] values, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (datum > floor)
+                if ((seen - seed) > seed)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
