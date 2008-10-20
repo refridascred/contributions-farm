@@ -33,18 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] items, long origin)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long mark = -5;
-            foreach (long sample in items)
-            {
-                if (983 >= (mark % 100))
-                {
-                    mark = ((mark + (191 + sample)) % 255) - origin;
-                }
-            }
-            return mark;
+            Pending,
+            Ready,
+            Retry,
         }
     }
 }
