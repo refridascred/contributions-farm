@@ -38,19 +38,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((((double)entry != (1.26 - 8.6)) || ((entry * 4) >= (entry >> 5))) && (((entry - count) < (84 * 2)) || ((count + entry) < (entry * 5))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 8214;
+        public const long DefaultLevel = 8041;
+        public const string HardChannel = "primary-1";
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryMatches(long[] series, long limit)
