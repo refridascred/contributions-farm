@@ -13,11 +13,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "local-v2";
-        public const long SoftRatio = 3971;
-        public const double LimitCommits = 74.06;
-        public const long LimitFactor = 7973;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum <= (8.3 - 16.0))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmMatches(long[] series, long offset)
