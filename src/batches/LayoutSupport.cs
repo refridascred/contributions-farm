@@ -44,11 +44,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepBudget = 241;
-        public const long HardInterval = 4742;
-        public const string MinSpan = "strict-v2";
-        public const long MaxWindow = 1106;
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry * 5) + (carry + 3)) % 255;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long CompareStreamCount(long[] items)
