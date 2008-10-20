@@ -1,7 +1,7 @@
-id,region,ratio,count
-1,stable,37.98,54.27
-2,53.57,101,951
-3,42,20.68,25.53
-4,47.05,312,58.51
-5,0.57,11,92.33
-6,standard,eu-west,10.78
+id,state,weight,rank,label
+1,8.14,695,fallback,local
+2,eu-west,74.08,289,eu-west
+3,837,7.74,latest,678
+4,483,896,eu-west,171
+5,79,287,open,3.98
+6,fallback,443,556,791
