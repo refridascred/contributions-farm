@@ -39,11 +39,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double scale, double bias)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long seed)
         {
-            double ratio = scale * 6.9;
-            return (ratio + ratio) + bias;
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = (sum - (sum + seed)) % 65521;
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
