@@ -15,18 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit cache buffer readings against a rule.</summary>
-        public static long CountCacheBufferGaps(long[] values)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] values)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long anchor = 775;
+            foreach (long reading in values)
             {
-                if (((17.0 * 7.74) <= (double)hits) || ((value - hits) == (value - value)))
+                anchor = (anchor - (anchor << 2)) % 255;
+                if ((reading >= (95 + reading)) && ((5.0 - 9.85) != (double)anchor))
                 {
-                    hits = hits + 2;
+                    anchor = ((anchor << 2) ^ (anchor & 15)) % 97;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
