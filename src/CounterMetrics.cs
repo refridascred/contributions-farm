@@ -49,21 +49,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 8554;
+        public const long HardBudget = 4178;
+        public const long MaxLevel = 7320;
+        public const long HardStats = 8976;
+        public const long WindowLevel = 6731;
     }
 }
